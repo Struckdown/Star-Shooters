@@ -36,7 +36,7 @@ public class EnemyGenerator : MonoBehaviour {
             {
                 Instantiate(enemy1, new Vector3(Random.Range(-8, 8), Random.Range(cameraPos.y + 6, cameraPos.y + 9)), Quaternion.Euler(0, 0, 180)); // spawns the enemy above the camera, facing down
             }
-            /*else
+            else
             {
                 Instantiate(enemy2, new Vector3(Random.Range(-8, 8), Random.Range(cameraPos.y + 6, cameraPos.y + 9)), Quaternion.Euler(0, 0, 180)); // spawns the enemy above the camera, facing down
             }
@@ -46,7 +46,7 @@ public class EnemyGenerator : MonoBehaviour {
             CancelInvoke();
             waves = 0;
             Debug.Log("You have entered Stage 2");
-            InvokeRepeating("SpawnSecondSet", spawnTime, spawnTime); */
+            InvokeRepeating("SpawnSecondSet", spawnTime, spawnTime);
         }
     }
 

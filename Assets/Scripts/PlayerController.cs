@@ -56,18 +56,18 @@ public class PlayerController : MonoBehaviour {
         {
             nextFire = Time.time + fireRate;
 
-            if (PowerManager.power >= 20)
+            if (PowerManager.currentPower >= 20)
             {
                 Instantiate(laser, (GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(-0.1f,0)), Quaternion.identity);
                 Instantiate(laser, GameObject.FindGameObjectWithTag("Player").transform.position + new Vector3(0.1f,0), Quaternion.identity);
-                PowerManager.power -= 2;
+                PowerManager.currentPower -= 2;
             }
 
-            else if (PowerManager.power > 0)
+            else if (PowerManager.currentPower > 0)
             {
 
                 Instantiate(laser, GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
-                PowerManager.power -= 1;
+                PowerManager.currentPower-= 1;
             }
             /*else
             {
@@ -75,12 +75,12 @@ public class PlayerController : MonoBehaviour {
             } Potential error message location, stating to the player how there is insufficient energy to fire the laser*/
         }
 
-        if (Input.GetKey(KeyCode.X) && Time.time > nextFire && PowerManager.power >= 20)
+        if (Input.GetKey(KeyCode.X) && Time.time > nextFire && PowerManager.currentPower >= 20)
         {
             Debug.Log("Super Laser Fired");
             nextFire = Time.time + fireRate;
             Instantiate(superLaser, GameObject.FindGameObjectWithTag("Player").transform.position, Quaternion.identity);
-            PowerManager.power -= 20;
+            PowerManager.currentPower -= 20;
         }
     }
 }

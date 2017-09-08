@@ -53,7 +53,7 @@ public class enemyLaserBehavior : MonoBehaviour{
             rend.material.color = color;
             active = false;
             GetComponent<Collider2D>().isTrigger = true;
-            PowerManager.power += 5;
+            PowerManager.currentPower += 5;
         }
     }
 }
