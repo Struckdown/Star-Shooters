@@ -11,3 +11,7 @@ func _ready():
 func _process(delta):
 	var forwardVec = Vector2(0,-1).rotated(rotation).normalized()
 	position += forwardVec * moveSpeed * delta
+
+
+func _on_DespawnTimer_timeout():
+	queue_free()
