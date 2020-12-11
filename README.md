@@ -14,3 +14,7 @@ Wave spawn system - Typically, enemies spawn in groups, and then the next wave s
 For art, I should be able to find stuff online. Cohesion might be tough, but this is proof of concept.
 Same with audio.
 Writing, I will fumble. Probably no *real* story.
+
+Credits: (Since I can't make art/music/sfx)
+Kenney.nl
+https://opengameart.org/ for any other assets
