@@ -1,0 +1,192 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Player/FutureFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Space Shooter Redux/PNG/UI/playerLife1_blue.png" type="Texture" id=2]
+[ext_resource path="res://icon.png" type="Texture" id=3]
+[ext_resource path="res://Player/Scoreboard.gd" type="Script" id=4]
+
+[sub_resource type="VisualShaderNodeVec3Constant" id=10]
+constant = Vector3( 0, 1, 0 )
+
+[sub_resource type="VisualShaderNodeVectorScalarMix" id=11]
+
+[sub_resource type="VisualShaderNodeIf" id=12]
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=14]
+uniform_name = "FillPercentage"
+
+[sub_resource type="VisualShaderNodeScalarFunc" id=16]
+function = 31
+
+[sub_resource type="VisualShaderNodeInput" id=2]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeVec3Constant" id=9]
+constant = Vector3( 1, 0, 0 )
+
+[sub_resource type="VisualShaderNodeVectorDecompose" id=15]
+
+[sub_resource type="VisualShader" id=6]
+code = "shader_type canvas_item;
+uniform float FillPercentage;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Input:3
+	vec3 n_out3p0 = vec3(UV, 0.0);
+
+// VectorDecompose:9
+	float n_out9p0 = n_out3p0.x;
+	float n_out9p1 = n_out3p0.y;
+	float n_out9p2 = n_out3p0.z;
+
+// ScalarUniform:18
+	float n_out18p0 = FillPercentage;
+
+// ScalarFunc:19
+	float n_out19p0 = 1.0 - n_out18p0;
+
+// Vector:13
+	vec3 n_out13p0 = vec3(0.000000, 1.000000, 0.000000);
+
+// Vector:8
+	vec3 n_out8p0 = vec3(1.000000, 0.000000, 0.000000);
+
+// VectorScalarMix:14
+	vec3 n_out14p0 = mix(n_out13p0, n_out8p0, n_out9p1);
+
+// If:16
+	float n_in16p2 = 0.00001;
+	vec3 n_in16p3 = vec3(0.00000, 0.00000, 0.00000);
+	vec3 n_in16p5 = vec3(0.00000, 0.00000, 0.00000);
+	vec3 n_out16p0;
+	if(abs(n_out9p1 - n_out19p0) < n_in16p2)
+	{
+		n_out16p0 = n_in16p3;
+	}
+	else if(n_out9p1 < n_out19p0)
+	{
+		n_out16p0 = n_in16p5;
+	}
+	else
+	{
+		n_out16p0 = n_out14p0;
+	}
+
+// Output:0
+	COLOR.rgb = n_out16p0;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+custom_defines = ""
+graph_offset = Vector2( -361.5, 137 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 740, 220 )
+nodes/fragment/3/node = SubResource( 2 )
+nodes/fragment/3/position = Vector2( -260, 360 )
+nodes/fragment/8/node = SubResource( 9 )
+nodes/fragment/8/position = Vector2( -200, 260 )
+nodes/fragment/9/node = SubResource( 15 )
+nodes/fragment/9/position = Vector2( -60, 360 )
+nodes/fragment/13/node = SubResource( 10 )
+nodes/fragment/13/position = Vector2( -200, 160 )
+nodes/fragment/14/node = SubResource( 11 )
+nodes/fragment/14/position = Vector2( 240, 180 )
+nodes/fragment/16/node = SubResource( 12 )
+nodes/fragment/16/position = Vector2( 520, 220 )
+nodes/fragment/18/node = SubResource( 14 )
+nodes/fragment/18/position = Vector2( 40, 480 )
+nodes/fragment/19/node = SubResource( 16 )
+nodes/fragment/19/position = Vector2( 240, 480 )
+nodes/fragment/connections = PoolIntArray( 3, 0, 9, 0, 13, 0, 14, 0, 8, 0, 14, 1, 9, 1, 14, 2, 9, 1, 16, 0, 14, 0, 16, 4, 16, 0, 0, 0, 18, 0, 19, 0, 19, 0, 16, 1 )
+
+[sub_resource type="ShaderMaterial" id=7]
+shader = SubResource( 6 )
+shader_param/FillPercentage = 0.3
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 4 )
+
+[node name="ScoreboardPnl" type="Panel" parent="."]
+margin_left = 790.0
+margin_right = 1030.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScoreboardPnl"]
+margin_right = 240.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScoreLbl" type="Label" parent="ScoreboardPnl/VBoxContainer"]
+margin_right = 240.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 230, 80 )
+custom_fonts/font = ExtResource( 1 )
+text = "SCORE
+0000000"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LivesLbl" type="Label" parent="ScoreboardPnl/VBoxContainer"]
+margin_top = 83.0
+margin_right = 240.0
+margin_bottom = 183.0
+rect_min_size = Vector2( 0, 100 )
+custom_fonts/font = ExtResource( 1 )
+text = "Lives"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerLife1_blue" type="Sprite" parent="ScoreboardPnl/VBoxContainer/LivesLbl"]
+position = Vector2( 76.4421, 91.0338 )
+texture = ExtResource( 2 )
+
+[node name="playerLife1_blue2" type="Sprite" parent="ScoreboardPnl/VBoxContainer/LivesLbl"]
+position = Vector2( 154.396, 91.0338 )
+texture = ExtResource( 2 )
+
+[node name="playerLife1_blue3" type="Sprite" parent="ScoreboardPnl/VBoxContainer/LivesLbl"]
+position = Vector2( 115.642, 91.0338 )
+texture = ExtResource( 2 )
+
+[node name="ChargeLbl" type="Label" parent="ScoreboardPnl/VBoxContainer"]
+margin_top = 188.0
+margin_right = 240.0
+margin_bottom = 268.0
+rect_min_size = Vector2( 230, 80 )
+custom_fonts/font = ExtResource( 1 )
+text = "Charge"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChargeBar" type="Sprite" parent="ScoreboardPnl/VBoxContainer"]
+material = SubResource( 7 )
+position = Vector2( 118.66, 407.233 )
+scale = Vector2( 0.486486, 4.40817 )
+texture = ExtResource( 3 )

@@ -6,8 +6,10 @@ var slowMode = false	# While shift is held, move slower
 var slowModeMultiplier = 0.5	# How much slower to move while holding shift
 var moveSpeed = 200
 var shouldFire = false
-var energyLevel = 0		# current energy
+var energyLevel = 0.0		# current energy
+var energyLimit = 1000.0	# max amount of energy allowed
 var energyThreshold = 1	# amount of energy needed to shoot
+signal energyUpdated
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -47,18 +49,18 @@ func applyInputs(delta):
 	
 	if shouldFire and energyLevel >= energyThreshold:
 		energyLevel -= energyThreshold
-		$CanvasLayer/EnergyLabel.text = "Energy:" + str(energyLevel)
 		var b = load("res://Player/PlayerBullet.tscn")
 		var bInst = b.instance()
 		get_parent().add_child(bInst)
 		bInst.position = self.position
+		emit_signal("energyUpdated")
 	
 
 # Your energy shield gathers the energy!
 func _on_EnergyArea_body_entered(body):
 	if body.is_in_group("Hostile"):
-		energyLevel += 100
-		$CanvasLayer/EnergyLabel.text = "Energy:" + str(energyLevel)
+		energyLevel = min(energyLevel+100, energyLimit)
+		emit_signal("energyUpdated")
 
 
 # When the core is hit, you die
