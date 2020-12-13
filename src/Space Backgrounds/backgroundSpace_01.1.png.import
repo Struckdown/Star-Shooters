@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/black.png-b60b28b2028e1ebe521f061ec59d5946.stex"
+path="res://.import/backgroundSpace_01.1.png-3a4aabf16935e868cf7e9d24e75d1eee.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Space Shooter Redux/Backgrounds/black.png"
-dest_files=[ "res://.import/black.png-b60b28b2028e1ebe521f061ec59d5946.stex" ]
+source_file="res://Space Backgrounds/backgroundSpace_01.1.png"
+dest_files=[ "res://.import/backgroundSpace_01.1.png-3a4aabf16935e868cf7e9d24e75d1eee.stex" ]
 
 [params]
 

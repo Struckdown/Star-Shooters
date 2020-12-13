@@ -17,4 +17,5 @@ Writing, I will fumble. Probably no *real* story.
 
 Credits: (Since I can't make art/music/sfx)
 Kenney.nl
-https://opengameart.org/ for any other assets
+https://opengameart.org/content/space-background-01
+https://opengameart.org/ for any other unmentioned assets
