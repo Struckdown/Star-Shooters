@@ -12,11 +12,11 @@
 [ext_resource path="res://Space Shooter Redux/PNG/Lasers/laserBlue09.png" type="Texture" id=11]
 [ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future.ttf" type="DynamicFontData" id=12]
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
 shader_param/scroll_speed = 0.1
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=2]
 size = 24
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -37,7 +37,7 @@ __meta__ = {
 }
 
 [node name="BG" type="Sprite" parent="."]
-material = SubResource( 2 )
+material = SubResource( 1 )
 position = Vector2( 522.211, 327.011 )
 scale = Vector2( 4.07493, 2.76301 )
 texture = ExtResource( 3 )
@@ -70,7 +70,7 @@ __meta__ = {
 [node name="PlayLbl" type="Label" parent="VBoxContainer/MarginContainer/PlayBtn"]
 margin_right = 222.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Play"
 align = 1
 valign = 1
@@ -94,7 +94,7 @@ __meta__ = {
 [node name="PlayLbl2" type="Label" parent="VBoxContainer/ExitBtn"]
 margin_right = 222.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 2 )
 text = "Exit"
 align = 1
 valign = 1
@@ -132,3 +132,4 @@ texture = ExtResource( 4 )
 [node name="Laser2" type="Sprite" parent="."]
 position = Vector2( 510.127, 425.54 )
 texture = ExtResource( 11 )
+[connection signal="button_down" from="VBoxContainer/MarginContainer/PlayBtn" to="." method="_on_PlayBtn_button_down"]

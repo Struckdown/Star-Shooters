@@ -20,6 +20,10 @@ config/description="A top-down 2D bullet-hell game with a focus on grazing bulle
 run/main_scene="res://World.tscn"
 config/icon="res://Space Shooter Redux/PNG/playerShip1_blue.png"
 
+[autoload]
+
+SceneTransition="*res://Levels/SceneTransition.tscn"
+
 [display]
 
 mouse_cursor/custom_image="res://Space Shooter Redux/PNG/UI/cursor.png"

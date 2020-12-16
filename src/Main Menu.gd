@@ -15,8 +15,16 @@ func _ready():
 	var i = randi() % (backgrounds.size()-1)
 	var bg = backgrounds[i]
 	$BG.texture = load(bg)
+	$"/root/SceneTransition".connect("fadeFinished", self, "fadeFinished")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_PlayBtn_button_down():
+	$"/root/SceneTransition".fadetoBlack()
+
+func fadeFinished():
+	get_tree().change_scene("res://World.tscn")

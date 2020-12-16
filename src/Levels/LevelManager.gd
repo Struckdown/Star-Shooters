@@ -10,6 +10,7 @@ func _ready():
 	playerRef = get_node("Player")
 	playerRef.connect("energyUpdated", self, "updateCharge")
 	updateCharge()
+	$"/root/SceneTransition".fadeinFromBlack()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
