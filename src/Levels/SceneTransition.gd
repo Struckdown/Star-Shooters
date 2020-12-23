@@ -23,4 +23,7 @@ func fadetoBlack():
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
-	emit_signal("fadeFinished")
+	if anim_name in ["FadeInFromBlack"]:
+		emit_signal("fadeFinished")
+	else:
+		raise()

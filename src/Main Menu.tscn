@@ -43,20 +43,20 @@ scale = Vector2( 4.07493, 2.76301 )
 texture = ExtResource( 3 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_left = 741.453
-margin_top = 354.836
-margin_right = 993.453
-margin_bottom = 459.836
+margin_left = 741.0
+margin_top = 355.0
+margin_right = 963.0
+margin_bottom = 437.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 252.0
+margin_right = 222.0
 margin_bottom = 39.0
 
 [node name="PlayBtn" type="TextureButton" parent="VBoxContainer/MarginContainer"]
-margin_right = 252.0
+margin_right = 222.0
 margin_bottom = 39.0
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
@@ -80,7 +80,7 @@ __meta__ = {
 
 [node name="ExitBtn" type="TextureButton" parent="VBoxContainer"]
 margin_top = 43.0
-margin_right = 252.0
+margin_right = 222.0
 margin_bottom = 82.0
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
@@ -91,7 +91,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayLbl2" type="Label" parent="VBoxContainer/ExitBtn"]
+[node name="ExitLbl" type="Label" parent="VBoxContainer/ExitBtn"]
 margin_right = 222.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 2 )
@@ -132,4 +132,5 @@ texture = ExtResource( 4 )
 [node name="Laser2" type="Sprite" parent="."]
 position = Vector2( 510.127, 425.54 )
 texture = ExtResource( 11 )
-[connection signal="button_down" from="VBoxContainer/MarginContainer/PlayBtn" to="." method="_on_PlayBtn_button_down"]
+[connection signal="button_up" from="VBoxContainer/MarginContainer/PlayBtn" to="." method="_on_PlayBtn_button_up"]
+[connection signal="button_up" from="VBoxContainer/ExitBtn" to="." method="_on_ExitBtn_button_up"]

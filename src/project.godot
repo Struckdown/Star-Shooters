@@ -17,7 +17,7 @@ _global_script_class_icons={
 
 config/name="Star Shooters"
 config/description="A top-down 2D bullet-hell game with a focus on grazing bullets to gain power!"
-run/main_scene="res://World.tscn"
+run/main_scene="res://Main Menu.tscn"
 config/icon="res://Space Shooter Redux/PNG/playerShip1_blue.png"
 
 [autoload]

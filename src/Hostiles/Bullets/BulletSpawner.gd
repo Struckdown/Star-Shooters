@@ -14,7 +14,7 @@ func _ready():
 #	pass
 
 func spawnBullet():
-	var b = load("res://Hostiles/Bullet_Base.tscn")
+	var b = load("res://Hostiles/Bullets/Bullet_Base.tscn")
 	var bInst = b.instance()
 	var boxSize = $Area2D/CollisionShape2D.shape.extents * scale * 2
 	get_parent().add_child(bInst)

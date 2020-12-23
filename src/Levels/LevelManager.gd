@@ -17,7 +17,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func _input(event):
+func _input(_event):
 	if Input.is_action_pressed("pause"):
 		$"CanvasLayer/Pause Menu".show()
 		get_tree().paused = true
