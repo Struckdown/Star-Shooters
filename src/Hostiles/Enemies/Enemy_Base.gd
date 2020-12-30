@@ -11,7 +11,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position += Vector2(0, delta*speed).rotated(rotation)
+	move(delta)
 
 
 #Called when the enemy is destroyed
@@ -19,5 +19,5 @@ func _exit_tree():
 	emit_signal("destroyed")
 
 
-func _on_Timer_timeout():
-	queue_free()
+func move(d):
+	position += Vector2(d*speed, 0).rotated(rotation)
