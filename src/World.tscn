@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Space Backgrounds/space_background_pack/Animated_BG.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Pause Menu/Pause Menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=5]
@@ -38,3 +39,11 @@ margin_bottom = -128.0
 
 [node name="KillZone" parent="." instance=ExtResource( 7 )]
 position = Vector2( 407.679, 665.222 )
+
+[node name="BulletEmitter" parent="." instance=ExtResource( 2 )]
+position = Vector2( 314.779, 359.613 )
+rotationDegPerSec = 5
+angleOfBulletSpread = 120
+amountOfBullets = 3
+bulletMovementSpeed = 100
+bulletSpawnDelay = 0.3
