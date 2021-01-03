@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/LevelManager.gd" type="Script" id=6]
 [ext_resource path="res://Levels/KillZone.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Hostiles/Waves/TwobyTwo.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Hostiles/Waves/4FlyingWide.tscn" type="PackedScene" id=10]
 
@@ -42,8 +43,8 @@ position = Vector2( 407.679, 665.222 )
 
 [node name="BulletEmitter" parent="." instance=ExtResource( 2 )]
 position = Vector2( 314.779, 359.613 )
-rotationDegPerSec = 5
-angleOfBulletSpread = 120
-amountOfBullets = 3
+angleOfBulletSpread = 30
+amountOfBullets = 12
 bulletMovementSpeed = 100
 bulletSpawnDelay = 0.3
+bulletType = ExtResource( 8 )
