@@ -1,4 +1,4 @@
-extends CanvasLayer
+extends Panel
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,4 +11,4 @@ func _ready():
 #	pass
 
 func updateCharge(charge):
-	$ScoreboardPnl/VBoxContainer/ChargeBar.material.set_shader_param("FillPercentage", charge)
+	$VBoxContainer/ChargeBar.material.set_shader_param("FillPercentage", charge)

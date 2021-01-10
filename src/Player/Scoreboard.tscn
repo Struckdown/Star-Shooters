@@ -116,25 +116,23 @@ nodes/fragment/connections = PoolIntArray( 3, 0, 9, 0, 13, 0, 14, 0, 8, 0, 14, 1
 shader = SubResource( 9 )
 shader_param/FillPercentage = 0.3
 
-[node name="CanvasLayer" type="CanvasLayer"]
-script = ExtResource( 4 )
-
-[node name="ScoreboardPnl" type="Panel" parent="."]
+[node name="ScoreboardPnl" type="Panel"]
 margin_left = 790.0
 margin_right = 1030.0
 margin_bottom = 600.0
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ScoreboardPnl"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_right = 240.0
 margin_bottom = 600.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ScoreLbl" type="Label" parent="ScoreboardPnl/VBoxContainer"]
+[node name="ScoreLbl" type="Label" parent="VBoxContainer"]
 margin_right = 240.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 230, 80 )
@@ -147,7 +145,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LivesLbl" type="Label" parent="ScoreboardPnl/VBoxContainer"]
+[node name="LivesLbl" type="Label" parent="VBoxContainer"]
 margin_top = 84.0
 margin_right = 240.0
 margin_bottom = 184.0
@@ -160,19 +158,19 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="playerLife1_blue" type="Sprite" parent="ScoreboardPnl/VBoxContainer/LivesLbl"]
+[node name="playerLife1_blue" type="Sprite" parent="VBoxContainer/LivesLbl"]
 position = Vector2( 76.4421, 91.0338 )
 texture = ExtResource( 2 )
 
-[node name="playerLife1_blue2" type="Sprite" parent="ScoreboardPnl/VBoxContainer/LivesLbl"]
+[node name="playerLife1_blue2" type="Sprite" parent="VBoxContainer/LivesLbl"]
 position = Vector2( 154.396, 91.0338 )
 texture = ExtResource( 2 )
 
-[node name="playerLife1_blue3" type="Sprite" parent="ScoreboardPnl/VBoxContainer/LivesLbl"]
+[node name="playerLife1_blue3" type="Sprite" parent="VBoxContainer/LivesLbl"]
 position = Vector2( 115.642, 91.0338 )
 texture = ExtResource( 2 )
 
-[node name="ChargeLbl" type="Label" parent="ScoreboardPnl/VBoxContainer"]
+[node name="ChargeLbl" type="Label" parent="VBoxContainer"]
 margin_top = 188.0
 margin_right = 240.0
 margin_bottom = 268.0
@@ -185,7 +183,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ChargeBar" type="Sprite" parent="ScoreboardPnl/VBoxContainer"]
+[node name="ChargeBar" type="Sprite" parent="VBoxContainer"]
 material = SubResource( 10 )
 position = Vector2( 118.66, 407.233 )
 scale = Vector2( 0.486486, 4.40817 )

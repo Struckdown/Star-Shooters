@@ -5,7 +5,7 @@ extends Node
 var bigPlanetSpeed = 0.3
 var planets = []
 var planetSpeeds = [0, 0, 0]
-var layerSpeedAllowedRanges = [[0.07,0.14], [0.14, 0.16], [0.12, 0.2]]
+var layerSpeedAllowedRanges = [[7,14], [14, 16], [12, 20]]
 
 func _ready():
 	planets.append($"parallax-space-big-planet")
@@ -24,7 +24,7 @@ func _process(delta):
 
 func updatePlanets(d):
 	for i in range(0, len(planets)):
-		planets[i].position.x -= planetSpeeds[i]
+		planets[i].position.x -= planetSpeeds[i] * d
 		if planets[i].position.x <= -250:
 			planets[i].position.x = rand_range(250, 350)
 			planets[i].position.y = rand_range(-80, 80)

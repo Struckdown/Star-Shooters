@@ -16,4 +16,5 @@ func _on_OptionsBtn_pressed():
 
 func _on_QuitBtn_pressed():
 	get_tree().paused = false
-	get_tree().change_scene("res://Main Menu.tscn")
+	if(get_tree().change_scene("res://Main Menu.tscn")):
+		print("ERROR in screen change!")

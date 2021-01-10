@@ -9,8 +9,8 @@ var curWave = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	scoreBoardRef = get_node("Scoreboard")
-	playerRef = get_node("Player")
+	scoreBoardRef = get_node("VPCscoreboard/Viewport/Scoreboard")
+	playerRef = get_node("VPCgame/Viewport/Player")
 	playerRef.connect("energyUpdated", self, "updateCharge")
 	updateCharge()
 	$"/root/SceneTransition".fadeinFromBlack()

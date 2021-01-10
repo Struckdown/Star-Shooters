@@ -24,7 +24,6 @@ func _process(delta):
 	rotation += deg2rad(rotationDegPerSec)
 
 func spawnBullets():
-	transform.x
 	for i in range(amountOfBullets):
 		var b = bulletType.instance()
 		get_parent().add_child(b)
