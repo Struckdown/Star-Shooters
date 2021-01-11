@@ -27,15 +27,29 @@ tracks/0/keys = {
 }
 
 [node name="Player" type="Node2D"]
+position = Vector2( 0, 4 )
 script = ExtResource( 2 )
 
 [node name="Spaceship" type="Sprite" parent="."]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 hframes = 6
+
+[node name="Spaceship_L" type="Sprite" parent="Spaceship"]
+position = Vector2( -420, 0 )
+texture = ExtResource( 1 )
+hframes = 6
 frame = 4
 
-[node name="EnergyArea" type="Area2D" parent="."]
+[node name="Spaceship_R" type="Sprite" parent="Spaceship"]
+position = Vector2( 420, 0 )
+texture = ExtResource( 1 )
+hframes = 6
+frame = 4
+
+[node name="EnergyArea" type="Area2D" parent="." groups=[
+"Player",
+]]
 
 [node name="EnergyHitBox" type="CollisionShape2D" parent="EnergyArea"]
 shape = SubResource( 1 )
