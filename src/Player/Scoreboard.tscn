@@ -117,8 +117,8 @@ shader = SubResource( 9 )
 shader_param/FillPercentage = 0.3
 
 [node name="ScoreboardPnl" type="Panel"]
-margin_left = 790.0
-margin_right = 1030.0
+margin_left = 820.0
+margin_right = 1020.0
 margin_bottom = 600.0
 script = ExtResource( 4 )
 __meta__ = {
@@ -126,30 +126,36 @@ __meta__ = {
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 240.0
+margin_right = 211.0
 margin_bottom = 600.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ScoreLbl" type="Label" parent="VBoxContainer"]
-margin_right = 240.0
+margin_right = 211.0
 margin_bottom = 80.0
-rect_min_size = Vector2( 230, 80 )
+rect_min_size = Vector2( 200, 80 )
+size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 text = "SCORE
-0000000"
+000000"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LivesLbl" type="Label" parent="VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 margin_top = 84.0
-margin_right = 240.0
-margin_bottom = 184.0
-rect_min_size = Vector2( 0, 100 )
+margin_right = 211.0
+margin_bottom = 164.0
+
+[node name="LivesLbl" type="Label" parent="VBoxContainer/VBoxContainer"]
+margin_top = -1.0
+margin_right = 211.0
+margin_bottom = 49.0
+rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 1 )
 text = "Lives"
 align = 1
@@ -158,23 +164,55 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="playerLife1_blue" type="Sprite" parent="VBoxContainer/LivesLbl"]
-position = Vector2( 76.4421, 91.0338 )
-texture = ExtResource( 2 )
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/VBoxContainer"]
+margin_top = 54.0
+margin_right = 211.0
+margin_bottom = 80.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="playerLife1_blue2" type="Sprite" parent="VBoxContainer/LivesLbl"]
-position = Vector2( 154.396, 91.0338 )
-texture = ExtResource( 2 )
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/CenterContainer"]
+margin_left = 52.0
+margin_right = 159.0
+margin_bottom = 26.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="playerLife1_blue3" type="Sprite" parent="VBoxContainer/LivesLbl"]
-position = Vector2( 115.642, 91.0338 )
+[node name="playerLife_0" type="TextureRect" parent="VBoxContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_right = 33.0
+margin_bottom = 26.0
 texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerLife_1" type="TextureRect" parent="VBoxContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 37.0
+margin_right = 70.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerLife_2" type="TextureRect" parent="VBoxContainer/VBoxContainer/CenterContainer/HBoxContainer"]
+margin_left = 74.0
+margin_right = 107.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ChargeLbl" type="Label" parent="VBoxContainer"]
-margin_top = 188.0
-margin_right = 240.0
-margin_bottom = 268.0
-rect_min_size = Vector2( 230, 80 )
+margin_top = 168.0
+margin_right = 211.0
+margin_bottom = 248.0
+rect_min_size = Vector2( 200, 80 )
+size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 1 )
 text = "Charge"
 align = 1
@@ -185,6 +223,6 @@ __meta__ = {
 
 [node name="ChargeBar" type="Sprite" parent="VBoxContainer"]
 material = SubResource( 10 )
-position = Vector2( 118.66, 407.233 )
-scale = Vector2( 0.486486, 4.40817 )
+position = Vector2( 100, 400 )
+scale = Vector2( 0.5, 4.5 )
 texture = ExtResource( 3 )
