@@ -1,5 +1,6 @@
 extends "res://Hostiles/Enemies/Enemy_Base.gd"
 
+export(PackedScene) var bulletToSpawn
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -20,8 +21,7 @@ func _on_ShotTimer_timeout():
 	spawnBullet()
 
 func spawnBullet():
-	var b = load("res://Hostiles/Bullets/Bullet_Base.tscn")
-	b = b.instance()
+	var b = bulletToSpawn.instance()
 	get_parent().add_child(b)
 	b.position = position
 	var fwdVec = transform.x * 10

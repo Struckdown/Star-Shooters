@@ -1,15 +1,19 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Waves/4FlyingWide.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Space Backgrounds/space_background_pack/Animated_BG.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Pause Menu/Pause Menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/LevelManager.gd" type="Script" id=6]
 [ext_resource path="res://Levels/KillZone.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Hostiles/Enemies/ForwardShooter.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Base.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/LevelBoundaries.tscn" type="PackedScene" id=11]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 6 )
+waves = [ ExtResource( 2 ) ]
 
 [node name="VPCscoreboard" type="ViewportContainer" parent="."]
 margin_left = 824.0
@@ -73,3 +77,9 @@ margin_left = 201.0
 margin_top = 72.0
 margin_right = -423.0
 margin_bottom = -128.0
+
+[node name="Enemy_Base" parent="." instance=ExtResource( 8 )]
+position = Vector2( 333.671, 487.864 )
+
+[node name="Bullet_Base" parent="." instance=ExtResource( 9 )]
+position = Vector2( 209.854, 491.832 )

@@ -29,7 +29,9 @@ script = ExtResource( 1 )
 texture = ExtResource( 2 )
 hframes = 3
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+[node name="KinematicBody2D" type="Area2D" parent="." groups=[
+"PlayerBullet",
+]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
 shape = SubResource( 1 )

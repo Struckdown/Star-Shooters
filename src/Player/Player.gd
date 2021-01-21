@@ -82,17 +82,7 @@ func applyInputs(delta):
 		emit_signal("energyUpdated")
 
 
-# Your energy shield gathers the energy!
-func _on_EnergyArea_body_entered(body):
-	if body.is_in_group("Hostile"):
-		energyLevel = min(energyLevel+100, energyLimit)
-		emit_signal("energyUpdated")
 
-
-# When the core is hit, you die
-func _on_CoreArea_body_entered(body):
-	if body.is_in_group("Hostile"):
-		print("You got hit in the core! You probably died!")
 
 
 func updateFakes():
@@ -119,3 +109,16 @@ func updateTeleport(delta):
 		else:
 			position = $Spaceship/Spaceship_L.global_position
 		teleporting = false
+
+# Your energy shield gathers the energy!
+func _on_EnergyArea_area_entered(area):
+	print("THING HAPPENED")
+	if area.is_in_group("Hostile"):
+		energyLevel = min(energyLevel+100, energyLimit)
+		emit_signal("energyUpdated")
+
+
+# When the core is hit, you die
+func _on_CoreArea_area_entered(area):
+	if area.is_in_group("Hostile"):
+		print("You got hit in the core! You probably died!")

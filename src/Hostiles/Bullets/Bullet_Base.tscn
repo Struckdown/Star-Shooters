@@ -31,11 +31,11 @@ rotation = 1.5708
 texture = ExtResource( 1 )
 hframes = 3
 
-[node name="KinematicBody2D" type="KinematicBody2D" parent="." groups=[
+[node name="Area2D" type="Area2D" parent="." groups=[
 "Hostile",
 ]]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

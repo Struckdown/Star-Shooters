@@ -67,5 +67,5 @@ shape = SubResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Flying"
 anims/Flying = SubResource( 3 )
-[connection signal="body_entered" from="EnergyArea" to="." method="_on_EnergyArea_body_entered"]
-[connection signal="body_entered" from="EnergyArea/CoreArea" to="." method="_on_CoreArea_body_entered"]
+[connection signal="area_entered" from="EnergyArea" to="." method="_on_EnergyArea_area_entered"]
+[connection signal="area_entered" from="EnergyArea/CoreArea" to="." method="_on_CoreArea_area_entered"]

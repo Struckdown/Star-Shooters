@@ -33,7 +33,7 @@ func spawnWave():
 	print("Spawning wave " + str(waveNum))
 	if waveNum < waves.size():
 		curWave = waves[waveNum].instance()
-		add_child(curWave)
+		$VPCgame/Viewport.add_child(curWave)
 		waveNum +=1
 		curWave.connect("waveFinished", self, "spawnWave")
 	else:
