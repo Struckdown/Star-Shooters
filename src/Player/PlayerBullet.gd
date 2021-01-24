@@ -1,6 +1,7 @@
 extends Node2D
 
 var moveSpeed = 800
+export(PackedScene) var explosion
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,3 +14,15 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position.y += delta * moveSpeed * -1
+
+
+# Destroy the bullet by playing a particle effect
+func destroy():
+	var e = explosion.instance()
+	get_parent().add_child(e)
+	e.global_position = global_position
+	var randomOffset = Vector2(rand_range(-5, 5), rand_range(0, -25))
+	e.position += randomOffset
+	e.emitting = true
+	queue_free()
+	

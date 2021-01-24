@@ -2,10 +2,10 @@ extends Node2D
 
 
 var speed = 0
-var health = 10
+var health = 50
 signal destroyed
 export(PackedScene) var explosionType
-
+var explosionParticles
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,19 +27,23 @@ func move(d):
 
 
 func destroy():
-	var particles = explosionType.instance()
-	add_child(particles)
-	particles.emitting = true
+	explosionParticles = explosionType.instance()
+	add_child(explosionParticles)
+	$AnimationPlayer.play("Death")
+	explosionParticles.emitting = true
 	$ExplosionTimer.start()
 
 
 func _on_ExplosionTimer_timeout():
+	remove_child(explosionParticles)
+	get_parent().add_child(explosionParticles)
 	queue_free()
 
 
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("PlayerBullet"):
-		health -= 1
-		area.owner.queue_free()
-		if health <= 10:
-			destroy()
+		if health > 0:
+			health -= 1
+			area.owner.destroy()
+			if health <= 0:
+				destroy()

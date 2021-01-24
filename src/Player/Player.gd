@@ -7,10 +7,14 @@ var slowMode = false	# While shift is held, move slower
 var slowModeMultiplier = 0.5	# How much slower to move while holding shift
 var moveSpeed = 200
 var shouldFire = false
+var fireHOffset = 5
+
 var energyLevel = 0.0		# current energy
 var energyLimit = 1000.0	# max amount of energy allowed
 var energyThreshold = 1	# amount of energy needed to shoot
 signal energyUpdated
+
+# Boundary rules
 var touchingBotWall = false	# TODO: Replace this with a bool array of walls touched?
 var touchingTopWall = false
 var touchingLeftWall = false
@@ -74,15 +78,20 @@ func applyInputs(delta):
 	position += newMoveVec * delta
 	
 	if shouldFire and energyLevel >= energyThreshold:
-		energyLevel -= energyThreshold
-		var b = load("res://Player/PlayerBullet.tscn")
-		var bInst = b.instance()
-		get_parent().add_child(bInst)
-		bInst.position = self.position
-		emit_signal("energyUpdated")
+		spawnBullet()
 
 
-
+func spawnBullet():
+	energyLevel -= energyThreshold
+	var b = load("res://Player/PlayerBullet.tscn")
+	var bInst = b.instance()
+	get_parent().add_child(bInst)
+	get_parent().move_child(bInst, 2)	# Force bullet to be under space
+	bInst.position = self.position
+	fireHOffset *= -1
+	var offset = Vector2(fireHOffset, -10)
+	bInst.position += offset
+	emit_signal("energyUpdated")
 
 
 func updateFakes():
@@ -112,7 +121,6 @@ func updateTeleport(delta):
 
 # Your energy shield gathers the energy!
 func _on_EnergyArea_area_entered(area):
-	print("THING HAPPENED")
 	if area.is_in_group("Hostile"):
 		energyLevel = min(energyLevel+100, energyLimit)
 		emit_signal("energyUpdated")
