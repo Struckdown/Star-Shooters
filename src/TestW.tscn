@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Hostiles/Bullets/Bullet_Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Enemies/Boss_1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Explosions/MultiExplosion.tscn" type="PackedScene" id=3]
 
 [node name="Node2D" type="Node2D"]
-position = Vector2( 492.703, 324.693 )
+position = Vector2( 498.315, 505.409 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0.27018, -4.98851 )
 
-[node name="Bullet_Base" parent="." instance=ExtResource( 1 )]
-position = Vector2( -232.798, -2.48008 )
+[node name="Boss_1" parent="." instance=ExtResource( 1 )]
+position = Vector2( -3.24603, -397.942 )
+rotation = 1.57079
+explosionType = ExtResource( 3 )
