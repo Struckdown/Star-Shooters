@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Boss_HP_Bar_2.png" type="Texture" id=1]
+[ext_resource path="res://Hostiles/Boss HP.gd" type="Script" id=2]
+[ext_resource path="res://Player/FutureFont.tres" type="DynamicFont" id=3]
+
+[node name="Boss HP" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HpBackground" type="TextureRect" parent="."]
+modulate = Color( 0.101961, 0, 1, 1 )
+anchor_right = 0.999
+anchor_bottom = 0.033
+margin_top = 53.5805
+margin_right = 0.0239258
+margin_bottom = 53.7805
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HpBarDamagedBuffer" type="TextureRect" parent="."]
+self_modulate = Color( 5, 5, 5, 1 )
+anchor_bottom = 0.033
+margin_top = 53.5805
+margin_right = 1024.0
+margin_bottom = 53.7805
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HpBar" type="TextureRect" parent="."]
+anchor_bottom = 0.033
+margin_top = 53.5805
+margin_right = 1024.0
+margin_bottom = 53.7805
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Boss Name" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 10.0908
+margin_bottom = 24.0908
+custom_fonts/font = ExtResource( 3 )
+text = "Hydra Dreadnaught"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DamageUpdateTimer" type="Timer" parent="."]
+[connection signal="timeout" from="DamageUpdateTimer" to="." method="_on_DamageUpdateTimer_timeout"]
