@@ -1,6 +1,6 @@
 extends Node2D
 
-
+var pointsWorth = 100
 var speed = 0
 var health = 50
 signal destroyed
@@ -19,7 +19,7 @@ func _process(delta):
 
 #Called when the enemy is destroyed
 func _exit_tree():
-	emit_signal("destroyed")
+	emit_signal("destroyed", pointsWorth)
 
 
 func move(d):

@@ -6,6 +6,7 @@ onready var playerRef
 export(Array, PackedScene) var waves
 var waveNum = 0
 var curWave = null
+var score = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -28,6 +29,9 @@ func _input(_event):
 func updateCharge():
 	scoreBoardRef.updateCharge(playerRef.energyLevel / playerRef.energyLimit)
 
+func updateScore(newScore):
+	score += newScore
+	scoreBoardRef.updateScore(score)
 
 func spawnWave():
 	print("Spawning wave " + str(waveNum))
@@ -36,6 +40,7 @@ func spawnWave():
 		$VPCgame/Viewport.add_child(curWave)
 		waveNum +=1
 		curWave.connect("waveFinished", self, "spawnWave")
+		curWave.connect("enemyDestroyed", self, "updateScore")
 	else:
 		print("Tried to access index out of bounds in wave size: " + str(waveNum))
 		print("TODO, play victory scene?")

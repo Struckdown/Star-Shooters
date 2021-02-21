@@ -3,6 +3,7 @@ extends Node2D
 
 var enemies
 signal waveFinished
+signal enemyDestroyed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,7 +16,8 @@ func _ready():
 #	pass
 
 
-func updateEnemyCount():
+func updateEnemyCount(pointsWorth):
 	enemies -= 1
+	emit_signal("enemyDestroyed", pointsWorth)
 	if enemies <= 0:
 		emit_signal("waveFinished")

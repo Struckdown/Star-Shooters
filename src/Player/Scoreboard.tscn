@@ -152,9 +152,8 @@ margin_right = 211.0
 margin_bottom = 164.0
 
 [node name="LivesLbl" type="Label" parent="VBoxContainer/VBoxContainer"]
-margin_top = -1.0
 margin_right = 211.0
-margin_bottom = 49.0
+margin_bottom = 50.0
 rect_min_size = Vector2( 0, 50 )
 custom_fonts/font = ExtResource( 1 )
 text = "Lives"

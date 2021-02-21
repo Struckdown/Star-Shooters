@@ -12,3 +12,7 @@ func _ready():
 
 func updateCharge(charge):
 	$VBoxContainer/ChargeBar.material.set_shader_param("FillPercentage", charge)
+
+
+func updateScore(score):
+	$VBoxContainer/ScoreLbl.text = "SCORE\n{scoreText}".format({"scoreText":"%06d" % score})
