@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Player/Player Sprite Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -8,13 +8,40 @@
 radius = 13.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 3.74248
+radius = 3.15271
 
 [sub_resource type="Animation" id=3]
+resource_name = "Explosion"
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpritesRoot/Spaceship:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 295.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpritesRoot/Spaceship:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 0, 1, 2, 3, 4, 5, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=4]
 length = 0.6
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("Spaceship:frame")
+tracks/0/path = NodePath("SpritesRoot/Spaceship:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -26,23 +53,54 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "Spawn"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("SpritesRoot/Spaceship:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 100 ), Vector2( 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SpritesRoot/Spaceship:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 2, 5 ), Vector2( 2, 2 ) ]
+}
+
 [node name="Player" type="Node2D"]
-position = Vector2( 0, 4 )
 script = ExtResource( 2 )
 
-[node name="Spaceship" type="Sprite" parent="."]
+[node name="SpritesRoot" type="Node2D" parent="."]
+
+[node name="Spaceship" type="Sprite" parent="SpritesRoot"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 hframes = 6
 
-[node name="Spaceship_L" type="Sprite" parent="Spaceship"]
-position = Vector2( -420, 0 )
+[node name="Spaceship_L" type="Sprite" parent="SpritesRoot"]
+position = Vector2( -840, 0 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 hframes = 6
 frame = 4
 
-[node name="Spaceship_R" type="Sprite" parent="Spaceship"]
-position = Vector2( 420, 0 )
+[node name="Spaceship_R" type="Sprite" parent="SpritesRoot"]
+position = Vector2( 840, 0 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 1 )
 hframes = 6
 frame = 4
@@ -65,7 +123,9 @@ texture = ExtResource( 3 )
 shape = SubResource( 2 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Flying"
-anims/Flying = SubResource( 3 )
+anims/Explosion = SubResource( 3 )
+anims/Flying = SubResource( 4 )
+anims/Spawn = SubResource( 5 )
 [connection signal="area_entered" from="EnergyArea" to="." method="_on_EnergyArea_area_entered"]
 [connection signal="area_entered" from="EnergyArea/CoreArea" to="." method="_on_CoreArea_area_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -1,6 +1,8 @@
 extends Node2D
 
 
+var hasControl = false
+var dying = false
 var inputVec = Vector2()	# this represents the Vec2 of button inputs by the player
 var inputVecLastFrame = Vector2()
 var slowMode = false	# While shift is held, move slower
@@ -22,6 +24,7 @@ var touchingRightWall = false
 var lastTouchingLeftWall = false	# false means last touched right wall
 var teleporting = false
 
+signal destroyed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,7 +34,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	determineInputs()
-	applyInputs(delta)
+	if hasControl:
+		applyInputs(delta)
 	updateFakes()
 	updateTeleport(delta)
 
@@ -95,9 +99,11 @@ func spawnBullet():
 
 
 func updateFakes():
-	$Spaceship/Spaceship_L.frame = $Spaceship.frame
-	$Spaceship/Spaceship_R.frame = $Spaceship.frame
-
+	$SpritesRoot/Spaceship_L.frame = $SpritesRoot/Spaceship.frame
+	$SpritesRoot/Spaceship_R.frame = $SpritesRoot/Spaceship.frame
+	#$SpritesRoot/Spaceship_L.position.x = $SpritesRoot/Spaceship.position.x - 420
+	#$SpritesRoot/Spaceship_R.position.x = $SpritesRoot/Spaceship.position.x + 420
+	
 
 func updateTeleport(delta):
 	if not teleporting:
@@ -114,9 +120,9 @@ func updateTeleport(delta):
 	
 	if not touchingWall:
 		if lastTouchingLeftWall:
-			position = $Spaceship/Spaceship_R.global_position
+			position = $SpritesRoot/Spaceship_R.global_position
 		else:
-			position = $Spaceship/Spaceship_L.global_position
+			position = $SpritesRoot/Spaceship_L.global_position
 		teleporting = false
 
 # Your energy shield gathers the energy!
@@ -128,5 +134,25 @@ func _on_EnergyArea_area_entered(area):
 
 # When the core is hit, you die
 func _on_CoreArea_area_entered(area):
-	if area.is_in_group("Hostile"):
-		print("You got hit in the core! You probably died!")
+	if area.is_in_group("Hostile") and not dying:
+		dying = true
+		#hasControl = false
+		$AnimationPlayer.play("Explosion")
+		var followingP = load("res://Utility/FollowingParticles.tscn")
+		followingP = followingP.instance()
+		followingP.init("res://Explosions/MultiExplosion.tscn", self)
+		get_tree().root.add_child(followingP)
+
+func spawn():
+	$AnimationPlayer.play("Spawn")
+	
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	match anim_name:
+		"Explosion":
+			emit_signal("destroyed")
+			queue_free()
+		"Spawn":
+			$AnimationPlayer.play("Flying")
+			hasControl = true
+	

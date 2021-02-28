@@ -3,6 +3,7 @@ extends Node2D
 
 onready var scoreBoardRef
 onready var playerRef
+export(PackedScene) var playerSpawn
 export(Array, PackedScene) var waves
 var waveNum = 0
 var curWave = null
@@ -11,9 +12,8 @@ var score = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	scoreBoardRef = get_node("VPCscoreboard/Viewport/Scoreboard")
-	playerRef = get_node("VPCgame/Viewport/Player")
-	playerRef.connect("energyUpdated", self, "updateCharge")
-	updateCharge()
+	playerSpawn = get_node("VPCgame/Viewport/PlayerSpawner")
+	spawnNewPlayer()
 	$"/root/SceneTransition".fadeinFromBlack()
 	spawnWave()
 
@@ -44,3 +44,9 @@ func spawnWave():
 	else:
 		print("Tried to access index out of bounds in wave size: " + str(waveNum))
 		print("TODO, play victory scene?")
+
+func spawnNewPlayer():
+	playerRef = playerSpawn.spawnPlayer()
+	playerRef.connect("energyUpdated", self, "updateCharge")
+	playerRef.connect("destroyed", self, "spawnNewPlayer")
+	updateCharge()
