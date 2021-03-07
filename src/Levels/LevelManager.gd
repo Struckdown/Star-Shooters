@@ -8,13 +8,13 @@ export(Array, PackedScene) var waves
 var waveNum = 0
 var curWave = null
 var score = 0
+var playerLives = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	scoreBoardRef = get_node("VPCscoreboard/Viewport/Scoreboard")
 	playerSpawn = get_node("VPCgame/Viewport/PlayerSpawner")
-	spawnNewPlayer()
-	$"/root/SceneTransition".fadeinFromBlack()
+	spawnNewPlayer(0)
 	spawnWave()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,8 +45,16 @@ func spawnWave():
 		print("Tried to access index out of bounds in wave size: " + str(waveNum))
 		print("TODO, play victory scene?")
 
-func spawnNewPlayer():
-	playerRef = playerSpawn.spawnPlayer()
-	playerRef.connect("energyUpdated", self, "updateCharge")
-	playerRef.connect("destroyed", self, "spawnNewPlayer")
-	updateCharge()
+func spawnNewPlayer(livesDelta):
+	playerLives += livesDelta
+	if playerLives >= 0:
+		playerRef = playerSpawn.spawnPlayer()
+		playerRef.connect("energyUpdated", self, "updateCharge")
+		playerRef.connect("destroyed", self, "spawnNewPlayer", [-1])
+		updateCharge()
+		if livesDelta != 0:
+			scoreBoardRef.updateLives(livesDelta)
+	else:
+		$"CanvasLayer/Game Over/AnimationPlayer".play("Game Over")
+		SceneTransition.transitionToScene("res://Main Menu.tscn")
+		

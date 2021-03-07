@@ -15,19 +15,11 @@ func _ready():
 	var i = randi() % (backgrounds.size()-1)
 	var bg = backgrounds[i]
 	$BG.texture = load(bg)
-	if $"/root/SceneTransition".connect("fadeFinished", self, "fadeFinished"):
-		print("Connect failed with fade?")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func fadeFinished():
-	if get_tree().change_scene("res://World.tscn"):
-		print("Scene failed to transition")
-
 
 func _on_ExitBtn_button_up():
 	if $VBoxContainer/ExitBtn.is_hovered():
@@ -35,4 +27,4 @@ func _on_ExitBtn_button_up():
 
 func _on_PlayBtn_button_up():
 	if $VBoxContainer/MarginContainer/PlayBtn.is_hovered():
-		$"/root/SceneTransition".fadetoBlack()
+		$"/root/SceneTransition".transitionToScene("res://World.tscn")
