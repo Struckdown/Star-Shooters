@@ -8,7 +8,9 @@ extents = Vector2( 10, 342.248 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 434.609, 10 )
 
-[node name="LevelBoundaries" type="Node2D"]
+[node name="LevelBoundaries" type="Node2D" groups=[
+"LevelBoundary",
+]]
 script = ExtResource( 1 )
 
 [node name="LeftArea" type="Area2D" parent="."]

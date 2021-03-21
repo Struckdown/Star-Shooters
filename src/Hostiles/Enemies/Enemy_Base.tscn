@@ -37,6 +37,7 @@ tracks/1/keys = {
 [node name="Enemy_Base" type="Node2D"]
 script = ExtResource( 2 )
 explosionType = ExtResource( 3 )
+flyingPattern = "straight"
 
 [node name="Area2D" type="Area2D" parent="."]
 

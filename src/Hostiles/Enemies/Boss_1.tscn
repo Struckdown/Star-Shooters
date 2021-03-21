@@ -7,7 +7,6 @@
 
 [node name="Boss_1" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
-explosionType = null
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 3 )

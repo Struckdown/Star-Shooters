@@ -3,7 +3,7 @@ extends Node2D
 
 onready var scoreBoardRef
 onready var playerRef
-export(PackedScene) var playerSpawn
+var playerSpawn
 export(Array, PackedScene) var waves
 var waveNum = 0
 var curWave = null

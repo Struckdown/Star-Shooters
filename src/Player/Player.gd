@@ -3,6 +3,7 @@ extends Node2D
 
 var hasControl = false
 var dying = false
+var respawnInvuln = true
 var inputVec = Vector2()	# this represents the Vec2 of button inputs by the player
 var inputVecLastFrame = Vector2()
 var slowMode = false	# While shift is held, move slower
@@ -134,7 +135,7 @@ func _on_EnergyArea_area_entered(area):
 
 # When the core is hit, you die
 func _on_CoreArea_area_entered(area):
-	if area.is_in_group("Hostile") and not dying:
+	if area.is_in_group("Hostile") and not dying and not respawnInvuln:
 		dying = true
 		#hasControl = false
 		$AnimationPlayer.play("Explosion")
@@ -156,3 +157,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			$AnimationPlayer.play("Flying")
 			hasControl = true
 	
+
+
+func _on_InvulnAnimPlayer_animation_finished(anim_name):
+	respawnInvuln = false
