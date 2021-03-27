@@ -1,17 +1,18 @@
 extends Node2D
 
-var pointsWorth = 100
-var speed = 155
+export(int) var pointsWorth = 100
+export(float) var speed = 140
 var velocity
-var health = 25
+export(int) var health = 25
 signal destroyed
 export(PackedScene) var explosionType
 var explosionParticles
-var moveGoal	# vector coordinate where enemy is trying to get to
+export(Vector2) var moveGoal	# vector coordinate where enemy is trying to get to
+export(NodePath) var moveGoalObject	# if given, try to move towards this object's position
 var levelBounds
 var levelViewport
-var target
-export(String, "straight", "hoverAndFire", "TBD") var flyingPattern
+var target	# thing to shoot
+export(String, "straight", "hoverRandomPoint", "hoverMoveGoal", "TBD") var flyingPattern
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,6 +23,8 @@ func _ready():
 	target = get_tree().get_nodes_in_group("Player")
 	if len(target) > 0:
 		target = target[0]
+	if moveGoal:
+		moveGoal += position
 	if not moveGoal and levelBounds:
 		getNewMoveGoal()
 
@@ -41,7 +44,7 @@ func move(d):
 	match flyingPattern:
 		"straight":
 			position += Vector2(d*speed, 0).rotated(rotation)
-		"hoverAndFire":
+		"hoverRandomPoint", "hoverMoveGoal":
 			if moveGoal:
 				velocity = position.direction_to(moveGoal) * speed * d
 				if position.distance_squared_to(moveGoal) > 5*5:
@@ -49,7 +52,7 @@ func move(d):
 
 func aimAtTarget():
 	match flyingPattern:
-		"hoverAndFire":
+		"hoverRandomPoint":
 			if target:
 				look_at(target.position)
 			else:
@@ -83,9 +86,5 @@ func getNewMoveGoal():
 	var mapSize = levelViewport.get_viewport().size
 	randomize()
 	var xRand = rand_range(mapSize.x * 0.1, mapSize.x * 0.9)
-	var yRand = rand_range(mapSize.y * 0.1, mapSize.y * 0.4)
-	#moveGoal = Vector2(xRand, mapCenter.y)
-#	print("xRand", xRand)
+	var yRand = rand_range(mapSize.y * 0.1, mapSize.y * 0.4) + 200	# 200 is from wave offset spawning things off-camera
 	moveGoal = Vector2(xRand, yRand)
-#	print("mapSize:", mapSize)
-#	print("moveGoal", moveGoal)

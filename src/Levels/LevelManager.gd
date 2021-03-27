@@ -37,7 +37,8 @@ func spawnWave():
 	print("Spawning wave " + str(waveNum))
 	if waveNum < waves.size():
 		curWave = waves[waveNum].instance()
-		$VPCgame/Viewport.add_child(curWave)
+		curWave.position.y -= 200	# Have enemies spawn off camera
+		$VPCgame/Viewport.call_deferred("add_child", curWave)
 		waveNum +=1
 		curWave.connect("waveFinished", self, "spawnWave")
 		curWave.connect("enemyDestroyed", self, "updateScore")
