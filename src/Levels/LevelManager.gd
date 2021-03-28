@@ -57,5 +57,5 @@ func spawnNewPlayer(livesDelta):
 			scoreBoardRef.updateLives(livesDelta)
 	else:
 		$"CanvasLayer/Game Over/AnimationPlayer".play("Game Over")
-		SceneTransition.transitionToScene("res://Main Menu.tscn")
+		
 		

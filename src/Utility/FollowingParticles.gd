@@ -10,10 +10,10 @@ func _ready():
 	pass
 
 # Must call setup to use
-# ParticlesToSpawn is the path to the resource, GameObjectToFollow is a gameobject
+# ParticlesToSpawn is the packed scene, GameObjectToFollow is a gameobject
 func init(_particlesToSpawn, _GameObjectToFollow):
 	GameObjectToFollow = _GameObjectToFollow
-	p = load(_particlesToSpawn).instance()
+	p = _particlesToSpawn.instance()
 	add_child(p)
 	p.emitting = true
 

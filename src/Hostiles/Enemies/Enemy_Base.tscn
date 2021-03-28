@@ -31,10 +31,11 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.7, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
 }
 
 [node name="Enemy_Base" type="Node2D"]
+scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 2 )
 explosionType = ExtResource( 3 )
 flyingPattern = "straight"

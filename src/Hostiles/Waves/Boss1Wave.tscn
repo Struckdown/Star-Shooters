@@ -9,5 +9,6 @@ script = ExtResource( 2 )
 [node name="Boss_1" parent="." instance=ExtResource( 1 )]
 position = Vector2( 507.616, 78.9973 )
 rotation = 1.57079
+scale = Vector2( 1, 1 )
 moveGoal = Vector2( 0, 200 )
 flyingPattern = "hoverMoveGoal"

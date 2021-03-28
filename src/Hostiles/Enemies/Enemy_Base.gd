@@ -8,7 +8,7 @@ signal destroyed
 export(PackedScene) var explosionType
 var explosionParticles
 export(Vector2) var moveGoal	# vector coordinate where enemy is trying to get to
-export(NodePath) var moveGoalObject	# if given, try to move towards this object's position
+#export(NodePath) var moveGoalObject	# if given, try to move towards this object's position	#TODO. This is not implemented
 var levelBounds
 var levelViewport
 var target	# thing to shoot
@@ -60,10 +60,10 @@ func aimAtTarget():
 					target = get_tree().get_nodes_in_group("Player")[0]
 
 func destroy():
-	explosionParticles = explosionType.instance()
-	add_child(explosionParticles)
+	explosionParticles = load("res://Utility/FollowingParticles.tscn").instance()
+	explosionParticles.init(explosionType, self)
+	get_tree().root.add_child(explosionParticles)
 	$AnimationPlayer.play("Death")
-	explosionParticles.emitting = true
 	$ExplosionTimer.start()
 
 

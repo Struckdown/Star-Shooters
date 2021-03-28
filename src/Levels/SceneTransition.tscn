@@ -48,6 +48,7 @@ anims/FadeInFromBlack = SubResource( 1 )
 anims/FadeToBlack = SubResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer"]
 modulate = Color( 0, 0, 0, 0 )

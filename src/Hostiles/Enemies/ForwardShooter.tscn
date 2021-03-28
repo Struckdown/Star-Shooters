@@ -6,7 +6,6 @@
 [ext_resource path="res://Hostiles/Bullets/Bullet_Base.tscn" type="PackedScene" id=4]
 
 [node name="Enemy_Base" instance=ExtResource( 1 )]
-scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 2 )
 bulletToSpawn = ExtResource( 4 )
 

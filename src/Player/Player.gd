@@ -8,7 +8,8 @@ var inputVec = Vector2()	# this represents the Vec2 of button inputs by the play
 var inputVecLastFrame = Vector2()
 var slowMode = false	# While shift is held, move slower
 var slowModeMultiplier = 0.5	# How much slower to move while holding shift
-var moveSpeed = 200
+export(int) var moveSpeed = 200
+export(PackedScene) var deathExplosion
 var shouldFire = false
 var fireHOffset = 5
 
@@ -141,7 +142,7 @@ func _on_CoreArea_area_entered(area):
 		$AnimationPlayer.play("Explosion")
 		var followingP = load("res://Utility/FollowingParticles.tscn")
 		followingP = followingP.instance()
-		followingP.init("res://Explosions/MultiExplosion.tscn", self)
+		followingP.init(deathExplosion, self)
 		get_tree().root.add_child(followingP)
 
 func spawn():
