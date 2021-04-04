@@ -7,17 +7,21 @@
 [node name="Boss HP" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_top = 1.0
+margin_bottom = 1.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HpBackground" type="TextureRect" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HpBackground" type="TextureRect" parent="CanvasLayer"]
 modulate = Color( 0.101961, 0, 1, 1 )
-anchor_right = 0.999
 anchor_bottom = 0.033
+margin_left = 100.0
 margin_top = 53.5805
-margin_right = 0.0239258
+margin_right = 700.0
 margin_bottom = 53.7805
 texture = ExtResource( 1 )
 expand = true
@@ -25,11 +29,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HpBarDamagedBuffer" type="TextureRect" parent="."]
+[node name="HpBarDamagedBuffer" type="TextureRect" parent="CanvasLayer"]
 self_modulate = Color( 5, 5, 5, 1 )
 anchor_bottom = 0.033
+margin_left = 100.0
 margin_top = 53.5805
-margin_right = 1024.0
+margin_right = 700.0
 margin_bottom = 53.7805
 texture = ExtResource( 1 )
 expand = true
@@ -37,10 +42,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HpBar" type="TextureRect" parent="."]
+[node name="HpBar" type="TextureRect" parent="CanvasLayer"]
 anchor_bottom = 0.033
+margin_left = 100.0
 margin_top = 53.5805
-margin_right = 1024.0
+margin_right = 700.0
 margin_bottom = 53.7805
 texture = ExtResource( 1 )
 expand = true
@@ -48,10 +54,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Boss Name" type="Label" parent="."]
+[node name="Boss Name" type="Label" parent="CanvasLayer"]
 anchor_right = 1.0
-margin_top = 10.0908
-margin_bottom = 24.0908
+margin_top = 10.0
+margin_bottom = 46.0
 custom_fonts/font = ExtResource( 3 )
 text = "Hydra Dreadnaught"
 align = 1
@@ -59,5 +65,5 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DamageUpdateTimer" type="Timer" parent="."]
-[connection signal="timeout" from="DamageUpdateTimer" to="." method="_on_DamageUpdateTimer_timeout"]
+[node name="DamageUpdateTimer" type="Timer" parent="CanvasLayer"]
+[connection signal="timeout" from="CanvasLayer/DamageUpdateTimer" to="." method="_on_DamageUpdateTimer_timeout"]

@@ -3,7 +3,8 @@ extends Node2D
 export(int) var pointsWorth = 100
 export(float) var speed = 140
 var velocity
-export(int) var health = 25
+export(int) var maxHealth = 25
+onready var health = maxHealth
 signal destroyed
 export(PackedScene) var explosionType
 var explosionParticles
@@ -13,6 +14,7 @@ var levelBounds
 var levelViewport
 var target	# thing to shoot
 export(String, "straight", "hoverRandomPoint", "hoverMoveGoal", "TBD") var flyingPattern
+var healthBarRef
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -68,8 +70,8 @@ func destroy():
 
 
 func _on_ExplosionTimer_timeout():
-	remove_child(explosionParticles)
-	get_parent().add_child(explosionParticles)
+#	remove_child(explosionParticles)
+#	get_parent().add_child(explosionParticles)
 	queue_free()
 
 
@@ -77,12 +79,14 @@ func _on_Area2D_area_entered(area):
 	if area.is_in_group("PlayerBullet"):
 		if health > 0:
 			health -= 1
+			if healthBarRef:
+				healthBarRef.applyDamage(float(health)/float(maxHealth)*100)
 			area.owner.destroy()
 			if health <= 0:
 				destroy()
 
 func getNewMoveGoal():
-	var mapCenter = levelBounds.position
+	#var mapCenter = levelBounds.position
 	var mapSize = levelViewport.get_viewport().size
 	randomize()
 	var xRand = rand_range(mapSize.x * 0.1, mapSize.x * 0.9)

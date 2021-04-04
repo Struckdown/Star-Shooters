@@ -23,7 +23,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		emit_signal("fadeFinished")
 		if anim_name == "FadeToBlack":
 			if nextScenePath:
-				get_tree().change_scene(nextScenePath)
-				fadeinFromBlack()
+				var err = get_tree().change_scene(nextScenePath)
+				if !err:
+					fadeinFromBlack()
 	else:
 		raise()

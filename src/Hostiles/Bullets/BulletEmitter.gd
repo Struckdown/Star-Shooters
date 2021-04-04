@@ -37,9 +37,10 @@ func _process(delta):
 func spawnBullets():
 	for i in range(amountOfBullets):
 		var b = bulletType.instance()
-		get_parent().add_child(b)
-		b.position = position
-		b.rotation = rotation + deg2rad(i*angleOfBulletSpread)
+		get_viewport().add_child(b)
+#		get_parent().add_child(b)
+		b.global_position = global_position
+		b.global_rotation = global_rotation + deg2rad(i*angleOfBulletSpread)
 		b.moveSpeed = bulletMovementSpeed
 
 func updateRotation(volleyUpdate):
