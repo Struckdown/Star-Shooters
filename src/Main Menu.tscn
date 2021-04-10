@@ -51,11 +51,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
-margin_right = 222.0
-margin_bottom = 39.0
-
-[node name="PlayBtn" type="TextureButton" parent="VBoxContainer/MarginContainer"]
+[node name="PlayBtn" type="TextureButton" parent="VBoxContainer"]
 margin_right = 222.0
 margin_bottom = 39.0
 texture_normal = ExtResource( 6 )
@@ -67,11 +63,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayLbl" type="Label" parent="VBoxContainer/MarginContainer/PlayBtn"]
+[node name="PlayLbl" type="Label" parent="VBoxContainer/PlayBtn"]
 margin_right = 222.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 2 )
-text = "Play"
+text = "New Game"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfiniteBtn" type="TextureButton" parent="VBoxContainer"]
+margin_top = 43.0
+margin_right = 222.0
+margin_bottom = 82.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfiniteLbl" type="Label" parent="VBoxContainer/InfiniteBtn"]
+margin_right = 222.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 2 )
+text = "Infinite Mode"
 align = 1
 valign = 1
 __meta__ = {
@@ -79,9 +99,9 @@ __meta__ = {
 }
 
 [node name="ExitBtn" type="TextureButton" parent="VBoxContainer"]
-margin_top = 43.0
+margin_top = 86.0
 margin_right = 222.0
-margin_bottom = 82.0
+margin_bottom = 125.0
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
@@ -132,5 +152,6 @@ texture = ExtResource( 4 )
 [node name="Laser2" type="Sprite" parent="."]
 position = Vector2( 510.127, 425.54 )
 texture = ExtResource( 11 )
-[connection signal="button_up" from="VBoxContainer/MarginContainer/PlayBtn" to="." method="_on_PlayBtn_button_up"]
+[connection signal="button_up" from="VBoxContainer/PlayBtn" to="." method="_on_PlayBtn_button_up"]
+[connection signal="button_up" from="VBoxContainer/InfiniteBtn" to="." method="_on_InfiniteBtn_button_up"]
 [connection signal="button_up" from="VBoxContainer/ExitBtn" to="." method="_on_ExitBtn_button_up"]

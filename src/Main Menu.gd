@@ -26,5 +26,10 @@ func _on_ExitBtn_button_up():
 		get_tree().quit()
 
 func _on_PlayBtn_button_up():
-	if $VBoxContainer/MarginContainer/PlayBtn.is_hovered():
+	if $VBoxContainer/PlayBtn.is_hovered():
 		$"/root/SceneTransition".transitionToScene("res://World.tscn")
+
+
+func _on_InfiniteBtn_button_up():
+	if $VBoxContainer/InfiniteBtn.is_hovered():
+		pass

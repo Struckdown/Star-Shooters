@@ -43,8 +43,7 @@ func spawnWave():
 		curWave.connect("waveFinished", self, "spawnWave")
 		curWave.connect("enemyDestroyed", self, "updateScore")
 	else:
-		print("Tried to access index out of bounds in wave size: " + str(waveNum))
-		print("TODO, play victory scene?")
+		$"CanvasLayer/Level Won".playLevelComplete()
 
 func spawnNewPlayer(livesDelta):
 	playerLives += livesDelta
