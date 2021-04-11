@@ -17,7 +17,8 @@ Writing, I will fumble. Probably no *real* story.
 
 Credits: (Since I can't make art/music/sfx)
 Kenney.nl
-https://opengameart.org/content/space-background-01
-https://opengameart.org/content/space-shooter-game-user-interface
-https://opengameart.org/content/explosion-set-1-m484-games - Master484 http://m484games.ucoz.com/ (Explosions)
-https://opengameart.org/ for any other unmentioned assets
+* https://opengameart.org/content/space-background-01
+* https://opengameart.org/content/space-shooter-game-user-interface
+* https://opengameart.org/content/explosion-set-1-m484-games - Master484 http://m484games.ucoz.com/ (Explosions)
+* https://opengameart.org/content/animated-spinning-gems - Gems
+* https://opengameart.org/ for any other unmentioned assets
