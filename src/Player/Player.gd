@@ -27,6 +27,7 @@ var lastTouchingLeftWall = false	# false means last touched right wall
 var teleporting = false
 
 signal destroyed
+signal gemCollected
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -132,6 +133,9 @@ func _on_EnergyArea_area_entered(area):
 	if area.is_in_group("Hostile"):
 		energyLevel = min(energyLevel+100, energyLimit)
 		emit_signal("energyUpdated")
+	if area.owner.is_in_group("Gem"):
+		area.owner.queue_free()
+		emit_signal("gemCollected")
 
 
 # When the core is hit, you die

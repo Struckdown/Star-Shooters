@@ -74,6 +74,9 @@ position = Vector2( 407.679, 665.222 )
 [node name="LevelBoundaries" parent="VPCgame/Viewport" instance=ExtResource( 11 )]
 position = Vector2( 410, 275 )
 
+[node name="Gem" parent="VPCgame/Viewport" instance=ExtResource( 15 )]
+position = Vector2( 411.782, 317.513 )
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Pause Menu" parent="CanvasLayer" instance=ExtResource( 4 )]
@@ -86,6 +89,3 @@ margin_bottom = -128.0
 [node name="Game Over" parent="CanvasLayer" instance=ExtResource( 1 )]
 
 [node name="Level Won" parent="CanvasLayer" instance=ExtResource( 13 )]
-
-[node name="Gem" parent="." instance=ExtResource( 15 )]
-position = Vector2( 411.782, 317.513 )

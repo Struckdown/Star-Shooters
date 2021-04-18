@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=2]
+[gd_scene load_steps=63 format=2]
 
 [ext_resource path="res://Art Packs/SpinningCrystals/Original/Blue/gem6/0041.png" type="Texture" id=1]
 [ext_resource path="res://Art Packs/SpinningCrystals/Original/Blue/gem6/0042.png" type="Texture" id=2]
@@ -59,6 +59,7 @@
 [ext_resource path="res://Art Packs/SpinningCrystals/Original/Blue/gem6/0057.png" type="Texture" id=57]
 [ext_resource path="res://Art Packs/SpinningCrystals/Original/Blue/gem6/0060.png" type="Texture" id=58]
 [ext_resource path="res://Art Packs/SpinningCrystals/Original/Blue/gem6/0047.png" type="Texture" id=59]
+[ext_resource path="res://Hostiles/Gem.gd" type="Script" id=60]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Spin"
@@ -80,8 +81,11 @@ tracks/0/keys = {
 [sub_resource type="CircleShape2D" id=2]
 radius = 65.6715
 
-[node name="Gem" type="Node2D"]
+[node name="Gem" type="Node2D" groups=[
+"Gem",
+]]
 scale = Vector2( 0.1, 0.1 )
+script = ExtResource( 60 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 13 )
@@ -90,7 +94,9 @@ texture = ExtResource( 13 )
 autoplay = "Spin"
 anims/Spin = SubResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=[
+"Gem",
+]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 2 )

@@ -39,6 +39,7 @@ func _process(delta):
 
 #Called when the enemy is destroyed
 func _exit_tree():
+	spawnGems()
 	emit_signal("destroyed", pointsWorth)
 
 
@@ -92,3 +93,11 @@ func getNewMoveGoal():
 	var xRand = rand_range(mapSize.x * 0.1, mapSize.x * 0.9)
 	var yRand = rand_range(mapSize.y * 0.1, mapSize.y * 0.4) + 200	# 200 is from wave offset spawning things off-camera
 	moveGoal = Vector2(xRand, yRand)
+
+func spawnGems():
+	var g = load("res://Hostiles/Gem.tscn")
+	var num = 10
+	for i in range(num):
+		var gem = g.instance()
+		get_viewport().call_deferred("add_child", gem)
+		gem.global_position = self.global_position

@@ -29,8 +29,8 @@ func _input(_event):
 func updateCharge():
 	scoreBoardRef.updateCharge(playerRef.energyLevel / playerRef.energyLimit)
 
-func updateScore(newScore):
-	score += newScore
+func addToScore(scoreToAdd):
+	score += scoreToAdd
 	scoreBoardRef.updateScore(score)
 
 func spawnWave():
@@ -41,7 +41,7 @@ func spawnWave():
 		$VPCgame/Viewport.call_deferred("add_child", curWave)
 		waveNum +=1
 		curWave.connect("waveFinished", self, "spawnWave")
-		curWave.connect("enemyDestroyed", self, "updateScore")
+		curWave.connect("enemyDestroyed", self, "addToScore")
 	else:
 		$"CanvasLayer/Level Won".playLevelComplete()
 
@@ -51,10 +51,12 @@ func spawnNewPlayer(livesDelta):
 		playerRef = playerSpawn.spawnPlayer()
 		playerRef.connect("energyUpdated", self, "updateCharge")
 		playerRef.connect("destroyed", self, "spawnNewPlayer", [-1])
+		playerRef.connect("gemCollected", self, "gemCollected")
 		updateCharge()
 		if livesDelta != 0:
 			scoreBoardRef.updateLives(livesDelta)
 	else:
 		$"CanvasLayer/Game Over/AnimationPlayer".play("Game Over")
 		
-		
+func gemCollected():
+	addToScore(100)
