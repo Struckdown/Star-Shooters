@@ -6,6 +6,9 @@ var rotSpeed
 var dragCoefficient = 0.9
 var velocity
 
+var magnetSpeed = 300
+var playerRef
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	init()
@@ -13,8 +16,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	velocity = velocity-(dragCoefficient*velocity*delta)
-	position += velocity*delta
+	if playerRef:
+		var dir = position.direction_to(playerRef.position).normalized()
+		position += dir*delta*magnetSpeed
+	else:
+		velocity = velocity-(dragCoefficient*velocity*delta)
+		position += velocity*delta
+
 	rotation_degrees += rotSpeed*delta
 
 func init():

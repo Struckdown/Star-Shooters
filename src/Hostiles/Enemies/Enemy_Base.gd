@@ -39,7 +39,8 @@ func _process(delta):
 
 #Called when the enemy is destroyed
 func _exit_tree():
-	spawnGems()
+	if health <= 0:
+		spawnGems()
 	emit_signal("destroyed", pointsWorth)
 
 

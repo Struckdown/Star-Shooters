@@ -41,3 +41,11 @@ func _on_TopArea_area_entered(area):
 func _on_TopArea_area_exited(area):
 	if area.is_in_group(playerHitbox):
 		area.owner.touchingTopWall = false
+
+
+func _on_GemZone_area_entered(area):
+	if area.owner.is_in_group("Player"):
+		for gem in get_tree().get_nodes_in_group("Gem"):
+			if gem.owner:
+				gem.owner.playerRef = area.owner
+

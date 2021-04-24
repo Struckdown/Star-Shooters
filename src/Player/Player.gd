@@ -166,3 +166,17 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 func _on_InvulnAnimPlayer_animation_finished(_anim_name):
 	respawnInvuln = false
+
+
+func _on_GemMagnetArea_area_entered(area):
+	if area.is_in_group("Gem"):
+		area.owner.playerRef = self
+
+
+func _on_GemMagnetArea_area_exited(area):
+	if area.is_in_group("Gem"):
+		if area.owner:	# check if gem still exists
+			area.owner.playerRef = null
+
+func checkIfGemInMagnet(gem):
+	return $GemMagnetArea.global_position.distance_to(gem.global_position) <= $GemMagnetArea/CollisionShape2D.shape.radius

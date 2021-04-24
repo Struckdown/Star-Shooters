@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Player/Player Sprite Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -6,13 +6,15 @@
 [ext_resource path="res://Explosions/MultiExplosion.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 13.0
+radius = 59.0018
 
 [sub_resource type="CircleShape2D" id=2]
+radius = 13.0
+
+[sub_resource type="CircleShape2D" id=3]
 radius = 3.15271
 
-[sub_resource type="Animation" id=3]
-resource_name = "Explosion"
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpritesRoot/Spaceship:rotation_degrees")
 tracks/0/interp = 1
@@ -38,7 +40,7 @@ tracks/1/keys = {
 "values": [ 0, 0, 1, 2, 3, 4, 5, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -54,8 +56,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Spawn"
+[sub_resource type="Animation" id=6]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpritesRoot/Spaceship:position")
@@ -82,8 +83,7 @@ tracks/1/keys = {
 "values": [ Vector2( 2, 5 ), Vector2( 2, 2 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "Invuln"
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
@@ -124,12 +124,17 @@ texture = ExtResource( 1 )
 hframes = 6
 frame = 4
 
+[node name="GemMagnetArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GemMagnetArea"]
+shape = SubResource( 1 )
+
 [node name="EnergyArea" type="Area2D" parent="." groups=[
 "PlayerOuterHitbox",
 ]]
 
 [node name="EnergyHitBox" type="CollisionShape2D" parent="EnergyArea"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Core" type="Sprite" parent="EnergyArea"]
 self_modulate = Color( 1, 0, 0, 1 )
@@ -139,16 +144,18 @@ texture = ExtResource( 3 )
 [node name="CoreArea" type="Area2D" parent="EnergyArea"]
 
 [node name="CoreHitBox" type="CollisionShape2D" parent="EnergyArea/CoreArea"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Explosion = SubResource( 3 )
-anims/Flying = SubResource( 4 )
-anims/Spawn = SubResource( 5 )
+anims/Explosion = SubResource( 4 )
+anims/Flying = SubResource( 5 )
+anims/Spawn = SubResource( 6 )
 
 [node name="InvulnAnimPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Invuln"
-anims/Invuln = SubResource( 6 )
+anims/Invuln = SubResource( 7 )
+[connection signal="area_entered" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_entered"]
+[connection signal="area_exited" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_exited"]
 [connection signal="area_entered" from="EnergyArea" to="." method="_on_EnergyArea_area_entered"]
 [connection signal="area_entered" from="EnergyArea/CoreArea" to="." method="_on_CoreArea_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
