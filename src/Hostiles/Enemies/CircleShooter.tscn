@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlack3.png" type="Texture" id=3]
+[ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=4]
+
+[node name="CircleShooter" instance=ExtResource( 2 )]
+flyingPattern = "hoverRandomPoint"
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 3 )
+
+[node name="BulletEmitter" parent="." index="4" instance=ExtResource( 1 )]
+rotationDegPerSec = 1
+amountOfBullets = 36
+bulletMovementSpeed = 120
+bulletSpawnDelay = 1.0
+bulletType = ExtResource( 4 )
