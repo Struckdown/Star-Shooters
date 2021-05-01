@@ -14,6 +14,9 @@ export(int) var amountOfBullets = 1
 export(int) var bulletMovementSpeed = 10
 export(float) var bulletSpawnDelay = 1	# in seconds
 export(PackedScene) var bulletType	# must be of class Bullet_Base or child
+export(float) var initialSpawnDelay = 0
+
+export(bool) var emitting = true
 
 var totalDelta = 0	# used for shoot delays. Could use a timer I guess?
 
@@ -23,6 +26,7 @@ signal sweepCompleted	# whenever the turret reverses direction, emit this signal
 func _ready():
 	internalRotation = deg2rad(initialRotationOffset)
 	actualRotationStart = rotation
+	totalDelta = -initialSpawnDelay
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,7 +34,8 @@ func _process(delta):
 	totalDelta += delta
 	if totalDelta > bulletSpawnDelay:
 		totalDelta -= bulletSpawnDelay
-		spawnBullets()
+		if emitting:
+			spawnBullets()
 		updateRotation(true)
 	updateRotation(false)
 
@@ -72,3 +77,12 @@ func updateRotation(volleyUpdate):
 			pass
 	
 	rotation = actualRotationStart + internalRotation
+
+func toggleEmitting(state):
+	for child in get_children():
+		if child.has_method("toggleEmitting"):
+			child.toggleEmitting(state)
+	if state != null:
+		emitting = state
+	else:
+		emitting = !emitting

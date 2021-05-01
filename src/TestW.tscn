@@ -9,12 +9,12 @@ position = Vector2( 498.315, 505.409 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 0.27018, -4.98851 )
+hasControl = true
 
 [node name="Boss_1" parent="." instance=ExtResource( 1 )]
-position = Vector2( -3.24603, -397.942 )
+position = Vector2( -18.8024, -351.273 )
 rotation = 1.57079
 scale = Vector2( 1, 1 )
-explosionType = null
 
 [node name="PlayerSpawner" parent="." instance=ExtResource( 4 )]
 position = Vector2( -106.259, -49.0581 )

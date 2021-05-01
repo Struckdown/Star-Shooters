@@ -1,7 +1,7 @@
 extends Node2D
 
 
-var hasControl = false
+export(bool) var hasControl = false
 var dying = false
 var respawnInvuln = true
 var inputVec = Vector2()	# this represents the Vec2 of button inputs by the player

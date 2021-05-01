@@ -11,7 +11,7 @@ flyingPattern = ""
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 3 )
 
-[node name="BulletEmitter" parent="." index="4" instance=ExtResource( 2 )]
+[node name="BulletEmitter" parent="WeaponManager" index="1" instance=ExtResource( 2 )]
 initialRotationOffset = -10.0
 amountOfBullets = 3
 bulletMovementSpeed = 200

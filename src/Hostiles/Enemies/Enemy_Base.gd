@@ -15,6 +15,7 @@ var levelViewport
 var target	# thing to shoot
 export(String, "straight", "hoverRandomPoint", "hoverMoveGoal", "TBD") var flyingPattern
 var healthBarRef
+signal tookDamage
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -80,12 +81,17 @@ func _on_ExplosionTimer_timeout():
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("PlayerBullet"):
 		if health > 0:
-			health -= 1
-			if healthBarRef:
-				healthBarRef.applyDamage(float(health)/float(maxHealth)*100)
+			takeDamage()
 			area.owner.destroy()
-			if health <= 0:
-				destroy()
+
+
+func takeDamage():
+	health -= 1
+	emit_signal("tookDamage", float(health)/float(maxHealth))
+	if healthBarRef:
+		healthBarRef.applyDamage(float(health)/float(maxHealth)*100)
+	if health <= 0:
+		destroy()
 
 func getNewMoveGoal():
 	#var mapCenter = levelBounds.position
