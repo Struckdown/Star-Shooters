@@ -38,3 +38,8 @@ func updatePhase():
 func _on_Timer_timeout():
 	phaseTracker = (phaseTracker + 1) % maxPhases
 	updatePhase()
+
+func toggleDeath():
+	for child in get_children():
+		if child != $Timer:
+			child.toggleEmitting(false)

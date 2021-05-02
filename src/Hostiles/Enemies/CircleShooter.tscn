@@ -16,3 +16,6 @@ rotationDegPerSec = 1
 amountOfBullets = 36
 bulletMovementSpeed = 120
 bulletType = ExtResource( 4 )
+initialSpawnDelayRandomRange = 3.0
+greenBulletFrequency = 1
+nthBulletIsGreen = [ 0, 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36 ]

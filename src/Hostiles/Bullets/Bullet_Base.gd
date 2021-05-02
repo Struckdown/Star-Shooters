@@ -7,6 +7,8 @@ var elapsedTime
 var horizontalOffset = 0
 var prevHorizontalOffset = 0
 export(int) var waveSpeed = 10
+var generatesEnergy = false
+export(String, FILE) var energySprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,9 +19,16 @@ func _ready():
 func _process(delta):
 	move(delta)
 
-
 func _on_DespawnTimer_timeout():
 	queue_free()
+
+func setGeneratesEnergy(generates):
+	generatesEnergy = generates
+	if generatesEnergy:
+		changeEnergySprite()
+
+func changeEnergySprite():
+	get_node("Sprite").texture = load(energySprite)
 
 func move(delta):
 	var forwardVec = Vector2(1, 0).rotated(rotation).normalized()

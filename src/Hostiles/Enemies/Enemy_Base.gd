@@ -70,6 +70,9 @@ func destroy():
 	get_tree().root.add_child(explosionParticles)
 	$AnimationPlayer.play("Death")
 	$ExplosionTimer.start()
+	for child in get_children():
+		if child.has_method("toggleDeath"):
+			child.toggleDeath()
 
 
 func _on_ExplosionTimer_timeout():

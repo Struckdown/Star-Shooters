@@ -16,3 +16,5 @@ initialRotationOffset = -10.0
 amountOfBullets = 3
 bulletMovementSpeed = 200
 bulletType = ExtResource( 4 )
+greenBulletFrequency = 2
+nthBulletIsGreen = [ 1 ]

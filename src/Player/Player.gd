@@ -131,8 +131,9 @@ func updateTeleport(delta):
 # Your energy shield gathers the energy!
 func _on_EnergyArea_area_entered(area):
 	if area.is_in_group("Hostile"):
-		energyLevel = min(energyLevel+100, energyLimit)
-		emit_signal("energyUpdated")
+		if area.owner.generatesEnergy:
+			energyLevel = min(energyLevel+100, energyLimit)
+			emit_signal("energyUpdated")
 	if area.owner.is_in_group("Gem"):
 		area.owner.queue_free()
 		emit_signal("gemCollected")

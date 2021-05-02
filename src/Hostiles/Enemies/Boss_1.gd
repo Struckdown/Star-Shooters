@@ -7,4 +7,4 @@ extends "res://Hostiles/Enemies/Enemy_Base.gd"
 
 
 #func move(delta):
-#	pare
+#	pass

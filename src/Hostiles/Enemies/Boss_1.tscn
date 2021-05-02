@@ -15,7 +15,7 @@ flyingPattern = "TBD"
 texture = ExtResource( 3 )
 
 [node name="WeaponManager" parent="." index="4"]
-phaseSwapMode = "health"
+phaseSwapMode = "time"
 timeToNextPhase = 3
 healthPercentToNextPhase = 50.0
 
@@ -42,4 +42,5 @@ amountOfBullets = 13
 bulletMovementSpeed = 255
 bulletSpawnDelay = 0.5
 bulletType = ExtResource( 5 )
-initialSpawnDelay = 0.25
+greenBulletFrequency = 1
+nthBulletIsGreen = [ 5, 9, 2, 12 ]

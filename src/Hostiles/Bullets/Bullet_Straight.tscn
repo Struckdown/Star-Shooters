@@ -8,13 +8,16 @@ radius = 1.40625
 height = 13.4375
 
 [node name="Bullet_Straight" instance=ExtResource( 1 )]
+energySprite = "res://Space Shooter Redux/PNG/Lasers/laserGreen11.png"
+
+[node name="Area2D" parent="." index="0"]
+visible = false
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 rotation = 1.5708
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="." index="2"]
-position = Vector2( 0.0200269, 0.265718 )
 rotation = 1.5708
 scale = Vector2( 0.346669, 0.304199 )
 texture = ExtResource( 2 )

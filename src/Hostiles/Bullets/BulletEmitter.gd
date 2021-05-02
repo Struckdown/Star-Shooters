@@ -14,9 +14,15 @@ export(int) var amountOfBullets = 1
 export(int) var bulletMovementSpeed = 10
 export(float) var bulletSpawnDelay = 1	# in seconds
 export(PackedScene) var bulletType	# must be of class Bullet_Base or child
-export(float) var initialSpawnDelay = 0
+export(float) var initialSpawnDelayConstant = 0
+export(float) var initialSpawnDelayRandomRange = 5	# from 0 to n, adds that amount of seconds randomly offset to initial spawn delay
+
+export(int) var greenBulletFrequency = -1
+export(Array, int) var nthBulletIsGreen = []
+var volleysFired = 0
 
 export(bool) var emitting = true
+
 
 var totalDelta = 0	# used for shoot delays. Could use a timer I guess?
 
@@ -24,9 +30,11 @@ signal sweepCompleted	# whenever the turret reverses direction, emit this signal
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	randomize()
 	internalRotation = deg2rad(initialRotationOffset)
 	actualRotationStart = rotation
-	totalDelta = -initialSpawnDelay
+	var delay = rand_range(0, initialSpawnDelayRandomRange)
+	totalDelta = -initialSpawnDelayConstant - delay
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -42,11 +50,14 @@ func _process(delta):
 func spawnBullets():
 	for i in range(amountOfBullets):
 		var b = bulletType.instance()
+		if i in nthBulletIsGreen and volleysFired%greenBulletFrequency == 0:
+			b.setGeneratesEnergy(true)
 		get_viewport().add_child(b)
 #		get_parent().add_child(b)
 		b.global_position = global_position
 		b.global_rotation = global_rotation + deg2rad(i*angleOfBulletSpread)
 		b.moveSpeed = bulletMovementSpeed
+	volleysFired += 1
 
 func updateRotation(volleyUpdate):
 	var amountToRotate = 0
