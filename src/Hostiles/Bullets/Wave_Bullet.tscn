@@ -22,7 +22,7 @@ tracks/0/keys = {
 
 [node name="WaveBullet" instance=ExtResource( 1 )]
 waveStr = 50
-energySprite = "res://Space Shooter Redux/PNG/Lasers/laserGreen14.png"
+energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed08.png"
 
 [node name="Sprite" type="Sprite" parent="." index="2"]
 rotation = 3.33294

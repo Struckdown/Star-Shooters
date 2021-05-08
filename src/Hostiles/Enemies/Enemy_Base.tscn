@@ -56,5 +56,6 @@ texture = ExtResource( 1 )
 anims/Death = SubResource( 2 )
 
 [node name="WeaponManager" parent="." instance=ExtResource( 4 )]
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="ExplosionTimer" to="." method="_on_ExplosionTimer_timeout"]

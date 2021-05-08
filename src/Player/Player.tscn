@@ -154,6 +154,7 @@ anims/Spawn = SubResource( 6 )
 [node name="InvulnAnimPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Invuln"
 anims/Invuln = SubResource( 7 )
+
 [connection signal="area_entered" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_entered"]
 [connection signal="area_exited" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_exited"]
 [connection signal="area_entered" from="EnergyArea" to="." method="_on_EnergyArea_area_entered"]

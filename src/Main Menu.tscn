@@ -152,6 +152,7 @@ texture = ExtResource( 4 )
 [node name="Laser2" type="Sprite" parent="."]
 position = Vector2( 510.127, 425.54 )
 texture = ExtResource( 11 )
+
 [connection signal="button_up" from="VBoxContainer/PlayBtn" to="." method="_on_PlayBtn_button_up"]
 [connection signal="button_up" from="VBoxContainer/InfiniteBtn" to="." method="_on_InfiniteBtn_button_up"]
 [connection signal="button_up" from="VBoxContainer/ExitBtn" to="." method="_on_ExitBtn_button_up"]

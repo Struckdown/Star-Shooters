@@ -8,6 +8,8 @@ var rotatingPositively = 1
 var internalRotation = 0	# how much the emitter has rotated internally (rad)
 var actualRotationStart	# The true relative rotation to parent of the emitter (rad)
 export(float) var initialRotationOffset = 0	# Initial offset (deg)
+export(String, "straight", "predict", "atTarget") var targetStyle
+
 
 export(int) var angleOfBulletSpread = 10	# degrees
 export(int) var amountOfBullets = 1
@@ -22,9 +24,10 @@ export(Array, int) var nthBulletIsGreen = []
 var volleysFired = 0
 
 export(bool) var emitting = true
-
+var target
 
 var totalDelta = 0	# used for shoot delays. Could use a timer I guess?
+
 
 signal sweepCompleted	# whenever the turret reverses direction, emit this signal. Two of these would mean a full restart
 
@@ -35,6 +38,7 @@ func _ready():
 	actualRotationStart = rotation
 	var delay = rand_range(0, initialSpawnDelayRandomRange)
 	totalDelta = -initialSpawnDelayConstant - delay
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -48,17 +52,31 @@ func _process(delta):
 	updateRotation(false)
 
 func spawnBullets():
+	var additionalRads
+
+	match targetStyle:
+		"straight":
+			additionalRads = 0
+		"predict":
+			additionalRads = 0
+			if len(get_tree().get_nodes_in_group("Player")) > 0:
+				target = get_tree().get_nodes_in_group("Player")[0]
+				additionalRads = get_angle_to(getExpectedTargetPosition())
+		"atTarget":
+			additionalRads = get_angle_to(target)
+		_:
+			additionalRads = 0
 	for i in range(amountOfBullets):
 		var b = bulletType.instance()
 		if i in nthBulletIsGreen and volleysFired%greenBulletFrequency == 0:
 			b.setGeneratesEnergy(true)
 		get_viewport().add_child(b)
-#		get_parent().add_child(b)
 		b.global_position = global_position
-		b.global_rotation = global_rotation + deg2rad(i*angleOfBulletSpread)
+		b.global_rotation = global_rotation + deg2rad(i*angleOfBulletSpread) + additionalRads
 		b.moveSpeed = bulletMovementSpeed
 	volleysFired += 1
 
+# volleyUpdate is a bool whether to increase rotation per volley shot
 func updateRotation(volleyUpdate):
 	var amountToRotate = 0
 	if volleyUpdate:
@@ -97,3 +115,52 @@ func toggleEmitting(state):
 		emitting = state
 	else:
 		emitting = !emitting
+
+
+# Solving circle line intersect problem using quadratic formula
+func getExpectedTargetPosition():
+	# assume our position to be origin (0,0)
+	var x = target.global_position.x - global_position.x	# target position relative to ours
+	var y = target.global_position.y - global_position.y
+	var v = bulletMovementSpeed
+	var tx = target.velocity.x# target velocity
+	var ty = target.velocity.y #
+	#var x = -3
+	#var y = -10
+	#var tx = -3
+	#var ty = 1
+	#var v = 5
+	
+	var a = tx*tx + ty*ty - v*v	#delta change in distance
+	var b = (2*x*tx) + (2*y*ty)
+	var c = x*x + y*y	# defines a circle
+	#a/0
+	print("a:" + str(a) + " b:" + str(b) + " c:" + str(c))
+	
+	var sqrtVal = b*b - 4*a*c
+	if sqrtVal <= 0 or a == 0:
+		print("Returned impossible situation, shooting cur pos")
+		return target.global_position
+	sqrtVal = sqrt(sqrtVal)
+	
+	var t1 = (-b + sqrtVal)/(2*a)
+	var t2 = (-b - sqrtVal)/(2*a)
+
+	print("t1:", t1)
+	print("t2:", t2)
+	
+	var time
+	if t1 >=0 and t2 >= 0:	# grab smaller of two values, selecting the one greater than 0.
+		time = min(t1, t2)
+	elif t1 >= 0:
+		time = t1
+	elif t2 >= 0:
+		time = t2
+	else:
+		time = 0
+	print("time: ", time)
+	
+	var predictedPosition = target.global_position + target.velocity*time
+
+	return predictedPosition
+

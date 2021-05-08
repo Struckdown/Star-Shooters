@@ -19,5 +19,5 @@ func init(_particlesToSpawn, _GameObjectToFollow):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if GameObjectToFollow != null:
+	if is_instance_valid(GameObjectToFollow):
 		global_position = GameObjectToFollow.global_position

@@ -58,7 +58,7 @@ func move(d):
 func aimAtTarget():
 	match flyingPattern:
 		"hoverRandomPoint":
-			if target:
+			if is_instance_valid(target):
 				look_at(target.position)
 			else:
 				if len(get_tree().get_nodes_in_group("Player")) > 0:

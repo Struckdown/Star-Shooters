@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Hostiles/Enemies/Boss_1.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Enemies/ForwardShooter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=4]
 
@@ -11,10 +11,17 @@ position = Vector2( 498.315, 505.409 )
 position = Vector2( 0.27018, -4.98851 )
 hasControl = true
 
-[node name="Boss_1" parent="." instance=ExtResource( 1 )]
-position = Vector2( -18.8024, -351.273 )
-rotation = 1.57079
-scale = Vector2( 1, 1 )
-
 [node name="PlayerSpawner" parent="." instance=ExtResource( 4 )]
 position = Vector2( -106.259, -49.0581 )
+
+[node name="ForwardShooter" parent="." instance=ExtResource( 1 )]
+position = Vector2( 12.1594, -323.929 )
+rotation = 1.5708
+flyingPattern = "TBD"
+
+[node name="BulletEmitter" parent="ForwardShooter/WeaponManager" index="1"]
+initialRotationOffset = 0.0
+bulletMovementSpeed = 600
+nthBulletIsGreen = [  ]
+
+[editable path="ForwardShooter"]

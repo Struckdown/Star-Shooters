@@ -9,6 +9,7 @@ var inputVecLastFrame = Vector2()
 var slowMode = false	# While shift is held, move slower
 var slowModeMultiplier = 0.5	# How much slower to move while holding shift
 export(int) var moveSpeed = 200
+var velocity = Vector2()
 export(PackedScene) var deathExplosion
 var shouldFire = false
 var fireHOffset = 5
@@ -79,10 +80,10 @@ func applyInputs(delta):
 	if touchingTopWall and inputVec.y <= -1:
 		moveVec.y = 0
 
-	var newMoveVec = moveVec * moveSpeed
+	velocity = moveVec * moveSpeed
 	if slowMode:
-		newMoveVec *= slowModeMultiplier
-	position += newMoveVec * delta
+		velocity *= slowModeMultiplier
+	position += velocity * delta
 	
 	if shouldFire and energyLevel >= energyThreshold:
 		spawnBullet()
