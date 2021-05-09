@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Hostiles/Enemies/ForwardShooter.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 498.315, 505.409 )
@@ -23,14 +21,10 @@ flyingPattern = "TBD"
 
 [node name="BulletEmitter" parent="ForwardShooter/WeaponManager" index="1"]
 initialRotationOffset = 0.0
-amountOfBullets = 36
-bulletMovementSpeed = 300
+useRotationAsCenterBullet = true
+angleOfBulletSpread = 0.5
+amountOfBullets = 9
+bulletMovementSpeed = 600
 nthBulletIsGreen = [  ]
-
-[node name="BulletEmitter2" parent="ForwardShooter/WeaponManager/BulletEmitter" index="0" instance=ExtResource( 3 )]
-targetStyle = "atTarget"
-amountOfBullets = 36
-bulletMovementSpeed = 300
-bulletType = ExtResource( 5 )
 
 [editable path="ForwardShooter"]

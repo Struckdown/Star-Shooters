@@ -9,9 +9,9 @@ var internalRotation = 0	# how much the emitter has rotated internally (rad)
 var actualRotationStart	# The true relative rotation to parent of the emitter (rad)
 export(float) var initialRotationOffset = 0	# Initial offset (deg)
 export(String, "straight", "predict", "atTarget") var targetStyle
+export(bool) var useRotationAsCenterBullet = false
 
-
-export(int) var angleOfBulletSpread = 10	# degrees
+export(float) var angleOfBulletSpread = 10	# degrees
 export(int) var amountOfBullets = 1
 export(int) var bulletMovementSpeed = 10
 export(float) var bulletSpawnDelay = 1	# in seconds
@@ -52,29 +52,43 @@ func _process(delta):
 	updateRotation(false)
 
 func spawnBullets():
-	var additionalRads
+	if not is_instance_valid(target):
+		if len(get_tree().get_nodes_in_group("Player")) > 0:
+			target = get_tree().get_nodes_in_group("Player")[0]
 
+	var additionalRads = 0
 	match targetStyle:
 		"straight":
 			additionalRads = 0
 		"predict":
-			additionalRads = 0
-			if len(get_tree().get_nodes_in_group("Player")) > 0:
-				target = get_tree().get_nodes_in_group("Player")[0]
+			if target:
 				additionalRads = get_angle_to(getExpectedTargetPosition())
 		"atTarget":
-			if len(get_tree().get_nodes_in_group("Player")) > 0:
-				target = get_tree().get_nodes_in_group("Player")[0].global_position
-				additionalRads = get_angle_to(target)
+			if target:
+				additionalRads = get_angle_to(target.global_position)
 		_:
 			additionalRads = 0
+
+	
 	for i in range(amountOfBullets):
 		var b = bulletType.instance()
 		if i in nthBulletIsGreen and volleysFired%greenBulletFrequency == 0:
 			b.setGeneratesEnergy(true)
 		get_viewport().add_child(b)
 		b.global_position = global_position
-		b.global_rotation = global_rotation + deg2rad(i*angleOfBulletSpread) + additionalRads
+		b.global_rotation = global_rotation + additionalRads
+		
+		# Calculate additional offset for shooting more than 1 bullet
+		var j
+		if useRotationAsCenterBullet:
+			j = (i%2) * 2 - 1	# j is either -1 or 1
+			if amountOfBullets % 2 == 0:	#bullet num is even
+				b.global_rotation += (deg2rad(ceil(float(i+1)/2.0)*angleOfBulletSpread*j) / 2.0)
+			else:	#bullet num is odd
+				var addedRot = deg2rad(ceil(float(i)/2.0)*angleOfBulletSpread*j)
+				b.global_rotation += addedRot
+		else:
+			b.global_rotation += deg2rad(i*angleOfBulletSpread)
 		b.moveSpeed = bulletMovementSpeed
 	volleysFired += 1
 
