@@ -63,7 +63,9 @@ func spawnBullets():
 				target = get_tree().get_nodes_in_group("Player")[0]
 				additionalRads = get_angle_to(getExpectedTargetPosition())
 		"atTarget":
-			additionalRads = get_angle_to(target)
+			if len(get_tree().get_nodes_in_group("Player")) > 0:
+				target = get_tree().get_nodes_in_group("Player")[0].global_position
+				additionalRads = get_angle_to(target)
 		_:
 			additionalRads = 0
 	for i in range(amountOfBullets):
@@ -118,6 +120,7 @@ func toggleEmitting(state):
 
 
 # Solving circle line intersect problem using quadratic formula
+# Consider y = tx+b as the line that identifies the player's position, and a circle of the equation x*x + y*y = t (t is time and the radius of the circle)
 func getExpectedTargetPosition():
 	# assume our position to be origin (0,0)
 	var x = target.global_position.x - global_position.x	# target position relative to ours
@@ -125,19 +128,13 @@ func getExpectedTargetPosition():
 	var v = bulletMovementSpeed
 	var tx = target.velocity.x# target velocity
 	var ty = target.velocity.y #
-	#var x = -3
-	#var y = -10
-	#var tx = -3
-	#var ty = 1
-	#var v = 5
-	
+
+	# achieved by substituting equations to get (a)t*t + (b)t + (c) quadratic formula and then solving
 	var a = tx*tx + ty*ty - v*v	#delta change in distance
 	var b = (2*x*tx) + (2*y*ty)
 	var c = x*x + y*y	# defines a circle
-	#a/0
-	print("a:" + str(a) + " b:" + str(b) + " c:" + str(c))
-	
-	var sqrtVal = b*b - 4*a*c
+
+	var sqrtVal = b*b - 4*a*c	# aka the determinant of the quadratic equation
 	if sqrtVal <= 0 or a == 0:
 		print("Returned impossible situation, shooting cur pos")
 		return target.global_position
@@ -146,9 +143,6 @@ func getExpectedTargetPosition():
 	var t1 = (-b + sqrtVal)/(2*a)
 	var t2 = (-b - sqrtVal)/(2*a)
 
-	print("t1:", t1)
-	print("t2:", t2)
-	
 	var time
 	if t1 >=0 and t2 >= 0:	# grab smaller of two values, selecting the one greater than 0.
 		time = min(t1, t2)
@@ -158,7 +152,7 @@ func getExpectedTargetPosition():
 		time = t2
 	else:
 		time = 0
-	print("time: ", time)
+	time = min(3, time)	# Upperbound time at 3 seconds
 	
 	var predictedPosition = target.global_position + target.velocity*time
 

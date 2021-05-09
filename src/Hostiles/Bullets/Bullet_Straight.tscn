@@ -8,7 +8,7 @@ radius = 1.40625
 height = 13.4375
 
 [node name="Bullet_Straight" instance=ExtResource( 1 )]
-energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed01.png"
+energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed06.png"
 
 [node name="Area2D" parent="." index="0"]
 visible = false
