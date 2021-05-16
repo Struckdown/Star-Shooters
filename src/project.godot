@@ -10,7 +10,6 @@ config_version=4
 
 _global_script_classes=[  ]
 _global_script_class_icons={
-
 }
 
 [application]
@@ -23,6 +22,7 @@ config/icon="res://Space Shooter Redux/PNG/playerShip1_blue.png"
 [autoload]
 
 SceneTransition="*res://Levels/SceneTransition.tscn"
+BGM="*res://Levels/BGM.tscn"
 
 [display]
 

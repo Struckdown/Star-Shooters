@@ -34,3 +34,6 @@ func init():
 	velocity = speed*direction
 	
 	rotSpeed = rand_range(-360,360)
+
+func collect():
+	queue_free()

@@ -56,15 +56,16 @@ func spawnBullets():
 		if len(get_tree().get_nodes_in_group("Player")) > 0:
 			target = get_tree().get_nodes_in_group("Player")[0]
 
+	$AudioStreamPlayer.play()
 	var additionalRads = 0
 	match targetStyle:
 		"straight":
 			additionalRads = 0
 		"predict":
-			if target:
+			if is_instance_valid(target):
 				additionalRads = get_angle_to(getExpectedTargetPosition())
 		"atTarget":
-			if target:
+			if is_instance_valid(target):
 				additionalRads = get_angle_to(target.global_position)
 		_:
 			additionalRads = 0

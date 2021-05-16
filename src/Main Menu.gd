@@ -21,15 +21,18 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func _on_ExitBtn_button_up():
-	if $VBoxContainer/ExitBtn.is_hovered():
-		get_tree().quit()
 
-func _on_PlayBtn_button_up():
-	if $VBoxContainer/PlayBtn.is_hovered():
-		$"/root/SceneTransition".transitionToScene("res://World.tscn")
-
-
-func _on_InfiniteBtn_button_up():
-	if $VBoxContainer/InfiniteBtn.is_hovered():
-		pass
+func _on_Menu_button_up(btn):
+	match btn:
+		"play":
+			if $VBoxContainer/PlayBtn.is_hovered():
+				$"/root/SceneTransition".transitionToScene("res://World.tscn")
+		"infinite":
+			pass
+		"tutorial":
+			pass
+		"exit":
+			if $VBoxContainer/ExitBtn.is_hovered():
+				get_tree().quit()
+		_:
+			pass

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/LongExplosion.wav-62bd2bf187c885fa6d9f31f85ada0860.sample"
+
+[deps]
+
+source_file="res://Explosions/LongExplosion.wav"
+dest_files=[ "res://.import/LongExplosion.wav-62bd2bf187c885fa6d9f31f85ada0860.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

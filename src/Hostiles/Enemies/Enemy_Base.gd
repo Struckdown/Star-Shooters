@@ -90,6 +90,8 @@ func _on_Area2D_area_entered(area):
 
 func takeDamage():
 	health -= 1
+	if not $AudioStreamPlayer.playing:
+		$AudioStreamPlayer.play()
 	emit_signal("tookDamage", float(health)/float(maxHealth))
 	if healthBarRef:
 		healthBarRef.applyDamage(float(health)/float(maxHealth)*100)
@@ -107,7 +109,7 @@ func getNewMoveGoal():
 func spawnGems():
 	var g = load("res://Hostiles/Gem.tscn")
 	var num = 10
-	for i in range(num):
+	for _i in range(num):
 		var gem = g.instance()
 		get_viewport().call_deferred("add_child", gem)
 		gem.global_position = self.global_position

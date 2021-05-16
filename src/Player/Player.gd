@@ -136,8 +136,9 @@ func _on_EnergyArea_area_entered(area):
 			energyLevel = min(energyLevel+100, energyLimit)
 			emit_signal("energyUpdated")
 	if area.owner.is_in_group("Gem"):
-		area.owner.queue_free()
+		area.owner.collect()
 		emit_signal("gemCollected")
+		$GemCollectorSFX.play()
 
 
 # When the core is hit, you die

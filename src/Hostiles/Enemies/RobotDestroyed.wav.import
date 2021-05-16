@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/RobotDestroyed.wav-616d7b8beec5d149fbd06f8a7fa1f493.sample"
+
+[deps]
+
+source_file="res://Hostiles/Enemies/RobotDestroyed.wav"
+dest_files=[ "res://.import/RobotDestroyed.wav-616d7b8beec5d149fbd06f8a7fa1f493.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

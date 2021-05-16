@@ -1,14 +1,15 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Space Backgrounds/space_background_pack/ScrollingShader2.shader" type="Shader" id=1]
 [ext_resource path="res://Main Menu.gd" type="Script" id=2]
 [ext_resource path="res://Space Shooter Redux/Backgrounds/black.png" type="Texture" id=3]
 [ext_resource path="res://Space Shooter Redux/PNG/Lasers/laserBlue08.png" type="Texture" id=4]
+[ext_resource path="res://Player/Player Sprite Sheet.png" type="Texture" id=5]
 [ext_resource path="res://Space Shooter Redux/PNG/UI/buttonBlue.png" type="Texture" id=6]
 [ext_resource path="res://Space Shooter Redux/PNG/UI/buttonGreen.png" type="Texture" id=7]
 [ext_resource path="res://Space Shooter Redux/PNG/UI/buttonRed.png" type="Texture" id=8]
 [ext_resource path="res://Space Shooter Redux/PNG/UI/buttonYellow.png" type="Texture" id=9]
-[ext_resource path="res://Space Shooter Redux/PNG/playerShip1_blue.png" type="Texture" id=10]
+[ext_resource path="res://icon.png" type="Texture" id=10]
 [ext_resource path="res://Space Shooter Redux/PNG/Lasers/laserBlue09.png" type="Texture" id=11]
 [ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future.ttf" type="DynamicFontData" id=12]
 
@@ -27,6 +28,155 @@ size = 48
 outline_size = 2
 outline_color = Color( 0.176471, 0.882353, 0.027451, 1 )
 font_data = ExtResource( 12 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "default"
+length = 4.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/Laser1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 849.969, -74.4276 ), Vector2( 410.969, 707.142 ), Vector2( 410.969, 707.142 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/Laser2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = false
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.3, 3.3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 510.127, -89.2724 ), Vector2( 510.127, -89.2724 ), Vector2( 510.127, 736.54 ), Vector2( 510.127, 736.54 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer/Laser1:rotation_degrees")
+tracks/2/interp = 2
+tracks/2/loop_wrap = false
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2, 4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 480.0, 480.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimationPlayer/Laser2:rotation_degrees")
+tracks/3/interp = 2
+tracks/3/loop_wrap = false
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.3, 3.3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 240.0, 240.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("AnimationPlayer/AnimatedPlayer:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5, 1.4, 2.5, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 503.579, 528.93 ), Vector2( 566.093, 528.93 ), Vector2( 566.093, 528.93 ), Vector2( 456.178, 528.93 ), Vector2( 503.579, 528.93 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "reset"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/Laser1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 849.969, -74.4276 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("AnimationPlayer/Laser2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ Vector2( 510.127, -89.2724 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("AnimationPlayer/Laser2:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("AnimationPlayer/Laser1:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 5 )
+region = Rect2( 16, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 5 )
+region = Rect2( 48, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 16, 16 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 5 )
+region = Rect2( 80, 0, 16, 16 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 10.0
+} ]
 
 [node name="Main Menu" type="Control"]
 anchor_right = 1.0
@@ -98,10 +248,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ExitBtn" type="TextureButton" parent="VBoxContainer"]
+[node name="TutorialBtn" type="TextureButton" parent="VBoxContainer"]
 margin_top = 86.0
 margin_right = 222.0
 margin_bottom = 125.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutorialLbl" type="Label" parent="VBoxContainer/TutorialBtn"]
+margin_right = 222.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 2 )
+text = "Tutorial"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitBtn" type="TextureButton" parent="VBoxContainer"]
+margin_top = 129.0
+margin_right = 222.0
+margin_bottom = 168.0
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
@@ -141,18 +315,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpaceShip" type="Sprite" parent="."]
-position = Vector2( 503.52, 517.096 )
-texture = ExtResource( 10 )
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+anims/default = SubResource( 4 )
+anims/reset = SubResource( 5 )
 
-[node name="Laser1" type="Sprite" parent="."]
-position = Vector2( 495.969, 348.142 )
+[node name="Laser1" type="Sprite" parent="AnimationPlayer"]
+position = Vector2( 574.442, 416.105 )
+rotation = 5.50786
 texture = ExtResource( 4 )
 
-[node name="Laser2" type="Sprite" parent="."]
-position = Vector2( 510.127, 425.54 )
+[node name="Laser2" type="Sprite" parent="AnimationPlayer"]
+position = Vector2( 510.127, -89.2724 )
+rotation = -0.0672183
 texture = ExtResource( 11 )
 
-[connection signal="button_up" from="VBoxContainer/PlayBtn" to="." method="_on_PlayBtn_button_up"]
-[connection signal="button_up" from="VBoxContainer/InfiniteBtn" to="." method="_on_InfiniteBtn_button_up"]
-[connection signal="button_up" from="VBoxContainer/ExitBtn" to="." method="_on_ExitBtn_button_up"]
+[node name="AnimatedPlayer" type="AnimatedSprite" parent="AnimationPlayer"]
+position = Vector2( 566.093, 528.93 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 12 )
+frame = 1
+playing = true
+
+[node name="Sprite" type="Sprite" parent="AnimationPlayer/AnimatedPlayer"]
+modulate = Color( 1, 0, 0, 1 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 10 )
+
+[connection signal="button_up" from="VBoxContainer/PlayBtn" to="." method="_on_Menu_button_up" binds= [ "play" ]]
+[connection signal="button_up" from="VBoxContainer/InfiniteBtn" to="." method="_on_Menu_button_up" binds= [ "infinite" ]]
+[connection signal="button_up" from="VBoxContainer/TutorialBtn" to="." method="_on_Menu_button_up" binds= [ "tutorial" ]]
+[connection signal="button_up" from="VBoxContainer/ExitBtn" to="." method="_on_Menu_button_up" binds= [ "exit" ]]

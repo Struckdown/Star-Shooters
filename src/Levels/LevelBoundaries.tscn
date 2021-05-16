@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Levels/LevelBoundaries.gd" type="Script" id=1]
+[ext_resource path="res://Levels/GemAreaTrigger.wav" type="AudioStream" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 342.248 )
@@ -45,6 +46,10 @@ shape = SubResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GemZone"]
 position = Vector2( 0, -142.486 )
 shape = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+
 [connection signal="area_entered" from="LeftArea" to="." method="_on_LeftArea_area_entered" binds= [ true ]]
 [connection signal="area_exited" from="LeftArea" to="." method="_on_LeftArea_area_exited" binds= [ true ]]
 [connection signal="area_entered" from="RightArea" to="." method="_on_LeftArea_area_entered" binds= [ false ]]

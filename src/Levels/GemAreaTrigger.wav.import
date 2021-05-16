@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/GemAreaTrigger.wav-339d449135449c8cbc8c2d7de8bc14c6.sample"
+
+[deps]
+
+source_file="res://Levels/GemAreaTrigger.wav"
+dest_files=[ "res://.import/GemAreaTrigger.wav-339d449135449c8cbc8c2d7de8bc14c6.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

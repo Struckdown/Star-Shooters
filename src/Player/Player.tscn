@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Player/Player Sprite Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Explosions/MultiExplosion.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hostiles/GemCollected2.wav" type="AudioStream" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 59.0018
@@ -154,6 +155,9 @@ anims/Spawn = SubResource( 6 )
 [node name="InvulnAnimPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Invuln"
 anims/Invuln = SubResource( 7 )
+
+[node name="GemCollectorSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
 
 [connection signal="area_entered" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_entered"]
 [connection signal="area_exited" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_exited"]

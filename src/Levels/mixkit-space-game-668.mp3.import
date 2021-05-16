@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mixkit-space-game-668.mp3-9f3d318c80461b287b3e348dc701e97c.mp3str"
+
+[deps]
+
+source_file="res://Levels/mixkit-space-game-668.mp3"
+dest_files=[ "res://.import/mixkit-space-game-668.mp3-9f3d318c80461b287b3e348dc701e97c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

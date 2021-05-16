@@ -17,6 +17,7 @@ func spawnPlayer():
 	get_parent().add_child(playerRef)
 	playerRef.global_position = global_position
 	playerRef.spawn()
+	$AudioStreamPlayer.play()
 	return playerRef
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
