@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlack5.png" type="Texture" id=4]
+
+[node name="HelixShooter" instance=ExtResource( 1 )]
+speed = 260.0
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 4 )
+
+[node name="BulletEmitter" parent="WeaponManager" index="1" instance=ExtResource( 2 )]
+targetStyle = "atTarget"
+angleOfBulletSpread = 0.0
+volleyClipSize = 10
+clipReloadTime = 3.0
+bulletMovementSpeed = 150
+bulletWaveSpeed = 5.0
+bulletWaveStr = 150.0
+bulletSpawnDelay = 0.1
+bulletType = ExtResource( 3 )
+initialSpawnDelayConstant = 3.0
+initialSpawnDelayRandomRange = 0.0
+greenBulletFrequency = 5
+nthBulletIsGreen = [ 0 ]
+
+[node name="BulletEmitter2" parent="WeaponManager/BulletEmitter" index="1" instance=ExtResource( 2 )]
+targetStyle = "atTarget"
+angleOfBulletSpread = 0.0
+volleyClipSize = 10
+clipReloadTime = 3.0
+bulletMovementSpeed = 150
+bulletWaveSpeed = 5.0
+bulletWaveStr = -150.0
+bulletSpawnDelay = 0.1
+bulletType = ExtResource( 3 )
+initialSpawnDelayConstant = 3.0
+initialSpawnDelayRandomRange = 0.0
+greenBulletFrequency = 5
+nthBulletIsGreen = [ 0 ]

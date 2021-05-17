@@ -13,7 +13,12 @@ export(bool) var useRotationAsCenterBullet = false
 
 export(float) var angleOfBulletSpread = 10	# degrees
 export(int) var amountOfBullets = 1
+export(int) var volleyClipSize = -1	# -1 for infinite
+var volleysRemaining
+export(float) var clipReloadTime = 0
 export(int) var bulletMovementSpeed = 10
+export(float) var bulletWaveSpeed = 0
+export(float) var bulletWaveStr = 0
 export(float) var bulletSpawnDelay = 1	# in seconds
 export(PackedScene) var bulletType	# must be of class Bullet_Base or child
 export(float) var initialSpawnDelayConstant = 0
@@ -38,6 +43,7 @@ func _ready():
 	actualRotationStart = rotation
 	var delay = rand_range(0, initialSpawnDelayRandomRange)
 	totalDelta = -initialSpawnDelayConstant - delay
+	volleysRemaining = volleyClipSize
 
 
 
@@ -46,8 +52,12 @@ func _process(delta):
 	totalDelta += delta
 	if totalDelta > bulletSpawnDelay:
 		totalDelta -= bulletSpawnDelay
-		if emitting:
+		if emitting and volleysRemaining != 0:
 			spawnBullets()
+			volleysRemaining -= 1
+		if volleysRemaining == 0:
+			totalDelta -= clipReloadTime
+			volleysRemaining = volleyClipSize
 		updateRotation(true)
 	updateRotation(false)
 
@@ -91,6 +101,8 @@ func spawnBullets():
 		else:
 			b.global_rotation += deg2rad(i*angleOfBulletSpread)
 		b.moveSpeed = bulletMovementSpeed
+		b.waveSpeed = bulletWaveSpeed
+		b.waveStr = bulletWaveStr
 	volleysFired += 1
 
 # volleyUpdate is a bool whether to increase rotation per volley shot

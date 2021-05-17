@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Hostiles/Enemies/HelixShooter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=2]
+
+[node name="WaveBase" instance=ExtResource( 2 )]
+
+[node name="HelixShooter" parent="." index="0" instance=ExtResource( 1 )]
+position = Vector2( 254.847, 118.928 )
+rotation = 1.57079
+speed = 210.0
+flyingPattern = "hoverRandomPoint"
+
+[node name="HelixShooter2" parent="." index="1" instance=ExtResource( 1 )]
+position = Vector2( 737.168, 118.928 )
+rotation = 1.57079
+speed = 210.0
+flyingPattern = "hoverRandomPoint"

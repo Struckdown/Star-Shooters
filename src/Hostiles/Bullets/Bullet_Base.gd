@@ -3,17 +3,17 @@ extends Node2D
 export(int) var moveSpeed = 200
 export(int) var waveStr = 0
 onready var startTime = OS.get_ticks_msec()
-var elapsedTime
+var elapsedTime = 0
 var horizontalOffset = 0
 var prevHorizontalOffset = 0
-export(int) var waveSpeed = 10
+export(float) var waveSpeed = 10
 var generatesEnergy = false
 export(String, FILE) var energySprite
+var totalHOffset = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	waveSpeed *= 10
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -33,9 +33,11 @@ func changeEnergySprite():
 func move(delta):
 	var forwardVec = Vector2(1, 0).rotated(rotation).normalized()
 	var sideVec = transform.y
-	elapsedTime = OS.get_ticks_msec() - startTime
-	horizontalOffset = sin(elapsedTime/waveSpeed) * waveStr
-	sideVec *= (horizontalOffset - 0)
+	elapsedTime += delta #(OS.get_ticks_msec() - startTime) * 0.001	# convert to seconds
+	horizontalOffset = sin(elapsedTime*waveSpeed+PI/2) * waveStr
+	totalHOffset += (horizontalOffset - prevHorizontalOffset)
+	sideVec *= totalHOffset
+
 	position += forwardVec * moveSpeed * delta	# forward motion
 	position += sideVec * delta	# side wiggle
 	prevHorizontalOffset = horizontalOffset
