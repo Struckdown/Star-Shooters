@@ -133,6 +133,7 @@ func updateTeleport(delta):
 func _on_EnergyArea_area_entered(area):
 	if area.is_in_group("Hostile"):
 		if area.owner.generatesEnergy:
+			$Node2D/EnergyAbsorptionParticles.emitting = true
 			energyLevel = min(energyLevel+100, energyLimit)
 			emit_signal("energyUpdated")
 	if area.owner.is_in_group("Gem"):
