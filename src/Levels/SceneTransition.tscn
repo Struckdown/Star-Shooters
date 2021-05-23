@@ -55,4 +55,5 @@ modulate = Color( 0, 0, 0, 0 )
 position = Vector2( 561.865, 328.878 )
 scale = Vector2( 18.5583, 11.2775 )
 texture = ExtResource( 1 )
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

@@ -1,0 +1,200 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Menus/Settings.gd" type="Script" id=1]
+[ext_resource path="res://Menus/Pause Menu/PauseFont.tres" type="DynamicFont" id=2]
+[ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Space Shooter GUI/PNG/Pause/Window.png" type="Texture" id=4]
+[ext_resource path="res://Space Shooter GUI/PNG/Pause/Table.png" type="Texture" id=5]
+[ext_resource path="res://Menus/UI_ButtonPress.wav" type="AudioStream" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+font_data = ExtResource( 3 )
+
+[node name="Settings" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -678.099, -260.396 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Window" type="NinePatchRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseCtrl" type="Control" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SettingsLbl" type="Label" parent="PauseCtrl"]
+anchor_right = 1.0
+margin_bottom = 71.0
+custom_fonts/font = SubResource( 1 )
+text = "Settings"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseCtrl"]
+anchor_left = 0.076
+anchor_top = 0.248
+anchor_right = 0.914
+anchor_bottom = 0.655
+margin_left = 0.175995
+margin_top = 0.199997
+margin_right = 0.0639648
+margin_bottom = -3.05176e-05
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PauseCtrl/VBoxContainer"]
+margin_right = 858.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicLbl" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer"]
+margin_top = 46.0
+margin_right = 155.0
+margin_bottom = 73.0
+rect_min_size = Vector2( 155, 0 )
+custom_fonts/font = SubResource( 3 )
+text = "Music"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSliderMusic" type="HSlider" parent="PauseCtrl/VBoxContainer/HBoxContainer"]
+margin_left = 159.0
+margin_right = 810.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 100.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Percent" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer"]
+margin_left = 814.0
+margin_top = 51.0
+margin_right = 858.0
+margin_bottom = 69.0
+custom_fonts/font = SubResource( 2 )
+text = "100%"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="PauseCtrl/VBoxContainer"]
+margin_top = 124.0
+margin_right = 858.0
+margin_bottom = 244.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXLbl" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer2"]
+margin_top = 46.0
+margin_right = 155.0
+margin_bottom = 73.0
+rect_min_size = Vector2( 155, 0 )
+custom_fonts/font = SubResource( 4 )
+text = "SFX"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSliderSFX" type="HSlider" parent="PauseCtrl/VBoxContainer/HBoxContainer2"]
+margin_left = 159.0
+margin_right = 810.0
+margin_bottom = 120.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+value = 100.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="Percent" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer2"]
+margin_left = 814.0
+margin_top = 51.0
+margin_right = 858.0
+margin_bottom = 69.0
+custom_fonts/font = SubResource( 2 )
+text = "100%"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResumeBtn" type="TextureButton" parent="PauseCtrl"]
+anchor_left = 0.324
+anchor_top = 0.793
+anchor_right = 0.677
+anchor_bottom = 0.95
+margin_left = 0.223999
+margin_top = 0.199982
+margin_right = -0.248047
+size_flags_vertical = 3
+texture_normal = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResumeLbl" type="Label" parent="PauseCtrl/ResumeBtn"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -18.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 2 )
+text = "Resume"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "SFX"
+
+[connection signal="visibility_changed" from="." to="." method="_on_Settings_visibility_changed"]
+[connection signal="value_changed" from="PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic" to="." method="_on_HSliderMusic_value_changed"]
+[connection signal="value_changed" from="PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX" to="." method="_on_HSliderSFX_value_changed"]
+[connection signal="pressed" from="PauseCtrl/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]

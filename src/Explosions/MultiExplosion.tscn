@@ -36,5 +36,6 @@ wait_time = 2.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 autoplay = true
+bus = "SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

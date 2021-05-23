@@ -49,6 +49,7 @@ shape = SubResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+bus = "SFX"
 
 [connection signal="area_entered" from="LeftArea" to="." method="_on_LeftArea_area_entered" binds= [ true ]]
 [connection signal="area_exited" from="LeftArea" to="." method="_on_LeftArea_area_exited" binds= [ true ]]

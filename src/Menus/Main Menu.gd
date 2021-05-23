@@ -15,6 +15,7 @@ func _ready():
 	var i = randi() % (backgrounds.size()-1)
 	var bg = backgrounds[i]
 	$BG.texture = load(bg)
+	$CanvasLayer/Settings.connect("closed", self, "hideSettings")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,8 +32,13 @@ func _on_Menu_button_up(btn):
 			pass
 		"tutorial":
 			pass
+		"options":
+			$CanvasLayer/Settings.show()
 		"exit":
 			if $VBoxContainer/ExitBtn.is_hovered():
 				get_tree().quit()
 		_:
 			pass
+
+func hideSettings():
+	$CanvasLayer/Settings.hide()

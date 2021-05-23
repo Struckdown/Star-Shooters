@@ -18,4 +18,4 @@ func _ready():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Game Over":
-		SceneTransition.transitionToScene("res://Main Menu.tscn")
+		SceneTransition.transitionToScene("res://Menus/Main Menu.tscn")

@@ -1,7 +1,7 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Space Backgrounds/space_background_pack/ScrollingShader2.shader" type="Shader" id=1]
-[ext_resource path="res://Main Menu.gd" type="Script" id=2]
+[ext_resource path="res://Menus/Main Menu.gd" type="Script" id=2]
 [ext_resource path="res://Space Shooter Redux/Backgrounds/black.png" type="Texture" id=3]
 [ext_resource path="res://Space Shooter Redux/PNG/Lasers/laserBlue08.png" type="Texture" id=4]
 [ext_resource path="res://Player/Player Sprite Sheet.png" type="Texture" id=5]
@@ -12,6 +12,7 @@
 [ext_resource path="res://icon.png" type="Texture" id=10]
 [ext_resource path="res://Space Shooter Redux/PNG/Lasers/laserBlue09.png" type="Texture" id=11]
 [ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future.ttf" type="DynamicFontData" id=12]
+[ext_resource path="res://Menus/Settings.tscn" type="PackedScene" id=13]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -272,10 +273,34 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ExitBtn" type="TextureButton" parent="VBoxContainer"]
+[node name="OptionsBtn" type="TextureButton" parent="VBoxContainer"]
 margin_top = 129.0
 margin_right = 222.0
 margin_bottom = 168.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OptionsLbl" type="Label" parent="VBoxContainer/OptionsBtn"]
+margin_right = 222.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 2 )
+text = "Options"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitBtn" type="TextureButton" parent="VBoxContainer"]
+margin_top = 172.0
+margin_right = 222.0
+margin_bottom = 211.0
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
@@ -342,7 +367,13 @@ modulate = Color( 1, 0, 0, 1 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 10 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Settings" parent="CanvasLayer" instance=ExtResource( 13 )]
+visible = false
+
 [connection signal="button_up" from="VBoxContainer/PlayBtn" to="." method="_on_Menu_button_up" binds= [ "play" ]]
 [connection signal="button_up" from="VBoxContainer/InfiniteBtn" to="." method="_on_Menu_button_up" binds= [ "infinite" ]]
 [connection signal="button_up" from="VBoxContainer/TutorialBtn" to="." method="_on_Menu_button_up" binds= [ "tutorial" ]]
+[connection signal="button_up" from="VBoxContainer/OptionsBtn" to="." method="_on_Menu_button_up" binds= [ "options" ]]
 [connection signal="button_up" from="VBoxContainer/ExitBtn" to="." method="_on_Menu_button_up" binds= [ "exit" ]]

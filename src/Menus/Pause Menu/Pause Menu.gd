@@ -2,7 +2,7 @@ extends MarginContainer
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	$Settings.connect("closed", self, "hideSettings")
 
 
 func _on_ResumeBtn_pressed():
@@ -11,10 +11,13 @@ func _on_ResumeBtn_pressed():
 
 
 func _on_OptionsBtn_pressed():
-	pass # Replace with function body.
+	$Settings.show()
 
 
 func _on_QuitBtn_pressed():
 	get_tree().paused = false
-	if(get_tree().change_scene("res://Main Menu.tscn")):
+	if(get_tree().change_scene("res://Menus/Main Menu.tscn")):
 		print("ERROR in screen change!")
+
+func hideSettings():
+	$Settings.hide()

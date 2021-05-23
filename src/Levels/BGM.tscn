@@ -4,6 +4,9 @@
 [ext_resource path="res://Levels/BGM.gd" type="Script" id=2]
 
 [node name="BGM" type="AudioStreamPlayer"]
+pause_mode = 2
 stream = ExtResource( 1 )
+volume_db = -20.0
 autoplay = true
+bus = "BGM"
 script = ExtResource( 2 )
