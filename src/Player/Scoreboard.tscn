@@ -89,7 +89,6 @@ void light() {
 
 }
 "
-custom_defines = ""
 graph_offset = Vector2( -361.5, 137 )
 mode = 1
 flags/light_only = false
@@ -225,3 +224,13 @@ material = SubResource( 10 )
 position = Vector2( 100, 400 )
 scale = Vector2( 0.5, 4.5 )
 texture = ExtResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_top = 583.0
+margin_right = 200.0
+margin_bottom = 597.0
+text = "Press ESC to Pause"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
