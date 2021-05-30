@@ -23,6 +23,7 @@ config/icon="res://Space Shooter Redux/PNG/playerShip1_blue.png"
 
 SceneTransition="*res://Levels/SceneTransition.tscn"
 BGM="*res://Levels/BGM.tscn"
+GameManager="*res://GameManager.tscn"
 
 [display]
 

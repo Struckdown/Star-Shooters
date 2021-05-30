@@ -1,7 +1,6 @@
 extends Panel
 
-var livesCount = 3
-
+var livesCount = GameManager.playerLives
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -15,8 +14,8 @@ func updateCharge(charge):
 	$VBoxContainer/ChargeBar.material.set_shader_param("FillPercentage", charge)
 
 
-func updateScore(score):
-	$VBoxContainer/ScoreLbl.text = "SCORE\n{scoreText}".format({"scoreText":"%06d" % score})
+func updateScore():
+	$VBoxContainer/ScoreLbl.text = "SCORE\n{scoreText}".format({"scoreText":"%06d" % GameManager.score})
 
 func updateLives(livesDelta):
 	livesCount += livesDelta

@@ -16,6 +16,7 @@ func _ready():
 	var bg = backgrounds[i]
 	$BG.texture = load(bg)
 	$CanvasLayer/Settings.connect("closed", self, "hideSettings")
+	GameManager.resetGame()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,11 +28,16 @@ func _on_Menu_button_up(btn):
 	match btn:
 		"play":
 			if $VBoxContainer/PlayBtn.is_hovered():
-				$"/root/SceneTransition".transitionToScene("res://World.tscn")
+				GameManager.stage = "Main"
+				$"/root/SceneTransition".transitionToScene("res://Levels/Stages/MainWorld.tscn")
 		"infinite":
-			pass
+			if $VBoxContainer/InfiniteBtn.is_hovered():
+				GameManager.stage = "Infinite"
+				$"/root/SceneTransition".transitionToScene("res://Levels/Stages/MainWorld.tscn")
 		"tutorial":
-			pass
+			if $VBoxContainer/TutorialBtn.is_hovered():
+				GameManager.stage = "Tutorial"
+				$"/root/SceneTransition".transitionToScene("res://Levels/Stages/MainWorld.tscn")
 		"options":
 			$CanvasLayer/Settings.show()
 		"exit":

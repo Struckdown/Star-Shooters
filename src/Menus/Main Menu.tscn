@@ -359,7 +359,6 @@ texture = ExtResource( 11 )
 position = Vector2( 566.093, 528.93 )
 scale = Vector2( 5, 5 )
 frames = SubResource( 12 )
-frame = 1
 playing = true
 
 [node name="Sprite" type="Sprite" parent="AnimationPlayer/AnimatedPlayer"]

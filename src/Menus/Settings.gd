@@ -4,6 +4,10 @@ signal closed
 
 func _ready():
 	_on_Settings_visibility_changed()
+	var musicVal = normalizeDBtoVal(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("BGM")))
+	$PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic.value = musicVal
+	var SFXval = normalizeDBtoVal(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
+	$PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX.value = SFXval
 
 
 func _on_ResumeBtn_pressed():
@@ -29,6 +33,10 @@ func normalizeValToDB(val):
 	newVal -= 50
 	return newVal
 
+func normalizeDBtoVal(DB):
+	var val = DB + 50
+	val *= 2
+	return val
 
 func _on_Settings_visibility_changed():
 	if visible:

@@ -7,8 +7,7 @@ var playerSpawn
 export(Array, PackedScene) var waves
 var waveNum = 0
 var curWave = null
-var score = 0
-var playerLives = 3
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,8 +29,8 @@ func updateCharge():
 	scoreBoardRef.updateCharge(playerRef.energyLevel / playerRef.energyLimit)
 
 func addToScore(scoreToAdd):
-	score += scoreToAdd
-	scoreBoardRef.updateScore(score)
+	GameManager.score += scoreToAdd
+	scoreBoardRef.updateScore()
 
 func spawnWave():
 	print("Spawning wave " + str(waveNum))
@@ -46,8 +45,8 @@ func spawnWave():
 		$"CanvasLayer/Level Won".playLevelComplete()
 
 func spawnNewPlayer(livesDelta):
-	playerLives += livesDelta
-	if playerLives >= 0:
+	GameManager.playerLives += livesDelta
+	if GameManager.playerLives >= 0:
 		playerRef = playerSpawn.spawnPlayer()
 		playerRef.connect("energyUpdated", self, "updateCharge")
 		playerRef.connect("destroyed", self, "spawnNewPlayer", [-1])
