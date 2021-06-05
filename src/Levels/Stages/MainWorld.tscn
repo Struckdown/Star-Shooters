@@ -1,24 +1,17 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Levels/LevelManager.gd" type="Script" id=1]
-[ext_resource path="res://Hostiles/Waves/TwoAndTwo.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Hostiles/Waves/4FlyingWide.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Menus/Pause Menu/Pause Menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Hostiles/Waves/HelixShooter2.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Hostiles/Waves/V5.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Space Backgrounds/space_background_pack/Animated_BG.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Hostiles/Waves/Boss1Wave.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/Game Over.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/LevelWon.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/LevelBoundaries.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Levels/KillZone.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Hostiles/Waves/2FlyingWideSpiral.tscn" type="PackedScene" id=15]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
-waves = [ ExtResource( 6 ), ExtResource( 15 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 7 ), ExtResource( 10 ) ]
 
 [node name="VPCscoreboard" type="ViewportContainer" parent="."]
 margin_left = 824.0
@@ -79,6 +72,10 @@ position = Vector2( 410, 275 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Game Over" parent="CanvasLayer" instance=ExtResource( 11 )]
+
+[node name="Level Won" parent="CanvasLayer" instance=ExtResource( 12 )]
+
 [node name="Pause Menu" parent="CanvasLayer" instance=ExtResource( 4 )]
 visible = false
 margin_left = 201.0
@@ -86,7 +83,3 @@ margin_top = 72.0
 margin_right = -423.0
 margin_bottom = -128.0
 mouse_filter = 1
-
-[node name="Game Over" parent="CanvasLayer" instance=ExtResource( 11 )]
-
-[node name="Level Won" parent="CanvasLayer" instance=ExtResource( 12 )]

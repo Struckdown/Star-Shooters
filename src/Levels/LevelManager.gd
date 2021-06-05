@@ -3,17 +3,19 @@ extends Node2D
 
 onready var scoreBoardRef
 onready var playerRef
+onready var WaveManager
 var playerSpawn
-export(Array, PackedScene) var waves
+var waves = []
 var waveNum = 0
 var curWave = null
-
+export(int) var level = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	scoreBoardRef = get_node("VPCscoreboard/Viewport/Scoreboard")
 	playerSpawn = get_node("VPCgame/Viewport/PlayerSpawner")
 	spawnNewPlayer(0)
+	getWaves()
 	spawnWave()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,6 +27,10 @@ func _input(_event):
 		$"CanvasLayer/Pause Menu".show()
 		get_tree().paused = true
 
+func getWaves():
+	var temp = load("res://Levels/Stages/Level" + str(level) + ".tscn").instance()
+	waves = temp.waves
+
 func updateCharge():
 	scoreBoardRef.updateCharge(playerRef.energyLevel / playerRef.energyLimit)
 
@@ -35,6 +41,7 @@ func addToScore(scoreToAdd):
 func spawnWave():
 	print("Spawning wave " + str(waveNum))
 	if waveNum < waves.size():
+
 		curWave = waves[waveNum].instance()
 		curWave.position.y -= 200	# Have enemies spawn off camera
 		$VPCgame/Viewport.call_deferred("add_child", curWave)
