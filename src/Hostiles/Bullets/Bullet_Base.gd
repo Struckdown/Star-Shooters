@@ -7,13 +7,18 @@ var elapsedTime = 0
 var horizontalOffset = 0
 var prevHorizontalOffset = 0
 export(float) var waveSpeed = 10
-var generatesEnergy = false
+export(bool) var generatesEnergy = false
 export(String, FILE) var energySprite
 var totalHOffset = 0
+export(bool) var titleScreenVersion
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	if titleScreenVersion:
+		if generatesEnergy:
+			setGeneratesEnergy(true)
+		$DespawnTimer.autostart = false
+		$DespawnTimer.stop()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
