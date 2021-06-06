@@ -1,11 +1,12 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Menus/Settings.gd" type="Script" id=1]
 [ext_resource path="res://Menus/Pause Menu/PauseFont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Space Shooter GUI/PNG/Pause/Window.png" type="Texture" id=4]
 [ext_resource path="res://Space Shooter GUI/PNG/Pause/Table.png" type="Texture" id=5]
-[ext_resource path="res://Menus/UI_ButtonPress.wav" type="AudioStream" id=6]
+[ext_resource path="res://Menus/UI_ButtonHovered.wav" type="AudioStream" id=6]
+[ext_resource path="res://Menus/UI_ButtonClicked.mp3" type="AudioStream" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -190,11 +191,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="SliderUpdatedSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "SFX"
+
+[node name="ButtonClickedSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+bus = "SFX"
+
+[node name="ButtonHoveredSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 6 )
 bus = "SFX"
 
 [connection signal="visibility_changed" from="." to="." method="_on_Settings_visibility_changed"]
 [connection signal="value_changed" from="PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic" to="." method="_on_HSliderMusic_value_changed"]
 [connection signal="value_changed" from="PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX" to="." method="_on_HSliderSFX_value_changed"]
+[connection signal="mouse_entered" from="PauseCtrl/ResumeBtn" to="." method="_on_ResumeBtn_mouse_entered"]
 [connection signal="pressed" from="PauseCtrl/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]

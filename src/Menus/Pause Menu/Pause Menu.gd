@@ -12,12 +12,19 @@ func _on_ResumeBtn_pressed():
 
 func _on_OptionsBtn_pressed():
 	$Settings.show()
+	$ClickSFX.play()
 
 
 func _on_QuitBtn_pressed():
+	$ClickSFX.play()
 	get_tree().paused = false
 	if(get_tree().change_scene("res://Menus/Main Menu.tscn")):
 		print("ERROR in screen change!")
 
 func hideSettings():
+	$ClickSFX.play()
 	$Settings.hide()
+
+
+func _on_Btn_mouse_entered():
+	$HoverSFX.play()

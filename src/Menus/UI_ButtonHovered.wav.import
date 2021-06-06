@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/UI_ButtonHovered.wav-5dbbe37cbc9c35155c8084753ffa3d5a.sample"
+
+[deps]
+
+source_file="res://Menus/UI_ButtonHovered.wav"
+dest_files=[ "res://.import/UI_ButtonHovered.wav-5dbbe37cbc9c35155c8084753ffa3d5a.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

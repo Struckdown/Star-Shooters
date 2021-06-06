@@ -7,6 +7,9 @@
 pause_mode = 2
 stream = ExtResource( 1 )
 volume_db = -20.0
-autoplay = true
 bus = "BGM"
 script = ExtResource( 2 )
+
+[node name="TweenOut" type="Tween" parent="."]
+
+[connection signal="tween_completed" from="TweenOut" to="." method="_on_TweenOut_tween_completed"]

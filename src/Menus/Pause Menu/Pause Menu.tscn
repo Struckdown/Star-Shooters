@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menus/Pause Menu/Pause Menu.gd" type="Script" id=2]
 [ext_resource path="res://Menus/Settings.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Menus/UI_ButtonHovered.wav" type="AudioStream" id=4]
+[ext_resource path="res://Menus/UI_ButtonClicked.mp3" type="AudioStream" id=5]
 [ext_resource path="res://Space Shooter GUI/PNG/Pause/Table.png" type="Texture" id=7]
 [ext_resource path="res://Space Shooter GUI/PNG/Pause/Window.png" type="Texture" id=8]
 [ext_resource path="res://Menus/Pause Menu/PauseFont.tres" type="DynamicFont" id=11]
@@ -137,6 +139,16 @@ anchor_bottom = 0.0
 margin_right = 1024.0
 margin_bottom = 600.0
 
+[node name="HoverSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "SFX"
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[connection signal="mouse_entered" from="PauseCtrl/VBoxContainer/ResumeBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="pressed" from="PauseCtrl/VBoxContainer/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]
+[connection signal="mouse_entered" from="PauseCtrl/VBoxContainer/OptionsBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="pressed" from="PauseCtrl/VBoxContainer/OptionsBtn" to="." method="_on_OptionsBtn_pressed"]
+[connection signal="mouse_entered" from="PauseCtrl/VBoxContainer/QuitBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="pressed" from="PauseCtrl/VBoxContainer/QuitBtn" to="." method="_on_QuitBtn_pressed"]

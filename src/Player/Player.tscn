@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Player/Player Sprite Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Explosions/MultiExplosion.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Hostiles/GemCollected2.wav" type="AudioStream" id=5]
+[ext_resource path="res://Player/AbsorbSFX.ogg" type="AudioStream" id=6]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 59.0018
@@ -98,6 +99,12 @@ tracks/0/keys = {
 "values": [ true, false, true, false, true, false, true, false, true, false, true ]
 }
 
+[sub_resource type="Gradient" id=8]
+colors = PoolColorArray( 0.810059, 0.113914, 0.113914, 1, 0, 0, 0, 1 )
+
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
+
 [sub_resource type="Curve" id=10]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
@@ -114,12 +121,14 @@ angular_velocity = 500.0
 angular_velocity_random = 1.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-radial_accel = -50.0
+radial_accel = -100.0
 angle = 360.0
 angle_random = 1.0
 scale = 4.0
 scale_curve = SubResource( 11 )
-color = Color( 0.768627, 0.129412, 0.129412, 1 )
+color_ramp = SubResource( 9 )
+hue_variation = 1.0
+hue_variation_random = 0.05
 
 [node name="Player" type="Node2D" groups=[
 "Player",
@@ -192,10 +201,13 @@ emitting = false
 amount = 100
 lifetime = 2.0
 one_shot = true
-speed_scale = 6.0
+speed_scale = 3.0
 explosiveness = 0.5
 local_coords = false
 process_material = SubResource( 12 )
+
+[node name="AbsorbSFX" type="AudioStreamPlayer" parent="Node2D"]
+stream = ExtResource( 6 )
 
 [connection signal="area_entered" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_entered"]
 [connection signal="area_exited" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_exited"]

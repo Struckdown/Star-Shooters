@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Space Backgrounds/space_background_pack/ScrollingShader2.shader" type="Shader" id=1]
 [ext_resource path="res://Menus/Main Menu.gd" type="Script" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://Space Shooter Redux/PNG/Lasers/laserBlue09.png" type="Texture" id=11]
 [ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future.ttf" type="DynamicFontData" id=12]
 [ext_resource path="res://Menus/Settings.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Menus/UI_ButtonHovered.wav" type="AudioStream" id=14]
+[ext_resource path="res://Menus/UI_ButtonClicked.mp3" type="AudioStream" id=15]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -266,12 +268,11 @@ anims/default = SubResource( 4 )
 anims/reset = SubResource( 5 )
 
 [node name="Player" parent="AnimationPlayer" instance=ExtResource( 5 )]
-position = Vector2( 460, 528.93 )
+position = Vector2( 503.579, 528.93 )
 scale = Vector2( 2, 2 )
 
 [node name="Bullet_Straight" parent="AnimationPlayer" instance=ExtResource( 10 )]
-position = Vector2( 410.969, 707.142 )
-rotation = 8.37758
+position = Vector2( 849.969, -74.428 )
 scale = Vector2( 3, 3 )
 generatesEnergy = true
 energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed08.png"
@@ -281,8 +282,7 @@ titleScreenVersion = true
 texture = ExtResource( 4 )
 
 [node name="Bullet_Straight2" parent="AnimationPlayer" instance=ExtResource( 10 )]
-position = Vector2( 510.127, 323.634 )
-rotation = 2.09439
+position = Vector2( 510.127, -89.272 )
 scale = Vector2( 3, 3 )
 titleScreenVersion = true
 
@@ -294,11 +294,24 @@ texture = ExtResource( 11 )
 [node name="Settings" parent="CanvasLayer" instance=ExtResource( 13 )]
 visible = false
 
+[node name="ButtonHoveredSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 14 )
+bus = "SFX"
+
+[node name="ButtonClickedSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+bus = "SFX"
+
 [connection signal="button_up" from="VBoxContainer/PlayBtn" to="." method="_on_Menu_button_up" binds= [ "play" ]]
+[connection signal="mouse_entered" from="VBoxContainer/PlayBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="button_up" from="VBoxContainer/InfiniteBtn" to="." method="_on_Menu_button_up" binds= [ "infinite" ]]
+[connection signal="mouse_entered" from="VBoxContainer/InfiniteBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="button_up" from="VBoxContainer/TutorialBtn" to="." method="_on_Menu_button_up" binds= [ "tutorial" ]]
+[connection signal="mouse_entered" from="VBoxContainer/TutorialBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="button_up" from="VBoxContainer/OptionsBtn" to="." method="_on_Menu_button_up" binds= [ "options" ]]
+[connection signal="mouse_entered" from="VBoxContainer/OptionsBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="button_up" from="VBoxContainer/ExitBtn" to="." method="_on_Menu_button_up" binds= [ "exit" ]]
+[connection signal="mouse_entered" from="VBoxContainer/ExitBtn" to="." method="_on_Btn_mouse_entered"]
 
 [editable path="AnimationPlayer/Bullet_Straight"]
 [editable path="AnimationPlayer/Bullet_Straight2"]
