@@ -21,6 +21,7 @@ export(int) var amountOfBullets = 1
 export(int) var volleyClipSize = -1	# -1 for infinite
 var volleysRemaining
 export(float) var clipReloadTime = 0
+export(float) var clipRandomReloadDelay = 0	# seconds
 export(int) var bulletMovementSpeed = 10
 export(float) var bulletWaveSpeed = 0
 export(float) var bulletWaveStr = 0
@@ -34,9 +35,10 @@ export(Array, int) var nthBulletIsGreen = []
 var volleysFired = 0
 
 export(bool) var emitting = true
+export(bool) var DEBUG = false
 var target	# what we're trying to track
 var positionToShoot	# the actual location we shoot, usually derived from target
-var needsToUpdatePosToShoot
+var needsToUpdatePosToShoot = true	# assumed to be true initially
 
 var totalDelta = 0	# used for shoot delays. Could use a timer I guess?
 
@@ -61,15 +63,15 @@ func _process(delta):
 	var shouldUpdateRotationPerVolley = false
 	if totalDelta > bulletSpawnDelay:
 		totalDelta -= bulletSpawnDelay
-		if needsToUpdatePosToShoot:
+		if needsToUpdatePosToShoot or targetStyle == "straight":	# could be moving so would always need to update
 			updatePosToShoot()
 			needsToUpdatePosToShoot = false
-		if emitting and volleysRemaining > 0:
+		if emitting and volleysRemaining != 0:	# lets this run negative. Is that an issue? Could be if an enemy were to live forever and keep shooting???
 			var rad = get_angle_to(positionToShoot)
 			spawnBullets(rad)
 			volleysRemaining -= 1
-		if volleysRemaining <= 0:
-			totalDelta -= clipReloadTime
+		if volleysRemaining == 0:
+			totalDelta -= (clipReloadTime + rand_range(0, clipRandomReloadDelay))
 			volleysRemaining = volleyClipSize
 			needsToUpdatePosToShoot = true
 		if not fireAtLocationForWholeClip:
@@ -78,7 +80,7 @@ func _process(delta):
 	updateRotation(shouldUpdateRotationPerVolley)
 
 func updatePosToShoot():
-	positionToShoot = position+transform.x
+	positionToShoot = global_position+global_transform.x
 	if not is_instance_valid(target):	# tries to find the player
 		if len(get_tree().get_nodes_in_group("Player")) > 0:
 			target = get_tree().get_nodes_in_group("Player")[0]
@@ -86,13 +88,13 @@ func updatePosToShoot():
 			return	# just return and shoot straight forward
 	match targetStyle:
 		"straight":
-			positionToShoot = position+transform.x
+			positionToShoot = global_position+global_transform.x
 		"predict":
 			positionToShoot = getExpectedTargetPosition()
 		"atTarget":
 			positionToShoot = target.global_position
 		_:
-			positionToShoot = position+transform.x
+			positionToShoot = global_position+global_transform.x
 
 # Additional rads is how much to rotate the fire arc by (in rads)
 func spawnBullets(additionalRads):
@@ -110,7 +112,9 @@ func spawnBullets(additionalRads):
 		if useRotationAsCenterBullet:
 			j = (i%2) * 2 - 1	# j is either -1 or 1
 			if amountOfBullets % 2 == 0:	#bullet num is even
-				b.global_rotation += (deg2rad(ceil(float(i+1)/2.0)*angleOfBulletSpread*j) / 2.0)
+				var ang = ceil(float(i+1)/2.0)*angleOfBulletSpread - angleOfBulletSpread*0.5
+				var addedRot = (deg2rad(ang*j) / 2.0)
+				b.global_rotation += addedRot
 			else:	#bullet num is odd
 				var addedRot = deg2rad(ceil(float(i)/2.0)*angleOfBulletSpread*j)
 				b.global_rotation += addedRot

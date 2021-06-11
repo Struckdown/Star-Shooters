@@ -14,6 +14,7 @@ texture = ExtResource( 3 )
 [node name="BulletEmitter" parent="WeaponManager" index="1" instance=ExtResource( 2 )]
 initialRotationOffset = -10.0
 targetStyle = "predict"
+fireAtLocationForWholeClip = false
 amountOfBullets = 3
 bulletMovementSpeed = 250
 bulletType = ExtResource( 4 )

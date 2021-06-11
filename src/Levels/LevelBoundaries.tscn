@@ -47,7 +47,7 @@ shape = SubResource( 2 )
 position = Vector2( 0, -142.486 )
 shape = SubResource( 3 )
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="GemsAbsorbedSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
 bus = "SFX"
 

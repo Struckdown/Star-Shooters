@@ -23,24 +23,42 @@ healthPercentToNextPhase = 50.0
 rotation = -0.785398
 rotationPerVolley = 10.0
 rotationRange = 90.0
+targetStyle = "straight"
+fireAtLocationForWholeClip = false
 bulletMovementSpeed = 255
 bulletSpawnDelay = 0.1
 bulletType = ExtResource( 5 )
+emitting = false
+
+[node name="TrackerE" parent="WeaponManager/RotatingE" index="1" instance=ExtResource( 4 )]
+targetStyle = "atTarget"
+fireAtLocationForWholeClip = false
+bulletMovementSpeed = 350
+bulletSpawnDelay = 0.2
+bulletType = ExtResource( 5 )
+emitting = false
 
 [node name="SpreadE" parent="WeaponManager" index="2" instance=ExtResource( 4 )]
-initialRotationOffset = -90.0
-angleOfBulletSpread = 15
-amountOfBullets = 13
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+amountOfBullets = 19
 bulletMovementSpeed = 255
 bulletSpawnDelay = 0.5
 bulletType = ExtResource( 5 )
+initialSpawnDelayRandomRange = 0.0
+emitting = false
 
-[node name="SpreadE2" parent="WeaponManager/SpreadE" index="0" instance=ExtResource( 4 )]
-initialRotationOffset = 5.0
-angleOfBulletSpread = 15
-amountOfBullets = 13
+[node name="SpreadE2" parent="WeaponManager/SpreadE" index="1" instance=ExtResource( 4 )]
+targetStyle = "straight"
+useRotationAsCenterBullet = true
+angleOfBulletSpread = 25.0
+amountOfBullets = 8
 bulletMovementSpeed = 255
 bulletSpawnDelay = 0.5
 bulletType = ExtResource( 5 )
+initialSpawnDelayConstant = 0.25
+initialSpawnDelayRandomRange = 0.0
 greenBulletFrequency = 1
-nthBulletIsGreen = [ 5, 9, 2, 12 ]
+nthBulletIsGreen = [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+emitting = false
+DEBUG = true

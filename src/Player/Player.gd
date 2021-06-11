@@ -113,6 +113,8 @@ func updateTeleport(delta):
 	if not teleporting:
 		return
 	var touchingWall = false
+	if not $TeleportSFX.playing:
+		$TeleportSFX.play()
 	if touchingLeftWall:
 		position.x -= delta*moveSpeed
 		touchingWall = true

@@ -9,7 +9,6 @@ flyingPattern = "hoverRandomPoint"
 
 [node name="BulletEmitter" parent="WeaponManager" index="1" instance=ExtResource( 1 )]
 rotationDegPerSec = 1
-angleOfBulletSpread = 180
 amountOfBullets = 2
 bulletMovementSpeed = 120
 bulletSpawnDelay = 0.1
