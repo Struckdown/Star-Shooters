@@ -1,5 +1,9 @@
 extends Node2D
 
+# Definitions:
+# Volley: All the bullets emitted in a single frame
+# Clip size: Amount of bullets that can be fired before the emitter must "reload" (ie a break between a burst of fire)
+
 # Emits bullets in patterns and is meant to be highly configurable
 export(int) var rotationDegPerSec = 0	# deg
 export(float) var rotationPerVolley = 0 #deg
@@ -10,6 +14,7 @@ var actualRotationStart	# The true relative rotation to parent of the emitter (r
 export(float) var initialRotationOffset = 0	# Initial offset (deg)
 export(String, "straight", "predict", "atTarget") var targetStyle
 export(bool) var useRotationAsCenterBullet = false
+export(bool) var fireAtLocationForWholeClip = true
 
 export(float) var angleOfBulletSpread = 10	# degrees
 export(int) var amountOfBullets = 1
@@ -29,7 +34,9 @@ export(Array, int) var nthBulletIsGreen = []
 var volleysFired = 0
 
 export(bool) var emitting = true
-var target
+var target	# what we're trying to track
+var positionToShoot	# the actual location we shoot, usually derived from target
+var needsToUpdatePosToShoot
 
 var totalDelta = 0	# used for shoot delays. Could use a timer I guess?
 
@@ -44,43 +51,52 @@ func _ready():
 	var delay = rand_range(0, initialSpawnDelayRandomRange)
 	totalDelta = -initialSpawnDelayConstant - delay
 	volleysRemaining = volleyClipSize
+	updatePosToShoot()
 
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	totalDelta += delta
+	var shouldUpdateRotationPerVolley = false
 	if totalDelta > bulletSpawnDelay:
 		totalDelta -= bulletSpawnDelay
-		if emitting and volleysRemaining != 0:
-			spawnBullets()
+		if needsToUpdatePosToShoot:
+			updatePosToShoot()
+			needsToUpdatePosToShoot = false
+		if emitting and volleysRemaining > 0:
+			var rad = get_angle_to(positionToShoot)
+			spawnBullets(rad)
 			volleysRemaining -= 1
-		if volleysRemaining == 0:
+		if volleysRemaining <= 0:
 			totalDelta -= clipReloadTime
 			volleysRemaining = volleyClipSize
-		updateRotation(true)
-	updateRotation(false)
+			needsToUpdatePosToShoot = true
+		if not fireAtLocationForWholeClip:
+			needsToUpdatePosToShoot = true
+		shouldUpdateRotationPerVolley = true
+	updateRotation(shouldUpdateRotationPerVolley)
 
-func spawnBullets():
-	if not is_instance_valid(target):
+func updatePosToShoot():
+	positionToShoot = position+transform.x
+	if not is_instance_valid(target):	# tries to find the player
 		if len(get_tree().get_nodes_in_group("Player")) > 0:
 			target = get_tree().get_nodes_in_group("Player")[0]
-
-	$AudioStreamPlayer.play()
-	var additionalRads = 0
+		else:
+			return	# just return and shoot straight forward
 	match targetStyle:
 		"straight":
-			additionalRads = 0
+			positionToShoot = position+transform.x
 		"predict":
-			if is_instance_valid(target):
-				additionalRads = get_angle_to(getExpectedTargetPosition())
+			positionToShoot = getExpectedTargetPosition()
 		"atTarget":
-			if is_instance_valid(target):
-				additionalRads = get_angle_to(target.global_position)
+			positionToShoot = target.global_position
 		_:
-			additionalRads = 0
+			positionToShoot = position+transform.x
 
-	
+# Additional rads is how much to rotate the fire arc by (in rads)
+func spawnBullets(additionalRads):
+	$FireSFX.play()
 	for i in range(amountOfBullets):
 		var b = bulletType.instance()
 		if i in nthBulletIsGreen and volleysFired%greenBulletFrequency == 0:

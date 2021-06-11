@@ -90,8 +90,8 @@ func _on_Area2D_area_entered(area):
 
 func takeDamage():
 	health -= 1
-	if not $AudioStreamPlayer.playing:
-		$AudioStreamPlayer.play()
+	if not $HitSFX.playing:
+		$HitSFX.play()
 	emit_signal("tookDamage", float(health)/float(maxHealth))
 	if healthBarRef:
 		healthBarRef.applyDamage(float(health)/float(maxHealth)*100)
