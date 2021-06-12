@@ -9,6 +9,10 @@ func _ready():
 	var SFXval = BGM.normalizeDBtoVal(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
 	$PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX.value = SFXval
 
+func _process(delta):
+	
+	if Input.is_action_pressed("ui_cancel") and visible:
+		emit_signal("closed")
 
 func _on_ResumeBtn_pressed():
 	emit_signal("closed")

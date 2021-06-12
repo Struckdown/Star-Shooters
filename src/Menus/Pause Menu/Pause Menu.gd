@@ -4,7 +4,6 @@ extends MarginContainer
 func _ready():
 	$Settings.connect("closed", self, "hideSettings")
 
-
 func _on_ResumeBtn_pressed():
 	self.hide()
 	get_tree().paused = false
@@ -28,3 +27,10 @@ func hideSettings():
 
 func _on_Btn_mouse_entered():
 	$HoverSFX.play()
+
+
+func _unhandled_input(event):
+	if event is InputEventKey:
+		if Input.is_action_pressed("ui_cancel") and visible and $Settings.visible == false:
+			_on_ResumeBtn_pressed()
+			get_tree().get_root().set_input_as_handled()

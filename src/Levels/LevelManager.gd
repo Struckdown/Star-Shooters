@@ -22,10 +22,12 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func _input(_event):
-	if Input.is_action_pressed("pause"):
+func _unhandled_input(event):
+	if Input.is_action_pressed("pause") and not $"CanvasLayer/Pause Menu".visible:
 		$"CanvasLayer/Pause Menu".show()
 		get_tree().paused = true
+		get_tree().get_root().set_input_as_handled()
+
 
 func getWaves():
 	var temp = load("res://Levels/Stages/Level" + str(level) + ".tscn").instance()
