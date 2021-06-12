@@ -127,11 +127,13 @@ __meta__ = {
 [node name="PlayBtn" type="TextureButton" parent="VBoxContainer"]
 margin_right = 222.0
 margin_bottom = 39.0
+focus_neighbour_top = NodePath("../ExitBtn")
+focus_neighbour_bottom = NodePath("../InfiniteBtn")
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
-texture_focused = ExtResource( 7 )
+texture_focused = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -151,11 +153,13 @@ __meta__ = {
 margin_top = 43.0
 margin_right = 222.0
 margin_bottom = 82.0
+focus_neighbour_top = NodePath("../PlayBtn")
+focus_neighbour_bottom = NodePath("../TutorialBtn")
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
-texture_focused = ExtResource( 7 )
+texture_focused = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -175,11 +179,13 @@ __meta__ = {
 margin_top = 86.0
 margin_right = 222.0
 margin_bottom = 125.0
+focus_neighbour_top = NodePath("../InfiniteBtn")
+focus_neighbour_bottom = NodePath("../OptionsBtn")
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
-texture_focused = ExtResource( 7 )
+texture_focused = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -199,11 +205,13 @@ __meta__ = {
 margin_top = 129.0
 margin_right = 222.0
 margin_bottom = 168.0
+focus_neighbour_top = NodePath("../TutorialBtn")
+focus_neighbour_bottom = NodePath("../ExitBtn")
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
-texture_focused = ExtResource( 7 )
+texture_focused = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -223,11 +231,13 @@ __meta__ = {
 margin_top = 172.0
 margin_right = 222.0
 margin_bottom = 211.0
+focus_neighbour_top = NodePath("../OptionsBtn")
+focus_neighbour_bottom = NodePath("../PlayBtn")
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
-texture_focused = ExtResource( 7 )
+texture_focused = ExtResource( 9 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

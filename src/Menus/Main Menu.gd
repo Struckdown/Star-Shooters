@@ -18,7 +18,7 @@ func _ready():
 	$CanvasLayer/Settings.connect("closed", self, "hideSettings")
 	GameManager.resetGame()
 	BGM.transitionSong("res://Menus/MainMenuBGM.mp3")
-
+	get_node("VBoxContainer/PlayBtn").grab_focus()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -54,6 +54,7 @@ func _on_Menu_button_up(btn):
 
 func hideSettings():
 	$CanvasLayer/Settings.hide()
+	get_node("VBoxContainer/OptionsBtn").grab_focus()
 
 
 func _on_Btn_mouse_entered():

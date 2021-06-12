@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Menus/Pause Menu/Pause Menu.gd" type="Script" id=2]
 [ext_resource path="res://Menus/Settings.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Menus/UI_ButtonHovered.wav" type="AudioStream" id=4]
 [ext_resource path="res://Menus/UI_ButtonClicked.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Space Shooter GUI/PNG/Pause/SelectedTable.png" type="Texture" id=6]
 [ext_resource path="res://Space Shooter GUI/PNG/Pause/Table.png" type="Texture" id=7]
 [ext_resource path="res://Space Shooter GUI/PNG/Pause/Window.png" type="Texture" id=8]
 [ext_resource path="res://Menus/Pause Menu/PauseFont.tres" type="DynamicFont" id=11]
@@ -62,6 +63,7 @@ margin_right = 361.0
 margin_bottom = 144.0
 size_flags_vertical = 3
 texture_normal = ExtResource( 7 )
+texture_focused = ExtResource( 6 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -87,6 +89,7 @@ margin_right = 361.0
 margin_bottom = 293.0
 size_flags_vertical = 3
 texture_normal = ExtResource( 7 )
+texture_focused = ExtResource( 6 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -112,6 +115,7 @@ margin_right = 361.0
 margin_bottom = 443.0
 size_flags_vertical = 3
 texture_normal = ExtResource( 7 )
+texture_focused = ExtResource( 6 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -146,6 +150,7 @@ bus = "SFX"
 [node name="ClickSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 
+[connection signal="visibility_changed" from="." to="." method="_on_Pause_Menu_visibility_changed"]
 [connection signal="mouse_entered" from="PauseCtrl/VBoxContainer/ResumeBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="pressed" from="PauseCtrl/VBoxContainer/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]
 [connection signal="mouse_entered" from="PauseCtrl/VBoxContainer/OptionsBtn" to="." method="_on_Btn_mouse_entered"]

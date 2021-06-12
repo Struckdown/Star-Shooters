@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Menus/Settings.gd" type="Script" id=1]
 [ext_resource path="res://Menus/Pause Menu/PauseFont.tres" type="DynamicFont" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Space Shooter GUI/PNG/Pause/Table.png" type="Texture" id=5]
 [ext_resource path="res://Menus/UI_ButtonHovered.wav" type="AudioStream" id=6]
 [ext_resource path="res://Menus/UI_ButtonClicked.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Space Shooter GUI/PNG/Pause/SelectedTable.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
@@ -97,6 +98,8 @@ __meta__ = {
 margin_left = 159.0
 margin_right = 809.0
 margin_bottom = 119.0
+focus_neighbour_top = NodePath("../../../ResumeBtn")
+focus_neighbour_bottom = NodePath("../../HBoxContainer2/HSliderSFX")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 value = 100.0
@@ -143,6 +146,8 @@ __meta__ = {
 margin_left = 159.0
 margin_right = 809.0
 margin_bottom = 120.0
+focus_neighbour_top = NodePath("../../HBoxContainer/HSliderMusic")
+focus_neighbour_bottom = NodePath("../../../ResumeBtn")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 value = 100.0
@@ -170,8 +175,11 @@ anchor_bottom = 0.95
 margin_left = 0.223999
 margin_top = 0.199982
 margin_right = -0.248047
+focus_neighbour_top = NodePath("../VBoxContainer/HBoxContainer2/HSliderSFX")
+focus_neighbour_bottom = NodePath("../VBoxContainer/HBoxContainer/HSliderMusic")
 size_flags_vertical = 3
 texture_normal = ExtResource( 5 )
+texture_focused = ExtResource( 8 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false

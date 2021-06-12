@@ -23,6 +23,7 @@ func _on_QuitBtn_pressed():
 func hideSettings():
 	$ClickSFX.play()
 	$Settings.hide()
+	$PauseCtrl/VBoxContainer/OptionsBtn.grab_focus()
 
 
 func _on_Btn_mouse_entered():
@@ -34,3 +35,8 @@ func _unhandled_input(event):
 		if Input.is_action_pressed("ui_cancel") and visible and $Settings.visible == false:
 			_on_ResumeBtn_pressed()
 			get_tree().get_root().set_input_as_handled()
+
+
+func _on_Pause_Menu_visibility_changed():
+	if visible:
+		$PauseCtrl/VBoxContainer/ResumeBtn.grab_focus()

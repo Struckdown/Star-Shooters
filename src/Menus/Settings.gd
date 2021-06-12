@@ -35,6 +35,7 @@ func _on_HSliderSFX_value_changed(value):
 func _on_Settings_visibility_changed():
 	if visible:
 		set_process_input(true)
+		$PauseCtrl/ResumeBtn.grab_focus()
 	else:
 		set_process_input(false)
 
