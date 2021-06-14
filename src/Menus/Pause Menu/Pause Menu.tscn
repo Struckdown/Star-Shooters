@@ -149,6 +149,7 @@ bus = "SFX"
 
 [node name="ClickSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+bus = "SFX"
 
 [connection signal="visibility_changed" from="." to="." method="_on_Pause_Menu_visibility_changed"]
 [connection signal="mouse_entered" from="PauseCtrl/VBoxContainer/ResumeBtn" to="." method="_on_Btn_mouse_entered"]
