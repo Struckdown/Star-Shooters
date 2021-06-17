@@ -31,7 +31,6 @@ func _ready():
 		moveGoal.y += 200
 	if not moveGoal and levelBounds:
 		getNewMoveGoal()
-	print("moveGOal:",moveGoal)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
