@@ -26,11 +26,12 @@ func _ready():
 	target = get_tree().get_nodes_in_group("Player")
 	if len(target) > 0:
 		target = target[0]
-	if moveGoal:
+	if flyingPattern == "hoverMoveGoal":
 		moveGoal += position
+		moveGoal.y += 200
 	if not moveGoal and levelBounds:
 		getNewMoveGoal()
-
+	print("moveGOal:",moveGoal)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -30,7 +30,8 @@ func _unhandled_input(event):
 
 
 func getWaves():
-	var temp = load("res://Levels/Stages/Level" + str(level) + ".tscn").instance()
+	var levelToLoad = "res://Levels/Stages/Level" + str(level) + "/Level" + str(level) + ".tscn"
+	var temp = load(levelToLoad).instance()
 	waves = temp.waves
 
 func updateCharge():

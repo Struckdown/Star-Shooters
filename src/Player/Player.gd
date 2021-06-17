@@ -18,6 +18,7 @@ var energyLevel = 0.0		# current energy
 var energyLimit = 1000.0	# max amount of energy allowed
 var energyThreshold = 1	# amount of energy needed to shoot
 signal energyUpdated
+onready var energyParticles = load("res://Player/EnergyAbsorptionParticles.tscn")
 
 # Boundary rules
 var touchingBotWall = false	# TODO: Replace this with a bool array of walls touched?
@@ -135,8 +136,18 @@ func updateTeleport(delta):
 func _on_EnergyArea_area_entered(area):
 	if area.is_in_group("Hostile"):
 		if area.owner.generatesEnergy:
-			$Node2D/EnergyAbsorptionParticles.emitting = true
-			$Node2D/AbsorbSFX.play()
+			
+			# Spawn particle and attached timer to it, destroy after timer runs out
+			var e = energyParticles.instance()
+			$EnergyParticleRoot.add_child(e)
+			e.emitting = true
+			var timer = Timer.new()
+			e.add_child(timer)
+			timer.connect("timeout", e, "queue_free")
+			timer.set_wait_time(e.lifetime)
+			timer.start()
+
+			$EnergyParticleRoot/AbsorbSFX.play()
 			energyLevel = min(energyLevel+100, energyLimit)
 			emit_signal("energyUpdated")
 	if area.owner.is_in_group("Gem"):
