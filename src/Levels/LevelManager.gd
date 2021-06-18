@@ -14,6 +14,8 @@ export(int) var level = 1
 func _ready():
 	scoreBoardRef = get_node("VPCscoreboard/Viewport/Scoreboard")
 	playerSpawn = get_node("VPCgame/Viewport/PlayerSpawner")
+	if GameManager.stage != null:
+		level = GameManager.stage
 	spawnNewPlayer(0)
 	getWaves()
 	spawnWave()

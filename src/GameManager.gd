@@ -3,7 +3,7 @@ extends Node2D
 
 var score = 0
 var playerLives = 3
-var stage = "Null"
+var stage = null
 
 func _ready():
 	pass
@@ -11,4 +11,4 @@ func _ready():
 func resetGame():
 	score = 0
 	playerLives = 3
-	stage = "Null"
+	stage = null
