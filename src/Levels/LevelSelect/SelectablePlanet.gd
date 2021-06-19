@@ -2,6 +2,7 @@ extends Node2D
 
 export(String, MULTILINE) var levelDescription
 export(int) var levelNumber
+signal playerNearby
 
 func _ready():
 	set_description(levelDescription)
@@ -12,9 +13,20 @@ func set_description(text):
 
 func _on_Area2D_area_entered(area):
 	if area.owner.is_in_group("Player"):
-		area.owner.selectedLevel = levelNumber
+		emit_signal("playerNearby", self)
 
 
 func _on_Area2D_area_exited(area):
 	if area.owner.is_in_group("Player"):
-		area.owner.selectedLevel = null
+		emit_signal("playerNearby", null)
+
+
+func _on_DisplayArea2D_area_entered(area):
+	if area.owner.is_in_group("Player"):
+		$AnimationPlayer.play("DisplayLevelInfo")
+
+
+
+func _on_DisplayArea2D_area_exited(area):
+	if area.owner.is_in_group("Player"):
+		$AnimationPlayer.play_backwards("DisplayLevelInfo")

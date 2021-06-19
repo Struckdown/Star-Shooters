@@ -1,0 +1,218 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Stats_Bar.png" type="Texture" id=1]
+[ext_resource path="res://Space Shooter GUI/PNG/Pause/Table.png" type="Texture" id=2]
+[ext_resource path="res://Space Shooter GUI/PNG/Pause/SelectedTable.png" type="Texture" id=3]
+[ext_resource path="res://Space Shooter GUI/PNG/Level_Menu/Window.png" type="Texture" id=4]
+[ext_resource path="res://Space Shooter GUI/PNG/Clouds/Cloud_02.png" type="Texture" id=5]
+[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future_thin.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://Art Packs/Fonts/SourceSansProRegular/SourceSansPro-Semibold.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://Levels/LevelSelect/MissionBriefing.gd" type="Script" id=10]
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 20
+outline_size = 2
+outline_color = Color( 0.192157, 0.215686, 0.815686, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 9 )
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 20
+font_data = ExtResource( 7 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "DisplayAnim"
+tracks/0/type = "value"
+tracks/0/path = NodePath("WindowTexture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource( 10 )
+
+[node name="WindowTexture" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+margin_left = 24.0
+margin_top = 80.0
+margin_right = 968.0
+margin_bottom = 560.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="LevelNameLbl" type="Label" parent="WindowTexture"]
+margin_left = 9.0
+margin_top = 17.0
+margin_right = 940.0
+margin_bottom = 44.0
+custom_fonts/font = SubResource( 2 )
+text = "Learning the Ropes"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="MissionBriefingLbl" type="Label" parent="WindowTexture"]
+margin_left = 17.0
+margin_top = 76.0
+margin_right = 930.0
+margin_bottom = 99.0
+custom_fonts/font = SubResource( 3 )
+text = "Mission Briefing"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="SpeechBubble" type="TextureRect" parent="WindowTexture"]
+margin_left = 266.0
+margin_top = 112.0
+margin_right = 896.0
+margin_bottom = 392.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="DialogueLbl" type="Label" parent="WindowTexture/SpeechBubble"]
+margin_left = 36.449
+margin_top = 24.9771
+margin_right = 604.449
+margin_bottom = 226.977
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Greetings Comrade! Welcome to BASIC training.
+Before we can send you out, you'll need to prove your skills. 
+
+We have setup this basic course to get you used to the basics.
+
+Remember, We need you to hunt down the Star Child, so your skills will be of the utmost importance.
+Prepare for deployment...
+"
+autowrap = true
+clip_text = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="SpeakerLbl" type="Label" parent="WindowTexture"]
+margin_left = 86.9041
+margin_top = 307.441
+margin_right = 250.904
+margin_bottom = 325.441
+custom_fonts/font = SubResource( 4 )
+custom_colors/font_color = Color( 0.835294, 0.756863, 0.231373, 1 )
+text = "Commander"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="OptionsTexture" type="TextureRect" parent="WindowTexture"]
+margin_left = 10.0
+margin_top = 390.0
+margin_right = 933.0
+margin_bottom = 466.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="DeployBtn" type="TextureButton" parent="WindowTexture/OptionsTexture"]
+margin_left = 647.401
+margin_top = 7.88333
+margin_right = 890.401
+margin_bottom = 70.8833
+focus_neighbour_left = NodePath("../CancelBtn")
+texture_normal = ExtResource( 2 )
+texture_focused = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeployLbl" type="Label" parent="WindowTexture/OptionsTexture/DeployBtn"]
+margin_left = 28.1996
+margin_top = 6.11667
+margin_right = 202.2
+margin_bottom = 50.1167
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Deploy"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelBtn" type="TextureButton" parent="WindowTexture/OptionsTexture"]
+margin_left = 42.1753
+margin_top = 9.38162
+margin_right = 285.175
+margin_bottom = 72.3816
+focus_neighbour_right = NodePath("../DeployBtn")
+texture_normal = ExtResource( 2 )
+texture_focused = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelLbl" type="Label" parent="WindowTexture/OptionsTexture/CancelBtn"]
+margin_left = 31.296
+margin_top = 4.61838
+margin_right = 205.296
+margin_bottom = 48.6184
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+text = "Cancel"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeakerIcon" type="TextureRect" parent="WindowTexture"]
+margin_left = 255.0
+margin_top = 303.0
+margin_right = 427.0
+margin_bottom = 475.0
+rect_rotation = -180.0
+texture = ExtResource( 6 )
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/DisplayAnim = SubResource( 6 )
+
+[node name="MissionBriefing" type="Node2D" parent="."]
+
+[connection signal="pressed" from="WindowTexture/OptionsTexture/DeployBtn" to="." method="_on_DeployBtn_pressed"]
+[connection signal="visibility_changed" from="WindowTexture/OptionsTexture/DeployBtn" to="." method="_on_DeployBtn_visibility_changed"]
+[connection signal="pressed" from="WindowTexture/OptionsTexture/CancelBtn" to="." method="_on_CancelBtn_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
