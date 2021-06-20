@@ -5,13 +5,18 @@ var selectedLevel = null
 func _ready():
 	for level in $Levels.get_children():
 		level.connect("playerNearby", self, "updateSelectedLevel")
+	$CanvasLayer/MissionBriefing.hide()
 
 
 
 func _input(event):
-	if event.is_action("fire"):
-		if selectedLevel != null:
-			$MissionBriefing.playDisplayAnimation("forwards")
+	if event.is_action_pressed("fire"):
+		if selectedLevel != null and not $CanvasLayer/MissionBriefing.visible:
+			#$CanvasLayer/MissionBriefing.show()
+			$CanvasLayer/MissionBriefing.playDisplayAnimation("forwards")
+			$MapPlayer.canMove = false
+			#get_tree().set_input_as_handled()
+
 
 # Sets the mission briefing data and what will be opened up when the action key is pressed
 func updateSelectedLevel(planet):
@@ -28,4 +33,5 @@ func _on_MissionBriefing_deploy():
 
 
 func _on_MissionBriefing_cancel():
+	$MapPlayer.canMove = true
 	pass#$MissionBriefing.playDisplayAnimation("backwards")

@@ -1,7 +1,7 @@
 extends Node2D
 
 var inputVecLastFrame
-var inputVec
+var inputVec = Vector2()
 var velocity
 var moveSpeed = 300
 var rotationSpeed = 255
@@ -9,17 +9,19 @@ var slowMode = false
 var slowModeMultiplier = 1
 var ROTATION_THRESHOLD = 2 # degs
 var selectedLevel = null
+var canMove = true
 
 func _ready():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	determineInputs()
+#	determineInputs()
 	applyInputs(delta)
 	updateRotation(delta)
 
-
+func _unhandled_input(event):
+	determineInputs()
 
 func determineInputs():
 	inputVecLastFrame = inputVec
@@ -35,10 +37,7 @@ func determineInputs():
 		inputVec.y += 1
 #	if Input.is_action_pressed("move_slow"):
 #		slowMode = true
-	if Input.is_action_pressed("fire"):
-		if selectedLevel != null:
-			GameManager.stage = selectedLevel
-			SceneTransition.transitionToScene("res://Levels/Stages/MainWorld.tscn")
+
 	
 func applyInputs(delta):
 	var moveVec = inputVec	# copy the move vec, and then apply walls and such to it
@@ -51,7 +50,10 @@ func applyInputs(delta):
 	if position.y <= -1400 and inputVec.y <= -1:
 		moveVec.y = 0
 
-	velocity = moveVec * moveSpeed
+	if canMove:
+		velocity = moveVec * moveSpeed
+	else:
+		velocity = Vector2()
 	if slowMode:
 		velocity *= slowModeMultiplier
 	position += velocity * delta

@@ -1,47 +1,48 @@
-extends Node
+extends Control
 
 signal deploy
 signal cancel
 var animDir
-var fullyVisible = false
+var buttonsInteractable = false
 
 func _ready():
-	pass
+	buttonsInteractable = visible
 
 
-func playDisplayAnimation(forwards):
-	animDir = forwards
+func playDisplayAnimation(dir):
+	animDir = dir
 	if animDir == "forwards":
-		$WindowTexture.show()
+		show()
 		$AnimationPlayer.play("DisplayAnim")
 	elif animDir == "backwards":
-		$AnimationPlayer.play_backwards("DisplayAnim")
+		$AnimationPlayer.play("HideAnim")
+		buttonsInteractable = false
 	else:
 		pass
 
 
 func _on_DeployBtn_visibility_changed():
-	$WindowTexture/OptionsTexture/DeployBtn.grab_focus()
+	pass#$WindowTexture/OptionsTexture/DeployBtn.grab_focus()
 
 
 func _on_DeployBtn_pressed():
-	if fullyVisible:
+	if buttonsInteractable:
+		print("event triggered in briefing")
 		emit_signal("deploy")
-		fullyVisible = false
+		buttonsInteractable = false
 
 
 func _on_CancelBtn_pressed():
-	if fullyVisible:
+	if buttonsInteractable:
 		emit_signal("cancel")
-		fullyVisible = false
+		buttonsInteractable = false
 		playDisplayAnimation("backwards")
 
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "DisplayAnim":
-		if animDir == "backwards":
-			$WindowTexture.hide()
-			fullyVisible = false
 		if animDir == "forwards":
-			fullyVisible = true
-		
+			$WindowTexture/OptionsTexture/DeployBtn.grab_focus()
+			buttonsInteractable = true
+	if anim_name == "HideAnim":
+		hide()
