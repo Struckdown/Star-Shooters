@@ -4,7 +4,7 @@
 [ext_resource path="res://Levels/Stages/Level2/TwoAndTwo.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/Stages/Level2/Boss1Wave.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/Stages/Level2/2FlyingWideSpiral.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Hostiles/Waves/4FlyingWide.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Stages/Level2/4FlyingWide.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/Stages/Level2/HelixShooter2.tscn" type="PackedScene" id=6]
 
 [node name="Level" type="Node2D"]
