@@ -4,6 +4,7 @@ extends Node2D
 var score = 0
 var playerLives = 3
 var stage = null
+var gameMode = null
 
 func _ready():
 	pass

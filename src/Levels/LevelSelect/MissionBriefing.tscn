@@ -24,11 +24,11 @@ font_data = ExtResource( 7 )
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 9 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 20
 font_data = ExtResource( 7 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 7 )
 
 [sub_resource type="Animation" id=6]
@@ -227,7 +227,7 @@ margin_left = 28.1996
 margin_top = 6.11667
 margin_right = 202.2
 margin_bottom = 50.1167
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Deploy"
 align = 1
@@ -254,7 +254,7 @@ margin_left = 31.296
 margin_top = 4.61838
 margin_right = 205.296
 margin_bottom = 48.6184
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 text = "Cancel"
 align = 1
@@ -281,7 +281,7 @@ margin_left = 86.9041
 margin_top = 307.441
 margin_right = 250.904
 margin_bottom = 325.441
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.835294, 0.756863, 0.231373, 1 )
 text = "Commander"
 align = 1

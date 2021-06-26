@@ -28,20 +28,20 @@ func _on_Menu_button_up(btn):
 	match btn:
 		"play":
 			if $VBoxContainer/PlayBtn.is_hovered():
-				GameManager.stage = "Main"
+				GameManager.gameMode = "Main"
 				$ButtonClickedSFX.play()
-				$"/root/SceneTransition".transitionToScene("res://Levels/Stages/MainWorld.tscn")
-				BGM.transitionSong("res://Levels/mixkit-space-game-668.mp3")
+				$"/root/SceneTransition".transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")
+				
 		"infinite":
 			if $VBoxContainer/InfiniteBtn.is_hovered():
-				GameManager.stage = "Infinite"
+				GameManager.gameMode = "Infinite"
 				$ButtonClickedSFX.play()
-				$"/root/SceneTransition".transitionToScene("res://Levels/Stages/MainWorld.tscn")
+				$"/root/SceneTransition".transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")
 		"tutorial":
 			if $VBoxContainer/TutorialBtn.is_hovered():
-				GameManager.stage = "Tutorial"
+				GameManager.gameMode = "Tutorial"
 				$ButtonClickedSFX.play()
-				$"/root/SceneTransition".transitionToScene("res://Levels/Stages/MainWorld.tscn")
+				$"/root/SceneTransition".transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")
 		"options":
 			$ButtonClickedSFX.play()
 			$CanvasLayer/Settings.show()

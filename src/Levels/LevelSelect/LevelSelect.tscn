@@ -23,12 +23,25 @@ position = Vector2( 253.906, 414.268 )
 levelDescription = "Alpha Sector
 Learning the Ropes"
 levelNumber = 1
+missionName = "Learning the Ropes"
+missionBriefing = "Greetings Comrade! Welcome to BASIC training.
+Before we can send you out, you'll need to prove your skills. 
+
+We have setup this basic course to get you used to the basics.
+
+Remember, We need you to hunt down the Star Child, so your skills will be of the utmost importance.
+Prepare for deployment...
+"
 
 [node name="Planet2" parent="Levels" instance=ExtResource( 6 )]
 position = Vector2( 572.804, 482.603 )
 levelDescription = "Sector Beta
 A Loss of Energy"
 levelNumber = 2
+missionName = "A Loss of Energy	"
+missionBriefing = "Incredible performance in your previous mission. Now that you're well acquainted with the capabilities of your spaceship, you will need to venture forth and carve out a path for us!
+
+Your enemy will not always use energy aligned ammunition, so make sure to seek out attacks that matched your training to generate charge to fight back! Without it, you will be lost."
 
 [node name="PlanetSprite" parent="Levels/Planet2" index="0"]
 scale = Vector2( 0.058, 0.058 )

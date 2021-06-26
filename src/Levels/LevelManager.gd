@@ -16,6 +16,7 @@ func _ready():
 	playerSpawn = get_node("VPCgame/Viewport/PlayerSpawner")
 	if GameManager.stage != null:
 		level = GameManager.stage
+	BGM.transitionSong("res://Levels/mixkit-space-game-668.mp3")
 	spawnNewPlayer(0)
 	getWaves()
 	spawnWave()
@@ -33,6 +34,7 @@ func _unhandled_input(event):
 
 func getWaves():
 	var levelToLoad = "res://Levels/Stages/Level" + str(level) + "/Level" + str(level) + ".tscn"
+	print(levelToLoad)
 	var temp = load(levelToLoad).instance()
 	waves = temp.waves
 

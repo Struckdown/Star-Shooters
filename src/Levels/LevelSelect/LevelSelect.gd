@@ -1,6 +1,7 @@
 extends Node2D
 
 var selectedLevel = null
+onready var selectedPlanet
 
 func _ready():
 	for level in $Levels.get_children():
@@ -24,6 +25,7 @@ func updateSelectedLevel(planet):
 		selectedLevel = null
 	else:
 		selectedLevel = planet.levelNumber
+		$CanvasLayer/MissionBriefing.updateText(planet)
 
 
 func _on_MissionBriefing_deploy():

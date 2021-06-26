@@ -3,6 +3,9 @@ extends Node2D
 export(String, MULTILINE) var levelDescription
 export(int) var levelNumber
 signal playerNearby
+export(String, MULTILINE) var missionName
+export(String, MULTILINE) var missionBriefing
+
 
 func _ready():
 	set_description(levelDescription)

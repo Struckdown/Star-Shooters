@@ -46,3 +46,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			buttonsInteractable = true
 	if anim_name == "HideAnim":
 		hide()
+
+func updateText(planet):
+	$WindowTexture/LevelNameLbl.text = planet.missionName
+	$WindowTexture/SpeechBubble/DialogueLbl.text = planet.missionBriefing
+	$WindowTexture/SpeakerLbl.text = "Commander"#planet.speakerText
