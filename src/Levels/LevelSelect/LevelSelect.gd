@@ -2,12 +2,15 @@ extends Node2D
 
 var selectedLevel = null
 onready var selectedPlanet
+var mapPlayerRef
 
 func _ready():
 	for level in $Levels.get_children():
 		level.connect("playerNearby", self, "updateSelectedLevel")
 	$CanvasLayer/MissionBriefing.hide()
-
+	GameManager.load_game()
+	#get_nodes_in_group()
+	mapPlayerRef = get_tree().get_nodes_in_group("Player")
 
 
 func _input(event):
@@ -15,7 +18,9 @@ func _input(event):
 		if selectedLevel != null and not $CanvasLayer/MissionBriefing.visible:
 			#$CanvasLayer/MissionBriefing.show()
 			$CanvasLayer/MissionBriefing.playDisplayAnimation("forwards")
-			$MapPlayer.canMove = false
+			for player in mapPlayerRef:
+				if is_instance_valid(player): 
+					player.canMove = false
 			#get_tree().set_input_as_handled()
 
 
@@ -31,9 +36,17 @@ func updateSelectedLevel(planet):
 func _on_MissionBriefing_deploy():
 	if selectedLevel != null:
 		GameManager.stage = selectedLevel
+		GameManager.saveGame()
 		SceneTransition.transitionToScene("res://Levels/Stages/MainWorld.tscn")
 
 
 func _on_MissionBriefing_cancel():
-	$MapPlayer.canMove = true
+	for player in mapPlayerRef:
+		if is_instance_valid(player):
+			player.canMove = true
 	pass#$MissionBriefing.playDisplayAnimation("backwards")
+
+func save():
+	var save_dict = {
+		#TODO
+	}

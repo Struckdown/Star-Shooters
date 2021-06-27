@@ -20,8 +20,7 @@ texture = ExtResource( 3 )
 
 [node name="Planet" parent="Levels" instance=ExtResource( 6 )]
 position = Vector2( 253.906, 414.268 )
-levelDescription = "Alpha Sector
-Learning the Ropes"
+levelDescription = "Alpha Sector"
 levelNumber = 1
 missionName = "Learning the Ropes"
 missionBriefing = "Greetings Comrade! Welcome to BASIC training.
@@ -35,8 +34,7 @@ Prepare for deployment...
 
 [node name="Planet2" parent="Levels" instance=ExtResource( 6 )]
 position = Vector2( 572.804, 482.603 )
-levelDescription = "Sector Beta
-A Loss of Energy"
+levelDescription = "Sector Beta"
 levelNumber = 2
 missionName = "A Loss of Energy	"
 missionBriefing = "Incredible performance in your previous mission. Now that you're well acquainted with the capabilities of your spaceship, you will need to venture forth and carve out a path for us!
@@ -47,7 +45,9 @@ Your enemy will not always use energy aligned ammunition, so make sure to seek o
 scale = Vector2( 0.058, 0.058 )
 texture = ExtResource( 2 )
 
-[node name="MapPlayer" parent="." instance=ExtResource( 7 )]
+[node name="MapPlayer" parent="." groups=[
+"Persist",
+] instance=ExtResource( 7 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
