@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Levels/Stages/Level2/Boss1Wave.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/SceneTransitionLaserBeam.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 155.0
 
 [node name="Node2D" type="Node2D"]
 position = Vector2( 498.315, 505.409 )
@@ -14,7 +17,11 @@ hasControl = true
 [node name="PlayerSpawner" parent="." instance=ExtResource( 4 )]
 position = Vector2( -106.259, -49.0581 )
 
-[node name="WaveBase" parent="." instance=ExtResource( 1 )]
-position = Vector2( -451.294, -478.418 )
+[node name="LaserBeam" parent="." instance=ExtResource( 1 )]
+position = Vector2( -316.53, -304.307 )
 
-[editable path="WaveBase"]
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 102.783, -303.676 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 1 )
