@@ -4,6 +4,7 @@ extends Node2D
 var score = 0
 var playerLives = 3
 var stage = null
+var lastPlayedStage = null
 var gameMode = null
 
 func _ready():
@@ -13,7 +14,29 @@ func resetGame():
 	score = 0
 	playerLives = 3
 	stage = null
+	lastPlayedStage = null
+	gameMode = null
 
+func updateScores(newScore: int) -> void:
+	var scores_save = File.new()
+	var levelSaveName = "user://score_Level" + str(stage) +".save"
+	scores_save.open(levelSaveName, File.READ)
+	var scores = []
+	while scores_save.get_position() < scores_save.get_len():
+		scores.append(parse_json(scores_save.get_line()))
+	scores_save.close()
+
+	scores_save.open(levelSaveName, File.WRITE)
+	scores.append(newScore)
+	scores.sort()
+	scores_save.seek(0)
+	scores.invert()	# reverses the list to put the biggest number at the top
+	var i = 0
+	for s in scores:
+		scores_save.store_line(to_json(s))
+		i += 1
+		if i >= 10:	# never store more than the 10 top scores
+			break
 
 func saveGame():
 	var save_game = File.new()

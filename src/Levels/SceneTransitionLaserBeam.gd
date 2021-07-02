@@ -3,17 +3,19 @@ extends RayCast2D
 var is_casting := false setget set_is_casting
 
 func _ready():
-	set_physics_process(true)
-	$Line2D.points[1] = Vector2.ZERO
+	pass
+#	set_physics_process(true)
+#	$Line2D.points[1] = Vector2.ZERO
 	
 func _input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		self.is_casting = event.pressed
-		cast_to = get_local_mouse_position()
-		print("Casting!?")
+	pass#if event is InputEventMouseButton:
+	#	self.is_casting = event.pressed
+	#	cast_to = get_local_mouse_position()
+	#	print("Casting!?")
 
 func _process(delta):
-	pass#cast_to = get_local_mouse_position()
+	pass
+	#cast_to = get_local_mouse_position()
 
 func _physics_process(delta: float) -> void:
 	var cast_point := cast_to

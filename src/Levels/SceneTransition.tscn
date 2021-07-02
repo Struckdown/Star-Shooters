@@ -1,100 +1,216 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Art Packs/GDQuest/BlackSquare.png" type="Texture" id=1]
 [ext_resource path="res://Levels/SceneTransition.gd" type="Script" id=2]
 [ext_resource path="res://Levels/SceneTransitionLaserBeam.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Levels/SceneTransitionLaserSFX.mp3" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "FadeInFromBlack"
-length = 0.5
-loop = true
+length = 0.7
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/Sprite:modulate")
+tracks/0/path = NodePath("CanvasLayer/LaserBeam:cast_to")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+"values": [ Vector2( 1000, 0 ), Vector2( 1000, 0 ), Vector2( 0, 1000 ), Vector2( -1000, 0 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/LaserBeam:cast_to")
+tracks/1/path = NodePath("CanvasLayer/Sprite:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 0,
-"values": [ Vector2( 1000, 0 ), Vector2( 0, 1000 ), Vector2( -1000, 0 ) ]
+"values": [ Vector2( 518.875, -5.01379 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("CanvasLayer/Sprite:position")
+tracks/2/path = NodePath("CanvasLayer/Sprite:rotation_degrees")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 0.1, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 518.875, -5.01379 ) ]
+"values": [ 90.0, 90.0, 180.0, 270.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("CanvasLayer/Sprite:rotation_degrees")
+tracks/3/path = NodePath("CanvasLayer/Sprite2:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 0.2, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 90.0, 90.0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("CanvasLayer/Sprite2:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Vector2( 518.875, -5.01379 ) ]
 }
+tracks/4/type = "value"
+tracks/4/path = NodePath("CanvasLayer/Sprite2:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 180.0, 180.0, 270.0, 360.0 ]
+}
 tracks/5/type = "value"
-tracks/5/path = NodePath("CanvasLayer/Sprite2:rotation_degrees")
+tracks/5/path = NodePath("CanvasLayer/LaserBeam/SourceParticles:emitting")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 0.2, 0.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 0.0, 90.0, 180.0 ]
+"times": PoolRealArray( 0, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("CanvasLayer/LaserBeam/SourceParticles:emitting")
+tracks/6/path = NodePath("CanvasLayer/LaserBeam:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
 tracks/6/enabled = true
 tracks/6/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
 "values": [ true, false ]
 }
+tracks/7/type = "audio"
+tracks/7/path = NodePath("LaserSFX")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "FadeToBlack"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/path = NodePath("CanvasLayer/LaserBeam:cast_to")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1000, 0 ), Vector2( 1000, 0 ), Vector2( 0, 1000 ), Vector2( -1000, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 518.875, -5.01379 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("CanvasLayer/Sprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 90.0, 90.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("CanvasLayer/Sprite2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 518.875, -5.01379 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("CanvasLayer/Sprite2:rotation_degrees")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 90.0, 180.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CanvasLayer/LaserBeam/SourceParticles:emitting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("CanvasLayer/LaserBeam:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.1, 0.6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/7/type = "audio"
+tracks/7/path = NodePath("LaserSFX")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 4 )
+} ],
+"times": PoolRealArray( 0 )
+}
 
 [sub_resource type="Animation" id=2]
-resource_name = "FadeToBlack"
+resource_name = "FadeToBlackOld"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("CanvasLayer/Sprite:modulate")
@@ -119,9 +235,9 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "FadeInFromBlack"
 anims/FadeInFromBlack = SubResource( 1 )
-anims/FadeToBlack = SubResource( 2 )
+anims/FadeToBlack = SubResource( 3 )
+anims/FadeToBlackOld = SubResource( 2 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 128
@@ -129,6 +245,7 @@ layer = 128
 [node name="Sprite" type="Sprite" parent="CanvasLayer"]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 518.875, -5.01379 )
+rotation = 4.71239
 scale = Vector2( 22.9983, 18.5175 )
 texture = ExtResource( 1 )
 offset = Vector2( 32, -32 )
@@ -136,15 +253,18 @@ offset = Vector2( 32, -32 )
 [node name="Sprite2" type="Sprite" parent="CanvasLayer"]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 518.875, -5.01379 )
+rotation = 6.28319
 scale = Vector2( 22.9983, 18.5175 )
 texture = ExtResource( 1 )
 offset = Vector2( 32, -32 )
 
 [node name="LaserBeam" parent="CanvasLayer" instance=ExtResource( 3 )]
+visible = false
 position = Vector2( 520.872, 3.10167 )
+cast_to = Vector2( -1000, 0 )
 
-[node name="SourceParticles" parent="CanvasLayer/LaserBeam" index="2"]
-emitting = true
+[node name="LaserSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 

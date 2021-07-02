@@ -8,7 +8,7 @@ func _ready():
 	for level in $Levels.get_children():
 		level.connect("playerNearby", self, "updateSelectedLevel")
 	$CanvasLayer/MissionBriefing.hide()
-	GameManager.load_game()
+	#GameManager.load_game()
 	#get_nodes_in_group()
 	mapPlayerRef = get_tree().get_nodes_in_group("Player")
 
