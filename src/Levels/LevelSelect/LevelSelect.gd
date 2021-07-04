@@ -22,6 +22,10 @@ func _input(event):
 				if is_instance_valid(player): 
 					player.canMove = false
 			#get_tree().set_input_as_handled()
+	if Input.is_action_pressed("pause") and not $"CanvasLayer/Pause Menu".visible:
+		$"CanvasLayer/Pause Menu".show()
+		get_tree().paused = true
+		get_tree().get_root().set_input_as_handled()
 
 
 # Sets the mission briefing data and what will be opened up when the action key is pressed
@@ -47,6 +51,7 @@ func _on_MissionBriefing_cancel():
 	pass#$MissionBriefing.playDisplayAnimation("backwards")
 
 func save():
-	var save_dict = {
+	var _save_dict = {
 		#TODO
 	}
+

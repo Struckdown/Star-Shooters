@@ -11,6 +11,7 @@ rotation = 1.57079
 flyingPattern = "hoverMoveGoal"
 
 [node name="BulletEmitter" parent="ForwardShooter/WeaponManager" index="1"]
+initialRotationOffset = 0.0
 targetStyle = "straight"
 bulletMovementSpeed = 150
 greenBulletFrequency = -1

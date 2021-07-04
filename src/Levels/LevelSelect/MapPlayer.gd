@@ -20,7 +20,7 @@ func _process(delta):
 	applyInputs(delta)
 	updateRotation(delta)
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	determineInputs()
 
 func determineInputs():

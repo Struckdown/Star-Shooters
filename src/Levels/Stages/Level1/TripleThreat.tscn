@@ -60,15 +60,15 @@ tracks/1/keys = {
 
 [node name="WaveBase" instance=ExtResource( 1 )]
 
-[node name="ForwardShooter" parent="." index="0" instance=ExtResource( 2 )]
+[node name="ForwardShooterSpirals" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( 452.747, 75.3363 )
 rotation = 1.57079
+speed = 120.0
 flyingPattern = "hoverRandomPoint"
 
-[node name="BulletEmitter" parent="ForwardShooter/WeaponManager" index="1"]
+[node name="BulletEmitter" parent="ForwardShooterSpirals/WeaponManager" index="1"]
 initialRotationOffset = 0.0
 targetStyle = "straight"
-useRotationAsCenterBullet = true
 angleOfBulletSpread = 15.0
 amountOfBullets = 12
 bulletMovementSpeed = 125
@@ -81,6 +81,7 @@ nthBulletIsGreen = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
 [node name="ForwardShooter2" parent="." index="1" instance=ExtResource( 2 )]
 position = Vector2( 207.811, 158.504 )
 rotation = 1.57079
+speed = 120.0
 flyingPattern = "hoverRandomPoint"
 
 [node name="AnimationPlayer" parent="ForwardShooter2" index="3"]
@@ -89,7 +90,6 @@ anims/Death = SubResource( 1 )
 [node name="BulletEmitter" parent="ForwardShooter2/WeaponManager" index="1"]
 initialRotationOffset = 0.0
 targetStyle = "atTarget"
-useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = true
 volleyClipSize = 4
 clipReloadTime = 2.0
@@ -103,6 +103,7 @@ nthBulletIsGreen = [ 0, 1, 2, 3 ]
 [node name="ForwardShooter3" parent="." index="2" instance=ExtResource( 2 )]
 position = Vector2( 728.175, 151.088 )
 rotation = 1.57079
+speed = 120.0
 flyingPattern = "hoverRandomPoint"
 
 [node name="AnimationPlayer" parent="ForwardShooter3" index="3"]
@@ -111,7 +112,6 @@ anims/Death = SubResource( 2 )
 [node name="BulletEmitter" parent="ForwardShooter3/WeaponManager" index="1"]
 initialRotationOffset = 0.0
 targetStyle = "atTarget"
-useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = true
 volleyClipSize = 4
 clipReloadTime = 2.0
@@ -122,6 +122,6 @@ initialSpawnDelayRandomRange = 3.0
 greenBulletFrequency = -1
 nthBulletIsGreen = [ 0, 1, 2, 3 ]
 
-[editable path="ForwardShooter"]
+[editable path="ForwardShooterSpirals"]
 [editable path="ForwardShooter2"]
 [editable path="ForwardShooter3"]

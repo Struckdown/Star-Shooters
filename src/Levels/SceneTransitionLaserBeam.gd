@@ -7,17 +7,17 @@ func _ready():
 #	set_physics_process(true)
 #	$Line2D.points[1] = Vector2.ZERO
 	
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	pass#if event is InputEventMouseButton:
 	#	self.is_casting = event.pressed
 	#	cast_to = get_local_mouse_position()
 	#	print("Casting!?")
 
-func _process(delta):
+func _process(_delta):
 	pass
 	#cast_to = get_local_mouse_position()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var cast_point := cast_to
 	force_raycast_update()
 	$ImpactParticles.emitting = is_colliding()

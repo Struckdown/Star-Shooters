@@ -9,7 +9,8 @@ var maxPhases
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	owner.connect("tookDamage", self, "updateHealth")
+	if owner.connect("tookDamage", self, "updateHealth"):
+		print("Weapon connect failed???")
 	if phaseSwapMode == "time":
 		$Timer.wait_time = timeToNextPhase
 		$Timer.start()

@@ -15,7 +15,8 @@ func _ready():
 	var i = randi() % (backgrounds.size()-1)
 	var bg = backgrounds[i]
 	$BG.texture = load(bg)
-	$CanvasLayer/Settings.connect("closed", self, "hideSettings")
+	if $CanvasLayer/Settings.connect("closed", self, "hideSettings"):
+		print("CanvasLayer/Settings connect failed???")
 	GameManager.resetGame()
 	BGM.transitionSong("res://Menus/MainMenuBGM.mp3")
 	get_node("VBoxContainer/PlayBtn").grab_focus()

@@ -53,6 +53,6 @@ func _on_DisplayArea2D_area_exited(area):
 
 #TODO
 func loadScore():
-	var save_dict = {
+	var _save_dict = {
 		"bestScore": bestScore
 	}

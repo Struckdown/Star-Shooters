@@ -9,6 +9,8 @@ var waves = []
 var waveNum = 0
 var curWave = null
 export(int) var level = 1
+var levelLost = false
+var levelWon = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,7 +27,7 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func _unhandled_input(event):
+func _unhandled_input(_event):
 	if Input.is_action_pressed("pause") and not $"CanvasLayer/Pause Menu".visible:
 		$"CanvasLayer/Pause Menu".show()
 		get_tree().paused = true
@@ -56,7 +58,11 @@ func spawnWave():
 		curWave.connect("waveFinished", self, "spawnWave")
 		curWave.connect("enemyDestroyed", self, "addToScore")
 	else:
-		$"CanvasLayer/Level Won".playLevelComplete()
+		levelWon = true
+		if not levelLost:
+			$"CanvasLayer/Level Won".playLevelComplete()
+		else:
+			print("Level was supposed to be won, but level lost was true first. :(")
 
 func spawnNewPlayer(livesDelta):
 	GameManager.playerLives += livesDelta
@@ -69,7 +75,11 @@ func spawnNewPlayer(livesDelta):
 		if livesDelta != 0:
 			scoreBoardRef.updateLives(livesDelta)
 	else:
-		$"CanvasLayer/Game Over/AnimationPlayer".play("Game Over")
-		
+		levelLost = true
+		if not levelWon:
+			$"CanvasLayer/Game Over/AnimationPlayer".play("Game Over")
+		else:
+			print("Level was supposed to be lost, but was already won")
+
 func gemCollected():
 	addToScore(100)
