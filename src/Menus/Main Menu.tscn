@@ -288,6 +288,10 @@ generatesEnergy = true
 energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed08.png"
 titleScreenVersion = true
 
+[node name="DespawnTimer" parent="AnimationPlayer/Bullet_Straight" index="1"]
+one_shot = false
+autostart = true
+
 [node name="Sprite" parent="AnimationPlayer/Bullet_Straight" index="2"]
 texture = ExtResource( 4 )
 
@@ -295,6 +299,10 @@ texture = ExtResource( 4 )
 position = Vector2( 510.127, -89.272 )
 scale = Vector2( 3, 3 )
 titleScreenVersion = true
+
+[node name="DespawnTimer" parent="AnimationPlayer/Bullet_Straight2" index="1"]
+one_shot = false
+autostart = true
 
 [node name="Sprite" parent="AnimationPlayer/Bullet_Straight2" index="2"]
 texture = ExtResource( 11 )

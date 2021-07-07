@@ -101,7 +101,6 @@ tracks/0/keys = {
 [node name="Gem" type="Node2D" groups=[
 "Gem",
 ]]
-modulate = Color( 1, 1, 1, 0 )
 scale = Vector2( 0.1, 0.1 )
 script = ExtResource( 60 )
 

@@ -4,6 +4,7 @@
 [ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
 
 [node name="WaveBase" instance=ExtResource( 1 )]
+enemiesToDestroy = 5
 
 [node name="Enemy_Base" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( 408.57, 174.73 )

@@ -4,6 +4,7 @@
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=2]
 
 [node name="WaveBase" instance=ExtResource( 2 )]
+enemiesToDestroy = 2
 
 [node name="HelixShooter" parent="." index="0" instance=ExtResource( 1 )]
 position = Vector2( 254.847, 118.928 )

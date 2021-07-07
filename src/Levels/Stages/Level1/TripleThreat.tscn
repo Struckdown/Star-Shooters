@@ -59,6 +59,7 @@ tracks/1/keys = {
 }
 
 [node name="WaveBase" instance=ExtResource( 1 )]
+enemiesToDestroy = 2
 
 [node name="ForwardShooterSpirals" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( 452.747, 75.3363 )

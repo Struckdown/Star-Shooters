@@ -12,6 +12,8 @@ var playerRef
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	init()
+	$Timer.wait_time += rand_range(0, 1)
+	$Timer.start()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
