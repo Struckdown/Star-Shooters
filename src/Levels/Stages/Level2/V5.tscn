@@ -7,21 +7,21 @@
 enemiesToDestroy = 5
 
 [node name="Enemy_Base" parent="." index="0" instance=ExtResource( 2 )]
-position = Vector2( 408.57, 174.73 )
+position = Vector2( 408.57, -182.65 )
 rotation = 1.56274
 
 [node name="Enemy_Base2" parent="." index="1" instance=ExtResource( 2 )]
-position = Vector2( 533.588, 291.195 )
+position = Vector2( 533.588, -66.1851 )
 rotation = 1.56274
 
 [node name="Enemy_Base3" parent="." index="2" instance=ExtResource( 2 )]
-position = Vector2( 743.298, 52.0463 )
+position = Vector2( 743.298, -305.334 )
 rotation = 1.56274
 
 [node name="Enemy_Base4" parent="." index="3" instance=ExtResource( 2 )]
-position = Vector2( 640.298, 176.191 )
+position = Vector2( 640.298, -181.189 )
 rotation = 1.56274
 
 [node name="Enemy_Base5" parent="." index="4" instance=ExtResource( 2 )]
-position = Vector2( 305.298, 59.191 )
+position = Vector2( 305.298, -298.189 )
 rotation = 1.56274

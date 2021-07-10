@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Enemies/ForwardShooter.tscn" type="PackedScene" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1045.63, 207.416, 91.6162, 102.634, -91.6162, -102.634, 661.904, 198.165, -277.187, -207.516, 277.187, 207.516, 361.383, 284.432, 0, 0, 0, 0, -61.6498, 261.579 )
+}
+
+[node name="WaveBase" instance=ExtResource( 1 )]
+enemiesToDestroy = 1
+
+[node name="PathFinder" parent="." index="0" instance=ExtResource( 2 )]
+position = Vector2( 1057.21, 200.548 )
+rotation = 1.57079
+speed = 120.0
+flyPath = NodePath("../Path2D")
+flyingPattern = "followPath"
+
+[node name="BulletEmitter" parent="PathFinder/WeaponManager" index="1"]
+initialRotationOffset = 0.0
+targetStyle = "atTarget"
+bulletMovementSpeed = 180
+greenBulletFrequency = -1
+nthBulletIsGreen = [ 0, 1, 2 ]
+
+[node name="Path2D" type="Path2D" parent="." index="1"]
+curve = SubResource( 1 )
+
+[editable path="PathFinder"]

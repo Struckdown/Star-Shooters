@@ -9,16 +9,24 @@ signal destroyed
 export(PackedScene) var explosionType
 var explosionParticles
 export(Vector2) var moveGoal	# vector coordinate where enemy is trying to get to
+export(NodePath) var flyPath
+var flyPoints
+var flyIndex = 0
 #export(NodePath) var moveGoalObject	# if given, try to move towards this object's position	#TODO. This is not implemented
 var levelBounds
 var levelViewport
 var target	# thing to shoot
-export(String, "straight", "hoverRandomPoint", "hoverMoveGoal", "TBD") var flyingPattern
+export(String, "straight", "hoverRandomPoint", "hoverMoveGoal", "followPath", "TBD") var flyingPattern
 var healthBarRef
 signal tookDamage
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if flyPath:
+		get_node(flyPath).position = Vector2.ZERO
+		flyPoints = get_node(flyPath).curve.get_baked_points()
+		
+		
 	levelBounds = get_tree().get_nodes_in_group("LevelBoundary")
 	if len(levelBounds) > 0:
 		levelBounds = levelBounds[0]
@@ -28,7 +36,7 @@ func _ready():
 		target = target[0]
 	if flyingPattern == "hoverMoveGoal":
 		moveGoal += position
-		moveGoal.y += 200
+		#moveGoal.y += 200
 	if not moveGoal and levelBounds:
 		getNewMoveGoal()
 
@@ -54,6 +62,18 @@ func move(d):
 				velocity = position.direction_to(moveGoal) * speed * d
 				if position.distance_squared_to(moveGoal) > 5*5:
 					position += velocity
+		"followPath":
+			if !flyPath:
+				return
+			var flyTarget = flyPoints[flyIndex]
+			if position.distance_to(flyTarget) < 5:
+				flyIndex = wrapi(flyIndex + 1, 0, flyPoints.size())
+				flyTarget = flyPoints[flyIndex]
+				if flyIndex == 0:
+					queue_free()
+			velocity = position.direction_to(flyTarget) * speed * d
+			look_at(global_position+velocity)
+			position += velocity
 
 func aimAtTarget():
 	match flyingPattern:
@@ -103,7 +123,7 @@ func getNewMoveGoal():
 	var mapSize = levelViewport.get_viewport().size
 	randomize()
 	var xRand = rand_range(mapSize.x * 0.1, mapSize.x * 0.9)
-	var yRand = rand_range(mapSize.y * 0.1, mapSize.y * 0.4) + 200	# 200 is from wave offset spawning things off-camera
+	var yRand = rand_range(mapSize.y * 0.1, mapSize.y * 0.4) #+ 200	# 200 is from wave offset spawning things off-camera
 	moveGoal = Vector2(xRand, yRand)
 
 func spawnGems():

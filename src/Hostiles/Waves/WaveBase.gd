@@ -27,10 +27,13 @@ func _ready():
 func setupAdvanceCondition():
 	match waveAdvanceCondition:
 		"enemies":
+			var actualEnemies = 0
 			for e in enemies:
-				e.connect("destroyed", self, "updateEnemyCount")
+				if e.has_signal("destroyed"):
+					e.connect("destroyed", self, "updateEnemyCount")
+					actualEnemies += 1
 			if enemiesToDestroy == 0:
-				enemiesToDestroy = len(enemies)	# set enemies to max enemies if unset
+				enemiesToDestroy = actualEnemies	# set enemies to max enemies if unset
 		"time":
 			var timer = Timer.new()
 			add_child(timer)
