@@ -12,7 +12,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 #	if Input.is_action_pressed("fire"):
 #		applyDamage(0.1)
 	if (bufferFillPercentage > bufferTargetFillPercentage):

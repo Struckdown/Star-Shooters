@@ -1,0 +1,61 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Enemies/ForwardShooter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlue2.png" type="Texture" id=5]
+
+[node name="WaveBase" instance=ExtResource( 1 )]
+enemiesToDestroy = 1
+
+[node name="ForwardShooter" parent="." index="0" instance=ExtResource( 2 )]
+position = Vector2( 510.669, -107.802 )
+rotation = 1.57079
+maxHealth = 60
+moveGoal = Vector2( 0, 200 )
+flyingPattern = "hoverMoveGoal"
+
+[node name="Sprite" parent="ForwardShooter" index="1"]
+texture = ExtResource( 5 )
+
+[node name="WeaponManager" parent="ForwardShooter" index="4"]
+phaseSwapMode = "time"
+timeToNextPhase = 1
+
+[node name="BulletEmitter" parent="ForwardShooter/WeaponManager" index="1"]
+rotation = -0.785398
+rotationPerVolley = 5.0
+rotationRange = 90.0
+initialRotationOffset = 0.0
+targetStyle = "straight"
+angleOfBulletSpread = 90.0
+amountOfBullets = 4
+bulletMovementSpeed = 130
+bulletSpawnDelay = 0.2
+initialSpawnDelayConstant = 3.0
+initialSpawnDelayRandomRange = 0.0
+greenBulletFrequency = -1
+nthBulletIsGreen = [ 0, 1, 2, 3 ]
+
+[node name="BulletEmitter2" parent="ForwardShooter/WeaponManager" index="2" instance=ExtResource( 4 )]
+rotation = -0.261799
+scale = Vector2( 1, 1 )
+rotationPerVolley = 10.0
+rotationRange = 30.0
+initialRotationOffset = 30.0
+targetStyle = "atTarget"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+bulletMovementSpeed = 130
+bulletWaveSpeed = 8.0
+bulletWaveStr = 200.0
+bulletSpawnDelay = 0.2
+bulletType = ExtResource( 3 )
+initialSpawnDelayConstant = 3.0
+initialSpawnDelayRandomRange = 0.0
+nthBulletIsGreen = [ 0 ]
+emitting = false
+
+[editable path="ForwardShooter"]

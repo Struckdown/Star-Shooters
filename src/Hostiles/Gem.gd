@@ -45,5 +45,5 @@ func _on_Timer_timeout():
 	$DespawnAnimationPlayer.play("Despawning")
 
 
-func _on_DespawnAnimationPlayer_animation_finished(anim_name):
+func _on_DespawnAnimationPlayer_animation_finished(_anim_name):
 	queue_free()

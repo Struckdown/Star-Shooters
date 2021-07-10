@@ -21,8 +21,8 @@ func _on_QuitBtn_pressed():
 	var scenePathToChangeTo = "res://Levels/LevelSelect/LevelSelect.tscn"
 	if get_tree().get_current_scene().name == "Map":
 		scenePathToChangeTo = "res://Menus/Main Menu.tscn"
-	if(get_tree().change_scene(scenePathToChangeTo)):
-		print("ERROR in screen change!")
+	SceneTransition.transitionToScene(scenePathToChangeTo)
+
 
 func hideSettings():
 	$ClickSFX.play()
