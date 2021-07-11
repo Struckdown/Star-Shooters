@@ -2,17 +2,25 @@ extends Node2D
 #Controls how the wave behaves and when it's considered "defeated"
 
 var enemiesDestroyed = 0
-var enemies
+var enemies = []
+var initialAmountOfEnemies
 export(String, "enemies", "time", "other") var waveAdvanceCondition = "enemies"
 export(int) var enemiesToDestroy = 0
 export(int) var timeToNextWave
 var waveFinishedSignalEmitted = false
 signal waveFinished
+signal startNextWave
 signal enemyDestroyed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	enemies = get_children()
+	var children = get_children()
+	for child in children:
+		if child.has_signal("destroyed"):
+			#actualEnemies += 1
+			child.connect("destroyed", self, "updateEnemyCount")
+			enemies.append(child)
+	initialAmountOfEnemies = len(enemies)
 	setupAdvanceCondition()
 
 
@@ -27,13 +35,8 @@ func _ready():
 func setupAdvanceCondition():
 	match waveAdvanceCondition:
 		"enemies":
-			var actualEnemies = 0
-			for e in enemies:
-				if e.has_signal("destroyed"):
-					e.connect("destroyed", self, "updateEnemyCount")
-					actualEnemies += 1
 			if enemiesToDestroy == 0:
-				enemiesToDestroy = actualEnemies	# set enemies to max enemies if unset
+				enemiesToDestroy = initialAmountOfEnemies	# set enemies to max enemies if unset
 		"time":
 			var timer = Timer.new()
 			add_child(timer)
@@ -44,16 +47,20 @@ func setupAdvanceCondition():
 		"other":
 			pass	#TODO? Not sure what to put here, maybe something with other objects calling this one to advance the wave?
 
+
 func updateEnemyCount(pointsWorth):
 	enemiesDestroyed += 1
 	emit_signal("enemyDestroyed", pointsWorth)
-	if enemiesDestroyed >= enemiesToDestroy:	# trigger if count met or no more enemies remain
+	if enemiesDestroyed >= enemiesToDestroy and waveAdvanceCondition == "enemies":	# trigger if count met
 		advanceWave()
-	if enemiesDestroyed >= len(enemies):
-		advanceWave()
+	if enemiesDestroyed >= initialAmountOfEnemies:
+		markWaveFinished()
 		queue_free()
 	
 func advanceWave():
 	if not waveFinishedSignalEmitted:
-		emit_signal("waveFinished")
+		emit_signal("startNextWave")
 		waveFinishedSignalEmitted = true
+
+func markWaveFinished():
+	emit_signal("waveFinished")

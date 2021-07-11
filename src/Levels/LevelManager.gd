@@ -8,6 +8,7 @@ var playerSpawn
 var waves = []
 var waveNum = 0
 var curWave = null
+var wavesComplete = 0
 export(int) var level = 1
 var levelLost = false
 var levelWon = false
@@ -48,21 +49,27 @@ func addToScore(scoreToAdd):
 	scoreBoardRef.updateScore()
 
 func spawnWave():
-	print("Spawning wave " + str(waveNum))
 	if waveNum < waves.size():
-
 		curWave = waves[waveNum].instance()
 		#curWave.position.y -= 200	# Have enemies spawn off camera	# Too hacky, need to come up with better alternative
 		$VPCgame/Viewport.call_deferred("add_child", curWave)
 		waveNum +=1
-		curWave.connect("waveFinished", self, "spawnWave")
+		curWave.connect("startNextWave", self, "spawnWave")
 		curWave.connect("enemyDestroyed", self, "addToScore")
+		curWave.connect("waveFinished", self, "updateWavesFinished")
 	else:
+		print("Ran out of waves to spawn, should be at the end here")
+
+
+func updateWavesFinished():
+	wavesComplete += 1
+	if wavesComplete >= waves.size():
 		levelWon = true
 		if not levelLost:
 			$"CanvasLayer/Level Won".playLevelComplete()
 		else:
 			print("Level was supposed to be won, but level lost was true first. :(")
+
 
 func spawnNewPlayer(livesDelta):
 	GameManager.playerLives += livesDelta
