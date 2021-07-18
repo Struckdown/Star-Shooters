@@ -9,7 +9,10 @@ signal destroyed
 export(PackedScene) var explosionType
 var explosionParticles
 export(Vector2) var moveGoal	# vector coordinate where enemy is trying to get to
-export(NodePath) var flyPath
+export(Array, NodePath) var flyPaths
+#export(Array, float) var delayBetweenNextFlightPath #Not yet implemented
+var flyPathIndex = 0
+export(bool) var loopFlyPaths
 var flyPoints
 var flyIndex = 0
 #export(NodePath) var moveGoalObject	# if given, try to move towards this object's position	#TODO. This is not implemented
@@ -22,9 +25,8 @@ signal tookDamage
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if flyPath:
-		get_node(flyPath).position = Vector2.ZERO
-		flyPoints = get_node(flyPath).curve.get_baked_points()
+	if len(flyPaths) > 0:
+		flyPoints = get_node(flyPaths[flyPathIndex]).curve.get_baked_points()
 		
 		
 	levelBounds = get_tree().get_nodes_in_group("LevelBoundary")
@@ -63,14 +65,23 @@ func move(d):
 				if position.distance_squared_to(moveGoal) > 5*5:
 					position += velocity
 		"followPath":
-			if !flyPath:
+			if len(flyPaths) <= 0:
 				return
 			var flyTarget = flyPoints[flyIndex]
-			if position.distance_to(flyTarget) < 5:
+			if position.distance_to(flyTarget) < (speed*d):	#fly point reached
 				flyIndex = wrapi(flyIndex + 1, 0, flyPoints.size())
 				flyTarget = flyPoints[flyIndex]
-				if flyIndex == 0:
-					queue_free()
+				if flyIndex == 0:	# we reached the end of the current fly path
+					flyPathIndex += 1
+					if flyPathIndex < len(flyPaths):
+						flyPoints = get_node(flyPaths[flyPathIndex]).curve.get_baked_points()
+					else:
+						if loopFlyPaths:
+							flyPathIndex = 0
+							flyPoints = get_node(flyPaths[flyPathIndex]).curve.get_baked_points()
+						else:
+							queue_free()
+					
 			velocity = position.direction_to(flyTarget) * speed * d
 			look_at(global_position+velocity)
 			position += velocity

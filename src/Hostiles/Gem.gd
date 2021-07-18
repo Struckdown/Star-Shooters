@@ -18,7 +18,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if playerRef:
+	if is_instance_valid(playerRef):
 		var dir = position.direction_to(playerRef.position).normalized()
 		position += dir*delta*magnetSpeed
 	else:

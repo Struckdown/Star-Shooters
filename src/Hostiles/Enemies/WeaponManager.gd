@@ -1,7 +1,7 @@
 extends Node2D
 
 
-export(String, "health", "time") var phaseSwapMode
+export(String, "health", "time", "never") var phaseSwapMode
 export(int) var timeToNextPhase
 export(float) var healthPercentToNextPhase
 var phaseTracker = 0
@@ -9,8 +9,11 @@ var maxPhases
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	if owner.connect("tookDamage", self, "updateHealth"):
-		print("Weapon connect failed???")
+	var node = get_parent()
+	while not node.has_signal("tookDamage"):
+		node = node.get_parent()
+	node.connect("tookDamage", self, "updateHealth")
+	#	print("Weapon connect failed???")
 	if phaseSwapMode == "time":
 		$Timer.wait_time = timeToNextPhase
 		$Timer.start()
@@ -30,7 +33,7 @@ func updateHealth(currentFraction):
 
 func updatePhase():
 	for child in get_children():
-		if child != $Timer:
+		if child.has_method("toggleEmitting"):
 			child.toggleEmitting(false)
 	if get_child_count() > phaseTracker + 1:
 		get_child(phaseTracker+1).toggleEmitting(true)
@@ -44,3 +47,8 @@ func toggleDeath():
 	for child in get_children():
 		if child != $Timer:
 			child.toggleEmitting(false)
+
+func toggleEmitting(state):
+	for child in get_children():
+		if child.has_method("toggleEmitting"):
+			child.toggleEmitting(state)

@@ -1,0 +1,153 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Enemies/ForwardShooter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hostiles/Enemies/HelixShooter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlack3.png" type="Texture" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 471.846, 11.5439, -68.1126, -180.793, 68.1126, 180.793, 828.386, 150.292, 294.314, -47.9311, -294.314, 47.9311, 570.231, 574.945, 0, 0, 0, 0, 140.533, 432.833, -216.11, 153.884, 216.11, -153.884, 227.145, 143.565 )
+}
+
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -30.289, 229.725, -140.762, 5.34539, 140.762, -5.34539, 172.836, 521.94, -170.162, 8.01809, 170.162, -8.01809, 228.072, 56.8909, -180.852, 4.45449, 180.852, -4.45449, 440.996, 500.558, 168.38, -27.6179, -168.38, 27.6179, 538.104, 46.2001, -152.344, 3.56359, 152.344, -3.56359, 679.757, 525.504, -117.599, -12.4726, 117.599, 12.4726, 871.469, 69.2247 )
+}
+
+[sub_resource type="Curve2D" id=5]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -59.719, 346.736, 0, 0, 0, 0, 815.733, 166.566 )
+}
+
+[node name="WaveBase" instance=ExtResource( 1 )]
+enemiesToDestroy = 2
+
+[node name="HelixShooter" parent="." index="0" instance=ExtResource( 3 )]
+position = Vector2( 467.619, -62.4273 )
+rotation = 1.57079
+flyPaths = [ NodePath("../CirclePath") ]
+loopFlyPaths = true
+flyingPattern = "followPath"
+
+[node name="BulletEmitter" parent="HelixShooter/WeaponManager" index="1"]
+greenBulletFrequency = -1
+
+[node name="BulletEmitter2" parent="HelixShooter/WeaponManager/BulletEmitter" index="1"]
+greenBulletFrequency = -1
+
+[node name="LeftPlayerShooter" parent="." index="1" instance=ExtResource( 2 )]
+position = Vector2( -104.539, 331.954 )
+rotation = 1.57079
+speed = 120.0
+flyPaths = [ NodePath("../LoopingPath") ]
+loopFlyPaths = true
+flyingPattern = "followPath"
+
+[node name="AnimationPlayer" parent="LeftPlayerShooter" index="3"]
+anims/Death = SubResource( 1 )
+
+[node name="BulletEmitter" parent="LeftPlayerShooter/WeaponManager" index="1"]
+initialRotationOffset = 0.0
+targetStyle = "atTarget"
+angleOfBulletSpread = 0.0
+amountOfBullets = 1
+bulletMovementSpeed = 160
+bulletSpawnDelay = 0.8
+initialSpawnDelayRandomRange = 3.0
+greenBulletFrequency = -1
+
+[node name="RightCircleSpammer" parent="." index="2" instance=ExtResource( 2 )]
+position = Vector2( 852.836, 158.404 )
+rotation = 1.57079
+speed = 80.0
+flyPaths = [ NodePath("../StraightPath") ]
+loopFlyPaths = true
+flyingPattern = "followPath"
+
+[node name="Sprite" parent="RightCircleSpammer" index="1"]
+texture = ExtResource( 4 )
+
+[node name="AnimationPlayer" parent="RightCircleSpammer" index="3"]
+anims/Death = SubResource( 2 )
+
+[node name="BulletEmitter" parent="RightCircleSpammer/WeaponManager" index="1"]
+rotationPerVolley = 1.0
+initialRotationOffset = 0.0
+targetStyle = "straight"
+useRotationAsCenterBullet = false
+fireAtLocationForWholeClip = true
+angleOfBulletSpread = 36.0
+amountOfBullets = 10
+bulletMovementSpeed = 160
+bulletSpawnDelay = 0.4
+initialSpawnDelayRandomRange = 3.0
+greenBulletFrequency = -1
+nthBulletIsGreen = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
+
+[node name="CirclePath" type="Path2D" parent="." index="3"]
+curve = SubResource( 3 )
+
+[node name="LoopingPath" type="Path2D" parent="." index="4"]
+curve = SubResource( 4 )
+
+[node name="StraightPath" type="Path2D" parent="." index="5"]
+curve = SubResource( 5 )
+
+[editable path="HelixShooter"]
+[editable path="LeftPlayerShooter"]
+[editable path="RightCircleSpammer"]

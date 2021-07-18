@@ -59,7 +59,7 @@ tracks/1/keys = {
 
 [sub_resource type="Curve2D" id=3]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -69.8773, 65.8448, 15.2025, 165.563, -15.2025, -165.563, 621.591, 71.0889, -191.767, -216.097, 191.767, 216.097, 389.547, 179.907, 118.75, 129.396, -118.75, -129.396, 195.884, 425.161, 0, 0, 0, 0, 1075.58, 99.5567 )
+"points": PoolVector2Array( 0, 0, 0, 0, -69.8773, 65.8448, 15.2025, 165.563, -15.2025, -165.563, 621.591, 71.0889, -191.767, -216.097, 191.767, 216.097, 389.547, 179.907, 118.75, 129.396, -118.75, -129.396, 195.884, 425.161, 0, 0, 0, 0, 882.849, 140.133 )
 }
 
 [node name="WaveBase" instance=ExtResource( 1 )]
@@ -70,7 +70,7 @@ timeToNextWave = 7
 position = Vector2( -400.284, 58.4327 )
 rotation = 1.57079
 speed = 120.0
-flyPath = NodePath("../Path2D")
+flyPaths = [ NodePath("../Path2D") ]
 flyingPattern = "followPath"
 
 [node name="BulletEmitter" parent="PathFinder/WeaponManager" index="1"]
@@ -84,7 +84,7 @@ nthBulletIsGreen = [ 0, 1, 2 ]
 position = Vector2( -300.284, 58.4327 )
 rotation = 1.57079
 speed = 120.0
-flyPath = NodePath("../Path2D")
+flyPaths = [ NodePath("../Path2D") ]
 flyingPattern = "followPath"
 
 [node name="AnimationPlayer" parent="PathFinder2" index="3"]
@@ -101,7 +101,7 @@ nthBulletIsGreen = [ 0, 1, 2 ]
 position = Vector2( -200.284, 58.4327 )
 rotation = 1.57079
 speed = 120.0
-flyPath = NodePath("../Path2D")
+flyPaths = [ NodePath("../Path2D") ]
 flyingPattern = "followPath"
 
 [node name="AnimationPlayer" parent="PathFinder3" index="3"]

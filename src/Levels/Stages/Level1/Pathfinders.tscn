@@ -3,6 +3,33 @@
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hostiles/Enemies/ForwardShooter.tscn" type="PackedScene" id=2]
 
+[sub_resource type="Animation" id=1]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+
 [sub_resource type="Animation" id=2]
 resource_name = "Death"
 tracks/0/type = "value"
@@ -30,36 +57,9 @@ tracks/1/keys = {
 "values": [ Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Death"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
-}
-
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=3]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 1045.63, 207.416, 91.6162, 102.634, -91.6162, -102.634, 661.904, 198.165, -261.438, -162.158, 261.438, 162.158, 361.383, 284.432, 198.12, 20.6595, -198.12, -20.6595, 191.122, 469.74, 0, 0, 0, 0, -61.6498, 261.579 )
+"points": PoolVector2Array( 0, 0, 0, 0, 858.105, 253.571, 91.6162, 102.634, -91.6162, -102.634, 661.904, 198.165, -261.438, -162.158, 261.438, 162.158, 361.383, 284.432, 198.12, 20.6595, -198.12, -20.6595, 191.122, 469.74, 0, 0, 0, 0, -61.6498, 261.579 )
 }
 
 [node name="WaveBase" instance=ExtResource( 1 )]
@@ -67,10 +67,10 @@ waveAdvanceCondition = "time"
 timeToNextWave = 7
 
 [node name="PathFinder" parent="." index="0" instance=ExtResource( 2 )]
-position = Vector2( 1078.95, 206.218 )
+position = Vector2( 892.74, 248.933 )
 rotation = 1.57079
 speed = 120.0
-flyPath = NodePath("../Path2D")
+flyPaths = [ NodePath("../Path2D") ]
 flyingPattern = "followPath"
 
 [node name="BulletEmitter" parent="PathFinder/WeaponManager" index="1"]
@@ -81,14 +81,14 @@ greenBulletFrequency = -1
 nthBulletIsGreen = [ 0, 1, 2 ]
 
 [node name="PathFinder2" parent="." index="1" instance=ExtResource( 2 )]
-position = Vector2( 1178.95, 206.218 )
+position = Vector2( 992.74, 248.933 )
 rotation = 1.57079
 speed = 120.0
-flyPath = NodePath("../Path2D")
+flyPaths = [ NodePath("../Path2D") ]
 flyingPattern = "followPath"
 
 [node name="AnimationPlayer" parent="PathFinder2" index="3"]
-anims/Death = SubResource( 2 )
+anims/Death = SubResource( 1 )
 
 [node name="BulletEmitter" parent="PathFinder2/WeaponManager" index="1"]
 initialRotationOffset = 0.0
@@ -98,14 +98,14 @@ greenBulletFrequency = -1
 nthBulletIsGreen = [ 0, 1, 2 ]
 
 [node name="PathFinder3" parent="." index="2" instance=ExtResource( 2 )]
-position = Vector2( 1278.95, 206.218 )
+position = Vector2( 1092.74, 248.933 )
 rotation = 1.57079
 speed = 120.0
-flyPath = NodePath("../Path2D")
+flyPaths = [ NodePath("../Path2D") ]
 flyingPattern = "followPath"
 
 [node name="AnimationPlayer" parent="PathFinder3" index="3"]
-anims/Death = SubResource( 3 )
+anims/Death = SubResource( 2 )
 
 [node name="BulletEmitter" parent="PathFinder3/WeaponManager" index="1"]
 initialRotationOffset = 0.0
@@ -115,7 +115,7 @@ greenBulletFrequency = -1
 nthBulletIsGreen = [ 0, 1, 2 ]
 
 [node name="Path2D" type="Path2D" parent="." index="3"]
-curve = SubResource( 1 )
+curve = SubResource( 3 )
 
 [editable path="PathFinder"]
 [editable path="PathFinder2"]

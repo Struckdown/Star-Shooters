@@ -1,10 +1,21 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hostiles/Enemies/ForwardShooter.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlue2.png" type="Texture" id=5]
+[ext_resource path="res://Hostiles/WeaponManager.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 504.257, 45.898, 11.3461, -48.0542, -11.3461, 48.0542, 706.88, 131.889, 60.7352, 34.7058, -60.7352, -34.7058, 240.77, 174.054, -63.4049, 30.7013, 63.4049, -30.7013, 208.825, 26.0767 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 16.0181, -62.7375, -16.0181, 62.7375, 284.155, 37.0808, 33.371, -117.466, -33.371, 117.466, 719.664, 186.291, 127.477, 8.00904, -127.477, -8.00904, 634.234, 514.662, 10.6787, 92.104, -10.6787, -92.104, 135.317, 480.4, -51.3913, 49.3891, 51.3913, -49.3891, 119.299, 84.6202, 0, 0, 0, 0, 482.084, 44.6815 )
+}
 
 [node name="WaveBase" instance=ExtResource( 1 )]
 enemiesToDestroy = 1
@@ -12,50 +23,54 @@ enemiesToDestroy = 1
 [node name="ForwardShooter" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( 510.669, -107.802 )
 rotation = 1.57079
-maxHealth = 60
+speed = 120.0
+maxHealth = 120
 moveGoal = Vector2( 0, 200 )
-flyingPattern = "hoverMoveGoal"
+flyPaths = [ NodePath("../Path2D"), NodePath("../Path2D2") ]
+loopFlyPaths = true
+flyingPattern = "followPath"
 
 [node name="Sprite" parent="ForwardShooter" index="1"]
 texture = ExtResource( 5 )
 
 [node name="WeaponManager" parent="ForwardShooter" index="4"]
-phaseSwapMode = "time"
+phaseSwapMode = "never"
 timeToNextPhase = 1
 
-[node name="BulletEmitter" parent="ForwardShooter/WeaponManager" index="1"]
-rotation = -0.785398
-rotationPerVolley = 5.0
-rotationRange = 90.0
-initialRotationOffset = 0.0
-targetStyle = "straight"
-angleOfBulletSpread = 90.0
-amountOfBullets = 4
-bulletMovementSpeed = 130
-bulletSpawnDelay = 0.2
-initialSpawnDelayConstant = 3.0
-initialSpawnDelayRandomRange = 0.0
-greenBulletFrequency = -1
-nthBulletIsGreen = [ 0, 1, 2, 3 ]
+[node name="WeaponManager" parent="ForwardShooter/WeaponManager" index="1" instance=ExtResource( 6 )]
+phaseSwapMode = "never"
 
-[node name="BulletEmitter2" parent="ForwardShooter/WeaponManager" index="2" instance=ExtResource( 4 )]
-rotation = -0.261799
-scale = Vector2( 1, 1 )
-rotationPerVolley = 10.0
-rotationRange = 30.0
-initialRotationOffset = 30.0
+[node name="CircleShots" parent="ForwardShooter/WeaponManager/WeaponManager" index="1" instance=ExtResource( 4 )]
+rotation = -0.785398
+targetStyle = "straight"
+fireAtLocationForWholeClip = false
+amountOfBullets = 36
+bulletMovementSpeed = 120
+bulletSpawnDelay = 0.6
+bulletType = ExtResource( 3 )
+initialSpawnDelayConstant = 2.0
+initialSpawnDelayRandomRange = 0.0
+nthBulletIsGreen = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35 ]
+
+[node name="AimingShots" parent="ForwardShooter/WeaponManager/WeaponManager" index="2" instance=ExtResource( 4 )]
+rotation = -0.785398
+initialRotationOffset = 90.0
 targetStyle = "atTarget"
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
-angleOfBulletSpread = 0.0
-bulletMovementSpeed = 130
-bulletWaveSpeed = 8.0
-bulletWaveStr = 200.0
-bulletSpawnDelay = 0.2
+angleOfBulletSpread = 2.0
+amountOfBullets = 3
+bulletMovementSpeed = 170
+bulletSpawnDelay = 0.5
 bulletType = ExtResource( 3 )
-initialSpawnDelayConstant = 3.0
+initialSpawnDelayConstant = 2.0
 initialSpawnDelayRandomRange = 0.0
-nthBulletIsGreen = [ 0 ]
-emitting = false
+nthBulletIsGreen = [ 0, 1, 2, 3 ]
+
+[node name="Path2D" type="Path2D" parent="." index="1"]
+curve = SubResource( 1 )
+
+[node name="Path2D2" type="Path2D" parent="." index="2"]
+curve = SubResource( 2 )
 
 [editable path="ForwardShooter"]
