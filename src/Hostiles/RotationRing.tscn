@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
+
+
+export(float) var rotationSpeedDegs = 30
+export(float) var maxRadius = 100
+export(float) var radiusGrowTime = 2
+export(int) var numOfChildren = 4
+export(NodePath) var childToCopy
+var elapsedTime = 0
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	for i in range(numOfChildren-1):
+		var copy = get_node(childToCopy).duplicate()
+		$RotatingChildren.add_child(copy)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	rotate(delta*deg2rad(rotationSpeedDegs))
+	updateChildPositions(delta)
+	
+func updateChildPositions(d):
+	elapsedTime += d
+	var degrees = 360/$RotatingChildren.get_child_count()
+
+	var i = 0
+	for child in $RotatingChildren.get_children():
+		var frac = clamp(elapsedTime/radiusGrowTime, 0, 1)
+		var radius = lerp(0, maxRadius, frac)
+		child.position = Vector2(1,0).rotated(deg2rad(degrees)*i)*radius
+		i += 1
+"
+
+[node name="RotationRing" type="Node2D"]
+script = SubResource( 1 )
+
+[node name="RotatingChildren" type="Node2D" parent="."]

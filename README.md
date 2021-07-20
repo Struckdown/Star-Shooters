@@ -20,6 +20,10 @@ Credits: (Since I can't make art/music/sfx)
 * https://opengameart.org/content/animated-spinning-gems - Gems
 * https://opengameart.org/content/2d-planets-0 - Planets
 * https://www.1001fonts.com/ - Adobe Source Sans Pro Regular font
-* https://opengameart.org/ for any other unmentioned art assets
-* https://mixkit.co/free-stock-music/ for SFX/BGM
-* https://www.zapsplat.com for additional sound effects 
+* https://mixkit.co/free-stock-music/ - SFX/BGM
+* https://www.zapsplat.com - additional sound effects 
+* https://opengameart.org/content/cosmic-time-magic-effect - vortex effect
+* https://retrocademedia.itch.io/buttonprompts4 - button prompt
+
+
+https://opengameart.org/ for any other unmentioned art assets, though I hope I didn't miss any

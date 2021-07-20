@@ -45,8 +45,10 @@ func setupAdvanceCondition():
 			timer.one_shot = true
 			timer.start()
 		"other":
-			pass	#TODO? Not sure what to put here, maybe something with other objects calling this one to advance the wave?
+			otherAdvanceCondition()
 
+func otherAdvanceCondition():
+	pass	# To be overwritten in subclasses
 
 func updateEnemyCount(pointsWorth):
 	enemiesDestroyed += 1

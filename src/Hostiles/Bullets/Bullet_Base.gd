@@ -11,6 +11,8 @@ export(bool) var generatesEnergy = false
 export(String, FILE) var energySprite
 var totalHOffset = 0
 export(bool) var titleScreenVersion
+export(float) var rotationSpeed = 0
+export(NodePath) var nodeToRotate
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,6 +21,8 @@ func _ready():
 			setGeneratesEnergy(true)
 		$DespawnTimer.autostart = false
 		$DespawnTimer.stop()
+	if nodeToRotate:
+		nodeToRotate = get_node(nodeToRotate)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -46,3 +50,6 @@ func move(delta):
 	position += forwardVec * moveSpeed * delta	# forward motion
 	position += sideVec * delta	# side wiggle
 	prevHorizontalOffset = horizontalOffset
+	
+	if nodeToRotate:
+		nodeToRotate.rotate(deg2rad(rotationSpeed)*delta)

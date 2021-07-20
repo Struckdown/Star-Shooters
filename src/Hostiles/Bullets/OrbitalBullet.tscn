@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Hostiles/RotationRing.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Base.tscn" type="PackedScene" id=4]
+
+[node name="OrbitalBulletSource" instance=ExtResource( 4 )]
+rotationSpeed = 30.0
+
+[node name="Sprite" parent="." index="0" instance=ExtResource( 2 )]
+moveSpeed = 0
+waveStr = 0
+waveSpeed = 0.0
+
+[node name="RotationRing" parent="." index="3" instance=ExtResource( 1 )]
+numOfChildren = 5
+childToCopy = NodePath("RotatingChildren/WaveBullet")
+
+[node name="WaveBullet" parent="RotationRing/RotatingChildren" index="0" instance=ExtResource( 2 )]
+moveSpeed = 0
+waveStr = 0
+waveSpeed = 0.0
+
+[editable path="RotationRing"]
