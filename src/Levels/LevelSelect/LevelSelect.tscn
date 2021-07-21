@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Levels/LevelSelect/MissionBriefing.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art Packs/Planets2D/Planets-Atmosphere-pngs/planet-2.png" type="Texture" id=2]
@@ -7,6 +7,118 @@
 [ext_resource path="res://Menus/Pause Menu/Pause Menu.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/LevelSelect/SelectablePlanet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/LevelSelect/MapPlayer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Art Packs/Planets2D/Planets-Basic-pngs/Planet-2.png" type="Texture" id=8]
+[ext_resource path="res://Art Packs/Planets2D/Planets-Atmosphere-pngs/planet-8.png" type="Texture" id=9]
+
+[sub_resource type="Animation" id=1]
+resource_name = "DisplayLevelInfo"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("LevelPanel:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 187, 0 ), Vector2( 187, 53 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LevelPanel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -95, -61 ), Vector2( -94.6821, -114 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LevelPanel/BestScoreLbl:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LevelPanel/LevelDescription:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 33.8306
+
+[sub_resource type="Animation" id=2]
+resource_name = "DisplayLevelInfo"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("LevelPanel:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 187, 0 ), Vector2( 187, 53 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LevelPanel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -95, -61 ), Vector2( -94.6821, -114 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LevelPanel/BestScoreLbl:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LevelPanel/LevelDescription:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="CircleShape2D" id=4]
+radius = 111.543
 
 [node name="Map" type="Node2D"]
 script = ExtResource( 4 )
@@ -46,6 +158,40 @@ Your enemy will not always use energy aligned ammunition, so make sure to seek o
 scale = Vector2( 0.058, 0.058 )
 texture = ExtResource( 2 )
 
+[node name="Planet3" parent="Levels" instance=ExtResource( 6 )]
+position = Vector2( 898.804, 105.603 )
+levelDescription = "Sector Charlie"
+levelNumber = 3
+missionName = "Revolving Troubles"
+missionBriefing = "Gadzooks! The Star Child evaporated the entire surface of the planet! And still the Nhamaar would see to aid the child! Destroy their blockade  and continue the hunt! Let no ship slow your hand!"
+
+[node name="PlanetSprite" parent="Levels/Planet3" index="0"]
+scale = Vector2( 0.09, 0.09 )
+texture = ExtResource( 8 )
+
+[node name="AnimationPlayer" parent="Levels/Planet3" index="3"]
+anims/DisplayLevelInfo = SubResource( 1 )
+
+[node name="Planet4" parent="Levels" instance=ExtResource( 6 )]
+position = Vector2( 1345.14, 371.091 )
+levelDescription = "Sector Delta"
+levelNumber = 4
+missionName = "Gravity Vectors"
+missionBriefing = "This battle fleet armada is siphoning energy off the local system! Don't just sit there, go blow some stuff up!"
+
+[node name="PlanetSprite" parent="Levels/Planet4" index="0"]
+scale = Vector2( 0.03, 0.03 )
+texture = ExtResource( 9 )
+
+[node name="CollisionShape2D" parent="Levels/Planet4/SelectableArea" index="0"]
+shape = SubResource( 3 )
+
+[node name="AnimationPlayer" parent="Levels/Planet4" index="3"]
+anims/DisplayLevelInfo = SubResource( 2 )
+
+[node name="CollisionShape2D" parent="Levels/Planet4/DisplayArea2D" index="0"]
+shape = SubResource( 4 )
+
 [node name="MapPlayer" parent="." groups=[
 "Persist",
 ] instance=ExtResource( 7 )]
@@ -65,3 +211,5 @@ margin_bottom = -101.6
 [connection signal="deploy" from="CanvasLayer/MissionBriefing" to="." method="_on_MissionBriefing_deploy"]
 
 [editable path="Levels/Planet2"]
+[editable path="Levels/Planet3"]
+[editable path="Levels/Planet4"]

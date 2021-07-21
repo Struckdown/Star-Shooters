@@ -59,10 +59,10 @@ func updateEnemyCount(pointsWorth):
 		markWaveFinished()
 		queue_free()
 	
-func advanceWave():
+func advanceWave():	# lets the wave manager know it can start the next wave
 	if not waveFinishedSignalEmitted:
 		emit_signal("startNextWave")
 		waveFinishedSignalEmitted = true
 
-func markWaveFinished():
+func markWaveFinished():	# needed for counting amount of waves finished so wave manager knows to end the level
 	emit_signal("waveFinished")

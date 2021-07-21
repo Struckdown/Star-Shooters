@@ -25,7 +25,7 @@ func _process(delta):
 	
 func updateChildPositions(d):
 	elapsedTime += d
-	var degrees = 360/$RotatingChildren.get_child_count()
+	var degrees = 360.0/max($RotatingChildren.get_child_count(), 1)
 
 	var i = 0
 	for child in $RotatingChildren.get_children():

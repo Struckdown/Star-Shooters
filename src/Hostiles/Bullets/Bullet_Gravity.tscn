@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Hostiles/Bullets/Bullet_Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Gravity.gd" type="Script" id=3]
+[ext_resource path="res://Art Packs/CosmicEffects/Vortex/Cosmic_25.png" type="Texture" id=5]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 63.5964
+
+[sub_resource type="Animation" id=2]
+resource_name = "Spawn"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Curve" id=3]
+max_value = 3.0
+_data = [ Vector2( 0.00172117, 3 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="ParticlesMaterial" id=5]
+emission_shape = 1
+emission_sphere_radius = 70.0
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = -300.0
+scale_curve = SubResource( 4 )
+color = Color( 0.545098, 0, 0.619608, 1 )
+
+[node name="Bullet_Gravity" instance=ExtResource( 1 )]
+script = ExtResource( 3 )
+rotationSpeed = 360.0
+nodeToRotate = NodePath("Sprite")
+
+[node name="Sprite" type="Sprite" parent="." index="2"]
+texture = ExtResource( 5 )
+
+[node name="GravityArea" type="Area2D" parent="." index="3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityArea" index="0"]
+shape = SubResource( 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
+autoplay = "Spawn"
+anims/Spawn = SubResource( 2 )
+
+[node name="Particles2D" type="Particles2D" parent="." index="5"]
+amount = 40
+local_coords = false
+process_material = SubResource( 5 )
+
+[connection signal="area_entered" from="GravityArea" to="." method="_on_GravityArea_area_entered"]
+[connection signal="area_exited" from="GravityArea" to="." method="_on_GravityArea_area_exited"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Gravity.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hostiles/Enemies/CircleShooter.tscn" type="PackedScene" id=3]
+
+[node name="WaveBase" instance=ExtResource( 1 )]
+waveAdvanceCondition = "time"
+timeToNextWave = 5
+
+[node name="SpiralShooter" parent="." index="0" instance=ExtResource( 3 )]
+position = Vector2( 492.696, -58.057 )
+rotation = 1.57079
+moveGoal = Vector2( 0, 100 )
+flyingPattern = "hoverMoveGoal"
+
+[node name="BulletEmitter" parent="SpiralShooter/WeaponManager" index="1"]
+rotationDegPerSec = 0
+targetStyle = "predict"
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+amountOfBullets = 1
+bulletMovementSpeed = 80
+bulletSpawnDelay = 3.0
+bulletType = ExtResource( 2 )
+nthBulletIsGreen = [  ]
+
+[editable path="SpiralShooter"]

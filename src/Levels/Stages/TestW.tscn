@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Levels/Stages/Level3/Orbiter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Stages/Level4/L4W1.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=4]
 
@@ -14,3 +14,4 @@ hasControl = true
 position = Vector2( 516.698, 515.379 )
 
 [node name="WaveBase" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0.88932, -0.920471 )
