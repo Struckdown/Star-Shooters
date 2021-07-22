@@ -1,41 +1,64 @@
 extends Control
 
+export(float, 1) var fill setget fill_set
+
 var maxSize = 600
 var fillPercentage = 100
 var bufferFillPercentage = 100
 var bufferTargetFillPercentage = 100
 
+var cur_hp = 100
+var hpTotal = 100
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	get_parent().healthBarRef = self
-	pass # Replace with function body.
-
+	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-#	if Input.is_action_pressed("fire"):
-#		applyDamage(0.1)
-	if (bufferFillPercentage > bufferTargetFillPercentage):
-		updateBufferVisuals()
+	pass
+	#if (bufferFillPercentage > bufferTargetFillPercentage):
+		#updateBufferVisuals()
+
+
+func setup(_hpTotal):
+	hpTotal = _hpTotal
+	cur_hp = _hpTotal
+	fill = hpTotal/cur_hp
+	updateBars()
+	show()
+	$AnimationPlayer.play("appear")
+
+func updateBars():
+	var amountRemaining = fill
+	for bar in $VBoxContainer/BG/HPBars.get_children():
+		var childCount = 3
+		var barFill = clamp(amountRemaining * childCount, 0, 1)
+		updateVisuals(bar, barFill*100)
+		amountRemaining -= (1.0/float(childCount))
 
 
 # Public function
-func applyDamage(percentFilled):
-	updateVisuals(percentFilled)
-	$CanvasLayer/DamageUpdateTimer.start()
+func applyDamage(damage):
+	cur_hp -= damage
+	fill = float(cur_hp)/float(hpTotal)
+	updateBars()
+	#$DamageUpdateTimer.start()
+
+func fill_set(_value):
+	fill = clamp(_value, 0, 1)
 
 # Percent filled is a number between 0 and 100
-func updateVisuals(percentFilled):
-	fillPercentage = percentFilled
-	var fillPixels = float(percentFilled) * maxSize * 0.01
-	$CanvasLayer/HpBar.rect_size.x = fillPixels
+func updateVisuals(bar, percentFilled):
+	bar.value = percentFilled
 
 func updateBufferVisuals():
-	bufferFillPercentage -= 0.1
+	bufferFillPercentage -= 0.3
 	if bufferFillPercentage <= bufferTargetFillPercentage:
 		bufferFillPercentage = bufferTargetFillPercentage
-	var fillPixels = float(bufferFillPercentage) * maxSize * 0.01
-	$CanvasLayer/HpBarDamagedBuffer.rect_size.x = fillPixels
+#	var fillPixels = float(bufferFillPercentage) * maxSize * 0.01
+	#$HpBarDamagedBuffer.rect_size.x = fillPixels
 
 func _on_DamageUpdateTimer_timeout():
 	bufferTargetFillPercentage = fillPercentage

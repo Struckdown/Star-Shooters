@@ -1,69 +1,224 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Boss_HP_Bar_2.png" type="Texture" id=1]
 [ext_resource path="res://Hostiles/Boss HP.gd" type="Script" id=2]
 [ext_resource path="res://Player/FutureFont.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Boss_HP_Table.png" type="Texture" id=4]
+[ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Boss_Name_Table.png" type="Texture" id=5]
+[ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Boss_HP_Bar_2_Gray.png" type="Texture" id=6]
 
-[node name="Boss HP" type="Control"]
+[sub_resource type="Animation" id=1]
+resource_name = "appear"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/Boss_Name_Table:rect_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer/Boss_Name_Table/Boss Name:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.7, 1.2, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("VBoxContainer/BG/HPBars/HpBarRed:value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.2, 1.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 100.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("VBoxContainer/BG/HPBars/HpBar2Yellow:value")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.7, 2.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 100.0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("VBoxContainer/BG/HPBars/HpBar3Green:value")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 2.1, 2.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, 100.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("VBoxContainer/BG:rect_size")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.5, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 29 ), Vector2( 0, 29 ), Vector2( 631, 29 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("VBoxContainer/BG:rect_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.5, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1 ), Vector2( 1e-05, 1 ), Vector2( 1, 1 ) ]
+}
+
+[node name="Boss HP" type="MarginContainer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 1.0
-margin_bottom = 1.0
+margin_right = -205.0
+margin_bottom = -526.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
+fill = 0.416
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 819.0
+margin_bottom = 74.0
 
-[node name="HpBackground" type="TextureRect" parent="CanvasLayer"]
-modulate = Color( 0.101961, 0, 1, 1 )
-anchor_bottom = 0.033
-margin_left = 100.0
-margin_top = 53.5805
-margin_right = 700.0
-margin_bottom = 53.7805
-texture = ExtResource( 1 )
+[node name="Boss_Name_Table" type="TextureRect" parent="VBoxContainer"]
+margin_left = 159.0
+margin_right = 659.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 500, 40 )
+size_flags_horizontal = 6
+texture = ExtResource( 5 )
 expand = true
+stretch_mode = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HpBarDamagedBuffer" type="TextureRect" parent="CanvasLayer"]
-self_modulate = Color( 5, 5, 5, 1 )
-anchor_bottom = 0.033
-margin_left = 100.0
-margin_top = 53.5805
-margin_right = 700.0
-margin_bottom = 53.7805
-texture = ExtResource( 1 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HpBar" type="TextureRect" parent="CanvasLayer"]
-anchor_bottom = 0.033
-margin_left = 100.0
-margin_top = 53.5805
-margin_right = 700.0
-margin_bottom = 53.7805
-texture = ExtResource( 1 )
-expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Boss Name" type="Label" parent="CanvasLayer"]
+[node name="Boss Name" type="Label" parent="VBoxContainer/Boss_Name_Table"]
 anchor_right = 1.0
-margin_top = 10.0
-margin_bottom = 46.0
+anchor_bottom = 1.0
+margin_right = -2.0
+margin_bottom = -4.0
 custom_fonts/font = ExtResource( 3 )
 text = "Hydra Dreadnaught"
 align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="DamageUpdateTimer" type="Timer" parent="CanvasLayer"]
-[connection signal="timeout" from="CanvasLayer/DamageUpdateTimer" to="." method="_on_DamageUpdateTimer_timeout"]
+[node name="BG" type="Control" parent="VBoxContainer"]
+margin_top = 44.0
+margin_right = 819.0
+margin_bottom = 74.0
+rect_min_size = Vector2( 0, 30 )
+size_flags_horizontal = 7
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BGTexture" type="TextureRect" parent="VBoxContainer/BG"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_bottom = -2.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HpBackground" type="TextureRect" parent="VBoxContainer/BG"]
+modulate = Color( 0.101961, 0, 1, 1 )
+margin_left = 420.0
+margin_top = 300.0
+margin_right = 420.0
+margin_bottom = 300.0
+texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HPBars" type="Control" parent="VBoxContainer/BG"]
+anchor_left = 0.022
+anchor_right = 0.976
+anchor_bottom = 0.8
+margin_left = -9.53674e-07
+margin_right = -3.05176e-05
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HpBarRed" type="TextureProgress" parent="VBoxContainer/BG/HPBars"]
+anchor_right = 1.0
+margin_left = 2.0
+margin_top = 4.0
+margin_bottom = 24.0
+value = 100.0
+texture_progress = ExtResource( 6 )
+tint_progress = Color( 2, 0, 0, 1 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HpBar2Yellow" type="TextureProgress" parent="VBoxContainer/BG/HPBars"]
+anchor_right = 1.0
+margin_left = 2.0
+margin_top = 4.0
+margin_bottom = 24.0
+value = 100.0
+texture_progress = ExtResource( 6 )
+tint_progress = Color( 2, 2, 0, 1 )
+nine_patch_stretch = true
+stretch_margin_right = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HpBar3Green" type="TextureProgress" parent="VBoxContainer/BG/HPBars"]
+anchor_right = 1.0
+margin_left = 2.0
+margin_top = 4.0
+margin_bottom = 24.0
+value = 100.0
+texture_progress = ExtResource( 6 )
+tint_progress = Color( 0.2, 2, 0, 1 )
+nine_patch_stretch = true
+stretch_margin_right = 100
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/appear = SubResource( 1 )

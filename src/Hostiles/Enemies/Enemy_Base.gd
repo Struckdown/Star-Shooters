@@ -118,14 +118,16 @@ func _on_Area2D_area_entered(area):
 			takeDamage()
 			area.owner.destroy()
 
+func setHealthBarRef(ref):
+	healthBarRef = ref
 
 func takeDamage():
-	health -= 1
+	health = max(health - 1, 0)	# disallow going below 0
 	if not $HitSFX.playing:
 		$HitSFX.play()
-	emit_signal("tookDamage", float(health)/float(maxHealth))
-	if healthBarRef:
-		healthBarRef.applyDamage(float(health)/float(maxHealth)*100)
+	emit_signal("tookDamage", float(health)/float(maxHealth))	# used by weapon manager
+	if healthBarRef:	# technically this won't work correctly if there is overkill
+		healthBarRef.applyDamage(1)
 	if health <= 0:
 		destroy()
 

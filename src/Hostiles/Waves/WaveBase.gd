@@ -7,6 +7,8 @@ var initialAmountOfEnemies
 export(String, "enemies", "time", "other") var waveAdvanceCondition = "enemies"
 export(int) var enemiesToDestroy = 0
 export(int) var timeToNextWave
+export(bool) var usesBossHP = false	# level manager uses this to connect this to the enemy
+var bossHPRef
 var waveFinishedSignalEmitted = false
 signal waveFinished
 signal startNextWave
@@ -49,6 +51,16 @@ func setupAdvanceCondition():
 
 func otherAdvanceCondition():
 	pass	# To be overwritten in subclasses
+
+func setUpBossHP():	# used by level manager
+	var hpTotal = 0
+	for child in get_children():
+		if child.has_signal("destroyed"):
+			hpTotal += child.maxHealth
+			child.setHealthBarRef(bossHPRef)
+	
+	bossHPRef.setup(hpTotal)
+	
 
 func updateEnemyCount(pointsWorth):
 	enemiesDestroyed += 1

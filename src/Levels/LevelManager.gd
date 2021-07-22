@@ -13,6 +13,9 @@ export(int) var level = 1
 var levelLost = false
 var levelWon = false
 
+export(bool) var debug = false
+export(int) var debugWave = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	scoreBoardRef = get_node("VPCscoreboard/Viewport/Scoreboard")
@@ -37,7 +40,6 @@ func _unhandled_input(_event):
 
 func getWaves():
 	var levelToLoad = "res://Levels/Stages/Level" + str(level) + "/Level" + str(level) + ".tscn"
-	print(levelToLoad)
 	var temp = load(levelToLoad).instance()
 	waves = temp.waves
 
@@ -49,6 +51,9 @@ func addToScore(scoreToAdd):
 	scoreBoardRef.updateScore()
 
 func spawnWave():
+	if debug:
+		waveNum = debugWave
+	
 	if waveNum < waves.size():
 		curWave = waves[waveNum].instance()
 		#curWave.position.y -= 200	# Have enemies spawn off camera	# Too hacky, need to come up with better alternative
@@ -57,6 +62,11 @@ func spawnWave():
 		curWave.connect("startNextWave", self, "spawnWave")
 		curWave.connect("enemyDestroyed", self, "addToScore")
 		curWave.connect("waveFinished", self, "updateWavesFinished")
+		if curWave.usesBossHP:
+			curWave.bossHPRef = $"CanvasLayer/Boss HP"
+			curWave.setUpBossHP()
+		else:
+			$"CanvasLayer/Boss HP".hide()
 	else:
 		print("Ran out of waves to spawn, should be at the end here")
 

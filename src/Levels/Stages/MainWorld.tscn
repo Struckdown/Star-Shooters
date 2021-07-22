@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Levels/LevelManager.gd" type="Script" id=1]
+[ext_resource path="res://Hostiles/Boss HP.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Menus/Pause Menu/Pause Menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=8]
@@ -12,6 +13,8 @@
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
+level = 2
+debugWave = 4
 
 [node name="VPCscoreboard" type="ViewportContainer" parent="."]
 margin_left = 824.0
@@ -37,7 +40,7 @@ margin_right = 240.0
 [node name="Camera2D" type="Camera2D" parent="VPCscoreboard/Viewport"]
 
 [node name="VPCgame" type="ViewportContainer" parent="."]
-margin_right = 840.0
+margin_right = 420.0
 margin_bottom = 600.0
 mouse_filter = 1
 __meta__ = {
@@ -83,3 +86,6 @@ margin_top = 72.0
 margin_right = -423.0
 margin_bottom = -128.0
 mouse_filter = 1
+
+[node name="Boss HP" parent="CanvasLayer" instance=ExtResource( 2 )]
+margin_right = -200.0
