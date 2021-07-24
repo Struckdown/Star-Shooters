@@ -18,4 +18,7 @@ func playLevelComplete():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Level Won":
 		GameManager.updateScores(GameManager.score)
-		SceneTransition.transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")
+		if GameManager.stage == 0:
+			SceneTransition.transitionToScene("res://Menus/Main Menu.tscn")
+		else:
+			SceneTransition.transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")

@@ -41,8 +41,9 @@ func _on_Menu_button_up(btn):
 		"tutorial":
 			if $VBoxContainer/TutorialBtn.is_hovered():
 				GameManager.gameMode = "Tutorial"
+				GameManager.stage = 0
 				$ButtonClickedSFX.play()
-				$"/root/SceneTransition".transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")
+				$"/root/SceneTransition".transitionToScene("res://Levels/Stages/MainWorld.tscn")
 		"options":
 			$ButtonClickedSFX.play()
 			$CanvasLayer/Settings.show()

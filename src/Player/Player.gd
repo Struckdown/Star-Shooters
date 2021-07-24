@@ -2,6 +2,7 @@ extends Node2D
 
 
 export(bool) var hasControl = false
+export(bool) var godMode = false
 var dying = false
 var respawnInvuln = true
 var inputVec = Vector2()	# this represents the Vec2 of button inputs by the player
@@ -158,7 +159,7 @@ func spawnEnergyCollectedParticles():
 
 # When the core is hit, you die
 func _on_CoreArea_area_entered(area):
-	if area.is_in_group("Hostile") and not dying and not respawnInvuln:
+	if area.is_in_group("Hostile") and not dying and not respawnInvuln and not godMode:
 		dying = true
 		#hasControl = false
 		$AnimationPlayer.play("Explosion")

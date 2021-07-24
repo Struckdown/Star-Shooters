@@ -19,7 +19,7 @@ func _on_QuitBtn_pressed():
 	$ClickSFX.play()
 	get_tree().paused = false
 	var scenePathToChangeTo = "res://Levels/LevelSelect/LevelSelect.tscn"
-	if get_tree().get_current_scene().name == "Map":
+	if get_tree().get_current_scene().name == "Map" or GameManager.stage == 0:
 		scenePathToChangeTo = "res://Menus/Main Menu.tscn"
 	SceneTransition.transitionToScene(scenePathToChangeTo)
 

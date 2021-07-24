@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Player/Tutorial.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/Stages/Level0/TutorialWave.gd" type="Script" id=3]
+
+[node name="TutorialWave" instance=ExtResource( 2 )]
+script = ExtResource( 3 )
+
+[node name="Viewport" type="Viewport" parent="." index="0"]
+size = Vector2( 1024, 600 )
+usage = 0
+
+[node name="Panel" type="Panel" parent="Viewport" index="0"]
+margin_left = -100.0
+margin_top = -100.0
+margin_right = 300.0
+margin_bottom = 300.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TutorialVideo" parent="." index="1" instance=ExtResource( 1 )]
+
+[connection signal="tree_exited" from="TutorialVideo" to="." method="_on_TutorialVideo_tree_exited"]

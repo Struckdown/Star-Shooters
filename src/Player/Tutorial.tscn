@@ -1,0 +1,256 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Space Backgrounds/space_background_pack/Animated_BG.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Art Packs/Pixel Button Prompts/Gamepad Spritesheets/Keyboard_Arrows.png" type="Texture" id=4]
+[ext_resource path="res://Art Packs/Pixel Button Prompts/Keyboard Prompts.png" type="Texture" id=5]
+[ext_resource path="res://Space Shooter GUI/PNG/Accept/Window.png" type="Texture" id=6]
+[ext_resource path="res://Levels/Stages/Level0/TutorialSimple.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Player/Tutorial.gd" type="Script" id=8]
+[ext_resource path="res://Art Packs/Fonts/SourceSansProRegular/SourceSansPro-Black.ttf" type="DynamicFontData" id=9]
+
+[sub_resource type="AtlasTexture" id=1]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 0, 0, 32, 20 )
+
+[sub_resource type="AtlasTexture" id=2]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 32, 0, 32, 20 )
+
+[sub_resource type="AtlasTexture" id=3]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 64, 0, 32, 20 )
+
+[sub_resource type="AtlasTexture" id=4]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 96, 0, 32, 20 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 128, 0, 32, 20 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 160, 0, 32, 20 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 192, 0, 32, 20 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 224, 0, 32, 20 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 4 )
+region = Rect2( 256, 0, 32, 20 )
+
+[sub_resource type="SpriteFrames" id=13]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 52, 168, 13, 12 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 5 )
+region = Rect2( 65, 168, 13, 12 )
+
+[sub_resource type="SpriteFrames" id=14]
+animations = [ {
+"frames": [ SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "default",
+"speed": 2.0
+} ]
+
+[sub_resource type="Animation" id=15]
+resource_name = "Demo"
+length = 12.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Window/ViewportContainer/Viewport/Fire key:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Window/ViewportContainer/Viewport/Player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6.7, 8.3, 9.3, 9.4, 9.5, 9.6, 9.7, 12.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 350, 500 ), Vector2( 350, 500 ), Vector2( 30, 500 ), Vector2( -30, 500 ), Vector2( -30, 640 ), Vector2( 800, 600 ), Vector2( 740, 500 ), Vector2( 640, 500 ), Vector2( 350, 500 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("Window/ViewportContainer/Viewport/Player")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 7.6, 7.7, 7.8, 7.9, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "spawnBullet"
+}, {
+"args": [  ],
+"method": "spawnBullet"
+}, {
+"args": [  ],
+"method": "spawnBullet"
+}, {
+"args": [  ],
+"method": "spawnBullet"
+}, {
+"args": [  ],
+"method": "spawnBullet"
+} ]
+}
+tracks/3/type = "method"
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 7.3, 8.1, 10.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [  ],
+"method": "updateMaxEnergy"
+}, {
+"args": [  ],
+"method": "resetEnergy"
+}, {
+"args": [  ],
+"method": "updateMaxEnergy"
+} ]
+}
+
+[sub_resource type="DynamicFont" id=16]
+size = 22
+font_data = ExtResource( 9 )
+
+[sub_resource type="Animation" id=17]
+resource_name = "Blink"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PressKeyToContinueLbl:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[node name="TutorialVideo" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Window" type="Sprite" parent="."]
+position = Vector2( 384.667, 219.058 )
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 6 )
+
+[node name="ViewportContainer" type="ViewportContainer" parent="Window"]
+margin_left = -389.0
+margin_top = -224.0
+margin_right = 408.0
+margin_bottom = 326.0
+stretch = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="Window/ViewportContainer"]
+size = Vector2( 797, 550 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="Animated_BG" parent="Window/ViewportContainer/Viewport" instance=ExtResource( 1 )]
+position = Vector2( 400, 60 )
+rotation = -1.57079
+scale = Vector2( 5, 5 )
+
+[node name="Player" parent="Window/ViewportContainer/Viewport" instance=ExtResource( 3 )]
+position = Vector2( 6.00002, 500 )
+godMode = true
+
+[node name="ScoreboardPnl" parent="Window/ViewportContainer/Viewport" instance=ExtResource( 2 )]
+margin_left = 660.0
+margin_right = 860.0
+rect_scale = Vector2( 0.7, 1 )
+
+[node name="Keyboard_Arrows" type="AnimatedSprite" parent="Window/ViewportContainer/Viewport"]
+position = Vector2( 492, 400 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 13 )
+frame = 5
+playing = true
+
+[node name="Fire key" type="AnimatedSprite" parent="Window/ViewportContainer/Viewport"]
+position = Vector2( 600, 430.763 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 14 )
+playing = true
+
+[node name="WaveBase" parent="Window/ViewportContainer/Viewport" instance=ExtResource( 7 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Demo"
+anims/Demo = SubResource( 15 )
+
+[node name="PressKeyToContinueLbl" type="Label" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 249.503
+margin_top = 46.6164
+margin_right = 507.503
+margin_bottom = 74.6164
+custom_fonts/font = SubResource( 16 )
+text = "Press any key to continue..."
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextAnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Blink = SubResource( 17 )
+
+[connection signal="energyUpdated" from="Window/ViewportContainer/Viewport/Player" to="." method="_on_Player_energyUpdated"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

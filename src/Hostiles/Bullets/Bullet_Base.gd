@@ -29,7 +29,6 @@ func _process(delta):
 	move(delta)
 
 func _on_DespawnTimer_timeout():
-	print("Bullet should have despawned: ", name)
 	queue_free()
 
 func setGeneratesEnergy(generates):
