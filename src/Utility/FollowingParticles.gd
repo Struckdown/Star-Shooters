@@ -13,9 +13,13 @@ func _ready():
 # ParticlesToSpawn is the packed scene, GameObjectToFollow is a gameobject
 func init(_particlesToSpawn, _GameObjectToFollow):
 	GameObjectToFollow = _GameObjectToFollow
+	GameObjectToFollow.connect("tree_exited", self, "destroy")
 	p = _particlesToSpawn.instance()
 	add_child(p)
 	p.emitting = true
+
+func destroy():
+	queue_free()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):

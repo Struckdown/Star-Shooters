@@ -290,7 +290,6 @@ titleScreenVersion = true
 
 [node name="DespawnTimer" parent="AnimationPlayer/Bullet_Straight" index="1"]
 one_shot = false
-autostart = true
 
 [node name="Sprite" parent="AnimationPlayer/Bullet_Straight" index="2"]
 texture = ExtResource( 4 )
@@ -302,7 +301,6 @@ titleScreenVersion = true
 
 [node name="DespawnTimer" parent="AnimationPlayer/Bullet_Straight2" index="1"]
 one_shot = false
-autostart = true
 
 [node name="Sprite" parent="AnimationPlayer/Bullet_Straight2" index="2"]
 texture = ExtResource( 11 )

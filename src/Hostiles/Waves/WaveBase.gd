@@ -46,6 +46,7 @@ func setupAdvanceCondition():
 			timer.set_wait_time(timeToNextWave)
 			timer.one_shot = true
 			timer.start()
+			print("Setup time wave")
 		"other":
 			otherAdvanceCondition()
 
@@ -77,4 +78,5 @@ func advanceWave():	# lets the wave manager know it can start the next wave
 		waveFinishedSignalEmitted = true
 
 func markWaveFinished():	# needed for counting amount of waves finished so wave manager knows to end the level
+	advanceWave()	# if for some reason the wave was cleared before it was advanced (eg, killing enemies before time ran out), advance it
 	emit_signal("waveFinished")

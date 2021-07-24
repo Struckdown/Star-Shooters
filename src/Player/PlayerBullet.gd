@@ -26,3 +26,7 @@ func destroy():
 	e.emitting = true
 	queue_free()
 	
+
+
+func _on_DespawnTimer_timeout():
+	queue_free()
