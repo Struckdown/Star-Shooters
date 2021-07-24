@@ -11,5 +11,5 @@ dest_files=[ "res://.import/sfx_lose.ogg-d774c9ce495dc081b461b56b4fcf3b74.oggstr
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

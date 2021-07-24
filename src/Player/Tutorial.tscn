@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Space Backgrounds/space_background_pack/Animated_BG.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=2]
@@ -11,51 +11,42 @@
 [ext_resource path="res://Art Packs/Fonts/SourceSansProRegular/SourceSansPro-Black.ttf" type="DynamicFontData" id=9]
 
 [sub_resource type="AtlasTexture" id=1]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 0, 0, 32, 20 )
 
 [sub_resource type="AtlasTexture" id=2]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 32, 0, 32, 20 )
 
 [sub_resource type="AtlasTexture" id=3]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 64, 0, 32, 20 )
 
 [sub_resource type="AtlasTexture" id=4]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 96, 0, 32, 20 )
 
 [sub_resource type="AtlasTexture" id=5]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 128, 0, 32, 20 )
 
 [sub_resource type="AtlasTexture" id=6]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 160, 0, 32, 20 )
 
 [sub_resource type="AtlasTexture" id=7]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 192, 0, 32, 20 )
 
 [sub_resource type="AtlasTexture" id=8]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 224, 0, 32, 20 )
 
 [sub_resource type="AtlasTexture" id=9]
-flags = 4
 atlas = ExtResource( 4 )
 region = Rect2( 256, 0, 32, 20 )
 
-[sub_resource type="SpriteFrames" id=13]
+[sub_resource type="SpriteFrames" id=10]
 animations = [ {
 "frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
 "loop": true,
@@ -64,16 +55,14 @@ animations = [ {
 } ]
 
 [sub_resource type="AtlasTexture" id=11]
-flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 52, 168, 13, 12 )
 
 [sub_resource type="AtlasTexture" id=12]
-flags = 4
 atlas = ExtResource( 5 )
 region = Rect2( 65, 168, 13, 12 )
 
-[sub_resource type="SpriteFrames" id=14]
+[sub_resource type="SpriteFrames" id=13]
 animations = [ {
 "frames": [ SubResource( 11 ), SubResource( 12 ) ],
 "loop": true,
@@ -81,8 +70,23 @@ animations = [ {
 "speed": 2.0
 } ]
 
-[sub_resource type="Animation" id=15]
-resource_name = "Demo"
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 168, 26, 12 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 5 )
+region = Rect2( 26, 168, 26, 12 )
+
+[sub_resource type="SpriteFrames" id=16]
+animations = [ {
+"frames": [ SubResource( 14 ), SubResource( 15 ) ],
+"loop": true,
+"name": "default",
+"speed": 0.5
+} ]
+
+[sub_resource type="Animation" id=17]
 length = 12.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Window/ViewportContainer/Viewport/Fire key:visible")
@@ -155,12 +159,11 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=18]
 size = 22
 font_data = ExtResource( 9 )
 
-[sub_resource type="Animation" id=17]
-resource_name = "Blink"
+[sub_resource type="Animation" id=19]
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("PressKeyToContinueLbl:self_modulate")
@@ -209,7 +212,7 @@ rotation = -1.57079
 scale = Vector2( 5, 5 )
 
 [node name="Player" parent="Window/ViewportContainer/Viewport" instance=ExtResource( 3 )]
-position = Vector2( 6.00002, 500 )
+position = Vector2( 350, 500 )
 godMode = true
 
 [node name="ScoreboardPnl" parent="Window/ViewportContainer/Viewport" instance=ExtResource( 2 )]
@@ -218,23 +221,31 @@ margin_right = 860.0
 rect_scale = Vector2( 0.7, 1 )
 
 [node name="Keyboard_Arrows" type="AnimatedSprite" parent="Window/ViewportContainer/Viewport"]
-position = Vector2( 492, 400 )
+position = Vector2( 560, 400 )
 scale = Vector2( 5, 5 )
-frames = SubResource( 13 )
-frame = 5
+frames = SubResource( 10 )
+frame = 7
 playing = true
 
 [node name="Fire key" type="AnimatedSprite" parent="Window/ViewportContainer/Viewport"]
-position = Vector2( 600, 430.763 )
+position = Vector2( 200, 400 )
 scale = Vector2( 5, 5 )
-frames = SubResource( 14 )
+frames = SubResource( 13 )
+frame = 1
+playing = true
+
+[node name="ShiftKey" type="AnimatedSprite" parent="Window/ViewportContainer/Viewport"]
+position = Vector2( 100, 350 )
+scale = Vector2( 5, 5 )
+frames = SubResource( 16 )
+frame = 1
 playing = true
 
 [node name="WaveBase" parent="Window/ViewportContainer/Viewport" instance=ExtResource( 7 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Demo"
-anims/Demo = SubResource( 15 )
+anims/Demo = SubResource( 17 )
 
 [node name="PressKeyToContinueLbl" type="Label" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -242,7 +253,7 @@ margin_left = 249.503
 margin_top = 46.6164
 margin_right = 507.503
 margin_bottom = 74.6164
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 text = "Press any key to continue..."
 align = 1
 __meta__ = {
@@ -250,7 +261,7 @@ __meta__ = {
 }
 
 [node name="TextAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Blink = SubResource( 17 )
+anims/Blink = SubResource( 19 )
 
 [connection signal="energyUpdated" from="Window/ViewportContainer/Viewport/Player" to="." method="_on_Player_energyUpdated"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

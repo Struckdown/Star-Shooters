@@ -35,7 +35,7 @@ func resetEnergy():
 	$Window/ViewportContainer/Viewport/ScoreboardPnl.updateCharge(fakeEnergy)
 
 
-func _on_AnimationPlayer_animation_finished(anim_name):
+func _on_AnimationPlayer_animation_finished(_anim_name):
 	tutorialFinished = true
 	$AnimationPlayer.play("Demo")
 	$TextAnimationPlayer.play("Blink")

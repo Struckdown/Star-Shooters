@@ -11,5 +11,5 @@ dest_files=[ "res://.import/sfx_shieldDown.ogg-5f9bb6a032f0f755892f886bc2cf2020.
 
 [params]
 
-loop=true
+loop=false
 loop_offset=0

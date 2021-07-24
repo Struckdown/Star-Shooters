@@ -26,5 +26,6 @@ func _on_GravityArea_area_exited(area):
 
 func applyGravityToObjects(delta):
 	for obj in objectsToPullOn:
-		var diffNormalized = (global_position - obj.global_position).normalized()
-		obj.global_position += (delta*diffNormalized*gravityStr)
+		if is_instance_valid(obj):
+			var diffNormalized = (global_position - obj.global_position).normalized()
+			obj.global_position += (delta*diffNormalized*gravityStr)

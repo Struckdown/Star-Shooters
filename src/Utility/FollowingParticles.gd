@@ -13,10 +13,19 @@ func _ready():
 # ParticlesToSpawn is the packed scene, GameObjectToFollow is a gameobject
 func init(_particlesToSpawn, _GameObjectToFollow):
 	GameObjectToFollow = _GameObjectToFollow
-	GameObjectToFollow.connect("tree_exited", self, "destroy")
+	GameObjectToFollow.connect("tree_exited", self, "ensureCleanup")
 	p = _particlesToSpawn.instance()
 	add_child(p)
 	p.emitting = true
+
+func ensureCleanup():	# the maximum lifetime of the following particles is one loop
+	var t = Timer.new()
+	add_child(t)
+	t.autostart = true
+	t.connect("timeout", self, "destroy")
+	t.wait_time = p.lifetime
+	t.start()
+	
 
 func destroy():
 	queue_free()
