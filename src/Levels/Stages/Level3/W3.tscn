@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hostiles/Bullets/OrbitalBullet.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( -177.448, 6.60712, 177.448, -6.60712, 733.396, 542.136, 139.693, 99.1068, -139.693, -99.1068, 744.723, 81.5256, 117.04, -66.0712, -117.04, 66.0712, 70.7965, 44.7146, -59.4641, -19.8214, 59.4641, 19.8214, 52.8629, 567.621, -76.4538, 83.0609, 76.4538, -83.0609, 733.396, 542.136 )
+}
+
+[node name="WaveBase" instance=ExtResource( 1 )]
+enemiesToDestroy = 1
+
+[node name="Enemy_Base" parent="." index="0" instance=ExtResource( 2 )]
+position = Vector2( 731.503, 642.778 )
+rotation = -1.57079
+speed = 90.0
+flyPaths = [ NodePath("../Path2D") ]
+loopFlyPaths = true
+flyingPattern = "followPath"
+
+[node name="WeaponManager" parent="Enemy_Base" index="4"]
+phaseSwapMode = "time"
+timeToNextPhase = 1
+
+[node name="BulletEmitter" parent="Enemy_Base/WeaponManager" index="1" instance=ExtResource( 3 )]
+rotationDegPerSec = 240
+targetStyle = "straight"
+angleOfBulletSpread = 180.0
+amountOfBullets = 2
+bulletMovementSpeed = 120
+bulletSpawnDelay = 0.1
+bulletType = ExtResource( 4 )
+initialSpawnDelayRandomRange = 1.0
+greenBulletFrequency = 10
+nthBulletIsGreen = [ 0, 1 ]
+
+[node name="BulletEmitter2" parent="Enemy_Base/WeaponManager" index="2" instance=ExtResource( 3 )]
+rotationDegPerSec = 240
+targetStyle = "straight"
+angleOfBulletSpread = 180.0
+amountOfBullets = 2
+bulletMovementSpeed = 110
+bulletSpawnDelay = 0.5
+bulletType = ExtResource( 5 )
+initialSpawnDelayRandomRange = 1.0
+nthBulletIsGreen = [ 0 ]
+orbitalChildren = 3
+
+[node name="Path2D" type="Path2D" parent="." index="1"]
+curve = SubResource( 1 )
+
+[editable path="Enemy_Base"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Levels/Stages/Level2/Boss1Wave.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Stages/Level3/W4.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Boss HP.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=4]
@@ -14,6 +14,11 @@ hasControl = true
 [node name="PlayerSpawner" parent="." instance=ExtResource( 4 )]
 position = Vector2( 516.698, 515.379 )
 
-[node name="WaveBase" parent="." instance=ExtResource( 1 )]
-
 [node name="Boss HP" parent="." instance=ExtResource( 3 )]
+visible = false
+margin_left = 269.928
+margin_top = 4.2045
+margin_right = 769.928
+margin_bottom = 78.2045
+
+[node name="WaveBase" parent="." instance=ExtResource( 1 )]

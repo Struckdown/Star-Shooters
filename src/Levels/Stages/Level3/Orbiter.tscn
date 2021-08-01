@@ -5,24 +5,30 @@
 [ext_resource path="res://Hostiles/Enemies/CircleShooter.tscn" type="PackedScene" id=3]
 
 [node name="WaveBase" instance=ExtResource( 1 )]
-waveAdvanceCondition = "time"
+enemiesToDestroy = 1
 timeToNextWave = 5
 
-[node name="SpiralShooter" parent="." index="0" instance=ExtResource( 3 )]
+[node name="OrbiterShooter" parent="." index="0" instance=ExtResource( 3 )]
 position = Vector2( 492.696, -58.057 )
 rotation = 1.57079
 moveGoal = Vector2( 0, 100 )
 flyingPattern = "hoverMoveGoal"
 
-[node name="BulletEmitter" parent="SpiralShooter/WeaponManager" index="1"]
+[node name="WeaponManager" parent="OrbiterShooter" index="4"]
+phaseSwapMode = "time"
+timeToNextPhase = 1
+
+[node name="BulletEmitter" parent="OrbiterShooter/WeaponManager" index="1"]
 rotationDegPerSec = 0
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 amountOfBullets = 1
-bulletMovementSpeed = 80
-bulletSpawnDelay = 3.0
+bulletSpawnDelay = 1.2
 bulletType = ExtResource( 2 )
-nthBulletIsGreen = [  ]
+initialSpawnDelayRandomRange = 1.0
+nthBulletIsGreen = [ 0 ]
+orbitalChildren = 8
+orbitalRotationSpeedDegs = 60.0
 
-[editable path="SpiralShooter"]
+[editable path="OrbiterShooter"]

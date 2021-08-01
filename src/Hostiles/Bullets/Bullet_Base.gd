@@ -13,6 +13,8 @@ var totalHOffset = 0
 export(bool) var titleScreenVersion
 export(float) var rotationSpeed = 0
 export(NodePath) var nodeToRotate
+var orbitalChildren = -1	# used by rotationalBullet
+var orbitalRotationSpeedDegs = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -23,6 +25,9 @@ func _ready():
 		$DespawnTimer.stop()
 	if nodeToRotate:
 		nodeToRotate = get_node(nodeToRotate)
+
+func init():
+	pass	# overridden in children classes
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

@@ -67,7 +67,7 @@ current = true
 position = Vector2( 435.655, 493.162 )
 
 [node name="KillZone" parent="VPCgame/Viewport" instance=ExtResource( 14 )]
-position = Vector2( 407.679, 750 )
+position = Vector2( 407.679, 950 )
 
 [node name="LevelBoundaries" parent="VPCgame/Viewport" instance=ExtResource( 13 )]
 position = Vector2( 410, 275 )

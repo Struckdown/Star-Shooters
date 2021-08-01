@@ -13,10 +13,12 @@ var elapsedTime = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	for i in range(numOfChildren-1):
+	pass
+
+func init():
+	for _i in range(numOfChildren-1):
 		var copy = get_node(childToCopy).duplicate()
 		$RotatingChildren.add_child(copy)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

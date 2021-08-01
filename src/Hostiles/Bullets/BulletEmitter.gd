@@ -34,6 +34,9 @@ export(int) var greenBulletFrequency = -1
 export(Array, int) var nthBulletIsGreen = []
 var volleysFired = 0
 
+export(int) var orbitalChildren = -1
+export(float) var orbitalRotationSpeedDegs = 30
+
 export(bool) var emitting = true
 export(bool) var DEBUG = false
 var target	# what we're trying to track
@@ -77,7 +80,7 @@ func _process(delta):
 		if not fireAtLocationForWholeClip:
 			needsToUpdatePosToShoot = true
 		shouldUpdateRotationPerVolley = true
-	updateRotation(shouldUpdateRotationPerVolley)
+	updateRotation(shouldUpdateRotationPerVolley, delta)
 
 func updatePosToShoot():
 	positionToShoot = global_position+global_transform.x
@@ -123,14 +126,17 @@ func spawnBullets(additionalRads):
 		b.moveSpeed = bulletMovementSpeed
 		b.waveSpeed = bulletWaveSpeed
 		b.waveStr = bulletWaveStr
+		b.orbitalChildren = orbitalChildren
+		b.orbitalRotationSpeedDegs = orbitalRotationSpeedDegs
+		b.init()
 	volleysFired += 1
 
 # volleyUpdate is a bool whether to increase rotation per volley shot
-func updateRotation(volleyUpdate):
+func updateRotation(volleyUpdate, delta):
 	var amountToRotate = 0
 	if volleyUpdate:
 		amountToRotate += rotationPerVolley
-	amountToRotate += rotationDegPerSec
+	amountToRotate += rotationDegPerSec*delta
 
 	if rotationRange != 0:
 		if rotatingPositively > 0:
