@@ -1,8 +1,11 @@
 extends Control
 
+var optionsFileName = "user://player.perfs"
 signal closed
+var fileLock = false
 
 func _ready():
+	loadSettings()
 	_on_Settings_visibility_changed()
 	var musicVal = BGM.normalizeDBtoVal(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("BGM")))
 	$PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic.value = musicVal
@@ -25,14 +28,14 @@ func _on_HSliderMusic_value_changed(value):
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("BGM"), val)
 	if not $SliderUpdatedSFX.playing and visible:
 		$SliderUpdatedSFX.play()
-
+	save()
 
 func _on_HSliderSFX_value_changed(value):
 	var val = BGM.normalizeValToDB(value)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("SFX"), val)
 	if not $SliderUpdatedSFX.playing and visible:
 		$SliderUpdatedSFX.play()
-
+	save()
 
 func _on_Settings_visibility_changed():
 	if visible:
@@ -41,6 +44,33 @@ func _on_Settings_visibility_changed():
 	else:
 		set_process_input(false)
 
-
 func _on_ResumeBtn_mouse_entered():
 	$ButtonHoveredSFX.play()
+
+func save():
+	if fileLock:
+		return
+	fileLock = true
+	var save_file = File.new()
+	save_file.open(optionsFileName, File.WRITE)
+	var bgm = $PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic.value
+	var sfx = $PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX.value
+	save_file.store_var(bgm)
+	save_file.store_var(sfx)
+	save_file.close()
+	fileLock = false
+	
+
+func loadSettings():
+	if fileLock:
+		return
+	fileLock = true
+	var save_file = File.new()
+	if save_file.file_exists(optionsFileName):
+		save_file.open(optionsFileName, File.READ)
+		var bgm = save_file.get_var()
+		var sfx = save_file.get_var()
+		$PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic.value = bgm
+		$PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX.value = sfx
+		save_file.close()
+	fileLock = false
