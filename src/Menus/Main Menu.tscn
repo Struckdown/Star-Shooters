@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Space Backgrounds/space_background_pack/ScrollingShader2.shader" type="Shader" id=1]
 [ext_resource path="res://Menus/Main Menu.gd" type="Script" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://Menus/Settings.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Menus/UI_ButtonHovered.wav" type="AudioStream" id=14]
 [ext_resource path="res://Menus/UI_ButtonClicked.mp3" type="AudioStream" id=15]
+[ext_resource path="res://Art Packs/Struckdown/Lock.png" type="Texture" id=16]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -150,11 +151,13 @@ __meta__ = {
 }
 
 [node name="InfiniteBtn" type="TextureButton" parent="VBoxContainer"]
+modulate = Color( 0.537255, 0.537255, 0.537255, 1 )
 margin_top = 43.0
 margin_right = 222.0
 margin_bottom = 82.0
 focus_neighbour_top = NodePath("../PlayBtn")
 focus_neighbour_bottom = NodePath("../TutorialBtn")
+disabled = true
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
@@ -317,6 +320,11 @@ bus = "SFX"
 [node name="ButtonClickedSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
 bus = "SFX"
+
+[node name="Lock" type="Sprite" parent="."]
+position = Vector2( 851.858, 417.716 )
+scale = Vector2( 1.47247, 1.47247 )
+texture = ExtResource( 16 )
 
 [connection signal="button_up" from="VBoxContainer/PlayBtn" to="." method="_on_Menu_button_up" binds= [ "play" ]]
 [connection signal="mouse_entered" from="VBoxContainer/PlayBtn" to="." method="_on_Btn_mouse_entered"]
