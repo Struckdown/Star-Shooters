@@ -8,6 +8,7 @@ func _ready():
 	for level in $Levels.get_children():
 		level.connect("playerNearby", self, "updateSelectedLevel")
 	$CanvasLayer/MissionBriefing.hide()
+	BGM.transitionSong("res://Menus/MainMenuBGM.mp3")	# Todo: Find new level select music?
 	#GameManager.load_game()
 	#get_nodes_in_group()
 	mapPlayerRef = get_tree().get_nodes_in_group("Player")

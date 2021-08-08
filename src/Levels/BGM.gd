@@ -14,6 +14,8 @@ func _ready():
 	play()
 
 func transitionSong(newSongPath):
+	if requestedSong == newSongPath:	# bail early if same song
+		return
 	requestedSong = newSongPath
 	fade_out(self)
 

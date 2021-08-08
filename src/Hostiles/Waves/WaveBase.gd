@@ -8,6 +8,7 @@ export(String, "enemies", "time", "other") var waveAdvanceCondition = "enemies"
 export(int) var enemiesToDestroy = 0
 export(int) var timeToNextWave
 export(bool) var usesBossHP = false	# level manager uses this to connect this to the enemy
+export(String) var musicRequest = ""
 var bossHPRef
 var waveFinishedSignalEmitted = false
 signal waveFinished
@@ -24,6 +25,8 @@ func _ready():
 			enemies.append(child)
 	initialAmountOfEnemies = len(enemies)
 	setupAdvanceCondition()
+	if musicRequest != "":
+		changeMusic()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -80,3 +83,6 @@ func advanceWave():	# lets the wave manager know it can start the next wave
 func markWaveFinished():	# needed for counting amount of waves finished so wave manager knows to end the level
 	advanceWave()	# if for some reason the wave was cleared before it was advanced (eg, killing enemies before time ran out), advance it
 	emit_signal("waveFinished")
+
+func changeMusic():
+	BGM.transitionSong(musicRequest)

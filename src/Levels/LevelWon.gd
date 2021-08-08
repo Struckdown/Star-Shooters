@@ -13,6 +13,7 @@ func _ready():
 
 func playLevelComplete():
 	$AnimationPlayer.play("Level Won")
+	$AudioStreamPlayer.play()
 	emit_signal("levelWon")
 
 func _on_AnimationPlayer_animation_finished(anim_name):
