@@ -28,12 +28,26 @@ tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
 }
 
 [node name="Enemy_Base" type="Node2D"]
@@ -61,6 +75,8 @@ anims/Death = SubResource( 2 )
 [node name="HitSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 bus = "SFX"
+
+[node name="DeathScaleTween" type="Tween" parent="."]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="ExplosionTimer" to="." method="_on_ExplosionTimer_timeout"]

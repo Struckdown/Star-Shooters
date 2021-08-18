@@ -105,6 +105,9 @@ func destroy():
 		if child.has_method("toggleDeath"):
 			child.toggleDeath()
 
+func scaleOut():
+	$DeathScaleTween.interpolate_property(self, "scale", self.scale, Vector2(0.2, 0.2), 0.3)
+	$DeathScaleTween.start()
 
 func _on_ExplosionTimer_timeout():
 #	remove_child(explosionParticles)

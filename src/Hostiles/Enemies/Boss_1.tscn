@@ -8,6 +8,7 @@
 
 [node name="Boss_1" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
+pointsWorth = 2500
 maxHealth = 50
 flyingPattern = "TBD"
 

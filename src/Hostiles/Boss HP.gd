@@ -27,7 +27,6 @@ func setup(_hpTotal):
 	cur_hp = _hpTotal
 	fill = hpTotal/cur_hp
 	updateBars()
-	show()
 	$AnimationPlayer.play("appear")
 
 func updateBars():
