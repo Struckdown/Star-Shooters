@@ -5,6 +5,7 @@ onready var selectedPlanet
 var mapPlayerRef
 
 func _ready():
+	GameManager.resetPlayerLives()	# Maybe move lives out of gamemanager into level manager?
 	for level in $Levels.get_children():
 		level.connect("playerNearby", self, "updateSelectedLevel")
 	$CanvasLayer/MissionBriefing.hide()

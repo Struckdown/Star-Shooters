@@ -17,6 +17,9 @@ func resetGame():
 	lastPlayedStage = null
 	gameMode = null
 
+func resetPlayerLives():
+	playerLives = 3	#called whenever level select is hit?
+
 func updateScores(newScore: int) -> void:
 	var scores_save = File.new()
 	var levelSaveName = "user://score_Level" + str(stage) +".save"
