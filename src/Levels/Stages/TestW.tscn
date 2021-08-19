@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Levels/Stages/Level2/Boss1Wave.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Boss HP.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Player/DeathShockwave.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
 
@@ -25,5 +27,11 @@ margin_bottom = 78.2045
 
 [node name="Boss_1" parent="WaveBase" index="0"]
 maxHealth = 5
+
+[node name="DeathShockwave" parent="." instance=ExtResource( 6 )]
+position = Vector2( 499.685, 220.251 )
+
+[node name="Bullet_Straight" parent="." instance=ExtResource( 5 )]
+position = Vector2( 346.109, 289.173 )
 
 [editable path="WaveBase"]

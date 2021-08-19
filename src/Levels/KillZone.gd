@@ -12,4 +12,5 @@ func _ready():
 
 
 func _on_Area2D_area_entered(area):
-	area.owner.queue_free()
+	if area.is_in_group("Hostile") or area.is_in_group("Enemy"):
+		area.owner.queue_free()

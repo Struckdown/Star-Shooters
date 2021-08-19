@@ -56,7 +56,9 @@ script = ExtResource( 2 )
 explosionType = ExtResource( 3 )
 flyingPattern = "straight"
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=[
+"Enemy",
+]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 1 )

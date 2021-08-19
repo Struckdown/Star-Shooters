@@ -98,5 +98,6 @@ func spawnNewPlayer(livesDelta):
 		else:
 			print("Level was supposed to be lost, but was already won")
 
+
 func gemCollected():
 	addToScore(100)

@@ -176,6 +176,10 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	match anim_name:
 		"Explosion":
 			emit_signal("destroyed")
+			var shockwave = load("res://Player/DeathShockwave.tscn")
+			shockwave = shockwave.instance()
+			shockwave.global_position = global_position
+			get_viewport().add_child(shockwave)
 			queue_free()
 		"Spawn":
 			$AnimationPlayer.play("Flying")
