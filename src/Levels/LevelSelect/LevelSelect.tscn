@@ -218,7 +218,9 @@ margin_bottom = -101.6
 [connection signal="playerNearby" from="UpgradePlanet" to="." method="_on_UpgradePlanet_playerNearby"]
 [connection signal="cancel" from="CanvasLayer/MissionBriefing" to="." method="_on_MissionBriefing_cancel"]
 [connection signal="deploy" from="CanvasLayer/MissionBriefing" to="." method="_on_MissionBriefing_deploy"]
+[connection signal="shopClosed" from="CanvasLayer/UpgradeMenu" to="." method="_on_UpgradeMenu_shopClosed"]
 
+[editable path="Levels/Planet"]
 [editable path="Levels/Planet2"]
 [editable path="Levels/Planet3"]
 [editable path="Levels/Planet4"]

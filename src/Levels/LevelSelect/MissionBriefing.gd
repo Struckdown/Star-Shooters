@@ -27,7 +27,6 @@ func _on_DeployBtn_visibility_changed():
 
 func _on_DeployBtn_pressed():
 	if buttonsInteractable:
-		print("event triggered in briefing")
 		emit_signal("deploy")
 		buttonsInteractable = false
 

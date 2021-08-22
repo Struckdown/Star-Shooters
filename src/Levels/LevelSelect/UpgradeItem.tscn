@@ -87,7 +87,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton" type="TextureRect" parent="Button"]
+[node name="UpgradeIcon" type="TextureRect" parent="Button"]
 margin_left = 80.0157
 margin_top = 19.475
 margin_right = 144.016
@@ -96,4 +96,4 @@ rect_min_size = Vector2( 64, 64 )
 texture = ExtResource( 4 )
 expand = true
 
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]

@@ -21,12 +21,11 @@ func _input(event):
 		if selectedLevel != null and not $CanvasLayer/MissionBriefing.visible:	# check if near level
 			#$CanvasLayer/MissionBriefing.show()
 			$CanvasLayer/MissionBriefing.playDisplayAnimation("forwards")
-			for player in mapPlayerRef:
-				if is_instance_valid(player): 
-					player.canMove = false
+			updatePlayerAllowedToMove(false)
 			#get_tree().set_input_as_handled()
 		if nearUpgradePlanet:
 			$CanvasLayer/UpgradeMenu.display(true)
+			updatePlayerAllowedToMove(false)
 	if Input.is_action_pressed("pause") and not $"CanvasLayer/Pause Menu".visible:
 		$"CanvasLayer/Pause Menu".show()
 		get_tree().paused = true
@@ -50,10 +49,7 @@ func _on_MissionBriefing_deploy():
 
 
 func _on_MissionBriefing_cancel():
-	for player in mapPlayerRef:
-		if is_instance_valid(player):
-			player.canMove = true
-	pass#$MissionBriefing.playDisplayAnimation("backwards")
+	updatePlayerAllowedToMove(true)
 
 func save():
 	var _save_dict = {
@@ -64,3 +60,13 @@ func save():
 
 func _on_UpgradePlanet_playerNearby(ref):
 	nearUpgradePlanet = ref
+
+
+func updatePlayerAllowedToMove(allowed):
+	for player in mapPlayerRef:
+		if is_instance_valid(player):
+			player.canMove = allowed
+
+
+func _on_UpgradeMenu_shopClosed():
+	updatePlayerAllowedToMove(true)

@@ -30,7 +30,7 @@ func getCost(level):
 	return 100*((level+1)*1.5)	#TODO come up with better formula
 
 
-func _on_Button_pressed():
+func _on_Button_button_up():
 	var curGems = UpgradeManager.gems
 	if str(curCost) == "MAX" or curCost > curGems:
 		return	# TODO add error noise?
