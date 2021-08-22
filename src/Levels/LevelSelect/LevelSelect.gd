@@ -3,6 +3,7 @@ extends Node2D
 var selectedLevel = null
 onready var selectedPlanet
 var mapPlayerRef
+var nearUpgradePlanet = null
 
 func _ready():
 	GameManager.resetPlayerLives()	# Maybe move lives out of gamemanager into level manager?
@@ -17,13 +18,15 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("fire"):
-		if selectedLevel != null and not $CanvasLayer/MissionBriefing.visible:
+		if selectedLevel != null and not $CanvasLayer/MissionBriefing.visible:	# check if near level
 			#$CanvasLayer/MissionBriefing.show()
 			$CanvasLayer/MissionBriefing.playDisplayAnimation("forwards")
 			for player in mapPlayerRef:
 				if is_instance_valid(player): 
 					player.canMove = false
 			#get_tree().set_input_as_handled()
+		if nearUpgradePlanet:
+			$CanvasLayer/UpgradeMenu.display(true)
 	if Input.is_action_pressed("pause") and not $"CanvasLayer/Pause Menu".visible:
 		$"CanvasLayer/Pause Menu".show()
 		get_tree().paused = true
@@ -57,3 +60,7 @@ func save():
 		#TODO
 	}
 
+
+
+func _on_UpgradePlanet_playerNearby(ref):
+	nearUpgradePlanet = ref

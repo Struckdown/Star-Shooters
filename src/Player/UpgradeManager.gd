@@ -1,9 +1,9 @@
 extends Node2D
 
 
-var gems = 0 setget setGems
+var gems = 2000 setget setGems
 var UIref = null
-var upgrades = {}	# contains "upgradeName": [level, levelMax]. Populated by upgrade items?
+var upgrades = {}	# contains "upgradeName": {"curLevel":0, "maxLevel":5, "startingCost": 100, }. Populated by upgrade items
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

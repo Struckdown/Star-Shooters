@@ -34,7 +34,7 @@ signal gemCollected
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	applyUpgrades()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -204,3 +204,8 @@ func _on_GemMagnetArea_area_exited(area):
 
 func checkIfGemInMagnet(gem):
 	return $GemMagnetArea.global_position.distance_to(gem.global_position) <= $GemMagnetArea/CollisionShape2D.shape.radius
+
+func applyUpgrades():
+	if "startingEnergyCharge" in UpgradeManager.upgrades:
+		energyLevel = UpgradeManager.upgrades["startingEnergyCharge"]["curLevel"] * energyLimit * 0.1
+	emit_signal("energyUpdated")

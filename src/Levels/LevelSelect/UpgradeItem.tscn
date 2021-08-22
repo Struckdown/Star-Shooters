@@ -95,3 +95,5 @@ margin_bottom = 83.475
 rect_min_size = Vector2( 64, 64 )
 texture = ExtResource( 4 )
 expand = true
+
+[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
