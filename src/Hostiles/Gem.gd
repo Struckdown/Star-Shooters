@@ -8,6 +8,7 @@ var velocity
 
 var magnetSpeed = 300
 var playerRef
+export(int, 0, 99999999) var gemValue = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,6 +39,7 @@ func init():
 	rotSpeed = rand_range(-360,360)
 
 func collect():
+	UpgradeManager.setGems(UpgradeManager.gems+gemValue)
 	queue_free()
 
 

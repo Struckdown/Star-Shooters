@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Levels/LevelSelect/MissionBriefing.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art Packs/Planets2D/Planets-Atmosphere-pngs/planet-2.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Levels/LevelSelect/MapPlayer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Art Packs/Planets2D/Planets-Basic-pngs/Planet-2.png" type="Texture" id=8]
 [ext_resource path="res://Art Packs/Planets2D/Planets-Atmosphere-pngs/planet-8.png" type="Texture" id=9]
+[ext_resource path="res://Levels/LevelSelect/PlayerGemCount.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "DisplayLevelInfo"
@@ -205,6 +206,8 @@ margin_left = 303.799
 margin_top = 98.4002
 margin_right = -320.201
 margin_bottom = -101.6
+
+[node name="PlayerGemCount" parent="CanvasLayer" instance=ExtResource( 10 )]
 
 [connection signal="cancel" from="CanvasLayer/MissionBriefing" to="." method="_on_MissionBriefing_cancel"]
 [connection signal="deploy" from="CanvasLayer/MissionBriefing" to="." method="_on_MissionBriefing_deploy"]
