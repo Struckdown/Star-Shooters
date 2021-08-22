@@ -61,6 +61,7 @@ margin_top = 76.0
 margin_right = 916.0
 margin_bottom = 459.0
 rect_min_size = Vector2( 800, 300 )
+follow_focus = true
 scroll_horizontal_enabled = false
 __meta__ = {
 "_edit_use_anchors_": false
@@ -81,6 +82,7 @@ upgradeName = "startingEnergyCharge"
 margin_top = 124.0
 margin_right = 881.0
 margin_bottom = 244.0
+upgradeName = "energyCap"
 
 [node name="Button" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem2" index="0"]
 margin_right = 881.0
@@ -98,6 +100,7 @@ text = "x250"
 margin_top = 248.0
 margin_right = 881.0
 margin_bottom = 368.0
+upgradeName = "chargeGain"
 
 [node name="Button" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem3" index="0"]
 margin_right = 881.0
@@ -112,6 +115,7 @@ text = "1->1.1"
 margin_top = 372.0
 margin_right = 881.0
 margin_bottom = 492.0
+upgradeName = "magnetRadius"
 
 [node name="Button" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem4" index="0"]
 margin_right = 881.0

@@ -6,10 +6,24 @@ export(int) var levelNumber
 signal playerNearby
 export(String, MULTILINE) var missionName
 export(String, MULTILINE) var missionBriefing
-
+var planetRotationSpeed = 0
 
 func _ready():
 	set_description()
+	setupPlanetSpeed()
+
+func setupPlanetSpeed():
+	var rng = RandomNumberGenerator.new()
+	rng.randomize()
+	# random speed and then multiply by -1 or 1 randomly
+	planetRotationSpeed = rand_range(0.5, 1) * (rng.randi_range(0,1)*2-1)
+
+
+func _process(delta):
+	updateIdleAnimation(delta)
+
+func updateIdleAnimation(delta) -> void:
+	$PlanetSprite.rotation_degrees += delta*planetRotationSpeed*5
 
 
 func set_description() -> void:

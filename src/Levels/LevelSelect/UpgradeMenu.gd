@@ -13,7 +13,6 @@ func _ready():
 #func _process(delta):
 #	pass
 
-
 func display(shouldDisplay):
 	if displaying == shouldDisplay:
 		return

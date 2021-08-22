@@ -4,6 +4,7 @@ extends Node2D
 var gems = 2000 setget setGems
 var UIref = null
 var upgrades = {}	# contains "upgradeName": {"curLevel":0, "maxLevel":5, "startingCost": 100, }. Populated by upgrade items
+# Upgrades so far: respawn energy, energy cap, energy gain, magnet radius
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

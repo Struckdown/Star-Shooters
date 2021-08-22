@@ -19,6 +19,7 @@ func _ready():
 			"startingCost": baseCost,
 		}
 	curCost = getCost(upgradeLevel)
+	$Button/CostLbl.text = "x" + str(getCost(upgradeLevel))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -38,6 +39,7 @@ func _on_Button_button_up():
 	UpgradeManager.setGems(curGems)
 	upgradeLevel += 1
 	$Button/ChangeLbl.text = "TODO???"
+	curCost = getCost(upgradeLevel)
 	$Button/CostLbl.text = "x" + str(getCost(upgradeLevel))
 	#TODO update progress bar
-	UpgradeManager.upgrades[upgradeName][upgradeLevel] = upgradeLevel
+	UpgradeManager.upgrades[upgradeName]["curLevel"] = upgradeLevel

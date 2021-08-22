@@ -17,6 +17,7 @@ var fireHOffset = 5
 
 var energyLevel = 0.0		# current energy
 var energyLimit = 1000.0	# max amount of energy allowed
+var energyGainMultiplier = 1
 var energyThreshold = 1	# amount of energy needed to shoot
 signal energyUpdated
 onready var energyParticles = load("res://Player/EnergyAbsorptionParticles.tscn")
@@ -140,7 +141,7 @@ func _on_EnergyArea_area_entered(area):
 			area.owner.markEnergyDrained()
 			spawnEnergyCollectedParticles()
 			$EnergyParticleRoot/AbsorbSFX.play()
-			energyLevel = min(energyLevel+100, energyLimit)
+			energyLevel = min(energyLevel+(100*energyGainMultiplier), energyLimit)
 			emit_signal("energyUpdated")
 	if area.owner.is_in_group("Gem"):
 		area.owner.collect()
@@ -206,6 +207,13 @@ func checkIfGemInMagnet(gem):
 	return $GemMagnetArea.global_position.distance_to(gem.global_position) <= $GemMagnetArea/CollisionShape2D.shape.radius
 
 func applyUpgrades():
+	if "energyCap" in UpgradeManager.upgrades:
+		energyLimit = (UpgradeManager.upgrades["energyCap"]["curLevel"] * 0.1 + 1) * energyLimit
 	if "startingEnergyCharge" in UpgradeManager.upgrades:
 		energyLevel = UpgradeManager.upgrades["startingEnergyCharge"]["curLevel"] * energyLimit * 0.1
+	if "chargeGain" in UpgradeManager.upgrades:
+		energyGainMultiplier = (UpgradeManager.upgrades["chargeGain"]["curLevel"]*0.1+1)
+	if "magnetRadius" in UpgradeManager.upgrades:
+		var r = $GemMagnetArea/CollisionShape2D.shape.radius
+		$GemMagnetArea/CollisionShape2D.shape.radius = UpgradeManager.upgrades["magnetRadius"]["curLevel"]*0.1+r
 	emit_signal("energyUpdated")

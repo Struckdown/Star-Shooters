@@ -29,5 +29,4 @@ func _on_Inner_area_exited(area):
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
 	active = false
-	print("finished shockwave anim")
 	queue_free()
