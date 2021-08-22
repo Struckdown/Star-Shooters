@@ -8,6 +8,7 @@ var horizontalOffset = 0
 var prevHorizontalOffset = 0
 export(float) var waveSpeed = 10
 export(bool) var generatesEnergy = false
+export(bool) var energyGenerated = false
 export(String, FILE) var energySprite
 var totalHOffset = 0
 export(bool) var titleScreenVersion
@@ -58,3 +59,8 @@ func move(delta):
 	
 	if nodeToRotate:
 		nodeToRotate.rotate(deg2rad(rotationSpeed)*delta)
+
+func markEnergyDrained():
+	if not energyGenerated:
+		energyGenerated = true
+		modulate = modulate*0.8
