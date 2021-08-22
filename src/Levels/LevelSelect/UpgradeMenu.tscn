@@ -1,0 +1,90 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Levels/LevelSelect/UpgradeMenuFont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Levels/LevelSelect/UpgradeItem.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Space Shooter GUI/PNG/Level_Menu/Window.png" type="Texture" id=6]
+
+[node name="UpgradeMenu" type="Control"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="WindowTexture" type="TextureRect" parent="."]
+margin_right = 944.0
+margin_bottom = 480.0
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ShopNameLbl" type="Label" parent="WindowTexture"]
+margin_left = 9.0
+margin_top = 17.0
+margin_right = 940.0
+margin_bottom = 44.0
+custom_fonts/font = ExtResource( 1 )
+text = "Upgrades"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="WindowTexture"]
+margin_left = 23.0
+margin_top = 76.0
+margin_right = 916.0
+margin_bottom = 459.0
+rect_min_size = Vector2( 800, 300 )
+scroll_horizontal_enabled = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowTexture/ScrollContainer"]
+margin_right = 881.0
+margin_bottom = 492.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="UpgradeItem" parent="WindowTexture/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_right = 881.0
+
+[node name="UpgradeItem2" parent="WindowTexture/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 124.0
+margin_right = 881.0
+margin_bottom = 244.0
+
+[node name="Button" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem2" index="0"]
+margin_right = 881.0
+
+[node name="UpgradeNameLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem2/Button" index="0"]
+text = "Energy Cap"
+
+[node name="ChangeLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem2/Button" index="1"]
+text = "1 -> 1.1"
+
+[node name="CostLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem2/Button" index="4"]
+text = "x250"
+
+[node name="UpgradeItem3" parent="WindowTexture/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 248.0
+margin_right = 881.0
+margin_bottom = 368.0
+
+[node name="Button" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem3" index="0"]
+margin_right = 881.0
+
+[node name="UpgradeItem4" parent="WindowTexture/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 372.0
+margin_right = 881.0
+margin_bottom = 492.0
+
+[node name="Button" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem4" index="0"]
+margin_right = 881.0
+
+[editable path="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem2"]
+[editable path="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem3"]
+[editable path="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem4"]

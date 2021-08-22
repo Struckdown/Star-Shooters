@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Levels/LevelSelect/MissionBriefing.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art Packs/Planets2D/Planets-Atmosphere-pngs/planet-2.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://Art Packs/Planets2D/Planets-Basic-pngs/Planet-2.png" type="Texture" id=8]
 [ext_resource path="res://Art Packs/Planets2D/Planets-Atmosphere-pngs/planet-8.png" type="Texture" id=9]
 [ext_resource path="res://Levels/LevelSelect/PlayerGemCount.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/LevelSelect/UpgradeMenu.tscn" type="PackedScene" id=11]
 
 [sub_resource type="Animation" id=1]
 resource_name = "DisplayLevelInfo"
@@ -163,7 +164,7 @@ position = Vector2( 898.804, 105.603 )
 levelDescription = "Sector Charlie"
 levelNumber = 3
 missionName = "Revolving Troubles"
-missionBriefing = "Gadzooks! The Star Child evaporated the entire surface of the planet! And still the Nhamaar would see to aid the child! Destroy their blockade  and continue the hunt! Let no ship slow your hand!"
+missionBriefing = "Gadzooks! The Star Child evaporated the entire surface of the planet! And still the Nhamaar would seek to aid the child! Destroy their blockade and continue the hunt! Let no ship slow your hand!"
 
 [node name="PlanetSprite" parent="Levels/Planet3" index="0"]
 scale = Vector2( 0.09, 0.09 )
@@ -208,6 +209,8 @@ margin_right = -320.201
 margin_bottom = -101.6
 
 [node name="PlayerGemCount" parent="CanvasLayer" instance=ExtResource( 10 )]
+
+[node name="UpgradeMenu" parent="CanvasLayer" instance=ExtResource( 11 )]
 
 [connection signal="cancel" from="CanvasLayer/MissionBriefing" to="." method="_on_MissionBriefing_cancel"]
 [connection signal="deploy" from="CanvasLayer/MissionBriefing" to="." method="_on_MissionBriefing_deploy"]

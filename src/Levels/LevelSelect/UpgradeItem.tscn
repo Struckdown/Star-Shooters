@@ -1,0 +1,97 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Health_Dot.png" type="Texture" id=1]
+[ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Boss_HP_Table.png" type="Texture" id=2]
+[ext_resource path="res://Art Packs/SpinningCrystals/Original/Blue/gem6/0001.png" type="Texture" id=3]
+[ext_resource path="res://Space Shooter GUI/PNG/Hangar/Dot_02.png" type="Texture" id=4]
+[ext_resource path="res://Space Shooter GUI/PNG/Pause/Table.png" type="Texture" id=5]
+[ext_resource path="res://Levels/LevelSelect/UpgradeMenuFont.tres" type="DynamicFont" id=6]
+[ext_resource path="res://Space Shooter GUI/PNG/Pause/SelectedTable.png" type="Texture" id=7]
+[ext_resource path="res://Levels/LevelSelect/UpgradeItem.gd" type="Script" id=8]
+
+[node name="UpgradeItem" type="MarginContainer"]
+margin_right = 905.0
+margin_bottom = 120.0
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Button" type="TextureButton" parent="."]
+margin_right = 905.0
+margin_bottom = 120.0
+rect_min_size = Vector2( 0, 120 )
+texture_normal = ExtResource( 5 )
+texture_focused = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpgradeNameLbl" type="Label" parent="Button"]
+margin_left = 275.075
+margin_top = 12.0587
+margin_right = 612.075
+margin_bottom = 39.0587
+custom_fonts/font = ExtResource( 6 )
+text = "Starting Energy Charge"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ChangeLbl" type="Label" parent="Button"]
+margin_left = 390.891
+margin_top = 40.6025
+margin_right = 492.891
+margin_bottom = 67.6025
+custom_fonts/font = ExtResource( 6 )
+text = "0 -> 10%"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ProgressBar" type="TextureProgress" parent="Button"]
+margin_left = 188.0
+margin_top = 65.0
+margin_right = 788.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 600, 20 )
+rect_scale = Vector2( 0.8, 1 )
+max_value = 5.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 1 )
+nine_patch_stretch = true
+
+[node name="GemIcon" type="TextureRect" parent="Button"]
+margin_left = 691.451
+margin_top = 16.9174
+margin_right = 755.451
+margin_bottom = 80.9174
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CostLbl" type="Label" parent="Button"]
+margin_left = 762.342
+margin_top = 42.3667
+margin_right = 824.342
+margin_bottom = 69.3667
+custom_fonts/font = ExtResource( 6 )
+text = "x100"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureRect" parent="Button"]
+margin_left = 80.0157
+margin_top = 19.475
+margin_right = 144.016
+margin_bottom = 83.475
+rect_min_size = Vector2( 64, 64 )
+texture = ExtResource( 4 )
+expand = true

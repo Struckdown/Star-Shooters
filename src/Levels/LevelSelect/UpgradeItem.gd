@@ -1,9 +1,11 @@
-extends Node2D
+extends MarginContainer
 
 
-var gems = 0 setget setGems
-var UIref = null
-var upgrades = {}	# contains "upgradeName": [level, levelMax]. Populated by upgrade items?
+export(String) var upgradeName
+var cost
+export(int) var upgradesLevels
+var upgradeLevel = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,8 +15,3 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-func setGems(_val):
-	gems = _val
-	if UIref:
-		UIref.updateVisuals()
