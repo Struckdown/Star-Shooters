@@ -76,7 +76,7 @@ margin_bottom = 492.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="UpgradeItem" parent="WindowTexture/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="StartChargeUpgrade" parent="WindowTexture/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
 margin_right = 881.0
 focus_neighbour_top = NodePath("../../../TextureButton")
 upgradeName = "startingEnergyCharge"
@@ -84,7 +84,7 @@ upgradeLevels = [ 0.0, 10.0, 20.0, 30.0, 40.0, 50.0 ]
 upgradeLevelSuffix = "%"
 baseCost = 50
 
-[node name="UpgradeItem2" parent="WindowTexture/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="EnergyCapUpgrade" parent="WindowTexture/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 124.0
 margin_right = 881.0
 margin_bottom = 244.0
@@ -93,57 +93,57 @@ upgradeLevels = [ 1.0, 1.25, 1.5, 2.0 ]
 upgradeLevelSuffix = "x"
 baseCost = 80
 
-[node name="Button" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem2" index="0"]
+[node name="Button" parent="WindowTexture/ScrollContainer/VBoxContainer/EnergyCapUpgrade" index="0"]
 margin_right = 881.0
 
-[node name="UpgradeNameLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem2/Button" index="0"]
+[node name="UpgradeNameLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/EnergyCapUpgrade/Button" index="0"]
 text = "Energy Cap"
 
-[node name="ChangeLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem2/Button" index="1"]
+[node name="ChangeLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/EnergyCapUpgrade/Button" index="1"]
 text = "1x -> 1.25x"
 
-[node name="CostLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem2/Button" index="4"]
+[node name="CostLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/EnergyCapUpgrade/Button" index="4"]
 text = "x250"
 
-[node name="UpgradeIcon" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem2/Button" index="5"]
+[node name="UpgradeIcon" parent="WindowTexture/ScrollContainer/VBoxContainer/EnergyCapUpgrade/Button" index="5"]
 texture = ExtResource( 8 )
 
-[node name="UpgradeItem3" parent="WindowTexture/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="ChargeGainUpgrade" parent="WindowTexture/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 248.0
 margin_right = 881.0
 margin_bottom = 368.0
 upgradeName = "chargeGain"
-upgradeLevels = [ 1.0, 1.2, 1.4, 1.6, 1.8, 2.0 ]
+upgradeLevels = [ 1.0, 2.0, 4.0, 7.0, 10.0 ]
 upgradeLevelSuffix = "x"
 
-[node name="Button" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem3" index="0"]
+[node name="Button" parent="WindowTexture/ScrollContainer/VBoxContainer/ChargeGainUpgrade" index="0"]
 margin_right = 881.0
 
-[node name="UpgradeNameLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem3/Button" index="0"]
+[node name="UpgradeNameLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/ChargeGainUpgrade/Button" index="0"]
 text = "Charge Gain"
 
-[node name="ChangeLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem3/Button" index="1"]
+[node name="ChangeLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/ChargeGainUpgrade/Button" index="1"]
 text = "1->1.1"
 
-[node name="UpgradeIcon" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem3/Button" index="5"]
+[node name="UpgradeIcon" parent="WindowTexture/ScrollContainer/VBoxContainer/ChargeGainUpgrade/Button" index="5"]
 texture = ExtResource( 5 )
 
-[node name="UpgradeItem4" parent="WindowTexture/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+[node name="MagnetRadiusUpgrade" parent="WindowTexture/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
 margin_top = 372.0
 margin_right = 881.0
 margin_bottom = 492.0
 upgradeName = "magnetRadius"
-upgradeLevels = [ 0.0, 20.0, 60.0 ]
+upgradeLevels = [ 0.0, 40.0, 80.0, 120.0 ]
 upgradeLevelSuffix = "px"
-baseCost = 130
+baseCost = 70
 
-[node name="Button" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem4" index="0"]
+[node name="Button" parent="WindowTexture/ScrollContainer/VBoxContainer/MagnetRadiusUpgrade" index="0"]
 margin_right = 881.0
 
-[node name="UpgradeNameLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem4/Button" index="0"]
+[node name="UpgradeNameLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/MagnetRadiusUpgrade/Button" index="0"]
 text = "Gem Magnet Radius"
 
-[node name="UpgradeIcon" parent="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem4/Button" index="5"]
+[node name="UpgradeIcon" parent="WindowTexture/ScrollContainer/VBoxContainer/MagnetRadiusUpgrade/Button" index="5"]
 texture = ExtResource( 9 )
 
 [node name="CloseButton" type="TextureButton" parent="WindowTexture"]
@@ -164,6 +164,6 @@ anims/Display = SubResource( 1 )
 [connection signal="button_up" from="WindowTexture/CloseButton" to="." method="_on_CloseButton_button_up"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 
-[editable path="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem2"]
-[editable path="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem3"]
-[editable path="WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem4"]
+[editable path="WindowTexture/ScrollContainer/VBoxContainer/EnergyCapUpgrade"]
+[editable path="WindowTexture/ScrollContainer/VBoxContainer/ChargeGainUpgrade"]
+[editable path="WindowTexture/ScrollContainer/VBoxContainer/MagnetRadiusUpgrade"]

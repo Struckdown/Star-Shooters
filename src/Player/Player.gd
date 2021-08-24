@@ -16,7 +16,7 @@ var shouldFire = false
 var fireHOffset = 5
 
 var energyLevel = 0.0		# current energy
-var energyLimit = 1000.0	# max amount of energy allowed
+var energyLimit = 250.0	# max amount of energy allowed
 var energyGainMultiplier = 1
 var energyThreshold = 1	# amount of energy needed to shoot
 signal energyUpdated
@@ -141,7 +141,7 @@ func _on_EnergyArea_area_entered(area):
 			area.owner.markEnergyDrained()
 			spawnEnergyCollectedParticles()
 			$EnergyParticleRoot/AbsorbSFX.play()
-			energyLevel = min(energyLevel+(100*energyGainMultiplier), energyLimit)
+			energyLevel = min(energyLevel+(25*energyGainMultiplier), energyLimit)
 			emit_signal("energyUpdated")
 	if area.owner.is_in_group("Gem"):
 		area.owner.collect()
@@ -219,7 +219,6 @@ func applyUpgrades():
 				"chargeGain":
 					energyGainMultiplier = UpgradeManager.upgrades["chargeGain"]["upgradeLevels"][curLevel]
 				"magnetRadius":
-					var r = $GemMagnetArea/CollisionShape2D.shape.radius
 					$GemMagnetArea/CollisionShape2D.shape.radius = UpgradeManager.upgrades["magnetRadius"]["upgradeLevels"][curLevel]
 				_:
 					print("No upgrade found for: ", upgradeName)

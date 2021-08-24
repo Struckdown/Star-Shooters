@@ -30,4 +30,4 @@ func _on_CloseButton_button_up():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Display" and displaying:
-		$WindowTexture/ScrollContainer/VBoxContainer/UpgradeItem/Button.grab_focus()
+		$WindowTexture/ScrollContainer/VBoxContainer/StartChargeUpgrade/Button.grab_focus()
