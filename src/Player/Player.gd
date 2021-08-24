@@ -207,13 +207,20 @@ func checkIfGemInMagnet(gem):
 	return $GemMagnetArea.global_position.distance_to(gem.global_position) <= $GemMagnetArea/CollisionShape2D.shape.radius
 
 func applyUpgrades():
-	if "energyCap" in UpgradeManager.upgrades:
-		energyLimit = (UpgradeManager.upgrades["energyCap"]["curLevel"] * 0.1 + 1) * energyLimit
-	if "startingEnergyCharge" in UpgradeManager.upgrades:
-		energyLevel = UpgradeManager.upgrades["startingEnergyCharge"]["curLevel"] * energyLimit * 0.1
-	if "chargeGain" in UpgradeManager.upgrades:
-		energyGainMultiplier = (UpgradeManager.upgrades["chargeGain"]["curLevel"]*0.1+1)
-	if "magnetRadius" in UpgradeManager.upgrades:
-		var r = $GemMagnetArea/CollisionShape2D.shape.radius
-		$GemMagnetArea/CollisionShape2D.shape.radius = UpgradeManager.upgrades["magnetRadius"]["curLevel"]*0.1+r
+	var upgradeNames = ["energyCap", "startingEnergyCharge", "chargeGain", "magnetRadius"]
+	for upgradeName in upgradeNames:
+		if upgradeName in UpgradeManager.upgrades:
+			var curLevel = UpgradeManager.upgrades[upgradeName]["curLevel"]
+			match upgradeName:
+				"energyCap":
+					energyLimit = UpgradeManager.upgrades["energyCap"]["upgradeLevels"][curLevel] * energyLimit
+				"startingEnergyCharge":
+					energyLevel = UpgradeManager.upgrades["startingEnergyCharge"]["upgradeLevels"][curLevel] * 0.01 * energyLimit
+				"chargeGain":
+					energyGainMultiplier = UpgradeManager.upgrades["chargeGain"]["upgradeLevels"][curLevel]
+				"magnetRadius":
+					var r = $GemMagnetArea/CollisionShape2D.shape.radius
+					$GemMagnetArea/CollisionShape2D.shape.radius = UpgradeManager.upgrades["magnetRadius"]["upgradeLevels"][curLevel]
+				_:
+					print("No upgrade found for: ", upgradeName)
 	emit_signal("energyUpdated")

@@ -3,7 +3,8 @@ extends MarginContainer
 
 export(String) var upgradeName
 var curCost
-export(int) var upgradeLevels = 5
+export(Array, float) var upgradeLevels
+export(String) var upgradeLevelSuffix
 export(int) var baseCost = 100
 var upgradeLevel = 0
 
@@ -15,10 +16,11 @@ func _ready():
 	else:	# set up data
 		UpgradeManager.upgrades[upgradeName] = {
 			"curLevel":0,
-			"maxLevel":upgradeLevels,
+			"upgradeLevels":upgradeLevels,
 			"startingCost": baseCost,
 		}
 	curCost = getCost(upgradeLevel)
+	updateNextLevelText()
 	$Button/CostLbl.text = "x" + str(getCost(upgradeLevel))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,19 +28,35 @@ func _ready():
 #	pass
 
 func getCost(level):
-	if upgradeLevel >= upgradeLevels:
+	if upgradeLevel >= len(upgradeLevels)-1:
 		return "MAX"
-	return 100*((level+1)*1.5)	#TODO come up with better formula
+	return baseCost*((level+1)*1.5)	#TODO come up with better formula
+
+func updateNextLevelText():	# updates the a->b text
+	var levelValues = UpgradeManager.upgrades[upgradeName]["upgradeLevels"]
+	if len(levelValues) == 0:
+		print("Upgrade Levels not setup for ", upgradeName)
+		return
+	var curVal = levelValues[upgradeLevel]
+	var nextVal = null
+	if upgradeLevel+1 >= len(levelValues):
+		nextVal = null	# no more levels!
+	else:
+		nextVal = levelValues[upgradeLevel+1]
+	if nextVal:
+		$Button/ChangeLbl.text = str(curVal) + upgradeLevelSuffix + "->" + str(nextVal) + upgradeLevelSuffix
+	else:
+		$Button/ChangeLbl.text = str(curVal) + upgradeLevelSuffix
 
 
 func _on_Button_button_up():
 	var curGems = UpgradeManager.gems
-	if str(curCost) == "MAX" or curCost > curGems:
-		return	# TODO add error noise?
+	if str(curCost) == "MAX" or curCost > curGems or (upgradeLevel >= len(upgradeLevels)-1):
+		return	# TODO add error SFX?
 	curGems -= curCost
 	UpgradeManager.setGems(curGems)
 	upgradeLevel += 1
-	$Button/ChangeLbl.text = "TODO???"
+	updateNextLevelText()
 	curCost = getCost(upgradeLevel)
 	$Button/CostLbl.text = "x" + str(getCost(upgradeLevel))
 	#TODO update progress bar

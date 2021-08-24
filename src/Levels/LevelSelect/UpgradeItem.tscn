@@ -29,10 +29,10 @@ __meta__ = {
 }
 
 [node name="UpgradeNameLbl" type="Label" parent="Button"]
-margin_left = 275.075
-margin_top = 12.0587
-margin_right = 612.075
-margin_bottom = 39.0587
+margin_left = 25.0
+margin_top = 12.0
+margin_right = 877.0
+margin_bottom = 39.0
 custom_fonts/font = ExtResource( 6 )
 text = "Starting Energy Charge"
 align = 1
@@ -41,10 +41,10 @@ __meta__ = {
 }
 
 [node name="ChangeLbl" type="Label" parent="Button"]
-margin_left = 390.891
-margin_top = 40.6025
-margin_right = 492.891
-margin_bottom = 67.6025
+margin_left = 27.0
+margin_top = 41.0
+margin_right = 878.0
+margin_bottom = 68.0
 custom_fonts/font = ExtResource( 6 )
 text = "0 -> 10%"
 align = 1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Levels/LevelSelect/MissionBriefing.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art Packs/Planets2D/Planets-Atmosphere-pngs/planet-2.png" type="Texture" id=2]
@@ -14,6 +14,9 @@
 [ext_resource path="res://Levels/LevelSelect/UpgradePlanet.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Art Packs/Planets2D/Planets-Basic-pngs/Planet-10.png" type="Texture" id=13]
 [ext_resource path="res://Utility/M_Grayscale.tres" type="Material" id=14]
+
+[sub_resource type="CircleShape2D" id=6]
+radius = 77.1044
 
 [sub_resource type="Animation" id=2]
 resource_name = "MoonOrbit"
@@ -180,6 +183,9 @@ Remember, We need you to hunt down the Star Child, so your skills will be of the
 Prepare for deployment...
 "
 
+[node name="CollisionShape2D" parent="Levels/Planet/SelectableArea" index="0"]
+shape = SubResource( 6 )
+
 [node name="Planet2" parent="Levels" instance=ExtResource( 6 )]
 position = Vector2( 572.804, 482.603 )
 levelDescription = "Sector Beta"
@@ -211,7 +217,7 @@ scale = Vector2( 11.1111, 11.1111 )
 [node name="Moon" type="Sprite" parent="Levels/Planet3/PlanetSprite/Node2D"]
 modulate = Color( 0.392157, 0.392157, 0.392157, 1 )
 material = ExtResource( 14 )
-position = Vector2( -68.2762, 0 )
+position = Vector2( 46.0615, 0 )
 scale = Vector2( 0.013, 0.013 )
 z_index = -1
 texture = ExtResource( 13 )
