@@ -36,7 +36,8 @@ func _on_Btn_mouse_entered():
 
 func _unhandled_input(event):
 	if event is InputEventKey:
-		if Input.is_action_pressed("ui_cancel") and visible and $Settings.visible == false:
+		var pauseButtonHit = Input.is_action_pressed("ui_cancel") or Input.is_action_pressed("pause")
+		if pauseButtonHit and visible and $Settings.visible == false:
 			_on_ResumeBtn_pressed()
 			get_tree().get_root().set_input_as_handled()
 

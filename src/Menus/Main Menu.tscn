@@ -202,6 +202,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Lock" type="Sprite" parent="VBoxContainer/InfiniteBtn"]
+position = Vector2( 110.858, 19.716 )
+scale = Vector2( 1.47247, 1.47247 )
+texture = ExtResource( 16 )
+
 [node name="TutorialBtn" type="TextureButton" parent="VBoxContainer"]
 margin_top = 86.0
 margin_right = 222.0
@@ -344,11 +349,6 @@ bus = "SFX"
 [node name="ButtonClickedSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
 bus = "SFX"
-
-[node name="Lock" type="Sprite" parent="."]
-position = Vector2( 851.858, 417.716 )
-scale = Vector2( 1.47247, 1.47247 )
-texture = ExtResource( 16 )
 
 [connection signal="button_up" from="VBoxContainer/PlayBtn" to="." method="_on_Menu_button_up" binds= [ "play" ]]
 [connection signal="mouse_entered" from="VBoxContainer/PlayBtn" to="." method="_on_Btn_mouse_entered"]

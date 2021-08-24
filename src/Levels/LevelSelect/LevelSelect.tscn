@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Levels/LevelSelect/MissionBriefing.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art Packs/Planets2D/Planets-Atmosphere-pngs/planet-2.png" type="Texture" id=2]
@@ -12,6 +12,38 @@
 [ext_resource path="res://Levels/LevelSelect/PlayerGemCount.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/LevelSelect/UpgradeMenu.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/LevelSelect/UpgradePlanet.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Art Packs/Planets2D/Planets-Basic-pngs/Planet-10.png" type="Texture" id=13]
+[ext_resource path="res://Utility/M_Grayscale.tres" type="Material" id=14]
+
+[sub_resource type="Animation" id=2]
+resource_name = "MoonOrbit"
+length = 20.0
+loop = true
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Moon:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 10, 20 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 70, 0 ), Vector2( -70, 0 ), Vector2( 70, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Moon:z_index")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 10 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, -1 ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "DisplayLevelInfo"
@@ -65,10 +97,10 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=3]
 radius = 33.8306
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 length = 0.6
 tracks/0/type = "value"
 tracks/0/path = NodePath("LevelPanel:rect_size")
@@ -119,7 +151,7 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
-[sub_resource type="CircleShape2D" id=4]
+[sub_resource type="CircleShape2D" id=5]
 radius = 111.543
 
 [node name="Map" type="Node2D"]
@@ -129,6 +161,7 @@ script = ExtResource( 4 )
 modulate = Color( 0.478431, 0.478431, 0.478431, 1 )
 position = Vector2( 1006.22, -402.817 )
 scale = Vector2( 2, 2 )
+z_index = -10
 texture = ExtResource( 3 )
 
 [node name="Levels" type="Node2D" parent="."]
@@ -171,6 +204,22 @@ missionBriefing = "Gadzooks! The Star Child evaporated the entire surface of the
 scale = Vector2( 0.09, 0.09 )
 texture = ExtResource( 8 )
 
+[node name="Node2D" type="Node2D" parent="Levels/Planet3/PlanetSprite" index="0"]
+rotation = 1.33518
+scale = Vector2( 11.1111, 11.1111 )
+
+[node name="Moon" type="Sprite" parent="Levels/Planet3/PlanetSprite/Node2D"]
+modulate = Color( 0.392157, 0.392157, 0.392157, 1 )
+material = ExtResource( 14 )
+position = Vector2( -68.2762, 0 )
+scale = Vector2( 0.013, 0.013 )
+z_index = -1
+texture = ExtResource( 13 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Levels/Planet3/PlanetSprite/Node2D"]
+autoplay = "MoonOrbit"
+anims/MoonOrbit = SubResource( 2 )
+
 [node name="AnimationPlayer" parent="Levels/Planet3" index="3"]
 anims/DisplayLevelInfo = SubResource( 1 )
 
@@ -186,13 +235,13 @@ scale = Vector2( 0.03, 0.03 )
 texture = ExtResource( 9 )
 
 [node name="CollisionShape2D" parent="Levels/Planet4/SelectableArea" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="AnimationPlayer" parent="Levels/Planet4" index="3"]
-anims/DisplayLevelInfo = SubResource( 3 )
+anims/DisplayLevelInfo = SubResource( 4 )
 
 [node name="CollisionShape2D" parent="Levels/Planet4/DisplayArea2D" index="0"]
-shape = SubResource( 4 )
+shape = SubResource( 5 )
 
 [node name="UpgradePlanet" parent="." instance=ExtResource( 12 )]
 
