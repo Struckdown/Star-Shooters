@@ -91,3 +91,7 @@ mouse_filter = 1
 margin_right = -200.0
 
 [node name="PlayerGemCount" parent="CanvasLayer" instance=ExtResource( 3 )]
+
+[node name="LevelWonGemCollectDelayTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="LevelWonGemCollectDelayTimer" to="." method="_on_LevelWonGemCollectDelayTimer_timeout"]

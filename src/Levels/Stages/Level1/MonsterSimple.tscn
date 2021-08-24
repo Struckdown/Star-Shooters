@@ -25,6 +25,7 @@ position = Vector2( 510.669, -107.802 )
 rotation = 1.57079
 speed = 120.0
 maxHealth = 120
+gemValue = 100
 moveGoal = Vector2( 0, 200 )
 flyPaths = [ NodePath("../Path2D"), NodePath("../Path2D2") ]
 loopFlyPaths = true

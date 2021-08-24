@@ -77,6 +77,8 @@ func updateWavesFinished():
 		levelWon = true
 		if not levelLost:
 			$"CanvasLayer/Level Won".playLevelComplete()
+			$LevelWonGemCollectDelayTimer.start()
+
 		else:
 			print("Level was supposed to be won, but level lost was true first. :(")
 
@@ -101,3 +103,7 @@ func spawnNewPlayer(livesDelta):
 
 func gemCollected():
 	addToScore(100)
+
+
+func _on_LevelWonGemCollectDelayTimer_timeout():
+	$VPCgame/Viewport/LevelBoundaries.collectGems(playerRef)

@@ -8,7 +8,7 @@ var velocity
 
 var magnetSpeed = 300
 var playerRef
-export(int, 0, 99999999) var gemValue = 1
+export(int, 0, 99999999) var gemValue = 1	# is there a better way to do a min?
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

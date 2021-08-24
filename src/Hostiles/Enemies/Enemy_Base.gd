@@ -5,6 +5,7 @@ export(float) var speed = 140
 var velocity
 export(int) var maxHealth = 25
 onready var health = maxHealth
+export(int) var gemValue = 10
 signal destroyed
 export(PackedScene) var explosionType
 var explosionParticles
@@ -144,7 +145,7 @@ func getNewMoveGoal():
 
 func spawnGems():
 	var g = load("res://Hostiles/Gem.tscn")
-	var num = 10
+	var num = gemValue
 	for _i in range(num):
 		var gem = g.instance()
 		get_viewport().call_deferred("add_child", gem)

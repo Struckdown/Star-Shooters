@@ -61,7 +61,7 @@ tracks/1/keys = {
 
 [sub_resource type="Curve2D" id=3]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 471.846, 11.5439, -68.1126, -180.793, 68.1126, 180.793, 828.386, 150.292, 294.314, -47.9311, -294.314, 47.9311, 570.231, 574.945, 0, 0, 0, 0, 140.533, 432.833, -216.11, 153.884, 216.11, -153.884, 227.145, 143.565 )
+"points": PoolVector2Array( 0, 0, 0, 0, 471.846, 11.5439, -68.1126, -180.793, 68.1126, 180.793, 771.971, 170.021, 294.314, -47.9311, -294.314, 47.9311, 570.231, 574.945, 0, 0, 0, 0, 140.533, 432.833, -216.11, 153.884, 216.11, -153.884, 227.145, 143.565 )
 }
 
 [sub_resource type="Curve2D" id=4]
@@ -80,6 +80,7 @@ enemiesToDestroy = 2
 [node name="HelixShooter" parent="." index="0" instance=ExtResource( 3 )]
 position = Vector2( 467.619, -62.4273 )
 rotation = 1.57079
+speed = 220.0
 flyPaths = [ NodePath("../CirclePath") ]
 loopFlyPaths = true
 flyingPattern = "followPath"

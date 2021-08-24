@@ -45,13 +45,16 @@ func _on_TopArea_area_exited(area):
 
 
 func _on_GemZone_area_entered(area):
-	var gems = 0
 	if area.owner.is_in_group("Player"):
-		if len(get_tree().get_nodes_in_group("Gem")) > 0:
-			gems = len(get_tree().get_nodes_in_group("Gem"))
-		if not $GemsAbsorbedSFX.playing and gems > 0:
-			$GemsAbsorbedSFX.play()
-		for gem in get_tree().get_nodes_in_group("Gem"):
-			if gem.owner:
-				gem.owner.playerRef = area.owner
+		collectGems(area.owner)
+
+func collectGems(playerRef):
+	var gems = 0
+	if len(get_tree().get_nodes_in_group("Gem")) > 0:
+		gems = len(get_tree().get_nodes_in_group("Gem"))
+	if not $GemsAbsorbedSFX.playing and gems > 0:
+		$GemsAbsorbedSFX.play()
+	for gem in get_tree().get_nodes_in_group("Gem"):
+		if gem.owner:
+			gem.owner.playerRef = playerRef
 
