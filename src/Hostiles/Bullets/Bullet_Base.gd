@@ -32,7 +32,7 @@ func init():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	move(delta)
+	move(delta*GameManager.gameSpeed)
 
 func _on_DespawnTimer_timeout():
 	queue_free()

@@ -6,6 +6,7 @@ var playerLives = 3
 var stage = null
 var lastPlayedStage = null
 var gameMode = null
+var gameSpeed = 1	#1 is normal speed
 
 func _ready():
 	pass

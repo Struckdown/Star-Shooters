@@ -57,19 +57,20 @@ func _exit_tree():
 
 
 func move(d):
+	var deltaSpeed = speed*d*GameManager.gameSpeed
 	match flyingPattern:
 		"straight":
-			position += Vector2(d*speed, 0).rotated(rotation)
+			position += Vector2(deltaSpeed, 0).rotated(rotation)
 		"hoverRandomPoint", "hoverMoveGoal":
 			if moveGoal:
-				velocity = position.direction_to(moveGoal) * speed * d
+				velocity = position.direction_to(moveGoal) * deltaSpeed
 				if position.distance_squared_to(moveGoal) > 5*5:
 					position += velocity
 		"followPath":
 			if len(flyPaths) <= 0:
 				return
 			var flyTarget = flyPoints[flyIndex]
-			if position.distance_to(flyTarget) < (speed*d):	#fly point reached
+			if position.distance_to(flyTarget) < (deltaSpeed):	#fly point reached
 				flyIndex = wrapi(flyIndex + 1, 0, flyPoints.size())
 				flyTarget = flyPoints[flyIndex]
 				if flyIndex == 0:	# we reached the end of the current fly path
@@ -83,7 +84,7 @@ func move(d):
 						else:
 							queue_free()
 					
-			velocity = position.direction_to(flyTarget) * speed * d
+			velocity = position.direction_to(flyTarget) * deltaSpeed
 			look_at(global_position+velocity)
 			position += velocity
 

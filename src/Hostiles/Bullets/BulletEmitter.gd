@@ -62,7 +62,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	totalDelta += delta
+	totalDelta += delta*GameManager.gameSpeed
 	var shouldUpdateRotationPerVolley = false
 	if totalDelta > bulletSpawnDelay:
 		totalDelta -= bulletSpawnDelay
@@ -80,7 +80,7 @@ func _process(delta):
 		if not fireAtLocationForWholeClip:
 			needsToUpdatePosToShoot = true
 		shouldUpdateRotationPerVolley = true
-	updateRotation(shouldUpdateRotationPerVolley, delta)
+	updateRotation(shouldUpdateRotationPerVolley, delta*GameManager.gameSpeed)
 
 func updatePosToShoot():
 	positionToShoot = global_position+global_transform.x

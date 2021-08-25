@@ -12,8 +12,8 @@ func _ready():
 	var SFXval = BGM.normalizeDBtoVal(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
 	$PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX.value = SFXval
 
-func _gui_input(_event):
-	if Input.is_action_pressed("ui_cancel") and visible:
+func _input(_event):
+	if (Input.is_action_pressed("ui_cancel") or Input.is_action_pressed("pause"))and visible:
 		emit_signal("closed")
 
 func _process(_delta):
@@ -55,8 +55,10 @@ func save():
 	save_file.open(optionsFileName, File.WRITE)
 	var bgm = $PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic.value
 	var sfx = $PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX.value
+	var speed = $PauseCtrl/VBoxContainer/HBoxContainer3/HSliderSpeed.value
 	save_file.store_var(bgm)
 	save_file.store_var(sfx)
+	save_file.store_var(speed)
 	save_file.close()
 	fileLock = false
 	
@@ -70,7 +72,16 @@ func loadSettings():
 		save_file.open(optionsFileName, File.READ)
 		var bgm = save_file.get_var()
 		var sfx = save_file.get_var()
+		var speed = save_file.get_var()
 		$PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic.value = bgm
 		$PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX.value = sfx
+		$PauseCtrl/VBoxContainer/HBoxContainer3/HSliderSpeed.value = speed
 		save_file.close()
 	fileLock = false
+
+
+func _on_HSliderSpeed_value_changed(value):
+	GameManager.gameSpeed = value
+	if not $SliderUpdatedSFX.playing and visible:
+		$SliderUpdatedSFX.play()
+	save()
