@@ -207,9 +207,9 @@ __meta__ = {
 
 [node name="SpeedLbl" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer3"]
 margin_top = 11.0
-margin_right = 155.0
+margin_right = 140.0
 margin_bottom = 68.0
-rect_min_size = Vector2( 155, 0 )
+rect_min_size = Vector2( 140, 0 )
 custom_fonts/font = SubResource( 4 )
 text = "Enemy Speed"
 align = 1
@@ -220,10 +220,12 @@ __meta__ = {
 }
 
 [node name="PercentMin" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer3"]
-margin_left = 159.0
+margin_left = 144.0
 margin_top = 30.0
-margin_right = 196.0
+margin_right = 181.0
 margin_bottom = 48.0
+grow_horizontal = 0
+rect_min_size = Vector2( 20, 0 )
 custom_fonts/font = SubResource( 3 )
 text = "50%"
 align = 1
@@ -233,7 +235,7 @@ __meta__ = {
 }
 
 [node name="HSliderSpeed" type="HSlider" parent="PauseCtrl/VBoxContainer/HBoxContainer3"]
-margin_left = 200.0
+margin_left = 185.0
 margin_right = 809.0
 margin_bottom = 79.0
 focus_neighbour_top = NodePath("../../HBoxContainer/HSliderMusic")

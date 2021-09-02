@@ -9,11 +9,17 @@ enemiesToDestroy = 2
 [node name="HelixShooter" parent="." index="0" instance=ExtResource( 1 )]
 position = Vector2( 254.847, -108.065 )
 rotation = 1.57079
+pointsWorth = 125
 speed = 210.0
+maxHealth = 35
+gemValue = 15
 flyingPattern = "hoverRandomPoint"
 
 [node name="HelixShooter2" parent="." index="1" instance=ExtResource( 1 )]
 position = Vector2( 737.168, -108.065 )
 rotation = 1.57079
+pointsWorth = 125
 speed = 210.0
+maxHealth = 35
+gemValue = 15
 flyingPattern = "hoverRandomPoint"

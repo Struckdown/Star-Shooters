@@ -26,7 +26,7 @@ margin_bottom = 78.2045
 [node name="WaveBase" parent="." instance=ExtResource( 1 )]
 
 [node name="Boss_1" parent="WaveBase" index="0"]
-maxHealth = 5
+maxHealth = 500
 
 [node name="DeathShockwave" parent="." instance=ExtResource( 6 )]
 position = Vector2( 499.685, 220.251 )

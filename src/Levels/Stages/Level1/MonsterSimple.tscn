@@ -9,21 +9,24 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 504.257, 45.898, 11.3461, -48.0542, -11.3461, 48.0542, 706.88, 131.889, 60.7352, 34.7058, -60.7352, -34.7058, 240.77, 174.054, -63.4049, 30.7013, 63.4049, -30.7013, 208.825, 26.0767 )
+"points": PoolVector2Array( 0, 0, 0, 0, 505.487, 134.376, 11.3461, -48.0542, -11.3461, 48.0542, 705.814, 185.403, 60.7352, 34.7058, -60.7352, -34.7058, 234.604, 248.399, -63.4049, 30.7013, 63.4049, -30.7013, 220.745, 120.517 )
 }
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 16.0181, -62.7375, -16.0181, 62.7375, 284.155, 37.0808, 33.371, -117.466, -33.371, 117.466, 719.664, 186.291, 127.477, 8.00904, -127.477, -8.00904, 634.234, 514.662, 10.6787, 92.104, -10.6787, -92.104, 135.317, 480.4, -51.3913, 49.3891, 51.3913, -49.3891, 119.299, 84.6202, 0, 0, 0, 0, 482.084, 44.6815 )
+"points": PoolVector2Array( 16.0181, -62.7375, -16.0181, 62.7375, 291.93, 141.306, 33.371, -117.466, -33.371, 117.466, 722.193, 201.152, 127.477, 8.00904, -127.477, -8.00904, 634.234, 514.662, 10.6787, 92.104, -10.6787, -92.104, 135.317, 480.4, -51.3913, 49.3891, 51.3913, -49.3891, 112.391, 157.685, 0, 0, 0, 0, 474.619, 133.746 )
 }
 
 [node name="WaveBase" instance=ExtResource( 1 )]
 enemiesToDestroy = 1
+usesBossHP = true
+bossName = "Elite Pathfinder"
 
 [node name="ForwardShooter" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( 510.669, -107.802 )
 rotation = 1.57079
-speed = 120.0
+pointsWorth = 500
+speed = 90.0
 maxHealth = 120
 gemValue = 100
 moveGoal = Vector2( 0, 200 )
@@ -47,7 +50,7 @@ targetStyle = "straight"
 fireAtLocationForWholeClip = false
 amountOfBullets = 36
 bulletMovementSpeed = 120
-bulletSpawnDelay = 0.6
+bulletSpawnDelay = 1.5
 bulletType = ExtResource( 3 )
 initialSpawnDelayConstant = 2.0
 initialSpawnDelayRandomRange = 0.0

@@ -80,7 +80,9 @@ enemiesToDestroy = 2
 [node name="HelixShooter" parent="." index="0" instance=ExtResource( 3 )]
 position = Vector2( 467.619, -62.4273 )
 rotation = 1.57079
-speed = 220.0
+pointsWorth = 150
+speed = 190.0
+gemValue = 15
 flyPaths = [ NodePath("../CirclePath") ]
 loopFlyPaths = true
 flyingPattern = "followPath"
@@ -105,16 +107,17 @@ anims/Death = SubResource( 1 )
 [node name="BulletEmitter" parent="LeftPlayerShooter/WeaponManager" index="1"]
 initialRotationOffset = 0.0
 targetStyle = "atTarget"
-angleOfBulletSpread = 0.0
-amountOfBullets = 1
+angleOfBulletSpread = 8.0
 bulletMovementSpeed = 160
 bulletSpawnDelay = 0.8
 initialSpawnDelayRandomRange = 3.0
 greenBulletFrequency = -1
+nthBulletIsGreen = [ 0, 1, 2 ]
 
 [node name="RightCircleSpammer" parent="." index="2" instance=ExtResource( 2 )]
 position = Vector2( 852.836, 158.404 )
 rotation = 1.57079
+pointsWorth = 125
 speed = 80.0
 flyPaths = [ NodePath("../StraightPath") ]
 loopFlyPaths = true
@@ -132,8 +135,8 @@ initialRotationOffset = 0.0
 targetStyle = "straight"
 useRotationAsCenterBullet = false
 fireAtLocationForWholeClip = true
-angleOfBulletSpread = 36.0
-amountOfBullets = 10
+angleOfBulletSpread = 45.0
+amountOfBullets = 8
 bulletMovementSpeed = 160
 bulletSpawnDelay = 0.4
 initialSpawnDelayRandomRange = 3.0

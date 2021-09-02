@@ -9,19 +9,23 @@ enemiesToDestroy = 4
 [node name="Enemy_Base" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( 167.274, -78.3995 )
 rotation = 1.57657
+pointsWorth = 75
 flyingPattern = "hoverRandomPoint"
 
 [node name="Enemy_Base2" parent="." index="1" instance=ExtResource( 2 )]
 position = Vector2( 352.999, -83.1617 )
 rotation = 1.57657
+pointsWorth = 75
 flyingPattern = "hoverRandomPoint"
 
 [node name="Enemy_Base3" parent="." index="2" instance=ExtResource( 2 )]
 position = Vector2( 570.473, -76.8121 )
 rotation = 1.57657
+pointsWorth = 75
 flyingPattern = "hoverRandomPoint"
 
 [node name="Enemy_Base4" parent="." index="3" instance=ExtResource( 2 )]
 position = Vector2( 716.514, -72.0498 )
 rotation = 1.57657
+pointsWorth = 75
 flyingPattern = "hoverRandomPoint"

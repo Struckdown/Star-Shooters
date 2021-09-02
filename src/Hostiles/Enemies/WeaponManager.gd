@@ -6,6 +6,8 @@ export(int) var timeToNextPhase
 export(float) var healthPercentToNextPhase
 var phaseTracker = 0
 var maxPhases
+var time = 0
+var active = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,14 +24,23 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	if active:
+		if phaseSwapMode != "time":
+			return
+		time += delta
+		if time >= timeToNextPhase:
+			time -= timeToNextPhase
+			phaseTracker = (phaseTracker + 1) % maxPhases
+			updatePhase()
 
 func updateHealth(currentFraction):
 	if phaseSwapMode == "health" and currentFraction > 0:
 		var healthFractionToNextPhase = (float(healthPercentToNextPhase)/100.0)
-		phaseTracker = int( (1-currentFraction) / healthFractionToNextPhase ) % maxPhases
-		updatePhase()
+		var newPhaseTracker = int( (1-currentFraction) / healthFractionToNextPhase ) % maxPhases
+		if newPhaseTracker != phaseTracker:
+			phaseTracker = newPhaseTracker
+			updatePhase()
 
 func updatePhase():
 	for child in get_children():
@@ -40,8 +51,9 @@ func updatePhase():
 
 
 func _on_Timer_timeout():
-	phaseTracker = (phaseTracker + 1) % maxPhases
-	updatePhase()
+	return
+#	phaseTracker = (phaseTracker + 1) % maxPhases
+#	updatePhase()
 
 func toggleDeath():
 	for child in get_children():
@@ -52,3 +64,4 @@ func toggleEmitting(state):
 	for child in get_children():
 		if child.has_method("toggleEmitting"):
 			child.toggleEmitting(state)
+	active = state

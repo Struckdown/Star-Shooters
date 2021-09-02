@@ -50,7 +50,9 @@ tracks/2/keys = {
 } ]
 }
 
-[node name="Enemy_Base" type="Node2D"]
+[node name="Enemy_Base" type="Node2D" groups=[
+"EnemyBase",
+]]
 scale = Vector2( 0.5, 0.5 )
 script = ExtResource( 2 )
 explosionType = ExtResource( 3 )

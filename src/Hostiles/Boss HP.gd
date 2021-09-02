@@ -22,7 +22,8 @@ func _process(_delta):
 		#updateBufferVisuals()
 
 
-func setup(_hpTotal):
+func setup(_hpTotal, bossName):
+	$"VBoxContainer/Boss_Name_Table/Boss Name".text = bossName
 	hpTotal = _hpTotal
 	cur_hp = _hpTotal
 	fill = hpTotal/cur_hp

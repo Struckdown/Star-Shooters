@@ -54,6 +54,7 @@ func _exit_tree():
 	if health <= 0:
 		spawnGems()
 	emit_signal("destroyed", pointsWorth)
+	get_tree().call_group("EnemyDestroyedListener", "OnEnemyDestroyed")
 
 
 func move(d):

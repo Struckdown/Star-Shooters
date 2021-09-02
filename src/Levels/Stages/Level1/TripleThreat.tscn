@@ -65,7 +65,10 @@ enemiesToDestroy = 2
 [node name="ForwardShooterSpirals" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( 452.747, -140.55 )
 rotation = 1.57079
+pointsWorth = 150
 speed = 120.0
+maxHealth = 35
+gemValue = 15
 flyingPattern = "hoverRandomPoint"
 
 [node name="Sprite" parent="ForwardShooterSpirals" index="1"]
@@ -87,6 +90,8 @@ nthBulletIsGreen = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
 position = Vector2( 207.811, -57.3825 )
 rotation = 1.57079
 speed = 120.0
+maxHealth = 15
+gemValue = 5
 flyingPattern = "hoverRandomPoint"
 
 [node name="AnimationPlayer" parent="ForwardShooter2" index="3"]
@@ -109,6 +114,8 @@ nthBulletIsGreen = [ 0, 1, 2, 3 ]
 position = Vector2( 728.175, -64.7985 )
 rotation = 1.57079
 speed = 120.0
+maxHealth = 15
+gemValue = 5
 flyingPattern = "hoverRandomPoint"
 
 [node name="AnimationPlayer" parent="ForwardShooter3" index="3"]

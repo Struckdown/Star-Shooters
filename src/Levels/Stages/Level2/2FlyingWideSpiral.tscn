@@ -10,7 +10,13 @@ timeToNextWave = 5
 [node name="SpiralShooter" parent="." index="0" instance=ExtResource( 3 )]
 position = Vector2( 644.293, -92.9798 )
 rotation = 1.57079
+pointsWorth = 125
+maxHealth = 35
+gemValue = 15
 
 [node name="SpiralShooter2" parent="." index="1" instance=ExtResource( 3 )]
 position = Vector2( 291.84, -92.9798 )
 rotation = 1.57079
+pointsWorth = 125
+maxHealth = 35
+gemValue = 15

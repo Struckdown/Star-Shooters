@@ -1,26 +1,31 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Hostiles/Enemies/Boss_1.gd" type="Script" id=1]
 [ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlack4.png" type="Texture" id=3]
 [ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hostiles/WeaponManager.tscn" type="PackedScene" id=6]
 
 [node name="Boss_1" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 pointsWorth = 2500
 maxHealth = 50
+gemValue = 175
 flyingPattern = "TBD"
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 3 )
 
 [node name="WeaponManager" parent="." index="4"]
+phaseSwapMode = "health"
+healthPercentToNextPhase = 66.0
+
+[node name="WeaponManager1" parent="WeaponManager" index="1" instance=ExtResource( 6 )]
 phaseSwapMode = "time"
 timeToNextPhase = 3
-healthPercentToNextPhase = 50.0
 
-[node name="RotatingE" parent="WeaponManager" index="1" instance=ExtResource( 4 )]
+[node name="RotatingE" parent="WeaponManager/WeaponManager1" index="1" instance=ExtResource( 4 )]
 rotation = -0.785398
 rotationPerVolley = 10.0
 rotationRange = 90.0
@@ -31,7 +36,7 @@ bulletSpawnDelay = 0.1
 bulletType = ExtResource( 5 )
 emitting = false
 
-[node name="TrackerE" parent="WeaponManager/RotatingE" index="1" instance=ExtResource( 4 )]
+[node name="TrackerE" parent="WeaponManager/WeaponManager1/RotatingE" index="1" instance=ExtResource( 4 )]
 targetStyle = "atTarget"
 fireAtLocationForWholeClip = false
 bulletMovementSpeed = 350
@@ -39,7 +44,7 @@ bulletSpawnDelay = 0.2
 bulletType = ExtResource( 5 )
 emitting = false
 
-[node name="SpreadE" parent="WeaponManager" index="2" instance=ExtResource( 4 )]
+[node name="SpreadE" parent="WeaponManager/WeaponManager1" index="2" instance=ExtResource( 4 )]
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 amountOfBullets = 19
@@ -49,7 +54,7 @@ bulletType = ExtResource( 5 )
 initialSpawnDelayRandomRange = 0.0
 emitting = false
 
-[node name="SpreadE2" parent="WeaponManager/SpreadE" index="1" instance=ExtResource( 4 )]
+[node name="SpreadE2" parent="WeaponManager/WeaponManager1/SpreadE" index="1" instance=ExtResource( 4 )]
 targetStyle = "straight"
 useRotationAsCenterBullet = true
 angleOfBulletSpread = 25.0
@@ -63,3 +68,21 @@ greenBulletFrequency = 1
 nthBulletIsGreen = [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 emitting = false
 DEBUG = true
+
+[node name="WeaponManager2" parent="WeaponManager" index="2" instance=ExtResource( 6 )]
+rotation = -0.523599
+
+[node name="Sprayer" parent="WeaponManager/WeaponManager2" index="1" instance=ExtResource( 4 )]
+rotationPerVolley = 2.0
+rotationRange = 60.0
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 18.0
+amountOfBullets = 5
+bulletMovementSpeed = 80
+bulletSpawnDelay = 0.2
+bulletType = ExtResource( 5 )
+initialSpawnDelayConstant = 1.0
+initialSpawnDelayRandomRange = 0.0
+nthBulletIsGreen = [ 0 ]
+emitting = false

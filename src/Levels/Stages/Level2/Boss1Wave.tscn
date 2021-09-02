@@ -7,6 +7,7 @@
 script = ExtResource( 2 )
 enemiesToDestroy = 1
 usesBossHP = true
+bossName = "Hydra Dreadnought"
 musicRequest = "res://Levels/BossBattle.mp3"
 
 [node name="Boss_1" parent="." instance=ExtResource( 1 )]

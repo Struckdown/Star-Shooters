@@ -9,6 +9,7 @@ enemiesToDestroy = 1
 [node name="ForwardShooter" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( 510.669, -107.802 )
 rotation = 1.57079
+pointsWorth = 50
 moveGoal = Vector2( 0, 200 )
 flyingPattern = "hoverMoveGoal"
 

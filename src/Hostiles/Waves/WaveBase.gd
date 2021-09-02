@@ -8,6 +8,7 @@ export(String, "enemies", "time", "other") var waveAdvanceCondition = "enemies"
 export(int) var enemiesToDestroy = 0
 export(int) var timeToNextWave
 export(bool) var usesBossHP = false	# level manager uses this to connect this to the enemy
+export(String) var bossName = ""
 export(String) var musicRequest = ""
 var bossHPRef
 var waveFinishedSignalEmitted = false
@@ -49,7 +50,6 @@ func setupAdvanceCondition():
 			timer.set_wait_time(timeToNextWave)
 			timer.one_shot = true
 			timer.start()
-			print("Setup time wave")
 		"other":
 			otherAdvanceCondition()
 
@@ -63,7 +63,7 @@ func setUpBossHP():	# used by level manager
 			hpTotal += child.maxHealth
 			child.setHealthBarRef(bossHPRef)
 	
-	bossHPRef.setup(hpTotal)
+	bossHPRef.setup(hpTotal, bossName)
 	
 
 func updateEnemyCount(pointsWorth):
