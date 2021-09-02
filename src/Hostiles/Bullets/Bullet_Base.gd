@@ -16,6 +16,7 @@ export(float) var rotationSpeed = 0
 export(NodePath) var nodeToRotate
 var orbitalChildren = -1	# used by rotationalBullet
 var orbitalRotationSpeedDegs = 0
+var canCauseDamage = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -35,7 +36,9 @@ func _process(delta):
 	move(delta*GameManager.gameSpeed)
 
 func _on_DespawnTimer_timeout():
-	queue_free()
+	canCauseDamage = false
+	$EndOfLifeTween.interpolate_property(self, "modulate", self.modulate.a, 0, 1)
+	$EndOfLifeTween.start()
 
 func setGeneratesEnergy(generates):
 	generatesEnergy = generates
@@ -43,7 +46,9 @@ func setGeneratesEnergy(generates):
 		changeEnergySprite()
 
 func changeEnergySprite():
-	get_node("Sprite").texture = load(energySprite)
+	if energySprite:
+		get_node("Sprite").texture = load(energySprite)
+
 
 func move(delta):
 	var forwardVec = Vector2(1, 0).rotated(rotation).normalized()
@@ -64,3 +69,7 @@ func markEnergyDrained():
 	if not energyGenerated:
 		energyGenerated = true
 		modulate = modulate*0.8
+
+
+func _on_EndOfLifeTween_tween_completed(_object, _key):
+	queue_free()

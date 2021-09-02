@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyRed1.png" type="Texture" id=3]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 847.216, 149.215, 279.105, 145.566, -279.105, -145.566, 342.34, 288.074, 0, 0, 0, 0, 305.913, -35.7175 )
+}
+
+[node name="WaveBase" instance=ExtResource( 1 )]
+waveAdvanceCondition = "time"
+timeToNextWave = 3
+
+[node name="Enemy_Base" parent="." index="0" instance=ExtResource( 2 )]
+position = Vector2( 851.836, 146.108 )
+rotation = -3.92699
+speed = 40.0
+maxHealth = 120
+gemValue = 75
+moveGoal = Vector2( 0, 100 )
+flyPaths = [ NodePath("../Path2D") ]
+flyingPattern = "followPath"
+
+[node name="Sprite" parent="Enemy_Base" index="1"]
+texture = ExtResource( 3 )
+
+[node name="WeaponManager" parent="Enemy_Base" index="4"]
+rotation = 1.309
+phaseSwapMode = "health"
+timeToNextPhase = 3
+
+[node name="Path2D" type="Path2D" parent="." index="1"]
+curve = SubResource( 1 )
+
+[editable path="Enemy_Base"]

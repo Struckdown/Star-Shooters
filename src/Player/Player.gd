@@ -162,13 +162,15 @@ func spawnEnergyCollectedParticles():
 # When the core is hit, you die
 func _on_CoreArea_area_entered(area):
 	if area.is_in_group("Hostile") and not dying and not respawnInvuln and not godMode:
-		dying = true
-		#hasControl = false
-		$AnimationPlayer.play("Explosion")
-		var followingP = load("res://Utility/FollowingParticles.tscn")
-		followingP = followingP.instance()
-		followingP.init(deathExplosion, self)
-		get_tree().root.add_child(followingP)
+		var bul = area.owner
+		if bul.canCauseDamage:
+			dying = true
+			#hasControl = false
+			$AnimationPlayer.play("Explosion")
+			var followingP = load("res://Utility/FollowingParticles.tscn")
+			followingP = followingP.instance()
+			followingP.init(deathExplosion, self)
+			get_tree().root.add_child(followingP)
 
 func spawn():
 	$AnimationPlayer.play("Spawn")

@@ -37,6 +37,9 @@ enemiesToDestroy = 1
 [node name="SpiralShooter" parent="." index="0" instance=ExtResource( 3 )]
 position = Vector2( -35.4573, 120.242 )
 rotation = 1.57079
+pointsWorth = 150
+maxHealth = 40
+gemValue = 20
 moveGoal = Vector2( 200, 15 )
 flyingPattern = "hoverMoveGoal"
 
@@ -57,6 +60,9 @@ orbitalChildren = 5
 [node name="SpiralShooter2" parent="." index="1" instance=ExtResource( 3 )]
 position = Vector2( 899.986, 136.278 )
 rotation = 1.57079
+pointsWorth = 150
+maxHealth = 40
+gemValue = 20
 moveGoal = Vector2( -200, 15 )
 flyingPattern = "hoverMoveGoal"
 

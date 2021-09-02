@@ -1,11 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Levels/Stages/Level.gd" type="Script" id=1]
 [ext_resource path="res://Levels/Stages/Level3/Orbiter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/Stages/Level3/W2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/Stages/Level3/W3.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/Stages/Level3/W4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Stages/Level3/W6.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Levels/Stages/Level3/W5.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Levels/Stages/Level3/W7.tscn" type="PackedScene" id=8]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
-waves = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ]
+waves = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ) ]

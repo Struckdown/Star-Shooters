@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hostiles/Bullets/OrbitalBullet.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlack2.png" type="Texture" id=5]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 96.6408, -90.6476, -96.6408, 90.6476, 132.92, 191.759, 833.294, 11.6085, -833.294, -11.6085, 405.612, 526.631, 190.285, 94.3934, -190.285, -94.3934, 843.118, 146.061 )
+}
+
+[node name="WaveBase" instance=ExtResource( 1 )]
+waveAdvanceCondition = "time"
+timeToNextWave = 3
+
+[node name="Enemy_Base" parent="." index="0" instance=ExtResource( 2 )]
+position = Vector2( -36.6601, 122.135 )
+rotation = -5.65548
+maxHealth = 60
+gemValue = 30
+moveGoal = Vector2( 0, 100 )
+flyPaths = [ NodePath("../Path2D") ]
+loopFlyPaths = true
+flyingPattern = "followPath"
+
+[node name="Sprite" parent="Enemy_Base" index="1"]
+texture = ExtResource( 5 )
+
+[node name="WeaponManager" parent="Enemy_Base" index="4"]
+rotation = 1.309
+phaseSwapMode = "time"
+timeToNextPhase = 3
+
+[node name="BulletEmitter" parent="Enemy_Base/WeaponManager" index="1" instance=ExtResource( 3 )]
+targetStyle = "atTarget"
+bulletMovementSpeed = 30
+bulletType = ExtResource( 4 )
+initialSpawnDelayRandomRange = 2.0
+nthBulletIsGreen = [ 0 ]
+orbitalChildren = 3
+orbitalRotationSpeedDegs = 45.0
+
+[node name="Path2D" type="Path2D" parent="." index="1"]
+curve = SubResource( 1 )
+
+[editable path="Enemy_Base"]
