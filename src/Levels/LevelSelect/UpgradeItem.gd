@@ -20,6 +20,7 @@ func _ready():
 			"startingCost": baseCost,
 		}
 	curCost = getCost(upgradeLevel)
+	updateProgressBarVisuals()
 	updateNextLevelText()
 	$Button/CostLbl.text = "x" + str(getCost(upgradeLevel))
 
@@ -48,6 +49,11 @@ func updateNextLevelText():	# updates the a->b text
 	else:
 		$Button/ChangeLbl.text = str(curVal) + upgradeLevelSuffix
 
+func updateProgressBarVisuals():
+	var cur = float(upgradeLevel)
+	var maximum = float(len(UpgradeManager.upgrades[upgradeName]["upgradeLevels"])) - 1
+	var upgradePercent =  cur / maximum
+	$Button/ProgressBar.updateFraction(upgradePercent)
 
 func _on_Button_button_up():
 	var curGems = UpgradeManager.gems
@@ -59,5 +65,5 @@ func _on_Button_button_up():
 	updateNextLevelText()
 	curCost = getCost(upgradeLevel)
 	$Button/CostLbl.text = "x" + str(getCost(upgradeLevel))
-	#TODO update progress bar
+	updateProgressBarVisuals()
 	UpgradeManager.upgrades[upgradeName]["curLevel"] = upgradeLevel

@@ -133,7 +133,7 @@ margin_top = 372.0
 margin_right = 881.0
 margin_bottom = 492.0
 upgradeName = "magnetRadius"
-upgradeLevels = [ 0.0, 40.0, 80.0, 120.0 ]
+upgradeLevels = [ 40.0, 80.0, 120.0, 160.0 ]
 upgradeLevelSuffix = "px"
 baseCost = 70
 
