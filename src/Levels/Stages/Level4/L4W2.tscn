@@ -4,17 +4,22 @@
 [ext_resource path="res://Hostiles/Bullets/Bullet_Gravity.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Enemies/CircleShooter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -20.0316, 406.016, -102.882, 5.66325, 102.882, -5.66325, 217.377, 58.3018, -131.199, 6.60712, 131.199, -6.60712, 448.626, 384.882, -83.0609, -0.943874, 83.0609, 0.943874, 743.115, 78.1232, 0, 0, 0, 0, 850.737, 86.6643 )
+}
 
 [node name="WaveBase" instance=ExtResource( 1 )]
 waveAdvanceCondition = "time"
-enemiesToDestroy = 1
+timeToNextWave = 2
 
 [node name="SpiralShooter" parent="." index="0" instance=ExtResource( 3 )]
-position = Vector2( 492.696, -58.057 )
-rotation = 1.57079
+position = Vector2( -26.2865, 414.596 )
+rotation = -0.785397
 moveGoal = Vector2( 0, 100 )
-flyingPattern = "hoverMoveGoal"
+flyPaths = [ NodePath("../Path2D") ]
+flyingPattern = "followPath"
 
 [node name="BulletEmitter" parent="SpiralShooter/WeaponManager" index="1"]
 rotationDegPerSec = 0
@@ -29,22 +34,16 @@ nthBulletIsGreen = [  ]
 
 [node name="GravEmitter" parent="SpiralShooter/WeaponManager/BulletEmitter" index="1" instance=ExtResource( 4 )]
 targetStyle = "atTarget"
-angleOfBulletSpread = 0.0
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 35.0
+amountOfBullets = 4
 bulletMovementSpeed = 80
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 2 )
-initialSpawnDelayRandomRange = 3.0
+initialSpawnDelayRandomRange = 2.0
 
-[node name="BulletEmitter3" parent="SpiralShooter/WeaponManager/BulletEmitter" index="2" instance=ExtResource( 4 )]
-targetStyle = "atTarget"
-useRotationAsCenterBullet = true
-fireAtLocationForWholeClip = false
-angleOfBulletSpread = 5.0
-amountOfBullets = 3
-bulletMovementSpeed = 100
-bulletType = ExtResource( 5 )
-initialSpawnDelayConstant = 1.5
-initialSpawnDelayRandomRange = 0.0
-nthBulletIsGreen = [ 0 ]
+[node name="Path2D" type="Path2D" parent="." index="1"]
+curve = SubResource( 1 )
 
 [editable path="SpiralShooter"]

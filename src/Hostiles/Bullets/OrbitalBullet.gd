@@ -29,3 +29,10 @@ func setGeneratesEnergy(generates):
 func setChildren(x:int):
 	$RotationRing.numOfChildren = x
 	$RotationRing.init()
+
+func _on_DespawnTimer_timeout():
+	._on_DespawnTimer_timeout()
+	for child in $RotationRing/RotatingChildren.get_children():
+		if child.has_method("startFadeOut"):
+			child.startFadeOut()
+		

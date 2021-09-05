@@ -37,7 +37,13 @@ func _process(delta):
 
 func _on_DespawnTimer_timeout():
 	canCauseDamage = false
-	$EndOfLifeTween.interpolate_property(self, "modulate", self.modulate.a, 0, 1)
+	startFadeOut()
+
+func startFadeOut():
+	var initColor = $Sprite.modulate
+	var finalColor = initColor
+	finalColor[3] = 0
+	$EndOfLifeTween.interpolate_property($Sprite, "modulate", initColor, finalColor, 1)
 	$EndOfLifeTween.start()
 
 func setGeneratesEnergy(generates):

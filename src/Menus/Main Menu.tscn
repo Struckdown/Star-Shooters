@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Space Backgrounds/space_background_pack/ScrollingShader2.shader" type="Shader" id=1]
 [ext_resource path="res://Menus/Main Menu.gd" type="Script" id=2]
@@ -32,6 +32,23 @@ size = 48
 outline_size = 2
 outline_color = Color( 0.176471, 0.882353, 0.027451, 1 )
 font_data = ExtResource( 12 )
+
+[sub_resource type="Animation" id=6]
+resource_name = "TitleScreenAnim"
+length = 14.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Title:custom_fonts/font:outline_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 3, 6.6, 9.5, 11.6, 14 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 0.176471, 0.882353, 0.027451, 1 ), Color( 0.713726, 0.65098, 0.121569, 1 ), Color( 0.4, 0.607843, 0.898039, 1 ), Color( 0.819608, 0.0509804, 0.807843, 1 ), Color( 0.647059, 0.572549, 0.317647, 1 ), Color( 0.176471, 0.882353, 0.027451, 1 ) ]
+}
 
 [sub_resource type="Animation" id=4]
 resource_name = "default"
@@ -303,6 +320,10 @@ align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TitleContainer"]
+autoplay = "TitleScreenAnim"
+anims/TitleScreenAnim = SubResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
