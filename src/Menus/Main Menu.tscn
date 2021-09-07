@@ -33,7 +33,7 @@ outline_size = 2
 outline_color = Color( 0.176471, 0.882353, 0.027451, 1 )
 font_data = ExtResource( 12 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "TitleScreenAnim"
 length = 14.0
 loop = true
@@ -50,8 +50,7 @@ tracks/0/keys = {
 "values": [ Color( 0.176471, 0.882353, 0.027451, 1 ), Color( 0.713726, 0.65098, 0.121569, 1 ), Color( 0.4, 0.607843, 0.898039, 1 ), Color( 0.819608, 0.0509804, 0.807843, 1 ), Color( 0.647059, 0.572549, 0.317647, 1 ), Color( 0.176471, 0.882353, 0.027451, 1 ) ]
 }
 
-[sub_resource type="Animation" id=4]
-resource_name = "default"
+[sub_resource type="Animation" id=5]
 length = 4.0
 loop = true
 tracks/0/type = "value"
@@ -139,8 +138,7 @@ tracks/6/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0.5, 0.5, 0.5, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "reset"
+[sub_resource type="Animation" id=6]
 length = 0.5
 
 [node name="Main Menu" type="Control"]
@@ -157,16 +155,16 @@ position = Vector2( 522.211, 327.011 )
 scale = Vector2( 4.07493, 2.76301 )
 texture = ExtResource( 3 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MainBtns" type="VBoxContainer" parent="."]
 margin_left = 741.0
 margin_top = 355.0
 margin_right = 963.0
-margin_bottom = 437.0
+margin_bottom = 566.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayBtn" type="TextureButton" parent="VBoxContainer"]
+[node name="PlayBtn" type="TextureButton" parent="MainBtns"]
 margin_right = 222.0
 margin_bottom = 39.0
 focus_neighbour_top = NodePath("../ExitBtn")
@@ -180,18 +178,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayLbl" type="Label" parent="VBoxContainer/PlayBtn"]
+[node name="PlayLbl" type="Label" parent="MainBtns/PlayBtn"]
 margin_right = 222.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 2 )
-text = "New Game"
+text = "Play"
 align = 1
 valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="InfiniteBtn" type="TextureButton" parent="VBoxContainer"]
+[node name="InfiniteBtn" type="TextureButton" parent="MainBtns"]
 modulate = Color( 0.537255, 0.537255, 0.537255, 1 )
 margin_top = 43.0
 margin_right = 222.0
@@ -208,7 +206,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="InfiniteLbl" type="Label" parent="VBoxContainer/InfiniteBtn"]
+[node name="InfiniteLbl" type="Label" parent="MainBtns/InfiniteBtn"]
 margin_right = 222.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 2 )
@@ -219,12 +217,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Lock" type="Sprite" parent="VBoxContainer/InfiniteBtn"]
+[node name="Lock" type="Sprite" parent="MainBtns/InfiniteBtn"]
 position = Vector2( 110.858, 19.716 )
 scale = Vector2( 1.47247, 1.47247 )
 texture = ExtResource( 16 )
 
-[node name="TutorialBtn" type="TextureButton" parent="VBoxContainer"]
+[node name="TutorialBtn" type="TextureButton" parent="MainBtns"]
 margin_top = 86.0
 margin_right = 222.0
 margin_bottom = 125.0
@@ -239,7 +237,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TutorialLbl" type="Label" parent="VBoxContainer/TutorialBtn"]
+[node name="TutorialLbl" type="Label" parent="MainBtns/TutorialBtn"]
 margin_right = 222.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 2 )
@@ -250,7 +248,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OptionsBtn" type="TextureButton" parent="VBoxContainer"]
+[node name="OptionsBtn" type="TextureButton" parent="MainBtns"]
 margin_top = 129.0
 margin_right = 222.0
 margin_bottom = 168.0
@@ -265,7 +263,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="OptionsLbl" type="Label" parent="VBoxContainer/OptionsBtn"]
+[node name="OptionsLbl" type="Label" parent="MainBtns/OptionsBtn"]
 margin_right = 222.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 2 )
@@ -276,7 +274,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ExitBtn" type="TextureButton" parent="VBoxContainer"]
+[node name="ExitBtn" type="TextureButton" parent="MainBtns"]
 margin_top = 172.0
 margin_right = 222.0
 margin_bottom = 211.0
@@ -291,11 +289,98 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ExitLbl" type="Label" parent="VBoxContainer/ExitBtn"]
+[node name="ExitLbl" type="Label" parent="MainBtns/ExitBtn"]
 margin_right = 222.0
 margin_bottom = 40.0
 custom_fonts/font = SubResource( 2 )
 text = "Exit"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PlayBtns" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 741.0
+margin_top = 406.311
+margin_right = 963.0
+margin_bottom = 445.311
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueBtn" type="TextureButton" parent="PlayBtns"]
+margin_right = 222.0
+margin_bottom = 39.0
+focus_neighbour_top = NodePath("../BackBtn")
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ContinueLbl" type="Label" parent="PlayBtns/ContinueBtn"]
+margin_right = 222.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 2 )
+text = "Continue"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGameBtn" type="TextureButton" parent="PlayBtns"]
+margin_top = 43.0
+margin_right = 222.0
+margin_bottom = 82.0
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewGameLbl" type="Label" parent="PlayBtns/NewGameBtn"]
+margin_right = 222.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 2 )
+text = "New Game"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackBtn" type="TextureButton" parent="PlayBtns"]
+margin_top = 86.0
+margin_right = 222.0
+margin_bottom = 125.0
+focus_neighbour_bottom = NodePath("../ContinueBtn")
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackLbl" type="Label" parent="PlayBtns/BackBtn"]
+margin_right = 222.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 2 )
+text = "Back"
 align = 1
 valign = 1
 __meta__ = {
@@ -323,12 +408,12 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TitleContainer"]
 autoplay = "TitleScreenAnim"
-anims/TitleScreenAnim = SubResource( 6 )
+anims/TitleScreenAnim = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/default = SubResource( 4 )
-anims/reset = SubResource( 5 )
+anims/default = SubResource( 5 )
+anims/reset = SubResource( 6 )
 
 [node name="Player" parent="AnimationPlayer" instance=ExtResource( 5 )]
 position = Vector2( 503.579, 528.93 )
@@ -371,16 +456,22 @@ bus = "SFX"
 stream = ExtResource( 15 )
 bus = "SFX"
 
-[connection signal="button_up" from="VBoxContainer/PlayBtn" to="." method="_on_Menu_button_up" binds= [ "play" ]]
-[connection signal="mouse_entered" from="VBoxContainer/PlayBtn" to="." method="_on_Btn_mouse_entered"]
-[connection signal="button_up" from="VBoxContainer/InfiniteBtn" to="." method="_on_Menu_button_up" binds= [ "infinite" ]]
-[connection signal="mouse_entered" from="VBoxContainer/InfiniteBtn" to="." method="_on_Btn_mouse_entered"]
-[connection signal="button_up" from="VBoxContainer/TutorialBtn" to="." method="_on_Menu_button_up" binds= [ "tutorial" ]]
-[connection signal="mouse_entered" from="VBoxContainer/TutorialBtn" to="." method="_on_Btn_mouse_entered"]
-[connection signal="button_up" from="VBoxContainer/OptionsBtn" to="." method="_on_Menu_button_up" binds= [ "options" ]]
-[connection signal="mouse_entered" from="VBoxContainer/OptionsBtn" to="." method="_on_Btn_mouse_entered"]
-[connection signal="button_up" from="VBoxContainer/ExitBtn" to="." method="_on_Menu_button_up" binds= [ "exit" ]]
-[connection signal="mouse_entered" from="VBoxContainer/ExitBtn" to="." method="_on_Btn_mouse_entered"]
+[connection signal="button_up" from="MainBtns/PlayBtn" to="." method="_on_Menu_button_up" binds= [ "play" ]]
+[connection signal="mouse_entered" from="MainBtns/PlayBtn" to="." method="_on_Btn_mouse_entered"]
+[connection signal="button_up" from="MainBtns/InfiniteBtn" to="." method="_on_Menu_button_up" binds= [ "infinite" ]]
+[connection signal="mouse_entered" from="MainBtns/InfiniteBtn" to="." method="_on_Btn_mouse_entered"]
+[connection signal="button_up" from="MainBtns/TutorialBtn" to="." method="_on_Menu_button_up" binds= [ "tutorial" ]]
+[connection signal="mouse_entered" from="MainBtns/TutorialBtn" to="." method="_on_Btn_mouse_entered"]
+[connection signal="button_up" from="MainBtns/OptionsBtn" to="." method="_on_Menu_button_up" binds= [ "options" ]]
+[connection signal="mouse_entered" from="MainBtns/OptionsBtn" to="." method="_on_Btn_mouse_entered"]
+[connection signal="button_up" from="MainBtns/ExitBtn" to="." method="_on_Menu_button_up" binds= [ "exit" ]]
+[connection signal="mouse_entered" from="MainBtns/ExitBtn" to="." method="_on_Btn_mouse_entered"]
+[connection signal="button_up" from="PlayBtns/ContinueBtn" to="." method="_on_Menu_button_up" binds= [ "continue" ]]
+[connection signal="mouse_entered" from="PlayBtns/ContinueBtn" to="." method="_on_Btn_mouse_entered"]
+[connection signal="button_up" from="PlayBtns/NewGameBtn" to="." method="_on_Menu_button_up" binds= [ "new game" ]]
+[connection signal="mouse_entered" from="PlayBtns/NewGameBtn" to="." method="_on_Btn_mouse_entered"]
+[connection signal="button_up" from="PlayBtns/BackBtn" to="." method="_on_Menu_button_up" binds= [ "back" ]]
+[connection signal="mouse_entered" from="PlayBtns/BackBtn" to="." method="_on_Btn_mouse_entered"]
 
 [editable path="AnimationPlayer/Bullet_Straight"]
 [editable path="AnimationPlayer/Bullet_Straight2"]
