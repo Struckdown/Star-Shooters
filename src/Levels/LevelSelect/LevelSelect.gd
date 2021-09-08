@@ -13,8 +13,14 @@ func _ready():
 	BGM.transitionSong("res://Menus/MainMenuBGM.mp3")	# Todo: Find new level select music?
 	#GameManager.load_game()
 	#get_nodes_in_group()
-	mapPlayerRef = get_tree().get_nodes_in_group("Player")
+	mapPlayerRef = get_tree().get_nodes_in_group("Player")[0]
+	mapPlayerRef.position = GameManager.mapPlayerLastPos
+	mapPlayerRef.rotation = GameManager.mapPlayerLastRot
 
+func _exit_tree():
+	GameManager.mapPlayerLastPos = mapPlayerRef.position
+	GameManager.mapPlayerLastRot = mapPlayerRef.rotation
+	GameManager.saveGame()
 
 func _input(event):
 	if event.is_action_pressed("fire"):
@@ -41,10 +47,9 @@ func updateSelectedLevel(planet):
 		$CanvasLayer/MissionBriefing.updateText(planet)
 
 
-func _on_MissionBriefing_deploy():
+func _on_MissionBriefing_deploy():	# note this also runs at the same time as exit_tree
 	if selectedLevel != null:
 		GameManager.stage = selectedLevel
-		GameManager.saveGame()
 		SceneTransition.transitionToScene("res://Levels/Stages/MainWorld.tscn")
 
 
@@ -63,9 +68,8 @@ func _on_UpgradePlanet_playerNearby(ref):
 
 
 func updatePlayerAllowedToMove(allowed):
-	for player in mapPlayerRef:
-		if is_instance_valid(player):
-			player.canMove = allowed
+	if is_instance_valid(mapPlayerRef):
+		mapPlayerRef.canMove = allowed
 
 
 func _on_UpgradeMenu_shopClosed():

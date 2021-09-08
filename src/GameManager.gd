@@ -4,22 +4,34 @@ extends Node2D
 var score = 0
 var playerLives = 3
 var stage = null
+var stagesCompleted = []
 var lastPlayedStage = null
 var gameMode = null
+var mapPlayerLastPos = Vector2(496.063, 303.194)
+var mapPlayerLastRot = 0
 var gameSpeed = 1	#1 is normal speed
 
-func _ready():
-	pass
+var saveGameFileName = "user://savegame.save"
 
-func resetGame():
+func _ready():
+	load_game()
+	
+
+func clearSaveData():
 	score = 0
-	playerLives = 3
 	stage = null
+	stagesCompleted = []
 	lastPlayedStage = null
 	gameMode = null
+	mapPlayerLastPos = Vector2(496.063, 303.194)
+	mapPlayerLastRot = 0
 
 func resetPlayerLives():
 	playerLives = 3	#called whenever level select is hit?
+
+func updateStagesCompleted(level):
+	if not stagesCompleted.has(level):
+		stagesCompleted.append(level)
 
 func updateScores(newScore: int) -> void:
 	var scores_save = File.new()
@@ -44,9 +56,13 @@ func updateScores(newScore: int) -> void:
 
 func saveGame():
 	UpgradeManager.saveGame()
+	var save_game = File.new()
+	save_game.open(saveGameFileName, File.WRITE)
+	save_game.store_line(to_json(stagesCompleted))
+	save_game.store_var(mapPlayerLastPos)
+	save_game.store_var(mapPlayerLastRot)
 	return
-#	var save_game = File.new()
-#	save_game.open("user://savegame.save", File.WRITE)
+
 #	var save_nodes = get_tree().get_nodes_in_group("Persist")
 #	for node in save_nodes:
 #		# Check the node is an instanced scene so it can be instanced again during load.
@@ -70,12 +86,14 @@ func saveGame():
 
 func load_game():
 	UpgradeManager.load_game()
-	return
-#	var save_game = File.new()
-#	if not save_game.file_exists("user://savegame.save"):
-#		print("Game save doesn't exist, can't load anything!")
-#		return # Error! We don't have a save to load.
-#
+	var save_game = File.new()
+	if not save_game.file_exists(saveGameFileName):
+		print("Game save doesn't exist, can't load anything!")
+		return # Error! We don't have a save to load.
+	save_game.open(saveGameFileName, File.READ)
+	stagesCompleted = parse_json(save_game.get_line())
+	mapPlayerLastPos = save_game.get_var()
+	mapPlayerLastRot = save_game.get_var()
 #	# We need to revert the game state so we're not cloning objects
 #	# during loading. This will vary wildly depending on the needs of a
 #	# project, so take care with this step.

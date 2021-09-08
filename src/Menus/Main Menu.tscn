@@ -303,16 +303,29 @@ __meta__ = {
 [node name="PlayBtns" type="VBoxContainer" parent="."]
 visible = false
 margin_left = 741.0
-margin_top = 406.311
+margin_top = 336.517
 margin_right = 963.0
-margin_bottom = 445.311
+margin_bottom = 522.517
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MissionsCompletedLbl" type="Label" parent="PlayBtns"]
+margin_right = 222.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 2 )
+text = "Missions Completed: 0"
+align = 1
+valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ContinueBtn" type="TextureButton" parent="PlayBtns"]
+margin_top = 61.0
 margin_right = 222.0
-margin_bottom = 39.0
+margin_bottom = 100.0
 focus_neighbour_top = NodePath("../BackBtn")
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
@@ -335,9 +348,9 @@ __meta__ = {
 }
 
 [node name="NewGameBtn" type="TextureButton" parent="PlayBtns"]
-margin_top = 43.0
+margin_top = 104.0
 margin_right = 222.0
-margin_bottom = 82.0
+margin_bottom = 143.0
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
@@ -361,9 +374,9 @@ __meta__ = {
 }
 
 [node name="BackBtn" type="TextureButton" parent="PlayBtns"]
-margin_top = 86.0
+margin_top = 147.0
 margin_right = 222.0
-margin_bottom = 125.0
+margin_bottom = 186.0
 focus_neighbour_bottom = NodePath("../ContinueBtn")
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )

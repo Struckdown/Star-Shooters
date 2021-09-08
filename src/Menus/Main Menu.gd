@@ -17,9 +17,9 @@ func _ready():
 	$BG.texture = load(bg)
 	if $CanvasLayer/Settings.connect("closed", self, "hideSettings"):
 		print("CanvasLayer/Settings connect failed???")
-	GameManager.resetGame()
 	BGM.transitionSong("res://Menus/MainMenuBGM.mp3")
 	get_node("MainBtns/PlayBtn").grab_focus()
+	$PlayBtns/MissionsCompletedLbl.text = "Missions Completed: " + str(len(GameManager.stagesCompleted))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -47,6 +47,8 @@ func _on_Menu_button_up(btn):
 				GameManager.gameMode = "Main"
 				$ButtonClickedSFX.play()
 				UpgradeManager.clearSaveData()
+				GameManager.clearSaveData()
+				GameManager.saveGame()
 				$"/root/SceneTransition".transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")
 		"infinite":
 			if $MainBtns/InfiniteBtn.is_hovered():

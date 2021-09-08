@@ -9,7 +9,7 @@ var saveFileName = "user://upgradeManager.save"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	load_game()
+	pass	# loaded by upgradeManager
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,7 +33,7 @@ func saveGame():
 func load_game():
 	var save_game = File.new()
 	if not save_game.file_exists(saveFileName):
-		print("Game save doesn't exist, can't load anything!")
+		print("Upgrade save doesn't exist, can't load anything!")
 		return # Error! We don't have a save to load.
 	save_game.open(saveFileName, File.READ)
 	upgrades = save_game.get_var()

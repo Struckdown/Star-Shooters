@@ -76,6 +76,7 @@ func updateWavesFinished():
 	if wavesComplete >= waves.size():
 		levelWon = true
 		playerRef.godMode = true
+		GameManager.updateStagesCompleted(level)
 		if not levelLost:
 			$"CanvasLayer/Level Won".playLevelComplete()
 			$LevelWonGemCollectDelayTimer.start()
