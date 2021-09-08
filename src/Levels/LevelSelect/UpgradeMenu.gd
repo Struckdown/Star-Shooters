@@ -24,6 +24,7 @@ func display(shouldDisplay):
 
 func _on_CloseButton_button_up():
 	display(false)
+	$WindowTexture/CloseButton/CloseSFX.play()
 	emit_signal("shopClosed")
 	$WindowTexture/CloseButton.release_focus()
 

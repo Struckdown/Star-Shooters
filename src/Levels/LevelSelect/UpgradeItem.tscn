@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Levels/LevelSelect/UpgradeProgressBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Menus/UI_ErrorSFX.mp3" type="AudioStream" id=2]
 [ext_resource path="res://Art Packs/SpinningCrystals/Original/Blue/gem6/0001.png" type="Texture" id=3]
 [ext_resource path="res://Space Shooter GUI/PNG/Hangar/Dot_02.png" type="Texture" id=4]
 [ext_resource path="res://Space Shooter GUI/PNG/Pause/Table.png" type="Texture" id=5]
 [ext_resource path="res://Levels/LevelSelect/UpgradeMenuFont.tres" type="DynamicFont" id=6]
 [ext_resource path="res://Space Shooter GUI/PNG/Pause/SelectedTable.png" type="Texture" id=7]
 [ext_resource path="res://Levels/LevelSelect/UpgradeItem.gd" type="Script" id=8]
+[ext_resource path="res://Levels/LevelSelect/UpgradeSFX.mp3" type="AudioStream" id=9]
 
 [node name="UpgradeItem" type="MarginContainer"]
 margin_right = 905.0
@@ -90,5 +92,13 @@ margin_bottom = 83.475
 rect_min_size = Vector2( 64, 64 )
 texture = ExtResource( 4 )
 expand = true
+
+[node name="UpgradeSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+bus = "SFX"
+
+[node name="ErrorSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+bus = "SFX"
 
 [connection signal="button_up" from="Button" to="." method="_on_Button_button_up"]

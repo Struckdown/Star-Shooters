@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Levels/LevelSelect/UpgradeMenuFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Levels/LevelSelect/UpgradeItem.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Space Shooter GUI/PNG/Buttons/BTNs_Active/Close_BTN.png" type="Texture" id=7]
 [ext_resource path="res://Space Shooter GUI/PNG/Hangar/Speed_Icon.png" type="Texture" id=8]
 [ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Cristal_Icon.png" type="Texture" id=9]
+[ext_resource path="res://Menus/UI_ButtonClicked.mp3" type="AudioStream" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Display"
@@ -157,6 +158,10 @@ expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="CloseSFX" type="AudioStreamPlayer" parent="WindowTexture/CloseButton"]
+stream = ExtResource( 10 )
+bus = "SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Display = SubResource( 1 )

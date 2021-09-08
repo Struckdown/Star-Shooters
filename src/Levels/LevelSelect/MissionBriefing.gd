@@ -28,12 +28,14 @@ func _on_DeployBtn_visibility_changed():
 func _on_DeployBtn_pressed():
 	if buttonsInteractable:
 		emit_signal("deploy")
+		$ButtonSFX.play()
 		buttonsInteractable = false
 
 
 func _on_CancelBtn_pressed():
 	if buttonsInteractable:
 		emit_signal("cancel")
+		$ButtonSFX.play()
 		buttonsInteractable = false
 		playDisplayAnimation("backwards")
 

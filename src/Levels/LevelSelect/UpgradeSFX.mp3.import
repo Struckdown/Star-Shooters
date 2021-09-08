@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/UpgradeSFX.mp3-47916ae49c5af7fda267f88ae8d87346.mp3str"
+
+[deps]
+
+source_file="res://Levels/LevelSelect/UpgradeSFX.mp3"
+dest_files=[ "res://.import/UpgradeSFX.mp3-47916ae49c5af7fda267f88ae8d87346.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

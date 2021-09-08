@@ -73,7 +73,7 @@ func _on_Menu_button_up(btn):
 
 func hideSettings():
 	$CanvasLayer/Settings.hide()
-	get_node("VBoxContainer/OptionsBtn").grab_focus()
+	get_node("MainBtns/OptionsBtn").grab_focus()
 
 
 func _on_Btn_mouse_entered():

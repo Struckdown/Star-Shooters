@@ -58,7 +58,9 @@ func updateProgressBarVisuals():
 func _on_Button_button_up():
 	var curGems = UpgradeManager.gems
 	if str(curCost) == "MAX" or curCost > curGems or (upgradeLevel >= len(upgradeLevels)-1):
-		return	# TODO add error SFX?
+		$ErrorSFX.play()
+		return
+	$UpgradeSFX.play()
 	curGems -= curCost
 	UpgradeManager.setGems(curGems)
 	upgradeLevel += 1
