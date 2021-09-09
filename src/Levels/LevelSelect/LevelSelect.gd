@@ -4,6 +4,7 @@ var selectedLevel = null
 onready var selectedPlanet
 var mapPlayerRef
 var nearUpgradePlanet = null
+var nearStatsZone = null	# in case we have multiple?
 
 func _ready():
 	GameManager.resetPlayerLives()	# Maybe move lives out of gamemanager into level manager?
@@ -31,6 +32,9 @@ func _input(event):
 			#get_tree().set_input_as_handled()
 		if nearUpgradePlanet:
 			$CanvasLayer/UpgradeMenu.display(true)
+			updatePlayerAllowedToMove(false)
+		if nearStatsZone:
+			$CanvasLayer/StatsMenu.display(true)
 			updatePlayerAllowedToMove(false)
 	if Input.is_action_pressed("pause") and not $"CanvasLayer/Pause Menu".visible:
 		$"CanvasLayer/Pause Menu".show()
@@ -73,4 +77,12 @@ func updatePlayerAllowedToMove(allowed):
 
 
 func _on_UpgradeMenu_shopClosed():
+	updatePlayerAllowedToMove(true)
+
+
+func _on_StatsZone_playerNearby(ref):
+	nearStatsZone = ref
+
+
+func _on_StatsMenu_statsClosed():
 	updatePlayerAllowedToMove(true)

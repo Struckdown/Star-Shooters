@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Levels/LevelSelect/MissionBriefing.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art Packs/Planets2D/Planets-Atmosphere-pngs/planet-2.png" type="Texture" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://Levels/LevelSelect/UpgradePlanet.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Art Packs/Planets2D/Planets-Basic-pngs/Planet-10.png" type="Texture" id=13]
 [ext_resource path="res://Utility/M_Grayscale.tres" type="Material" id=14]
+[ext_resource path="res://Levels/LevelSelect/StatsZone.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Levels/LevelSelect/StatsMenu.tscn" type="PackedScene" id=16]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 77.1044
@@ -250,6 +252,9 @@ shape = SubResource( 6 )
 
 [node name="UpgradePlanet" parent="." instance=ExtResource( 12 )]
 
+[node name="StatsZone" parent="." instance=ExtResource( 15 )]
+position = Vector2( 119.055, -182.551 )
+
 [node name="MapPlayer" parent="." groups=[
 "Persist",
 ] instance=ExtResource( 7 )]
@@ -269,10 +274,16 @@ margin_bottom = -101.6
 
 [node name="UpgradeMenu" parent="CanvasLayer" instance=ExtResource( 11 )]
 
+[node name="StatsMenu" parent="CanvasLayer" instance=ExtResource( 16 )]
+margin_left = -6.20422
+margin_right = 33.7958
+
 [connection signal="playerNearby" from="UpgradePlanet" to="." method="_on_UpgradePlanet_playerNearby"]
+[connection signal="playerNearby" from="StatsZone" to="." method="_on_StatsZone_playerNearby"]
 [connection signal="cancel" from="CanvasLayer/MissionBriefing" to="." method="_on_MissionBriefing_cancel"]
 [connection signal="deploy" from="CanvasLayer/MissionBriefing" to="." method="_on_MissionBriefing_deploy"]
 [connection signal="shopClosed" from="CanvasLayer/UpgradeMenu" to="." method="_on_UpgradeMenu_shopClosed"]
+[connection signal="statsClosed" from="CanvasLayer/StatsMenu" to="." method="_on_StatsMenu_statsClosed"]
 
 [editable path="Levels/Planet"]
 [editable path="Levels/Planet2"]
