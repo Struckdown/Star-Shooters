@@ -153,6 +153,7 @@ margin_top = 9.91571
 margin_right = 892.832
 margin_bottom = 57.9157
 texture_normal = ExtResource( 4 )
+texture_hover = ExtResource( 7 )
 texture_focused = ExtResource( 7 )
 expand = true
 __meta__ = {

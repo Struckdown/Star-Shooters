@@ -13,6 +13,7 @@ pointsWorth = 2500
 maxHealth = 50
 gemValue = 175
 flyingPattern = "TBD"
+isBoss = true
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 3 )

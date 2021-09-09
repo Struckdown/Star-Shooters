@@ -33,6 +33,7 @@ moveGoal = Vector2( 0, 200 )
 flyPaths = [ NodePath("../Path2D"), NodePath("../Path2D2") ]
 loopFlyPaths = true
 flyingPattern = "followPath"
+isBoss = true
 
 [node name="Sprite" parent="ForwardShooter" index="1"]
 texture = ExtResource( 5 )

@@ -26,6 +26,7 @@ func _ready():
 	spawnNewPlayer(0)
 	getWaves()
 	spawnWave()
+	StatsManager.updateStats("stagesPlayed", 1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -77,6 +78,7 @@ func updateWavesFinished():
 		levelWon = true
 		playerRef.godMode = true
 		GameManager.updateStagesCompleted(level)
+		StatsManager.updateStats("stagesCleared", 1)
 		if not levelLost:
 			$"CanvasLayer/Level Won".playLevelComplete()
 			$LevelWonGemCollectDelayTimer.start()

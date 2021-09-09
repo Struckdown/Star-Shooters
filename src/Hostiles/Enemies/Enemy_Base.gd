@@ -22,6 +22,7 @@ var levelViewport
 var target	# thing to shoot
 export(String, "straight", "hoverRandomPoint", "hoverMoveGoal", "followPath", "TBD") var flyingPattern
 var healthBarRef
+export(bool) var isBoss = false
 signal tookDamage
 
 # Called when the node enters the scene tree for the first time.
@@ -135,6 +136,9 @@ func takeDamage():
 	if healthBarRef:	# technically this won't work correctly if there is overkill
 		healthBarRef.applyDamage(1)
 	if health <= 0:
+		StatsManager.updateStats("enemiesKilled", 1)
+		if isBoss:
+			StatsManager.updateStats("bossesDefeated", 1)
 		destroy()
 
 func getNewMoveGoal():

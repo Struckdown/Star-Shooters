@@ -40,6 +40,7 @@ func init():
 
 func collect():
 	UpgradeManager.setGems(UpgradeManager.gems+gemValue)
+	StatsManager.updateStats("gemsCollected", gemValue)
 	queue_free()
 
 

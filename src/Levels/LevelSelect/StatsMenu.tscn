@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Levels/LevelSelect/UpgradeMenuFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Space Shooter GUI/PNG/Level_Menu/Window.png" type="Texture" id=2]
@@ -6,44 +6,47 @@
 [ext_resource path="res://Space Shooter GUI/PNG/Upgrade/Close_BTN.png" type="Texture" id=4]
 [ext_resource path="res://Space Shooter GUI/PNG/Buttons/BTNs_Active/Close_BTN.png" type="Texture" id=5]
 [ext_resource path="res://Levels/LevelSelect/StatsMenu.gd" type="Script" id=6]
+[ext_resource path="res://Levels/LevelSelect/StatsFont.tres" type="DynamicFont" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Display"
+length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("WindowTexture:rect_position")
+tracks/0/path = NodePath("WindowTexture:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -1039.59, 16.9706 ), Vector2( 21.2131, 16.9706 ) ]
+"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ) ]
 }
 
 [node name="StatsMenu" type="Control"]
-margin_right = 40.0
-margin_bottom = 40.0
+margin_right = 1022.0
+margin_bottom = 552.0
+mouse_filter = 2
 script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="WindowTexture" type="TextureRect" parent="."]
-anchor_left = -26.52
-anchor_right = -26.52
-margin_left = 21.2131
-margin_top = 16.9706
-margin_right = 965.212
-margin_bottom = 496.971
+margin_left = 40.2211
+margin_top = 60.9706
+margin_right = 984.22
+margin_bottom = 540.971
+rect_scale = Vector2( 1, 1e-05 )
+rect_pivot_offset = Vector2( 0, 240 )
 texture = ExtResource( 2 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="ShopNameLbl" type="Label" parent="WindowTexture"]
+[node name="WindowNameLbl" type="Label" parent="WindowTexture"]
 margin_left = 9.0
 margin_top = 17.0
 margin_right = 940.0
@@ -71,7 +74,132 @@ __meta__ = {
 stream = ExtResource( 3 )
 bus = "SFX"
 
+[node name="ScrollContainer" type="ScrollContainer" parent="WindowTexture"]
+margin_left = 74.0
+margin_top = 110.0
+margin_right = 878.0
+margin_bottom = 443.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="WindowTexture/ScrollContainer"]
+margin_right = 804.0
+margin_bottom = 333.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowTexture/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 804.0
+margin_bottom = 27.0
+
+[node name="EnemiesKilledLbl" type="Label" parent="WindowTexture/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_right = 220.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 7 )
+text = "Enemies Killed:"
+
+[node name="EnemiesKilledVal" type="Label" parent="WindowTexture/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_left = 224.0
+margin_right = 269.0
+margin_bottom = 27.0
+size_flags_horizontal = 2
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.913725, 0.756863, 0.219608, 1 )
+text = "152"
+
+[node name="LasersFiredLbl" type="Label" parent="WindowTexture/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_left = 418.0
+margin_right = 610.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 7 )
+text = "Lasers Fired:"
+align = 2
+
+[node name="LasersFiredVal" type="Label" parent="WindowTexture/ScrollContainer/VBoxContainer/HBoxContainer"]
+margin_left = 614.0
+margin_right = 659.0
+margin_bottom = 27.0
+size_flags_horizontal = 2
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.913725, 0.756863, 0.219608, 1 )
+text = "621"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="WindowTexture/ScrollContainer/VBoxContainer"]
+visible = false
+margin_right = 804.0
+margin_bottom = 27.0
+
+[node name="MarginContainer" type="MarginContainer" parent="WindowTexture/ScrollContainer/VBoxContainer/HBoxContainer2"]
+margin_right = 340.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="WindowTexture/ScrollContainer/VBoxContainer/HBoxContainer2/MarginContainer"]
+margin_right = 340.0
+margin_bottom = 27.0
+
+[node name="StatName" type="Label" parent="WindowTexture/ScrollContainer/VBoxContainer/HBoxContainer2/MarginContainer/HBoxContainer"]
+margin_right = 209.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 7 )
+text = "Charge Gained:"
+align = 2
+
+[node name="StatValue" type="Label" parent="WindowTexture/ScrollContainer/VBoxContainer/HBoxContainer2/MarginContainer/HBoxContainer"]
+margin_left = 213.0
+margin_right = 340.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.913725, 0.756863, 0.219608, 1 )
+text = "67212"
+
+[node name="Hbox" type="HBoxContainer" parent="WindowTexture/ScrollContainer/VBoxContainer/HBoxContainer2"]
+margin_left = 344.0
+margin_right = 804.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+
+[node name="StatName2" type="Label" parent="WindowTexture/ScrollContainer/VBoxContainer/HBoxContainer2/Hbox"]
+margin_right = 439.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 7 )
+text = "Overworld Distance Traveled: "
+
+[node name="StatValue2" type="Label" parent="WindowTexture/ScrollContainer/VBoxContainer/HBoxContainer2/Hbox"]
+margin_left = 443.0
+margin_right = 460.0
+margin_bottom = 27.0
+size_flags_horizontal = 2
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.913725, 0.756863, 0.219608, 1 )
+text = "7"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Display = SubResource( 1 )
+
+[node name="StatsLblSample" type="Label" parent="."]
+visible = false
+margin_right = 214.0
+margin_bottom = 27.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 7 )
+text = "Enemies Killed:"
+
+[node name="StatsValSample" type="Label" parent="."]
+visible = false
+margin_left = 218.0
+margin_right = 263.0
+margin_bottom = 27.0
+size_flags_horizontal = 2
+custom_fonts/font = ExtResource( 7 )
+custom_colors/font_color = Color( 0.913725, 0.756863, 0.219608, 1 )
+text = "152"
 
 [connection signal="button_up" from="WindowTexture/CloseButton" to="." method="_on_CloseButton_button_up"]

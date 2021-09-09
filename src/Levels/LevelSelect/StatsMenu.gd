@@ -1,18 +1,54 @@
 extends Control
 
-# This script is _very_ similar to upgrade menu, consider merging?
-
 signal statsClosed
 var displaying
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	setUpStats()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+func setUpStats():
+	var vBox = get_node("WindowTexture/ScrollContainer/VBoxContainer")
+	var i = 0
+	var statsOrder = ["enemiesKilled", "deaths", "bossesDefeated",
+"lasersFired", "chargeGained", "overworldDistanceTraveled",
+"timesSlipstreamed", "stagesCleared", "stagesPlayed",
+"totalScore", "gemsCollected", "gameCompletion"
+]
+
+	var hBox = null
+	for stat in statsOrder:
+		if i%2 == 0:
+			hBox = HBoxContainer.new()
+			vBox.add_child(hBox)
+		var lbl = $StatsLblSample.duplicate()
+		var val = $StatsValSample.duplicate()
+		lbl.text = prettyText(str(stat)) + ":"
+		val.text = str(StatsManager.stats[stat])
+		lbl.show()
+		val.show()
+		hBox.add_child(lbl)
+		hBox.add_child(val)
+		i += 1
+	#$WindowTexture/ScrollContainer/VBoxContainer/HBoxContainer/EnemiesKilledVal.text = StatsManager.stats["enemiesKilled"]
+
+func prettyText(txt: String):
+	var newTxt = ""
+	var i = 0
+	for l in txt:
+		if i == 0:
+			l = l.to_upper()
+		if l == l.to_upper():
+			newTxt += " "
+		newTxt += l
+		i += 1
+	return newTxt
+
 
 func display(shouldDisplay):
 	if displaying == shouldDisplay:

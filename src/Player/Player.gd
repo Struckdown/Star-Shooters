@@ -96,6 +96,7 @@ func spawnBullet():
 	energyLevel -= energyThreshold
 	var b = load("res://Player/PlayerBullet.tscn")
 	var bInst = b.instance()
+	StatsManager.updateStats("lasersFired", 1)
 	get_parent().add_child(bInst)
 	get_parent().move_child(bInst, 2)	# Force bullet to be under space
 	bInst.position = self.position
@@ -133,6 +134,7 @@ func updateTeleport(delta):
 		else:
 			position = $SpritesRoot/Spaceship_L.global_position
 		teleporting = false
+		StatsManager.updateStats("timesSlipstreamed", 1)
 
 # Your energy shield gathers the energy!
 func _on_EnergyArea_area_entered(area):
@@ -141,7 +143,9 @@ func _on_EnergyArea_area_entered(area):
 			area.owner.markEnergyDrained()
 			spawnEnergyCollectedParticles()
 			$EnergyParticleRoot/AbsorbSFX.play()
+			var oldEnergyLevel = energyLevel
 			energyLevel = min(energyLevel+(25*energyGainMultiplier), energyLimit)
+			StatsManager.updateStats("chargeGained", energyLevel-oldEnergyLevel)
 			emit_signal("energyUpdated")
 	if area.owner.is_in_group("Gem"):
 		area.owner.collect()
@@ -165,6 +169,7 @@ func _on_CoreArea_area_entered(area):
 		var bul = area.owner
 		if bul.canCauseDamage:
 			dying = true
+			StatsManager.updateStats("deaths", 1)
 			#hasControl = false
 			$AnimationPlayer.play("Explosion")
 			var followingP = load("res://Utility/FollowingParticles.tscn")

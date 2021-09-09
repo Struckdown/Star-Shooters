@@ -275,8 +275,8 @@ margin_bottom = -101.6
 [node name="UpgradeMenu" parent="CanvasLayer" instance=ExtResource( 11 )]
 
 [node name="StatsMenu" parent="CanvasLayer" instance=ExtResource( 16 )]
-margin_left = -6.20422
-margin_right = 33.7958
+margin_right = 1025.0
+margin_bottom = 601.0
 
 [connection signal="playerNearby" from="UpgradePlanet" to="." method="_on_UpgradePlanet_playerNearby"]
 [connection signal="playerNearby" from="StatsZone" to="." method="_on_StatsZone_playerNearby"]

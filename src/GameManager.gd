@@ -56,6 +56,7 @@ func updateScores(newScore: int) -> void:
 
 func saveGame():
 	UpgradeManager.saveGame()
+	StatsManager.saveGame()
 	var save_game = File.new()
 	save_game.open(saveGameFileName, File.WRITE)
 	save_game.store_line(to_json(stagesCompleted))
@@ -86,6 +87,7 @@ func saveGame():
 
 func load_game():
 	UpgradeManager.load_game()
+	StatsManager.load_game()
 	var save_game = File.new()
 	if not save_game.file_exists(saveGameFileName):
 		print("Game save doesn't exist, can't load anything!")

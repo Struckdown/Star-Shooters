@@ -47,6 +47,7 @@ func _on_Menu_button_up(btn):
 				GameManager.gameMode = "Main"
 				$ButtonClickedSFX.play()
 				UpgradeManager.clearSaveData()
+				StatsManager.clearSaveData()
 				GameManager.clearSaveData()
 				GameManager.saveGame()
 				$"/root/SceneTransition".transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")
