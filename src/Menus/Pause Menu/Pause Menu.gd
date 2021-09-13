@@ -45,3 +45,6 @@ func _unhandled_input(event):
 func _on_Pause_Menu_visibility_changed():
 	if visible:
 		$PauseCtrl/VBoxContainer/ResumeBtn.grab_focus()
+
+func _exit_tree():
+	get_tree().paused = false	# if the pause menu disappears for any reason, the tree should not be paused anymore, since this should only happen on transitions

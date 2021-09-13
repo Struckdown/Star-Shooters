@@ -54,10 +54,11 @@ color = Color( 0.545098, 0, 0.619608, 1 )
 
 [node name="Bullet_Gravity" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-rotationSpeed = 360.0
+rotationSpeed = -360.0
 nodeToRotate = NodePath("Sprite")
 
 [node name="Sprite" type="Sprite" parent="." index="2"]
+scale = Vector2( 1e-05, 1e-05 )
 texture = ExtResource( 5 )
 
 [node name="GravityArea" type="Area2D" parent="." index="3"]
