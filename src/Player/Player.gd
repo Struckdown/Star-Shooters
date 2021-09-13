@@ -30,6 +30,8 @@ var touchingRightWall = false
 var lastTouchingLeftWall = false	# false means last touched right wall
 var teleporting = false
 
+var cheatModeActive = false
+
 signal destroyed
 signal gemCollected
 
@@ -46,6 +48,12 @@ func _process(delta):
 	updateFakes()
 	updateTeleport(delta)
 
+func _input(event):
+	if event is InputEventKey and event.is_pressed():
+		if event.scancode == KEY_G:
+			cheatModeActive = true
+			print("Cheat mode activated")
+			
 
 func determineInputs():
 	inputVecLastFrame = inputVec
@@ -167,7 +175,7 @@ func spawnEnergyCollectedParticles():
 func _on_CoreArea_area_entered(area):
 	if area.is_in_group("Hostile") and not dying and not respawnInvuln and not godMode:
 		var bul = area.owner
-		if bul.canCauseDamage:
+		if bul.canCauseDamage and not cheatModeActive:
 			dying = true
 			StatsManager.updateStats("deaths", 1)
 			#hasControl = false
