@@ -16,6 +16,7 @@ func init():
 	.init()
 	if orbitalChildren > 0:
 		setChildren(orbitalChildren)
+	$RotationRing.rotation = rand_range(0, 2*PI)
 	$RotationRing.rotationSpeedDegs = orbitalRotationSpeedDegs
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

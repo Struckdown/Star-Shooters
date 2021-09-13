@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
+[ext_resource path="res://Levels/Stages/Level4/L4W6.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Boss HP.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=4]
@@ -27,5 +28,7 @@ moveSpeed = 10
 
 [node name="DespawnTimer" parent="Bullet_Straight" index="1"]
 wait_time = 2.0
+
+[node name="WaveBase" parent="." instance=ExtResource( 1 )]
 
 [editable path="Bullet_Straight"]

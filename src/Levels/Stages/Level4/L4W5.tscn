@@ -1,0 +1,190 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Hostiles/Bullets/Bullet_Gravity.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hostiles/Enemies/CircleShooter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlack2.png" type="Texture" id=5]
+[ext_resource path="res://Hostiles/Bullets/OrbitalBullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=8]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[node name="WaveBase" instance=ExtResource( 2 )]
+enemiesToDestroy = 2
+
+[node name="StandardShooter" parent="." index="0" instance=ExtResource( 4 )]
+position = Vector2( 235.598, -43.1303 )
+rotation = 1.57079
+speed = 120.0
+moveGoal = Vector2( 0, 150 )
+flyingPattern = "hoverMoveGoal"
+
+[node name="Sprite" parent="StandardShooter" index="1"]
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" parent="StandardShooter" index="3"]
+anims/Death = SubResource( 1 )
+
+[node name="BulletEmitter" parent="StandardShooter/WeaponManager" index="1"]
+rotationDegPerSec = 0
+targetStyle = "predict"
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+amountOfBullets = 0
+bulletMovementSpeed = 80
+bulletSpawnDelay = 3.0
+bulletType = ExtResource( 1 )
+nthBulletIsGreen = [  ]
+
+[node name="BulletEmitter" parent="StandardShooter/WeaponManager/BulletEmitter" index="1" instance=ExtResource( 3 )]
+rotation = -0.523599
+rotationDegPerSec = 15
+rotationRange = 60.0
+targetStyle = "straight"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+bulletMovementSpeed = 90
+bulletSpawnDelay = 0.2
+bulletType = ExtResource( 8 )
+initialSpawnDelayConstant = 2.0
+initialSpawnDelayRandomRange = 0.0
+greenBulletFrequency = 5
+nthBulletIsGreen = [ 0 ]
+
+[node name="GravEmitter" parent="StandardShooter/WeaponManager/BulletEmitter" index="2" instance=ExtResource( 3 )]
+rotation = -0.523599
+rotationDegPerSec = 15
+rotationRange = 60.0
+initialRotationOffset = 60.0
+targetStyle = "straight"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+bulletMovementSpeed = 90
+bulletType = ExtResource( 1 )
+initialSpawnDelayConstant = 2.0
+initialSpawnDelayRandomRange = 0.0
+greenBulletFrequency = 5
+nthBulletIsGreen = [ 0 ]
+
+[node name="StandardShooter2" parent="." index="1" instance=ExtResource( 4 )]
+position = Vector2( 404.609, -43.1303 )
+rotation = 1.57079
+speed = 120.0
+moveGoal = Vector2( 0, 150 )
+flyingPattern = "hoverMoveGoal"
+
+[node name="Sprite" parent="StandardShooter2" index="1"]
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" parent="StandardShooter2" index="3"]
+anims/Death = SubResource( 2 )
+
+[node name="BulletEmitter" parent="StandardShooter2/WeaponManager" index="1"]
+rotationDegPerSec = 0
+targetStyle = "predict"
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+amountOfBullets = 0
+bulletMovementSpeed = 80
+bulletSpawnDelay = 3.0
+bulletType = ExtResource( 1 )
+nthBulletIsGreen = [  ]
+
+[node name="BulletEmitter" parent="StandardShooter2/WeaponManager/BulletEmitter" index="1" instance=ExtResource( 3 )]
+targetStyle = "atTarget"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 55.0
+amountOfBullets = 4
+bulletMovementSpeed = 50
+bulletSpawnDelay = 3.0
+bulletType = ExtResource( 6 )
+initialSpawnDelayRandomRange = 2.0
+nthBulletIsGreen = [ 0, 1, 2, 3 ]
+orbitalChildren = 6
+
+[editable path="StandardShooter"]
+[editable path="StandardShooter2"]

@@ -7,7 +7,6 @@
 [ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=5]
 
 [node name="WaveBase" instance=ExtResource( 1 )]
-waveAdvanceCondition = "time"
 enemiesToDestroy = 1
 
 [node name="SpiralShooter" parent="." index="0" instance=ExtResource( 3 )]

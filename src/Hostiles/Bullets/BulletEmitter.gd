@@ -17,6 +17,7 @@ export(bool) var useRotationAsCenterBullet = false
 export(bool) var fireAtLocationForWholeClip = true
 
 export(float) var angleOfBulletSpread = 10	# degrees
+export(float) var randomAngleOfBulletSpread = 0 # degrees
 export(int) var amountOfBullets = 1
 export(int) var volleyClipSize = -1	# -1 for infinite
 var volleysRemaining
@@ -62,7 +63,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	totalDelta += delta*GameManager.gameSpeed
+	totalDelta += delta*GameManager.gameSpeed * int(emitting)	# only update while active
 	var shouldUpdateRotationPerVolley = false
 	if totalDelta > bulletSpawnDelay:
 		totalDelta -= bulletSpawnDelay
@@ -123,6 +124,8 @@ func spawnBullets(additionalRads):
 				b.global_rotation += addedRot
 		else:
 			b.global_rotation += deg2rad(i*angleOfBulletSpread)
+		var randAngle = rand_range(-randomAngleOfBulletSpread, randomAngleOfBulletSpread)
+		b.global_rotation += deg2rad(randAngle)
 		b.moveSpeed = bulletMovementSpeed
 		b.waveSpeed = bulletWaveSpeed
 		b.waveStr = bulletWaveStr
@@ -189,7 +192,7 @@ func getExpectedTargetPosition():
 
 	var sqrtVal = b*b - 4*a*c	# aka the determinant of the quadratic equation
 	if sqrtVal <= 0 or a == 0:
-		print("Returned impossible situation, shooting cur pos")
+		# there is no intersection, default to shooting current position
 		return target.global_position
 	sqrtVal = sqrt(sqrtVal)
 	

@@ -7,7 +7,7 @@
 [ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlack2.png" type="Texture" id=5]
 [ext_resource path="res://Hostiles/Bullets/OrbitalBullet.tscn" type="PackedScene" id=6]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Death"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -48,7 +48,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=2]
 _data = {
 "points": PoolVector2Array( 77.7826, 55.559, -77.7826, -55.559, 5.00668, 44.1143, -17.9518, -108.699, 17.9518, 108.699, 742.473, 90.3636, -2.86312, -122.608, 2.86312, 122.608, 14.2565, 238.361, -25.88, -135.487, 25.88, 135.487, 735.746, 405.7, 66.4308, -21.0224, -66.4308, 21.0224, 85.7328, 562.107, -109.317, 12.6134, 109.317, -12.6134, 72.2785, 387.2, 0, 128.657, 0, -128.657, 659.224, 296.383, 10.3181, 7.937, -10.3181, -7.937, 25.1883, 80.2728, 0, 0, 0, 0, 5.00668, 44.1143 )
 }
@@ -61,6 +61,7 @@ position = Vector2( -49.8315, 42.0793 )
 speed = 120.0
 moveGoal = Vector2( 0, 100 )
 flyPaths = [ NodePath("../Path2D") ]
+loopFlyPaths = true
 flyingPattern = "followPath"
 
 [node name="BulletEmitter" parent="GravShooter/WeaponManager" index="1"]
@@ -97,7 +98,7 @@ flyingPattern = "hoverMoveGoal"
 texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" parent="StandardShooter" index="3"]
-anims/Death = SubResource( 2 )
+anims/Death = SubResource( 1 )
 
 [node name="BulletEmitter" parent="StandardShooter/WeaponManager" index="1"]
 rotationDegPerSec = 0
@@ -124,7 +125,7 @@ nthBulletIsGreen = [ 0, 1, 2, 3 ]
 orbitalChildren = 6
 
 [node name="Path2D" type="Path2D" parent="." index="2"]
-curve = SubResource( 1 )
+curve = SubResource( 2 )
 
 [editable path="GravShooter"]
 [editable path="StandardShooter"]

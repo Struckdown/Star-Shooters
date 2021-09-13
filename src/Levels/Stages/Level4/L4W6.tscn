@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Hostiles/Enemies/Void_Bringer.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=2]
+
+[node name="WaveBase" instance=ExtResource( 2 )]
+enemiesToDestroy = 1
+usesBossHP = true
+bossName = "Void Bringer"
+musicRequest = "res://Levels/BossBattle.mp3"
+
+[node name="Void_Bringer" parent="." index="0" instance=ExtResource( 1 )]
+position = Vector2( 402.057, -91.4959 )
+rotation = 1.57079
+scale = Vector2( 2, 2 )
+moveGoal = Vector2( 0, 180 )
+flyingPattern = "hoverMoveGoal"
