@@ -1,7 +1,7 @@
 extends Node2D
 
 
-export(String, "health", "time", "never") var phaseSwapMode
+export(String, "health", "time", "never") var phaseSwapMode = "health"
 export(int) var timeToNextPhase
 export(float) var healthPercentToNextPhase
 var phaseTracker = 0
@@ -12,7 +12,7 @@ var active = true
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var node = get_parent()
-	while not node.has_signal("tookDamage"):
+	while not node.has_signal("tookDamage") and not node.is_in_group("EnemyBase"):
 		node = node.get_parent()
 	node.connect("tookDamage", self, "updateHealth")
 	#	print("Weapon connect failed???")

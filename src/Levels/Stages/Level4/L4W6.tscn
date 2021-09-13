@@ -13,5 +13,6 @@ musicRequest = "res://Levels/BossBattle.mp3"
 position = Vector2( 402.057, -91.4959 )
 rotation = 1.57079
 scale = Vector2( 2, 2 )
-moveGoal = Vector2( 0, 180 )
+maxHealth = 1000
+moveGoal = Vector2( 0, 220 )
 flyingPattern = "hoverMoveGoal"
