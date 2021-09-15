@@ -63,6 +63,9 @@ func spawnWave():
 		curWave.connect("startNextWave", self, "spawnWave")
 		curWave.connect("enemyDestroyed", self, "addToScore")
 		curWave.connect("waveFinished", self, "updateWavesFinished")
+		var enemies = curWave.getEnemies()
+		for e in enemies:
+			$VPCgame/Viewport/EnemyArrowTrackerManager.startTrackingNewEnemy(e)
 		if curWave.usesBossHP:
 			curWave.bossHPRef = $"CanvasLayer/Boss HP"
 			curWave.setUpBossHP()

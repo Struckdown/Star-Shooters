@@ -34,6 +34,7 @@ rotation = -1.57079
 texture = ExtResource( 2 )
 
 [node name="WeaponManager" parent="." index="6"]
+phaseSwapMode = "health"
 healthPercentToNextPhase = 50.0
 
 [node name="Phase1" parent="WeaponManager" index="1" instance=ExtResource( 6 )]

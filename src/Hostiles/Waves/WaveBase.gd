@@ -86,3 +86,10 @@ func markWaveFinished():	# needed for counting amount of waves finished so wave 
 
 func changeMusic():
 	BGM.transitionSong(musicRequest)
+
+func getEnemies():
+	var e = []
+	for child in get_children():
+		if child.is_in_group("EnemyBase"):
+			e.append(child)
+	return e

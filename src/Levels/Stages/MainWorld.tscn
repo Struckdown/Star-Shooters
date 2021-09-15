@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Levels/LevelManager.gd" type="Script" id=1]
 [ext_resource path="res://Hostiles/Boss HP.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/LevelSelect/PlayerGemCount.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Menus/Pause Menu/Pause Menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hostiles/EnemyArrowTrackerManager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Space Backgrounds/space_background_pack/Animated_BG.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/Game Over.tscn" type="PackedScene" id=11]
@@ -72,6 +73,8 @@ position = Vector2( 407.679, 950 )
 
 [node name="LevelBoundaries" parent="VPCgame/Viewport" instance=ExtResource( 13 )]
 position = Vector2( 410, 275 )
+
+[node name="EnemyArrowTrackerManager" parent="VPCgame/Viewport" instance=ExtResource( 6 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

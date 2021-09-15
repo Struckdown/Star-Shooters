@@ -1,7 +1,7 @@
 extends Node2D
 
 
-export(String, "health", "time", "never") var phaseSwapMode = "health"
+export(String, "health", "time", "never") var phaseSwapMode = "never"	# most enemies don't swap by default.
 export(int) var timeToNextPhase
 export(float) var healthPercentToNextPhase
 var phaseTracker = 0

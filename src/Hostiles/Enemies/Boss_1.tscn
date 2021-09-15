@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Hostiles/Enemies/Boss_1.gd" type="Script" id=1]
 [ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Hostiles/WeaponManager.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=7]
 
 [node name="Boss_1" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
@@ -72,6 +73,8 @@ DEBUG = true
 
 [node name="WeaponManager2" parent="WeaponManager" index="2" instance=ExtResource( 6 )]
 rotation = -0.523599
+phaseSwapMode = "time"
+timeToNextPhase = 10
 
 [node name="Sprayer" parent="WeaponManager/WeaponManager2" index="1" instance=ExtResource( 4 )]
 rotationPerVolley = 2.0
@@ -80,9 +83,23 @@ useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 18.0
 amountOfBullets = 5
-bulletMovementSpeed = 80
+bulletMovementSpeed = 140
 bulletSpawnDelay = 0.2
 bulletType = ExtResource( 5 )
+initialSpawnDelayConstant = 1.0
+initialSpawnDelayRandomRange = 0.0
+nthBulletIsGreen = [ 0 ]
+emitting = false
+
+[node name="Sprayer2" parent="WeaponManager/WeaponManager2" index="2" instance=ExtResource( 4 )]
+rotationPerVolley = 2.0
+rotationRange = 60.0
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 18.0
+amountOfBullets = 5
+bulletMovementSpeed = 80
+bulletType = ExtResource( 7 )
 initialSpawnDelayConstant = 1.0
 initialSpawnDelayRandomRange = 0.0
 nthBulletIsGreen = [ 0 ]

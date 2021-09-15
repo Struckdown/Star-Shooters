@@ -92,8 +92,10 @@ func applyInputs(delta):
 		moveVec.y = 0
 
 	velocity = moveVec * moveSpeed
+	$EnergyArea/Core.visible = false
 	if slowMode:
 		velocity *= slowModeMultiplier
+		$EnergyArea/Core.visible = true
 	position += velocity * delta
 	
 	if shouldFire and energyLevel >= energyThreshold:

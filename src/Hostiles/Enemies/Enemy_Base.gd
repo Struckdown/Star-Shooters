@@ -6,7 +6,6 @@ var velocity
 export(int) var maxHealth = 25
 onready var health = maxHealth
 export(int) var gemValue = 10
-signal destroyed
 export(PackedScene) var explosionType
 var explosionParticles
 export(Vector2) var moveGoal	# vector coordinate where enemy is trying to get to
@@ -23,7 +22,10 @@ var target	# thing to shoot
 export(String, "straight", "hoverRandomPoint", "hoverMoveGoal", "followPath", "TBD") var flyingPattern
 var healthBarRef
 export(bool) var isBoss = false
+
+signal destroyed
 signal tookDamage
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -55,7 +57,7 @@ func _exit_tree():
 	if health <= 0:
 		spawnGems()
 	emit_signal("destroyed", pointsWorth)
-	get_tree().call_group("EnemyDestroyedListener", "OnEnemyDestroyed")
+	get_tree().call_group("EnemyDestroyedListener", "OnEnemyDestroyed", self)
 
 
 func move(d):
