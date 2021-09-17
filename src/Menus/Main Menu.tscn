@@ -436,7 +436,7 @@ scale = Vector2( 2, 2 )
 position = Vector2( 849.969, -74.428 )
 scale = Vector2( 3, 3 )
 generatesEnergy = true
-energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed08.png"
+energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed08New.png"
 titleScreenVersion = true
 
 [node name="DespawnTimer" parent="AnimationPlayer/Bullet_Straight" index="1"]

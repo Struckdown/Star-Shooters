@@ -35,7 +35,7 @@ func _process(delta):
 			updatePhase()
 
 func updateHealth(currentFraction):
-	if phaseSwapMode == "health" and currentFraction > 0:
+	if phaseSwapMode == "health" and currentFraction > 0 and maxPhases > 0:
 		var healthFractionToNextPhase = (float(healthPercentToNextPhase)/100.0)
 		var newPhaseTracker = int( (1-currentFraction) / healthFractionToNextPhase ) % maxPhases
 		if newPhaseTracker != phaseTracker:

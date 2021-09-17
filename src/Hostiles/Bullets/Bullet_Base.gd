@@ -20,9 +20,9 @@ var canCauseDamage = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if generatesEnergy:
+		setGeneratesEnergy(true)
 	if titleScreenVersion:
-		if generatesEnergy:
-			setGeneratesEnergy(true)
 		$DespawnTimer.autostart = false
 		$DespawnTimer.stop()
 	if nodeToRotate:

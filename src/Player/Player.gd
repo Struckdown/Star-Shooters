@@ -188,7 +188,7 @@ func _on_CoreArea_area_entered(area):
 			get_tree().root.add_child(followingP)
 
 func spawn():
-	$AnimationPlayer.play("Spawn")
+	$AnimationPlayer.play("Spawn")	# Note this messes with the transform
 	
 
 func _on_AnimationPlayer_animation_finished(anim_name):

@@ -12,7 +12,7 @@ script = ExtResource( 3 )
 moveSpeed = 0
 waveStr = 0
 waveSpeed = 0.0
-energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed08.png"
+energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed08New.png"
 
 [node name="RotationRing" parent="." index="3" instance=ExtResource( 1 )]
 numOfChildren = 5
@@ -22,5 +22,6 @@ childToCopy = NodePath("RotatingChildren/WaveBullet")
 moveSpeed = 0
 waveStr = 0
 waveSpeed = 0.0
+energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed09New.png"
 
 [editable path="RotationRing"]
