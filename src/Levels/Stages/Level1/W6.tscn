@@ -88,9 +88,14 @@ loopFlyPaths = true
 flyingPattern = "followPath"
 
 [node name="BulletEmitter" parent="HelixShooter/WeaponManager" index="1"]
+rotation = 1.5708
+targetStyle = "straight"
+bulletMovementSpeed = 120
 greenBulletFrequency = -1
 
 [node name="BulletEmitter2" parent="HelixShooter/WeaponManager/BulletEmitter" index="1"]
+targetStyle = "straight"
+bulletMovementSpeed = 120
 greenBulletFrequency = -1
 
 [node name="LeftPlayerShooter" parent="." index="1" instance=ExtResource( 2 )]
@@ -108,7 +113,7 @@ anims/Death = SubResource( 1 )
 initialRotationOffset = 0.0
 targetStyle = "atTarget"
 angleOfBulletSpread = 8.0
-bulletMovementSpeed = 160
+bulletMovementSpeed = 130
 bulletSpawnDelay = 0.8
 initialSpawnDelayRandomRange = 3.0
 greenBulletFrequency = -1
@@ -137,7 +142,7 @@ useRotationAsCenterBullet = false
 fireAtLocationForWholeClip = true
 angleOfBulletSpread = 45.0
 amountOfBullets = 8
-bulletMovementSpeed = 160
+bulletMovementSpeed = 130
 bulletSpawnDelay = 0.4
 initialSpawnDelayRandomRange = 3.0
 greenBulletFrequency = -1

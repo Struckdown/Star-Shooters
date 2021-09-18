@@ -29,7 +29,7 @@ export(float) var bulletWaveStr = 0
 export(float) var bulletSpawnDelay = 1	# in seconds
 export(PackedScene) var bulletType	# must be of class Bullet_Base or child
 export(float) var initialSpawnDelayConstant = 0
-export(float) var initialSpawnDelayRandomRange = 5	# from 0 to n, adds that amount of seconds randomly offset to initial spawn delay
+export(float) var initialSpawnDelayRandomRange = 1	# from 0 to n, adds that amount of seconds randomly offset to initial spawn delay
 
 export(int) var greenBulletFrequency = -1
 export(Array, int) var nthBulletIsGreen = []
