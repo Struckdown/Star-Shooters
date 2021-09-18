@@ -19,6 +19,7 @@ export(bool) var fireAtLocationForWholeClip = true
 export(float) var angleOfBulletSpread = 10	# degrees
 export(float) var randomAngleOfBulletSpread = 0 # degrees
 export(int) var amountOfBullets = 1
+export(Array, int) var bulletsToSkip = []
 export(int) var volleyClipSize = -1	# -1 for infinite
 var volleysRemaining
 export(float) var clipReloadTime = 0
@@ -33,6 +34,7 @@ export(float) var initialSpawnDelayRandomRange = 1	# from 0 to n, adds that amou
 
 export(int) var greenBulletFrequency = -1
 export(Array, int) var nthBulletIsGreen = []
+export(float, 0, 1) var makeBulletEnergizedAnywaysOdds = 0	# All bullets will have this chance to be green
 var volleysFired = 0
 
 export(int) var orbitalChildren = -1
@@ -104,8 +106,13 @@ func updatePosToShoot():
 func spawnBullets(additionalRads):
 	$FireSFX.play()
 	for i in range(amountOfBullets):
+		if i in bulletsToSkip:	# allows for gaps in bullet patterns
+			continue
 		var b = bulletType.instance()
 		if i in nthBulletIsGreen and volleysFired%greenBulletFrequency == 0:
+			b.setGeneratesEnergy(true)
+		var shouldHaveEnergyByChance = rand_range(0, 1)
+		if shouldHaveEnergyByChance <= makeBulletEnergizedAnywaysOdds:
 			b.setGeneratesEnergy(true)
 		get_viewport().add_child(b)
 		b.global_position = global_position

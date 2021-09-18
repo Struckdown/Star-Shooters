@@ -67,7 +67,7 @@ bulletType = ExtResource( 5 )
 initialSpawnDelayConstant = 0.25
 initialSpawnDelayRandomRange = 0.0
 greenBulletFrequency = 1
-nthBulletIsGreen = [ 0, 1, 2, 3, 4, 5, 6, 7 ]
+makeBulletEnergizedAnywaysOdds = 0.4
 emitting = false
 DEBUG = true
 
