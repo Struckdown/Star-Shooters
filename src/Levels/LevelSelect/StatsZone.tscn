@@ -171,7 +171,6 @@ script = ExtResource( 6 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 rotation = -0.426009
-scale = Vector2( 1, 1 )
 amount = 35
 process_material = SubResource( 5 )
 
@@ -232,7 +231,7 @@ margin_left = 8.0
 margin_top = 2.0
 margin_right = 0.0469818
 margin_bottom = 0.0149956
-text = "The Void
+text = "The Temporal Rift
 Stats"
 align = 1
 valign = 1

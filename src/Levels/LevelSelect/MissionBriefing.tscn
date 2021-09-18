@@ -34,96 +34,99 @@ font_data = ExtResource( 7 )
 
 [sub_resource type="Animation" id=6]
 resource_name = "DisplayAnim"
-length = 5.0
+length = 4.4
 tracks/0/type = "value"
-tracks/0/path = NodePath("WindowTexture:rect_position")
-tracks/0/interp = 2
+tracks/0/path = NodePath("WindowTexture/SpeechBubble/DialogueLbl:percent_visible")
+tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( -2, 1 ),
+"times": PoolRealArray( 0, 1.9, 4.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 24, 640 ), Vector2( 24, 80 ) ]
+"values": [ 0.0, 0.0, 1.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("WindowTexture/SpeechBubble/DialogueLbl:percent_visible")
+tracks/1/path = NodePath("WindowTexture/SpeakerIcon:rect_size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 2.5, 5 ),
+"times": PoolRealArray( 0, 1, 1.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 1.0 ]
+"values": [ Vector2( 172, 0 ), Vector2( 172, 0 ), Vector2( 172, 172 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("WindowTexture/SpeakerIcon:rect_size")
+tracks/2/path = NodePath("WindowTexture/SpeakerLbl:percent_visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = false
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0, 1.6, 2 ),
+"times": PoolRealArray( 0, 1.1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 172, 0 ), Vector2( 172, 0 ), Vector2( 172, 172 ) ]
+"values": [ 0.0, 0.0, 1.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("WindowTexture/SpeakerLbl:percent_visible")
+tracks/3/path = NodePath("WindowTexture/LevelNameLbl:percent_visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = false
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1.7, 2.1 ),
+"times": PoolRealArray( 0, 0.4, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 1.0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("WindowTexture/LevelNameLbl:percent_visible")
+tracks/4/path = NodePath("WindowTexture/MissionBriefingLbl:percent_visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = false
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/keys = {
-"times": PoolRealArray( 0, 1, 1.6 ),
+"times": PoolRealArray( 0, 0.4, 1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 1.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("WindowTexture/MissionBriefingLbl:percent_visible")
+tracks/5/path = NodePath(".:rect_scale")
 tracks/5/interp = 1
-tracks/5/loop_wrap = false
+tracks/5/loop_wrap = true
 tracks/5/imported = false
 tracks/5/enabled = true
 tracks/5/keys = {
-"times": PoolRealArray( 0, 1, 1.6 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 1.0 ]
+"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=7]
 resource_name = "HideAnim"
+length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("WindowTexture:rect_position")
+tracks/0/path = NodePath(".:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( -2, 1 ),
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 24, 80 ), Vector2( 24, 640 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1e-05 ) ]
 }
 
 [node name="CanvasLayer" type="Control"]
+rect_scale = Vector2( 1, 1e-05 )
+rect_pivot_offset = Vector2( 0, 320 )
 script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -131,9 +134,9 @@ __meta__ = {
 
 [node name="WindowTexture" type="TextureRect" parent="."]
 margin_left = 24.0
-margin_top = 640.0
+margin_top = 80.0
 margin_right = 968.0
-margin_bottom = 1120.0
+margin_bottom = 560.0
 texture = ExtResource( 4 )
 expand = true
 __meta__ = {
@@ -192,6 +195,7 @@ Prepare for deployment...
 "
 autowrap = true
 clip_text = true
+percent_visible = 0.2
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -265,7 +269,7 @@ __meta__ = {
 margin_left = 255.0
 margin_top = 303.0
 margin_right = 427.0
-margin_bottom = 303.0
+margin_bottom = 475.0
 rect_rotation = -180.0
 texture = ExtResource( 6 )
 expand = true
