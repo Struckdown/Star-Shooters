@@ -59,6 +59,7 @@ nodeToRotate = NodePath("Sprite")
 
 [node name="Sprite" type="Sprite" parent="." index="2"]
 scale = Vector2( 1e-05, 1e-05 )
+z_index = -1
 texture = ExtResource( 5 )
 
 [node name="GravityArea" type="Area2D" parent="." index="3"]

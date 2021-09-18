@@ -17,6 +17,7 @@ shader = ExtResource( 7 )
 shader_param/scroll_speed = 0.03
 
 [node name="Animated_BG" type="Node2D"]
+z_index = -10
 script = ExtResource( 6 )
 
 [node name="parallax-space-backgound" type="Sprite" parent="."]
@@ -29,6 +30,7 @@ material = SubResource( 2 )
 texture = ExtResource( 5 )
 
 [node name="parallax-space-big-planet" type="Sprite" parent="."]
+modulate = Color( 0.556863, 0.556863, 0.556863, 1 )
 position = Vector2( 66.4681, -19.799 )
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 90, 90 )
