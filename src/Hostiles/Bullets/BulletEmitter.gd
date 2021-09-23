@@ -12,7 +12,14 @@ var rotatingPositively = 1
 var internalRotation = 0	# how much the emitter has rotated internally (rad)
 var actualRotationStart	# The true relative rotation to parent of the emitter (rad)
 export(float) var initialRotationOffset = 0	# Initial offset (deg)
-export(String, "straight", "predict", "atTarget") var targetStyle
+export(String, "straight", "predict", "atTarget", "shape") var targetStyle
+export(String, MULTILINE) var equation = "pow(abs(x), (2.0/3.0))+sqrt(1-pow(x,2))"
+export(float) var shapeEmissionTime = 1.0
+export(int) var shapeTotalBullets = 20
+export(float) var shapeMagnitude = 50
+export(bool) var shapeOneShot = true
+var shapeTrackerX = -1.0	# bounds shape on x axis from -1 to 1
+
 export(bool) var useRotationAsCenterBullet = false
 export(bool) var fireAtLocationForWholeClip = true
 
@@ -34,7 +41,7 @@ export(float) var initialSpawnDelayRandomRange = 1	# from 0 to n, adds that amou
 
 export(int) var greenBulletFrequency = -1
 export(Array, int) var nthBulletIsGreen = []
-export(float, 0, 1) var makeBulletEnergizedAnywaysOdds = 0	# All bullets will have this chance to be green
+export(float, 0, 1) var makeBulletEnergizedAnywaysOdds = 0	# All bullets will have this chance to be powered
 var volleysFired = 0
 
 export(int) var orbitalChildren = -1
@@ -59,6 +66,9 @@ func _ready():
 	var delay = rand_range(0, initialSpawnDelayRandomRange)
 	totalDelta = -initialSpawnDelayConstant - delay
 	volleysRemaining = volleyClipSize
+	if targetStyle == "shape":
+		bulletSpawnDelay = (shapeEmissionTime / float(shapeTotalBullets)) / 2	# accounts for [-1..1]
+#		print(bulletSpawnDelay)
 	updatePosToShoot()
 
 
@@ -74,7 +84,7 @@ func _process(delta):
 			needsToUpdatePosToShoot = false
 		if emitting and volleysRemaining != 0:	# lets this run negative. Is that an issue? Could be if an enemy were to live forever and keep shooting???
 			var rad = get_angle_to(positionToShoot)
-			spawnBullets(rad)
+			spawnBullets(delta, rad)
 			volleysRemaining -= 1
 		if volleysRemaining == 0:
 			totalDelta -= (clipReloadTime + rand_range(0, clipRandomReloadDelay))
@@ -103,7 +113,7 @@ func updatePosToShoot():
 			positionToShoot = global_position+global_transform.x
 
 # Additional rads is how much to rotate the fire arc by (in rads)
-func spawnBullets(additionalRads):
+func spawnBullets(delta, additionalRads):
 	$FireSFX.play()
 	for i in range(amountOfBullets):
 		if i in bulletsToSkip:	# allows for gaps in bullet patterns
@@ -138,8 +148,28 @@ func spawnBullets(additionalRads):
 		b.waveStr = bulletWaveStr
 		b.orbitalChildren = orbitalChildren
 		b.orbitalRotationSpeedDegs = orbitalRotationSpeedDegs
+		if targetStyle == "shape":
+			b.targetPos = calculateBulletTargetPosition(delta)
+			if totalDelta > 1:
+				totalDelta -= 2
+			#print(b.targetPos)
 		b.init()
 	volleysFired += 1
+
+
+
+func calculateBulletTargetPosition(_delta):
+	if targetStyle == "shape":
+		var expression = Expression.new()
+		expression.parse(equation, ["x"])
+		var y = expression.execute([shapeTrackerX])
+		var x = shapeTrackerX
+		var targetPos = Vector2(x, -y) * shapeMagnitude + global_position
+		shapeTrackerX += bulletSpawnDelay/shapeEmissionTime * 4
+		if shapeTrackerX > 1 and shapeOneShot:
+			emitting = false
+		return targetPos
+
 
 # volleyUpdate is a bool whether to increase rotation per volley shot
 func updateRotation(volleyUpdate, delta):

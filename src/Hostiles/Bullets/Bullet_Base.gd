@@ -17,6 +17,7 @@ export(NodePath) var nodeToRotate
 var orbitalChildren = -1	# used by rotationalBullet
 var orbitalRotationSpeedDegs = 0
 var canCauseDamage = true
+var targetPos = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -58,6 +59,13 @@ func changeEnergySprite():
 
 func move(delta):
 	var forwardVec = Vector2(1, 0).rotated(rotation).normalized()
+	if targetPos != null:
+		if global_position.distance_squared_to(targetPos) >= 16:
+			forwardVec = (targetPos-global_position).normalized()
+		else:
+			moveSpeed = 0
+			global_position = targetPos
+
 	var sideVec = transform.y
 	elapsedTime += delta #(OS.get_ticks_msec() - startTime) * 0.001	# convert to seconds
 	horizontalOffset = sin(elapsedTime*waveSpeed+PI/2) * waveStr
