@@ -6,7 +6,15 @@ var animDir
 var buttonsInteractable = false
 
 func _ready():
-	buttonsInteractable = visible
+	updateButtonDisabled(true)
+	$AnimationPlayer.playback_speed = 1
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		$AnimationPlayer.playback_speed = 4
+	if event.is_action_released("ui_accept"):
+		$AnimationPlayer.playback_speed = 1
+
 
 
 func playDisplayAnimation(dir):
@@ -16,10 +24,15 @@ func playDisplayAnimation(dir):
 		$AnimationPlayer.play("DisplayAnim")
 	elif animDir == "backwards":
 		$AnimationPlayer.play("HideAnim")
-		buttonsInteractable = false
+		updateButtonDisabled(true)
 	else:
 		pass
 
+
+func updateButtonDisabled(disabled):
+	buttonsInteractable = not disabled
+	$WindowTexture/OptionsTexture/DeployBtn.disabled = disabled
+	$WindowTexture/OptionsTexture/CancelBtn.disabled = disabled
 
 func _on_DeployBtn_visibility_changed():
 	pass#$WindowTexture/OptionsTexture/DeployBtn.grab_focus()
@@ -29,14 +42,14 @@ func _on_DeployBtn_pressed():
 	if buttonsInteractable:
 		emit_signal("deploy")
 		$ButtonSFX.play()
-		buttonsInteractable = false
+		updateButtonDisabled(true)
 
 
 func _on_CancelBtn_pressed():
 	if buttonsInteractable:
 		emit_signal("cancel")
 		$ButtonSFX.play()
-		buttonsInteractable = false
+		updateButtonDisabled(true)
 		playDisplayAnimation("backwards")
 
 
@@ -44,7 +57,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "DisplayAnim":
 		if animDir == "forwards":
 			$WindowTexture/OptionsTexture/DeployBtn.grab_focus()
-			buttonsInteractable = true
+			updateButtonDisabled(false)
 	if anim_name == "HideAnim":
 		hide()
 

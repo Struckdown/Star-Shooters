@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Stats_Bar.png" type="Texture" id=1]
 [ext_resource path="res://Space Shooter GUI/PNG/Pause/Table.png" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Art Packs/Fonts/SourceSansProRegular/SourceSansPro-Semibold.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://Levels/LevelSelect/MissionBriefing.gd" type="Script" id=10]
 [ext_resource path="res://Menus/UI_ButtonClicked.mp3" type="AudioStream" id=11]
+[ext_resource path="res://Space Shooter GUI/PNG/Pause/GrayTable.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -125,7 +126,6 @@ tracks/0/keys = {
 }
 
 [node name="CanvasLayer" type="Control"]
-rect_scale = Vector2( 1, 1e-05 )
 rect_pivot_offset = Vector2( 0, 320 )
 script = ExtResource( 10 )
 __meta__ = {
@@ -195,7 +195,6 @@ Prepare for deployment...
 "
 autowrap = true
 clip_text = true
-percent_visible = 0.2
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -218,6 +217,7 @@ margin_right = 890.401
 margin_bottom = 70.8833
 focus_neighbour_left = NodePath("../CancelBtn")
 texture_normal = ExtResource( 2 )
+texture_disabled = ExtResource( 12 )
 texture_focused = ExtResource( 3 )
 expand = true
 __meta__ = {
@@ -245,6 +245,7 @@ margin_right = 285.175
 margin_bottom = 72.3816
 focus_neighbour_right = NodePath("../DeployBtn")
 texture_normal = ExtResource( 2 )
+texture_disabled = ExtResource( 12 )
 texture_focused = ExtResource( 3 )
 expand = true
 __meta__ = {
