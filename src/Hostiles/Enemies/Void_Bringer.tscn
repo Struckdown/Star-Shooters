@@ -89,7 +89,6 @@ clipReloadTime = 3.0
 bulletMovementSpeed = 90
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 7 )
-initialSpawnDelayRandomRange = 1.0
 
 [node name="RightTur" parent="WeaponManager/Phase1/Phase1b" index="2" instance=ExtResource( 3 )]
 position = Vector2( 20.9763, 30.1534 )
@@ -103,7 +102,6 @@ clipReloadTime = 5.0
 bulletMovementSpeed = 90
 bulletSpawnDelay = 0.3
 bulletType = ExtResource( 8 )
-initialSpawnDelayRandomRange = 1.0
 nthBulletIsGreen = [ 0, 1 ]
 orbitalChildren = 7
 
@@ -164,7 +162,6 @@ clipReloadTime = 3.0
 bulletMovementSpeed = 90
 bulletSpawnDelay = 0.5
 bulletType = ExtResource( 7 )
-initialSpawnDelayRandomRange = 1.0
 
 [node name="RightTur" parent="WeaponManager/Phase2/Phase2b" index="2" instance=ExtResource( 3 )]
 position = Vector2( 20.9763, 30.1534 )
@@ -176,6 +173,5 @@ amountOfBullets = 2
 bulletMovementSpeed = 130
 bulletSpawnDelay = 0.2
 bulletType = ExtResource( 8 )
-initialSpawnDelayRandomRange = 1.0
 nthBulletIsGreen = [ 0, 1 ]
 orbitalChildren = 4

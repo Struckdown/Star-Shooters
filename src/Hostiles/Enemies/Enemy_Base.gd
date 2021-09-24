@@ -152,9 +152,7 @@ func getNewMoveGoal():
 	moveGoal = Vector2(xRand, yRand)
 
 func spawnGems():
-	var g = load("res://Hostiles/Gem.tscn")
-	var num = gemValue
-	for _i in range(num):
-		var gem = g.instance()
-		get_viewport().call_deferred("add_child", gem)
-		gem.global_position = self.global_position
+	var g = load("res://Hostiles/GemSpawner.tscn").instance()
+	g.gemsRemaining = gemValue
+	g.global_position = global_position
+	get_viewport().call_deferred("add_child", g)
