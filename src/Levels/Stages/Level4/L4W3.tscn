@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Hostiles/Bullets/Bullet_Gravity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Hostiles/Enemies/CircleShooter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlack2.png" type="Texture" id=5]
 [ext_resource path="res://Hostiles/Bullets/OrbitalBullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Death"
@@ -85,6 +86,21 @@ bulletMovementSpeed = 80
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 1 )
 initialSpawnDelayRandomRange = 2.0
+
+[node name="BulletEmitter2" parent="GravShooter/WeaponManager/BulletEmitter" index="2" instance=ExtResource( 3 )]
+rotation = 1.57079
+targetStyle = "atTarget"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 17.0
+amountOfBullets = 3
+bulletMovementSpeed = 50
+bulletWaveSpeed = 5.0
+bulletWaveStr = 30.0
+bulletSpawnDelay = 1.7
+bulletType = ExtResource( 7 )
+initialSpawnDelayRandomRange = 2.0
+nthBulletIsGreen = [ 1, 2 ]
 
 [node name="StandardShooter" parent="." index="1" instance=ExtResource( 4 )]
 position = Vector2( 352.575, -74.5947 )
