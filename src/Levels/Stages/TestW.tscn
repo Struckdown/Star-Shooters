@@ -42,3 +42,28 @@ bulletMovementSpeed = 211
 bulletSpawnDelay = 0.0
 bulletType = ExtResource( 6 )
 initialSpawnDelayRandomRange = 0.0
+
+[node name="BulletEmitter3" parent="." instance=ExtResource( 1 )]
+position = Vector2( 846.06, 326.065 )
+targetStyle = "shape"
+equation = "pow(x,2)"
+shapeTotalBullets = 16
+shapeMagnitude = 150.0
+bulletMovementSpeed = 211
+bulletSpawnDelay = 0.0
+bulletType = ExtResource( 6 )
+initialSpawnDelayRandomRange = 0.0
+
+[node name="BulletEmitter4" parent="." instance=ExtResource( 1 )]
+position = Vector2( 846.06, 62.286 )
+targetStyle = "shape"
+equation = "x*0"
+shapeXMin = -0.3
+shapeXMax = 0.3
+shapeEmissionTime = 0.2
+shapeTotalBullets = 5
+shapeMagnitude = 150.0
+bulletMovementSpeed = 211
+bulletSpawnDelay = 0.0
+bulletType = ExtResource( 6 )
+initialSpawnDelayRandomRange = 0.0

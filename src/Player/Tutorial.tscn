@@ -107,10 +107,10 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 6.7, 8.3, 9.3, 9.4, 9.5, 9.6, 9.7, 12.1 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.6, 2, 6.7, 8.3, 9.3, 9.4, 9.5, 9.6, 9.7, 12.1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 350, 500 ), Vector2( 350, 500 ), Vector2( 30, 500 ), Vector2( -30, 500 ), Vector2( -30, 640 ), Vector2( 800, 600 ), Vector2( 740, 500 ), Vector2( 640, 500 ), Vector2( 350, 500 ) ]
+"values": [ Vector2( 350, 500 ), Vector2( 400, 500 ), Vector2( 350, 500 ), Vector2( 350, 500 ), Vector2( 30, 500 ), Vector2( -30, 500 ), Vector2( -30, 640 ), Vector2( 800, 600 ), Vector2( 740, 500 ), Vector2( 640, 500 ), Vector2( 350, 500 ) ]
 }
 tracks/2/type = "method"
 tracks/2/path = NodePath("Window/ViewportContainer/Viewport/Player")
@@ -157,6 +157,18 @@ tracks/3/keys = {
 "args": [  ],
 "method": "updateMaxEnergy"
 } ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Window/ViewportContainer/Viewport/Player/EnergyArea/Core:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.6, 5.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
 }
 
 [sub_resource type="DynamicFont" id=18]
@@ -215,6 +227,9 @@ scale = Vector2( 5, 5 )
 position = Vector2( 350, 500 )
 godMode = true
 
+[node name="Core" parent="Window/ViewportContainer/Viewport/Player/EnergyArea" index="1"]
+visible = false
+
 [node name="ScoreboardPnl" parent="Window/ViewportContainer/Viewport" instance=ExtResource( 2 )]
 margin_left = 660.0
 margin_right = 860.0
@@ -224,7 +239,7 @@ rect_scale = Vector2( 0.7, 1 )
 position = Vector2( 560, 400 )
 scale = Vector2( 5, 5 )
 frames = SubResource( 10 )
-frame = 2
+frame = 7
 playing = true
 
 [node name="Fire key" type="AnimatedSprite" parent="Window/ViewportContainer/Viewport"]
@@ -238,6 +253,7 @@ playing = true
 position = Vector2( 100, 350 )
 scale = Vector2( 5, 5 )
 frames = SubResource( 16 )
+frame = 1
 playing = true
 
 [node name="WaveBase" parent="Window/ViewportContainer/Viewport" instance=ExtResource( 7 )]
@@ -264,3 +280,5 @@ anims/Blink = SubResource( 19 )
 
 [connection signal="energyUpdated" from="Window/ViewportContainer/Viewport/Player" to="." method="_on_Player_energyUpdated"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+
+[editable path="Window/ViewportContainer/Viewport/Player"]

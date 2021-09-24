@@ -14,11 +14,13 @@ var actualRotationStart	# The true relative rotation to parent of the emitter (r
 export(float) var initialRotationOffset = 0	# Initial offset (deg)
 export(String, "straight", "predict", "atTarget", "shape") var targetStyle
 export(String, MULTILINE) var equation = "pow(abs(x), (2.0/3.0))+sqrt(1-pow(x,2))"
+export(float) var shapeXMin = -1
+export(float) var shapeXMax = 1
 export(float) var shapeEmissionTime = 1.0
 export(int) var shapeTotalBullets = 20
 export(float) var shapeMagnitude = 50
 export(bool) var shapeOneShot = true
-var shapeTrackerX = -1.0	# bounds shape on x axis from -1 to 1
+onready var shapeTrackerX = shapeXMin	# bounds shape on x axis from shapeXMin to shapeXMax
 
 export(bool) var useRotationAsCenterBullet = false
 export(bool) var fireAtLocationForWholeClip = true
@@ -162,11 +164,12 @@ func calculateBulletTargetPosition(_delta):
 	if targetStyle == "shape":
 		var expression = Expression.new()
 		expression.parse(equation, ["x"])
+		print(name, shapeTrackerX)
 		var y = expression.execute([shapeTrackerX])
 		var x = shapeTrackerX
 		var targetPos = Vector2(x, -y) * shapeMagnitude + global_position
 		shapeTrackerX += bulletSpawnDelay/shapeEmissionTime * 4
-		if shapeTrackerX > 1 and shapeOneShot:
+		if shapeTrackerX > shapeXMax and shapeOneShot:
 			emitting = false
 		return targetPos
 
