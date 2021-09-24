@@ -65,6 +65,10 @@ func _on_Menu_button_up(btn):
 		"options":
 			$ButtonClickedSFX.play()
 			$CanvasLayer/Settings.show()
+		"credits":
+			if $MainBtns/CreditsBtn.is_hovered():
+				$ButtonClickedSFX.play()
+				$CanvasLayer/Credits.display(true)
 		"exit":
 			if $MainBtns/ExitBtn.is_hovered():
 				$ButtonClickedSFX.play()
@@ -79,3 +83,8 @@ func hideSettings():
 
 func _on_Btn_mouse_entered():
 	$ButtonHoveredSFX.play()
+
+
+func _on_Credits_closed():
+	$CanvasLayer/Credits.display(false)
+	$MainBtns/CreditsBtn.grab_focus()

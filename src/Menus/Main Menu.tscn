@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Space Backgrounds/space_background_pack/ScrollingShader2.shader" type="Shader" id=1]
 [ext_resource path="res://Menus/Main Menu.gd" type="Script" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Menus/UI_ButtonHovered.wav" type="AudioStream" id=14]
 [ext_resource path="res://Menus/UI_ButtonClicked.mp3" type="AudioStream" id=15]
 [ext_resource path="res://Art Packs/Struckdown/Lock.png" type="Texture" id=16]
+[ext_resource path="res://Menus/Credits.tscn" type="PackedScene" id=17]
 
 [sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 1 )
@@ -157,9 +158,9 @@ texture = ExtResource( 3 )
 
 [node name="MainBtns" type="VBoxContainer" parent="."]
 margin_left = 741.0
-margin_top = 355.0
+margin_top = 337.341
 margin_right = 963.0
-margin_bottom = 566.0
+margin_bottom = 591.341
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -253,7 +254,7 @@ margin_top = 129.0
 margin_right = 222.0
 margin_bottom = 168.0
 focus_neighbour_top = NodePath("../TutorialBtn")
-focus_neighbour_bottom = NodePath("../ExitBtn")
+focus_neighbour_bottom = NodePath("../CreditsBtn")
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
@@ -274,11 +275,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ExitBtn" type="TextureButton" parent="MainBtns"]
+[node name="CreditsBtn" type="TextureButton" parent="MainBtns"]
 margin_top = 172.0
 margin_right = 222.0
 margin_bottom = 211.0
 focus_neighbour_top = NodePath("../OptionsBtn")
+focus_neighbour_bottom = NodePath("../ExitBtn")
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CreditsLbl" type="Label" parent="MainBtns/CreditsBtn"]
+margin_right = 222.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 2 )
+text = "Credits"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExitBtn" type="TextureButton" parent="MainBtns"]
+margin_top = 215.0
+margin_right = 222.0
+margin_bottom = 254.0
+focus_neighbour_top = NodePath("../CreditsBtn")
 focus_neighbour_bottom = NodePath("../PlayBtn")
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
@@ -461,6 +488,9 @@ texture = ExtResource( 11 )
 [node name="Settings" parent="CanvasLayer" instance=ExtResource( 13 )]
 visible = false
 
+[node name="Credits" parent="CanvasLayer" instance=ExtResource( 17 )]
+visible = false
+
 [node name="ButtonHoveredSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )
 bus = "SFX"
@@ -477,6 +507,8 @@ bus = "SFX"
 [connection signal="mouse_entered" from="MainBtns/TutorialBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="button_up" from="MainBtns/OptionsBtn" to="." method="_on_Menu_button_up" binds= [ "options" ]]
 [connection signal="mouse_entered" from="MainBtns/OptionsBtn" to="." method="_on_Btn_mouse_entered"]
+[connection signal="button_up" from="MainBtns/CreditsBtn" to="." method="_on_Menu_button_up" binds= [ "credits" ]]
+[connection signal="mouse_entered" from="MainBtns/CreditsBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="button_up" from="MainBtns/ExitBtn" to="." method="_on_Menu_button_up" binds= [ "exit" ]]
 [connection signal="mouse_entered" from="MainBtns/ExitBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="button_up" from="PlayBtns/ContinueBtn" to="." method="_on_Menu_button_up" binds= [ "continue" ]]
@@ -485,6 +517,7 @@ bus = "SFX"
 [connection signal="mouse_entered" from="PlayBtns/NewGameBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="button_up" from="PlayBtns/BackBtn" to="." method="_on_Menu_button_up" binds= [ "back" ]]
 [connection signal="mouse_entered" from="PlayBtns/BackBtn" to="." method="_on_Btn_mouse_entered"]
+[connection signal="closed" from="CanvasLayer/Credits" to="." method="_on_Credits_closed"]
 
 [editable path="AnimationPlayer/Bullet_Straight"]
 [editable path="AnimationPlayer/Bullet_Straight2"]
