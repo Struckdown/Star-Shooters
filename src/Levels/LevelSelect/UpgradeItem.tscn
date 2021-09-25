@@ -79,7 +79,7 @@ margin_top = 42.3667
 margin_right = 824.342
 margin_bottom = 69.3667
 custom_fonts/font = ExtResource( 6 )
-text = "x100"
+text = "100"
 __meta__ = {
 "_edit_use_anchors_": false
 }

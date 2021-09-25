@@ -12,6 +12,12 @@ func _ready():
 #func _process(delta):
 #	pass
 
+func _input(event):
+	if event.is_action_pressed("ui_cancel") and displaying:
+		closeWindow()
+		get_tree().get_root().set_input_as_handled()
+		
+
 func setUpStats():
 	var vBox = get_node("WindowTexture/ScrollContainer/VBoxContainer")
 	var i = 0
@@ -60,6 +66,9 @@ func display(shouldDisplay):
 		$AnimationPlayer.play_backwards("Display")
 
 func _on_CloseButton_button_up():
+	closeWindow()
+
+func closeWindow():
 	display(false)
 	$WindowTexture/CloseButton/CloseSFX.play()
 	emit_signal("statsClosed")

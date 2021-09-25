@@ -22,7 +22,7 @@ func _ready():
 	curCost = getCost(upgradeLevel)
 	updateProgressBarVisuals()
 	updateNextLevelText()
-	$Button/CostLbl.text = "x" + str(getCost(upgradeLevel))
+	$Button/CostLbl.text = " " + str(getCost(upgradeLevel))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

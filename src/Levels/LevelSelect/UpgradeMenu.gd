@@ -14,6 +14,13 @@ func _ready():
 func _process(_delta):
 	updateArrows()
 
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel") and displaying:
+		closeWindow()
+		get_tree().get_root().set_input_as_handled()
+		
+
 func display(shouldDisplay):
 	if displaying == shouldDisplay:
 		return
@@ -24,11 +31,13 @@ func display(shouldDisplay):
 		$AnimationPlayer.play_backwards("Display")
 
 func _on_CloseButton_button_up():
+	closeWindow()
+
+func closeWindow():
 	display(false)
 	$WindowTexture/CloseButton/CloseSFX.play()
 	emit_signal("shopClosed")
 	$WindowTexture/CloseButton.release_focus()
-
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Display" and displaying:
