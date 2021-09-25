@@ -18,6 +18,7 @@ export(int) var debugWave = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	scoreBoardRef = get_node("VPCscoreboard/Viewport/Scoreboard")
 	playerSpawn = get_node("VPCgame/Viewport/PlayerSpawner")
 	if GameManager.stage != null:

@@ -489,7 +489,6 @@ texture = ExtResource( 11 )
 visible = false
 
 [node name="Credits" parent="CanvasLayer" instance=ExtResource( 17 )]
-visible = false
 
 [node name="ButtonHoveredSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 14 )

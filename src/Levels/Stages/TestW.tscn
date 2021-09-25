@@ -67,3 +67,18 @@ bulletMovementSpeed = 211
 bulletSpawnDelay = 0.0
 bulletType = ExtResource( 6 )
 initialSpawnDelayRandomRange = 0.0
+
+[node name="BulletEmitter5" parent="." instance=ExtResource( 1 )]
+position = Vector2( 512.306, 315.43 )
+targetStyle = "shape"
+equation = "-abs(x)"
+shapeXMin = -2.0
+shapeXMax = 2.0
+shapeEmissionTime = 3.0
+shapeTotalBullets = 15
+shapeMagnitude = 150.0
+bulletMovementSpeed = 211
+bulletSpawnDelay = 0.0
+bulletType = ExtResource( 6 )
+initialSpawnDelayRandomRange = 0.0
+emitting = false

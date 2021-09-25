@@ -6,6 +6,10 @@ func _ready():
 		print("Settings failed to connect?")
 
 func _on_ResumeBtn_pressed():
+	if GameManager.stage != null:
+		Input.set_mouse_mode(Input.mouse_mod)
+	else:
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	self.hide()
 	get_tree().paused = false
 

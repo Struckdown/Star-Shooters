@@ -95,10 +95,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PoolRealArray( 0, 7.5, 8.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ true ]
+"values": [ false, true, false ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Window/ViewportContainer/Viewport/Player:position")
@@ -170,6 +170,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [ false, true, false ]
 }
+tracks/5/type = "value"
+tracks/5/path = NodePath("Window/ViewportContainer/Viewport/ShiftKey:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.6, 5.8 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Window/ViewportContainer/Viewport/Keyboard_Arrows:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 2, 6.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true ]
+}
 
 [sub_resource type="DynamicFont" id=18]
 size = 22
@@ -239,10 +263,10 @@ rect_scale = Vector2( 0.7, 1 )
 position = Vector2( 560, 400 )
 scale = Vector2( 5, 5 )
 frames = SubResource( 10 )
-frame = 7
 playing = true
 
 [node name="Fire key" type="AnimatedSprite" parent="Window/ViewportContainer/Viewport"]
+visible = false
 position = Vector2( 200, 400 )
 scale = Vector2( 5, 5 )
 frames = SubResource( 13 )
@@ -250,10 +274,10 @@ frame = 1
 playing = true
 
 [node name="ShiftKey" type="AnimatedSprite" parent="Window/ViewportContainer/Viewport"]
+visible = false
 position = Vector2( 100, 350 )
 scale = Vector2( 5, 5 )
 frames = SubResource( 16 )
-frame = 1
 playing = true
 
 [node name="WaveBase" parent="Window/ViewportContainer/Viewport" instance=ExtResource( 7 )]

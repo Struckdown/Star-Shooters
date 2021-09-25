@@ -70,7 +70,6 @@ func _ready():
 	volleysRemaining = volleyClipSize
 	if targetStyle == "shape":
 		bulletSpawnDelay = (shapeEmissionTime / float(shapeTotalBullets)) / 2	# accounts for [-1..1]
-#		print(bulletSpawnDelay)
 	updatePosToShoot()
 
 
@@ -154,7 +153,6 @@ func spawnBullets(delta, additionalRads):
 			b.targetPos = calculateBulletTargetPosition(delta)
 			if totalDelta > 1:
 				totalDelta -= 2
-			#print(b.targetPos)
 		b.init()
 	volleysFired += 1
 
@@ -164,7 +162,6 @@ func calculateBulletTargetPosition(_delta):
 	if targetStyle == "shape":
 		var expression = Expression.new()
 		expression.parse(equation, ["x"])
-		print(name, shapeTrackerX)
 		var y = expression.execute([shapeTrackerX])
 		var x = shapeTrackerX
 		var targetPos = Vector2(x, -y) * shapeMagnitude + global_position
