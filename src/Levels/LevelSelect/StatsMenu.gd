@@ -24,7 +24,7 @@ func setUpStats():
 	var statsOrder = ["enemiesKilled", "deaths", "bossesDefeated",
 "lasersFired", "chargeGained", "overworldDistanceTraveled",
 "timesSlipstreamed", "stagesCleared", "stagesPlayed",
-"totalScore", "gemsCollected", "gameCompletion"
+"totalScore", "gemsCollected", "gameCompletion", "timePlayed",
 ]
 
 	var hBox = null
@@ -36,21 +36,21 @@ func setUpStats():
 		var val = $StatsValSample.duplicate()
 		lbl.text = prettyText(str(stat)) + ":"
 		val.text = str(StatsManager.stats[stat])
+		hBox.name = lbl.text + "hBox"
 		lbl.show()
 		val.show()
 		hBox.add_child(lbl)
 		hBox.add_child(val)
 		i += 1
-	#$WindowTexture/ScrollContainer/VBoxContainer/HBoxContainer/EnemiesKilledVal.text = StatsManager.stats["enemiesKilled"]
 
 func prettyText(txt: String):
 	var newTxt = ""
 	var i = 0
 	for l in txt:
-		if i == 0:
-			l = l.to_upper()
 		if l == l.to_upper():
 			newTxt += " "
+		if i == 0:
+			l = l.to_upper()
 		newTxt += l
 		i += 1
 	return newTxt
@@ -73,3 +73,10 @@ func closeWindow():
 	$WindowTexture/CloseButton/CloseSFX.play()
 	emit_signal("statsClosed")
 	$WindowTexture/CloseButton.release_focus()
+
+
+func _on_SecondTimer_timeout():
+	var vBox = get_node("WindowTexture/ScrollContainer/VBoxContainer")
+	for child in vBox.get_children():
+		if child.name == "Time PlayedhBox":
+			child.get_children()[1].text = str(int(StatsManager.stats["timePlayed"]))	# TODO Consider per stat conversions (Eg, timePlayed should convert seconds to HH:MM format)

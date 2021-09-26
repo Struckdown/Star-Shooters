@@ -1,5 +1,7 @@
 extends Node2D
 
+# To add a stat, add it to the resetToDefaults function. Then add the "updateStats" function wherever it shuold be incremented.
+# Then update the statsmenu to include this new stats in the correct position.
 
 var stats = {}
 var saveFileName = "user://statsManager.save"
@@ -10,14 +12,15 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	updateStats("timePlayed", delta)
 
 func updateStats(key, valueDelta):
 	if key in stats:
 		stats[key] = stats[key] + valueDelta
 	else:
 		push_error("Tried to push an invalid stat: " + key)
+		stats[key] = valueDelta
 
 func saveGame():
 	var save_game = File.new()
@@ -42,5 +45,6 @@ func resetToDefaults():
 	stats = {"enemiesKilled": 0, "deaths": 0, "bossesDefeated": 0,
 "lasersFired": 0, "chargeGained": 0, "overworldDistanceTraveled": 0,
 "timesSlipstreamed": 0, "stagesCleared": 0, "stagesPlayed": 0,
-"totalScore": 0, "gemsCollected": 0, "gameCompletion": 0
+"totalScore": 0, "gemsCollected": 0, "gameCompletion": 0,
+"timePlayed": 0
 }

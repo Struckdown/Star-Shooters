@@ -202,4 +202,8 @@ custom_fonts/font = ExtResource( 7 )
 custom_colors/font_color = Color( 0.913725, 0.756863, 0.219608, 1 )
 text = "152"
 
+[node name="SecondTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="button_up" from="WindowTexture/CloseButton" to="." method="_on_CloseButton_button_up"]
+[connection signal="timeout" from="SecondTimer" to="." method="_on_SecondTimer_timeout"]
