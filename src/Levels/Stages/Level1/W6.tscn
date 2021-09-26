@@ -81,7 +81,7 @@ enemiesToDestroy = 2
 position = Vector2( 467.619, -62.4273 )
 rotation = 1.57079
 pointsWorth = 150
-speed = 190.0
+speed = 140.0
 gemValue = 15
 flyPaths = [ NodePath("../CirclePath") ]
 loopFlyPaths = true
@@ -90,12 +90,18 @@ flyingPattern = "followPath"
 [node name="BulletEmitter" parent="HelixShooter/WeaponManager" index="1"]
 rotation = 1.5708
 targetStyle = "straight"
-bulletMovementSpeed = 120
+volleyClipSize = 8
+bulletMovementSpeed = 80
+bulletScale = Vector2( 2, 2 )
+bulletWaveSpeed = 3.0
 greenBulletFrequency = -1
 
 [node name="BulletEmitter2" parent="HelixShooter/WeaponManager/BulletEmitter" index="1"]
 targetStyle = "straight"
-bulletMovementSpeed = 120
+volleyClipSize = 8
+bulletMovementSpeed = 80
+bulletScale = Vector2( 2, 2 )
+bulletWaveSpeed = 3.0
 greenBulletFrequency = -1
 
 [node name="LeftPlayerShooter" parent="." index="1" instance=ExtResource( 2 )]
@@ -142,8 +148,9 @@ useRotationAsCenterBullet = false
 fireAtLocationForWholeClip = true
 angleOfBulletSpread = 45.0
 amountOfBullets = 8
-bulletMovementSpeed = 130
-bulletSpawnDelay = 0.4
+bulletMovementSpeed = 110
+bulletScale = Vector2( 1.2, 1.2 )
+bulletSpawnDelay = 1.2
 initialSpawnDelayRandomRange = 3.0
 greenBulletFrequency = -1
 nthBulletIsGreen = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]

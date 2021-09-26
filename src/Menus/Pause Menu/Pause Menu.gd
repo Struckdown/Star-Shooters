@@ -7,7 +7,7 @@ func _ready():
 
 func _on_ResumeBtn_pressed():
 	if GameManager.stage != null:
-		Input.set_mouse_mode(Input.mouse_mod)
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	self.hide()
@@ -49,6 +49,7 @@ func _unhandled_input(event):
 func _on_Pause_Menu_visibility_changed():
 	if visible:
 		$PauseCtrl/VBoxContainer/ResumeBtn.grab_focus()
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _exit_tree():
 	get_tree().paused = false	# if the pause menu disappears for any reason, the tree should not be paused anymore, since this should only happen on transitions

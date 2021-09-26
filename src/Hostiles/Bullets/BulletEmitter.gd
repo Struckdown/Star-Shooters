@@ -34,6 +34,7 @@ var volleysRemaining
 export(float) var clipReloadTime = 0
 export(float) var clipRandomReloadDelay = 0	# seconds
 export(int) var bulletMovementSpeed = 10
+export(Vector2) var bulletScale = Vector2(1,1)
 export(float) var bulletWaveSpeed = 0
 export(float) var bulletWaveStr = 0
 export(float) var bulletSpawnDelay = 1	# in seconds
@@ -149,6 +150,7 @@ func spawnBullets(delta, additionalRads):
 		b.waveStr = bulletWaveStr
 		b.orbitalChildren = orbitalChildren
 		b.orbitalRotationSpeedDegs = orbitalRotationSpeedDegs
+		b.scale = bulletScale
 		if targetStyle == "shape":
 			b.targetPos = calculateBulletTargetPosition(delta)
 			if totalDelta > 1:
