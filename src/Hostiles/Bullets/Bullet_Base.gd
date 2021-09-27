@@ -16,8 +16,10 @@ export(float) var rotationSpeed = 0
 export(NodePath) var nodeToRotate
 var orbitalChildren = -1	# used by rotationalBullet
 var orbitalRotationSpeedDegs = 0
+export(bool) var trackYFirst = false	# orthogonal bullets
 var canCauseDamage = true
 var targetPos = null
+var target = null	# used in derived classes
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -26,7 +28,7 @@ func _ready():
 	if titleScreenVersion:
 		$DespawnTimer.autostart = false
 		$DespawnTimer.stop()
-	if nodeToRotate:
+	if nodeToRotate and typeof(nodeToRotate) != TYPE_OBJECT:
 		nodeToRotate = get_node(nodeToRotate)
 
 func init():
@@ -35,6 +37,7 @@ func init():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	move(delta*GameManager.gameSpeed)
+	updateNodeToRotate(delta)
 
 func _on_DespawnTimer_timeout():
 	canCauseDamage = false
@@ -75,7 +78,8 @@ func move(delta):
 	position += forwardVec * moveSpeed * delta	# forward motion
 	position += sideVec * delta	# side wiggle
 	prevHorizontalOffset = horizontalOffset
-	
+
+func updateNodeToRotate(delta):
 	if nodeToRotate:
 		nodeToRotate.rotate(deg2rad(rotationSpeed)*delta)
 

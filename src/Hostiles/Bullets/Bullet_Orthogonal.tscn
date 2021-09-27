@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Hostiles/Bullets/Bullet_Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Orthogonal.gd" type="Script" id=2]
+[ext_resource path="res://Space Shooter Redux/PNG/Lasers/laserBlue09.png" type="Texture" id=3]
+
+[node name="Bullet_Orthogonal" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed09.png"
+rotationSpeed = 360.0
+nodeToRotate = NodePath("Sprite")
+
+[node name="Sprite" type="Sprite" parent="." index="2"]
+scale = Vector2( 0.2, 0.2 )
+texture = ExtResource( 3 )

@@ -12,7 +12,7 @@ var rotatingPositively = 1
 var internalRotation = 0	# how much the emitter has rotated internally (rad)
 var actualRotationStart	# The true relative rotation to parent of the emitter (rad)
 export(float) var initialRotationOffset = 0	# Initial offset (deg)
-export(String, "straight", "predict", "atTarget", "shape") var targetStyle
+export(String, "straight", "predict", "atTarget", "shape") var targetStyle	# shape emitter
 export(String, MULTILINE) var equation = "pow(abs(x), (2.0/3.0))+sqrt(1-pow(x,2))"
 export(float) var shapeXMin = -1
 export(float) var shapeXMax = 1
@@ -47,8 +47,10 @@ export(Array, int) var nthBulletIsGreen = []
 export(float, 0, 1) var makeBulletEnergizedAnywaysOdds = 0	# All bullets will have this chance to be powered
 var volleysFired = 0
 
-export(int) var orbitalChildren = -1
+export(int) var orbitalChildren = -1	# orbital bullets	#TODO maybe subclass the bullet emitter to have these properties instead?
 export(float) var orbitalRotationSpeedDegs = 30
+
+export(bool) var trackYFirst = false	# orthogonalBullets
 
 export(bool) var emitting = true
 export(bool) var DEBUG = false
@@ -63,6 +65,9 @@ signal sweepCompleted	# whenever the turret reverses direction, emit this signal
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if not is_instance_valid(target):	# tries to find the player
+		if len(get_tree().get_nodes_in_group("Player")) > 0:
+			target = get_tree().get_nodes_in_group("Player")[0]
 	randomize()
 	internalRotation = deg2rad(initialRotationOffset)
 	actualRotationStart = rotation
@@ -151,10 +156,12 @@ func spawnBullets(delta, additionalRads):
 		b.orbitalChildren = orbitalChildren
 		b.orbitalRotationSpeedDegs = orbitalRotationSpeedDegs
 		b.scale = bulletScale
+		b.target = target
 		if targetStyle == "shape":
 			b.targetPos = calculateBulletTargetPosition(delta)
 			if totalDelta > 1:
 				totalDelta -= 2
+		b.trackYFirst = trackYFirst
 		b.init()
 	volleysFired += 1
 

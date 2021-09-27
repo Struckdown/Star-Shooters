@@ -22,6 +22,5 @@ childToCopy = NodePath("RotatingChildren/WaveBullet")
 moveSpeed = 0
 waveStr = 0
 waveSpeed = 0.0
-energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed09New.png"
 
 [editable path="RotationRing"]

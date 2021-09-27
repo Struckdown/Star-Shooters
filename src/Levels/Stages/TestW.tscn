@@ -4,9 +4,19 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Boss HP.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Orthogonal.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="BulletEmitter" parent="." instance=ExtResource( 1 )]
+position = Vector2( 397.782, 285.656 )
+targetStyle = "straight"
+shapeTotalBullets = 16
+shapeMagnitude = 150.0
+bulletMovementSpeed = 50
+bulletSpawnDelay = 2.0
+bulletType = ExtResource( 5 )
+initialSpawnDelayRandomRange = 0.0
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 518.457, 459.398 )
@@ -21,64 +31,3 @@ margin_left = 269.928
 margin_top = 4.2045
 margin_right = 769.928
 margin_bottom = 78.2045
-
-[node name="BulletEmitter" parent="." instance=ExtResource( 1 )]
-position = Vector2( 397.782, 285.656 )
-targetStyle = "shape"
-shapeTotalBullets = 16
-shapeMagnitude = 150.0
-bulletMovementSpeed = 211
-bulletSpawnDelay = 0.0
-bulletType = ExtResource( 6 )
-initialSpawnDelayRandomRange = 0.0
-
-[node name="BulletEmitter2" parent="." instance=ExtResource( 1 )]
-position = Vector2( 397.782, 285.656 )
-targetStyle = "shape"
-equation = "pow(abs(x), (2.0/3.0))-sqrt(1-pow(x,2))"
-shapeTotalBullets = 16
-shapeMagnitude = 150.0
-bulletMovementSpeed = 211
-bulletSpawnDelay = 0.0
-bulletType = ExtResource( 6 )
-initialSpawnDelayRandomRange = 0.0
-
-[node name="BulletEmitter3" parent="." instance=ExtResource( 1 )]
-position = Vector2( 846.06, 326.065 )
-targetStyle = "shape"
-equation = "pow(x,2)"
-shapeTotalBullets = 16
-shapeMagnitude = 150.0
-bulletMovementSpeed = 211
-bulletSpawnDelay = 0.0
-bulletType = ExtResource( 6 )
-initialSpawnDelayRandomRange = 0.0
-
-[node name="BulletEmitter4" parent="." instance=ExtResource( 1 )]
-position = Vector2( 846.06, 62.286 )
-targetStyle = "shape"
-equation = "x*0"
-shapeXMin = -0.3
-shapeXMax = 0.3
-shapeEmissionTime = 0.2
-shapeTotalBullets = 5
-shapeMagnitude = 150.0
-bulletMovementSpeed = 211
-bulletSpawnDelay = 0.0
-bulletType = ExtResource( 6 )
-initialSpawnDelayRandomRange = 0.0
-
-[node name="BulletEmitter5" parent="." instance=ExtResource( 1 )]
-position = Vector2( 512.306, 315.43 )
-targetStyle = "shape"
-equation = "-abs(x)"
-shapeXMin = -2.0
-shapeXMax = 2.0
-shapeEmissionTime = 3.0
-shapeTotalBullets = 15
-shapeMagnitude = 150.0
-bulletMovementSpeed = 211
-bulletSpawnDelay = 0.0
-bulletType = ExtResource( 6 )
-initialSpawnDelayRandomRange = 0.0
-emitting = false
