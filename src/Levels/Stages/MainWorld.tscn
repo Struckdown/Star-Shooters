@@ -79,8 +79,10 @@ position = Vector2( 410, 275 )
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Game Over" parent="CanvasLayer" instance=ExtResource( 11 )]
+margin_right = -201.0
 
 [node name="Level Won" parent="CanvasLayer" instance=ExtResource( 12 )]
+margin_right = -203.0
 
 [node name="Pause Menu" parent="CanvasLayer" instance=ExtResource( 4 )]
 visible = false
