@@ -172,9 +172,10 @@ __meta__ = {
 }
 
 [node name="LivesHBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/CenterContainer"]
-margin_left = 52.0
-margin_right = 159.0
+margin_left = 15.0
+margin_right = 196.0
 margin_bottom = 26.0
+rect_min_size = Vector2( 0, 26 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -199,6 +200,24 @@ __meta__ = {
 [node name="playerLife_2" type="TextureRect" parent="VBoxContainer/VBoxContainer/CenterContainer/LivesHBoxContainer"]
 margin_left = 74.0
 margin_right = 107.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerLife_3" type="TextureRect" parent="VBoxContainer/VBoxContainer/CenterContainer/LivesHBoxContainer"]
+margin_left = 111.0
+margin_right = 144.0
+margin_bottom = 26.0
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="playerLife_4" type="TextureRect" parent="VBoxContainer/VBoxContainer/CenterContainer/LivesHBoxContainer"]
+margin_left = 148.0
+margin_right = 181.0
 margin_bottom = 26.0
 texture = ExtResource( 2 )
 __meta__ = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Levels/LevelSelect/UpgradeMenuFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Levels/LevelSelect/UpgradeItem.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Cristal_Icon.png" type="Texture" id=9]
 [ext_resource path="res://Menus/UI_ButtonClicked.mp3" type="AudioStream" id=10]
 [ext_resource path="res://Art Packs/Struckdown/Triangle.png" type="Texture" id=11]
+[ext_resource path="res://Space Shooter Redux/PNG/UI/playerLife1_blue.png" type="Texture" id=12]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Display"
@@ -78,7 +79,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="WindowTexture/ScrollContainer"]
 margin_right = 881.0
-margin_bottom = 492.0
+margin_bottom = 616.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -152,6 +153,23 @@ text = "Gem Magnet Radius"
 [node name="UpgradeIcon" parent="WindowTexture/ScrollContainer/VBoxContainer/MagnetRadiusUpgrade/Button" index="5"]
 texture = ExtResource( 9 )
 
+[node name="LivesUpgrade" parent="WindowTexture/ScrollContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 496.0
+margin_right = 881.0
+margin_bottom = 616.0
+upgradeName = "lives"
+upgradeLevels = [ 3.0, 4.0, 5.0 ]
+baseCost = 750
+
+[node name="Button" parent="WindowTexture/ScrollContainer/VBoxContainer/LivesUpgrade" index="0"]
+margin_right = 881.0
+
+[node name="UpgradeNameLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/LivesUpgrade/Button" index="0"]
+text = "Spare Lives"
+
+[node name="UpgradeIcon" parent="WindowTexture/ScrollContainer/VBoxContainer/LivesUpgrade/Button" index="5"]
+texture = ExtResource( 12 )
+
 [node name="CloseButton" type="TextureButton" parent="WindowTexture"]
 margin_left = 844.832
 margin_top = 9.91571
@@ -207,3 +225,4 @@ anims/Display = SubResource( 1 )
 [editable path="WindowTexture/ScrollContainer/VBoxContainer/EnergyCapUpgrade"]
 [editable path="WindowTexture/ScrollContainer/VBoxContainer/ChargeGainUpgrade"]
 [editable path="WindowTexture/ScrollContainer/VBoxContainer/MagnetRadiusUpgrade"]
+[editable path="WindowTexture/ScrollContainer/VBoxContainer/LivesUpgrade"]

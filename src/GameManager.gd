@@ -27,7 +27,9 @@ func clearSaveData():
 	mapPlayerLastRot = 0
 
 func resetPlayerLives():
-	playerLives = 3	#called whenever level select is hit?
+	var curLevel = UpgradeManager.upgrades["lives"]["curLevel"]
+	playerLives = UpgradeManager.upgrades["lives"]["upgradeLevels"][curLevel]	#called whenever level select is hit?
+
 
 func updateStagesCompleted(level):
 	if not stagesCompleted.has(level):

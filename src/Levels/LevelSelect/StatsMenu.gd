@@ -84,11 +84,9 @@ func _on_SecondTimer_timeout():
 			child.get_children()[1].text = formattedTime	# TODO Consider per stat conversions (Eg, timePlayed should convert seconds to HH:MM format)
 
 func convertSecondsToHHMMSS(seconds: int) -> String:
-	var hours = seconds / 3600
-	#print(seconds)
+	var hours = int(float(seconds) / 3600.0)
 	seconds %= 3600
-	var minutes = seconds / 60
+	var minutes = int(float(seconds) / 60.0)
 	seconds %= 60
 	var formattedStr = "" + str(hours) + " hours, " + str(minutes) + " minutes, " + str(seconds) + " seconds"
-	print(formattedStr)
 	return formattedStr
