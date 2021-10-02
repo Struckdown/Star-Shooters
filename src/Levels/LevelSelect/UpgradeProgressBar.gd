@@ -15,4 +15,4 @@ func _ready():
 func updateFraction(newFrac):
 	fractionFull = clamp(newFrac, 0, 1)
 	if has_node("Pips"):
-		$Pips.rect_size.x = (fractionFull*445)
+		$Pips.rect_size.x = (fractionFull*$Background.rect_size.x-25)

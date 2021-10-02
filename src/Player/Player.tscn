@@ -9,16 +9,16 @@
 [ext_resource path="res://Player/PlayerTeleport2.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Player/PlayerShieldShader.tres" type="Material" id=8]
 
-[sub_resource type="CircleShape2D" id=15]
+[sub_resource type="CircleShape2D" id=1]
 radius = 59.0018
 
-[sub_resource type="CircleShape2D" id=16]
+[sub_resource type="CircleShape2D" id=2]
 radius = 22.2842
 
-[sub_resource type="CircleShape2D" id=17]
+[sub_resource type="CircleShape2D" id=3]
 radius = 2.97038
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=4]
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpritesRoot/Spaceship:rotation_degrees")
 tracks/0/interp = 1
@@ -44,7 +44,7 @@ tracks/1/keys = {
 "values": [ 0, 0, 1, 2, 3, 4, 5, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=5]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -60,7 +60,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=6]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpritesRoot/Spaceship:position")
@@ -87,7 +87,7 @@ tracks/1/keys = {
 "values": [ Vector2( 2, 5 ), Vector2( 3, 3 ) ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=7]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
@@ -146,14 +146,14 @@ texture = ExtResource( 3 )
 [node name="GemMagnetArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GemMagnetArea"]
-shape = SubResource( 15 )
+shape = SubResource( 1 )
 
 [node name="EnergyArea" type="Area2D" parent="." groups=[
 "PlayerOuterHitbox",
 ]]
 
 [node name="EnergyHitBox" type="CollisionShape2D" parent="EnergyArea"]
-shape = SubResource( 16 )
+shape = SubResource( 2 )
 
 [node name="Core" type="Sprite" parent="EnergyArea"]
 scale = Vector2( 0.125, 0.125 )
@@ -162,16 +162,16 @@ texture = ExtResource( 3 )
 [node name="CoreArea" type="Area2D" parent="EnergyArea"]
 
 [node name="CoreHitBox" type="CollisionShape2D" parent="EnergyArea/CoreArea"]
-shape = SubResource( 17 )
+shape = SubResource( 3 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Explosion = SubResource( 18 )
-anims/Flying = SubResource( 19 )
-anims/Spawn = SubResource( 20 )
+anims/Explosion = SubResource( 4 )
+anims/Flying = SubResource( 5 )
+anims/Spawn = SubResource( 6 )
 
 [node name="InvulnAnimPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Invuln"
-anims/Invuln = SubResource( 21 )
+anims/Invuln = SubResource( 7 )
 
 [node name="GemCollectorSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )

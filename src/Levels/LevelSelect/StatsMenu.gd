@@ -79,4 +79,16 @@ func _on_SecondTimer_timeout():
 	var vBox = get_node("WindowTexture/ScrollContainer/VBoxContainer")
 	for child in vBox.get_children():
 		if child.name == "Time PlayedhBox":
-			child.get_children()[1].text = str(int(StatsManager.stats["timePlayed"]))	# TODO Consider per stat conversions (Eg, timePlayed should convert seconds to HH:MM format)
+			var time = int(StatsManager.stats["timePlayed"])
+			var formattedTime = convertSecondsToHHMMSS(time)
+			child.get_children()[1].text = formattedTime	# TODO Consider per stat conversions (Eg, timePlayed should convert seconds to HH:MM format)
+
+func convertSecondsToHHMMSS(seconds: int) -> String:
+	var hours = seconds / 3600
+	#print(seconds)
+	seconds %= 3600
+	var minutes = seconds / 60
+	seconds %= 60
+	var formattedStr = "" + str(hours) + " hours, " + str(minutes) + " minutes, " + str(seconds) + " seconds"
+	print(formattedStr)
+	return formattedStr
