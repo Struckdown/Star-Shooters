@@ -1,5 +1,7 @@
 extends MarginContainer
 
+var prevFocusOwner = null
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	if $Settings.connect("closed", self, "hideSettings"):
@@ -12,6 +14,8 @@ func _on_ResumeBtn_pressed():
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	self.hide()
 	get_tree().paused = false
+	if prevFocusOwner:
+		prevFocusOwner.grab_focus()
 
 
 func _on_OptionsBtn_pressed():
@@ -48,6 +52,7 @@ func _unhandled_input(event):
 
 func _on_Pause_Menu_visibility_changed():
 	if visible:
+		prevFocusOwner = get_focus_owner()
 		$PauseCtrl/VBoxContainer/ResumeBtn.grab_focus()
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
