@@ -23,11 +23,12 @@ texture = ExtResource( 3 )
 phaseSwapMode = "health"
 healthPercentToNextPhase = 66.0
 
-[node name="WeaponManager1" parent="WeaponManager" index="1" instance=ExtResource( 6 )]
+[node name="WeaponManager1" parent="WeaponManager" index="0" instance=ExtResource( 6 )]
 phaseSwapMode = "time"
 timeToNextPhase = 3
+debug = true
 
-[node name="RotatingE" parent="WeaponManager/WeaponManager1" index="1" instance=ExtResource( 4 )]
+[node name="RotatingE" parent="WeaponManager/WeaponManager1" index="0" instance=ExtResource( 4 )]
 rotation = -0.785398
 rotationPerVolley = 10.0
 rotationRange = 90.0
@@ -46,7 +47,7 @@ bulletSpawnDelay = 0.2
 bulletType = ExtResource( 5 )
 emitting = false
 
-[node name="SpreadE" parent="WeaponManager/WeaponManager1" index="2" instance=ExtResource( 4 )]
+[node name="SpreadE" parent="WeaponManager/WeaponManager1" index="1" instance=ExtResource( 4 )]
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 amountOfBullets = 19
@@ -71,12 +72,12 @@ makeBulletEnergizedAnywaysOdds = 0.4
 emitting = false
 DEBUG = true
 
-[node name="WeaponManager2" parent="WeaponManager" index="2" instance=ExtResource( 6 )]
+[node name="WeaponManager2" parent="WeaponManager" index="1" instance=ExtResource( 6 )]
 rotation = -0.523599
 phaseSwapMode = "time"
 timeToNextPhase = 10
 
-[node name="Sprayer" parent="WeaponManager/WeaponManager2" index="1" instance=ExtResource( 4 )]
+[node name="Sprayer" parent="WeaponManager/WeaponManager2" index="0" instance=ExtResource( 4 )]
 rotationPerVolley = 2.0
 rotationRange = 60.0
 useRotationAsCenterBullet = true
@@ -91,7 +92,7 @@ initialSpawnDelayRandomRange = 0.0
 nthBulletIsGreen = [ 0 ]
 emitting = false
 
-[node name="Sprayer2" parent="WeaponManager/WeaponManager2" index="2" instance=ExtResource( 4 )]
+[node name="Sprayer2" parent="WeaponManager/WeaponManager2" index="1" instance=ExtResource( 4 )]
 rotationPerVolley = 2.0
 rotationRange = 60.0
 useRotationAsCenterBullet = true

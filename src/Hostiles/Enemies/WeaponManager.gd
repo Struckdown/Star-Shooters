@@ -8,6 +8,8 @@ var phaseTracker = 0
 var maxPhases
 var time = 0
 var active = true
+var weaponManagerParent = null
+export(bool) var debug = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,16 +18,19 @@ func _ready():
 		node = node.get_parent()
 	node.connect("tookDamage", self, "updateHealth")
 	#	print("Weapon connect failed???")
-	if phaseSwapMode == "time":
-		$Timer.wait_time = timeToNextPhase
-		$Timer.start()
-	maxPhases = get_child_count()-1
-	updatePhase()
+	if get_parent().has_method("updatePhase"):
+		weaponManagerParent = get_parent()
+		active = false
+	maxPhases = get_child_count()
+	if active:
+		updatePhase()	# only activate root
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if active:
+		if weaponManagerParent and not weaponManagerParent.active:
+			return
 		if phaseSwapMode != "time":
 			return
 		time += delta
@@ -43,25 +48,31 @@ func updateHealth(currentFraction):
 			updatePhase()
 
 func updatePhase():
+	# Turn all children off
 	for child in get_children():
-		if child.has_method("toggleEmitting"):
+		if child.has_method("updatePhase"):
+			child.active = false
+			child.updatePhase()
+		else:
 			child.toggleEmitting(false)
-	if get_child_count() > phaseTracker + 1:
-		get_child(phaseTracker+1).toggleEmitting(true)
+	
+	if not active:
+		return
 
-
-func _on_Timer_timeout():
-	return
-#	phaseTracker = (phaseTracker + 1) % maxPhases
-#	updatePhase()
+	# Turn active child on
+	var c = get_child(phaseTracker)
+	if c.has_method("updatePhase"):
+		c.active = true
+		c.updatePhase()
+	else:
+		c.toggleEmitting(active)
 
 func toggleDeath():
+	push_error("Where is this called from...?")	# this is dumb and should be removed
 	for child in get_children():
-		if child != $Timer:
-			child.toggleEmitting(false)
+		child.toggleEmitting(false)
 
-func toggleEmitting(state):
-	for child in get_children():
-		if child.has_method("toggleEmitting"):
-			child.toggleEmitting(state)
-	active = state
+#func toggleEmitting(state):
+#	for child in get_children():
+#		if child.has_method("toggleEmitting"):	# check if weapon manager or emitter
+#			child.toggleEmitting(state)

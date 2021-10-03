@@ -215,10 +215,7 @@ func toggleEmitting(state):
 	for child in get_children():
 		if child.has_method("toggleEmitting"):
 			child.toggleEmitting(state)
-	if state != null:
-		emitting = state
-	else:
-		emitting = !emitting
+	emitting = state
 
 
 # Solving circle line intersect problem using quadratic formula
