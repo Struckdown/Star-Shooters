@@ -28,20 +28,8 @@ func updateIdleAnimation(delta) -> void:
 
 func set_description() -> void:
 	$LevelPanel/LevelDescription.text = levelDescription + "\n" + missionName
-
-	var scores_save = File.new()
-	var saveFileName = "user://score_Level" + str(levelNumber) +".save"
-	if not scores_save.file_exists(saveFileName):
-		scores_save.open(saveFileName, File.WRITE)
-		scores_save.store_line("0")
-		bestScore = 0
-	else:
-		scores_save.open(saveFileName, File.READ)
-		var scores = []
-		while scores_save.get_position() < scores_save.get_len():
-			scores.append(scores_save.get_line())
-		bestScore = scores[0]	# scores are assumed to already be sorted in descending order
-	
+	if levelNumber in GameManager.stagesCompletedData:
+		bestScore = GameManager.stagesCompletedData[levelNumber]
 	$LevelPanel/BestScoreLbl.text = "Best Score: " + str(bestScore)
 
 
@@ -64,9 +52,3 @@ func _on_DisplayArea2D_area_entered(area):
 func _on_DisplayArea2D_area_exited(area):
 	if area.owner.is_in_group("Player"):
 		$AnimationPlayer.play_backwards("DisplayLevelInfo")
-
-#TODO
-func loadScore():
-	var _save_dict = {
-		"bestScore": bestScore
-	}

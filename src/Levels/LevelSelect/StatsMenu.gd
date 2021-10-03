@@ -2,9 +2,12 @@ extends Control
 
 signal statsClosed
 var displaying
+const TOTAL_LEVELS_IN_GAME = 4	# TODO derive automatically from level select screen?
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	calculateTotalScore()
+	calculateGameCompletion()
 	setUpStats()
 
 
@@ -16,7 +19,21 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel") and displaying:
 		closeWindow()
 		get_tree().get_root().set_input_as_handled()
-		
+
+
+func calculateTotalScore():	
+	var totalScore = 0
+	for key in GameManager.stagesCompletedData:
+		totalScore += GameManager.stagesCompletedData[key]
+	var prevTotalScore = StatsManager.stats["totalScore"]
+	StatsManager.updateStats("totalScore", totalScore-prevTotalScore)
+
+func calculateGameCompletion():
+	var levelsComplete = len(GameManager.stagesCompletedData)
+	var prevPercentage = StatsManager.stats["gameCompletion"]
+	var percentage = float(levelsComplete) / float(TOTAL_LEVELS_IN_GAME) * 100
+	StatsManager.updateStats("gameCompletion", percentage-prevPercentage)
+
 
 func setUpStats():
 	var vBox = get_node("WindowTexture/ScrollContainer/VBoxContainer")
@@ -36,6 +53,8 @@ func setUpStats():
 		var val = $StatsValSample.duplicate()
 		lbl.text = prettyText(str(stat)) + ":"
 		val.text = str(StatsManager.stats[stat])
+		if lbl.text == "Game Completion:":
+			val.text += "%"
 		hBox.name = lbl.text + "hBox"
 		lbl.show()
 		val.show()
@@ -55,7 +74,6 @@ func prettyText(txt: String):
 		i += 1
 	return newTxt
 
-
 func display(shouldDisplay):
 	if displaying == shouldDisplay:
 		return
@@ -74,7 +92,6 @@ func closeWindow():
 	emit_signal("statsClosed")
 	$WindowTexture/CloseButton.release_focus()
 
-
 func _on_SecondTimer_timeout():
 	var vBox = get_node("WindowTexture/ScrollContainer/VBoxContainer")
 	for child in vBox.get_children():
@@ -82,6 +99,7 @@ func _on_SecondTimer_timeout():
 			var time = int(StatsManager.stats["timePlayed"])
 			var formattedTime = convertSecondsToHHMMSS(time)
 			child.get_children()[1].text = formattedTime	# TODO Consider per stat conversions (Eg, timePlayed should convert seconds to HH:MM format)
+
 
 func convertSecondsToHHMMSS(seconds: int) -> String:
 	var hours = int(float(seconds) / 3600.0)

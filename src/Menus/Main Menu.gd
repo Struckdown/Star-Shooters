@@ -19,7 +19,7 @@ func _ready():
 		print("CanvasLayer/Settings connect failed???")
 	BGM.transitionSong("res://Menus/MainMenuBGM.mp3")
 	get_node("MainBtns/PlayBtn").grab_focus()
-	$PlayBtns/MissionsCompletedLbl.text = "Missions Completed: " + str(len(GameManager.stagesCompleted))
+	$PlayBtns/MissionsCompletedLbl.text = "Missions Completed: " + str(len(GameManager.stagesCompletedData))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

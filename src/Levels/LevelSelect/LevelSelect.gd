@@ -13,13 +13,10 @@ func _ready():
 		level.connect("playerNearby", self, "updateSelectedLevel")
 	$CanvasLayer/MissionBriefing.hide()
 	BGM.transitionSong("res://Menus/MainMenuBGM.mp3")	# Todo: Find new level select music?
-	#GameManager.load_game()
-	#get_nodes_in_group()
 	mapPlayerRef = get_tree().get_nodes_in_group("Player")[0]
 	mapPlayerRef.position = GameManager.mapPlayerLastPos
 	mapPlayerRef.rotation = GameManager.mapPlayerLastRot
-	calculateTotalScore()
-	calculateGameCompletion()
+
 
 func _exit_tree():
 	GameManager.mapPlayerLastPos = mapPlayerRef.position
@@ -62,27 +59,6 @@ func _on_MissionBriefing_deploy():	# note this also runs at the same time as exi
 
 func _on_MissionBriefing_cancel():
 	updatePlayerAllowedToMove(true)
-
-func save():
-	var _save_dict = {
-		#TODO
-	}
-
-func calculateTotalScore():
-	var totalScore = 0
-	for p in $Levels.get_children():
-		totalScore += int(p.bestScore)
-	var prevTotalScore = StatsManager.stats["totalScore"]
-	StatsManager.updateStats("totalScore", totalScore-prevTotalScore)
-
-func calculateGameCompletion():
-	var levelsComplete = 0
-	for p in $Levels.get_children():
-		if int(p.bestScore) != 0:
-			levelsComplete += 1
-	var prevPercentage = StatsManager.stats["gameCompletion"]
-	var percentage = float(levelsComplete) / 4.0 * 100
-	StatsManager.updateStats("gameCompletion", percentage-prevPercentage)
 
 
 func _on_UpgradePlanet_playerNearby(ref):

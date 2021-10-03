@@ -4,7 +4,7 @@ extends Node2D
 var score = 0
 var playerLives = 3
 var stage = null
-var stagesCompleted = []
+var stagesCompletedData = {}
 var lastPlayedStage = null
 var gameMode = null
 var mapPlayerLastPos = Vector2(496.063, 303.194)
@@ -20,7 +20,7 @@ func _ready():
 func clearSaveData():
 	score = 0
 	stage = null
-	stagesCompleted = []
+	stagesCompletedData = {}
 	lastPlayedStage = null
 	gameMode = null
 	mapPlayerLastPos = Vector2(496.063, 303.194)
@@ -31,37 +31,20 @@ func resetPlayerLives():
 	playerLives = UpgradeManager.upgrades["lives"]["upgradeLevels"][curLevel]	#called whenever level select is hit?
 
 
-func updateStagesCompleted(level):
-	if not stagesCompleted.has(level):
-		stagesCompleted.append(level)
+func updateStagesCompleted(level:int, newScore:int):
+	if stagesCompletedData.has(level):
+		stagesCompletedData[level] = max(newScore, stagesCompletedData[level])
+	else:
+		stagesCompletedData[level] = newScore
+	saveGame()
 
-func updateScores(newScore: int) -> void:
-	var scores_save = File.new()
-	var levelSaveName = "user://score_Level" + str(stage) +".save"
-	scores_save.open(levelSaveName, File.READ)
-	var scores = []
-	while scores_save.get_position() < scores_save.get_len():
-		scores.append(parse_json(scores_save.get_line()))
-	scores_save.close()
-
-	scores_save.open(levelSaveName, File.WRITE)
-	scores.append(newScore)
-	scores.sort()
-	scores_save.seek(0)
-	scores.invert()	# reverses the list to put the biggest number at the top
-	var i = 0
-	for s in scores:
-		scores_save.store_line(to_json(s))
-		i += 1
-		if i >= 10:	# never store more than the 10 top scores
-			break
 
 func saveGame():
 	UpgradeManager.saveGame()
 	StatsManager.saveGame()
 	var save_game = File.new()
 	save_game.open(saveGameFileName, File.WRITE)
-	save_game.store_line(to_json(stagesCompleted))
+	save_game.store_line(to_json(stagesCompletedData))
 	save_game.store_var(mapPlayerLastPos)
 	save_game.store_var(mapPlayerLastRot)
 	return
@@ -95,7 +78,7 @@ func load_game():
 		print("Game save doesn't exist, can't load anything!")
 		return # Error! We don't have a save to load.
 	save_game.open(saveGameFileName, File.READ)
-	stagesCompleted = parse_json(save_game.get_line())
+	stagesCompletedData = parse_json(save_game.get_line())
 	mapPlayerLastPos = save_game.get_var()
 	mapPlayerLastRot = save_game.get_var()
 #	# We need to revert the game state so we're not cloning objects

@@ -81,7 +81,7 @@ func updateWavesFinished():
 	if wavesComplete >= waves.size():
 		levelWon = true
 		playerRef.godMode = true
-		GameManager.updateStagesCompleted(level)
+		GameManager.updateStagesCompleted(level, GameManager.score)
 		StatsManager.updateStats("stagesCleared", 1)
 		if not levelLost:
 			$"CanvasLayer/Level Won".playLevelComplete()
