@@ -10,7 +10,7 @@ export(int) var timeToNextWave
 export(bool) var usesBossHP = false	# level manager uses this to connect this to the enemy
 export(String) var bossName = ""
 export(String) var musicRequest = ""
-var bossHPRef
+var bossHPRef	# set by level manager
 var waveFinishedSignalEmitted = false
 signal waveFinished
 signal startNextWave
@@ -28,6 +28,8 @@ func _ready():
 	setupAdvanceCondition()
 	if musicRequest != "":
 		changeMusic()
+	if usesBossHP:
+		setUpBossHP()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

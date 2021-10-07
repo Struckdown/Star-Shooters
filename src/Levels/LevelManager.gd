@@ -64,14 +64,10 @@ func spawnWave():
 		curWave.connect("startNextWave", self, "spawnWave")
 		curWave.connect("enemyDestroyed", self, "addToScore")
 		curWave.connect("waveFinished", self, "updateWavesFinished")
+		curWave.bossHPRef = $"CanvasLayer/Boss HP"
 		var enemies = curWave.getEnemies()
 		for e in enemies:
 			$VPCgame/Viewport/EnemyArrowTrackerManager.startTrackingNewEnemy(e)
-		if curWave.usesBossHP:
-			curWave.bossHPRef = $"CanvasLayer/Boss HP"
-			curWave.setUpBossHP()
-		else:
-			$"CanvasLayer/Boss HP".hide()
 	else:
 		print("Ran out of waves to spawn, should be at the end here")
 

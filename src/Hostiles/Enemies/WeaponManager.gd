@@ -48,6 +48,8 @@ func updateHealth(currentFraction):
 			updatePhase()
 
 func updatePhase():
+	if get_child_count() <= 0:
+		return
 	# Turn all children off
 	for child in get_children():
 		if child.has_method("updatePhase"):
@@ -67,8 +69,7 @@ func updatePhase():
 	else:
 		c.toggleEmitting(active)
 
-func toggleDeath():
-	push_error("Where is this called from...?")	# this is dumb and should be removed
+func markOwnerAsDestroyed():
 	for child in get_children():
 		child.toggleEmitting(false)
 

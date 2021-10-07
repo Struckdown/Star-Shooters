@@ -108,8 +108,8 @@ func destroy():
 	$AnimationPlayer.play("Death")
 	$ExplosionTimer.start()
 	for child in get_children():
-		if child.has_method("toggleDeath"):
-			child.toggleDeath()
+		if child.has_method("markOwnerAsDestroyed"):
+			child.markOwnerAsDestroyed()
 
 func scaleOut():
 	$DeathScaleTween.interpolate_property(self, "scale", self.scale, Vector2(0.2, 0.2), 0.3)
