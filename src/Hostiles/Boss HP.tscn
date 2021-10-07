@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Boss_HP_Bar_2.png" type="Texture" id=1]
 [ext_resource path="res://Hostiles/Boss HP.gd" type="Script" id=2]
@@ -9,102 +9,129 @@
 
 [sub_resource type="Animation" id=1]
 resource_name = "appear"
-length = 2.5
+length = 2.7
 tracks/0/type = "value"
-tracks/0/path = NodePath("VBoxContainer/Boss_Name_Table:rect_scale")
-tracks/0/interp = 2
+tracks/0/path = NodePath("VBoxContainer/Boss_Name_Table/Boss Name:self_modulate")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("VBoxContainer/Boss_Name_Table/Boss Name:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.7, 1.2, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("VBoxContainer/BG/HPBars/HpBarRed:value")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer/BG/HPBars/HpBarRed:value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
 "times": PoolRealArray( 0, 1.2, 1.6 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 100.0 ]
 }
-tracks/3/type = "value"
-tracks/3/path = NodePath("VBoxContainer/BG/HPBars/HpBar2Yellow:value")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/path = NodePath("VBoxContainer/BG/HPBars/HpBar2Yellow:value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
 "times": PoolRealArray( 0, 1.7, 2.1 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 100.0 ]
 }
-tracks/4/type = "value"
-tracks/4/path = NodePath("VBoxContainer/BG/HPBars/HpBar3Green:value")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/path = NodePath("VBoxContainer/BG/HPBars/HpBar3Green:value")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0, 2.1, 2.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 0.0, 0.0, 100.0 ]
 }
-tracks/5/type = "value"
-tracks/5/path = NodePath("VBoxContainer/BG:rect_size")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = false
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/path = NodePath("VBoxContainer/BG:rect_size")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/keys = {
 "times": PoolRealArray( 0, 0.5, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 0, 29 ), Vector2( 0, 29 ), Vector2( 631, 29 ) ]
 }
-tracks/6/type = "value"
-tracks/6/path = NodePath("VBoxContainer/BG:rect_scale")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
+tracks/5/type = "value"
+tracks/5/path = NodePath("VBoxContainer/BG:rect_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 0, 0.5, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1e-05, 1 ), Vector2( 1e-05, 1 ), Vector2( 1, 1 ) ]
 }
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = false
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 tracks/7/type = "value"
-tracks/7/path = NodePath(".:visible")
+tracks/7/path = NodePath("VBoxContainer/Boss_Name_Table:rect_scale")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/keys = {
+"times": PoolRealArray( 0, 0.5, 2.7 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "init"
+tracks/0/type = "value"
+tracks/0/path = NodePath("VBoxContainer/Boss_Name_Table:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
+"update": 0,
+"values": [ Vector2( 1, 1e-05 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("VBoxContainer/BG:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1 ) ]
 }
 
 [node name="Boss HP" type="MarginContainer"]
@@ -127,6 +154,7 @@ margin_left = 159.0
 margin_right = 659.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 500, 40 )
+rect_scale = Vector2( 1, 1e-05 )
 size_flags_horizontal = 6
 texture = ExtResource( 5 )
 expand = true
@@ -154,6 +182,7 @@ margin_top = 44.0
 margin_right = 819.0
 margin_bottom = 74.0
 rect_min_size = Vector2( 0, 30 )
+rect_scale = Vector2( 1e-05, 1 )
 size_flags_horizontal = 7
 __meta__ = {
 "_edit_use_anchors_": false
@@ -231,4 +260,6 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "init"
 anims/appear = SubResource( 1 )
+anims/init = SubResource( 2 )
