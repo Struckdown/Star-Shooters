@@ -126,7 +126,7 @@ func spawnBullets(delta, additionalRads):
 		if i in bulletsToSkip:	# allows for gaps in bullet patterns
 			continue
 		var b = bulletType.instance()
-		if i in nthBulletIsGreen and volleysFired%greenBulletFrequency == 0:
+		if i in nthBulletIsGreen and (volleysFired+1)%greenBulletFrequency == 0:
 			b.setGeneratesEnergy(true)
 		var shouldHaveEnergyByChance = rand_range(0, 1)
 		if shouldHaveEnergyByChance <= makeBulletEnergizedAnywaysOdds:

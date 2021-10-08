@@ -144,7 +144,6 @@ scale = Vector2( 0.525, 0.525 )
 texture = ExtResource( 3 )
 
 [node name="GemMagnetArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GemMagnetArea"]
 shape = SubResource( 1 )
@@ -152,7 +151,6 @@ shape = SubResource( 1 )
 [node name="EnergyArea" type="Area2D" parent="." groups=[
 "PlayerOuterHitbox",
 ]]
-visible = false
 
 [node name="EnergyHitBox" type="CollisionShape2D" parent="EnergyArea"]
 shape = SubResource( 2 )

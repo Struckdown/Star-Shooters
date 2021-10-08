@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Levels/LevelSelect/MissionBriefing.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art Packs/Planets2D/Planets-Atmosphere-pngs/planet-2.png" type="Texture" id=2]
@@ -16,6 +16,7 @@
 [ext_resource path="res://Utility/M_Grayscale.tres" type="Material" id=14]
 [ext_resource path="res://Levels/LevelSelect/StatsZone.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Levels/LevelSelect/StatsMenu.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Art Packs/Planets2D/Planets-Atmosphere-pngs/planet-12.png" type="Texture" id=17]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 77.1044
@@ -158,6 +159,60 @@ tracks/3/keys = {
 [sub_resource type="CircleShape2D" id=6]
 radius = 111.543
 
+[sub_resource type="CircleShape2D" id=7]
+radius = 50.5131
+
+[sub_resource type="Animation" id=8]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("LevelPanel:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 187, 0 ), Vector2( 187, 53 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LevelPanel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -95, -61 ), Vector2( -94.6821, -114 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LevelPanel/BestScoreLbl:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LevelPanel/LevelDescription:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Map" type="Node2D"]
 script = ExtResource( 4 )
 
@@ -250,6 +305,26 @@ anims/DisplayLevelInfo = SubResource( 5 )
 [node name="CollisionShape2D" parent="Levels/Planet4/DisplayArea2D" index="0"]
 shape = SubResource( 6 )
 
+[node name="Planet5" parent="Levels" instance=ExtResource( 6 )]
+position = Vector2( 1793.88, 62.4397 )
+levelDescription = "Sector Echo"
+levelNumber = 5
+missionName = "Asteroid Defense"
+missionBriefing = "Your upcoming mission will take place in an asteroid field. Due to interplanetary regulation, your weapons will have no effect on the asteroids. Unfortunately, the same cannot be said about them with respect to your ship."
+
+[node name="PlanetSprite" parent="Levels/Planet5" index="0"]
+scale = Vector2( 0.09, 0.09 )
+texture = ExtResource( 17 )
+
+[node name="CollisionShape2D" parent="Levels/Planet5/SelectableArea" index="0"]
+shape = SubResource( 7 )
+
+[node name="AnimationPlayer" parent="Levels/Planet5" index="3"]
+anims/DisplayLevelInfo = SubResource( 8 )
+
+[node name="CollisionShape2D" parent="Levels/Planet5/DisplayArea2D" index="0"]
+shape = SubResource( 6 )
+
 [node name="UpgradePlanet" parent="." instance=ExtResource( 12 )]
 
 [node name="StatsZone" parent="." instance=ExtResource( 15 )]
@@ -289,3 +364,4 @@ margin_bottom = -101.6
 [editable path="Levels/Planet2"]
 [editable path="Levels/Planet3"]
 [editable path="Levels/Planet4"]
+[editable path="Levels/Planet5"]

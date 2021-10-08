@@ -70,8 +70,8 @@ func updatePhase():
 		c.toggleEmitting(active)
 
 func markOwnerAsDestroyed():
-	for child in get_children():
-		child.toggleEmitting(false)
+	active = false
+	updatePhase()
 
 #func toggleEmitting(state):
 #	for child in get_children():
