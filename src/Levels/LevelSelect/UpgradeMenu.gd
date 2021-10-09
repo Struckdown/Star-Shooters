@@ -37,7 +37,7 @@ func closeWindow():
 	display(false)
 	$WindowTexture/CloseButton/CloseSFX.play()
 	emit_signal("shopClosed")
-	$WindowTexture/CloseButton.release_focus()
+	get_focus_owner().release_focus()
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Display" and displaying:

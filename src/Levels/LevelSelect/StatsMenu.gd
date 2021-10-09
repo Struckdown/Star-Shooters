@@ -1,7 +1,7 @@
 extends Control
 
 signal statsClosed
-var displaying
+var displaying = false
 const TOTAL_LEVELS_IN_GAME = 4	# TODO derive automatically from level select screen?
 
 # Called when the node enters the scene tree for the first time.
@@ -83,9 +83,6 @@ func display(shouldDisplay):
 	else:
 		$AnimationPlayer.play_backwards("Display")
 
-func _on_CloseButton_button_up():
-	closeWindow()
-
 func closeWindow():
 	display(false)
 	$WindowTexture/CloseButton/CloseSFX.play()
@@ -108,3 +105,12 @@ func convertSecondsToHHMMSS(seconds: int) -> String:
 	seconds %= 60
 	var formattedStr = "" + str(hours) + " hours, " + str(minutes) + " minutes, " + str(seconds) + " seconds"
 	return formattedStr
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Display" and displaying:
+		$WindowTexture/CloseButton.grab_focus()
+
+
+func _on_CloseButton_button_down():
+		closeWindow()

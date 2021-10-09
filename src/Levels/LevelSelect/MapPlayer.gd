@@ -63,14 +63,11 @@ func updateRotation(delta):
 	if velocity == Vector2():
 		return
 	var desiredAngle = rad2deg(velocity.angle())
-	#print(desiredAngle)
 	var diff = desiredAngle - rotation_degrees
 	if diff > 360:
 		diff -= 360
 	if diff < -360:
 		diff += 360
-	#print(diff)
-#	print(cwDiff)
 	var dirMultiplier = 1
 	if diff > 180 or diff < -180:
 		dirMultiplier = -1

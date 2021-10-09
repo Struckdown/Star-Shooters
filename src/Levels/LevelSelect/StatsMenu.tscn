@@ -205,5 +205,6 @@ text = "152"
 [node name="SecondTimer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="button_up" from="WindowTexture/CloseButton" to="." method="_on_CloseButton_button_up"]
+[connection signal="button_down" from="WindowTexture/CloseButton" to="." method="_on_CloseButton_button_down"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="timeout" from="SecondTimer" to="." method="_on_SecondTimer_timeout"]
