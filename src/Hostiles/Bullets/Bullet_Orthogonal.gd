@@ -31,6 +31,8 @@ func updateDirection():
 		axisDelta = positionDifference.y
 	else:
 		axisDelta = positionDifference.x
+	if axisDelta == 0:	# avoid division by zero in following statement
+		axisDelta = 1
 	axisDelta /= abs(axisDelta)	# reduce it to either 1 or -1
 	if trackYFirst:
 		moveDir = Vector2(0, axisDelta)

@@ -1,10 +1,12 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Levels/Stages/Level.gd" type="Script" id=1]
 [ext_resource path="res://Levels/Stages/Level5/L5W1.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/Stages/Level5/L5W2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/Stages/Level5/L5W3.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Stages/Level5/L5W4.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Stages/Level5/L5W5.tscn" type="PackedScene" id=6]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
-waves = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ]
+waves = [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]

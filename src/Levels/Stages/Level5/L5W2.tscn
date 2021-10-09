@@ -38,16 +38,33 @@ targetStyle = "straight"
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
-volleyClipSize = 5
+volleyClipSize = 10
 clipReloadTime = 3.0
-bulletMovementSpeed = 90
-bulletSpawnDelay = 0.3
+bulletMovementSpeed = 110
+bulletSpawnDelay = 0.2
 bulletType = ExtResource( 5 )
 initialSpawnDelayConstant = 1.5
 initialSpawnDelayRandomRange = 0.0
 greenBulletFrequency = 5
 nthBulletIsGreen = [ 0 ]
+makeBulletEnergizedAnywaysOdds = 0.2
 trackYFirst = true
+
+[node name="BulletEmitter2" parent="OrthogonalShooter/WeaponManager/BulletEmitter" index="2" instance=ExtResource( 4 )]
+targetStyle = "straight"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+volleyClipSize = 10
+clipReloadTime = 3.0
+bulletMovementSpeed = 110
+bulletSpawnDelay = 0.2
+bulletType = ExtResource( 5 )
+initialSpawnDelayConstant = 1.5
+initialSpawnDelayRandomRange = 0.0
+greenBulletFrequency = 5
+nthBulletIsGreen = [ 0 ]
+makeBulletEnergizedAnywaysOdds = 0.2
 
 [node name="Path2D" type="Path2D" parent="." index="1"]
 curve = SubResource( 1 )

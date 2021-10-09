@@ -17,6 +17,7 @@ shader = ExtResource( 7 )
 shader_param/scroll_speed = 0.03
 
 [node name="Animated_BG" type="Node2D"]
+modulate = Color( 0.0627451, 0.980392, 0.87451, 1 )
 z_index = -10
 script = ExtResource( 6 )
 
