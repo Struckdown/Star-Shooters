@@ -21,13 +21,13 @@ func transitionSong(newSongPath):
 
 func normalizeValToDB(val):
 	var newVal = 0
-	newVal = val*0.5
-	newVal -= 50
+	newVal = val*0.9
+	newVal -= 90
 	return newVal
 
 func normalizeDBtoVal(DB):
-	var val = DB + 50
-	val *= 2
+	var val = DB + 90
+	val /= 0.9
 	return val
 
 
