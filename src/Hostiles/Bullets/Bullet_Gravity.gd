@@ -14,14 +14,13 @@ func _process(delta):
 	applyGravityToObjects(delta)
 
 func _on_GravityArea_area_entered(area):
-	if area.owner.is_in_group("Player"):
+	if area.is_in_group("PlayerOuterHitbox"):
 		objectsToPullOn.append(area.owner)
 
 
 func _on_GravityArea_area_exited(area):
-	var nodeOwner = area.owner
-	if is_instance_valid(nodeOwner) and nodeOwner.is_in_group("Player") and nodeOwner in objectsToPullOn:
-		var obj = objectsToPullOn.find(nodeOwner)
+	if is_instance_valid(area.owner) and area.owner in objectsToPullOn:
+		var obj = objectsToPullOn.find(area.owner)
 		objectsToPullOn.remove(obj)
 
 func applyGravityToObjects(delta):

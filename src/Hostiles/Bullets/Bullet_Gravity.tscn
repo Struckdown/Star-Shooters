@@ -5,7 +5,7 @@
 [ext_resource path="res://Art Packs/CosmicEffects/Vortex/Cosmic_25.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 63.5964
+radius = 125.0
 
 [sub_resource type="Animation" id=2]
 resource_name = "Spawn"
@@ -56,6 +56,8 @@ color = Color( 0.545098, 0, 0.619608, 1 )
 script = ExtResource( 3 )
 rotationSpeed = -360.0
 nodeToRotate = NodePath("Sprite")
+canCauseDamage = false
+gravityStr = 20.0
 
 [node name="Sprite" type="Sprite" parent="." index="2"]
 scale = Vector2( 1e-05, 1e-05 )

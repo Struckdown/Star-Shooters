@@ -10,10 +10,10 @@
 [ext_resource path="res://Player/PlayerShieldShader.tres" type="Material" id=8]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 59.0018
+radius = 22.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 22.2842
+radius = 15.0
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 2.97038

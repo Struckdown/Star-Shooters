@@ -17,7 +17,7 @@ export(NodePath) var nodeToRotate
 var orbitalChildren = -1	# used by rotationalBullet
 var orbitalRotationSpeedDegs = 0
 export(bool) var trackYFirst = false	# orthogonal bullets
-var canCauseDamage = true
+export(bool) var canCauseDamage = true
 var targetPos = null
 var target = null	# used in derived classes
 
