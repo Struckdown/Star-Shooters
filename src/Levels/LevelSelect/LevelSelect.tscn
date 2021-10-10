@@ -345,6 +345,7 @@ position = Vector2( 119.055, -182.551 )
 [node name="StatsMenu" parent="CanvasLayer" instance=ExtResource( 16 )]
 margin_right = 1025.0
 margin_bottom = 601.0
+levels = NodePath("../../Levels")
 
 [node name="Pause Menu" parent="CanvasLayer" instance=ExtResource( 5 )]
 visible = false

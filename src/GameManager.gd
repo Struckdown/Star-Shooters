@@ -31,8 +31,8 @@ func resetPlayerLives():
 	playerLives = UpgradeManager.upgrades["lives"]["upgradeLevels"][curLevel]	#called whenever level select is hit?
 
 
-func updateStagesCompleted(level:int, newScore:int):
-	if stagesCompletedData.has(level):
+func updateStagesCompleted(level:String, newScore:int):	# level is an int converted to a string
+	if level in stagesCompletedData:
 		stagesCompletedData[level] = max(newScore, stagesCompletedData[level])
 	else:
 		stagesCompletedData[level] = newScore

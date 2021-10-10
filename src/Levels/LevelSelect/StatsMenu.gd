@@ -2,7 +2,7 @@ extends Control
 
 signal statsClosed
 var displaying = false
-const TOTAL_LEVELS_IN_GAME = 4	# TODO derive automatically from level select screen?
+export(NodePath) var levels
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -29,9 +29,10 @@ func calculateTotalScore():
 	StatsManager.updateStats("totalScore", totalScore-prevTotalScore)
 
 func calculateGameCompletion():
+	var totalLevels = get_node(levels).get_child_count()
 	var levelsComplete = len(GameManager.stagesCompletedData)
 	var prevPercentage = StatsManager.stats["gameCompletion"]
-	var percentage = float(levelsComplete) / float(TOTAL_LEVELS_IN_GAME) * 100
+	var percentage = float(levelsComplete) / float(totalLevels) * 100
 	StatsManager.updateStats("gameCompletion", percentage-prevPercentage)
 
 

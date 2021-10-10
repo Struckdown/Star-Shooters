@@ -28,8 +28,8 @@ func updateIdleAnimation(delta) -> void:
 
 func set_description() -> void:
 	$LevelPanel/LevelDescription.text = levelDescription + "\n" + missionName
-	if levelNumber in GameManager.stagesCompletedData:
-		bestScore = GameManager.stagesCompletedData[levelNumber]
+	if str(levelNumber) in GameManager.stagesCompletedData:
+		bestScore = GameManager.stagesCompletedData[str(levelNumber)]
 	$LevelPanel/BestScoreLbl.text = "Best Score: " + str(bestScore)
 
 

@@ -21,4 +21,6 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		if GameManager.stage == 0:
 			SceneTransition.transitionToScene("res://Menus/Main Menu.tscn")
 		else:
+			GameManager.updateStagesCompleted(str(GameManager.stage), GameManager.score)
+			StatsManager.updateStats("stagesCleared", 1)
 			SceneTransition.transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")
