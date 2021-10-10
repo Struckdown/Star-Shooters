@@ -7,7 +7,7 @@
 [ext_resource path="res://Levels/Stages/Level1/MonsterSimple.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/Stages/Level1/PathfindersReversed.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Stages/Level1/W6.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Levels/Stages/Level1/Checkpoint.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Hostiles/Waves/Checkpoint.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Hostiles/Waves/WarningScreen.tscn" type="PackedScene" id=9]
 
 [node name="Level" type="Node2D"]

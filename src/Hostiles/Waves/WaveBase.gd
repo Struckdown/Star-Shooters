@@ -64,8 +64,8 @@ func setUpBossHP():	# used by level manager
 		if child.has_signal("destroyed"):
 			hpTotal += child.maxHealth
 			child.setHealthBarRef(bossHPRef)
-	
-	bossHPRef.setup(hpTotal, bossName)
+	if bossHPRef:
+		bossHPRef.setup(hpTotal, bossName)
 	
 
 func updateEnemyCount(pointsWorth):

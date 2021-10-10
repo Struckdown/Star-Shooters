@@ -27,7 +27,7 @@ position = Vector2( 510.669, -107.802 )
 rotation = 1.57079
 pointsWorth = 500
 speed = 90.0
-maxHealth = 120
+maxHealth = 400
 gemValue = 100
 moveGoal = Vector2( 0, 200 )
 flyPaths = [ NodePath("../Path2D"), NodePath("../Path2D2") ]
@@ -43,7 +43,7 @@ timeToNextPhase = 1
 
 [node name="WeaponManager" parent="ForwardShooter/WeaponManager" index="1" instance=ExtResource( 6 )]
 
-[node name="CircleShots" parent="ForwardShooter/WeaponManager/WeaponManager" index="1" instance=ExtResource( 4 )]
+[node name="CircleShots" parent="ForwardShooter/WeaponManager/WeaponManager" index="0" instance=ExtResource( 4 )]
 rotation = -0.785398
 targetStyle = "straight"
 fireAtLocationForWholeClip = false
@@ -56,7 +56,7 @@ initialSpawnDelayConstant = 2.0
 initialSpawnDelayRandomRange = 0.0
 nthBulletIsGreen = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35 ]
 
-[node name="AimingShots" parent="ForwardShooter/WeaponManager/WeaponManager" index="2" instance=ExtResource( 4 )]
+[node name="AimingShots" parent="ForwardShooter/WeaponManager/WeaponManager" index="1" instance=ExtResource( 4 )]
 rotation = -0.785398
 initialRotationOffset = 90.0
 targetStyle = "atTarget"

@@ -4,8 +4,7 @@
 [ext_resource path="res://Hostiles/Bullets/Bullet_Gravity.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Enemies/CircleShooter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Hostiles/Bullets/Bullet_Orthogonal.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlack2.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
@@ -90,53 +89,58 @@ tracks/2/keys = {
 } ]
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
 [node name="WaveBase" instance=ExtResource( 1 )]
 enemiesToDestroy = 3
 
-[node name="OrthogonalShooter" parent="." index="0" instance=ExtResource( 3 )]
-position = Vector2( 949.417, 121.706 )
-rotation = -3.14159
-speed = 160.0
-maxHealth = 50
-moveGoal = Vector2( -300, 0 )
-loopFlyPaths = true
-flyingPattern = "hoverMoveGoal"
-
-[node name="BulletEmitter" parent="OrthogonalShooter/WeaponManager" index="0"]
-rotationDegPerSec = 0
-targetStyle = "predict"
-fireAtLocationForWholeClip = false
-angleOfBulletSpread = 0.0
-amountOfBullets = 0
-bulletMovementSpeed = 80
-bulletSpawnDelay = 3.0
-bulletType = ExtResource( 2 )
-nthBulletIsGreen = [  ]
-
-[node name="BulletEmitter" parent="OrthogonalShooter/WeaponManager/BulletEmitter" index="1" instance=ExtResource( 4 )]
-targetStyle = "straight"
-useRotationAsCenterBullet = true
-fireAtLocationForWholeClip = false
-angleOfBulletSpread = 0.0
-volleyClipSize = 50
-clipReloadTime = 6.0
-bulletMovementSpeed = 180
-bulletScale = Vector2( 2, 2 )
-bulletSpawnDelay = 0.05
-bulletType = ExtResource( 5 )
-initialSpawnDelayConstant = 3.0
-initialSpawnDelayRandomRange = 0.0
-greenBulletFrequency = 4
-nthBulletIsGreen = [ 0 ]
-
-[node name="TargetShooter" parent="." index="1" instance=ExtResource( 3 )]
-position = Vector2( 429.544, -122.754 )
+[node name="TargetShooter" parent="." index="0" instance=ExtResource( 3 )]
+position = Vector2( 512.089, -122.754 )
 rotation = -4.71238
-speed = 160.0
+speed = 80.0
 maxHealth = 50
 moveGoal = Vector2( 0, 200 )
 loopFlyPaths = true
-flyingPattern = "hoverMoveGoal"
+flyingPattern = "straight"
 
 [node name="Sprite" parent="TargetShooter" index="1"]
 texture = ExtResource( 7 )
@@ -156,29 +160,28 @@ bulletType = ExtResource( 2 )
 nthBulletIsGreen = [  ]
 
 [node name="BulletEmitter" parent="TargetShooter/WeaponManager/BulletEmitter" index="1" instance=ExtResource( 4 )]
-targetStyle = "atTarget"
-useRotationAsCenterBullet = true
+rotation = 1.5708
+targetStyle = "straight"
 fireAtLocationForWholeClip = false
-amountOfBullets = 3
-bulletMovementSpeed = 140
-bulletScale = Vector2( 1.5, 1.5 )
-bulletWaveSpeed = 2.0
-bulletWaveStr = 100.0
-bulletSpawnDelay = 0.9
-bulletType = ExtResource( 6 )
+angleOfBulletSpread = 180.0
+amountOfBullets = 2
+bulletMovementSpeed = 80
+bulletScale = Vector2( 4, 4 )
+bulletSpawnDelay = 0.8
+bulletType = ExtResource( 5 )
 initialSpawnDelayConstant = 1.0
 initialSpawnDelayRandomRange = 0.0
 greenBulletFrequency = 4
-nthBulletIsGreen = [ 0 ]
+nthBulletIsGreen = [ 0, 1 ]
 
-[node name="TargetShooter2" parent="." index="2" instance=ExtResource( 3 )]
-position = Vector2( 206.514, -38.6219 )
+[node name="TargetShooter2" parent="." index="1" instance=ExtResource( 3 )]
+position = Vector2( 392.24, -229.11 )
 rotation = -4.71238
-speed = 160.0
+speed = 80.0
 maxHealth = 50
 moveGoal = Vector2( 0, 200 )
 loopFlyPaths = true
-flyingPattern = "hoverMoveGoal"
+flyingPattern = "straight"
 
 [node name="Sprite" parent="TargetShooter2" index="1"]
 texture = ExtResource( 7 )
@@ -198,21 +201,61 @@ bulletType = ExtResource( 2 )
 nthBulletIsGreen = [  ]
 
 [node name="BulletEmitter" parent="TargetShooter2/WeaponManager/BulletEmitter" index="1" instance=ExtResource( 4 )]
-targetStyle = "atTarget"
-useRotationAsCenterBullet = true
+rotation = 1.5708
+targetStyle = "straight"
 fireAtLocationForWholeClip = false
-amountOfBullets = 3
-bulletMovementSpeed = 140
-bulletScale = Vector2( 1.5, 1.5 )
-bulletWaveSpeed = 2.0
-bulletWaveStr = -100.0
-bulletSpawnDelay = 0.9
-bulletType = ExtResource( 6 )
+angleOfBulletSpread = 180.0
+amountOfBullets = 2
+bulletMovementSpeed = 80
+bulletScale = Vector2( 4, 4 )
+bulletSpawnDelay = 0.8
+bulletType = ExtResource( 5 )
 initialSpawnDelayConstant = 1.0
 initialSpawnDelayRandomRange = 0.0
 greenBulletFrequency = 4
-nthBulletIsGreen = [ 0 ]
+nthBulletIsGreen = [ 0, 1 ]
 
-[editable path="OrthogonalShooter"]
+[node name="TargetShooter3" parent="." index="2" instance=ExtResource( 3 )]
+position = Vector2( 639.874, -229.11 )
+rotation = -4.71238
+speed = 80.0
+maxHealth = 50
+moveGoal = Vector2( 0, 200 )
+loopFlyPaths = true
+flyingPattern = "straight"
+
+[node name="Sprite" parent="TargetShooter3" index="1"]
+texture = ExtResource( 7 )
+
+[node name="AnimationPlayer" parent="TargetShooter3" index="3"]
+anims/Death = SubResource( 3 )
+
+[node name="BulletEmitter" parent="TargetShooter3/WeaponManager" index="0"]
+rotationDegPerSec = 0
+targetStyle = "predict"
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+amountOfBullets = 0
+bulletMovementSpeed = 80
+bulletSpawnDelay = 3.0
+bulletType = ExtResource( 2 )
+nthBulletIsGreen = [  ]
+
+[node name="BulletEmitter" parent="TargetShooter3/WeaponManager/BulletEmitter" index="1" instance=ExtResource( 4 )]
+rotation = 1.5708
+targetStyle = "straight"
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 180.0
+amountOfBullets = 2
+bulletMovementSpeed = 80
+bulletScale = Vector2( 4, 4 )
+bulletSpawnDelay = 0.8
+bulletType = ExtResource( 5 )
+initialSpawnDelayConstant = 1.0
+initialSpawnDelayRandomRange = 0.0
+greenBulletFrequency = 4
+nthBulletIsGreen = [ 0, 1 ]
+
 [editable path="TargetShooter"]
 [editable path="TargetShooter2"]
+[editable path="TargetShooter3"]

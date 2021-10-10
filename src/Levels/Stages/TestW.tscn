@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Stages/Level5/L5W7.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Boss HP.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=5]
-[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=6]
 
 [node name="Node2D" type="Node2D"]
 
@@ -23,23 +21,4 @@ margin_top = 4.2045
 margin_right = 769.928
 margin_bottom = 78.2045
 
-[node name="Enemy_Base" parent="." instance=ExtResource( 6 )]
-position = Vector2( 314.229, 174.635 )
-speed = 0.0
-
-[node name="WeaponManager" parent="Enemy_Base" index="4"]
-phaseSwapMode = "time"
-timeToNextPhase = 1
-
-[node name="BulletEmitter" parent="Enemy_Base/WeaponManager" index="0" instance=ExtResource( 1 )]
-targetStyle = "shape"
-bulletMovementSpeed = 100
-bulletType = ExtResource( 5 )
-
-[node name="BulletEmitter2" parent="Enemy_Base/WeaponManager" index="1" instance=ExtResource( 1 )]
-targetStyle = "shape"
-equation = "pow(abs(x), (2.0/3.0))-sqrt(1-pow(x,2))"
-bulletMovementSpeed = 100
-bulletType = ExtResource( 5 )
-
-[editable path="Enemy_Base"]
+[node name="WaveBase" parent="." instance=ExtResource( 1 )]

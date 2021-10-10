@@ -26,7 +26,8 @@ autostart = true
 [node name="Light2D" type="Light2D" parent="."]
 scale = Vector2( 0.125, 0.125 )
 texture = ExtResource( 1 )
-energy = 0.75
+texture_scale = 0.75
+energy = 0.6
 
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_DespawnTimer_timeout"]
 [connection signal="tween_completed" from="EndOfLifeTween" to="." method="_on_EndOfLifeTween_tween_completed"]
