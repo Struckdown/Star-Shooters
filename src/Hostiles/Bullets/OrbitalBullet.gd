@@ -37,3 +37,9 @@ func _on_DespawnTimer_timeout():
 		if child.has_method("startFadeOut"):
 			child.startFadeOut()
 		
+
+func checkForWrap():	# orbital bullets never wrap or bounce, it'd be weird.
+	pass
+
+func checkForBounce():
+	pass

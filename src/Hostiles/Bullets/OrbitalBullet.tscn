@@ -22,5 +22,6 @@ childToCopy = NodePath("RotatingChildren/WaveBullet")
 moveSpeed = 0
 waveStr = 0
 waveSpeed = 0.0
+diesOnOutOfBounds = false
 
 [editable path="RotationRing"]

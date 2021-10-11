@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Levels/LevelSelect/MissionBriefing.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Art Packs/Planets2D/Planets-Atmosphere-pngs/planet-2.png" type="Texture" id=2]
@@ -17,6 +17,8 @@
 [ext_resource path="res://Levels/LevelSelect/StatsZone.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Levels/LevelSelect/StatsMenu.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Art Packs/Planets2D/Planets-Atmosphere-pngs/planet-12.png" type="Texture" id=17]
+[ext_resource path="res://Art Packs/Planets2D/Planets-Atmosphere-pngs/planet-10.png" type="Texture" id=18]
+[ext_resource path="res://Art Packs/Planets2D/Planets-Atmosphere-pngs/planet-7.png" type="Texture" id=19]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 77.1044
@@ -213,6 +215,108 @@ tracks/3/keys = {
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="Animation" id=9]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("LevelPanel:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 187, 0 ), Vector2( 187, 53 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LevelPanel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -95, -61 ), Vector2( -94.6821, -114 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LevelPanel/BestScoreLbl:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LevelPanel/LevelDescription:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.6
+tracks/0/type = "value"
+tracks/0/path = NodePath("LevelPanel:rect_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 187, 0 ), Vector2( 187, 53 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("LevelPanel:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -95, -61 ), Vector2( -94.6821, -114 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("LevelPanel/BestScoreLbl:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("LevelPanel/LevelDescription:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
 [node name="Map" type="Node2D"]
 script = ExtResource( 4 )
 
@@ -249,7 +353,7 @@ levelNumber = 2
 missionName = "A Loss of Energy	"
 missionBriefing = "Incredible performance in your previous mission. Now that you're well acquainted with the capabilities of your spaceship, you will need to venture forth and carve out a path for us!
 
-Your enemy will not always use energy aligned ammunition, so make sure to seek out attacks that matched your training to generate charge to fight back! Without it, you will be lost."
+Your enemy will not always use energy aligned ammunition, so make sure to seek out attacks that matched your training to generate charge to fight back! Without it, you stand no chance."
 
 [node name="PlanetSprite" parent="Levels/Planet2" index="0"]
 scale = Vector2( 0.058, 0.058 )
@@ -260,7 +364,7 @@ position = Vector2( 898.804, 105.603 )
 levelDescription = "Sector Charlie"
 levelNumber = 3
 missionName = "Revolving Troubles"
-missionBriefing = "Gadzooks! The Star Child evaporated the entire surface of the planet! And still the Nhamaar would seek to aid the child! Destroy their blockade and continue the hunt! Let no ship slow your hand!"
+missionBriefing = "Gadzooks! The Star Child evaporated the entire surface of the planet! And still the Federation would seek to aid the child! Destroy their blockade and continue the hunt! Let no ship slow your hand!"
 
 [node name="PlanetSprite" parent="Levels/Planet3" index="0"]
 scale = Vector2( 0.09, 0.09 )
@@ -290,7 +394,7 @@ position = Vector2( 1345.14, 371.091 )
 levelDescription = "Sector Delta"
 levelNumber = 4
 missionName = "Gravity Vectors"
-missionBriefing = "This battle fleet armada is siphoning energy off the local system! Don't just sit there, go blow some stuff up!"
+missionBriefing = "This entire planet has been ravaged! The entire ecosystem is inhabitable. The nearby  battle fleet armada must be responsible! Don't just float there, go blow some stuff up! They deserve death!"
 
 [node name="PlanetSprite" parent="Levels/Planet4" index="0"]
 scale = Vector2( 0.03, 0.03 )
@@ -309,8 +413,12 @@ shape = SubResource( 6 )
 position = Vector2( 1793.88, 62.4397 )
 levelDescription = "Sector Echo"
 levelNumber = 5
-missionName = "Asteroid Defense"
-missionBriefing = "Your upcoming mission will take place in an asteroid field. Due to interplanetary regulation, your weapons will have no effect on the asteroids. Unfortunately, the same cannot be said about them with respect to your ship."
+missionName = "Orthogonal Flyby"
+missionBriefing = "Your next mission will be far more dangerous. A Titan class Destroyer is in the area. It is supported by two assault batteries, impervious to  your attacks.
+
+God speed.
+
+P.S. Do you have cremation preferences?."
 
 [node name="PlanetSprite" parent="Levels/Planet5" index="0"]
 scale = Vector2( 0.09, 0.09 )
@@ -323,6 +431,48 @@ shape = SubResource( 7 )
 anims/DisplayLevelInfo = SubResource( 8 )
 
 [node name="CollisionShape2D" parent="Levels/Planet5/DisplayArea2D" index="0"]
+shape = SubResource( 6 )
+
+[node name="Planet6" parent="Levels" instance=ExtResource( 6 )]
+position = Vector2( 1427.88, -275.56 )
+levelDescription = "Sector Foxtrot"
+levelNumber = 6
+missionName = "Asteroid Defense"
+missionBriefing = "Oh, you survived the Titan? Well, uh, your upcoming mission will take place in an asteroid field. Due to interplanetary regulation, your weapons will have no effect on the asteroids. Unfortunately, the same cannot be said about them with respect to your ship."
+
+[node name="PlanetSprite" parent="Levels/Planet6" index="0"]
+scale = Vector2( 0.09, 0.09 )
+texture = ExtResource( 18 )
+
+[node name="CollisionShape2D" parent="Levels/Planet6/SelectableArea" index="0"]
+shape = SubResource( 7 )
+
+[node name="AnimationPlayer" parent="Levels/Planet6" index="3"]
+anims/DisplayLevelInfo = SubResource( 9 )
+
+[node name="CollisionShape2D" parent="Levels/Planet6/DisplayArea2D" index="0"]
+shape = SubResource( 6 )
+
+[node name="Planet7" parent="Levels" instance=ExtResource( 6 )]
+position = Vector2( 880.998, -358.716 )
+levelDescription = "Sector Golf"
+levelNumber = 7
+missionName = "The Bouncer"
+missionBriefing = "How are you still alive!? That last mission was supposed to kill- I mean it was rated as odds of survival were one in a million! Your flight skills are unsurmounted! You truly are our greatest pilot!
+
+Back to on topic though, we need you to bypass this Federation system's space defenses. They're using experimental space-wrapping weapons, so watch out for unusual movement!"
+
+[node name="PlanetSprite" parent="Levels/Planet7" index="0"]
+scale = Vector2( 0.045, 0.045 )
+texture = ExtResource( 19 )
+
+[node name="CollisionShape2D" parent="Levels/Planet7/SelectableArea" index="0"]
+shape = SubResource( 7 )
+
+[node name="AnimationPlayer" parent="Levels/Planet7" index="3"]
+anims/DisplayLevelInfo = SubResource( 10 )
+
+[node name="CollisionShape2D" parent="Levels/Planet7/DisplayArea2D" index="0"]
 shape = SubResource( 6 )
 
 [node name="UpgradePlanet" parent="." instance=ExtResource( 12 )]
@@ -366,3 +516,5 @@ margin_bottom = -101.6
 [editable path="Levels/Planet3"]
 [editable path="Levels/Planet4"]
 [editable path="Levels/Planet5"]
+[editable path="Levels/Planet6"]
+[editable path="Levels/Planet7"]

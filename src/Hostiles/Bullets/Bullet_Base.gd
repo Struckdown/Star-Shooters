@@ -18,8 +18,14 @@ var orbitalChildren = -1	# used by rotationalBullet
 var orbitalRotationSpeedDegs = 0
 export(bool) var trackYFirst = false	# orthogonal bullets
 export(bool) var canCauseDamage = true
+export(bool) var diesOnOutOfBounds = true
 var targetPos = null
 var target = null	# used in derived classes
+var bounds
+var wrapsRemaining = 0
+var hasEverBeenInBounds = false
+var bouncesRemaining = 0
+var directionVectorMultiplier = Vector2(1, 1)	# used for bounces
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,6 +36,7 @@ func _ready():
 		$DespawnTimer.stop()
 	if nodeToRotate and typeof(nodeToRotate) != TYPE_OBJECT:
 		nodeToRotate = get_node(nodeToRotate)
+	bounds = get_viewport_rect().size
 
 func init():
 	pass	# overridden in children classes
@@ -38,16 +45,21 @@ func init():
 func _process(delta):
 	move(delta*GameManager.gameSpeed)
 	updateNodeToRotate(delta)
+	checkHasEverBeenInBounds()
+	var bounced = checkForBounce()
+	if not bounced:
+		checkForWrap()
+
 
 func _on_DespawnTimer_timeout():
 	canCauseDamage = false
 	startFadeOut()
 
 func startFadeOut():
-	var initColor = $Sprite.modulate
+	var initColor = modulate
 	var finalColor = initColor
 	finalColor[3] = 0
-	$EndOfLifeTween.interpolate_property($Sprite, "modulate", initColor, finalColor, 1)
+	$EndOfLifeTween.interpolate_property(self, "modulate", initColor, finalColor, 1)
 	$EndOfLifeTween.start()
 
 func setGeneratesEnergy(generates):
@@ -62,6 +74,8 @@ func changeEnergySprite():
 
 func move(delta):
 	var forwardVec = Vector2(1, 0).rotated(rotation).normalized()
+	forwardVec.x *= directionVectorMultiplier.x
+	forwardVec.y *= directionVectorMultiplier.y
 	if targetPos != null:
 		if global_position.distance_squared_to(targetPos) >= 16:
 			forwardVec = (targetPos-global_position).normalized()
@@ -91,3 +105,67 @@ func markEnergyDrained():
 
 func _on_EndOfLifeTween_tween_completed(_object, _key):
 	queue_free()
+
+
+func checkForWrap():
+	if outOfBounds():
+		if wrapsRemaining <= 0:
+			if not titleScreenVersion and diesOnOutOfBounds:
+				startFadeOut()
+		else:
+			var _wrapped = wrap()
+
+# check if out of bounds for wrapping
+func outOfBounds() -> bool:
+	if global_position.x > bounds.x:
+		return true
+	if global_position.x < 0:
+		return true
+	if global_position.y < 0:
+		return true
+	if global_position.y > bounds.y:
+		return true
+	return false
+	
+func wrap() -> bool:
+	var wrapped = false
+	wrapsRemaining -= 1
+	if global_position.x > bounds.x:
+		position.x -= bounds.x
+		wrapped = true
+	if global_position.x < 0:
+		position.x += bounds.x
+		wrapped = true
+	if global_position.y < 0:
+		position.y += bounds.y
+		wrapped = true
+	if global_position.y > bounds.y:
+		position.y -= bounds.y
+		wrapped = true
+	return wrapped
+
+
+func checkForBounce() -> bool:
+	var bounced = false
+	if outOfBounds():
+		if bouncesRemaining > 0:
+			bouncesRemaining -= 1
+			if global_position.x > bounds.x:
+				directionVectorMultiplier.x = -1
+				bounced = true
+			if global_position.x < 0:
+				directionVectorMultiplier.x = 1
+				bounced = true
+			if global_position.y < 0:
+				directionVectorMultiplier.y = -1
+				bounced = true
+			if global_position.y > bounds.y:
+				directionVectorMultiplier.y = 1
+				bounced = true
+	return bounced
+
+func checkHasEverBeenInBounds() -> void:
+	if hasEverBeenInBounds:
+		return
+	if not outOfBounds():	# check if ever been on screen, else return early
+		hasEverBeenInBounds = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Space Shooter Redux/PNG/ufoGreen.png" type="Texture" id=2]
@@ -8,6 +8,37 @@
 [ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Hostiles/WeaponManager.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Gravity.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Hostiles/Bullets/OrbitalBullet.tscn" type="PackedScene" id=10]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Orbs"
+length = 5.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Titan/Trailing Orb:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.000509076, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Titan/Trailing Orb2:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.000509076, -360.0 ]
+}
 
 [node name="WaveBase" instance=ExtResource( 1 )]
 enemiesToDestroy = 1
@@ -28,19 +59,19 @@ flyingPattern = "hoverMoveGoal"
 
 [node name="Trailing Orb" type="Sprite" parent="Titan" index="0"]
 position = Vector2( -31.5359, 111.621 )
-rotation = 8.88506e-06
+rotation = 4.09795
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 
 [node name="Trailing Orb2" type="Sprite" parent="Titan" index="1"]
 position = Vector2( -31.5354, -113.021 )
-rotation = 8.88506e-06
+rotation = -4.09794
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 
 [node name="WeaponManager" parent="Titan" index="6"]
 phaseSwapMode = "health"
-healthPercentToNextPhase = 30.0
+healthPercentToNextPhase = 33.0
 
 [node name="Phase1" parent="Titan/WeaponManager" index="0" instance=ExtResource( 8 )]
 phaseSwapMode = "time"
@@ -56,16 +87,15 @@ amountOfBullets = 0
 [node name="LeftOrbEmitter" parent="Titan/WeaponManager/Phase1/A/OrbEmitters" index="1" instance=ExtResource( 4 )]
 position = Vector2( -31.4384, 111.62 )
 rotation = 8.88506e-06
-rotationDegPerSec = 15
 rotationRange = 30.0
 initialRotationOffset = 15.0
 targetStyle = "atTarget"
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 amountOfBullets = 3
-volleyClipSize = 50
+volleyClipSize = 35
 clipReloadTime = 4.0
-bulletMovementSpeed = 140
+bulletMovementSpeed = 100.0
 bulletScale = Vector2( 2, 2 )
 bulletSpawnDelay = 0.5
 bulletType = ExtResource( 7 )
@@ -77,16 +107,15 @@ nthBulletIsGreen = [ 0 ]
 [node name="RightOrbEmitter" parent="Titan/WeaponManager/Phase1/A/OrbEmitters" index="2" instance=ExtResource( 4 )]
 position = Vector2( -31.4378, -112.842 )
 rotation = 8.88506e-06
-rotationDegPerSec = 15
 rotationRange = 30.0
 initialRotationOffset = 15.0
 targetStyle = "atTarget"
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 amountOfBullets = 3
-volleyClipSize = 50
+volleyClipSize = 35
 clipReloadTime = 4.0
-bulletMovementSpeed = 140
+bulletMovementSpeed = 100.0
 bulletScale = Vector2( 2, 2 )
 bulletSpawnDelay = 0.5
 bulletType = ExtResource( 7 )
@@ -98,7 +127,7 @@ nthBulletIsGreen = [ 0 ]
 [node name="BodyEmitter" parent="Titan/WeaponManager/Phase1/A" index="2" instance=ExtResource( 4 )]
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
-bulletMovementSpeed = 70
+bulletMovementSpeed = 150.0
 bulletScale = Vector2( 7, 7 )
 bulletSpawnDelay = 2.0
 bulletType = ExtResource( 5 )
@@ -115,7 +144,6 @@ amountOfBullets = 0
 [node name="LeftOrbEmitter" parent="Titan/WeaponManager/Phase1/B/OrbEmitters" index="1" instance=ExtResource( 4 )]
 position = Vector2( -31.4384, 111.62 )
 rotation = 8.88506e-06
-rotationDegPerSec = 15
 rotationRange = 30.0
 initialRotationOffset = 15.0
 targetStyle = "atTarget"
@@ -123,9 +151,9 @@ useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 8.0
 amountOfBullets = 5
-volleyClipSize = 50
+volleyClipSize = 35
 clipReloadTime = 4.0
-bulletMovementSpeed = 140
+bulletMovementSpeed = 120.0
 bulletScale = Vector2( 2, 2 )
 bulletSpawnDelay = 0.5
 bulletType = ExtResource( 7 )
@@ -137,7 +165,6 @@ nthBulletIsGreen = [ 0 ]
 [node name="RightOrbEmitter" parent="Titan/WeaponManager/Phase1/B/OrbEmitters" index="2" instance=ExtResource( 4 )]
 position = Vector2( -31.4378, -112.842 )
 rotation = 8.88506e-06
-rotationDegPerSec = 15
 rotationRange = 30.0
 initialRotationOffset = 15.0
 targetStyle = "atTarget"
@@ -145,9 +172,9 @@ useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 8.0
 amountOfBullets = 5
-volleyClipSize = 50
+volleyClipSize = 35
 clipReloadTime = 4.0
-bulletMovementSpeed = 140
+bulletMovementSpeed = 120.0
 bulletScale = Vector2( 2, 2 )
 bulletSpawnDelay = 0.5
 bulletType = ExtResource( 7 )
@@ -160,7 +187,7 @@ nthBulletIsGreen = [ 0 ]
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
-bulletMovementSpeed = 240
+bulletMovementSpeed = 150.0
 bulletScale = Vector2( 3, 3 )
 bulletWaveSpeed = 5.0
 bulletWaveStr = 120.0
@@ -174,7 +201,7 @@ orbitalChildren = 9
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
-bulletMovementSpeed = 240
+bulletMovementSpeed = 150.0
 bulletScale = Vector2( 3, 3 )
 bulletWaveSpeed = 5.0
 bulletWaveStr = -120.0
@@ -183,5 +210,261 @@ bulletType = ExtResource( 6 )
 initialSpawnDelayConstant = 3.0
 initialSpawnDelayRandomRange = 0.0
 orbitalChildren = 9
+
+[node name="Phase2" parent="Titan/WeaponManager" index="1" instance=ExtResource( 8 )]
+phaseSwapMode = "time"
+timeToNextPhase = 10
+
+[node name="A" parent="Titan/WeaponManager/Phase2" index="0" instance=ExtResource( 4 )]
+amountOfBullets = 0
+initialSpawnDelayConstant = 3000.0
+
+[node name="OrbEmitters" parent="Titan/WeaponManager/Phase2/A" index="1" instance=ExtResource( 4 )]
+amountOfBullets = 0
+
+[node name="LeftOrbEmitter" parent="Titan/WeaponManager/Phase2/A/OrbEmitters" index="1" instance=ExtResource( 4 )]
+position = Vector2( -31.4384, 111.62 )
+rotation = 8.88506e-06
+rotationPerVolley = 5.0
+targetStyle = "straight"
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 30.0
+amountOfBullets = 12
+volleyClipSize = 15
+clipReloadTime = -1.0
+bulletMovementSpeed = 70.0
+bulletScale = Vector2( 2, 2 )
+bulletSpawnDelay = 0.5
+bulletType = ExtResource( 6 )
+initialSpawnDelayConstant = 3.0
+initialSpawnDelayRandomRange = 0.0
+makeBulletEnergizedAnywaysOdds = 0.1
+
+[node name="RightOrbEmitter" parent="Titan/WeaponManager/Phase2/A/OrbEmitters" index="2" instance=ExtResource( 4 )]
+position = Vector2( -31.4378, -112.842 )
+rotation = 8.88506e-06
+rotationPerVolley = 5.0
+targetStyle = "straight"
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 30.0
+amountOfBullets = 12
+volleyClipSize = 15
+clipReloadTime = -1.0
+bulletMovementSpeed = 70.0
+bulletScale = Vector2( 2, 2 )
+bulletSpawnDelay = 0.5
+bulletType = ExtResource( 6 )
+initialSpawnDelayConstant = 3.0
+initialSpawnDelayRandomRange = 0.0
+makeBulletEnergizedAnywaysOdds = 0.1
+
+[node name="BodyEmitter" parent="Titan/WeaponManager/Phase2/A" index="2" instance=ExtResource( 4 )]
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+bulletMovementSpeed = 50.0
+bulletScale = Vector2( 3, 3 )
+bulletSpawnDelay = 0.2
+bulletType = ExtResource( 5 )
+initialSpawnDelayConstant = 3.0
+initialSpawnDelayRandomRange = 0.0
+greenBulletFrequency = 5
+nthBulletIsGreen = [ 0 ]
+
+[node name="B" parent="Titan/WeaponManager/Phase2" index="1" instance=ExtResource( 4 )]
+amountOfBullets = 0
+initialSpawnDelayConstant = 3000.0
+
+[node name="OrbEmitters" parent="Titan/WeaponManager/Phase2/B" index="1" instance=ExtResource( 4 )]
+amountOfBullets = 0
+
+[node name="LeftOrbEmitter" parent="Titan/WeaponManager/Phase2/B/OrbEmitters" index="1" instance=ExtResource( 4 )]
+position = Vector2( -31.4384, 111.62 )
+rotation = 8.88506e-06
+rotationRange = 30.0
+initialRotationOffset = 15.0
+targetStyle = "atTarget"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+randomAngleOfBulletSpread = 25.0
+amountOfBullets = 3
+volleyClipSize = 25
+clipReloadTime = 3.0
+bulletMovementSpeed = 80.0
+bulletSpawnDelay = 0.2
+bulletType = ExtResource( 7 )
+initialSpawnDelayConstant = 3.0
+initialSpawnDelayRandomRange = 0.0
+makeBulletEnergizedAnywaysOdds = 0.2
+
+[node name="RightOrbEmitter" parent="Titan/WeaponManager/Phase2/B/OrbEmitters" index="2" instance=ExtResource( 4 )]
+position = Vector2( -31.4378, -112.842 )
+rotation = 8.88506e-06
+rotationRange = 30.0
+initialRotationOffset = 15.0
+targetStyle = "atTarget"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+randomAngleOfBulletSpread = 25.0
+amountOfBullets = 3
+volleyClipSize = 25
+clipReloadTime = 3.0
+bulletMovementSpeed = 80.0
+bulletSpawnDelay = 0.2
+bulletType = ExtResource( 7 )
+initialSpawnDelayConstant = 3.0
+initialSpawnDelayRandomRange = 0.0
+makeBulletEnergizedAnywaysOdds = 0.2
+
+[node name="BodyEmitter" parent="Titan/WeaponManager/Phase2/B" index="2" instance=ExtResource( 4 )]
+targetStyle = "atTarget"
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+volleyClipSize = 5
+clipReloadTime = 3.0
+bulletMovementSpeed = 80.0
+bulletWaveSpeed = 5.0
+bulletWaveStr = 120.0
+bulletSpawnDelay = 0.3
+bulletType = ExtResource( 10 )
+initialSpawnDelayConstant = 3.0
+initialSpawnDelayRandomRange = 0.0
+greenBulletFrequency = 2
+nthBulletIsGreen = [ 0 ]
+orbitalChildren = 6
+orbitalRotationSpeedDegs = 25.0
+
+[node name="Phase3" parent="Titan/WeaponManager" index="2" instance=ExtResource( 8 )]
+phaseSwapMode = "time"
+timeToNextPhase = 10
+
+[node name="A" parent="Titan/WeaponManager/Phase3" index="0" instance=ExtResource( 4 )]
+amountOfBullets = 0
+initialSpawnDelayConstant = 3000.0
+
+[node name="OrbEmitters" parent="Titan/WeaponManager/Phase3/A" index="1" instance=ExtResource( 4 )]
+amountOfBullets = 0
+
+[node name="LeftOrbEmitter" parent="Titan/WeaponManager/Phase3/A/OrbEmitters" index="1" instance=ExtResource( 4 )]
+position = Vector2( -31.4384, 111.62 )
+rotation = 8.88506e-06
+rotationPerVolley = 5.0
+targetStyle = "atTarget"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 25.0
+amountOfBullets = 2
+clipReloadTime = -1.0
+bulletMovementSpeed = 170.0
+bulletScale = Vector2( 3, 3 )
+bulletSpawnDelay = 0.8
+bulletType = ExtResource( 7 )
+initialSpawnDelayConstant = 3.0
+initialSpawnDelayRandomRange = 0.0
+makeBulletEnergizedAnywaysOdds = 0.1
+
+[node name="RightOrbEmitter" parent="Titan/WeaponManager/Phase3/A/OrbEmitters" index="2" instance=ExtResource( 4 )]
+position = Vector2( -31.4378, -112.842 )
+rotation = 8.88506e-06
+rotationPerVolley = 5.0
+targetStyle = "atTarget"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 25.0
+amountOfBullets = 2
+clipReloadTime = -1.0
+bulletMovementSpeed = 170.0
+bulletScale = Vector2( 3, 3 )
+bulletSpawnDelay = 0.8
+bulletType = ExtResource( 7 )
+initialSpawnDelayConstant = 3.0
+initialSpawnDelayRandomRange = 0.0
+makeBulletEnergizedAnywaysOdds = 0.1
+
+[node name="BodyEmitter" parent="Titan/WeaponManager/Phase3/A" index="2" instance=ExtResource( 4 )]
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 40.0
+amountOfBullets = 3
+bulletMovementSpeed = 60.0
+bulletScale = Vector2( 2, 2 )
+bulletWaveSpeed = 1.0
+bulletWaveStr = 100.0
+bulletSpawnDelay = 2.5
+bulletType = ExtResource( 9 )
+initialSpawnDelayConstant = 3.0
+initialSpawnDelayRandomRange = 0.0
+greenBulletFrequency = 5
+nthBulletIsGreen = [ 0 ]
+
+[node name="B" parent="Titan/WeaponManager/Phase3" index="1" instance=ExtResource( 4 )]
+amountOfBullets = 0
+initialSpawnDelayConstant = 3000.0
+
+[node name="OrbEmitters" parent="Titan/WeaponManager/Phase3/B" index="1" instance=ExtResource( 4 )]
+amountOfBullets = 0
+
+[node name="LeftOrbEmitter" parent="Titan/WeaponManager/Phase3/B/OrbEmitters" index="1" instance=ExtResource( 4 )]
+position = Vector2( -31.4384, 111.62 )
+rotation = 8.88506e-06
+rotationRange = 30.0
+initialRotationOffset = 15.0
+targetStyle = "atTarget"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+randomAngleOfBulletSpread = 24.0
+amountOfBullets = 3
+volleyClipSize = 30
+clipReloadTime = 3.0
+bulletMovementSpeed = 80.0
+bulletWaveSpeed = 2.0
+bulletWaveStr = 80.0
+bulletSpawnDelay = 0.2
+bulletType = ExtResource( 6 )
+initialSpawnDelayConstant = 3.0
+initialSpawnDelayRandomRange = 0.0
+makeBulletEnergizedAnywaysOdds = 0.2
+
+[node name="RightOrbEmitter" parent="Titan/WeaponManager/Phase3/B/OrbEmitters" index="2" instance=ExtResource( 4 )]
+position = Vector2( -31.4378, -112.842 )
+rotation = 8.88506e-06
+rotationRange = 30.0
+initialRotationOffset = 15.0
+targetStyle = "atTarget"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+randomAngleOfBulletSpread = 24.0
+amountOfBullets = 3
+volleyClipSize = 30
+clipReloadTime = 3.0
+bulletMovementSpeed = 80.0
+bulletWaveSpeed = 2.0
+bulletWaveStr = 80.0
+bulletSpawnDelay = 0.2
+bulletType = ExtResource( 6 )
+initialSpawnDelayConstant = 3.0
+initialSpawnDelayRandomRange = 0.0
+makeBulletEnergizedAnywaysOdds = 0.2
+
+[node name="BodyEmitter" parent="Titan/WeaponManager/Phase3/B" index="2" instance=ExtResource( 4 )]
+targetStyle = "atTarget"
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+volleyClipSize = 5
+clipReloadTime = 3.0
+bulletMovementSpeed = 180.0
+bulletScale = Vector2( 2, 2 )
+bulletSpawnDelay = 0.3
+bulletType = ExtResource( 7 )
+initialSpawnDelayConstant = 3.0
+initialSpawnDelayRandomRange = 0.0
+greenBulletFrequency = 3
+nthBulletIsGreen = [ 0 ]
+
+[node name="OrbAnimator" type="AnimationPlayer" parent="." index="1"]
+autoplay = "Orbs"
+anims/Orbs = SubResource( 1 )
 
 [editable path="Titan"]

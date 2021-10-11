@@ -5,7 +5,7 @@ extends Node2D
 # Clip size: Amount of bullets that can be fired before the emitter must "reload" (ie a break between a burst of fire)
 
 # Emits bullets in patterns and is meant to be highly configurable
-export(int) var rotationDegPerSec = 0	# deg
+export(float) var rotationDegPerSec = 0	# deg
 export(float) var rotationPerVolley = 0 #deg
 export(float) var rotationRange = 0	# how many degrees the emitter can rotate before reversing direction, 0 means not used
 var rotatingPositively = 1
@@ -33,7 +33,7 @@ export(int) var volleyClipSize = -1	# -1 for infinite
 var volleysRemaining
 export(float) var clipReloadTime = 0
 export(float) var clipRandomReloadDelay = 0	# seconds
-export(int) var bulletMovementSpeed = 10
+export(float) var bulletMovementSpeed = 10
 export(Vector2) var bulletScale = Vector2(1,1)
 export(float) var bulletWaveSpeed = 0
 export(float) var bulletWaveStr = 0
@@ -51,6 +51,10 @@ export(int) var orbitalChildren = -1	# orbital bullets	#TODO maybe subclass the 
 export(float) var orbitalRotationSpeedDegs = 30
 
 export(bool) var trackYFirst = false	# orthogonalBullets
+
+export(int) var wrapsRemaining = 0	# wrapping property. Don't use with ring bullets
+
+export(int) var bouncesRemaining = 0	# bounce off walls property
 
 export(bool) var emitting = true
 export(bool) var DEBUG = false
@@ -157,6 +161,8 @@ func spawnBullets(delta, additionalRads):
 		b.orbitalRotationSpeedDegs = orbitalRotationSpeedDegs
 		b.scale = bulletScale
 		b.target = target
+		b.wrapsRemaining = wrapsRemaining
+		b.bouncesRemaining = bouncesRemaining
 		if targetStyle == "shape":
 			b.targetPos = calculateBulletTargetPosition(delta)
 			if totalDelta > 1:
