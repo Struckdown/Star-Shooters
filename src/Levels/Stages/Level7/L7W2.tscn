@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Gravity.tscn" type="PackedScene" id=2]
@@ -6,15 +6,20 @@
 [ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=6]
 
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( -31.748, 77.7826, 31.748, -77.7826, 5.23703, 202.105, -157.153, 13.4929, 157.153, -13.4929, 274.183, 69.5047, -201.6, -61.1149, 201.6, 61.1149, 665.969, 76.0912, 0, 0, 0, 0, 999.323, 241.181 )
+}
+
 [node name="WaveBase" instance=ExtResource( 1 )]
 enemiesToDestroy = 1
 
 [node name="BouncerShooter" parent="." index="0" instance=ExtResource( 3 )]
-position = Vector2( 387.169, -66.8984 )
-rotation = 1.57079
+position = Vector2( -97.9308, 224.767 )
+rotation = -0.261799
 pointsWorth = 250
-moveGoal = Vector2( 0, 200 )
-flyingPattern = "hoverMoveGoal"
+flyPaths = [ NodePath("../Path2D") ]
+flyingPattern = "followPath"
 
 [node name="BulletEmitter" parent="BouncerShooter/WeaponManager" index="0"]
 rotationDegPerSec = 0.0
@@ -28,20 +33,22 @@ bulletType = ExtResource( 2 )
 nthBulletIsGreen = [  ]
 
 [node name="BulletEmitter" parent="BouncerShooter/WeaponManager/BulletEmitter" index="1" instance=ExtResource( 4 )]
-targetStyle = "straight"
-useRotationAsCenterBullet = true
+targetStyle = "atTarget"
 fireAtLocationForWholeClip = false
-angleOfBulletSpread = 30.0
-amountOfBullets = 12
+angleOfBulletSpread = 60.0
+amountOfBullets = 6
 volleyClipSize = 5
 clipReloadTime = 7.0
 bulletMovementSpeed = 150.0
-bulletSpawnDelay = 0.6
+bulletScale = Vector2( 4, 4 )
 bulletType = ExtResource( 6 )
 initialSpawnDelayConstant = 1.5
 initialSpawnDelayRandomRange = 0.0
 greenBulletFrequency = 2
 nthBulletIsGreen = [ 0, 3, 6, 9 ]
 bouncesRemaining = 3
+
+[node name="Path2D" type="Path2D" parent="." index="1"]
+curve = SubResource( 1 )
 
 [editable path="BouncerShooter"]

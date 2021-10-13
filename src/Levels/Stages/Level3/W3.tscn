@@ -28,27 +28,21 @@ flyingPattern = "followPath"
 phaseSwapMode = "time"
 timeToNextPhase = 1
 
-[node name="BulletEmitter" parent="Enemy_Base/WeaponManager" index="1" instance=ExtResource( 3 )]
-rotationDegPerSec = 240
+[node name="BulletEmitter" parent="Enemy_Base/WeaponManager" index="0" instance=ExtResource( 3 )]
 targetStyle = "straight"
 angleOfBulletSpread = 180.0
 amountOfBullets = 2
-bulletMovementSpeed = 120
 bulletSpawnDelay = 0.1
 bulletType = ExtResource( 4 )
-initialSpawnDelayRandomRange = 1.0
 greenBulletFrequency = 10
 nthBulletIsGreen = [ 0, 1 ]
 
-[node name="RingEmitter2" parent="Enemy_Base/WeaponManager" index="2" instance=ExtResource( 3 )]
-rotationDegPerSec = 240
+[node name="RingEmitter2" parent="Enemy_Base/WeaponManager" index="1" instance=ExtResource( 3 )]
 targetStyle = "straight"
 angleOfBulletSpread = 180.0
 amountOfBullets = 2
-bulletMovementSpeed = 110
 bulletSpawnDelay = 0.5
 bulletType = ExtResource( 5 )
-initialSpawnDelayRandomRange = 1.0
 nthBulletIsGreen = [ 0 ]
 orbitalChildren = 3
 

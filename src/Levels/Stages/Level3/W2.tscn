@@ -43,14 +43,14 @@ gemValue = 20
 moveGoal = Vector2( 200, 15 )
 flyingPattern = "hoverMoveGoal"
 
-[node name="BulletEmitter" parent="SpiralShooter/WeaponManager" index="1"]
-rotationDegPerSec = 0
+[node name="BulletEmitter" parent="SpiralShooter/WeaponManager" index="0"]
+rotationDegPerSec = 0.0
 targetStyle = "atTarget"
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 15.0
 amountOfBullets = 2
-bulletMovementSpeed = 80
+bulletMovementSpeed = 10.0
 bulletSpawnDelay = 2.0
 bulletType = ExtResource( 2 )
 initialSpawnDelayRandomRange = 1.0
@@ -69,12 +69,12 @@ flyingPattern = "hoverMoveGoal"
 [node name="AnimationPlayer" parent="SpiralShooter2" index="3"]
 anims/Death = SubResource( 1 )
 
-[node name="BulletEmitter" parent="SpiralShooter2/WeaponManager" index="1"]
-rotationDegPerSec = 0
+[node name="BulletEmitter" parent="SpiralShooter2/WeaponManager" index="0"]
+rotationDegPerSec = 0.0
 targetStyle = "atTarget"
 angleOfBulletSpread = 15.0
 amountOfBullets = 2
-bulletMovementSpeed = 80
+bulletMovementSpeed = 10.0
 bulletSpawnDelay = 2.0
 bulletType = ExtResource( 2 )
 initialSpawnDelayRandomRange = 1.0

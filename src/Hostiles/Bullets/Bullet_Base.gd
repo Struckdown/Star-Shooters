@@ -150,17 +150,17 @@ func checkForBounce() -> bool:
 	if outOfBounds():
 		if bouncesRemaining > 0:
 			bouncesRemaining -= 1
-			if global_position.x > bounds.x:
-				directionVectorMultiplier.x = -1
+			if position.x > bounds.x:
+				directionVectorMultiplier.x *= -1
 				bounced = true
-			if global_position.x < 0:
-				directionVectorMultiplier.x = 1
+			if position.x < 0:
+				directionVectorMultiplier.x *= -1
 				bounced = true
-			if global_position.y < 0:
-				directionVectorMultiplier.y = -1
+			if position.y < 0:
+				directionVectorMultiplier.y *= -1
 				bounced = true
-			if global_position.y > bounds.y:
-				directionVectorMultiplier.y = 1
+			if position.y > bounds.y:
+				directionVectorMultiplier.y *= -1
 				bounced = true
 	return bounced
 

@@ -124,13 +124,12 @@ speed = 90.0
 moveGoal = Vector2( 0, 100 )
 flyingPattern = "hoverMoveGoal"
 
-[node name="BulletEmitter" parent="Enemy_Base/WeaponManager" index="1" instance=ExtResource( 3 )]
+[node name="BulletEmitter" parent="Enemy_Base/WeaponManager" index="0" instance=ExtResource( 3 )]
 targetStyle = "atTarget"
 angleOfBulletSpread = 35.0
 amountOfBullets = 2
 volleyClipSize = 1
 clipReloadTime = 3.0
-bulletMovementSpeed = 120
 bulletSpawnDelay = 0.4
 bulletType = ExtResource( 5 )
 initialSpawnDelayConstant = 2.0
@@ -148,13 +147,12 @@ flyingPattern = "hoverMoveGoal"
 [node name="AnimationPlayer" parent="Enemy_Base2" index="3"]
 anims/Death = SubResource( 1 )
 
-[node name="BulletEmitter" parent="Enemy_Base2/WeaponManager" index="1" instance=ExtResource( 3 )]
+[node name="BulletEmitter" parent="Enemy_Base2/WeaponManager" index="0" instance=ExtResource( 3 )]
 targetStyle = "atTarget"
 angleOfBulletSpread = 25.0
 amountOfBullets = 2
 volleyClipSize = 7
 clipReloadTime = 2.0
-bulletMovementSpeed = 120
 bulletSpawnDelay = 0.4
 bulletType = ExtResource( 4 )
 initialSpawnDelayConstant = 2.0
@@ -172,12 +170,11 @@ flyingPattern = "hoverMoveGoal"
 [node name="AnimationPlayer" parent="Enemy_Base3" index="3"]
 anims/Death = SubResource( 2 )
 
-[node name="BulletEmitter" parent="Enemy_Base3/WeaponManager" index="1" instance=ExtResource( 3 )]
+[node name="BulletEmitter" parent="Enemy_Base3/WeaponManager" index="0" instance=ExtResource( 3 )]
 targetStyle = "atTarget"
 angleOfBulletSpread = 25.0
 amountOfBullets = 2
 volleyClipSize = 6
-bulletMovementSpeed = 120
 bulletSpawnDelay = 0.4
 bulletType = ExtResource( 4 )
 initialSpawnDelayConstant = 1.0
@@ -195,13 +192,12 @@ flyingPattern = "hoverMoveGoal"
 [node name="AnimationPlayer" parent="Enemy_Base4" index="3"]
 anims/Death = SubResource( 3 )
 
-[node name="BulletEmitter" parent="Enemy_Base4/WeaponManager" index="1" instance=ExtResource( 3 )]
+[node name="BulletEmitter" parent="Enemy_Base4/WeaponManager" index="0" instance=ExtResource( 3 )]
 targetStyle = "atTarget"
 angleOfBulletSpread = 25.0
 amountOfBullets = 2
 volleyClipSize = 9
 clipReloadTime = 1.0
-bulletMovementSpeed = 120
 bulletSpawnDelay = 0.4
 bulletType = ExtResource( 4 )
 initialSpawnDelayConstant = 2.0
@@ -219,13 +215,12 @@ flyingPattern = "hoverMoveGoal"
 [node name="AnimationPlayer" parent="Enemy_Base5" index="3"]
 anims/Death = SubResource( 4 )
 
-[node name="BulletEmitter" parent="Enemy_Base5/WeaponManager" index="1" instance=ExtResource( 3 )]
+[node name="BulletEmitter" parent="Enemy_Base5/WeaponManager" index="0" instance=ExtResource( 3 )]
 targetStyle = "atTarget"
 angleOfBulletSpread = 25.0
 amountOfBullets = 2
 volleyClipSize = 3
 clipReloadTime = 2.0
-bulletMovementSpeed = 120
 bulletSpawnDelay = 0.4
 bulletType = ExtResource( 4 )
 initialSpawnDelayConstant = 2.0
