@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Hostiles/AsteroidSpawner.gd" type="Script" id=1]
+
+[node name="AstroidSpawner" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="SpeedAsteroidTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="LargeGroupAsteroidTimer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="SpeedAsteroidTimer" to="." method="_on_SpeedAsteroidTimer_timeout"]
+[connection signal="timeout" from="LargeGroupAsteroidTimer" to="." method="_on_LargeGroupAsteroidTimer_timeout"]

@@ -76,7 +76,7 @@ func updateWavesFinished():
 	wavesComplete += 1
 	if wavesComplete >= waves.size():
 		levelWon = true
-		if playerRef:
+		if is_instance_valid(playerRef):
 			playerRef.godMode = true
 		if not levelLost:
 			$"CanvasLayer/Level Won".playLevelComplete()

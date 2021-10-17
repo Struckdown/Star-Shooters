@@ -7,6 +7,7 @@ var initialAmountOfEnemies
 export(String, "enemies", "time", "other") var waveAdvanceCondition = "enemies"
 export(int) var enemiesToDestroy = 0
 export(int) var timeToNextWave
+export(bool) var timeOutFinishesWaveInsteadOfAdvancesWave = false
 export(bool) var usesBossHP = false	# level manager uses this to connect this to the enemy
 export(String) var bossName = ""
 export(String) var musicRequest = ""
@@ -48,7 +49,10 @@ func setupAdvanceCondition():
 		"time":
 			var timer = Timer.new()
 			add_child(timer)
-			timer.connect("timeout", self, "advanceWave")
+			var functionToConnectTo = "advanceWave"
+			if timeOutFinishesWaveInsteadOfAdvancesWave:
+				functionToConnectTo = "markWaveFinished"
+			timer.connect("timeout", self, functionToConnectTo)
 			timer.set_wait_time(timeToNextWave)
 			timer.one_shot = true
 			timer.start()
