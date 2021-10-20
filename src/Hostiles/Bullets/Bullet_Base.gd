@@ -1,5 +1,7 @@
 extends Node2D
 
+var lifetime := 10.0
+var dying = false
 export(int) var moveSpeed = 200
 export(int) var waveStr = 0
 onready var startTime = OS.get_ticks_msec()
@@ -49,11 +51,8 @@ func _process(delta):
 	var bounced = checkForBounce()
 	if not bounced:
 		checkForWrap()
+	checkForEndOfLife()
 
-
-func _on_DespawnTimer_timeout():
-	canCauseDamage = false
-	startFadeOut()
 
 func startFadeOut():
 	var initColor = modulate
@@ -169,3 +168,10 @@ func checkHasEverBeenInBounds() -> void:
 		return
 	if not outOfBounds():	# check if ever been on screen, else return early
 		hasEverBeenInBounds = true
+
+
+func checkForEndOfLife():
+	if elapsedTime > lifetime and not dying:
+		dying = true
+		canCauseDamage = false
+		startFadeOut()

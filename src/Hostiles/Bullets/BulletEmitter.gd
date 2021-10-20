@@ -28,6 +28,7 @@ export(bool) var fireAtLocationForWholeClip = true
 export(float) var angleOfBulletSpread = 10	# degrees
 export(float) var randomAngleOfBulletSpread = 0 # degrees
 export(int) var amountOfBullets = 1
+export(float) var lifetime = 10.0
 export(Array, int) var bulletsToSkip = []
 export(int) var volleyClipSize = -1	# -1 for infinite
 var volleysRemaining
@@ -163,6 +164,7 @@ func spawnBullets(delta, additionalRads):
 		b.target = target
 		b.wrapsRemaining = wrapsRemaining
 		b.bouncesRemaining = bouncesRemaining
+		b.lifetime = lifetime
 		if targetStyle == "shape":
 			b.targetPos = calculateBulletTargetPosition(delta)
 			if totalDelta > 1:
