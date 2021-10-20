@@ -221,6 +221,7 @@ rotation = 1.57079
 scale = Vector2( 0.8, 0.8 )
 pointsWorth = 650
 maxHealth = 360
+deathShakeIntensity = 5.0
 moveGoal = Vector2( 0, 250 )
 flyingPattern = "hoverMoveGoal"
 isBoss = true

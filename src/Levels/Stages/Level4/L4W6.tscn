@@ -14,5 +14,6 @@ position = Vector2( 402.057, -91.4959 )
 rotation = 1.57079
 scale = Vector2( 2, 2 )
 maxHealth = 1000
+deathShakeIntensity = 8.0
 moveGoal = Vector2( 0, 220 )
 flyingPattern = "hoverMoveGoal"

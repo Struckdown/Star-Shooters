@@ -28,6 +28,7 @@ rotation = 1.57079
 pointsWorth = 500
 speed = 90.0
 maxHealth = 400
+deathShakeIntensity = 6.0
 gemValue = 100
 moveGoal = Vector2( 0, 200 )
 flyPaths = [ NodePath("../Path2D"), NodePath("../Path2D2") ]
@@ -41,6 +42,9 @@ texture = ExtResource( 5 )
 [node name="WeaponManager" parent="ForwardShooter" index="4"]
 timeToNextPhase = 1
 
+[node name="BulletEmitter" parent="ForwardShooter/WeaponManager" index="0"]
+bulletMovementSpeed = 10.0
+
 [node name="WeaponManager" parent="ForwardShooter/WeaponManager" index="1" instance=ExtResource( 6 )]
 
 [node name="CircleShots" parent="ForwardShooter/WeaponManager/WeaponManager" index="0" instance=ExtResource( 4 )]
@@ -48,7 +52,6 @@ rotation = -0.785398
 targetStyle = "straight"
 fireAtLocationForWholeClip = false
 amountOfBullets = 36
-bulletMovementSpeed = 60
 bulletScale = Vector2( 3, 3 )
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 3 )
@@ -64,7 +67,6 @@ useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 2.0
 amountOfBullets = 3
-bulletMovementSpeed = 130
 bulletType = ExtResource( 3 )
 initialSpawnDelayConstant = 2.0
 initialSpawnDelayRandomRange = 0.0

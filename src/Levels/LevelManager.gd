@@ -1,6 +1,5 @@
 extends Node2D
 
-
 onready var scoreBoardRef
 onready var playerRef
 onready var WaveManager
@@ -12,6 +11,8 @@ var wavesComplete = 0
 export(int) var level = 1
 var levelLost = false
 var levelWon = false
+onready var camera = $VPCgame/Viewport/Camera2D
+var shakeIntensity = 0	# from 0 to 1
 
 export(bool) var debug = false
 export(int) var debugWave = 0
@@ -30,8 +31,8 @@ func _ready():
 	StatsManager.updateStats("stagesPlayed", 1)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(_delta):
+	updateCameraShake()
 
 func _unhandled_input(_event):
 	if Input.is_action_pressed("pause") and not $"CanvasLayer/Pause Menu".visible:
@@ -109,3 +110,12 @@ func gemCollected():
 
 func _on_LevelWonGemCollectDelayTimer_timeout():
 	$VPCgame/Viewport/LevelBoundaries.collectGems(playerRef)
+
+func updateCameraShake():
+	var x = (randi()%2*2-1) * shakeIntensity
+	var y = (randi()%2*2-1) * shakeIntensity
+	camera.offset = Vector2(x, y)
+	shakeIntensity *= 0.95
+
+func addCameraShakeIntensity(val):
+	shakeIntensity += val

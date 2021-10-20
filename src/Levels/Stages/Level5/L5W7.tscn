@@ -53,6 +53,7 @@ scale = Vector2( 2, 2 )
 pointsWorth = 2500
 speed = 90.0
 maxHealth = 800
+deathShakeIntensity = 8.0
 gemValue = 170
 moveGoal = Vector2( 0, 250 )
 flyingPattern = "hoverMoveGoal"

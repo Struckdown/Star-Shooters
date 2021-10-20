@@ -5,6 +5,7 @@ export(float) var speed = 140
 var velocity
 export(int) var maxHealth = 25
 onready var health = maxHealth
+export(float) var deathShakeIntensity = 3
 export(int) var gemValue = 10
 export(PackedScene) var explosionType
 var explosionParticles
@@ -23,12 +24,15 @@ export(String, "straight", "hoverRandomPoint", "hoverMoveGoal", "followPath", "T
 var healthBarRef
 export(bool) var isBoss = false
 
+var levelManagerRef
+
 signal destroyed
 signal tookDamage
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	levelManagerRef = find_parent("Level")
 	if len(flyPaths) > 0:
 		flyPoints = get_node(flyPaths[flyPathIndex]).curve.get_baked_points()
 		
@@ -105,6 +109,7 @@ func destroy():
 	explosionParticles = load("res://Utility/FollowingParticles.tscn").instance()
 	explosionParticles.init(explosionType, self)
 	get_tree().root.add_child(explosionParticles)
+	levelManagerRef.addCameraShakeIntensity(deathShakeIntensity)
 	$AnimationPlayer.play("Death")
 	$ExplosionTimer.start()
 	for child in get_children():

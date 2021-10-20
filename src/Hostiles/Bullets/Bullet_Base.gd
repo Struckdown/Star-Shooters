@@ -34,8 +34,7 @@ func _ready():
 	if generatesEnergy:
 		setGeneratesEnergy(true)
 	if titleScreenVersion:
-		$DespawnTimer.autostart = false
-		$DespawnTimer.stop()
+		dying = true	# hack that avoids the fadeout ever being called
 	if nodeToRotate and typeof(nodeToRotate) != TYPE_OBJECT:
 		nodeToRotate = get_node(nodeToRotate)
 	bounds = get_viewport_rect().size
