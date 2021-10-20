@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Levels/TimeRemaining.gd" type="Script" id=1]
+
+[node name="TimeRemaining" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+minutes = 2
+seconds = 4
+
+[node name="TimeLbl" type="Label" parent="."]
+margin_right = 40.0
+margin_bottom = 14.0
+text = "2:00"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

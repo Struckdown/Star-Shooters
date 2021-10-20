@@ -54,7 +54,13 @@ func setUpStats():
 		var val = $StatsValSample.duplicate()
 		lbl.text = prettyText(str(stat)) + ":"
 		val.text = str(StatsManager.stats[stat])
+		if i % 2 == 1:
+			lbl.align = Label.ALIGN_RIGHT
+			lbl.size_flags_horizontal = SIZE_EXPAND_FILL
+			val.size_flags_horizontal = SIZE_FILL
+			val.text = "%7d" % int(val.text)
 		if lbl.text == "Game Completion:":
+			val.text = "%7.1f" % float(val.text)
 			val.text += "%"
 		hBox.name = lbl.text + "hBox"
 		lbl.show()
