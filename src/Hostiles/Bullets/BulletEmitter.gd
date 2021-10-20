@@ -34,7 +34,7 @@ export(int) var volleyClipSize = -1	# -1 for infinite
 var volleysRemaining
 export(float) var clipReloadTime = 0
 export(float) var clipRandomReloadDelay = 0	# seconds
-export(float) var bulletMovementSpeed = 10
+export(float) var bulletMovementSpeed = 130
 export(Vector2) var bulletScale = Vector2(1,1)
 export(float) var bulletWaveSpeed = 0
 export(float) var bulletWaveStr = 0

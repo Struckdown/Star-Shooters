@@ -143,13 +143,13 @@ speed = 50.0
 moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"
 
-[node name="BulletEmitter" parent="GravShooter/WeaponManager" index="1"]
-rotationDegPerSec = 0
+[node name="BulletEmitter" parent="GravShooter/WeaponManager" index="0"]
+rotationDegPerSec = 0.0
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
-bulletMovementSpeed = 80
+bulletMovementSpeed = 130.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 1 )
 nthBulletIsGreen = [  ]
@@ -160,7 +160,7 @@ useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 35.0
 amountOfBullets = 4
-bulletMovementSpeed = 80
+bulletMovementSpeed = 80.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 1 )
 initialSpawnDelayRandomRange = 2.0
@@ -172,7 +172,7 @@ useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 15.0
 amountOfBullets = 5
-bulletMovementSpeed = 80
+bulletMovementSpeed = 120.0
 bulletSpawnDelay = 2.0
 bulletType = ExtResource( 8 )
 initialSpawnDelayRandomRange = 2.0
@@ -191,13 +191,13 @@ texture = ExtResource( 5 )
 [node name="AnimationPlayer" parent="StandardShooter" index="3"]
 anims/Death = SubResource( 1 )
 
-[node name="BulletEmitter" parent="StandardShooter/WeaponManager" index="1"]
-rotationDegPerSec = 0
+[node name="BulletEmitter" parent="StandardShooter/WeaponManager" index="0"]
+rotationDegPerSec = 0.0
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
-bulletMovementSpeed = 80
+bulletMovementSpeed = 130.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 1 )
 nthBulletIsGreen = [  ]
@@ -208,7 +208,6 @@ useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 55.0
 amountOfBullets = 4
-bulletMovementSpeed = 50
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 6 )
 initialSpawnDelayRandomRange = 2.0
@@ -228,13 +227,13 @@ texture = ExtResource( 5 )
 [node name="AnimationPlayer" parent="StandardShooter2" index="3"]
 anims/Death = SubResource( 2 )
 
-[node name="BulletEmitter" parent="StandardShooter2/WeaponManager" index="1"]
-rotationDegPerSec = 0
+[node name="BulletEmitter" parent="StandardShooter2/WeaponManager" index="0"]
+rotationDegPerSec = 0.0
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
-bulletMovementSpeed = 80
+bulletMovementSpeed = 130.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 1 )
 nthBulletIsGreen = [  ]
@@ -245,7 +244,6 @@ useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 55.0
 amountOfBullets = 4
-bulletMovementSpeed = 50
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 6 )
 initialSpawnDelayRandomRange = 2.0
@@ -268,13 +266,13 @@ texture = ExtResource( 7 )
 [node name="AnimationPlayer" parent="Runner" index="3"]
 anims/Death = SubResource( 3 )
 
-[node name="BulletEmitter" parent="Runner/WeaponManager" index="1"]
-rotationDegPerSec = 0
+[node name="BulletEmitter" parent="Runner/WeaponManager" index="0"]
+rotationDegPerSec = 0.0
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
-bulletMovementSpeed = 80
+bulletMovementSpeed = 130.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 1 )
 nthBulletIsGreen = [  ]

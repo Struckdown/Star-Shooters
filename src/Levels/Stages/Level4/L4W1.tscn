@@ -15,13 +15,13 @@ rotation = 1.57079
 moveGoal = Vector2( 0, 100 )
 flyingPattern = "hoverMoveGoal"
 
-[node name="BulletEmitter" parent="SpiralShooter/WeaponManager" index="1"]
-rotationDegPerSec = 0
+[node name="BulletEmitter" parent="SpiralShooter/WeaponManager" index="0"]
+rotationDegPerSec = 0.0
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
-bulletMovementSpeed = 80
+bulletMovementSpeed = 130.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 2 )
 nthBulletIsGreen = [  ]
@@ -29,7 +29,7 @@ nthBulletIsGreen = [  ]
 [node name="GravEmitter" parent="SpiralShooter/WeaponManager/BulletEmitter" index="1" instance=ExtResource( 4 )]
 targetStyle = "atTarget"
 angleOfBulletSpread = 0.0
-bulletMovementSpeed = 80
+bulletMovementSpeed = 120.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 2 )
 initialSpawnDelayRandomRange = 3.0
@@ -40,7 +40,6 @@ useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 5.0
 amountOfBullets = 3
-bulletMovementSpeed = 100
 bulletType = ExtResource( 5 )
 initialSpawnDelayConstant = 1.5
 initialSpawnDelayRandomRange = 0.0

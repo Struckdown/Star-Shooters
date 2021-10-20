@@ -48,7 +48,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Curve2D" id=3]
+[sub_resource type="Curve2D" id=2]
 _data = {
 "points": PoolVector2Array( 55.2357, 220.052, -55.2357, -220.052, 24.2268, 266.09, -103.945, 73.5391, 103.945, -73.5391, 226.079, 76.7786, -196.576, -59.397, 196.576, 59.397, 676.059, 49.7074, 189.505, -94.7523, -189.505, 94.7523, 667.573, 519.933, -403.051, 55.1543, 403.051, -55.1543, 482.311, 194.664, 240.857, 248.471, -240.857, -248.471, 120.273, 346.692 )
 }
@@ -67,12 +67,12 @@ loopFlyPaths = true
 flyingPattern = "followPath"
 
 [node name="BulletEmitter" parent="OrthogonalShooter/WeaponManager" index="0"]
-rotationDegPerSec = 0
+rotationDegPerSec = 0.0
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
-bulletMovementSpeed = 80
+bulletMovementSpeed = 130.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 2 )
 nthBulletIsGreen = [  ]
@@ -84,7 +84,7 @@ fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 volleyClipSize = 10
 clipReloadTime = 3.0
-bulletMovementSpeed = 110
+bulletMovementSpeed = 120.0
 bulletScale = Vector2( 2, 2 )
 bulletSpawnDelay = 0.1
 bulletType = ExtResource( 5 )
@@ -106,24 +106,22 @@ flyingPattern = "hoverMoveGoal"
 anims/Death = SubResource( 1 )
 
 [node name="BulletEmitter" parent="PivotShooter/WeaponManager" index="0"]
-rotationDegPerSec = 0
+rotationDegPerSec = 0.0
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
-bulletMovementSpeed = 80
+bulletMovementSpeed = 130.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 2 )
 nthBulletIsGreen = [  ]
 
 [node name="BulletEmitter" parent="PivotShooter/WeaponManager/BulletEmitter" index="1" instance=ExtResource( 4 )]
-rotationDegPerSec = 360
 targetStyle = "straight"
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 90.0
 amountOfBullets = 2
-bulletMovementSpeed = 110
 bulletScale = Vector2( 1.2, 1.2 )
 bulletSpawnDelay = 0.05
 bulletType = ExtResource( 6 )
@@ -134,7 +132,7 @@ nthBulletIsGreen = [ 0 ]
 makeBulletEnergizedAnywaysOdds = 0.2
 
 [node name="Path2D" type="Path2D" parent="." index="2"]
-curve = SubResource( 3 )
+curve = SubResource( 2 )
 
 [editable path="OrthogonalShooter"]
 [editable path="PivotShooter"]

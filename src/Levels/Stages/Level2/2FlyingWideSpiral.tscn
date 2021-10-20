@@ -16,6 +16,7 @@ gemValue = 15
 
 [node name="BulletEmitter" parent="SpiralShooter/WeaponManager" index="0"]
 rotationDegPerSec = 0.0
+bulletMovementSpeed = 130.0
 
 [node name="SpiralShooter2" parent="." index="1" instance=ExtResource( 3 )]
 position = Vector2( 291.84, -92.9798 )
@@ -26,7 +27,7 @@ gemValue = 15
 
 [node name="BulletEmitter" parent="SpiralShooter2/WeaponManager" index="0"]
 rotationDegPerSec = 0.0
-bulletMovementSpeed = 10.0
+bulletMovementSpeed = 130.0
 
 [editable path="SpiralShooter"]
 [editable path="SpiralShooter2"]

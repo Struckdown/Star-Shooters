@@ -31,11 +31,11 @@ rotation = 1.309
 phaseSwapMode = "time"
 timeToNextPhase = 3
 
-[node name="BulletEmitter" parent="Enemy_Base/WeaponManager" index="1" instance=ExtResource( 3 )]
+[node name="BulletEmitter" parent="Enemy_Base/WeaponManager" index="0" instance=ExtResource( 3 )]
 targetStyle = "straight"
 angleOfBulletSpread = 35.0
 amountOfBullets = 3
-bulletMovementSpeed = 120
+bulletMovementSpeed = 120.0
 bulletSpawnDelay = 0.4
 bulletType = ExtResource( 4 )
 initialSpawnDelayConstant = 2.0
@@ -43,11 +43,10 @@ initialSpawnDelayRandomRange = 0.0
 greenBulletFrequency = 2
 nthBulletIsGreen = [ 0, 1 ]
 
-[node name="RingEmitter" parent="Enemy_Base/WeaponManager" index="2" instance=ExtResource( 3 )]
+[node name="RingEmitter" parent="Enemy_Base/WeaponManager" index="1" instance=ExtResource( 3 )]
 targetStyle = "straight"
 angleOfBulletSpread = 35.0
 amountOfBullets = 3
-bulletMovementSpeed = 60
 bulletType = ExtResource( 5 )
 initialSpawnDelayConstant = 2.0
 initialSpawnDelayRandomRange = 0.0

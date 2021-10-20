@@ -11,13 +11,13 @@ flyingPattern = ""
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 3 )
 
-[node name="BulletEmitter" parent="WeaponManager" index="1" instance=ExtResource( 2 )]
+[node name="BulletEmitter" parent="WeaponManager" index="0" instance=ExtResource( 2 )]
 initialRotationOffset = -10.0
 targetStyle = "predict"
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 amountOfBullets = 3
-bulletMovementSpeed = 250
+bulletMovementSpeed = 120.0
 bulletType = ExtResource( 4 )
 greenBulletFrequency = 2
 nthBulletIsGreen = [ 0 ]

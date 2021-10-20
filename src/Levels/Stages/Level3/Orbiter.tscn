@@ -21,12 +21,13 @@ flyingPattern = "hoverMoveGoal"
 phaseSwapMode = "time"
 timeToNextPhase = 1
 
-[node name="BulletEmitter" parent="OrbiterShooter/WeaponManager" index="1"]
-rotationDegPerSec = 0
+[node name="BulletEmitter" parent="OrbiterShooter/WeaponManager" index="0"]
+rotationDegPerSec = 0.0
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 amountOfBullets = 1
+bulletMovementSpeed = 130.0
 bulletSpawnDelay = 1.2
 bulletType = ExtResource( 2 )
 initialSpawnDelayRandomRange = 1.0

@@ -39,19 +39,22 @@ isBoss = true
 [node name="Sprite" parent="ForwardShooter" index="1"]
 texture = ExtResource( 5 )
 
+[node name="Scratch2" parent="ForwardShooter/Sprite" index="1"]
+position = Vector2( 36.2335, -0.278198 )
+
 [node name="WeaponManager" parent="ForwardShooter" index="4"]
 timeToNextPhase = 1
 
-[node name="BulletEmitter" parent="ForwardShooter/WeaponManager" index="0"]
-bulletMovementSpeed = 10.0
-
-[node name="WeaponManager" parent="ForwardShooter/WeaponManager" index="1" instance=ExtResource( 6 )]
+[node name="WeaponManager" parent="ForwardShooter/WeaponManager" index="0" instance=ExtResource( 6 )]
+phaseSwapMode = "time"
+timeToNextPhase = 7
 
 [node name="CircleShots" parent="ForwardShooter/WeaponManager/WeaponManager" index="0" instance=ExtResource( 4 )]
 rotation = -0.785398
 targetStyle = "straight"
 fireAtLocationForWholeClip = false
 amountOfBullets = 36
+bulletMovementSpeed = 120.0
 bulletScale = Vector2( 3, 3 )
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 3 )
@@ -67,6 +70,7 @@ useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 2.0
 amountOfBullets = 3
+bulletMovementSpeed = 180.0
 bulletType = ExtResource( 3 )
 initialSpawnDelayConstant = 2.0
 initialSpawnDelayRandomRange = 0.0

@@ -109,7 +109,6 @@ func destroy():
 	explosionParticles = load("res://Utility/FollowingParticles.tscn").instance()
 	explosionParticles.init(explosionType, self)
 	get_tree().root.add_child(explosionParticles)
-	levelManagerRef.addCameraShakeIntensity(deathShakeIntensity)
 	$AnimationPlayer.play("Death")
 	$ExplosionTimer.start()
 	for child in get_children():
@@ -123,6 +122,11 @@ func scaleOut():
 func _on_ExplosionTimer_timeout():
 #	remove_child(explosionParticles)
 #	get_parent().add_child(explosionParticles)
+	levelManagerRef.addCameraShakeIntensity(deathShakeIntensity)
+	var partsParticles = load("res://Explosions/PartsEmitter.tscn").instance()
+	get_tree().root.add_child(partsParticles)
+	partsParticles.global_position = global_position
+	partsParticles.emitting = true
 	queue_free()
 
 
@@ -140,6 +144,7 @@ func takeDamage():
 	if not $HitSFX.playing:
 		$HitSFX.play()
 	emit_signal("tookDamage", float(health)/float(maxHealth))	# used by weapon manager
+	updateScratches()
 	if healthBarRef:	# technically this won't work correctly if there is overkill
 		healthBarRef.applyDamage(1)
 	if health <= 0:
@@ -147,6 +152,16 @@ func takeDamage():
 		if isBoss:
 			StatsManager.updateStats("bossesDefeated", 1)
 		destroy()
+
+func updateScratches():
+	var healthFrac = float(health)/float(maxHealth)
+	if healthFrac < 0.75:
+		$Sprite/Scratch1.show()
+	if healthFrac < 0.50:
+		$Sprite/Scratch2.show()
+	if healthFrac < 0.25:
+		$Sprite/Scratch3.show()
+
 
 func getNewMoveGoal():
 	#var mapCenter = levelBounds.position

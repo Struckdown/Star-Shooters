@@ -106,26 +106,25 @@ texture = ExtResource( 5 )
 [node name="AnimationPlayer" parent="StandardShooter" index="3"]
 anims/Death = SubResource( 1 )
 
-[node name="BulletEmitter" parent="StandardShooter/WeaponManager" index="1"]
-rotationDegPerSec = 0
+[node name="BulletEmitter" parent="StandardShooter/WeaponManager" index="0"]
+rotationDegPerSec = 0.0
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
-bulletMovementSpeed = 80
+bulletMovementSpeed = 130.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 1 )
 nthBulletIsGreen = [  ]
 
 [node name="BulletEmitter" parent="StandardShooter/WeaponManager/BulletEmitter" index="1" instance=ExtResource( 3 )]
 rotation = -0.523599
-rotationDegPerSec = 15
 rotationRange = 60.0
 targetStyle = "straight"
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
-bulletMovementSpeed = 90
+bulletMovementSpeed = 120.0
 bulletSpawnDelay = 0.2
 bulletType = ExtResource( 8 )
 initialSpawnDelayConstant = 2.0
@@ -135,14 +134,13 @@ nthBulletIsGreen = [ 0 ]
 
 [node name="GravEmitter" parent="StandardShooter/WeaponManager/BulletEmitter" index="2" instance=ExtResource( 3 )]
 rotation = -0.523599
-rotationDegPerSec = 15
 rotationRange = 60.0
 initialRotationOffset = 60.0
 targetStyle = "straight"
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
-bulletMovementSpeed = 90
+bulletMovementSpeed = 90.0
 bulletType = ExtResource( 1 )
 initialSpawnDelayConstant = 2.0
 initialSpawnDelayRandomRange = 0.0
@@ -162,13 +160,13 @@ texture = ExtResource( 5 )
 [node name="AnimationPlayer" parent="StandardShooter2" index="3"]
 anims/Death = SubResource( 2 )
 
-[node name="BulletEmitter" parent="StandardShooter2/WeaponManager" index="1"]
-rotationDegPerSec = 0
+[node name="BulletEmitter" parent="StandardShooter2/WeaponManager" index="0"]
+rotationDegPerSec = 0.0
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
-bulletMovementSpeed = 80
+bulletMovementSpeed = 130.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 1 )
 nthBulletIsGreen = [  ]
@@ -179,7 +177,6 @@ useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 55.0
 amountOfBullets = 4
-bulletMovementSpeed = 50
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 6 )
 initialSpawnDelayRandomRange = 2.0

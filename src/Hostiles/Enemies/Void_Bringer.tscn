@@ -15,33 +15,35 @@ maxHealth = 2500
 gemValue = 250
 isBoss = true
 
-[node name="GunBase" type="Sprite" parent="." index="2"]
-position = Vector2( -11.6119, -29.9661 )
+[node name="GunBase" type="Sprite" parent="Sprite" index="0"]
+position = Vector2( 29.9661, -11.6118 )
+rotation = 1.5708
 texture = ExtResource( 4 )
 
-[node name="Gun" type="Sprite" parent="GunBase" index="0"]
+[node name="Gun" type="Sprite" parent="Sprite/GunBase" index="0"]
 position = Vector2( 13.2975, 0 )
 rotation = -1.57079
 texture = ExtResource( 2 )
 
-[node name="GunBase2" type="Sprite" parent="." index="3"]
-position = Vector2( -11.6119, 29.5916 )
+[node name="GunBase2" type="Sprite" parent="Sprite" index="1"]
+position = Vector2( -29.5916, -11.612 )
+rotation = 1.5708
 texture = ExtResource( 4 )
 
-[node name="Gun" type="Sprite" parent="GunBase2" index="0"]
+[node name="Gun" type="Sprite" parent="Sprite/GunBase2" index="0"]
 position = Vector2( 13.2975, 0 )
 rotation = -1.57079
 texture = ExtResource( 2 )
 
-[node name="WeaponManager" parent="." index="6"]
+[node name="WeaponManager" parent="." index="4"]
 phaseSwapMode = "health"
 healthPercentToNextPhase = 50.0
 
-[node name="Phase1" parent="WeaponManager" index="1" instance=ExtResource( 6 )]
+[node name="Phase1" parent="WeaponManager" index="0" instance=ExtResource( 6 )]
 phaseSwapMode = "time"
 timeToNextPhase = 5
 
-[node name="Phase1a" parent="WeaponManager/Phase1" index="1" instance=ExtResource( 3 )]
+[node name="Phase1a" parent="WeaponManager/Phase1" index="0" instance=ExtResource( 3 )]
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
 bulletType = null
@@ -51,7 +53,7 @@ position = Vector2( 20.9763, -30.1534 )
 targetStyle = "straight"
 angleOfBulletSpread = 0.0
 randomAngleOfBulletSpread = 30.0
-bulletMovementSpeed = 90
+bulletMovementSpeed = 120.0
 bulletSpawnDelay = 0.1
 bulletType = ExtResource( 5 )
 initialSpawnDelayConstant = 2.0
@@ -64,7 +66,7 @@ position = Vector2( 20.9763, 30.1534 )
 targetStyle = "straight"
 angleOfBulletSpread = 0.0
 randomAngleOfBulletSpread = 30.0
-bulletMovementSpeed = 90
+bulletMovementSpeed = 120.0
 bulletSpawnDelay = 0.1
 bulletType = ExtResource( 5 )
 initialSpawnDelayConstant = 2.0
@@ -72,7 +74,7 @@ initialSpawnDelayRandomRange = 0.0
 greenBulletFrequency = 8
 nthBulletIsGreen = [ 0 ]
 
-[node name="Phase1b" parent="WeaponManager/Phase1" index="2" instance=ExtResource( 3 )]
+[node name="Phase1b" parent="WeaponManager/Phase1" index="1" instance=ExtResource( 3 )]
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
 bulletType = null
@@ -86,7 +88,7 @@ angleOfBulletSpread = 20.0
 amountOfBullets = 5
 volleyClipSize = 5
 clipReloadTime = 3.0
-bulletMovementSpeed = 90
+bulletMovementSpeed = 120.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 7 )
 
@@ -99,17 +101,17 @@ randomAngleOfBulletSpread = 5.0
 amountOfBullets = 2
 volleyClipSize = 3
 clipReloadTime = 5.0
-bulletMovementSpeed = 90
+bulletMovementSpeed = 120.0
 bulletSpawnDelay = 0.3
 bulletType = ExtResource( 8 )
 nthBulletIsGreen = [ 0, 1 ]
 orbitalChildren = 7
 
-[node name="Phase2" parent="WeaponManager" index="2" instance=ExtResource( 6 )]
+[node name="Phase2" parent="WeaponManager" index="1" instance=ExtResource( 6 )]
 phaseSwapMode = "time"
 timeToNextPhase = 8
 
-[node name="Phase2a" parent="WeaponManager/Phase2" index="1" instance=ExtResource( 3 )]
+[node name="Phase2a" parent="WeaponManager/Phase2" index="0" instance=ExtResource( 3 )]
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
 bulletType = null
@@ -122,7 +124,7 @@ fireAtLocationForWholeClip = false
 angleOfBulletSpread = 20.0
 randomAngleOfBulletSpread = 5.0
 amountOfBullets = 5
-bulletMovementSpeed = 180
+bulletMovementSpeed = 120.0
 bulletSpawnDelay = 0.3
 bulletType = ExtResource( 5 )
 initialSpawnDelayConstant = 2.0
@@ -136,7 +138,7 @@ rotation = -1.5708
 targetStyle = "straight"
 fireAtLocationForWholeClip = false
 amountOfBullets = 19
-bulletMovementSpeed = 120
+bulletMovementSpeed = 120.0
 bulletSpawnDelay = 0.5
 bulletType = ExtResource( 5 )
 initialSpawnDelayConstant = 2.0
@@ -144,7 +146,7 @@ initialSpawnDelayRandomRange = 0.0
 greenBulletFrequency = 2
 nthBulletIsGreen = [ 3, 6, 9, 12 ]
 
-[node name="Phase2b" parent="WeaponManager/Phase2" index="2" instance=ExtResource( 3 )]
+[node name="Phase2b" parent="WeaponManager/Phase2" index="1" instance=ExtResource( 3 )]
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
 bulletType = null
@@ -159,18 +161,16 @@ useRotationAsCenterBullet = true
 angleOfBulletSpread = 0.0
 volleyClipSize = 10
 clipReloadTime = 3.0
-bulletMovementSpeed = 90
+bulletMovementSpeed = 120.0
 bulletSpawnDelay = 0.5
 bulletType = ExtResource( 7 )
 
 [node name="RightTur" parent="WeaponManager/Phase2/Phase2b" index="2" instance=ExtResource( 3 )]
 position = Vector2( 20.9763, 30.1534 )
-rotationDegPerSec = 90
 targetStyle = "straight"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 180.0
 amountOfBullets = 2
-bulletMovementSpeed = 130
 bulletSpawnDelay = 0.2
 bulletType = ExtResource( 8 )
 nthBulletIsGreen = [ 0, 1 ]

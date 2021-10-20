@@ -57,12 +57,12 @@ moveGoal = Vector2( 400, 0 )
 flyingPattern = "hoverMoveGoal"
 
 [node name="BulletEmitter" parent="OrthogonalShooter/WeaponManager" index="0"]
-rotationDegPerSec = 0
+rotationDegPerSec = 0.0
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
-bulletMovementSpeed = 80
+bulletMovementSpeed = 130.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 2 )
 nthBulletIsGreen = [  ]
@@ -74,7 +74,6 @@ fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 volleyClipSize = 5
 clipReloadTime = 3.0
-bulletMovementSpeed = 90
 bulletSpawnDelay = 0.3
 bulletType = ExtResource( 5 )
 initialSpawnDelayConstant = 1.5
@@ -93,12 +92,12 @@ flyingPattern = "hoverMoveGoal"
 anims/Death = SubResource( 1 )
 
 [node name="BulletEmitter" parent="OrthogonalShooter2/WeaponManager" index="0"]
-rotationDegPerSec = 0
+rotationDegPerSec = 0.0
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
-bulletMovementSpeed = 80
+bulletMovementSpeed = 130.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 2 )
 nthBulletIsGreen = [  ]
@@ -110,7 +109,6 @@ fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 volleyClipSize = 5
 clipReloadTime = 3.0
-bulletMovementSpeed = 90
 bulletSpawnDelay = 0.3
 bulletType = ExtResource( 5 )
 initialSpawnDelayConstant = 1.5

@@ -21,13 +21,13 @@ moveGoal = Vector2( 0, 100 )
 flyPaths = [ NodePath("../Path2D") ]
 flyingPattern = "followPath"
 
-[node name="BulletEmitter" parent="SpiralShooter/WeaponManager" index="1"]
-rotationDegPerSec = 0
+[node name="BulletEmitter" parent="SpiralShooter/WeaponManager" index="0"]
+rotationDegPerSec = 0.0
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
-bulletMovementSpeed = 80
+bulletMovementSpeed = 130.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 2 )
 nthBulletIsGreen = [  ]
@@ -38,7 +38,6 @@ useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 35.0
 amountOfBullets = 4
-bulletMovementSpeed = 80
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 2 )
 initialSpawnDelayRandomRange = 2.0

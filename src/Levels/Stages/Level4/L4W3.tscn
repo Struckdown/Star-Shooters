@@ -65,13 +65,13 @@ flyPaths = [ NodePath("../Path2D") ]
 loopFlyPaths = true
 flyingPattern = "followPath"
 
-[node name="BulletEmitter" parent="GravShooter/WeaponManager" index="1"]
-rotationDegPerSec = 0
+[node name="BulletEmitter" parent="GravShooter/WeaponManager" index="0"]
+rotationDegPerSec = 0.0
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
-bulletMovementSpeed = 80
+bulletMovementSpeed = 130.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 1 )
 nthBulletIsGreen = [  ]
@@ -82,7 +82,7 @@ useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 35.0
 amountOfBullets = 4
-bulletMovementSpeed = 80
+bulletMovementSpeed = 90.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 1 )
 initialSpawnDelayRandomRange = 2.0
@@ -94,7 +94,7 @@ useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 17.0
 amountOfBullets = 3
-bulletMovementSpeed = 50
+bulletMovementSpeed = 120.0
 bulletWaveSpeed = 5.0
 bulletWaveStr = 30.0
 bulletSpawnDelay = 1.7
@@ -116,13 +116,13 @@ texture = ExtResource( 5 )
 [node name="AnimationPlayer" parent="StandardShooter" index="3"]
 anims/Death = SubResource( 1 )
 
-[node name="BulletEmitter" parent="StandardShooter/WeaponManager" index="1"]
-rotationDegPerSec = 0
+[node name="BulletEmitter" parent="StandardShooter/WeaponManager" index="0"]
+rotationDegPerSec = 0.0
 targetStyle = "predict"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
-bulletMovementSpeed = 80
+bulletMovementSpeed = 130.0
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 1 )
 nthBulletIsGreen = [  ]
@@ -133,7 +133,6 @@ useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 55.0
 amountOfBullets = 4
-bulletMovementSpeed = 50
 bulletSpawnDelay = 3.0
 bulletType = ExtResource( 6 )
 initialSpawnDelayRandomRange = 2.0
