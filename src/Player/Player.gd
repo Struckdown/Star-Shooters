@@ -179,6 +179,7 @@ func _on_CoreArea_area_entered(area):
 		var bul = area.owner
 		if bul.canCauseDamage and not cheatModeActive:
 			dying = true
+			get_tree().get_nodes_in_group("LevelManager")[0].addCameraShakeIntensity(8)
 			StatsManager.updateStats("deaths", 1)
 			#hasControl = false
 			$AnimationPlayer.play("Explosion")

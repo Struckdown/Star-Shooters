@@ -22,4 +22,4 @@ func updateLives(livesDelta):
 	livesCount += livesDelta
 	for life in $VBoxContainer/VBoxContainer/CenterContainer/LivesHBoxContainer.get_children():
 		if int(life.name[-1]) >= livesCount:
-			life.hide()
+			life.disappear()

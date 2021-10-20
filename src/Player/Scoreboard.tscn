@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player/FutureFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Space Shooter Redux/PNG/UI/playerLife1_blue.png" type="Texture" id=2]
+[ext_resource path="res://Player/playerScoreboardLife.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Player/Scoreboard.gd" type="Script" id=4]
 
@@ -180,49 +180,23 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="playerLife_0" type="TextureRect" parent="VBoxContainer/VBoxContainer/CenterContainer/LivesHBoxContainer"]
-margin_right = 33.0
-margin_bottom = 26.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="playerLife_0" parent="VBoxContainer/VBoxContainer/CenterContainer/LivesHBoxContainer" instance=ExtResource( 2 )]
 
-[node name="playerLife_1" type="TextureRect" parent="VBoxContainer/VBoxContainer/CenterContainer/LivesHBoxContainer"]
+[node name="playerLife_1" parent="VBoxContainer/VBoxContainer/CenterContainer/LivesHBoxContainer" instance=ExtResource( 2 )]
 margin_left = 37.0
 margin_right = 70.0
-margin_bottom = 26.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="playerLife_2" type="TextureRect" parent="VBoxContainer/VBoxContainer/CenterContainer/LivesHBoxContainer"]
+[node name="playerLife_2" parent="VBoxContainer/VBoxContainer/CenterContainer/LivesHBoxContainer" instance=ExtResource( 2 )]
 margin_left = 74.0
 margin_right = 107.0
-margin_bottom = 26.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="playerLife_3" type="TextureRect" parent="VBoxContainer/VBoxContainer/CenterContainer/LivesHBoxContainer"]
+[node name="playerLife_3" parent="VBoxContainer/VBoxContainer/CenterContainer/LivesHBoxContainer" instance=ExtResource( 2 )]
 margin_left = 111.0
 margin_right = 144.0
-margin_bottom = 26.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
-[node name="playerLife_4" type="TextureRect" parent="VBoxContainer/VBoxContainer/CenterContainer/LivesHBoxContainer"]
+[node name="playerLife_4" parent="VBoxContainer/VBoxContainer/CenterContainer/LivesHBoxContainer" instance=ExtResource( 2 )]
 margin_left = 148.0
 margin_right = 181.0
-margin_bottom = 26.0
-texture = ExtResource( 2 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="ChargeLbl" type="Label" parent="VBoxContainer"]
 margin_top = 168.0
