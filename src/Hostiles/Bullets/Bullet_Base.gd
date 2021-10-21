@@ -10,7 +10,6 @@ var horizontalOffset = 0
 var prevHorizontalOffset = 0
 export(float) var waveSpeed = 10
 export(bool) var generatesEnergy = false
-export(bool) var energyGenerated = false
 export(String, FILE) var energySprite
 var totalHOffset = 0
 export(bool) var titleScreenVersion
@@ -61,8 +60,11 @@ func startFadeOut():
 	$EndOfLifeTween.start()
 
 func setGeneratesEnergy(generates):
-	generatesEnergy = generates
-	if generatesEnergy:
+	var area = $Area2D
+	if not generates and area.is_in_group("generatesEnergy"):
+		area.remove_from_group("generatesEnergy")
+	if generates and not area.is_in_group("generatesEnergy"):
+		area.add_to_group("generatesEnergy")
 		changeEnergySprite()
 
 func changeEnergySprite():
@@ -96,8 +98,8 @@ func updateNodeToRotate(delta):
 		nodeToRotate.rotate(deg2rad(rotationSpeed)*delta)
 
 func markEnergyDrained():
-	if not energyGenerated:
-		energyGenerated = true
+	if $Area2D.is_in_group("generatesEnergy"):
+		$Area2D.remove_from_group("generatesEnergy")
 		modulate = modulate*0.8
 
 

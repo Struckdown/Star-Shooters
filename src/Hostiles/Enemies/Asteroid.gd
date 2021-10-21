@@ -1,25 +1,29 @@
-extends KinematicBody2D
+extends RigidBody2D
 
 var speed = 100
 var velocity = Vector2(1,0)
+var canCauseDamage = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var rotationSpeedMultiplier = rand_range(0.5, 2.5)
 	$AnimationPlayer.playback_speed = rotationSpeedMultiplier
-
+	
+func init():
+	linear_velocity = (velocity*speed).rotated(rotation)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	move(delta)
+func _process(_delta):
+	pass
+#	move(delta)
 
-func move(delta):
-	var collision = move_and_collide(velocity*delta*speed)
-	if collision:
-		velocity += collision.normal * 0.7
-		var otherObj = collision.collider
-		otherObj.velocity = otherObj.velocity + collision.normal * -0.7
+#func move(delta):
+#	#var collision = move_and_collide(velocity*delta*speed)
+#	if collision:
+#		velocity += collision.normal * 0.7
+#		var otherObj = collision.collider
+#		otherObj.velocity = otherObj.velocity + collision.normal * -0.7
 
 
 func setUpSize():	# TODO the hitbox doesn't work for larger asteroids >:(
