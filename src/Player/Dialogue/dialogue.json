@@ -1,0 +1,46 @@
+{
+	"testDialogue":[
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "You're not going to [wave amp=50 freq=2]believe[/wave] this, but I just watched a space [rainbow freq=0.2 sat=10 val=20]whale[/rainbow] fly through a [tornado radius=5 freq=2]nebula[/tornado] and it was the most [shake rate=5 level=10]beautiful[/shake] thing I've ever [fade start=2 length=12]seen in my life.[/fade]",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Hey, if you're not [wave amp=50 freq=3]busy[/wave], could you pick up groceries on this flyby of this star system?",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "What, no, go get your own groceries. I'm busy here! Blam! Blam! See? Shooting pirates or something!",
+		}
+	],
+	"level1Intro":[
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "How are you finding your ship? The TitanCoreX Shielding doesn't let us build anything big, so this was the best we could give you.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "The lack of air-conditioning for my legs is unfortunate, but at least the noise dampeners work fine."
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Right... Just try not to ruin it. Cloning you isn't free, and neither is the ship. We're going over a simulation today about the sorts of things you might expect to see in the field.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Take a moment to get your handling. Fiddle with the dice, write your name on it, get the seat warmers right, whatever it is that you need.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "You can use the [color=#ff3333]ARROW KEYS[/color] to pilot the ship and [color=#ff3333]SHIFT[/color] to slow yourself down.",
+		},
+	]
+}

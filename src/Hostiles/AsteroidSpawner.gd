@@ -6,6 +6,7 @@ var aggressionMultiplier = 1.0
 var asteroidSpawnValue = 0
 var spawnTime = 1.0
 var totalDelta = 0.0
+var targetPosition = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -56,7 +57,7 @@ func _on_LargeAsteroid_timeout():
 
 
 func _on_TargetingAsteroidsTimer_timeout():
-	var player = get_tree().get_nodes_in_group("Player")[0]
+	getPlayerPosition()
 	for _i in range(3):
 		var a = asteroid.instance()
 		add_child(a)
@@ -64,8 +65,14 @@ func _on_TargetingAsteroidsTimer_timeout():
 		a.global_position.x = rand_range(0, viewport.x) * 1.3 - viewport.x*0.15
 		a.global_position.y = rand_range(-15, -130)
 		a.rotation_degrees = rand_range(75, 125)
-		if is_instance_valid(player):
-			a.rotation = a.global_position.angle_to_point(player.global_position) + deg2rad(180)
+		a.rotation = a.global_position.angle_to_point(targetPosition) + deg2rad(180)
 		a.speed = rand_range(250, 280) * aggressionMultiplier
 		a.init()
 	$TargetingAsteroidsTimer.start(spawnTime/aggressionMultiplier)
+
+func getPlayerPosition():
+	var players = get_tree().get_nodes_in_group("Player")
+	var player
+	if len(players) > 0:
+		player = players[0]
+		targetPosition = player.global_position

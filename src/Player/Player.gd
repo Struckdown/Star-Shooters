@@ -48,12 +48,14 @@ func _process(delta):
 	updateFakes()
 	updateTeleport(delta)
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventKey and event.is_pressed():
 		if event.scancode == KEY_G:
 			cheatModeActive = true
 			print("Cheat mode activated")
-			
+	if event.is_action_pressed("fire"):
+		shouldFire = true
+
 
 func determineInputs():
 	inputVecLastFrame = inputVec
@@ -69,9 +71,7 @@ func determineInputs():
 		inputVec.y += 1
 	if Input.is_action_pressed("move_slow"):
 		slowMode = true
-	if Input.is_action_pressed("fire"):
-		shouldFire = true
-	else:
+	if not Input.is_action_pressed("fire"):
 		shouldFire = false
 
 

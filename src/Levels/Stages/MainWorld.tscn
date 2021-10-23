@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Levels/LevelManager.gd" type="Script" id=1]
 [ext_resource path="res://Hostiles/Boss HP.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Menus/Pause Menu/Pause Menu.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Hostiles/EnemyArrowTrackerManager.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Player/Dialogue/DialogueBox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Space Backgrounds/space_background_pack/Animated_BG.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/Game Over.tscn" type="PackedScene" id=11]
@@ -99,6 +100,10 @@ mouse_filter = 1
 margin_right = -200.0
 
 [node name="PlayerGemCount" parent="CanvasLayer" instance=ExtResource( 3 )]
+
+[node name="DialogueBox" parent="CanvasLayer" instance=ExtResource( 7 )]
+margin_top = 50.6428
+margin_bottom = -379.357
 
 [node name="LevelWonGemCollectDelayTimer" type="Timer" parent="."]
 

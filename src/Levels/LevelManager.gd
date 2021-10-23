@@ -13,6 +13,7 @@ var levelLost = false
 var levelWon = false
 onready var camera = $VPCgame/Viewport/Camera2D
 var shakeIntensity = 0	# from 0 to 1
+onready var dialogueBoxRef = $CanvasLayer/DialogueBox
 
 export(bool) var debug = false
 export(int) var debugWave = 0
@@ -54,11 +55,15 @@ func addToScore(scoreToAdd):
 	scoreBoardRef.updateScore()
 
 func spawnWave():
+	
 	if debug:
 		waveNum = debugWave
 	
 	if waveNum < waves.size():
 		curWave = waves[waveNum].instance()
+		curWave.dialogueBoxRef = dialogueBoxRef
+		dialogueBoxRef.setUpNewSequence(curWave.dialogueRequest)
+		dialogueBoxRef.connect("finished", curWave, "markWaveFinished")
 		#curWave.position.y -= 200	# Have enemies spawn off camera	# Too hacky, need to come up with better alternative
 		$VPCgame/Viewport.call_deferred("add_child", curWave)
 		waveNum +=1

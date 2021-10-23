@@ -13,6 +13,9 @@ export(String) var bossName = ""
 export(String) var musicRequest = ""
 var bossHPRef	# set by level manager
 var waveFinishedSignalEmitted = false
+export(String) var dialogueRequest = ""
+var dialogueBoxRef	# set by level manager
+
 signal waveFinished
 signal startNextWave
 signal enemyDestroyed

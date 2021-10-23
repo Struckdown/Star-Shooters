@@ -1,0 +1,170 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Player/Dialogue/DialogueBox.gd" type="Script" id=1]
+[ext_resource path="res://Space Shooter GUI/PNG/Clouds/Cloud_02.png" type="Texture" id=2]
+[ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future_thin.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Player/Dialogue/Commander.png" type="Texture" id=4]
+[ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Hide"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 1e-05 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Show"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("DialogueBoxBackground/MarginContainer/HBoxContainer/VBoxContainer/RichText:percent_visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.3, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 1.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+
+[node name="DialogueBox" type="Control"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -233.0
+margin_bottom = -430.0
+rect_min_size = Vector2( 791, 170 )
+rect_scale = Vector2( 1, 1e-05 )
+rect_pivot_offset = Vector2( 0, 85 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DialogueBoxBackground" type="NinePatchRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 0.994
+margin_bottom = 0.026001
+texture = ExtResource( 2 )
+patch_margin_left = 29
+patch_margin_top = 33
+patch_margin_right = 300
+patch_margin_bottom = 72
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogueBoxBackground"]
+anchor_right = 1.0
+anchor_bottom = 0.898
+margin_left = 44.0
+margin_top = 14.0
+margin_right = -24.0
+margin_bottom = -20.66
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="DialogueBoxBackground/MarginContainer"]
+margin_right = 723.0
+margin_bottom = 117.0
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogueBoxBackground/MarginContainer/HBoxContainer"]
+margin_right = 591.0
+margin_bottom = 117.0
+size_flags_horizontal = 3
+
+[node name="NameLbl" type="Label" parent="DialogueBoxBackground/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_right = 591.0
+margin_bottom = 39.0
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.2
+custom_fonts/font = SubResource( 1 )
+text = "Pilot
+"
+align = 1
+
+[node name="RichText" type="RichTextLabel" parent="DialogueBoxBackground/MarginContainer/HBoxContainer/VBoxContainer"]
+margin_top = 43.0
+margin_right = 591.0
+margin_bottom = 117.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/normal_font = SubResource( 2 )
+bbcode_enabled = true
+bbcode_text = "You're not going to [wave amp=50 freq=2]believe[/wave] this, but I just watched a space [rainbow freq=0.2 sat=10 val=20]whale[/rainbow] fly through a [tornado radius=5 freq=2]nebula[/tornado] and it was the most [shake rate=5 level=10]beautiful[/shake] thing I've ever [fade start=2 length=12]seen in my life.[/fade]"
+visible_characters = 0
+percent_visible = 0.0
+text = "You're not going to believe this, but I just watched a space whale fly through a nebula and it was the most beautiful thing I've ever seen in my life."
+
+[node name="Portrait" type="TextureRect" parent="DialogueBoxBackground/MarginContainer/HBoxContainer"]
+margin_left = 595.0
+margin_right = 723.0
+margin_bottom = 117.0
+rect_min_size = Vector2( 128, 0 )
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hide = SubResource( 3 )
+anims/Show = SubResource( 4 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
