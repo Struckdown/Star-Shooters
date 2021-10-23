@@ -42,6 +42,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=4]
 resource_name = "Show"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:rect_scale")
 tracks/0/interp = 1
@@ -59,7 +60,7 @@ tracks/1/path = NodePath("DialogueBoxBackground/MarginContainer/HBoxContainer/VB
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0.3, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -80,13 +81,11 @@ tracks/2/keys = {
 }
 
 [node name="DialogueBox" type="Control"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -233.0
 margin_bottom = -430.0
 rect_min_size = Vector2( 791, 170 )
-rect_scale = Vector2( 1, 1e-05 )
 rect_pivot_offset = Vector2( 0, 85 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -136,6 +135,7 @@ custom_fonts/font = SubResource( 1 )
 text = "Pilot
 "
 align = 1
+percent_visible = -0.2
 
 [node name="RichText" type="RichTextLabel" parent="DialogueBoxBackground/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 43.0

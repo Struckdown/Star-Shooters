@@ -1,17 +1,18 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Stats_Bar.png" type="Texture" id=1]
 [ext_resource path="res://Space Shooter GUI/PNG/Pause/Table.png" type="Texture" id=2]
 [ext_resource path="res://Space Shooter GUI/PNG/Pause/SelectedTable.png" type="Texture" id=3]
 [ext_resource path="res://Space Shooter GUI/PNG/Level_Menu/Window.png" type="Texture" id=4]
 [ext_resource path="res://Space Shooter GUI/PNG/Clouds/Cloud_02.png" type="Texture" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://Space Shooter GUI/PNG/Level_Menu/Table.png" type="Texture" id=6]
 [ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future_thin.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://Art Packs/Fonts/SourceSansProRegular/SourceSansPro-Semibold.ttf" type="DynamicFontData" id=9]
 [ext_resource path="res://Levels/LevelSelect/MissionBriefing.gd" type="Script" id=10]
 [ext_resource path="res://Menus/UI_ButtonClicked.mp3" type="AudioStream" id=11]
 [ext_resource path="res://Space Shooter GUI/PNG/Pause/GrayTable.png" type="Texture" id=12]
+[ext_resource path="res://Player/Dialogue/Commander.png" type="Texture" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 24
@@ -43,17 +44,17 @@ tracks/0/loop_wrap = false
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1.9, 4.4 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
+"times": PoolRealArray( 1.9, 4.4 ),
+"transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ 0.0, 0.0, 1.0 ]
+"values": [ 0.0, 1.0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("WindowTexture/SpeakerIcon:rect_size")
+tracks/1/path = NodePath("WindowTexture/SpeakerBackground/SpeakerIcon:rect_size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = false
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 1, 1.4 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
@@ -107,6 +108,18 @@ tracks/5/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("WindowTexture/SpeakerBackground:rect_scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 1, 1.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1e-05 ), Vector2( 1, 1e-05 ), Vector2( 1, 1 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -195,6 +208,7 @@ Prepare for deployment...
 "
 autowrap = true
 clip_text = true
+percent_visible = 0.0
 __meta__ = {
 "_edit_use_anchors_": true
 }
@@ -266,13 +280,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SpeakerIcon" type="TextureRect" parent="WindowTexture"]
-margin_left = 255.0
-margin_top = 303.0
-margin_right = 427.0
-margin_bottom = 475.0
+[node name="SpeakerBackground" type="NinePatchRect" parent="WindowTexture"]
+anchor_left = 0.0211864
+anchor_top = 0.0791667
+anchor_right = 0.0423729
+anchor_bottom = 0.158333
+margin_left = 230.613
+margin_top = 295.726
+margin_right = 402.613
+margin_bottom = 467.726
 rect_rotation = -180.0
+rect_clip_content = true
 texture = ExtResource( 6 )
+patch_margin_left = 51
+patch_margin_top = 27
+patch_margin_right = 72
+patch_margin_bottom = 35
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeakerIcon" type="TextureRect" parent="WindowTexture/SpeakerBackground"]
+anchor_left = 0.972417
+anchor_top = 0.907118
+anchor_right = 1.0245
+anchor_bottom = 0.91188
+margin_right = 172.0
+margin_bottom = 172.0
+rect_rotation = -180.0
+texture = ExtResource( 13 )
 expand = true
 stretch_mode = 1
 __meta__ = {
@@ -280,10 +316,10 @@ __meta__ = {
 }
 
 [node name="SpeakerLbl" type="Label" parent="WindowTexture"]
-margin_left = 86.9041
-margin_top = 307.441
-margin_right = 250.904
-margin_bottom = 325.441
+margin_left = 72.7619
+margin_top = 337.139
+margin_right = 236.762
+margin_bottom = 355.139
 custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0.835294, 0.756863, 0.231373, 1 )
 text = "Commander"

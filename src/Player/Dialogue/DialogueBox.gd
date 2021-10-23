@@ -6,6 +6,10 @@ var filePath = "res://Player/Dialogue/dialogue.json"
 var txtDictionary
 var dialogueIndex = 0
 var currentTextScene = []
+var charactersToShowPerSecond = 40
+var characterUpdatingAllowed = false
+var visibleCharacters = 0.0
+export(bool) var debug = false
 
 signal finished
 
@@ -18,15 +22,18 @@ func _ready():
 	if err.result == null:
 		print(err)
 	txtDictionary = JSON.parse(txtDictionary).result
+	if debug:
+		setUpNewSequence("testDialogue")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	updateText(delta)
 
 func _input(event):
 	if event.is_action_pressed("ui_accept") and visible:
 		$AnimationPlayer.play("Hide")
+		characterUpdatingAllowed = false
 		get_tree().set_input_as_handled()
 		
 
@@ -69,8 +76,15 @@ func atEndOfDialogue():
 func _on_AnimationPlayer_animation_finished(anim_name):
 	match anim_name:
 		"Show":
-			pass
+			characterUpdatingAllowed = true
 		"Hide":
-			lbl.percent_visible = 0
+#			lbl.percent_visible = 0
+			lbl.visible_characters = 0
+			visibleCharacters = 0.0
 			if not atEndOfDialogue():
 				advanceText()
+
+func updateText(delta):
+	if characterUpdatingAllowed:
+		visibleCharacters += delta*charactersToShowPerSecond
+		lbl.visible_characters = visibleCharacters

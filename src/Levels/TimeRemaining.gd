@@ -19,6 +19,7 @@ func _process(delta):
 func updateLbl():
 	var m = int(remainingTime / 60)
 	var s = int(remainingTime) % 60
+	s = max(s, 0)
 	s = "%02d" % s
 	var output = str(m) + ":" + str(s)
 	$TimeLbl.text = output

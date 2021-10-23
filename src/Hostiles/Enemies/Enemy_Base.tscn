@@ -78,7 +78,7 @@ texture = ExtResource( 8 )
 
 [node name="Scratch2" type="Sprite" parent="Sprite"]
 visible = false
-position = Vector2( 33.2305, -14.9614 )
+position = Vector2( 28.0277, -5.89371 )
 rotation = 1.23311
 texture = ExtResource( 7 )
 
