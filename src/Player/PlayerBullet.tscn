@@ -48,4 +48,5 @@ anims/firing = SubResource( 2 )
 wait_time = 5.0
 autostart = true
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="DespawnTimer" to="." method="_on_DespawnTimer_timeout"]

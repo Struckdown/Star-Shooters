@@ -3,14 +3,25 @@ extends RigidBody2D
 var speed = 100
 var velocity = Vector2(1,0)
 var canCauseDamage = true
+export(int) var piecesWhenBrokenMin = 0
+export(int) var piecesWhenBrokenMax = 3
+var piecesWhenBroken
+var asteroid = load("res://Hostiles/Enemies/Asteroid.tscn")
+var splitting = false
+export(int) var health = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var rotationSpeedMultiplier = rand_range(0.5, 2.5)
 	$AnimationPlayer.playback_speed = rotationSpeedMultiplier
-	
+	var d = piecesWhenBrokenMax - piecesWhenBrokenMin + 1
+	if d > 0:
+		piecesWhenBroken = randi() % d + piecesWhenBrokenMin
+	else:
+		piecesWhenBroken = max(0, piecesWhenBrokenMax)
+
 func init():
-	linear_velocity = (velocity*speed).rotated(rotation)
+	linear_velocity = (velocity*speed*GameManager.gameSpeed).rotated(rotation)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -74,3 +85,25 @@ func setUpSize():	# TODO the hitbox doesn't work for larger asteroids >:(
 	$Area2D/CollisionShape2D.shape = newArea
 	newArea.extents = $Sprite.texture.get_size() * 0.5
 	print(newArea)
+
+
+func applyDamage():
+	health -= 1
+	if health <= 0:
+		if not splitting:
+			splitting = true
+			splitApart()
+
+func splitApart():
+	for _i in range(piecesWhenBroken):
+		var a = asteroid.instance()
+		get_viewport().call_deferred("add_child", a)
+		a.global_position = global_position
+		a.rotation_degrees = rand_range(0, 360)
+		a.speed = rand_range(250, 370) * GameManager.gameSpeed
+		a.init()
+	var partsParticles = load("res://Explosions/PartsEmitter.tscn").instance()
+	get_viewport().add_child(partsParticles)
+	partsParticles.global_position = global_position
+	partsParticles.emitting = true
+	queue_free()

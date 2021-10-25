@@ -30,3 +30,11 @@ func destroy():
 
 func _on_DespawnTimer_timeout():
 	queue_free()
+
+
+func _on_Area2D_area_entered(area):
+	if area.is_in_group("Enemy"):
+		var areaOwner = area.owner
+		if is_instance_valid(areaOwner) and areaOwner.has_method("applyDamage"):
+			areaOwner.applyDamage()
+			destroy()

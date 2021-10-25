@@ -18,7 +18,7 @@ func _process(delta):
 	totalDelta += delta
 
 func increaseAggression(_aggresionLevel):
-	aggressionMultiplier = _aggresionLevel
+	aggressionMultiplier = _aggresionLevel * GameManager.gameSpeed
 
 func _on_SpeedAsteroidTimer_timeout():
 	var a = asteroid.instance()

@@ -108,7 +108,7 @@ func aimAtTarget():
 func destroy():
 	explosionParticles = load("res://Utility/FollowingParticles.tscn").instance()
 	explosionParticles.init(explosionType, self)
-	get_tree().root.add_child(explosionParticles)
+	get_viewport().add_child(explosionParticles)
 	$AnimationPlayer.play("Death")
 	$ExplosionTimer.start()
 	for child in get_children():
@@ -120,15 +120,15 @@ func scaleOut():
 	$DeathScaleTween.start()
 
 func _on_ExplosionTimer_timeout():
-#	remove_child(explosionParticles)
-#	get_parent().add_child(explosionParticles)
 	levelManagerRef.addCameraShakeIntensity(deathShakeIntensity)
 	var partsParticles = load("res://Explosions/PartsEmitter.tscn").instance()
-	get_tree().root.add_child(partsParticles)
+	get_viewport().add_child(partsParticles)
 	partsParticles.global_position = global_position
 	partsParticles.emitting = true
 	queue_free()
 
+func setHealthBarRef(ref):
+	healthBarRef = ref
 
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("PlayerBullet"):
@@ -136,8 +136,9 @@ func _on_Area2D_area_entered(area):
 			takeDamage()
 			area.owner.destroy()
 
-func setHealthBarRef(ref):
-	healthBarRef = ref
+func applyDamage():
+	if health > 0:
+		takeDamage()
 
 func takeDamage():
 	health = max(health - 1, 0)	# disallow going below 0
