@@ -81,11 +81,13 @@ tracks/2/keys = {
 }
 
 [node name="DialogueBox" type="Control"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -233.0
 margin_bottom = -430.0
 rect_min_size = Vector2( 791, 170 )
+rect_scale = Vector2( 1, 1e-05 )
 rect_pivot_offset = Vector2( 0, 85 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -135,7 +137,6 @@ custom_fonts/font = SubResource( 1 )
 text = "Pilot
 "
 align = 1
-percent_visible = -0.2
 
 [node name="RichText" type="RichTextLabel" parent="DialogueBoxBackground/MarginContainer/HBoxContainer/VBoxContainer"]
 margin_top = 43.0
@@ -159,12 +160,8 @@ texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 5.0
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Hide = SubResource( 3 )
 anims/Show = SubResource( 4 )
 
-[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

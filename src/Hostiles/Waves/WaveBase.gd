@@ -88,10 +88,11 @@ func advanceWave():	# lets the wave manager know it can start the next wave
 	if not waveFinishedSignalEmitted:
 		emit_signal("startNextWave")
 		waveFinishedSignalEmitted = true
+		emit_signal("waveFinished")
+
 
 func markWaveFinished():	# needed for counting amount of waves finished so wave manager knows to end the level
 	advanceWave()	# if for some reason the wave was cleared before it was advanced (eg, killing enemies before time ran out), advance it
-	emit_signal("waveFinished")
 
 func changeMusic():
 	BGM.transitionSong(musicRequest)

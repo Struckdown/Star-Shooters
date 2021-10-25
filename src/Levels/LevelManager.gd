@@ -55,7 +55,7 @@ func addToScore(scoreToAdd):
 	scoreBoardRef.updateScore()
 
 func spawnWave():
-	
+	#print("Spawned wave: ", waveNum, " out of ", waves.size())
 	if debug:
 		waveNum = debugWave
 	
@@ -76,16 +76,16 @@ func spawnWave():
 			$VPCgame/Viewport/EnemyArrowTrackerManager.startTrackingNewEnemy(e)
 	else:
 		pass
-		#print("Ran out of waves to spawn, should be at the end here")
+		print("Ran out of waves to spawn, should be at the end here")
 
 
 func updateWavesFinished():
+	print("a wave has finished!")
 	wavesComplete += 1
 	if wavesComplete >= waves.size():
 		levelWon = true
 		if is_instance_valid(playerRef):
-			print("LevelManager: Godmode is disabled")
-#			playerRef.godMode = true
+			playerRef.godMode = true
 		if not levelLost:
 			$"CanvasLayer/Level Won".playLevelComplete()
 			$LevelWonGemCollectDelayTimer.start()

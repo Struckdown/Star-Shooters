@@ -51,8 +51,9 @@ func _process(delta):
 func _unhandled_input(event):
 	if event is InputEventKey and event.is_pressed():
 		if event.scancode == KEY_G:
-			cheatModeActive = true
-			print("Cheat mode activated")
+			print("Player: Cheat mode not allowed!")
+			#cheatModeActive = true
+			#print("Cheat mode activated")
 	if event.is_action_pressed("fire"):
 		shouldFire = true
 
