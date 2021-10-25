@@ -8,6 +8,7 @@ onready var health = maxHealth
 export(float) var deathShakeIntensity = 3
 export(int) var gemValue = 10
 export(PackedScene) var explosionType
+var followingParticles = preload("res://Utility/FollowingParticles.tscn")
 var explosionParticles
 export(Vector2) var moveGoal	# vector coordinate where enemy is trying to get to
 export(Array, NodePath) var flyPaths
@@ -106,7 +107,7 @@ func aimAtTarget():
 					target = get_tree().get_nodes_in_group("Player")[0]
 
 func destroy():
-	explosionParticles = load("res://Utility/FollowingParticles.tscn").instance()
+	explosionParticles = followingParticles.instance()
 	explosionParticles.init(explosionType, self)
 	get_viewport().add_child(explosionParticles)
 	$AnimationPlayer.play("Death")

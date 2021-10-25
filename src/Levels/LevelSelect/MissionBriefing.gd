@@ -20,6 +20,7 @@ func _input(event):
 func playDisplayAnimation(dir):
 	animDir = dir
 	if animDir == "forwards":
+		$WindowTexture/SpeechBubble/DialogueLbl.percent_visible = 0
 		show()
 		$AnimationPlayer.play("DisplayAnim")
 	elif animDir == "backwards":

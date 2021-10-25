@@ -17,7 +17,11 @@ _global_script_class_icons={
 config/name="Star Shooters"
 config/description="A top-down 2D bullet-hell game with a focus on grazing bullets to gain power!"
 run/main_scene="res://Menus/Main Menu.tscn"
+boot_splash/image="res://BorisProductions.png"
+boot_splash/fullsize=false
+boot_splash/bg_color=Color( 0.12549, 0.145098, 0.192157, 1 )
 config/icon="res://Space Shooter Redux/PNG/playerShip1_blue.png"
+config/windows_native_icon="res://DesktopIcons/Windows.ico"
 
 [autoload]
 

@@ -87,7 +87,7 @@ size_flags_vertical = 3
 margin_right = 881.0
 focus_neighbour_top = NodePath("../../../TextureButton")
 upgradeName = "startingEnergyCharge"
-upgradeLevels = [ 0.0, 10.0, 20.0, 30.0, 40.0, 50.0 ]
+upgradeLevels = [ 0.0, 4.0, 8.0, 13.0, 18.0, 25.0 ]
 upgradeLevelSuffix = "%"
 baseCost = 50
 
@@ -120,7 +120,7 @@ margin_top = 248.0
 margin_right = 881.0
 margin_bottom = 368.0
 upgradeName = "chargeGain"
-upgradeLevels = [ 1.0, 1.5, 2.0, 2.5, 3.0 ]
+upgradeLevels = [ 1.0, 1.1, 1.3, 1.6, 2.0 ]
 upgradeLevelSuffix = "x"
 
 [node name="Button" parent="WindowTexture/ScrollContainer/VBoxContainer/ChargeGainUpgrade" index="0"]
@@ -140,7 +140,7 @@ margin_top = 372.0
 margin_right = 881.0
 margin_bottom = 492.0
 upgradeName = "magnetRadius"
-upgradeLevels = [ 40.0, 80.0, 120.0, 160.0 ]
+upgradeLevels = [ 40.0, 90.0, 140.0, 200.0 ]
 upgradeLevelSuffix = "px"
 baseCost = 70
 

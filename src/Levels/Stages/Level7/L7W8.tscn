@@ -56,6 +56,7 @@ tracks/2/keys = {
 enemiesToDestroy = 3
 usesBossHP = true
 bossName = "The Mori Squadron"
+musicRequest = "res://Levels/BossBattle.mp3"
 
 [node name="WrapperShooter" parent="." index="0" instance=ExtResource( 5 )]
 position = Vector2( 179.987, -56.9989 )

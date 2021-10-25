@@ -21,6 +21,7 @@ _data = {
 enemiesToDestroy = 1
 usesBossHP = true
 bossName = "Elite Pathfinder"
+musicRequest = "res://Levels/BossBattle.mp3"
 
 [node name="ForwardShooter" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( 510.669, -107.802 )
