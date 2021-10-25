@@ -6,7 +6,7 @@
 [ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=6]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "Death"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -47,7 +47,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=2]
 _data = {
 "points": PoolVector2Array( 5.11742, -1.89426, -5.11742, 1.89426, 736, 58, -85.8006, -139.915, 85.8006, 139.915, 61.8247, 231.799, -29.165, -166.954, 29.165, 166.954, 750, 295, 101.083, 115.353, -101.083, -115.353, 95.1225, 518.398, 242.598, 83.2445, -242.598, -83.2445, 746, 87 )
 }
@@ -65,6 +65,8 @@ position = Vector2( 914.084, 34.4938 )
 rotation = 2.57477
 pointsWorth = 250
 speed = 120.0
+maxHealth = 70
+gemValue = 25
 flyPaths = [ NodePath("../Path2D") ]
 loopFlyPaths = true
 flyingPattern = "followPath"
@@ -100,12 +102,14 @@ position = Vector2( -100.916, 110.494 )
 rotation = 0.226198
 pointsWorth = 250
 speed = 120.0
+maxHealth = 70
+gemValue = 25
 flyPaths = [ NodePath("../Path2D2") ]
 loopFlyPaths = true
 flyingPattern = "followPath"
 
 [node name="AnimationPlayer" parent="BouncerShooter2" index="3"]
-anims/Death = SubResource( 2 )
+anims/Death = SubResource( 1 )
 
 [node name="BulletEmitter" parent="BouncerShooter2/WeaponManager" index="0"]
 rotationDegPerSec = 0.0
@@ -134,7 +138,7 @@ nthBulletIsGreen = [ 0, 1 ]
 bouncesRemaining = 3
 
 [node name="Path2D" type="Path2D" parent="." index="2"]
-curve = SubResource( 1 )
+curve = SubResource( 2 )
 
 [node name="Path2D2" type="Path2D" parent="." index="3"]
 curve = SubResource( 3 )

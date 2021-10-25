@@ -63,6 +63,13 @@
 			"dialogue": "This will let the TitanCoreX shielding absorb the radiation of the laser and you'll be able to shoot it back using [color=#ff3333]SPACE[/color]. Good luck!",
 		},
 	],
+	"level1Slipstream":[
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Oh, one more thing. You can fly into the sides to slipstream around! You'll need to force the movement for it to work!",
+		},
+	],
 	"level2Intro":[
 		{
 			"name": "Pilot",

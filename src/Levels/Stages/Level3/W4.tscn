@@ -120,8 +120,10 @@ enemiesToDestroy = 5
 [node name="Enemy_Base" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( 396.428, -77.398 )
 rotation = 1.57079
+pointsWorth = 125
 speed = 90.0
-moveGoal = Vector2( 0, 100 )
+maxHealth = 70
+moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"
 
 [node name="BulletEmitter" parent="Enemy_Base/WeaponManager" index="0" instance=ExtResource( 3 )]
@@ -141,8 +143,10 @@ orbitalChildren = 3
 [node name="Enemy_Base2" parent="." index="1" instance=ExtResource( 2 )]
 position = Vector2( 263.078, -77.398 )
 rotation = 1.57079
+pointsWorth = 125
 speed = 90.0
-moveGoal = Vector2( 0, 100 )
+maxHealth = 70
+moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"
 
 [node name="AnimationPlayer" parent="Enemy_Base2" index="3"]
@@ -165,8 +169,10 @@ nthBulletIsGreen = [ 0, 1 ]
 [node name="Enemy_Base3" parent="." index="2" instance=ExtResource( 2 )]
 position = Vector2( 535.021, -77.398 )
 rotation = 1.57079
+pointsWorth = 125
 speed = 90.0
-moveGoal = Vector2( 0, 100 )
+maxHealth = 70
+moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"
 
 [node name="AnimationPlayer" parent="Enemy_Base3" index="3"]
@@ -188,8 +194,10 @@ nthBulletIsGreen = [ 0, 1 ]
 [node name="Enemy_Base4" parent="." index="3" instance=ExtResource( 2 )]
 position = Vector2( 645.896, -77.398 )
 rotation = 1.57079
+pointsWorth = 125
 speed = 90.0
-moveGoal = Vector2( 0, 100 )
+maxHealth = 70
+moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"
 
 [node name="AnimationPlayer" parent="Enemy_Base4" index="3"]
@@ -212,8 +220,10 @@ nthBulletIsGreen = [ 0, 1 ]
 [node name="Enemy_Base5" parent="." index="4" instance=ExtResource( 2 )]
 position = Vector2( 140.217, -77.398 )
 rotation = 1.57079
+pointsWorth = 125
 speed = 90.0
-moveGoal = Vector2( 0, 100 )
+maxHealth = 70
+moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"
 
 [node name="AnimationPlayer" parent="Enemy_Base5" index="3"]

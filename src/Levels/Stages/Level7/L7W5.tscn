@@ -14,6 +14,8 @@ enemiesToDestroy = 1
 position = Vector2( 387.169, -66.8984 )
 rotation = 1.57079
 pointsWorth = 250
+maxHealth = 70
+gemValue = 25
 moveGoal = Vector2( 0, 200 )
 flyingPattern = "hoverMoveGoal"
 
@@ -37,7 +39,7 @@ fireAtLocationForWholeClip = false
 amountOfBullets = 36
 volleyClipSize = 5
 clipReloadTime = 7.0
-bulletMovementSpeed = 140.0
+bulletMovementSpeed = 110.0
 bulletSpawnDelay = 0.6
 bulletType = ExtResource( 6 )
 initialSpawnDelayConstant = 1.5

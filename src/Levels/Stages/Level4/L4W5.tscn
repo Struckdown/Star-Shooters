@@ -97,6 +97,7 @@ enemiesToDestroy = 2
 position = Vector2( 235.598, -43.1303 )
 rotation = 1.57079
 speed = 120.0
+maxHealth = 70
 moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"
 
@@ -151,6 +152,7 @@ nthBulletIsGreen = [ 0 ]
 position = Vector2( 404.609, -43.1303 )
 rotation = 1.57079
 speed = 120.0
+maxHealth = 70
 moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"
 

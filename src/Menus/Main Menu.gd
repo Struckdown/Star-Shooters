@@ -88,3 +88,6 @@ func _on_Btn_mouse_entered():
 func _on_Credits_closed():
 	$CanvasLayer/Credits.display(false)
 	$MainBtns/CreditsBtn.grab_focus()
+
+func resetMainMenuBullet():
+	$AnimationPlayer/Bullet_Straight/Area2D.add_to_group("generatesEnergy")

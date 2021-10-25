@@ -167,11 +167,13 @@ bulletType = ExtResource( 7 )
 
 [node name="RightTur" parent="WeaponManager/Phase2/Phase2b" index="2" instance=ExtResource( 3 )]
 position = Vector2( 20.9763, 30.1534 )
+rotationPerVolley = 5.0
 targetStyle = "straight"
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 180.0
 amountOfBullets = 2
-bulletSpawnDelay = 0.2
+bulletMovementSpeed = 110.0
+bulletSpawnDelay = 0.4
 bulletType = ExtResource( 8 )
 nthBulletIsGreen = [ 0, 1 ]
 orbitalChildren = 4

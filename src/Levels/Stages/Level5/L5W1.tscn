@@ -53,6 +53,9 @@ enemiesToDestroy = 2
 [node name="OrthogonalShooter" parent="." index="0" instance=ExtResource( 3 )]
 position = Vector2( -88.7306, 83.5241 )
 rotation = 1.57079
+pointsWorth = 175
+maxHealth = 70
+gemValue = 15
 moveGoal = Vector2( 400, 0 )
 flyingPattern = "hoverMoveGoal"
 
@@ -74,6 +77,7 @@ fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 volleyClipSize = 5
 clipReloadTime = 3.0
+bulletMovementSpeed = 110.0
 bulletSpawnDelay = 0.3
 bulletType = ExtResource( 5 )
 initialSpawnDelayConstant = 1.5
@@ -85,6 +89,9 @@ trackYFirst = true
 [node name="OrthogonalShooter2" parent="." index="1" instance=ExtResource( 3 )]
 position = Vector2( 974.643, 290.151 )
 rotation = 1.57079
+pointsWorth = 175
+maxHealth = 70
+gemValue = 15
 moveGoal = Vector2( -400, 0 )
 flyingPattern = "hoverMoveGoal"
 
@@ -109,6 +116,7 @@ fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 volleyClipSize = 5
 clipReloadTime = 3.0
+bulletMovementSpeed = 110.0
 bulletSpawnDelay = 0.3
 bulletType = ExtResource( 5 )
 initialSpawnDelayConstant = 1.5

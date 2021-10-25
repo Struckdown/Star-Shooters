@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlack1.png" type="Texture" id=1]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Gravity.tscn" type="PackedScene" id=2]
@@ -7,49 +7,11 @@
 [ext_resource path="res://Hostiles/Enemies/CircleShooter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlack5.png" type="Texture" id=7]
+[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Hostiles/WeaponManager.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=10]
 
 [sub_resource type="Animation" id=1]
-resource_name = "Death"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "scaleOut"
-} ]
-}
-
-[sub_resource type="Animation" id=2]
 resource_name = "Death"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -100,6 +62,7 @@ position = Vector2( 179.987, -56.9989 )
 rotation = 1.57079
 pointsWorth = 650
 maxHealth = 120
+gemValue = 45
 moveGoal = Vector2( 0, 250 )
 flyingPattern = "hoverMoveGoal"
 
@@ -125,7 +88,7 @@ angleOfBulletSpread = 36.0
 amountOfBullets = 10
 volleyClipSize = 5
 clipReloadTime = 7.0
-bulletMovementSpeed = 80.0
+bulletMovementSpeed = 60.0
 bulletWaveSpeed = 3.0
 bulletWaveStr = 100.0
 bulletSpawnDelay = 2.0
@@ -144,7 +107,7 @@ angleOfBulletSpread = 36.0
 amountOfBullets = 10
 volleyClipSize = 5
 clipReloadTime = 7.0
-bulletMovementSpeed = 80.0
+bulletMovementSpeed = 60.0
 bulletWaveSpeed = 3.0
 bulletWaveStr = -100.0
 bulletSpawnDelay = 2.0
@@ -160,6 +123,7 @@ position = Vector2( 587.987, -56.9989 )
 rotation = 1.57079
 pointsWorth = 650
 maxHealth = 120
+gemValue = 35
 moveGoal = Vector2( 0, 250 )
 flyingPattern = "hoverMoveGoal"
 
@@ -185,7 +149,7 @@ angleOfBulletSpread = 36.0
 amountOfBullets = 10
 volleyClipSize = 5
 clipReloadTime = 7.0
-bulletMovementSpeed = 80.0
+bulletMovementSpeed = 60.0
 bulletWaveSpeed = 3.0
 bulletWaveStr = 100.0
 bulletSpawnDelay = 2.0
@@ -204,7 +168,7 @@ angleOfBulletSpread = 36.0
 amountOfBullets = 10
 volleyClipSize = 5
 clipReloadTime = 7.0
-bulletMovementSpeed = 80.0
+bulletMovementSpeed = 60.0
 bulletWaveSpeed = 3.0
 bulletWaveStr = -100.0
 bulletSpawnDelay = 2.0
@@ -215,35 +179,33 @@ makeBulletEnergizedAnywaysOdds = 0.1
 trackYFirst = true
 bouncesRemaining = 2
 
-[node name="WrapperShooterLead" parent="." index="2" instance=ExtResource( 5 )]
+[node name="Leader" parent="." index="2" instance=ExtResource( 8 )]
 position = Vector2( 387.876, -106.759 )
 rotation = 1.57079
 scale = Vector2( 0.8, 0.8 )
 pointsWorth = 650
-maxHealth = 360
+maxHealth = 480
 deathShakeIntensity = 5.0
+gemValue = 150
 moveGoal = Vector2( 0, 250 )
 flyingPattern = "hoverMoveGoal"
 isBoss = true
 
-[node name="Sprite" parent="WrapperShooterLead" index="1"]
+[node name="Sprite" parent="Leader" index="1"]
 texture = ExtResource( 7 )
 
-[node name="AnimationPlayer" parent="WrapperShooterLead" index="3"]
-anims/Death = SubResource( 2 )
+[node name="WeaponManager" parent="Leader" index="4"]
+healthPercentToNextPhase = 50.0
 
-[node name="BulletEmitter" parent="WrapperShooterLead/WeaponManager" index="0"]
-rotationDegPerSec = 0.0
-targetStyle = "predict"
-fireAtLocationForWholeClip = false
+[node name="PhaseA" parent="Leader/WeaponManager" index="0" instance=ExtResource( 3 )]
 angleOfBulletSpread = 0.0
 amountOfBullets = 0
-bulletMovementSpeed = 10.0
-bulletSpawnDelay = 3.0
-bulletType = ExtResource( 2 )
-nthBulletIsGreen = [  ]
+bulletType = ExtResource( 10 )
 
-[node name="BulletEmitter" parent="WrapperShooterLead/WeaponManager/BulletEmitter" index="1" instance=ExtResource( 3 )]
+[node name="BulletEmitter" parent="Leader/WeaponManager/PhaseA" index="1" instance=ExtResource( 3 )]
+position = Vector2( -213.518, 0.799652 )
+rotation = -4.05311e-06
+scale = Vector2( 1.6, 1.6 )
 targetStyle = "atTarget"
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
@@ -260,7 +222,10 @@ makeBulletEnergizedAnywaysOdds = 0.1
 trackYFirst = true
 wrapsRemaining = 2
 
-[node name="BulletEmitter2" parent="WrapperShooterLead/WeaponManager/BulletEmitter" index="2" instance=ExtResource( 3 )]
+[node name="BulletEmitter2" parent="Leader/WeaponManager/PhaseA" index="2" instance=ExtResource( 3 )]
+position = Vector2( -213.518, 0.799652 )
+rotation = -4.05311e-06
+scale = Vector2( 1.6, 1.6 )
 targetStyle = "atTarget"
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
@@ -276,6 +241,30 @@ initialSpawnDelayRandomRange = 0.0
 makeBulletEnergizedAnywaysOdds = 0.1
 bouncesRemaining = 2
 
+[node name="PhaseB" parent="Leader/WeaponManager" index="1" instance=ExtResource( 9 )]
+phaseSwapMode = "time"
+timeToNextPhase = 5
+
+[node name="BulletEmitter" parent="Leader/WeaponManager/PhaseB" index="0" instance=ExtResource( 3 )]
+position = Vector2( -213.518, 0.799683 )
+rotation = -4.05311e-06
+scale = Vector2( 1.6, 1.6 )
+targetStyle = "atTarget"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 24.0
+amountOfBullets = 3
+volleyClipSize = 3
+clipReloadTime = 5.0
+bulletMovementSpeed = 111.0
+bulletScale = Vector2( 2, 2 )
+bulletType = ExtResource( 6 )
+initialSpawnDelayConstant = 1.5
+initialSpawnDelayRandomRange = 0.0
+makeBulletEnergizedAnywaysOdds = 0.1
+trackYFirst = true
+wrapsRemaining = 2
+
 [editable path="WrapperShooter"]
 [editable path="BouncerShooter2"]
-[editable path="WrapperShooterLead"]
+[editable path="Leader"]

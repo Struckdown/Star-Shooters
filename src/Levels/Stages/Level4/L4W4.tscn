@@ -182,6 +182,7 @@ nthBulletIsGreen = [ 0, 1, 2, 3, 4 ]
 position = Vector2( 139.066, -43.1303 )
 rotation = 1.57079
 speed = 120.0
+maxHealth = 70
 moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"
 
@@ -218,6 +219,7 @@ orbitalChildren = 6
 position = Vector2( 542.111, -43.1303 )
 rotation = 1.57079
 speed = 120.0
+maxHealth = 70
 moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"
 

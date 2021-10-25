@@ -7,16 +7,16 @@
 enemiesToDestroy = 1
 
 [node name="ForwardShooter" parent="." index="0" instance=ExtResource( 2 )]
-position = Vector2( 510.669, -107.802 )
+position = Vector2( 427.815, -107.802 )
 rotation = 1.57079
 pointsWorth = 50
 moveGoal = Vector2( 0, 200 )
 flyingPattern = "hoverMoveGoal"
 
-[node name="BulletEmitter" parent="ForwardShooter/WeaponManager" index="1"]
+[node name="BulletEmitter" parent="ForwardShooter/WeaponManager" index="0"]
 initialRotationOffset = 0.0
 targetStyle = "straight"
-bulletMovementSpeed = 150
+bulletMovementSpeed = 130.0
 initialSpawnDelayRandomRange = 3.0
 greenBulletFrequency = -1
 nthBulletIsGreen = [ 0, 1, 2 ]

@@ -75,7 +75,8 @@ func spawnWave():
 		for e in enemies:
 			$VPCgame/Viewport/EnemyArrowTrackerManager.startTrackingNewEnemy(e)
 	else:
-		print("Ran out of waves to spawn, should be at the end here")
+		pass
+		#print("Ran out of waves to spawn, should be at the end here")
 
 
 func updateWavesFinished():
@@ -83,7 +84,8 @@ func updateWavesFinished():
 	if wavesComplete >= waves.size():
 		levelWon = true
 		if is_instance_valid(playerRef):
-			playerRef.godMode = true
+			print("LevelManager: Godmode is disabled")
+#			playerRef.godMode = true
 		if not levelLost:
 			$"CanvasLayer/Level Won".playLevelComplete()
 			$LevelWonGemCollectDelayTimer.start()

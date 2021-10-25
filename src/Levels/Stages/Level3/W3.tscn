@@ -19,6 +19,7 @@ position = Vector2( 731.503, 642.778 )
 rotation = -1.57079
 pointsWorth = 125
 speed = 90.0
+maxHealth = 40
 gemValue = 15
 flyPaths = [ NodePath("../Path2D") ]
 loopFlyPaths = true

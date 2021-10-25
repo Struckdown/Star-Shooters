@@ -11,7 +11,7 @@ position = Vector2( 254.847, -108.065 )
 rotation = 1.57079
 pointsWorth = 125
 speed = 210.0
-maxHealth = 35
+maxHealth = 45
 gemValue = 15
 flyingPattern = "hoverRandomPoint"
 
@@ -20,6 +20,6 @@ position = Vector2( 737.168, -108.065 )
 rotation = 1.57079
 pointsWorth = 125
 speed = 210.0
-maxHealth = 35
+maxHealth = 45
 gemValue = 15
 flyingPattern = "hoverRandomPoint"

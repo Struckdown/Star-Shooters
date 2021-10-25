@@ -73,10 +73,11 @@ speed = 120.0
 flyPaths = [ NodePath("../Path2D") ]
 flyingPattern = "followPath"
 
-[node name="BulletEmitter" parent="PathFinder/WeaponManager" index="1"]
+[node name="BulletEmitter" parent="PathFinder/WeaponManager" index="0"]
 initialRotationOffset = 0.0
 targetStyle = "atTarget"
-bulletMovementSpeed = 180
+bulletMovementSpeed = 130.0
+bulletSpawnDelay = 2.0
 greenBulletFrequency = -1
 nthBulletIsGreen = [ 0, 1, 2 ]
 
@@ -90,10 +91,11 @@ flyingPattern = "followPath"
 [node name="AnimationPlayer" parent="PathFinder2" index="3"]
 anims/Death = SubResource( 1 )
 
-[node name="BulletEmitter" parent="PathFinder2/WeaponManager" index="1"]
+[node name="BulletEmitter" parent="PathFinder2/WeaponManager" index="0"]
 initialRotationOffset = 0.0
 targetStyle = "atTarget"
-bulletMovementSpeed = 180
+bulletMovementSpeed = 130.0
+bulletSpawnDelay = 2.0
 greenBulletFrequency = -1
 nthBulletIsGreen = [ 0, 1, 2 ]
 
@@ -107,10 +109,11 @@ flyingPattern = "followPath"
 [node name="AnimationPlayer" parent="PathFinder3" index="3"]
 anims/Death = SubResource( 2 )
 
-[node name="BulletEmitter" parent="PathFinder3/WeaponManager" index="1"]
+[node name="BulletEmitter" parent="PathFinder3/WeaponManager" index="0"]
 initialRotationOffset = 0.0
 targetStyle = "atTarget"
-bulletMovementSpeed = 180
+bulletMovementSpeed = 130.0
+bulletSpawnDelay = 2.0
 greenBulletFrequency = -1
 nthBulletIsGreen = [ 0, 1, 2 ]
 

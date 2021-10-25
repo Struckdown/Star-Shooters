@@ -17,6 +17,9 @@ timeToNextWave = 2
 [node name="SpiralShooter" parent="." index="0" instance=ExtResource( 3 )]
 position = Vector2( -26.2865, 414.596 )
 rotation = -0.785397
+pointsWorth = 150
+maxHealth = 70
+gemValue = 15
 moveGoal = Vector2( 0, 100 )
 flyPaths = [ NodePath("../Path2D") ]
 flyingPattern = "followPath"

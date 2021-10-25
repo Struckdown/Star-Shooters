@@ -60,7 +60,7 @@ tracks/1/keys = {
 }
 
 [node name="WaveBase" instance=ExtResource( 1 )]
-enemiesToDestroy = 2
+enemiesToDestroy = 3
 
 [node name="ForwardShooterSpirals" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( 452.747, -140.55 )
@@ -69,21 +69,22 @@ pointsWorth = 150
 speed = 120.0
 maxHealth = 35
 gemValue = 15
-flyingPattern = "hoverRandomPoint"
+moveGoal = Vector2( 0, 200 )
+flyingPattern = "hoverMoveGoal"
 
 [node name="Sprite" parent="ForwardShooterSpirals" index="1"]
 texture = ExtResource( 4 )
 
-[node name="BulletEmitter" parent="ForwardShooterSpirals/WeaponManager" index="1"]
+[node name="BulletEmitter" parent="ForwardShooterSpirals/WeaponManager" index="0"]
 initialRotationOffset = 0.0
 targetStyle = "straight"
 angleOfBulletSpread = 40.0
 amountOfBullets = 6
-bulletMovementSpeed = 70
+bulletMovementSpeed = 110.0
 bulletScale = Vector2( 1.5, 1.5 )
-bulletWaveSpeed = 1.0
-bulletWaveStr = 100.0
-bulletSpawnDelay = 2.0
+bulletWaveSpeed = 3.0
+bulletWaveStr = 40.0
+bulletSpawnDelay = 3.0
 bulletType = ExtResource( 3 )
 greenBulletFrequency = -1
 nthBulletIsGreen = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
@@ -92,14 +93,13 @@ nthBulletIsGreen = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
 position = Vector2( 207.811, -57.3825 )
 rotation = 1.57079
 speed = 120.0
-maxHealth = 15
 gemValue = 5
 flyingPattern = "hoverRandomPoint"
 
 [node name="AnimationPlayer" parent="ForwardShooter2" index="3"]
 anims/Death = SubResource( 1 )
 
-[node name="BulletEmitter" parent="ForwardShooter2/WeaponManager" index="1"]
+[node name="BulletEmitter" parent="ForwardShooter2/WeaponManager" index="0"]
 initialRotationOffset = 0.0
 targetStyle = "atTarget"
 fireAtLocationForWholeClip = true
@@ -107,7 +107,7 @@ angleOfBulletSpread = 15.0
 volleyClipSize = 4
 clipReloadTime = 2.0
 clipRandomReloadDelay = 0.5
-bulletMovementSpeed = 125
+bulletMovementSpeed = 130.0
 bulletScale = Vector2( 1.5, 1.5 )
 bulletSpawnDelay = 0.2
 initialSpawnDelayRandomRange = 3.0
@@ -118,14 +118,13 @@ nthBulletIsGreen = [ 0, 1, 2, 3 ]
 position = Vector2( 728.175, -64.7985 )
 rotation = 1.57079
 speed = 120.0
-maxHealth = 15
 gemValue = 5
 flyingPattern = "hoverRandomPoint"
 
 [node name="AnimationPlayer" parent="ForwardShooter3" index="3"]
 anims/Death = SubResource( 2 )
 
-[node name="BulletEmitter" parent="ForwardShooter3/WeaponManager" index="1"]
+[node name="BulletEmitter" parent="ForwardShooter3/WeaponManager" index="0"]
 initialRotationOffset = 0.0
 targetStyle = "atTarget"
 fireAtLocationForWholeClip = true
@@ -133,7 +132,7 @@ angleOfBulletSpread = 15.0
 volleyClipSize = 4
 clipReloadTime = 2.0
 clipRandomReloadDelay = 0.5
-bulletMovementSpeed = 125
+bulletMovementSpeed = 130.0
 bulletScale = Vector2( 1.5, 1.5 )
 bulletSpawnDelay = 0.2
 initialSpawnDelayRandomRange = 3.0

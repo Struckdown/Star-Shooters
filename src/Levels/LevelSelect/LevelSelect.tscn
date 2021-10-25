@@ -418,7 +418,7 @@ missionBriefing = "Your next mission will be far more dangerous. A Titan class D
 
 God speed.
 
-P.S. Do you have cremation preferences?."
+P.S. Do you have cremation preferences?"
 
 [node name="PlanetSprite" parent="Levels/Planet5" index="0"]
 scale = Vector2( 0.09, 0.09 )

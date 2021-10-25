@@ -13,6 +13,8 @@ enemiesToDestroy = 1
 position = Vector2( 387.169, -66.8984 )
 rotation = 1.57079
 pointsWorth = 250
+speed = 70.0
+gemValue = 15
 moveGoal = Vector2( 0, 200 )
 flyingPattern = "hoverMoveGoal"
 

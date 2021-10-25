@@ -17,6 +17,7 @@ enemiesToDestroy = 1
 [node name="OrthogonalShooter" parent="." index="0" instance=ExtResource( 3 )]
 position = Vector2( -37.1828, 124.94 )
 rotation = -0.523598
+maxHealth = 70
 moveGoal = Vector2( 400, 0 )
 flyPaths = [ NodePath("../Path2D") ]
 loopFlyPaths = true
