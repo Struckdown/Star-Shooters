@@ -25,7 +25,7 @@
 		{
 			"name": "Pilot",
 			"portrait": "Pilot",
-			"dialogue": "The lack of air-conditioning for my legs is unfortunate, but at least the noise dampeners work fine."
+			"dialogue": "The lack of air-conditioning for my legs is unfortunate, but at least the noise dampeners work fine. The jumpsuit has pockets so that's a plus."
 		},
 		{
 			"name": "Commander",
@@ -40,7 +40,179 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "You can use the [color=#ff3333]ARROW KEYS[/color] to pilot the ship and [color=#ff3333]SHIFT[/color] to slow yourself down.",
+			"dialogue": "You can use the [color=#ff3333]ARROW KEYS[/color] or [color=#ff3333]WASD[/color] to pilot the ship and [color=#ff3333]SHIFT[/color] to slow yourself down. You can see your pilot seat when you're moving slow.",
 		},
-	]
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "You're making this sound like it's a game or something. I've got the steering wheel and it's handling fine."
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Err, I didn't mean to say that life and death is a game. Regardless, we're going to start the simulation in just a second. You'll want to pay attention to this next instruction!",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "The key is to go near hostile projectiles [wave amp=50 freq=2]without[/wave] letting it touch the center of your ship!",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "This will let the TitanCoreX shielding absorb the radiation of the laser and you'll be able to shoot it back using [color=#ff3333]SPACE[/color]. Good luck!",
+		},
+	],
+	"level2Intro":[
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Question. Why can't we absorb all the energy types? Follow up question, why can't we just install normal guns on this space ship?",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Uh, science reasons. Look, I'm a commanding officer, I just tell you what to do.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Great... Guess it doesn't matter so long as there's something to absorb...",
+		},
+	],
+	"level3Intro":[
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "The incoming fleet doesn't seem to be heavily armed.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Good, good, you should be able to best them easily then. One of our forward scouts report that the fleet is using a new weapon type here. Something nicknamed 'Ring Protocol'.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "I thought I was the forward scout?",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "The forward forward scout. Someone's gotta look out for you after all!",
+		},
+	],
+	"level4Intro":[
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "You seem to be really certain about killing everyone here.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "We must avenge the planet! Look at what they did to this place!",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Who is 'they' anyways? The academy was always theory.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "The Federation is our greatest enemy! They have been attacking our planets for decades! We are simply returning the favour now that we have the tech and your ship!",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "All I've seen so far is us finding wreckage after wreckage and cleaning up.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "We'll talk more later, for now - note that there is gravity tech in this sector that will mess with your controls. It shouldn't be dangerous but everything else will be.",
+		},
+	],
+	"level5Intro":[
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Thanks for the vote of confidence.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "The weaponry here is far more advanced than anything you've seen before. I'm routing another battalion your way but we need you to do what you can to slow these forces down.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "...Anyone ever tell you that you're not an inspiration?",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "...",
+		}
+	],
+	"level6Intro":[
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "How are you so good?",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Sheer contempt at this point.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "We're going to be returning to headquarters after your successful mission but we'll need to route through this asteroid field. It should pass through soon.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Wouldn't it be safer to go around?",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Listen here, I give the orders, you just have to follow.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Fine, but I'm not doing this for you. I'm doing this for me.",
+		},
+	],
+	"level7Intro":[
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Do you have HR's number?",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "What for? I am HR.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "...That's not how that works.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "It is here. Now take out that Federation base.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "...",
+		},
+	],
 }

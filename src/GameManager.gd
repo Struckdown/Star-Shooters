@@ -37,7 +37,10 @@ func updateStagesCompleted(level:String, newScore:int):	# level is an int conver
 	else:
 		stagesCompletedData[level] = newScore
 	saveGame()
+	resetScore()	# Maybe find better place to reset score?
 
+func resetScore():
+	score = 0
 
 func saveGame():
 	UpgradeManager.saveGame()

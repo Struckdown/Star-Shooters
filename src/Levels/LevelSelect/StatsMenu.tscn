@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Levels/LevelSelect/UpgradeMenuFont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://Space Shooter GUI/PNG/Level_Menu/Window.png" type="Texture" id=2]
+[ext_resource path="res://Art Packs/Space Shooter GUI/PNG/Level_Menu/Window.png" type="Texture" id=2]
 [ext_resource path="res://Menus/UI_ButtonClicked.mp3" type="AudioStream" id=3]
-[ext_resource path="res://Space Shooter GUI/PNG/Upgrade/Close_BTN.png" type="Texture" id=4]
-[ext_resource path="res://Space Shooter GUI/PNG/Buttons/BTNs_Active/Close_BTN.png" type="Texture" id=5]
+[ext_resource path="res://Art Packs/Space Shooter GUI/PNG/Upgrade/Close_BTN.png" type="Texture" id=4]
+[ext_resource path="res://Art Packs/Space Shooter GUI/PNG/Buttons/BTNs_Active/Close_BTN.png" type="Texture" id=5]
 [ext_resource path="res://Levels/LevelSelect/StatsMenu.gd" type="Script" id=6]
 [ext_resource path="res://Levels/LevelSelect/StatsFont.tres" type="DynamicFont" id=7]
 

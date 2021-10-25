@@ -5,7 +5,7 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Art Packs/Pixel Button Prompts/Gamepad Spritesheets/Keyboard_Arrows.png" type="Texture" id=4]
 [ext_resource path="res://Art Packs/Pixel Button Prompts/Keyboard Prompts.png" type="Texture" id=5]
-[ext_resource path="res://Space Shooter GUI/PNG/Accept/Window.png" type="Texture" id=6]
+[ext_resource path="res://Art Packs/Space Shooter GUI/PNG/Accept/Window.png" type="Texture" id=6]
 [ext_resource path="res://Levels/Stages/Level0/TutorialSimple.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/Tutorial.gd" type="Script" id=8]
 [ext_resource path="res://Art Packs/Fonts/SourceSansProRegular/SourceSansPro-Black.ttf" type="DynamicFontData" id=9]

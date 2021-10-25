@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://Space Shooter GUI/PNG/You_Win/Header.png" type="Texture" id=1]
+[ext_resource path="res://Art Packs/Space Shooter GUI/PNG/You_Win/Header.png" type="Texture" id=1]
 [ext_resource path="res://Levels/LevelWon.gd" type="Script" id=2]
 [ext_resource path="res://Levels/LevelComplete.mp3" type="AudioStream" id=3]
 

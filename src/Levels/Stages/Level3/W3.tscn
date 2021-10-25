@@ -8,7 +8,7 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( -177.448, 6.60712, 177.448, -6.60712, 733.396, 542.136, 139.693, 99.1068, -139.693, -99.1068, 744.723, 81.5256, 117.04, -66.0712, -117.04, 66.0712, 70.7965, 44.7146, -59.4641, -19.8214, 59.4641, 19.8214, 52.8629, 567.621, -76.4538, 83.0609, 76.4538, -83.0609, 733.396, 542.136 )
+"points": PoolVector2Array( -177.448, 6.60712, 177.448, -6.60712, 653.56, 496.008, 139.693, 99.1068, -139.693, -99.1068, 672.059, 76.4006, 117.04, -66.0712, -117.04, 66.0712, 73.3412, 84.8095, -59.4641, -19.8214, 59.4641, 19.8214, 105.295, 506.94, -76.4538, 83.0609, 76.4538, -83.0609, 645.992, 502.735 )
 }
 
 [node name="WaveBase" instance=ExtResource( 1 )]
@@ -29,7 +29,7 @@ phaseSwapMode = "time"
 timeToNextPhase = 1
 
 [node name="BulletEmitter" parent="Enemy_Base/WeaponManager" index="0" instance=ExtResource( 3 )]
-targetStyle = "straight"
+targetStyle = "atTarget"
 angleOfBulletSpread = 180.0
 amountOfBullets = 2
 bulletMovementSpeed = 120.0
@@ -39,7 +39,7 @@ greenBulletFrequency = 10
 nthBulletIsGreen = [ 0, 1 ]
 
 [node name="RingEmitter2" parent="Enemy_Base/WeaponManager" index="1" instance=ExtResource( 3 )]
-targetStyle = "straight"
+targetStyle = "atTarget"
 angleOfBulletSpread = 180.0
 amountOfBullets = 2
 bulletMovementSpeed = 120.0

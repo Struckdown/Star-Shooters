@@ -1,11 +1,11 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Boss_HP_Bar_2.png" type="Texture" id=1]
+[ext_resource path="res://Art Packs/Space Shooter GUI/PNG/Main_UI/Boss_HP_Bar_2.png" type="Texture" id=1]
 [ext_resource path="res://Hostiles/Boss HP.gd" type="Script" id=2]
 [ext_resource path="res://Player/FutureFont.tres" type="DynamicFont" id=3]
-[ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Boss_HP_Table.png" type="Texture" id=4]
-[ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Boss_Name_Table.png" type="Texture" id=5]
-[ext_resource path="res://Space Shooter GUI/PNG/Main_UI/Boss_HP_Bar_2_Gray.png" type="Texture" id=6]
+[ext_resource path="res://Art Packs/Space Shooter GUI/PNG/Main_UI/Boss_HP_Table.png" type="Texture" id=4]
+[ext_resource path="res://Art Packs/Space Shooter GUI/PNG/Main_UI/Boss_Name_Table.png" type="Texture" id=5]
+[ext_resource path="res://Art Packs/Space Shooter GUI/PNG/Main_UI/Boss_HP_Bar_2_Gray.png" type="Texture" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "appear"

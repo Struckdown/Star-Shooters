@@ -18,6 +18,7 @@ func _ready():
 	var file = File.new()
 	file.open(filePath, File.READ)
 	txtDictionary = file.get_as_text()
+	file.close()
 	var err = JSON.parse(txtDictionary)
 	if err.result == null:
 		print(err)
