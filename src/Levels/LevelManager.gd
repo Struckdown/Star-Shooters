@@ -80,7 +80,6 @@ func spawnWave():
 
 
 func updateWavesFinished():
-	print("a wave has finished!")
 	wavesComplete += 1
 	if wavesComplete >= waves.size():
 		levelWon = true

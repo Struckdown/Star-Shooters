@@ -13,7 +13,7 @@
 radius = 22.0
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 15.0
+radius = 22.6594
 
 [sub_resource type="CircleShape2D" id=3]
 radius = 2.97038
@@ -197,6 +197,7 @@ anims/Spawn = SubResource( 6 )
 
 [node name="InvulnAnimPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Invuln"
+playback_speed = 0.5
 anims/Invuln = SubResource( 7 )
 
 [node name="GemCollectorSFX" type="AudioStreamPlayer" parent="."]

@@ -127,7 +127,7 @@ upgradeLevelSuffix = "x"
 margin_right = 881.0
 
 [node name="UpgradeNameLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/ChargeGainUpgrade/Button" index="0"]
-text = "Charge Gain"
+text = "Energy Gain"
 
 [node name="ChangeLbl" parent="WindowTexture/ScrollContainer/VBoxContainer/ChargeGainUpgrade/Button" index="1"]
 text = "1->1.1"
@@ -159,7 +159,7 @@ margin_right = 881.0
 margin_bottom = 616.0
 upgradeName = "lives"
 upgradeLevels = [ 3.0, 4.0, 5.0 ]
-baseCost = 750
+baseCost = 250
 
 [node name="Button" parent="WindowTexture/ScrollContainer/VBoxContainer/LivesUpgrade" index="0"]
 margin_right = 881.0

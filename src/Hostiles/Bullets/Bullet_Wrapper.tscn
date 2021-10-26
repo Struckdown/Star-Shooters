@@ -48,10 +48,18 @@ func wrap() -> void:
 
 [node name="Bullet_Wrapper" instance=ExtResource( 1 )]
 script = SubResource( 1 )
+moveSpeed = 200
+waveStr = 0
+waveSpeed = 10.0
+generatesEnergy = false
 energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed08.png"
+titleScreenVersion = false
 rotationSpeed = 360.0
 nodeToRotate = NodePath("Sprite")
+trackYFirst = false
+canCauseDamage = true
+diesOnOutOfBounds = true
 
-[node name="Sprite" type="Sprite" parent="." index="4"]
+[node name="Sprite" type="Sprite" parent="." index="0"]
 scale = Vector2( 0.3, 0.3 )
 texture = ExtResource( 3 )

@@ -12,7 +12,7 @@ _data = {
 }
 
 [node name="WaveBase" instance=ExtResource( 1 )]
-waveAdvanceCondition = "time"
+enemiesToDestroy = 1
 timeToNextWave = 3
 
 [node name="Enemy_Base" parent="." index="0" instance=ExtResource( 2 )]

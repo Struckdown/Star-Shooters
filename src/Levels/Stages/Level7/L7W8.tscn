@@ -204,7 +204,6 @@ amountOfBullets = 0
 bulletType = ExtResource( 10 )
 
 [node name="BulletEmitter" parent="Leader/WeaponManager/PhaseA" index="1" instance=ExtResource( 3 )]
-position = Vector2( -213.518, 0.799652 )
 rotation = -4.05311e-06
 scale = Vector2( 1.6, 1.6 )
 targetStyle = "atTarget"
@@ -224,7 +223,6 @@ trackYFirst = true
 wrapsRemaining = 2
 
 [node name="BulletEmitter2" parent="Leader/WeaponManager/PhaseA" index="2" instance=ExtResource( 3 )]
-position = Vector2( -213.518, 0.799652 )
 rotation = -4.05311e-06
 scale = Vector2( 1.6, 1.6 )
 targetStyle = "atTarget"
@@ -247,7 +245,6 @@ phaseSwapMode = "time"
 timeToNextPhase = 5
 
 [node name="BulletEmitter" parent="Leader/WeaponManager/PhaseB" index="0" instance=ExtResource( 3 )]
-position = Vector2( -213.518, 0.799683 )
 rotation = -4.05311e-06
 scale = Vector2( 1.6, 1.6 )
 targetStyle = "atTarget"

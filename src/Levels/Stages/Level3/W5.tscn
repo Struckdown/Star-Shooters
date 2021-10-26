@@ -13,7 +13,7 @@ _data = {
 
 [node name="WaveBase" instance=ExtResource( 1 )]
 waveAdvanceCondition = "time"
-timeToNextWave = 3
+timeToNextWave = 7
 
 [node name="Enemy_Base" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( -74.474, 118.531 )

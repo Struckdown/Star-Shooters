@@ -4,14 +4,11 @@
 [ext_resource path="res://Space Shooter Redux/PNG/Lasers/laserBlue01.png" type="Texture" id=2]
 
 [sub_resource type="CapsuleShape2D" id=1]
-radius = 1.40625
-height = 13.4375
+radius = 1.22021
+height = 12.2553
 
 [node name="Bullet_Straight" instance=ExtResource( 1 )]
 energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed06.png"
-
-[node name="Area2D" parent="." index="0"]
-visible = false
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 rotation = 1.5708
