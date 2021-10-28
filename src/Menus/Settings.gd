@@ -85,3 +85,7 @@ func _on_HSliderSpeed_value_changed(value):
 	if not $SliderUpdatedSFX.playing and visible:
 		$SliderUpdatedSFX.play()
 	save()
+
+
+func _on_Checkbox_toggled(button_pressed):
+	OS.window_fullscreen = button_pressed

@@ -74,7 +74,7 @@ __meta__ = {
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PauseCtrl/VBoxContainer"]
 margin_right = 857.0
-margin_bottom = 78.0
+margin_bottom = 57.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -82,9 +82,9 @@ __meta__ = {
 }
 
 [node name="MusicLbl" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer"]
-margin_top = 25.0
+margin_top = 15.0
 margin_right = 155.0
-margin_bottom = 52.0
+margin_bottom = 42.0
 rect_min_size = Vector2( 155, 0 )
 custom_fonts/font = SubResource( 2 )
 text = "Music"
@@ -96,9 +96,9 @@ __meta__ = {
 
 [node name="PercentMin" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer"]
 margin_left = 159.0
-margin_top = 30.0
+margin_top = 19.0
 margin_right = 183.0
-margin_bottom = 48.0
+margin_bottom = 37.0
 custom_fonts/font = SubResource( 3 )
 text = "0%"
 align = 1
@@ -110,7 +110,7 @@ __meta__ = {
 [node name="HSliderMusic" type="HSlider" parent="PauseCtrl/VBoxContainer/HBoxContainer"]
 margin_left = 187.0
 margin_right = 809.0
-margin_bottom = 78.0
+margin_bottom = 57.0
 focus_neighbour_top = NodePath("../../../ResumeBtn")
 focus_neighbour_bottom = NodePath("../../HBoxContainer2/HSliderSFX")
 size_flags_horizontal = 3
@@ -122,9 +122,9 @@ ticks_on_borders = true
 
 [node name="PercentMax" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer"]
 margin_left = 813.0
-margin_top = 30.0
+margin_top = 19.0
 margin_right = 857.0
-margin_bottom = 48.0
+margin_bottom = 37.0
 custom_fonts/font = SubResource( 3 )
 text = "100%"
 align = 1
@@ -134,9 +134,9 @@ __meta__ = {
 }
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="PauseCtrl/VBoxContainer"]
-margin_top = 82.0
+margin_top = 61.0
 margin_right = 857.0
-margin_bottom = 160.0
+margin_bottom = 119.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -144,9 +144,9 @@ __meta__ = {
 }
 
 [node name="SFXLbl" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer2"]
-margin_top = 25.0
+margin_top = 15.0
 margin_right = 155.0
-margin_bottom = 52.0
+margin_bottom = 42.0
 rect_min_size = Vector2( 155, 0 )
 custom_fonts/font = SubResource( 4 )
 text = "SFX"
@@ -158,9 +158,9 @@ __meta__ = {
 
 [node name="PercentMin" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer2"]
 margin_left = 159.0
-margin_top = 30.0
+margin_top = 20.0
 margin_right = 183.0
-margin_bottom = 48.0
+margin_bottom = 38.0
 custom_fonts/font = SubResource( 3 )
 text = "0%"
 align = 1
@@ -172,7 +172,7 @@ __meta__ = {
 [node name="HSliderSFX" type="HSlider" parent="PauseCtrl/VBoxContainer/HBoxContainer2"]
 margin_left = 187.0
 margin_right = 809.0
-margin_bottom = 78.0
+margin_bottom = 58.0
 focus_neighbour_top = NodePath("../../HBoxContainer/HSliderMusic")
 focus_neighbour_bottom = NodePath("../../HBoxContainer3/HSliderSpeed")
 size_flags_horizontal = 3
@@ -184,9 +184,9 @@ ticks_on_borders = true
 
 [node name="PercentMax" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer2"]
 margin_left = 813.0
-margin_top = 30.0
+margin_top = 20.0
 margin_right = 857.0
-margin_bottom = 48.0
+margin_bottom = 38.0
 custom_fonts/font = SubResource( 3 )
 text = "100%"
 align = 1
@@ -196,9 +196,9 @@ __meta__ = {
 }
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="PauseCtrl/VBoxContainer"]
-margin_top = 164.0
+margin_top = 123.0
 margin_right = 857.0
-margin_bottom = 243.0
+margin_bottom = 181.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -206,9 +206,8 @@ __meta__ = {
 }
 
 [node name="SpeedLbl" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer3"]
-margin_top = 11.0
 margin_right = 140.0
-margin_bottom = 68.0
+margin_bottom = 57.0
 rect_min_size = Vector2( 140, 0 )
 custom_fonts/font = SubResource( 4 )
 text = "Enemy Speed"
@@ -221,9 +220,9 @@ __meta__ = {
 
 [node name="PercentMin" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer3"]
 margin_left = 144.0
-margin_top = 30.0
+margin_top = 20.0
 margin_right = 181.0
-margin_bottom = 48.0
+margin_bottom = 38.0
 grow_horizontal = 0
 rect_min_size = Vector2( 20, 0 )
 custom_fonts/font = SubResource( 3 )
@@ -237,9 +236,9 @@ __meta__ = {
 [node name="HSliderSpeed" type="HSlider" parent="PauseCtrl/VBoxContainer/HBoxContainer3"]
 margin_left = 185.0
 margin_right = 809.0
-margin_bottom = 79.0
+margin_bottom = 58.0
 focus_neighbour_top = NodePath("../../HBoxContainer2/HSliderSFX")
-focus_neighbour_bottom = NodePath("../../../ResumeBtn")
+focus_neighbour_bottom = NodePath("../../HBoxContainer4/Checkbox")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 min_value = 0.5
@@ -251,9 +250,9 @@ ticks_on_borders = true
 
 [node name="PercentMax" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer3"]
 margin_left = 813.0
-margin_top = 30.0
+margin_top = 20.0
 margin_right = 857.0
-margin_bottom = 48.0
+margin_bottom = 38.0
 custom_fonts/font = SubResource( 3 )
 text = "150%"
 align = 1
@@ -261,6 +260,39 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="PauseCtrl/VBoxContainer"]
+margin_top = 185.0
+margin_right = 857.0
+margin_bottom = 243.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FullscreenLbl" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer4"]
+margin_right = 140.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 140, 0 )
+custom_fonts/font = SubResource( 4 )
+text = "Full Screen"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Checkbox" type="CheckBox" parent="PauseCtrl/VBoxContainer/HBoxContainer4"]
+margin_left = 144.0
+margin_right = 168.0
+margin_bottom = 58.0
+focus_neighbour_top = NodePath("../../HBoxContainer3/HSliderSpeed")
+focus_neighbour_bottom = NodePath("../../../ResumeBtn")
+size_flags_vertical = 3
+align = 1
+expand_icon = true
 
 [node name="ResumeBtn" type="TextureButton" parent="PauseCtrl"]
 anchor_left = 0.324
@@ -270,7 +302,7 @@ anchor_bottom = 0.95
 margin_left = 0.223999
 margin_top = 0.199982
 margin_right = -0.248047
-focus_neighbour_top = NodePath("../VBoxContainer/HBoxContainer3/HSliderSpeed")
+focus_neighbour_top = NodePath("../VBoxContainer/HBoxContainer4/Checkbox")
 focus_neighbour_bottom = NodePath("../VBoxContainer/HBoxContainer/HSliderMusic")
 size_flags_vertical = 3
 texture_normal = ExtResource( 5 )
@@ -310,5 +342,6 @@ bus = "SFX"
 [connection signal="value_changed" from="PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic" to="." method="_on_HSliderMusic_value_changed"]
 [connection signal="value_changed" from="PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX" to="." method="_on_HSliderSFX_value_changed"]
 [connection signal="value_changed" from="PauseCtrl/VBoxContainer/HBoxContainer3/HSliderSpeed" to="." method="_on_HSliderSpeed_value_changed"]
+[connection signal="toggled" from="PauseCtrl/VBoxContainer/HBoxContainer4/Checkbox" to="." method="_on_Checkbox_toggled"]
 [connection signal="mouse_entered" from="PauseCtrl/ResumeBtn" to="." method="_on_ResumeBtn_mouse_entered"]
 [connection signal="pressed" from="PauseCtrl/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]

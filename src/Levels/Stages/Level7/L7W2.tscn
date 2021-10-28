@@ -15,8 +15,8 @@ _data = {
 enemiesToDestroy = 1
 
 [node name="BouncerShooter" parent="." index="0" instance=ExtResource( 3 )]
-position = Vector2( -97.9308, 224.767 )
-rotation = -0.261799
+position = Vector2( -35.6351, 286.119 )
+rotation = -0.877486
 pointsWorth = 250
 maxHealth = 70
 gemValue = 15

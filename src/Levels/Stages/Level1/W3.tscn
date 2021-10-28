@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hostiles/Enemies/ForwardShooter.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Enemies/HelixShooter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlack3.png" type="Texture" id=4]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Death"
@@ -91,20 +92,26 @@ flyingPattern = "followPath"
 [node name="BulletEmitter" parent="HelixShooter/WeaponManager" index="0"]
 rotation = 1.5708
 targetStyle = "straight"
+randomAngleOfBulletSpread = 7.0
 volleyClipSize = 3
 bulletMovementSpeed = 110.0
 bulletScale = Vector2( 2, 2 )
-bulletWaveSpeed = 3.0
-bulletWaveStr = 130.0
+bulletWaveSpeed = 0.0
+bulletWaveStr = 0.0
+bulletSpawnDelay = 0.2
+bulletType = ExtResource( 5 )
 greenBulletFrequency = -1
 
 [node name="BulletEmitter2" parent="HelixShooter/WeaponManager/BulletEmitter" index="1"]
 targetStyle = "straight"
+randomAngleOfBulletSpread = 7.0
 volleyClipSize = 3
 bulletMovementSpeed = 110.0
 bulletScale = Vector2( 2, 2 )
-bulletWaveSpeed = 3.0
-bulletWaveStr = -130.0
+bulletWaveSpeed = 0.0
+bulletWaveStr = 0.0
+bulletSpawnDelay = 0.2
+bulletType = ExtResource( 5 )
 greenBulletFrequency = -1
 
 [node name="LeftPlayerShooter" parent="." index="1" instance=ExtResource( 2 )]

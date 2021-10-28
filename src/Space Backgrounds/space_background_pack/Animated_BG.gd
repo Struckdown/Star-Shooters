@@ -9,8 +9,12 @@ var layerSpeedAllowedRanges = [[7,14], [14, 16], [12, 20]]
 var colors = ["Red", "Orange", "Green", "Blue"]
 export(String, "Red", "Orange", "Green", "Blue") var color = "Red"
 export(bool) var useRandomColor = true
+export(float) var backgroundSpeedMultiplier setget updateBackgroundSpeed
+var backgroundSpeedBase
+onready var background = $background
 
 func _ready():
+	backgroundSpeedBase = $background.material.get_shader_param("scroll_speed")
 	planets.append($"parallax-space-big-planet")
 	planets.append($"parallax-space-far-planets")
 	planets.append($"parallax-space-ring-planet")
@@ -27,7 +31,7 @@ func _process(delta):
 
 func updatePlanets(d):
 	for i in range(0, len(planets)):
-		planets[i].position.x -= planetSpeeds[i] * d
+		planets[i].position.x -= planetSpeeds[i] * d * (backgroundSpeedMultiplier*0.5)
 		if planets[i].position.x <= -250:
 			planets[i].position.x = rand_range(250, 350)
 			planets[i].position.y = rand_range(-80, 80)
@@ -47,3 +51,11 @@ func applyHueShift():
 			modulate = Color(0.133333, 0.980392, 0.062745)
 		"Blue":
 			modulate = Color(0.062745, 0.980392, 0.87451)
+
+func updateBackgroundSpeed(_val):
+	if not background:
+		return
+	backgroundSpeedMultiplier = _val
+	var newSpeed = backgroundSpeedBase*backgroundSpeedMultiplier
+	background.material.set_shader_param("scroll_speed",newSpeed)
+	$"parallax-space-stars".material.set_shader_param("scroll_speed",newSpeed)

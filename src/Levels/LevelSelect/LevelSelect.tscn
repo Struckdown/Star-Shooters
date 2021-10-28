@@ -438,7 +438,7 @@ position = Vector2( 1427.88, -275.56 )
 levelDescription = "Sector Foxtrot"
 levelNumber = 6
 missionName = "Asteroid Defense"
-missionBriefing = "Oh, you survived the Titan? Well, uh, your upcoming mission will take place in an asteroid field. Due to interplanetary regulation, your weapons will have no effect on the asteroids. Unfortunately, the same cannot be said about them with respect to your ship."
+missionBriefing = "Oh, you survived the Titan? Well, uh, your upcoming mission will take place in an asteroid field. There will be no opportunity to re-energize your vessal, so spend your energy carefully."
 
 [node name="PlanetSprite" parent="Levels/Planet6" index="0"]
 scale = Vector2( 0.09, 0.09 )

@@ -9,9 +9,12 @@ var piecesWhenBroken
 var asteroid = load("res://Hostiles/Enemies/Asteroid.tscn")
 var splitting = false
 export(int) var health = 1
+var loadedGem = preload("res://Hostiles/GemSpawner.tscn")
+var initialHealth = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	initialHealth = health
 	var rotationSpeedMultiplier = rand_range(0.5, 2.5)
 	$AnimationPlayer.playback_speed = rotationSpeedMultiplier
 	var d = piecesWhenBrokenMax - piecesWhenBrokenMin + 1
@@ -93,6 +96,7 @@ func applyDamage():
 		if not splitting:
 			splitting = true
 			splitApart()
+			spawnGems()
 
 func splitApart():
 	for _i in range(piecesWhenBroken):
@@ -107,3 +111,9 @@ func splitApart():
 	partsParticles.global_position = global_position
 	partsParticles.emitting = true
 	queue_free()
+
+func spawnGems():
+	var g = loadedGem.instance()
+	g.gemsRemaining = initialHealth * (randi()%2+2)
+	g.global_position = global_position
+	get_viewport().call_deferred("add_child", g)

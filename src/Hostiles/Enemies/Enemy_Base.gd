@@ -24,6 +24,7 @@ var target	# thing to shoot
 export(String, "straight", "hoverRandomPoint", "hoverMoveGoal", "followPath", "TBD") var flyingPattern
 var healthBarRef
 export(bool) var isBoss = false
+var loadedGem = preload("res://Hostiles/GemSpawner.tscn")
 
 var levelManagerRef
 
@@ -174,7 +175,7 @@ func getNewMoveGoal():
 	moveGoal = Vector2(xRand, yRand)
 
 func spawnGems():
-	var g = load("res://Hostiles/GemSpawner.tscn").instance()
+	var g = loadedGem.instance()
 	g.gemsRemaining = gemValue
 	g.global_position = global_position
 	get_viewport().call_deferred("add_child", g)

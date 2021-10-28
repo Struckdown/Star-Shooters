@@ -11,12 +11,12 @@ speed = 260.0
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 4 )
 
-[node name="BulletEmitter" parent="WeaponManager" index="1" instance=ExtResource( 2 )]
+[node name="BulletEmitter" parent="WeaponManager" index="0" instance=ExtResource( 2 )]
 targetStyle = "atTarget"
 angleOfBulletSpread = 0.0
 volleyClipSize = 10
 clipReloadTime = 3.0
-bulletMovementSpeed = 150
+bulletMovementSpeed = 110.0
 bulletWaveSpeed = 5.0
 bulletWaveStr = 150.0
 bulletSpawnDelay = 0.1
@@ -31,7 +31,7 @@ targetStyle = "atTarget"
 angleOfBulletSpread = 0.0
 volleyClipSize = 10
 clipReloadTime = 3.0
-bulletMovementSpeed = 150
+bulletMovementSpeed = 110.0
 bulletWaveSpeed = 5.0
 bulletWaveStr = -150.0
 bulletSpawnDelay = 0.1

@@ -49,20 +49,20 @@ tracks/2/keys = {
 
 [sub_resource type="Curve2D" id=2]
 _data = {
-"points": PoolVector2Array( 5.11742, -1.89426, -5.11742, 1.89426, 736, 58, -85.8006, -139.915, 85.8006, 139.915, 61.8247, 231.799, -29.165, -166.954, 29.165, 166.954, 750, 295, 101.083, 115.353, -101.083, -115.353, 95.1225, 518.398, 242.598, 83.2445, -242.598, -83.2445, 746, 87 )
+"points": PoolVector2Array( 66.548, 41.5566, -66.548, -41.5566, 685.411, 66.5605, -85.8006, -139.915, 85.8006, 139.915, 61.8247, 231.799, -29.165, -166.954, 29.165, 166.954, 750, 295, 101.083, 115.353, -101.083, -115.353, 95.1225, 518.398, 242.598, 83.2445, -242.598, -83.2445, 746, 87 )
 }
 
 [sub_resource type="Curve2D" id=3]
 _data = {
-"points": PoolVector2Array( 5.11742, -1.89426, -5.11742, 1.89426, 68.1323, 109.617, -85.8006, -139.915, 85.8006, 139.915, 675.26, 137.367, -29.165, -166.954, 29.165, 166.954, 89.9956, 472.043, 101.083, 115.353, -101.083, -115.353, 738.327, 491.384, 242.598, 83.2445, -242.598, -83.2445, 56.3597, 122.231 )
+"points": PoolVector2Array( -28.2536, 74.859, 28.2536, -74.859, 89.0789, 74.8892, -85.8006, -139.915, 85.8006, 139.915, 675.26, 137.367, -29.165, -166.954, 29.165, 166.954, 89.9956, 472.043, 101.083, 115.353, -101.083, -115.353, 738.327, 491.384, -127.153, 194.036, 127.153, -194.036, 62.3821, 126.948 )
 }
 
 [node name="WaveBase" instance=ExtResource( 1 )]
 enemiesToDestroy = 2
 
 [node name="BouncerShooter" parent="." index="0" instance=ExtResource( 3 )]
-position = Vector2( 914.084, 34.4938 )
-rotation = 2.57477
+position = Vector2( 914.084, 137.675 )
+rotation = 3.46174
 pointsWorth = 250
 speed = 120.0
 maxHealth = 70
@@ -98,8 +98,8 @@ nthBulletIsGreen = [ 0, 1 ]
 bouncesRemaining = 3
 
 [node name="BouncerShooter2" parent="." index="1" instance=ExtResource( 3 )]
-position = Vector2( -100.916, 110.494 )
-rotation = 0.226198
+position = Vector2( 93.3032, -51.0216 )
+rotation = 1.76668
 pointsWorth = 250
 speed = 120.0
 maxHealth = 70
@@ -138,6 +138,7 @@ nthBulletIsGreen = [ 0, 1 ]
 bouncesRemaining = 3
 
 [node name="Path2D" type="Path2D" parent="." index="2"]
+visible = false
 curve = SubResource( 2 )
 
 [node name="Path2D2" type="Path2D" parent="." index="3"]

@@ -25,6 +25,7 @@ func _ready():
 	playerSpawn = get_node("VPCgame/Viewport/PlayerSpawner")
 	if GameManager.stage != null:
 		level = GameManager.stage
+	setupLevelSpecificFeatures()
 	BGM.transitionSong("res://Levels/mixkit-space-game-668.mp3")
 	spawnNewPlayer(0)
 	getWaves()
@@ -125,3 +126,9 @@ func updateCameraShake():
 
 func addCameraShakeIntensity(val):
 	shakeIntensity += val
+
+func setupLevelSpecificFeatures():
+	match level:
+		6:
+			var bg = get_tree().get_nodes_in_group("Background")[0]
+			bg.backgroundSpeedMultiplier = 8

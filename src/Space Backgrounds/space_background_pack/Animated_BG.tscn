@@ -16,12 +16,15 @@ shader_param/scroll_speed = 0.01
 shader = ExtResource( 7 )
 shader_param/scroll_speed = 0.03
 
-[node name="Animated_BG" type="Node2D"]
+[node name="Animated_BG" type="Node2D" groups=[
+"Background",
+]]
 modulate = Color( 0.0627451, 0.980392, 0.87451, 1 )
 z_index = -10
 script = ExtResource( 6 )
+backgroundSpeedMultiplier = 1.0
 
-[node name="parallax-space-backgound" type="Sprite" parent="."]
+[node name="background" type="Sprite" parent="."]
 material = SubResource( 1 )
 texture = ExtResource( 2 )
 region_filter_clip = true

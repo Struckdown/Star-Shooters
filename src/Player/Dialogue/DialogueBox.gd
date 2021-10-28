@@ -10,6 +10,7 @@ var charactersToShowPerSecond = 40
 var characterUpdatingAllowed = false
 var visibleCharacters = 0.0
 export(bool) var debug = false
+var allTextShown = false
 
 signal finished
 
@@ -33,10 +34,13 @@ func _process(delta):
 
 func _input(event):
 	if event.is_action_pressed("ui_accept") and visible:
-		$AnimationPlayer.play("Hide")
-		characterUpdatingAllowed = false
+		if allTextShown and not $AnimationPlayer.is_playing():
+			$AnimationPlayer.play("Hide")
+			characterUpdatingAllowed = false
+		else:
+			visibleCharacters = lbl.get_total_character_count()
 		get_tree().set_input_as_handled()
-		
+
 
 func setUpNewSequence(key):
 	if key == "":
@@ -89,3 +93,4 @@ func updateText(delta):
 	if characterUpdatingAllowed:
 		visibleCharacters += delta*charactersToShowPerSecond
 		lbl.visible_characters = visibleCharacters
+		allTextShown = ( lbl.visible_characters >= lbl.get_total_character_count() )
