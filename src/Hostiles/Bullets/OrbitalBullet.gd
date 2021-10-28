@@ -1,11 +1,6 @@
 extends "res://Hostiles/Bullets/Bullet_Base.gd"
 
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	._ready()
@@ -14,6 +9,7 @@ func _ready():
 
 func init():
 	.init()
+	$RotationRing/RotatingChildren/WaveBullet.lifetime = lifetime
 	if orbitalChildren > 0:
 		setChildren(orbitalChildren)
 	$RotationRing.rotation = rand_range(0, 2*PI)

@@ -16,8 +16,10 @@ func _ready():
 	pass
 
 func init():
+	var masterChild = get_node(childToCopy)
 	for _i in range(numOfChildren-1):
-		var copy = get_node(childToCopy).duplicate()
+		var copy = masterChild.duplicate()
+		copy.lifetime = masterChild.lifetime
 		$RotatingChildren.add_child(copy)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,7 +34,8 @@ func updateChildPositions(d):
 	var i = 0
 	for child in $RotatingChildren.get_children():
 		var frac = clamp(elapsedTime/radiusGrowTime, 0, 1)
-		var radius = lerp(0, maxRadius, frac)
+#		var radius = lerp(0, maxRadius, frac)
+		var radius = sin(frac * PI / 2) * maxRadius
 		child.position = Vector2(1,0).rotated(deg2rad(degrees)*i)*radius
 		i += 1
 "

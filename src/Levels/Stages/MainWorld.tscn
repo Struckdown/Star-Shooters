@@ -88,14 +88,6 @@ margin_right = -201.0
 [node name="Level Won" parent="CanvasLayer" instance=ExtResource( 12 )]
 margin_right = -203.0
 
-[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource( 4 )]
-visible = false
-margin_left = 201.0
-margin_top = 72.0
-margin_right = -423.0
-margin_bottom = -128.0
-mouse_filter = 1
-
 [node name="Boss HP" parent="CanvasLayer" instance=ExtResource( 2 )]
 margin_right = -200.0
 
@@ -104,6 +96,14 @@ margin_right = -200.0
 [node name="DialogueBox" parent="CanvasLayer" instance=ExtResource( 7 )]
 margin_top = 50.6428
 margin_bottom = -379.357
+
+[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource( 4 )]
+visible = false
+margin_left = 201.0
+margin_top = 72.0
+margin_right = -423.0
+margin_bottom = -128.0
+mouse_filter = 1
 
 [node name="LevelWonGemCollectDelayTimer" type="Timer" parent="."]
 

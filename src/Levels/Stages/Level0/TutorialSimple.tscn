@@ -12,12 +12,11 @@ rotation = 1.57079
 moveGoal = Vector2( 0, 200 )
 flyingPattern = "hoverMoveGoal"
 
-[node name="BulletEmitter" parent="ForwardShooter/WeaponManager" index="1"]
+[node name="BulletEmitter" parent="ForwardShooter/WeaponManager" index="0"]
 initialRotationOffset = 0.0
 targetStyle = "straight"
 amountOfBullets = 1
-bulletMovementSpeed = 150
-initialSpawnDelayRandomRange = 1.0
+bulletMovementSpeed = 130.0
 greenBulletFrequency = -1
 
 [editable path="ForwardShooter"]
