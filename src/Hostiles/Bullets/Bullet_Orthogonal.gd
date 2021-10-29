@@ -9,6 +9,10 @@ func _ready():
 	._ready()
 	updateDirection()
 
+func init():
+	global_rotation = 0
+	if trackYFirst:
+		$ArrowsNode.rotation_degrees = 90
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -40,6 +44,7 @@ func updateDirection():
 		moveDir = Vector2(axisDelta, 0)
 
 	if moveDir != prevMoveDir and prevMoveDir != Vector2.ZERO:
+		$ArrowsNode.hide()
 		hasPassedTarget = true
 		if trackYFirst:
 			moveDir = (target.position - position).x

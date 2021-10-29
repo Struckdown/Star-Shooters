@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Hostiles/Bullets/Bullet_Base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Orthogonal.gd" type="Script" id=2]
 [ext_resource path="res://Space Shooter Redux/PNG/Lasers/laserBlue09.png" type="Texture" id=3]
+[ext_resource path="res://Art Packs/Struckdown/Triangle.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 3.35797
@@ -19,3 +20,16 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="." index="2"]
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 3 )
+
+[node name="ArrowsNode" type="Node2D" parent="." index="4"]
+
+[node name="ArrowSprite" type="Sprite" parent="ArrowsNode" index="0"]
+position = Vector2( 0, 7.25273 )
+scale = Vector2( 0.025, 0.025 )
+texture = ExtResource( 4 )
+
+[node name="ArrowSprite2" type="Sprite" parent="ArrowsNode" index="1"]
+position = Vector2( 0, -7.253 )
+rotation = 3.14159
+scale = Vector2( 0.025, 0.025 )
+texture = ExtResource( 4 )
