@@ -19,7 +19,6 @@
 ]]
 script = ExtResource( 1 )
 level = 5
-debug = true
 debugWave = 2
 
 [node name="VPCscoreboard" type="ViewportContainer" parent="."]

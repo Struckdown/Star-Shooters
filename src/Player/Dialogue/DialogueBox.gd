@@ -16,6 +16,7 @@ signal finished
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	hide()
 	var file = File.new()
 	file.open(filePath, File.READ)
 	txtDictionary = file.get_as_text()

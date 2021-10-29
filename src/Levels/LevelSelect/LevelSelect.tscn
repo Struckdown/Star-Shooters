@@ -342,6 +342,8 @@ We have setup this basic course to get you used to the basics.
 Remember, We need you to hunt down the Star Child, so your skills will be of the utmost importance.
 Prepare for deployment...
 "
+unlocked = true
+levelsToUnlock = [ NodePath("../Planet2") ]
 
 [node name="CollisionShape2D" parent="Levels/Planet/SelectableArea" index="0"]
 shape = SubResource( 1 )
@@ -354,10 +356,14 @@ missionName = "A Loss of Energy	"
 missionBriefing = "Incredible performance in your previous mission. Now that you're well acquainted with the capabilities of your spaceship, you will need to venture forth and carve out a path for us!
 
 Your enemy will not always use energy aligned ammunition, so make sure to seek out attacks that matched your training to generate charge to fight back! Without it, you stand no chance."
+levelsToUnlock = [ NodePath("../Planet3") ]
 
 [node name="PlanetSprite" parent="Levels/Planet2" index="0"]
 scale = Vector2( 0.058, 0.058 )
 texture = ExtResource( 2 )
+
+[node name="Lock" parent="Levels/Planet2" index="5"]
+scale = Vector2( 1.5, 1.5 )
 
 [node name="Planet3" parent="Levels" instance=ExtResource( 6 )]
 position = Vector2( 898.804, 105.603 )
@@ -365,6 +371,7 @@ levelDescription = "Sector Charlie"
 levelNumber = 3
 missionName = "Revolving Troubles"
 missionBriefing = "Gadzooks! The Star Child evaporated the entire surface of the planet! And still the Federation would seek to aid the child! Destroy their blockade and continue the hunt! Let no ship slow your hand!"
+levelsToUnlock = [ NodePath("../Planet4") ]
 
 [node name="PlanetSprite" parent="Levels/Planet3" index="0"]
 scale = Vector2( 0.09, 0.09 )
@@ -395,6 +402,7 @@ levelDescription = "Sector Delta"
 levelNumber = 4
 missionName = "Gravity Vectors"
 missionBriefing = "This entire planet has been ravaged! The entire ecosystem is inhabitable. The nearby  battle fleet armada must be responsible! Don't just float there, go blow some stuff up! They deserve death!"
+levelsToUnlock = [ NodePath("../Planet5") ]
 
 [node name="PlanetSprite" parent="Levels/Planet4" index="0"]
 scale = Vector2( 0.03, 0.03 )
@@ -409,6 +417,9 @@ anims/DisplayLevelInfo = SubResource( 5 )
 [node name="CollisionShape2D" parent="Levels/Planet4/DisplayArea2D" index="0"]
 shape = SubResource( 6 )
 
+[node name="Lock" parent="Levels/Planet4" index="5"]
+scale = Vector2( 1, 1 )
+
 [node name="Planet5" parent="Levels" instance=ExtResource( 6 )]
 position = Vector2( 1793.88, 62.4397 )
 levelDescription = "Sector Echo"
@@ -419,6 +430,7 @@ missionBriefing = "Your next mission will be far more dangerous. A Titan class D
 God speed.
 
 P.S. Do you have cremation preferences?"
+levelsToUnlock = [ NodePath("../Planet6") ]
 
 [node name="PlanetSprite" parent="Levels/Planet5" index="0"]
 scale = Vector2( 0.09, 0.09 )
@@ -439,6 +451,7 @@ levelDescription = "Sector Foxtrot"
 levelNumber = 6
 missionName = "Asteroid Defense"
 missionBriefing = "Oh, you survived the Titan? Well, uh, your upcoming mission will take place in an asteroid field. There will be no opportunity to re-energize your vessal, so spend your energy carefully."
+levelsToUnlock = [ NodePath("../Planet7") ]
 
 [node name="PlanetSprite" parent="Levels/Planet6" index="0"]
 scale = Vector2( 0.09, 0.09 )
@@ -474,6 +487,9 @@ anims/DisplayLevelInfo = SubResource( 10 )
 
 [node name="CollisionShape2D" parent="Levels/Planet7/DisplayArea2D" index="0"]
 shape = SubResource( 6 )
+
+[node name="Lock" parent="Levels/Planet7" index="5"]
+scale = Vector2( 1, 1 )
 
 [node name="UpgradePlanet" parent="." instance=ExtResource( 12 )]
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Art Packs/Planets2D/Planets-Atmosphere-pngs/planet-1.png" type="Texture" id=1]
 [ext_resource path="res://Levels/LevelSelect/SelectablePlanet.gd" type="Script" id=2]
 [ext_resource path="res://Art Packs/Space Shooter GUI/PNG/Ship_Shop/Table_01.png" type="Texture" id=3]
+[ext_resource path="res://Art Packs/Struckdown/Lock.png" type="Texture" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 57.4139
@@ -123,6 +124,10 @@ anims/DisplayLevelInfo = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DisplayArea2D"]
 shape = SubResource( 3 )
+
+[node name="Lock" type="Sprite" parent="."]
+scale = Vector2( 3, 3 )
+texture = ExtResource( 4 )
 
 [connection signal="area_entered" from="SelectableArea" to="." method="_on_Area2D_area_entered"]
 [connection signal="area_exited" from="SelectableArea" to="." method="_on_Area2D_area_exited"]

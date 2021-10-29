@@ -1,6 +1,8 @@
 extends Panel
 
+var firstUpdate = true
 var livesCount
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	GameManager.resetPlayerLives()
@@ -23,3 +25,6 @@ func updateLives(livesDelta):
 	for life in $VBoxContainer/VBoxContainer/CenterContainer/LivesHBoxContainer.get_children():
 		if int(life.name[-1]) >= livesCount:
 			life.disappear()
+			if firstUpdate:
+				life.hide()
+	firstUpdate = false

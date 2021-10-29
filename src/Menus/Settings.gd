@@ -6,6 +6,7 @@ var fileLock = false
 
 func _ready():
 	loadSettings()
+	$PauseCtrl/VBoxContainer/HBoxContainer4/Checkbox.pressed = OS.window_fullscreen
 	_on_Settings_visibility_changed()
 	var musicVal = BGM.normalizeDBtoVal(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("BGM")))
 	$PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic.value = musicVal
@@ -13,7 +14,7 @@ func _ready():
 	$PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX.value = SFXval
 
 func _input(_event):
-	if (Input.is_action_pressed("ui_cancel") or Input.is_action_pressed("pause"))and visible:
+	if (Input.is_action_pressed("ui_cancel") or Input.is_action_pressed("pause")) and visible:
 		emit_signal("closed")
 
 func _process(_delta):

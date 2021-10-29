@@ -77,7 +77,7 @@ func spawnWave():
 			$VPCgame/Viewport/EnemyArrowTrackerManager.startTrackingNewEnemy(e)
 	else:
 		pass
-		print("Ran out of waves to spawn, should be at the end here")
+		#print("Ran out of waves to spawn, should be at the end here")
 
 
 func updateWavesFinished():
