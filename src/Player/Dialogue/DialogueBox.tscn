@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Player/Dialogue/DialogueBox.gd" type="Script" id=1]
 [ext_resource path="res://Art Packs/Space Shooter GUI/PNG/Clouds/Cloud_02.png" type="Texture" id=2]
 [ext_resource path="res://Art Packs/Fonts/SourceSansProRegular/SourceSansPro-Regular.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://Player/Dialogue/Commander.png" type="Texture" id=4]
 [ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Player/Dialogue/textTypingSFX.mp3" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 5 )
@@ -164,4 +165,9 @@ stretch_mode = 6
 anims/Hide = SubResource( 3 )
 anims/Show = SubResource( 4 )
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+bus = "SFX"
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_AudioStreamPlayer_finished"]

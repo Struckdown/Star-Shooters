@@ -69,7 +69,7 @@ initialSpawnDelayRandomRange = 0.0
 makeBulletEnergizedAnywaysOdds = 1.0
 
 [node name="Node2D" type="Node2D" parent="." index="1"]
-modulate = Color( 1, 1, 1, 0.366539 )
+modulate = Color( 1, 1, 1, 0.226682 )
 position = Vector2( 441.129, 434.918 )
 
 [node name="Sprite" type="Sprite" parent="Node2D" index="0"]

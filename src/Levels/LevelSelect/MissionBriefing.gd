@@ -22,6 +22,7 @@ func playDisplayAnimation(dir):
 	if animDir == "forwards":
 		$WindowTexture/SpeechBubble/DialogueLbl.percent_visible = 0
 		show()
+		#$TypingSFX.play()
 		$AnimationPlayer.play("DisplayAnim")
 	elif animDir == "backwards":
 		$AnimationPlayer.play("HideAnim")
@@ -59,6 +60,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		if animDir == "forwards":
 			$WindowTexture/OptionsTexture/DeployBtn.grab_focus()
 			updateButtonDisabled(false)
+			$TypingSFX.stop()
 	if anim_name == "HideAnim":
 		hide()
 
@@ -66,3 +68,8 @@ func updateText(planet):
 	$WindowTexture/LevelNameLbl.text = planet.missionName
 	$WindowTexture/SpeechBubble/DialogueLbl.text = planet.missionBriefing
 	$WindowTexture/SpeakerLbl.text = "Commander"#planet.speakerText
+
+
+func _on_TypingSFX_finished():
+	if $WindowTexture/SpeechBubble/DialogueLbl.percent_visible < 1:
+		$TypingSFX.play()

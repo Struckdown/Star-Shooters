@@ -117,3 +117,4 @@ func spawnGems():
 	g.gemsRemaining = initialHealth * (randi()%2+2)
 	g.global_position = global_position
 	get_viewport().call_deferred("add_child", g)
+

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/textTypingSFX.mp3-f361c795a7848bd2d9640813410cec7b.mp3str"
+
+[deps]
+
+source_file="res://Player/Dialogue/textTypingSFX.mp3"
+dest_files=[ "res://.import/textTypingSFX.mp3-f361c795a7848bd2d9640813410cec7b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

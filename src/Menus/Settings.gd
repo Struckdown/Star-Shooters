@@ -8,10 +8,6 @@ func _ready():
 	loadSettings()
 	$PauseCtrl/VBoxContainer/HBoxContainer4/Checkbox.pressed = OS.window_fullscreen
 	_on_Settings_visibility_changed()
-	var musicVal = BGM.normalizeDBtoVal(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("BGM")))
-	$PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic.value = musicVal
-	var SFXval = BGM.normalizeDBtoVal(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX")))
-	$PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX.value = SFXval
 
 func _input(_event):
 	if (Input.is_action_pressed("ui_cancel") or Input.is_action_pressed("pause")) and visible:
@@ -75,7 +71,9 @@ func loadSettings():
 		var sfx = save_file.get_var()
 		var speed = save_file.get_var()
 		$PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic.value = bgm
+		_on_HSliderMusic_value_changed(bgm)
 		$PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX.value = sfx
+		_on_HSliderSFX_value_changed(sfx)
 		$PauseCtrl/VBoxContainer/HBoxContainer3/HSliderSpeed.value = speed
 		save_file.close()
 	fileLock = false

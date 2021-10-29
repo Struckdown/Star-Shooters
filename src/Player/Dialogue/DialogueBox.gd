@@ -55,6 +55,7 @@ func advanceText():
 	if atEndOfDialogue():
 		cleanupBox()
 		return
+	$AudioStreamPlayer.play()
 	$AnimationPlayer.play("Show")
 	lbl.bbcode_text = currentTextScene[dialogueIndex]["dialogue"]
 	nameLbl.text = currentTextScene[dialogueIndex]["name"]
@@ -95,3 +96,11 @@ func updateText(delta):
 		visibleCharacters += delta*charactersToShowPerSecond
 		lbl.visible_characters = visibleCharacters
 		allTextShown = ( lbl.visible_characters >= lbl.get_total_character_count() )
+		if allTextShown:
+			$AudioStreamPlayer.stop()
+
+
+func _on_AudioStreamPlayer_finished():
+	var finishedDisplayingText = ( lbl.visible_characters >= lbl.get_total_character_count() )
+	if not finishedDisplayingText:
+		$AudioStreamPlayer.play()
