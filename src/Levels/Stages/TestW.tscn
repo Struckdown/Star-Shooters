@@ -26,6 +26,7 @@ margin_bottom = 78.2045
 
 [node name="BulletEmitter" parent="." instance=ExtResource( 6 )]
 position = Vector2( 222.236, 198.425 )
+rotation = 0.400327
 lifetime = 3.0
 bulletMovementSpeed = 100.0
 bulletType = ExtResource( 1 )

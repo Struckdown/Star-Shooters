@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Player/PlayerHitParticles.gd" type="Script" id=1]
+[ext_resource path="res://Player/ShieldTakesDamageSFX.mp3" type="AudioStream" id=2]
+
+[sub_resource type="Gradient" id=1]
+colors = PoolColorArray( 0.839355, 0.049181, 0.049181, 1, 0.905882, 0.419608, 0.0196078, 0 )
+
+[sub_resource type="GradientTexture" id=2]
+gradient = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+flag_disable_z = true
+spread = 20.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 1000.0
+initial_velocity_random = 0.8
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+color_ramp = SubResource( 2 )
+
+[node name="HitParticles" type="Particles2D"]
+emitting = false
+amount = 40
+explosiveness = 0.95
+local_coords = false
+process_material = SubResource( 3 )
+script = ExtResource( 1 )
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
+autoplay = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/ShieldTakesDamageSFX.mp3-b3afa34b7a52de9bda08ab17e37bfc55.mp3str"
+
+[deps]
+
+source_file="res://Player/ShieldTakesDamageSFX.mp3"
+dest_files=[ "res://.import/ShieldTakesDamageSFX.mp3-b3afa34b7a52de9bda08ab17e37bfc55.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

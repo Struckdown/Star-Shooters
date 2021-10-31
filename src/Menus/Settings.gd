@@ -53,9 +53,11 @@ func save():
 	var bgm = $PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic.value
 	var sfx = $PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX.value
 	var speed = $PauseCtrl/VBoxContainer/HBoxContainer3/HSliderSpeed.value
+	var instaKill = $PauseCtrl/VBoxContainer/HBoxContainer4/Checkbox2.pressed
 	save_file.store_var(bgm)
 	save_file.store_var(sfx)
 	save_file.store_var(speed)
+	save_file.store_var(instaKill)
 	save_file.close()
 	fileLock = false
 	
@@ -70,11 +72,13 @@ func loadSettings():
 		var bgm = save_file.get_var()
 		var sfx = save_file.get_var()
 		var speed = save_file.get_var()
+		var instaKill = save_file.get_var()
 		$PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic.value = bgm
 		_on_HSliderMusic_value_changed(bgm)
 		$PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX.value = sfx
 		_on_HSliderSFX_value_changed(sfx)
 		$PauseCtrl/VBoxContainer/HBoxContainer3/HSliderSpeed.value = speed
+		$PauseCtrl/VBoxContainer/HBoxContainer4/Checkbox2.pressed = instaKill
 		save_file.close()
 	fileLock = false
 
@@ -88,3 +92,8 @@ func _on_HSliderSpeed_value_changed(value):
 
 func _on_Checkbox_toggled(button_pressed):
 	OS.window_fullscreen = button_pressed
+
+
+func _on_Checkbox2_toggled(button_pressed):
+	GameManager.instaKillMode = button_pressed
+	save()

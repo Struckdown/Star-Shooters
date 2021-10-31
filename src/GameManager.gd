@@ -10,6 +10,7 @@ var gameMode = null
 var mapPlayerLastPos = Vector2(496.063, 303.194)
 var mapPlayerLastRot = 0
 var gameSpeed = 1	#1 is normal speed
+var instaKillMode = false
 
 var saveGameFileName = "user://savegame.save"
 

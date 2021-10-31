@@ -20,7 +20,8 @@ var energyLimit = 250.0	# max amount of energy allowed
 var energyGainMultiplier = 1
 var energyThreshold = 1	# amount of energy needed to shoot
 signal energyUpdated
-onready var energyParticles = load("res://Player/EnergyAbsorptionParticles.tscn")
+onready var energyParticles = preload("res://Player/EnergyAbsorptionParticles.tscn")
+onready var hitParticles = preload("res://Player/PlayerHitParticles.tscn")
 
 # Boundary rules
 var touchingBotWall = false	# TODO: Replace this with a bool array of walls touched?
@@ -32,11 +33,16 @@ var teleporting = false
 
 var cheatModeActive = false
 
+var levelManagerRef
+
 signal destroyed
 signal gemCollected
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var levelManagers = get_tree().get_nodes_in_group("LevelManager")
+	if len(levelManagers) > 0:
+		levelManagerRef = levelManagers[0]
 	applyUpgrades()
 
 
@@ -178,15 +184,26 @@ func _on_CoreArea_area_entered(area):
 	if area.is_in_group("Hostile") and not dying and not respawnInvuln and not godMode:
 		var bul = area.owner
 		if bul.canCauseDamage and not cheatModeActive:
-			dying = true
-			get_tree().get_nodes_in_group("LevelManager")[0].addCameraShakeIntensity(8)
-			StatsManager.updateStats("deaths", 1)
-			#hasControl = false
-			$AnimationPlayer.play("Explosion")
-			var followingP = load("res://Utility/FollowingParticles.tscn")
-			followingP = followingP.instance()
-			followingP.init(deathExplosion, self)
-			get_tree().root.add_child(followingP)
+			var HP = hitParticles.instance()
+			HP.global_rotation = bul.global_rotation
+			$EnergyParticleRoot.add_child(HP)
+			if levelManagerRef:
+				levelManagerRef.addCameraShakeIntensity(2)
+			takeDamage()
+
+func takeDamage():
+	energyLevel -= energyLimit*0.25
+	emit_signal("energyUpdated")
+	if energyLevel <= 0 or GameManager.instaKillMode:
+		dying = true
+		levelManagerRef.addCameraShakeIntensity(8)
+		StatsManager.updateStats("deaths", 1)
+		#hasControl = false
+		$AnimationPlayer.play("Explosion")
+		var followingP = load("res://Utility/FollowingParticles.tscn")
+		followingP = followingP.instance()
+		followingP.init(deathExplosion, self)
+		get_tree().root.add_child(followingP)
 
 func spawn():
 	$AnimationPlayer.play("Spawn")	# Note this messes with the transform

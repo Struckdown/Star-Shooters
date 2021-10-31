@@ -60,7 +60,12 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "This will let the TitanCoreX shielding absorb the radiation of the laser and you'll be able to shoot it back using [color=#ff3333]SPACE[/color]. Good luck!",
+			"dialogue": "This will let the TitanCoreX shielding absorb the radiation of the laser and you'll be able to shoot it back using [color=#ff3333]SPACE[/color].",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "If you are hit, you'll discharge energy to stay alive. Not enough energy? You die. Good luck!",
 		},
 	],
 	"level1Slipstream":[

@@ -42,7 +42,9 @@ gui_disable_input = true
 margin_left = 0.0
 margin_right = 240.0
 
-[node name="Camera2D" type="Camera2D" parent="VPCscoreboard/Viewport"]
+[node name="Camera2D" type="Camera2D" parent="VPCscoreboard/Viewport" groups=[
+"Camera",
+]]
 
 [node name="VPCgame" type="ViewportContainer" parent="."]
 margin_right = 420.0

@@ -272,9 +272,11 @@ __meta__ = {
 }
 
 [node name="FullscreenLbl" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer4"]
-margin_right = 140.0
-margin_bottom = 57.0
+margin_top = 15.0
+margin_right = 211.0
+margin_bottom = 42.0
 rect_min_size = Vector2( 140, 0 )
+size_flags_horizontal = 3
 custom_fonts/font = SubResource( 4 )
 text = "Full Screen"
 align = 1
@@ -285,11 +287,38 @@ __meta__ = {
 }
 
 [node name="Checkbox" type="CheckBox" parent="PauseCtrl/VBoxContainer/HBoxContainer4"]
-margin_left = 144.0
-margin_right = 168.0
+margin_left = 215.0
+margin_right = 426.0
 margin_bottom = 58.0
 focus_neighbour_top = NodePath("../../HBoxContainer3/HSliderSpeed")
 focus_neighbour_bottom = NodePath("../../../ResumeBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+align = 1
+expand_icon = true
+
+[node name="InstaKillLbl" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer4"]
+margin_left = 430.0
+margin_right = 641.0
+margin_bottom = 57.0
+rect_min_size = Vector2( 140, 0 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 4 )
+text = "Insta Kill Mode"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Checkbox2" type="CheckBox" parent="PauseCtrl/VBoxContainer/HBoxContainer4"]
+margin_left = 645.0
+margin_right = 857.0
+margin_bottom = 58.0
+focus_neighbour_top = NodePath("../../HBoxContainer3/HSliderSpeed")
+focus_neighbour_bottom = NodePath("../../../ResumeBtn")
+size_flags_horizontal = 3
 size_flags_vertical = 3
 align = 1
 expand_icon = true
@@ -343,5 +372,6 @@ bus = "SFX"
 [connection signal="value_changed" from="PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX" to="." method="_on_HSliderSFX_value_changed"]
 [connection signal="value_changed" from="PauseCtrl/VBoxContainer/HBoxContainer3/HSliderSpeed" to="." method="_on_HSliderSpeed_value_changed"]
 [connection signal="toggled" from="PauseCtrl/VBoxContainer/HBoxContainer4/Checkbox" to="." method="_on_Checkbox_toggled"]
+[connection signal="toggled" from="PauseCtrl/VBoxContainer/HBoxContainer4/Checkbox2" to="." method="_on_Checkbox2_toggled"]
 [connection signal="mouse_entered" from="PauseCtrl/ResumeBtn" to="." method="_on_ResumeBtn_mouse_entered"]
 [connection signal="pressed" from="PauseCtrl/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]
