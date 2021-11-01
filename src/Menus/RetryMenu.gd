@@ -2,9 +2,16 @@ extends MarginContainer
 
 
 var hints = [
-	"Any gems acquired can be spent at the asteroid upgrade store to permanently strengthen your ship!",
+	"Any gems acquired can be spent at the asteroid upgrade store to permanently strengthen your ship.",
 	"You can adjust the game speed in the settings if you're struggling!",
+	"Most enemies have no randomness in their attack patterns, so pay close attention to safe places.",
+	"So long as you have enough charge (the white bar), you can survive a direct hit.",
+	"Wrapping around the sides of the screen can get you out of tricky places. Some enemies may require it.",
+	"Don't give up! You're braver than you believe, stronger than you seem and smarter than you think!",
+	"Increasing your max energy cap doesn't change how many direct hits you can take. Just how much you can attack.",
+	"It can be worthwhile to bank a bit of energy before moving onto the next wave.",
 ]
+
 signal retry
 signal backToMap
 
