@@ -62,12 +62,8 @@ func spawnWave():
 	
 	if waveNum < waves.size():
 		curWave = waves[waveNum].instance()
-		curWave.dialogueBoxRef = dialogueBoxRef
-		dialogueBoxRef.setUpNewSequence(curWave.dialogueRequest)
-		dialogueBoxRef.connect("finished", curWave, "markWaveFinished")
-		#curWave.position.y -= 200	# Have enemies spawn off camera	# Too hacky, need to come up with better alternative
-		$VPCgame/Viewport.call_deferred("add_child", curWave)
 		waveNum +=1
+		$VPCgame/Viewport.call_deferred("add_child", curWave)
 		curWave.connect("startNextWave", self, "spawnWave")
 		curWave.connect("enemyDestroyed", self, "addToScore")
 		curWave.connect("waveFinished", self, "updateWavesFinished")
@@ -75,6 +71,11 @@ func spawnWave():
 		var enemies = curWave.getEnemies()
 		for e in enemies:
 			$VPCgame/Viewport/EnemyArrowTrackerManager.startTrackingNewEnemy(e)
+		curWave.dialogueBoxRef = dialogueBoxRef
+		if curWave.dialogueRequest:
+			dialogueBoxRef.connect("finished", curWave, "markWaveFinished")
+			dialogueBoxRef.setUpNewSequence(curWave.dialogueRequest)
+
 	else:
 		pass
 		#print("Ran out of waves to spawn, should be at the end here")
@@ -132,3 +133,16 @@ func setupLevelSpecificFeatures():
 		6:
 			var bg = get_tree().get_nodes_in_group("Background")[0]
 			bg.backgroundSpeedMultiplier = 8
+
+
+func _on_Game_Over_gameOverAnimationFinished():
+	$CanvasLayer/Control/RetryMenu.display()
+	
+
+func _on_RetryMenu_retry():
+	GameManager.skipDialogue = true
+	SceneTransition.transitionToScene("res://Levels/Stages/MainWorld.tscn")	# all the properties should already be set, so this should reload the level
+
+
+func _on_RetryMenu_backToMap():
+	SceneTransition.transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")

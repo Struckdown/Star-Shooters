@@ -1,0 +1,189 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Art Packs/Fonts/SourceSansProRegular/SourceSansPro-Light.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Menus/RetryMenu.gd" type="Script" id=3]
+[ext_resource path="res://Menus/UI_ButtonHovered.wav" type="AudioStream" id=4]
+[ext_resource path="res://Menus/UI_ButtonClicked.mp3" type="AudioStream" id=5]
+[ext_resource path="res://Art Packs/Space Shooter GUI/PNG/Pause/SelectedTable.png" type="Texture" id=6]
+[ext_resource path="res://Art Packs/Space Shooter GUI/PNG/Pause/Table.png" type="Texture" id=7]
+[ext_resource path="res://Art Packs/Space Shooter GUI/PNG/Pause/Window.png" type="Texture" id=8]
+[ext_resource path="res://Menus/Pause Menu/PauseFont.tres" type="DynamicFont" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 40
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 24
+font_data = ExtResource( 2 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "Show"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0.25, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -176.597 ), Vector2( 0, 0 ) ]
+}
+
+[node name="RetryMenu" type="MarginContainer"]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -398.0
+margin_bottom = -300.0
+rect_min_size = Vector2( 400, 300 )
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": "Allows the user to retry the level"
+}
+
+[node name="Window" type="NinePatchRect" parent="."]
+margin_right = 626.0
+margin_bottom = 300.0
+rect_min_size = Vector2( 626, 0 )
+texture = ExtResource( 8 )
+
+[node name="RetryCtrl" type="Control" parent="."]
+margin_right = 626.0
+margin_bottom = 300.0
+
+[node name="RetryTitleLbl" type="Label" parent="RetryCtrl"]
+anchor_right = 1.0
+margin_bottom = 45.0
+custom_fonts/font = SubResource( 1 )
+text = "Retry?"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="RetryCtrl"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -279.0
+margin_top = 119.0
+margin_right = 268.0
+margin_bottom = -109.0
+custom_constants/separation = 5
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RetryBtn" type="TextureButton" parent="RetryCtrl/HBoxContainer"]
+margin_right = 271.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+texture_normal = ExtResource( 7 )
+texture_focused = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RetryLbl" type="Label" parent="RetryCtrl/HBoxContainer/RetryBtn"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -18.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 11 )
+text = "Retry"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitBtn" type="TextureButton" parent="RetryCtrl/HBoxContainer"]
+margin_left = 276.0
+margin_right = 547.0
+margin_bottom = 72.0
+size_flags_horizontal = 3
+texture_normal = ExtResource( 7 )
+texture_focused = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitLbl" type="Label" parent="RetryCtrl/HBoxContainer/QuitBtn"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -18.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 11 )
+text = "Return To map"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RetryHint" type="Label" parent="RetryCtrl"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 21.0
+margin_top = 202.0
+margin_right = -22.0
+margin_bottom = -39.0
+custom_fonts/font = SubResource( 2 )
+text = "Hint: You can adjust the game speed in the settings if you're struggling!"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HoverSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+bus = "SFX"
+
+[node name="ClickSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+bus = "SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Show = SubResource( 3 )
+
+[connection signal="mouse_entered" from="RetryCtrl/HBoxContainer/RetryBtn" to="." method="_on_RetryBtn_mouse_entered"]
+[connection signal="pressed" from="RetryCtrl/HBoxContainer/RetryBtn" to="." method="_on_RetryBtn_pressed"]
+[connection signal="mouse_entered" from="RetryCtrl/HBoxContainer/QuitBtn" to="." method="_on_Btn_mouse_entered"]
+[connection signal="pressed" from="RetryCtrl/HBoxContainer/QuitBtn" to="." method="_on_QuitBtn_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]

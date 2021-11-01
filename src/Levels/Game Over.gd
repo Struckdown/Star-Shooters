@@ -1,5 +1,6 @@
 extends Control
 
+signal gameOverAnimationFinished
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,4 +17,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 		if GameManager.stage == 0:
 			SceneTransition.transitionToScene("res://Menus/Main Menu.tscn")
 		else:
-			SceneTransition.transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")
+			emit_signal("gameOverAnimationFinished")
+			

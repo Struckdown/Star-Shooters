@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Levels/LevelManager.gd" type="Script" id=1]
 [ext_resource path="res://Hostiles/Boss HP.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Player/Dialogue/DialogueBox.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Space Backgrounds/space_background_pack/Animated_BG.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Menus/RetryMenu.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Levels/Game Over.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/LevelWon.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/LevelBoundaries.tscn" type="PackedScene" id=13]
@@ -90,6 +91,20 @@ margin_right = -201.0
 [node name="Level Won" parent="CanvasLayer" instance=ExtResource( 12 )]
 margin_right = -203.0
 
+[node name="Control" type="Control" parent="CanvasLayer"]
+margin_left = 110.0
+margin_top = 129.0
+margin_right = 736.0
+margin_bottom = 428.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RetryMenu" parent="CanvasLayer/Control" instance=ExtResource( 10 )]
+visible = false
+margin_right = 0.0
+margin_bottom = 0.0
+
 [node name="Boss HP" parent="CanvasLayer" instance=ExtResource( 2 )]
 margin_right = -200.0
 
@@ -109,4 +124,7 @@ mouse_filter = 1
 
 [node name="LevelWonGemCollectDelayTimer" type="Timer" parent="."]
 
+[connection signal="gameOverAnimationFinished" from="CanvasLayer/Game Over" to="." method="_on_Game_Over_gameOverAnimationFinished"]
+[connection signal="backToMap" from="CanvasLayer/Control/RetryMenu" to="." method="_on_RetryMenu_backToMap"]
+[connection signal="retry" from="CanvasLayer/Control/RetryMenu" to="." method="_on_RetryMenu_retry"]
 [connection signal="timeout" from="LevelWonGemCollectDelayTimer" to="." method="_on_LevelWonGemCollectDelayTimer_timeout"]
