@@ -252,7 +252,8 @@ func takeDamage():
 	emit_signal("energyUpdated")
 	if energyLevel <= 0 or GameManager.instaKillMode:
 		dying = true
-		levelManagerRef.addCameraShakeIntensity(8)
+		if levelManagerRef:
+			levelManagerRef.addCameraShakeIntensity(8)
 		StatsManager.updateStats("deaths", 1)
 		#hasControl = false
 		$AnimationPlayer.play("Explosion")

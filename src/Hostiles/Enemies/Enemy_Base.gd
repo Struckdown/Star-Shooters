@@ -20,24 +20,26 @@ var flyIndex = 0
 #export(NodePath) var moveGoalObject	# if given, try to move towards this object's position	#TODO. This is not implemented
 var levelBounds
 var levelViewport
-var target	# thing to shoot
-export(String, "straight", "hoverRandomPoint", "hoverMoveGoal", "followPath", "TBD") var flyingPattern
+export(NodePath) var target	# thing to shoot
+export(String, "straight", "hoverRandomPoint", "hoverMoveGoal", "followPath", "homingNoStop", "TBD") var flyingPattern
+export(Vector2) var turningRateDegsBounds
+var turningRateDeg
 var healthBarRef
 export(bool) var isBoss = false
+export(bool) var deathCountsAsWaveProgression = true
 var loadedGem = preload("res://Hostiles/GemSpawner.tscn")
 
 var levelManagerRef
 
 signal destroyed
 signal tookDamage
-
+signal wantsNewTarget
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	levelManagerRef = find_parent("Level")
 	if len(flyPaths) > 0:
 		flyPoints = get_node(flyPaths[flyPathIndex]).curve.get_baked_points()
-		
 		
 	levelBounds = get_tree().get_nodes_in_group("LevelBoundary")
 	if len(levelBounds) > 0:
@@ -51,6 +53,7 @@ func _ready():
 		#moveGoal.y += 200
 	if not moveGoal and levelBounds:
 		getNewMoveGoal()
+	turningRateDeg = rand_range(turningRateDegsBounds[0], turningRateDegsBounds[1])
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -62,7 +65,8 @@ func _process(delta):
 func _exit_tree():
 	if health <= 0:
 		spawnGems()
-	emit_signal("destroyed", pointsWorth)
+	if deathCountsAsWaveProgression:
+		emit_signal("destroyed", pointsWorth)
 	get_tree().call_group("EnemyDestroyedListener", "OnEnemyDestroyed", self)
 
 
@@ -97,6 +101,20 @@ func move(d):
 			velocity = position.direction_to(flyTarget) * deltaSpeed
 			look_at(global_position+velocity)
 			position += velocity
+		"homingNoStop":
+			var deltaAngle
+			var distToTarget = -1
+			if is_instance_valid(target):
+				distToTarget = global_position.distance_squared_to(target.global_position)
+				deltaAngle = get_angle_to(target.global_position)
+			else:
+				deltaAngle = 0
+				emit_signal("wantsNewTarget")
+			if distToTarget > 0 and distToTarget <= 4000:
+				emit_signal("wantsNewTarget")
+			velocity = Vector2(deltaSpeed, 0).rotated(rotation) * deltaSpeed
+			position += velocity
+			rotation += min(abs(deltaAngle), deg2rad(turningRateDeg)) * sign(deltaAngle)
 
 func aimAtTarget():
 	match flyingPattern:

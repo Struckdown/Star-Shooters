@@ -1,0 +1,87 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Enemies/BossL3.gd" type="Script" id=2]
+[ext_resource path="res://Space Shooter Redux/PNG/Parts/cockpitBlue_1.png" type="Texture" id=3]
+[ext_resource path="res://Hostiles/WeaponManager.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hostiles/Bullets/OrbitalBullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=8]
+
+[node name="BossL3" instance=ExtResource( 1 )]
+scale = Vector2( 1.5, 1.5 )
+script = ExtResource( 2 )
+pointsWorth = 2200
+maxHealth = 800
+deathShakeIntensity = 6.0
+gemValue = 170
+moveGoal = Vector2( 0, 250 )
+flyingPattern = "hoverMoveGoal"
+isBoss = true
+
+[node name="cockpitBlue_1" type="Sprite" parent="Sprite" index="0"]
+position = Vector2( -37.5226, -6.4288 )
+rotation = 1.57079
+scale = Vector2( 0.823109, 0.823109 )
+texture = ExtResource( 3 )
+
+[node name="cockpitBlue_2" type="Sprite" parent="Sprite" index="1"]
+position = Vector2( 37.523, -6.429 )
+rotation = 4.71238
+scale = Vector2( 0.823109, 0.823109 )
+texture = ExtResource( 3 )
+
+[node name="WeaponManager" parent="." index="4"]
+phaseSwapMode = "health"
+healthPercentToNextPhase = 50.0
+
+[node name="WeaponManager2" parent="WeaponManager" index="0" instance=ExtResource( 4 )]
+phaseSwapMode = "time"
+timeToNextPhase = 10
+
+[node name="TargetEmitter" parent="WeaponManager/WeaponManager2" index="0" instance=ExtResource( 5 )]
+targetStyle = "predict"
+volleyClipSize = 3
+clipReloadTime = 2.0
+bulletMovementSpeed = 440.0
+bulletSpawnDelay = 0.1
+bulletType = ExtResource( 7 )
+
+[node name="RingEmitter" parent="WeaponManager/WeaponManager2" index="1" instance=ExtResource( 5 )]
+rotationPerVolley = 2.0
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 20.0
+amountOfBullets = 18
+volleyClipSize = 9
+clipReloadTime = 2.0
+bulletSpawnDelay = 0.1
+bulletType = ExtResource( 8 )
+
+[node name="WeaponManager" parent="WeaponManager" index="1" instance=ExtResource( 4 )]
+phaseSwapMode = "time"
+timeToNextPhase = 7
+
+[node name="RingEmitter" parent="WeaponManager/WeaponManager" index="0" instance=ExtResource( 5 )]
+randomAngleOfBulletSpread = 30.0
+amountOfBullets = 2
+bulletSpawnDelay = 2.0
+bulletType = ExtResource( 6 )
+orbitalChildren = 7
+
+[node name="BulletEmitter2" parent="WeaponManager/WeaponManager" index="1" instance=ExtResource( 5 )]
+targetStyle = "atTarget"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+randomAngleOfBulletSpread = 10.0
+amountOfBullets = 8
+bulletMovementSpeed = 160.0
+bulletSpawnDelay = 1.4
+bulletType = ExtResource( 7 )
+orbitalChildren = 7
+
+[node name="MinionSpawnTimer" type="Timer" parent="." index="7"]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="MinionSpawnTimer" to="." method="_on_MinionSpawnTimer_timeout"]

@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Space Shooter Redux/PNG/Parts/cockpitRed_0.png" type="Texture" id=2]
+[ext_resource path="res://Space Shooter Redux/PNG/Parts/wingRed_0.png" type="Texture" id=3]
+[ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=5]
+
+[node name="BossL3Minion" instance=ExtResource( 1 )]
+scale = Vector2( 0.3, 0.3 )
+speed = 90.0
+gemValue = 0
+flyingPattern = "homingNoStop"
+turningRateDegsBounds = Vector2( 1, 2 )
+deathCountsAsWaveProgression = false
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 2 )
+
+[node name="wingRed_0" type="Sprite" parent="Sprite" index="0"]
+position = Vector2( -23.5072, 5.13906 )
+texture = ExtResource( 3 )
+
+[node name="wingRed_1" type="Sprite" parent="Sprite" index="1"]
+position = Vector2( 23.507, 5.139 )
+scale = Vector2( -1, 1 )
+texture = ExtResource( 3 )
+
+[node name="BulletEmitter" parent="WeaponManager" index="0" instance=ExtResource( 4 )]
+fireAtLocationForWholeClip = false
+amountOfBullets = 3
+bulletMovementSpeed = 190.0
+bulletSpawnDelay = 1.5
+bulletType = ExtResource( 5 )
+nthBulletIsGreen = [ 0, 1, 2 ]
