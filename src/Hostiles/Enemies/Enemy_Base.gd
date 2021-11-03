@@ -132,18 +132,18 @@ func _on_ExplosionTimer_timeout():
 func setHealthBarRef(ref):
 	healthBarRef = ref
 
-func _on_Area2D_area_entered(area):
+func _on_Area2D_area_entered(area):	# this code block might be redundant with the player bullet having the same code
 	if area.is_in_group("PlayerBullet"):
 		if health > 0:
-			takeDamage()
+			takeDamage(area.owner.damage)
 			area.owner.destroy()
 
-func applyDamage():
+func applyDamage(damage):
 	if health > 0:
-		takeDamage()
+		takeDamage(damage)
 
-func takeDamage():
-	health = max(health - 1, 0)	# disallow going below 0
+func takeDamage(damage):
+	health = max(health - damage, 0)	# disallow going below 0
 	if not $HitSFX.playing:
 		$HitSFX.play()
 	emit_signal("tookDamage", float(health)/float(maxHealth))	# used by weapon manager

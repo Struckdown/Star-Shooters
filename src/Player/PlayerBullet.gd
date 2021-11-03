@@ -1,6 +1,7 @@
 extends Node2D
 
 var moveSpeed = 800
+var damage = 1
 export(PackedScene) var explosion
 
 # Called when the node enters the scene tree for the first time.
@@ -13,8 +14,12 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.y += delta * moveSpeed * -1
+	move(delta)
+	
 
+func move(delta):
+	var forwardVec = Vector2(1, 0).rotated(rotation).normalized()
+	position += forwardVec * moveSpeed * delta	# forward motion
 
 # Destroy the bullet by playing a particle effect
 func destroy():
@@ -36,5 +41,5 @@ func _on_Area2D_area_entered(area):
 	if area.is_in_group("Enemy"):
 		var areaOwner = area.owner
 		if is_instance_valid(areaOwner) and areaOwner.has_method("applyDamage"):
-			areaOwner.applyDamage()
+			areaOwner.applyDamage(damage)
 			destroy()

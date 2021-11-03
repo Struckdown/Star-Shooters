@@ -14,14 +14,20 @@ var velocity = Vector2()
 export(PackedScene) var deathExplosion
 var shouldFire = false
 var fireHOffset = 5
+var fireDelay = 0	# remaining time till next shot
+var fireDelayUpperBound# delay between each fired bullet
+var fireIndex = 0	# which pos2d to shoot from
+var shotDamage = 1	# how much damage each projectile does
+export(String, "2Straight", "4arc", "strongSlow", "forwardBackward") var firePattern setget updateFirePattern
 
-var energyLevel = 0.0		# current energy
+export(float) var energyLevel = 0.0		# current energy
 var energyLimit = 250.0	# max amount of energy allowed
 var energyGainMultiplier = 1
 var energyThreshold = 1	# amount of energy needed to shoot
 signal energyUpdated
 onready var energyParticles = preload("res://Player/EnergyAbsorptionParticles.tscn")
 onready var hitParticles = preload("res://Player/PlayerHitParticles.tscn")
+onready var bulletPrefab = preload("res://Player/PlayerBullet.tscn")
 
 # Boundary rules
 var touchingBotWall = false	# TODO: Replace this with a bool array of walls touched?
@@ -60,6 +66,16 @@ func _unhandled_input(event):
 			print("Player: Cheat mode not allowed!")
 			#cheatModeActive = true
 			#print("Cheat mode activated")
+		if event.scancode == KEY_R:
+			match firePattern:
+				"2Straight":
+					updateFirePattern("4arc")
+				"4arc":
+					updateFirePattern("strongSlow")
+				"strongSlow":
+					updateFirePattern("forwardBackward")
+				"forwardBackward":
+					updateFirePattern("2Straight")
 	if event.is_action_pressed("fire"):
 		shouldFire = true
 
@@ -105,22 +121,62 @@ func applyInputs(delta):
 		$EnergyArea/Core.visible = true
 	position += velocity * delta
 	
-	if shouldFire and energyLevel >= energyThreshold:
-		spawnBullet()
+	if shouldFire and energyLevel >= energyThreshold and fireDelay <= 0:
+		performAttack()
+	fireDelay = max(0, fireDelay-delta)
 
 
-func spawnBullet():
+func updateFirePattern(_val):
+	firePattern = _val
+	match firePattern:
+		"2Straight":
+			fireDelayUpperBound = 0
+			energyThreshold = 1
+			shotDamage = 1
+		"4arc":
+			fireDelayUpperBound = 0.1
+			energyThreshold = 4
+			shotDamage = 1
+		"strongSlow":
+			fireDelayUpperBound = 0.5
+			energyThreshold = 30
+			shotDamage = 30
+		"forwardBackward":
+			fireDelayUpperBound = 0
+			energyThreshold = 3
+			shotDamage = 1
+
+func performAttack():
 	energyLevel -= energyThreshold
-	var b = load("res://Player/PlayerBullet.tscn")
-	var bInst = b.instance()
+	fireDelay = fireDelayUpperBound
+	emit_signal("energyUpdated")
+	match firePattern:
+		"2Straight":
+			spawnBullet(get_node("SpritesRoot/Spaceship/FireGroups/2Straight"), fireIndex)
+			fireIndex = (fireIndex+1)%2
+		"4arc":
+			for i in range(4):
+				spawnBullet(get_node("SpritesRoot/Spaceship/FireGroups/4Arc"), i)
+		"strongSlow":
+			spawnBullet(get_node("SpritesRoot/Spaceship/FireGroups/strongSlow"), 0)
+		"forwardBackward":
+			for i in range(3):
+				spawnBullet(get_node("SpritesRoot/Spaceship/FireGroups/forwardBackward"), i)
+	
+func spawnBullet(pos2Dgroup:Node2D, shotIndex):
+	var bInst = bulletPrefab.instance()
 	StatsManager.updateStats("lasersFired", 1)
 	get_parent().add_child(bInst)
 	get_parent().move_child(bInst, 2)	# Force bullet to be under space
 	bInst.position = self.position
-	fireHOffset *= -1
-	var offset = Vector2(fireHOffset, -10)
-	bInst.position += offset
-	emit_signal("energyUpdated")
+	var pos2D = pos2Dgroup.get_child(shotIndex)
+#	fireHOffset *= -1
+#	var offset = Vector2(fireHOffset, -10)
+	bInst.position += pos2D.position
+	bInst.rotation_degrees += pos2D.rotation_degrees - 90
+	bInst.scale = pos2D.scale
+	bInst.damage = shotDamage
+	
 
 
 func updateFakes():

@@ -10,6 +10,7 @@ var hints = [
 	"Don't give up! You're braver than you believe, stronger than you seem and smarter than you think!",
 	"Increasing your max energy cap doesn't change how many direct hits you can take. Just how much you can attack.",
 	"It can be worthwhile to bank a bit of energy before moving onto the next wave.",
+	"Game too easy (and yet you're here)? Up the difficulty with insta-kill mode in the settings. One hit, you're dead!"
 ]
 
 signal retry

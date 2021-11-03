@@ -90,8 +90,8 @@ func setUpSize():	# TODO the hitbox doesn't work for larger asteroids >:(
 	print(newArea)
 
 
-func applyDamage():
-	health -= 1
+func applyDamage(damage):
+	health -= damage
 	if health <= 0:
 		if not splitting:
 			splitting = true
