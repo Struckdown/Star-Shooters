@@ -3,15 +3,15 @@ extends Node2D
 
 var score = 0
 var playerLives = 3
-var stage = null
-var stagesCompletedData = {}
-var lastPlayedStage = null
-var gameMode = null
+var stage = null	# String
+var stagesCompletedData = {} 	# string->array map
+var lastPlayedStage = null	 #string
+var gameMode = null	# String
 var mapPlayerLastPos = Vector2(496.063, 303.194)
 var mapPlayerLastRot = 0
 var gameSpeed = 1	#1 is normal speed
 var instaKillMode = false
-var skipDialogue = false
+var skipDialogue = false	# set on game over to true and reset on level select entered
 
 var saveGameFileName = "user://savegame.save"
 

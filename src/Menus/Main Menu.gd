@@ -38,10 +38,10 @@ func _on_Menu_button_up(btn):
 				$ButtonClickedSFX.play()
 				$"/root/SceneTransition".transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")
 		"back":
-			if $PlayBtns/BackBtn.is_hovered():
-					$MainBtns.show()
-					$PlayBtns.hide()
-					$MainBtns/PlayBtn.grab_focus()
+				$MainBtns.show()
+				$PlayBtns.hide()
+				$ExtraBtns.hide()
+				$MainBtns/PlayBtn.grab_focus()
 		"new game":
 			if $PlayBtns/NewGameBtn.is_hovered():
 				GameManager.gameMode = "Main"
@@ -62,6 +62,11 @@ func _on_Menu_button_up(btn):
 				GameManager.stage = 0
 				$ButtonClickedSFX.play()
 				$"/root/SceneTransition".transitionToScene("res://Levels/Stages/MainWorld.tscn")
+		"extras":
+			$ButtonClickedSFX.play()
+			$ExtraBtns.show()
+			$MainBtns.hide()
+			$ExtraBtns/BossRushBtn.grab_focus()
 		"options":
 			$ButtonClickedSFX.play()
 			$CanvasLayer/Settings.show()
@@ -73,6 +78,12 @@ func _on_Menu_button_up(btn):
 			if $MainBtns/ExitBtn.is_hovered():
 				$ButtonClickedSFX.play()
 				get_tree().quit()
+		"BossRush":
+			if $ExtraBtns/BossRushBtn.is_hovered():
+				GameManager.gameMode = "BossRush"
+				GameManager.stage = "BossRush"
+				$ButtonClickedSFX.play()
+				$"/root/SceneTransition".transitionToScene("res://Levels/Stages/MainWorld.tscn")
 		_:
 			pass
 
@@ -91,3 +102,4 @@ func _on_Credits_closed():
 
 func resetMainMenuBullet():
 	$AnimationPlayer/Bullet_Straight/Area2D.add_to_group("generatesEnergy")
+

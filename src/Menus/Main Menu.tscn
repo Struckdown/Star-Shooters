@@ -171,7 +171,7 @@ __meta__ = {
 margin_right = 222.0
 margin_bottom = 39.0
 focus_neighbour_top = NodePath("../ExitBtn")
-focus_neighbour_bottom = NodePath("../InfiniteBtn")
+focus_neighbour_bottom = NodePath("../TutorialBtn")
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
@@ -192,45 +192,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="InfiniteBtn" type="TextureButton" parent="MainBtns"]
-modulate = Color( 0.537255, 0.537255, 0.537255, 1 )
+[node name="TutorialBtn" type="TextureButton" parent="MainBtns"]
 margin_top = 43.0
 margin_right = 222.0
 margin_bottom = 82.0
 focus_neighbour_top = NodePath("../PlayBtn")
-focus_neighbour_bottom = NodePath("../TutorialBtn")
-disabled = true
-texture_normal = ExtResource( 6 )
-texture_pressed = ExtResource( 7 )
-texture_hover = ExtResource( 9 )
-texture_disabled = ExtResource( 8 )
-texture_focused = ExtResource( 9 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="InfiniteLbl" type="Label" parent="MainBtns/InfiniteBtn"]
-margin_right = 222.0
-margin_bottom = 40.0
-custom_fonts/font = SubResource( 2 )
-text = "Infinite Mode"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Lock" type="Sprite" parent="MainBtns/InfiniteBtn"]
-position = Vector2( 110.858, 19.716 )
-scale = Vector2( 1.47247, 1.47247 )
-texture = ExtResource( 16 )
-
-[node name="TutorialBtn" type="TextureButton" parent="MainBtns"]
-margin_top = 86.0
-margin_right = 222.0
-margin_bottom = 125.0
-focus_neighbour_top = NodePath("../InfiniteBtn")
-focus_neighbour_bottom = NodePath("../OptionsBtn")
+focus_neighbour_bottom = NodePath("../ExtrasBtn")
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
@@ -251,11 +218,37 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ExtrasBtn" type="TextureButton" parent="MainBtns"]
+margin_top = 86.0
+margin_right = 222.0
+margin_bottom = 125.0
+focus_neighbour_top = NodePath("../TutorialBtn")
+focus_neighbour_bottom = NodePath("../OptionsBtn")
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExtrasLbl" type="Label" parent="MainBtns/ExtrasBtn"]
+margin_right = 222.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 2 )
+text = "Extras"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="OptionsBtn" type="TextureButton" parent="MainBtns"]
 margin_top = 129.0
 margin_right = 222.0
 margin_bottom = 168.0
-focus_neighbour_top = NodePath("../TutorialBtn")
+focus_neighbour_top = NodePath("../ExtrasBtn")
 focus_neighbour_bottom = NodePath("../CreditsBtn")
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
@@ -429,6 +422,112 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="ExtraBtns" type="VBoxContainer" parent="."]
+visible = false
+margin_left = 741.0
+margin_top = 336.517
+margin_right = 963.0
+margin_bottom = 522.517
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ExtraInfoLbl" type="Label" parent="ExtraBtns"]
+margin_right = 222.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 2 )
+text = "Boss Rush Score: 0
+Infinite Mode Score: 0"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BossRushBtn" type="TextureButton" parent="ExtraBtns"]
+margin_top = 61.0
+margin_right = 222.0
+margin_bottom = 100.0
+focus_neighbour_top = NodePath("../BackBtn")
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BossRushLbl" type="Label" parent="ExtraBtns/BossRushBtn"]
+margin_right = 222.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 2 )
+text = "Boss Rush"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfiniteBtn" type="TextureButton" parent="ExtraBtns"]
+modulate = Color( 0.537255, 0.537255, 0.537255, 1 )
+margin_top = 104.0
+margin_right = 222.0
+margin_bottom = 143.0
+disabled = true
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="InfiniteLbl" type="Label" parent="ExtraBtns/InfiniteBtn"]
+margin_right = 222.0
+margin_bottom = 40.0
+custom_fonts/font = SubResource( 2 )
+text = "Infinite Mode"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Lock" type="Sprite" parent="ExtraBtns/InfiniteBtn"]
+position = Vector2( 110.858, 19.716 )
+scale = Vector2( 1.47247, 1.47247 )
+texture = ExtResource( 16 )
+
+[node name="BackBtn" type="TextureButton" parent="ExtraBtns"]
+margin_top = 147.0
+margin_right = 222.0
+margin_bottom = 186.0
+focus_neighbour_bottom = NodePath("../BossRushBtn")
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackLbl" type="Label" parent="ExtraBtns/BackBtn"]
+margin_right = 222.0
+margin_bottom = 39.0
+size_flags_horizontal = 3
+size_flags_vertical = 7
+custom_fonts/font = SubResource( 2 )
+text = "Back"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="TitleContainer" type="CenterContainer" parent="."]
 margin_right = 1026.0
 margin_bottom = 237.0
@@ -460,6 +559,7 @@ anims/reset = SubResource( 6 )
 [node name="Player" parent="AnimationPlayer" instance=ExtResource( 5 )]
 position = Vector2( 503.579, 528.93 )
 scale = Vector2( 2, 2 )
+hasControl = false
 
 [node name="Bullet_Straight" parent="AnimationPlayer" instance=ExtResource( 10 )]
 position = Vector2( 849.969, -74.428 )
@@ -496,10 +596,10 @@ bus = "SFX"
 
 [connection signal="button_up" from="MainBtns/PlayBtn" to="." method="_on_Menu_button_up" binds= [ "play" ]]
 [connection signal="mouse_entered" from="MainBtns/PlayBtn" to="." method="_on_Btn_mouse_entered"]
-[connection signal="button_up" from="MainBtns/InfiniteBtn" to="." method="_on_Menu_button_up" binds= [ "infinite" ]]
-[connection signal="mouse_entered" from="MainBtns/InfiniteBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="button_up" from="MainBtns/TutorialBtn" to="." method="_on_Menu_button_up" binds= [ "tutorial" ]]
 [connection signal="mouse_entered" from="MainBtns/TutorialBtn" to="." method="_on_Btn_mouse_entered"]
+[connection signal="button_up" from="MainBtns/ExtrasBtn" to="." method="_on_Menu_button_up" binds= [ "extras" ]]
+[connection signal="mouse_entered" from="MainBtns/ExtrasBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="button_up" from="MainBtns/OptionsBtn" to="." method="_on_Menu_button_up" binds= [ "options" ]]
 [connection signal="mouse_entered" from="MainBtns/OptionsBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="button_up" from="MainBtns/CreditsBtn" to="." method="_on_Menu_button_up" binds= [ "credits" ]]
@@ -512,6 +612,12 @@ bus = "SFX"
 [connection signal="mouse_entered" from="PlayBtns/NewGameBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="button_up" from="PlayBtns/BackBtn" to="." method="_on_Menu_button_up" binds= [ "back" ]]
 [connection signal="mouse_entered" from="PlayBtns/BackBtn" to="." method="_on_Btn_mouse_entered"]
+[connection signal="button_up" from="ExtraBtns/BossRushBtn" to="." method="_on_Menu_button_up" binds= [ "BossRush" ]]
+[connection signal="mouse_entered" from="ExtraBtns/BossRushBtn" to="." method="_on_Btn_mouse_entered"]
+[connection signal="button_up" from="ExtraBtns/InfiniteBtn" to="." method="_on_Menu_button_up" binds= [ "infinite" ]]
+[connection signal="mouse_entered" from="ExtraBtns/InfiniteBtn" to="." method="_on_Btn_mouse_entered"]
+[connection signal="button_up" from="ExtraBtns/BackBtn" to="." method="_on_Menu_button_up" binds= [ "back" ]]
+[connection signal="mouse_entered" from="ExtraBtns/BackBtn" to="." method="_on_Btn_mouse_entered"]
 [connection signal="closed" from="CanvasLayer/Credits" to="." method="_on_Credits_closed"]
 
 [editable path="AnimationPlayer/Bullet_Straight"]

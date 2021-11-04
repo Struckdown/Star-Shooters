@@ -18,7 +18,8 @@ func updateCharge(charge):
 	$VBoxContainer/ChargeBar.material.set_shader_param("FillPercentage", charge)
 
 func updateScore():
-	$VBoxContainer/ScoreLbl.text = "SCORE\n{scoreText}".format({"scoreText":"%06d" % GameManager.score})
+	
+	$VBoxContainer/ScoreLbl.text = "SCORE\n{scoreText}".format({"scoreText":"%06d" % min(GameManager.score, 999999)})
 
 func updateLives(livesDelta):
 	livesCount += livesDelta

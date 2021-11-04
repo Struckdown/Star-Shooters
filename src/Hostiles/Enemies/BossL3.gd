@@ -48,3 +48,8 @@ func getPlayer():
 	if len(players) > 0:
 		p = players[0]
 	return p
+
+func _exit_tree():
+	._exit_tree()
+	for m in spawnedMinions:
+		m.destroy()
