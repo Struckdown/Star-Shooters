@@ -35,6 +35,7 @@ export(bool) var deathCountsAsWaveProgression = true
 var loadedGem = preload("res://Hostiles/GemSpawner.tscn")
 var timeSinceLastGoal := 0.0
 var levelManagerRef
+var explosionManagerRef
 
 signal destroyed
 signal tookDamage
@@ -43,6 +44,9 @@ signal wantsNewTarget
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	levelManagerRef = find_parent("Level")
+	var explosionManagers = get_tree().get_nodes_in_group("explosionManager")
+	if len(explosionManagers) > 0:
+		explosionManagerRef = explosionManagers[0]
 	if len(flyPaths) > 0:
 		flyPoints = get_node(flyPaths[flyPathIndex]).curve.get_baked_points()
 		
@@ -148,9 +152,8 @@ func aimAtTarget():
 					target = get_tree().get_nodes_in_group("Player")[0]
 
 func destroy():
-	explosionParticles = followingParticles.instance()
-	explosionParticles.init(explosionType, self)
-	get_viewport().add_child(explosionParticles)
+	if explosionManagerRef:
+		explosionManagerRef.requestExplosion("multi", position, self)
 	$AnimationPlayer.play("Death")
 	$ExplosionTimer.start()
 	for child in get_children():

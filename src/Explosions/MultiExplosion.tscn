@@ -33,7 +33,7 @@ script = ExtResource( 2 )
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
 autoplay = true
 bus = "SFX"

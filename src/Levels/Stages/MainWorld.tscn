@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Levels/LevelManager.gd" type="Script" id=1]
 [ext_resource path="res://Hostiles/Boss HP.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://Levels/LevelWon.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Levels/LevelBoundaries.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Levels/KillZone.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Levels/ExplosionPoolManager.tscn" type="PackedScene" id=15]
 
 [node name="Level" type="Node2D" groups=[
 "LevelManager",
@@ -82,6 +83,8 @@ position = Vector2( 407.679, 950 )
 position = Vector2( 410, 275 )
 
 [node name="EnemyArrowTrackerManager" parent="VPCgame/Viewport" instance=ExtResource( 6 )]
+
+[node name="ExplosionPoolManager" parent="VPCgame/Viewport" instance=ExtResource( 15 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

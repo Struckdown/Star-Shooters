@@ -20,6 +20,7 @@ anim_speed = 1.0
 
 [node name="ExplosionParticle" type="Particles2D"]
 material = SubResource( 1 )
+z_index = 1
 emitting = false
 amount = 1
 lifetime = 0.3
@@ -33,7 +34,6 @@ script = ExtResource( 2 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
-autoplay = true
 bus = "SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

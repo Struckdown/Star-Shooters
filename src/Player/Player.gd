@@ -40,6 +40,7 @@ var teleporting = false
 var cheatModeActive = false
 
 var levelManagerRef
+var explosionManagerRef
 
 signal destroyed
 signal gemCollected
@@ -49,6 +50,9 @@ func _ready():
 	var levelManagers = get_tree().get_nodes_in_group("LevelManager")
 	if len(levelManagers) > 0:
 		levelManagerRef = levelManagers[0]
+	var explosionManagers = get_tree().get_nodes_in_group("explosionManager")
+	if len(explosionManagers) > 0:
+		explosionManagerRef = explosionManagers[0]
 	applyUpgrades()
 
 
@@ -170,13 +174,11 @@ func spawnBullet(pos2Dgroup:Node2D, shotIndex):
 	get_parent().move_child(bInst, 2)	# Force bullet to be under space
 	bInst.position = self.position
 	var pos2D = pos2Dgroup.get_child(shotIndex)
-#	fireHOffset *= -1
-#	var offset = Vector2(fireHOffset, -10)
 	bInst.position += pos2D.position
 	bInst.rotation_degrees += pos2D.rotation_degrees - 90
 	bInst.scale = pos2D.scale
 	bInst.damage = shotDamage
-	
+	bInst.explosionManagerRef = explosionManagerRef
 
 
 func updateFakes():

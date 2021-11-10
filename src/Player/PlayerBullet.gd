@@ -2,6 +2,7 @@ extends Node2D
 
 var moveSpeed = 800
 var damage = 1
+var explosionManagerRef
 export(PackedScene) var explosion
 
 # Called when the node enters the scene tree for the first time.
@@ -23,12 +24,11 @@ func move(delta):
 
 # Destroy the bullet by playing a particle effect
 func destroy():
-	var e = explosion.instance()
-	get_parent().add_child(e)
-	e.global_position = global_position
-	var randomOffset = Vector2(rand_range(-5, 5), rand_range(0, -25))
-	e.position += randomOffset
-	e.emitting = true
+	if explosionManagerRef:
+		var pos = position
+		var randomOffset = Vector2(rand_range(-5, 5), rand_range(0, -25))
+		pos += randomOffset
+		explosionManagerRef.requestExplosion("single", pos)
 	queue_free()
 	
 
