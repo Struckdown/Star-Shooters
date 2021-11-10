@@ -332,7 +332,7 @@ texture = ExtResource( 3 )
 [node name="Planet" parent="Levels" instance=ExtResource( 6 )]
 position = Vector2( 253.906, 414.268 )
 levelDescription = "Alpha Sector"
-levelNumber = 1
+levelName = "1"
 missionName = "Learning the Ropes"
 missionBriefing = "Greetings Comrade! Welcome to BASIC training.
 Before we can send you out, you'll need to prove your skills. 
@@ -351,7 +351,7 @@ shape = SubResource( 1 )
 [node name="Planet2" parent="Levels" instance=ExtResource( 6 )]
 position = Vector2( 572.804, 482.603 )
 levelDescription = "Sector Beta"
-levelNumber = 2
+levelName = "2"
 missionName = "A Loss of Energy	"
 missionBriefing = "Incredible performance in your previous mission. Now that you're well acquainted with the capabilities of your spaceship, you will need to venture forth and carve out a path for us!
 
@@ -368,7 +368,7 @@ scale = Vector2( 1.5, 1.5 )
 [node name="Planet3" parent="Levels" instance=ExtResource( 6 )]
 position = Vector2( 898.804, 105.603 )
 levelDescription = "Sector Charlie"
-levelNumber = 3
+levelName = "3"
 missionName = "Revolving Troubles"
 missionBriefing = "Gadzooks! The Star Child evaporated the entire surface of the planet! And still the Federation would seek to aid the child! Destroy their blockade and continue the hunt! Let no ship slow your hand!"
 levelsToUnlock = [ NodePath("../Planet4") ]
@@ -399,7 +399,7 @@ anims/DisplayLevelInfo = SubResource( 3 )
 [node name="Planet4" parent="Levels" instance=ExtResource( 6 )]
 position = Vector2( 1345.14, 371.091 )
 levelDescription = "Sector Delta"
-levelNumber = 4
+levelName = "4"
 missionName = "Gravity Vectors"
 missionBriefing = "This entire planet has been ravaged! The entire ecosystem is inhabitable. The nearby  battle fleet armada must be responsible! Don't just float there, go blow some stuff up! They deserve death!"
 levelsToUnlock = [ NodePath("../Planet5") ]
@@ -423,7 +423,7 @@ scale = Vector2( 1, 1 )
 [node name="Planet5" parent="Levels" instance=ExtResource( 6 )]
 position = Vector2( 1793.88, 62.4397 )
 levelDescription = "Sector Echo"
-levelNumber = 5
+levelName = "5"
 missionName = "Orthogonal Flyby"
 missionBriefing = "Your next mission will be far more dangerous. A Titan class Destroyer is in the area. It is supported by two assault batteries, impervious to  your attacks.
 
@@ -448,7 +448,7 @@ shape = SubResource( 6 )
 [node name="Planet6" parent="Levels" instance=ExtResource( 6 )]
 position = Vector2( 1427.88, -275.56 )
 levelDescription = "Sector Foxtrot"
-levelNumber = 6
+levelName = "6"
 missionName = "Asteroid Defense"
 missionBriefing = "Oh, you survived the Titan? Well, uh, your upcoming mission will take place in an asteroid field. There will be no opportunity to re-energize your vessal, so spend your energy carefully."
 levelsToUnlock = [ NodePath("../Planet7") ]
@@ -469,7 +469,7 @@ shape = SubResource( 6 )
 [node name="Planet7" parent="Levels" instance=ExtResource( 6 )]
 position = Vector2( 880.998, -358.716 )
 levelDescription = "Sector Golf"
-levelNumber = 7
+levelName = "7"
 missionName = "The Bouncer"
 missionBriefing = "How are you still alive!? That last mission was supposed to kill- I mean it was rated as odds of survival were one in a million! Your flight skills are unsurmounted! You truly are our greatest pilot!
 

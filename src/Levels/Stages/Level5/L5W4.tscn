@@ -99,7 +99,8 @@ nthBulletIsGreen = [ 0 ]
 position = Vector2( 397.151, -136.906 )
 rotation = 1.57079
 pointsWorth = 250
-speed = 170.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 75
 gemValue = 15
 moveGoal = Vector2( 0, 300 )
@@ -120,7 +121,7 @@ bulletType = ExtResource( 2 )
 nthBulletIsGreen = [  ]
 
 [node name="BulletEmitter" parent="PivotShooter/WeaponManager/BulletEmitter" index="1" instance=ExtResource( 4 )]
-targetStyle = "straight"
+targetStyle = "atTarget"
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 90.0
@@ -128,7 +129,7 @@ amountOfBullets = 2
 volleyClipSize = 10
 clipReloadTime = 3.0
 bulletScale = Vector2( 1.2, 1.2 )
-bulletSpawnDelay = 0.05
+bulletSpawnDelay = 0.1
 bulletType = ExtResource( 6 )
 initialSpawnDelayConstant = 1.5
 initialSpawnDelayRandomRange = 0.0

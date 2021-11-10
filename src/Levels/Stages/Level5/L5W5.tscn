@@ -96,7 +96,8 @@ enemiesToDestroy = 3
 [node name="OrthogonalShooter" parent="." index="0" instance=ExtResource( 3 )]
 position = Vector2( 949.417, 121.706 )
 rotation = -3.14159
-speed = 160.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 50
 moveGoal = Vector2( -300, 0 )
 loopFlyPaths = true
@@ -132,7 +133,8 @@ nthBulletIsGreen = [ 0 ]
 [node name="TargetShooter" parent="." index="1" instance=ExtResource( 3 )]
 position = Vector2( 429.544, -122.754 )
 rotation = -4.71238
-speed = 160.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 50
 moveGoal = Vector2( 0, 200 )
 loopFlyPaths = true
@@ -174,7 +176,8 @@ nthBulletIsGreen = [ 0 ]
 [node name="TargetShooter2" parent="." index="2" instance=ExtResource( 3 )]
 position = Vector2( 206.514, -38.6219 )
 rotation = -4.71238
-speed = 160.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 50
 moveGoal = Vector2( 0, 200 )
 loopFlyPaths = true

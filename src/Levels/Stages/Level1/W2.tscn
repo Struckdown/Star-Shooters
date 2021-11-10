@@ -66,7 +66,8 @@ enemiesToDestroy = 3
 position = Vector2( 452.747, -140.55 )
 rotation = 1.57079
 pointsWorth = 150
-speed = 120.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 35
 gemValue = 15
 moveGoal = Vector2( 0, 200 )
@@ -92,7 +93,8 @@ nthBulletIsGreen = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ]
 [node name="ForwardShooter2" parent="." index="1" instance=ExtResource( 2 )]
 position = Vector2( 207.811, -57.3825 )
 rotation = 1.57079
-speed = 120.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 gemValue = 5
 flyingPattern = "hoverRandomPoint"
 
@@ -117,7 +119,8 @@ nthBulletIsGreen = [ 0, 1, 2, 3 ]
 [node name="ForwardShooter3" parent="." index="2" instance=ExtResource( 2 )]
 position = Vector2( 728.175, -64.7985 )
 rotation = 1.57079
-speed = 120.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 gemValue = 5
 flyingPattern = "hoverRandomPoint"
 

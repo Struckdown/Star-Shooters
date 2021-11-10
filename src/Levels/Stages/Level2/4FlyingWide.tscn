@@ -10,6 +10,8 @@ enemiesToDestroy = 4
 position = Vector2( 167.274, -78.3995 )
 rotation = 1.57657
 pointsWorth = 75
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 35
 flyingPattern = "hoverRandomPoint"
 
@@ -17,6 +19,8 @@ flyingPattern = "hoverRandomPoint"
 position = Vector2( 352.999, -83.1617 )
 rotation = 1.57657
 pointsWorth = 75
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 35
 flyingPattern = "hoverRandomPoint"
 
@@ -24,6 +28,8 @@ flyingPattern = "hoverRandomPoint"
 position = Vector2( 570.473, -76.8121 )
 rotation = 1.57657
 pointsWorth = 75
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 35
 flyingPattern = "hoverRandomPoint"
 
@@ -31,5 +37,7 @@ flyingPattern = "hoverRandomPoint"
 position = Vector2( 716.514, -72.0498 )
 rotation = 1.57657
 pointsWorth = 75
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 35
 flyingPattern = "hoverRandomPoint"

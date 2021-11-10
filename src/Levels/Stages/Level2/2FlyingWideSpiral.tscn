@@ -11,6 +11,8 @@ timeToNextWave = 5
 position = Vector2( 644.293, -92.9798 )
 rotation = 1.57079
 pointsWorth = 125
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 35
 gemValue = 15
 
@@ -22,6 +24,8 @@ bulletMovementSpeed = 130.0
 position = Vector2( 291.84, -92.9798 )
 rotation = 1.57079
 pointsWorth = 125
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 35
 gemValue = 15
 

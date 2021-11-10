@@ -1,9 +1,14 @@
 extends Node2D
 
 export(int) var pointsWorth = 100
-export(float) var speed = 140
-var velocity
-export(int) var maxHealth = 25
+export(float) var speed = 110
+export(float) var maxSpeed = 1.5
+export(bool) var useAcclerationInsteadOfLinearVelocity = false
+var velocity := Vector2.ZERO
+var acceleration := Vector2.ZERO
+export(float) var leashRadius = 10
+export(float) var slowingDistance := 50.0
+export(int) var maxHealth := 25
 onready var health = maxHealth
 export(float) var deathShakeIntensity = 3
 export(int) var gemValue = 10
@@ -11,6 +16,7 @@ export(PackedScene) var explosionType
 var followingParticles = preload("res://Utility/FollowingParticles.tscn")
 var explosionParticles
 export(Vector2) var moveGoal	# vector coordinate where enemy is trying to get to
+var originalMoveGoal
 export(Array, NodePath) var flyPaths
 #export(Array, float) var delayBetweenNextFlightPath #Not yet implemented
 var flyPathIndex = 0
@@ -19,7 +25,6 @@ var flyPoints
 var flyIndex = 0
 #export(NodePath) var moveGoalObject	# if given, try to move towards this object's position	#TODO. This is not implemented
 var levelBounds
-var levelViewport
 export(NodePath) var target	# thing to shoot
 export(String, "straight", "hoverRandomPoint", "hoverMoveGoal", "followPath", "homingNoStop", "TBD") var flyingPattern
 export(Vector2) var turningRateDegsBounds
@@ -28,7 +33,7 @@ var healthBarRef
 export(bool) var isBoss = false
 export(bool) var deathCountsAsWaveProgression = true
 var loadedGem = preload("res://Hostiles/GemSpawner.tscn")
-
+var timeSinceLastGoal := 0.0
 var levelManagerRef
 
 signal destroyed
@@ -41,19 +46,17 @@ func _ready():
 	if len(flyPaths) > 0:
 		flyPoints = get_node(flyPaths[flyPathIndex]).curve.get_baked_points()
 		
-	levelBounds = get_tree().get_nodes_in_group("LevelBoundary")
-	if len(levelBounds) > 0:
-		levelBounds = levelBounds[0]
-		levelViewport = levelBounds.get_parent()
 	target = get_tree().get_nodes_in_group("Player")
 	if len(target) > 0:
 		target = target[0]
 	if flyingPattern == "hoverMoveGoal":
 		moveGoal += position
-		#moveGoal.y += 200
-	if not moveGoal and levelBounds:
+		originalMoveGoal = moveGoal
+	if not moveGoal:
 		getNewMoveGoal()
+		originalMoveGoal = moveGoal
 	turningRateDeg = rand_range(turningRateDegsBounds[0], turningRateDegsBounds[1])
+
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -72,19 +75,27 @@ func _exit_tree():
 
 func move(d):
 	var deltaSpeed = speed*d*GameManager.gameSpeed
+	timeSinceLastGoal += d
+	acceleration = Vector2.ZERO
+	var distToEndPoint = position.distance_squared_to(moveGoal)
 	match flyingPattern:
 		"straight":
-			position += Vector2(deltaSpeed, 0).rotated(rotation)
+			acceleration = Vector2(deltaSpeed, 0).rotated(rotation)
 		"hoverRandomPoint", "hoverMoveGoal":
 			if moveGoal:
-				velocity = position.direction_to(moveGoal) * deltaSpeed
-				if position.distance_squared_to(moveGoal) > 5*5:
-					position += velocity
+				if (distToEndPoint <= slowingDistance or timeSinceLastGoal > 1) and useAcclerationInsteadOfLinearVelocity:
+					timeSinceLastGoal = 0
+					var r = leashRadius * sqrt(randf())
+					var theta = randf() * 2 * PI
+					var circlePoint = Vector2(originalMoveGoal.x+r*cos(theta), originalMoveGoal.y+r*sin(theta))
+					moveGoal = circlePoint
+				if distToEndPoint > slowingDistance:
+					acceleration = position.direction_to(moveGoal) * deltaSpeed
 		"followPath":
 			if len(flyPaths) <= 0:
 				return
 			var flyTarget = flyPoints[flyIndex]
-			if position.distance_to(flyTarget) < (deltaSpeed):	#fly point reached
+			if position.distance_to(flyTarget) < (deltaSpeed*4):	#fly point reached
 				flyIndex = wrapi(flyIndex + 1, 0, flyPoints.size())
 				flyTarget = flyPoints[flyIndex]
 				if flyIndex == 0:	# we reached the end of the current fly path
@@ -97,10 +108,11 @@ func move(d):
 							flyPoints = get_node(flyPaths[flyPathIndex]).curve.get_baked_points()
 						else:
 							queue_free()
-					
-			velocity = position.direction_to(flyTarget) * deltaSpeed
-			look_at(global_position+velocity)
-			position += velocity
+			acceleration = position.direction_to(flyTarget) * deltaSpeed
+			var desiredAngle = get_angle_to(global_position+acceleration)
+			var maxRotation = PI / 64
+			desiredAngle = sign(desiredAngle) * min(abs(desiredAngle), maxRotation)
+			rotation += desiredAngle
 		"homingNoStop":
 			var deltaAngle
 			var distToTarget = -1
@@ -112,9 +124,19 @@ func move(d):
 				emit_signal("wantsNewTarget")
 			if distToTarget > 0 and distToTarget <= 4000:
 				emit_signal("wantsNewTarget")
-			velocity = Vector2(deltaSpeed, 0).rotated(rotation) * deltaSpeed
-			position += velocity
+			acceleration = Vector2(deltaSpeed, 0).rotated(rotation) * deltaSpeed
 			rotation += min(abs(deltaAngle), deg2rad(turningRateDeg)) * sign(deltaAngle)
+
+	if useAcclerationInsteadOfLinearVelocity:
+		if distToEndPoint > slowingDistance:
+			velocity += acceleration.normalized() * deltaSpeed
+		else:
+			velocity *= distToEndPoint / slowingDistance
+		if velocity.length() > maxSpeed:
+			velocity = velocity/velocity.length() * maxSpeed
+	else:
+		velocity = acceleration.normalized() * deltaSpeed
+	position += velocity
 
 func aimAtTarget():
 	match flyingPattern:
@@ -186,7 +208,7 @@ func updateScratches():
 
 func getNewMoveGoal():
 	#var mapCenter = levelBounds.position
-	var mapSize = levelViewport.get_viewport().size
+	var mapSize = get_viewport().size
 	randomize()
 	var xRand = rand_range(mapSize.x * 0.1, mapSize.x * 0.9)
 	var yRand = rand_range(mapSize.y * 0.1, mapSize.y * 0.4) #+ 200	# 200 is from wave offset spawning things off-camera

@@ -63,9 +63,9 @@ func _process(delta):
 func _unhandled_input(event):
 	if event is InputEventKey and event.is_pressed():
 		if event.scancode == KEY_G:
-			print("Player: Cheat mode not allowed!")
-			#cheatModeActive = true
-			#print("Cheat mode activated")
+			#print("Player: Cheat mode not allowed!")
+			cheatModeActive = true
+			print("Player: Cheat mode activated")
 		if event.scancode == KEY_R:
 			match firePattern:
 				"2Straight":

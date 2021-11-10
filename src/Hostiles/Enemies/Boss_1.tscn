@@ -125,7 +125,8 @@ initialSpawnDelayRandomRange = 0.0
 nthBulletIsGreen = [ 0 ]
 emitting = false
 
-[node name="BulletEmitter" parent="." index="5" instance=ExtResource( 4 )]
+[node name="CircleEmitter" parent="." index="5" instance=ExtResource( 4 )]
+spawnAsChild = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 lifetime = 600.0

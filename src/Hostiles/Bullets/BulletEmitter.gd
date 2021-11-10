@@ -5,6 +5,7 @@ extends Node2D
 # Clip size: Amount of bullets that can be fired before the emitter must "reload" (ie a break between a burst of fire)
 
 # Emits bullets in patterns and is meant to be highly configurable
+export(bool) var spawnAsChild = false
 export(float) var rotationDegPerSec = 0	# deg
 export(float) var rotationPerVolley = 0 #deg
 export(float) var rotationRange = 0	# how many degrees the emitter can rotate before reversing direction, 0 means not used
@@ -126,6 +127,8 @@ func updatePosToShoot():
 
 # Additional rads is how much to rotate the fire arc by (in rads)
 func spawnBullets(delta, additionalRads):
+	if not $VisibilityNotifier2D.is_visible_in_tree():
+		return
 	$FireSFX.play()
 	for i in range(amountOfBullets):
 		if i in bulletsToSkip:	# allows for gaps in bullet patterns
@@ -136,7 +139,10 @@ func spawnBullets(delta, additionalRads):
 		var shouldHaveEnergyByChance = rand_range(0, 1)
 		if shouldHaveEnergyByChance <= makeBulletEnergizedAnywaysOdds:
 			b.setGeneratesEnergy(true)
-		get_viewport().add_child(b)
+		if spawnAsChild:
+			add_child(b)
+		else:
+			get_viewport().add_child(b)
 		b.global_position = global_position
 		b.global_rotation = global_rotation + additionalRads
 		

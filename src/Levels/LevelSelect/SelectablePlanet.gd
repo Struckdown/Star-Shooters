@@ -2,7 +2,7 @@ extends Node2D
 
 export(String, MULTILINE) var levelDescription # Sector Name
 var bestScore = 0
-export(int) var levelNumber
+export(String) var levelName
 signal playerNearby
 export(String, MULTILINE) var missionName
 export(String, MULTILINE) var missionBriefing
@@ -32,8 +32,8 @@ func updateIdleAnimation(delta) -> void:
 
 func set_description() -> void:
 	$LevelPanel/LevelDescription.text = levelDescription + "\n" + missionName
-	if str(levelNumber) in GameManager.stagesCompletedData:
-		bestScore = GameManager.stagesCompletedData[str(levelNumber)]
+	if levelName in GameManager.stagesCompletedData:
+		bestScore = GameManager.stagesCompletedData[levelName]
 	$LevelPanel/BestScoreLbl.text = "Best Score: " + str(bestScore)
 
 
@@ -62,6 +62,8 @@ func _on_DisplayArea2D_area_exited(area):
 func unlockLevel():
 	$Lock.hide()
 	unlocked = true
-	if str(levelNumber) in GameManager.stagesCompletedData:
+	if levelName in GameManager.stagesCompletedData:
 		for level in levelsToUnlock:
-			get_node(level).unlockLevel()
+			var otherLevel = get_node(level)
+			if not otherLevel.unlocked:	# avoids circular loops
+				otherLevel.unlockLevel()

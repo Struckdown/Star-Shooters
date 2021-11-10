@@ -139,7 +139,8 @@ enemiesToDestroy = 3
 position = Vector2( 353.213, -101.009 )
 rotation = 1.57079
 pointsWorth = 200
-speed = 50.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"
 
@@ -181,7 +182,8 @@ nthBulletIsGreen = [ 0, 1, 2, 3, 4 ]
 [node name="StandardShooter" parent="." index="1" instance=ExtResource( 4 )]
 position = Vector2( 139.066, -43.1303 )
 rotation = 1.57079
-speed = 120.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 70
 moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"
@@ -218,7 +220,8 @@ orbitalChildren = 6
 [node name="StandardShooter2" parent="." index="2" instance=ExtResource( 4 )]
 position = Vector2( 542.111, -43.1303 )
 rotation = 1.57079
-speed = 120.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 70
 moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"

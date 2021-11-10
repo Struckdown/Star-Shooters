@@ -96,7 +96,8 @@ enemiesToDestroy = 2
 [node name="StandardShooter" parent="." index="0" instance=ExtResource( 4 )]
 position = Vector2( 235.598, -43.1303 )
 rotation = 1.57079
-speed = 120.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 70
 moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"
@@ -127,6 +128,7 @@ fireAtLocationForWholeClip = false
 angleOfBulletSpread = 12.0
 amountOfBullets = 2
 volleyClipSize = 15
+clipReloadTime = 2.0
 bulletMovementSpeed = 120.0
 bulletSpawnDelay = 0.2
 bulletType = ExtResource( 8 )
@@ -153,7 +155,8 @@ nthBulletIsGreen = [ 0 ]
 [node name="StandardShooter2" parent="." index="1" instance=ExtResource( 4 )]
 position = Vector2( 404.609, -43.1303 )
 rotation = 1.57079
-speed = 120.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 70
 moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"

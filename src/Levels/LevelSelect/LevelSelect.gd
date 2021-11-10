@@ -48,7 +48,7 @@ func updateSelectedLevel(planet):
 	if planet == null:
 		selectedLevel = null
 	else:
-		selectedLevel = planet.levelNumber
+		selectedLevel = planet.levelName
 		$CanvasLayer/MissionBriefing.updateText(planet)
 
 

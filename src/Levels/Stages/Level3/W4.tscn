@@ -121,9 +121,10 @@ enemiesToDestroy = 5
 position = Vector2( 396.428, -77.398 )
 rotation = 1.57079
 pointsWorth = 125
-speed = 90.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 70
-moveGoal = Vector2( 0, 150 )
+moveGoal = Vector2( 0, 180 )
 flyingPattern = "hoverMoveGoal"
 
 [node name="BulletEmitter" parent="Enemy_Base/WeaponManager" index="0" instance=ExtResource( 3 )]
@@ -144,9 +145,10 @@ orbitalChildren = 3
 position = Vector2( 263.078, -77.398 )
 rotation = 1.57079
 pointsWorth = 125
-speed = 90.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 70
-moveGoal = Vector2( 0, 150 )
+moveGoal = Vector2( 0, 180 )
 flyingPattern = "hoverMoveGoal"
 
 [node name="AnimationPlayer" parent="Enemy_Base2" index="3"]
@@ -170,9 +172,10 @@ nthBulletIsGreen = [ 0, 1 ]
 position = Vector2( 535.021, -77.398 )
 rotation = 1.57079
 pointsWorth = 125
-speed = 90.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 70
-moveGoal = Vector2( 0, 150 )
+moveGoal = Vector2( 0, 180 )
 flyingPattern = "hoverMoveGoal"
 
 [node name="AnimationPlayer" parent="Enemy_Base3" index="3"]
@@ -195,9 +198,10 @@ nthBulletIsGreen = [ 0, 1 ]
 position = Vector2( 645.896, -77.398 )
 rotation = 1.57079
 pointsWorth = 125
-speed = 90.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 70
-moveGoal = Vector2( 0, 150 )
+moveGoal = Vector2( 0, 180 )
 flyingPattern = "hoverMoveGoal"
 
 [node name="AnimationPlayer" parent="Enemy_Base4" index="3"]
@@ -221,9 +225,10 @@ nthBulletIsGreen = [ 0, 1 ]
 position = Vector2( 140.217, -77.398 )
 rotation = 1.57079
 pointsWorth = 125
-speed = 90.0
+speed = 1.0
+useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 70
-moveGoal = Vector2( 0, 150 )
+moveGoal = Vector2( 0, 180 )
 flyingPattern = "hoverMoveGoal"
 
 [node name="AnimationPlayer" parent="Enemy_Base5" index="3"]
