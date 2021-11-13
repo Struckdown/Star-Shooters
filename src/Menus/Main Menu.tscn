@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Space Backgrounds/space_background_pack/ScrollingShader2.shader" type="Shader" id=1]
 [ext_resource path="res://Menus/Main Menu.gd" type="Script" id=2]
@@ -23,6 +23,12 @@ shader = ExtResource( 1 )
 shader_param/scroll_speed = 0.1
 
 [sub_resource type="DynamicFont" id=2]
+size = 24
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 12 )
+
+[sub_resource type="DynamicFont" id=7]
 size = 24
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
@@ -159,31 +165,35 @@ scale = Vector2( 4.07493, 2.76301 )
 texture = ExtResource( 3 )
 
 [node name="MainBtns" type="VBoxContainer" parent="."]
-margin_left = 741.0
-margin_top = 337.341
+margin_left = 711.0
+margin_top = 337.0
 margin_right = 963.0
-margin_bottom = 591.341
+margin_bottom = 591.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PlayBtn" type="TextureButton" parent="MainBtns"]
-margin_right = 222.0
+margin_right = 252.0
 margin_bottom = 39.0
 focus_neighbour_top = NodePath("../ExitBtn")
 focus_neighbour_bottom = NodePath("../TutorialBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
 texture_focused = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="PlayLbl" type="Label" parent="MainBtns/PlayBtn"]
-margin_right = 222.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 1.0
 custom_fonts/font = SubResource( 2 )
 text = "Play"
 align = 1
@@ -194,22 +204,26 @@ __meta__ = {
 
 [node name="TutorialBtn" type="TextureButton" parent="MainBtns"]
 margin_top = 43.0
-margin_right = 222.0
+margin_right = 252.0
 margin_bottom = 82.0
 focus_neighbour_top = NodePath("../PlayBtn")
 focus_neighbour_bottom = NodePath("../ExtrasBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
 texture_focused = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="TutorialLbl" type="Label" parent="MainBtns/TutorialBtn"]
-margin_right = 222.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 1.0
 custom_fonts/font = SubResource( 2 )
 text = "Tutorial"
 align = 1
@@ -220,22 +234,26 @@ __meta__ = {
 
 [node name="ExtrasBtn" type="TextureButton" parent="MainBtns"]
 margin_top = 86.0
-margin_right = 222.0
+margin_right = 252.0
 margin_bottom = 125.0
 focus_neighbour_top = NodePath("../TutorialBtn")
 focus_neighbour_bottom = NodePath("../OptionsBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
 texture_focused = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ExtrasLbl" type="Label" parent="MainBtns/ExtrasBtn"]
-margin_right = 222.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 1.0
 custom_fonts/font = SubResource( 2 )
 text = "Extras"
 align = 1
@@ -246,22 +264,26 @@ __meta__ = {
 
 [node name="OptionsBtn" type="TextureButton" parent="MainBtns"]
 margin_top = 129.0
-margin_right = 222.0
+margin_right = 252.0
 margin_bottom = 168.0
 focus_neighbour_top = NodePath("../ExtrasBtn")
 focus_neighbour_bottom = NodePath("../CreditsBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
 texture_focused = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="OptionsLbl" type="Label" parent="MainBtns/OptionsBtn"]
-margin_right = 222.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.026
+margin_bottom = -0.0139999
 custom_fonts/font = SubResource( 2 )
 text = "Options"
 align = 1
@@ -272,22 +294,26 @@ __meta__ = {
 
 [node name="CreditsBtn" type="TextureButton" parent="MainBtns"]
 margin_top = 172.0
-margin_right = 222.0
+margin_right = 252.0
 margin_bottom = 211.0
 focus_neighbour_top = NodePath("../OptionsBtn")
 focus_neighbour_bottom = NodePath("../ExitBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
 texture_focused = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="CreditsLbl" type="Label" parent="MainBtns/CreditsBtn"]
-margin_right = 222.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.026
+margin_bottom = -0.0139999
 custom_fonts/font = SubResource( 2 )
 text = "Credits"
 align = 1
@@ -298,22 +324,26 @@ __meta__ = {
 
 [node name="ExitBtn" type="TextureButton" parent="MainBtns"]
 margin_top = 215.0
-margin_right = 222.0
+margin_right = 252.0
 margin_bottom = 254.0
 focus_neighbour_top = NodePath("../CreditsBtn")
 focus_neighbour_bottom = NodePath("../PlayBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
 texture_focused = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ExitLbl" type="Label" parent="MainBtns/ExitBtn"]
-margin_right = 222.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.026
+margin_bottom = -0.0139999
 custom_fonts/font = SubResource( 2 )
 text = "Exit"
 align = 1
@@ -324,16 +354,16 @@ __meta__ = {
 
 [node name="PlayBtns" type="VBoxContainer" parent="."]
 visible = false
-margin_left = 741.0
-margin_top = 336.517
+margin_left = 711.0
+margin_top = 337.0
 margin_right = 963.0
-margin_bottom = 522.517
+margin_bottom = 523.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="MissionsCompletedLbl" type="Label" parent="PlayBtns"]
-margin_right = 222.0
+margin_right = 252.0
 margin_bottom = 57.0
 custom_fonts/font = SubResource( 2 )
 text = "Missions Completed: 0"
@@ -346,21 +376,25 @@ __meta__ = {
 
 [node name="ContinueBtn" type="TextureButton" parent="PlayBtns"]
 margin_top = 61.0
-margin_right = 222.0
+margin_right = 252.0
 margin_bottom = 100.0
 focus_neighbour_top = NodePath("../BackBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
 texture_focused = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ContinueLbl" type="Label" parent="PlayBtns/ContinueBtn"]
-margin_right = 222.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.026
+margin_bottom = -0.0139999
 custom_fonts/font = SubResource( 2 )
 text = "Continue"
 align = 1
@@ -371,20 +405,23 @@ __meta__ = {
 
 [node name="NewGameBtn" type="TextureButton" parent="PlayBtns"]
 margin_top = 104.0
-margin_right = 222.0
+margin_right = 252.0
 margin_bottom = 143.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
 texture_focused = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="NewGameLbl" type="Label" parent="PlayBtns/NewGameBtn"]
-margin_right = 222.0
-margin_bottom = 39.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_fonts/font = SubResource( 2 )
@@ -397,21 +434,24 @@ __meta__ = {
 
 [node name="BackBtn" type="TextureButton" parent="PlayBtns"]
 margin_top = 147.0
-margin_right = 222.0
+margin_right = 252.0
 margin_bottom = 186.0
 focus_neighbour_bottom = NodePath("../ContinueBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
 texture_focused = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BackLbl" type="Label" parent="PlayBtns/BackBtn"]
-margin_right = 222.0
-margin_bottom = 39.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_fonts/font = SubResource( 2 )
@@ -424,19 +464,19 @@ __meta__ = {
 
 [node name="ExtraBtns" type="VBoxContainer" parent="."]
 visible = false
-margin_left = 741.0
-margin_top = 336.517
+margin_left = 711.0
+margin_top = 337.0
 margin_right = 963.0
-margin_bottom = 522.517
+margin_bottom = 583.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ExtraInfoLbl" type="Label" parent="ExtraBtns"]
-margin_right = 222.0
-margin_bottom = 57.0
-custom_fonts/font = SubResource( 2 )
-text = "Boss Rush Score: 0
+margin_right = 252.0
+margin_bottom = 117.0
+custom_fonts/font = SubResource( 7 )
+text = "Boss Rush Score: 116153
 Infinite Mode Score: 0"
 align = 1
 valign = 1
@@ -446,22 +486,26 @@ __meta__ = {
 }
 
 [node name="BossRushBtn" type="TextureButton" parent="ExtraBtns"]
-margin_top = 61.0
-margin_right = 222.0
-margin_bottom = 100.0
+margin_top = 121.0
+margin_right = 252.0
+margin_bottom = 160.0
 focus_neighbour_top = NodePath("../BackBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
 texture_focused = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BossRushLbl" type="Label" parent="ExtraBtns/BossRushBtn"]
-margin_right = 222.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.026
+margin_bottom = -0.0139999
 custom_fonts/font = SubResource( 2 )
 text = "Boss Rush"
 align = 1
@@ -472,22 +516,26 @@ __meta__ = {
 
 [node name="InfiniteBtn" type="TextureButton" parent="ExtraBtns"]
 modulate = Color( 0.537255, 0.537255, 0.537255, 1 )
-margin_top = 104.0
-margin_right = 222.0
-margin_bottom = 143.0
+margin_top = 164.0
+margin_right = 252.0
+margin_bottom = 203.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 disabled = true
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
 texture_focused = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="InfiniteLbl" type="Label" parent="ExtraBtns/InfiniteBtn"]
-margin_right = 222.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 1.0
 custom_fonts/font = SubResource( 2 )
 text = "Infinite Mode"
 align = 1
@@ -497,27 +545,30 @@ __meta__ = {
 }
 
 [node name="Lock" type="Sprite" parent="ExtraBtns/InfiniteBtn"]
-position = Vector2( 110.858, 19.716 )
+position = Vector2( 125.608, 19.716 )
 scale = Vector2( 1.47247, 1.47247 )
 texture = ExtResource( 16 )
 
 [node name="BackBtn" type="TextureButton" parent="ExtraBtns"]
-margin_top = 147.0
-margin_right = 222.0
-margin_bottom = 186.0
+margin_top = 207.0
+margin_right = 252.0
+margin_bottom = 246.0
 focus_neighbour_bottom = NodePath("../BossRushBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 7 )
 texture_hover = ExtResource( 9 )
 texture_disabled = ExtResource( 8 )
 texture_focused = ExtResource( 9 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="BackLbl" type="Label" parent="ExtraBtns/BackBtn"]
-margin_right = 222.0
-margin_bottom = 39.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
 custom_fonts/font = SubResource( 2 )

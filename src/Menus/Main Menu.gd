@@ -20,6 +20,7 @@ func _ready():
 	BGM.transitionSong("res://Menus/MainMenuBGM.mp3")
 	get_node("MainBtns/PlayBtn").grab_focus()
 	$PlayBtns/MissionsCompletedLbl.text = "Missions Completed: " + str(len(GameManager.stagesCompletedData))
+	setupExtraInfolbl()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -103,3 +104,10 @@ func _on_Credits_closed():
 func resetMainMenuBullet():
 	$AnimationPlayer/Bullet_Straight/Area2D.add_to_group("generatesEnergy")
 
+func setupExtraInfolbl():
+	var bossRushScore = 0
+	if "BossRush" in GameManager.stagesCompletedData:
+		bossRushScore = GameManager.stagesCompletedData["BossRush"]
+	var finalString = "Boss Rush Score: " + str(bossRushScore) + "\n"
+	finalString += "Infinite Mode Score: " + str(0) 
+	$ExtraBtns/ExtraInfoLbl.text = finalString
