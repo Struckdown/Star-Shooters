@@ -12,8 +12,11 @@ var mapPlayerLastRot = 0
 var gameSpeed = 1	#1 is normal speed
 var instaKillMode = false
 var skipDialogue = false	# set on game over to true and reset on level select entered
+enum playerFireTypes{SPREAD,CHARGE,FOCUSED,REVERSE}
+var playerFireType = playerFireTypes.FOCUSED
 
 var saveGameFileName = "user://savegame.save"
+signal fireModeUpdated
 
 func _ready():
 	load_game()
@@ -114,3 +117,32 @@ func load_game():
 #
 #	save_game.close()
 #	print("Game loaded")
+
+func switchToNextFireMode():
+	match playerFireType:
+		GameManager.playerFireTypes.FOCUSED:
+			playerFireType = GameManager.playerFireTypes.SPREAD
+		GameManager.playerFireTypes.SPREAD:
+			playerFireType = GameManager.playerFireTypes.REVERSE
+		GameManager.playerFireTypes.REVERSE:
+			playerFireType = GameManager.playerFireTypes.CHARGE
+		GameManager.playerFireTypes.CHARGE:
+			playerFireType = GameManager.playerFireTypes.FOCUSED
+	emit_signal("fireModeUpdated")
+
+func updateFireMode(newType):
+	match newType:
+		GameManager.playerFireTypes.FOCUSED:
+			playerFireType = newType
+		GameManager.playerFireTypes.CHARGE:
+			playerFireType = newType
+		GameManager.playerFireTypes.REVERSE:
+			playerFireType = newType
+		GameManager.playerFireTypes.FOCUSED:
+			playerFireType = newType
+		_:
+			print("Tried to set an invalid fire mode!")
+			return
+	emit_signal("fireModeUpdated")
+
+	

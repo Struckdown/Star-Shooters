@@ -8,6 +8,10 @@ func _ready():
 	GameManager.resetPlayerLives()
 	livesCount = GameManager.playerLives
 	updateLives(0)
+	updateFireType()
+	var err = GameManager.connect("fireModeUpdated", self, "updateFireType")
+	if err:
+		print("Error:", err)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,7 +19,7 @@ func _ready():
 #	pass
 
 func updateCharge(charge):
-	$VBoxContainer/ChargeBar.material.set_shader_param("FillPercentage", charge)
+	$VBoxContainer/MarginContainer/ChargeBar.material.set_shader_param("FillPercentage", charge)
 
 func updateScore():
 	
@@ -29,3 +33,22 @@ func updateLives(livesDelta):
 			if firstUpdate:
 				life.hide()
 	firstUpdate = false
+
+func updateFireType():
+	var finalStr = "Fire Mode: "
+	var newTexture = "Blue"
+	match GameManager.playerFireType:
+		GameManager.playerFireTypes.FOCUSED:
+			finalStr += "Focused"
+			newTexture = "Blue"
+		GameManager.playerFireTypes.CHARGE:
+			finalStr += "Heavy"
+			newTexture = "Red"
+		GameManager.playerFireTypes.REVERSE:
+			finalStr += "Reverse"
+			newTexture = "Yellow"
+		GameManager.playerFireTypes.SPREAD:
+			finalStr += "Spread"
+			newTexture = "Green"
+	$VBoxContainer/HBoxContainer/FireModeLbl.text = finalStr
+	$VBoxContainer/HBoxContainer/FireTypeTexture.texture = load("res://Space Shooter Redux/PNG/Power-ups/powerup" + newTexture +"_bolt.png")

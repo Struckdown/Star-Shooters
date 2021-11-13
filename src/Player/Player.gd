@@ -18,7 +18,8 @@ var fireDelay = 0	# remaining time till next shot
 var fireDelayUpperBound# delay between each fired bullet
 var fireIndex = 0	# which pos2d to shoot from
 var shotDamage = 1	# how much damage each projectile does
-export(String, "2Straight", "4arc", "strongSlow", "forwardBackward") var firePattern setget updateFirePattern
+#enum playerFireTypes{SPREAD,CHARGE,FOCUSED,REVERSE}
+var firePattern
 
 export(float) var energyLevel = 0.0		# current energy
 var energyLimit = 250.0	# max amount of energy allowed
@@ -53,6 +54,10 @@ func _ready():
 	var explosionManagers = get_tree().get_nodes_in_group("explosionManager")
 	if len(explosionManagers) > 0:
 		explosionManagerRef = explosionManagers[0]
+	var err = GameManager.connect("fireModeUpdated", self, "updateFirePattern")
+	if err:
+		print("Error:", err)
+	updateFirePattern()
 	applyUpgrades()
 
 
@@ -70,16 +75,8 @@ func _unhandled_input(event):
 			#print("Player: Cheat mode not allowed!")
 			cheatModeActive = true
 			print("Player: Cheat mode activated")
-		if event.scancode == KEY_R:
-			match firePattern:
-				"2Straight":
-					updateFirePattern("4arc")
-				"4arc":
-					updateFirePattern("strongSlow")
-				"strongSlow":
-					updateFirePattern("forwardBackward")
-				"forwardBackward":
-					updateFirePattern("2Straight")
+	if event.is_action_pressed("switchWeapons"):
+		GameManager.switchToNextFireMode()
 	if event.is_action_pressed("fire"):
 		shouldFire = true
 
@@ -130,42 +127,46 @@ func applyInputs(delta):
 	fireDelay = max(0, fireDelay-delta)
 
 
-func updateFirePattern(_val):
-	firePattern = _val
+func updateFirePattern():
+	firePattern = GameManager.playerFireType
 	match firePattern:
-		"2Straight":
+		GameManager.playerFireTypes.FOCUSED:
 			fireDelayUpperBound = 0
 			energyThreshold = 1
 			shotDamage = 1
-		"4arc":
+		GameManager.playerFireTypes.SPREAD:
 			fireDelayUpperBound = 0.1
 			energyThreshold = 4
 			shotDamage = 1
-		"strongSlow":
+		GameManager.playerFireTypes.CHARGE:
 			fireDelayUpperBound = 0.5
 			energyThreshold = 30
 			shotDamage = 30
-		"forwardBackward":
+		GameManager.playerFireTypes.REVERSE:
 			fireDelayUpperBound = 0
 			energyThreshold = 3
 			shotDamage = 1
+		_:
+			print("No fire type matched!")
 
 func performAttack():
 	energyLevel -= energyThreshold
 	fireDelay = fireDelayUpperBound
 	emit_signal("energyUpdated")
 	match firePattern:
-		"2Straight":
+		GameManager.playerFireTypes.FOCUSED:
 			spawnBullet(get_node("SpritesRoot/Spaceship/FireGroups/2Straight"), fireIndex)
 			fireIndex = (fireIndex+1)%2
-		"4arc":
+		GameManager.playerFireTypes.SPREAD:
 			for i in range(4):
 				spawnBullet(get_node("SpritesRoot/Spaceship/FireGroups/4Arc"), i)
-		"strongSlow":
+		GameManager.playerFireTypes.CHARGE:
 			spawnBullet(get_node("SpritesRoot/Spaceship/FireGroups/strongSlow"), 0)
-		"forwardBackward":
+		GameManager.playerFireTypes.REVERSE:
 			for i in range(3):
 				spawnBullet(get_node("SpritesRoot/Spaceship/FireGroups/forwardBackward"), i)
+		_:
+			print("No attack pattern matched?")
 	
 func spawnBullet(pos2Dgroup:Node2D, shotIndex):
 	var bInst = bulletPrefab.instance()
