@@ -225,6 +225,7 @@ func _on_EnergyArea_area_entered(area):
 	if area.owner.is_in_group("Gem"):
 		area.owner.collect()
 		emit_signal("gemCollected")
+		$GemCollectorSFX.pitch_scale = rand_range(0.75, 1.75)
 		$GemCollectorSFX.play()
 
 func spawnEnergyCollectedParticles():
