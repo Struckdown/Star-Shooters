@@ -14,7 +14,7 @@ func _ready():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Game Over":
-		if GameManager.stage == 0:
+		if GameManager.stage == "0":
 			SceneTransition.transitionToScene("res://Menus/Main Menu.tscn")
 		else:
 			emit_signal("gameOverAnimationFinished")

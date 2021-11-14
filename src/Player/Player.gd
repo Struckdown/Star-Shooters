@@ -75,9 +75,9 @@ func _unhandled_input(event):
 			#print("Player: Cheat mode not allowed!")
 			cheatModeActive = true
 			print("Player: Cheat mode activated")
-	if event.is_action_pressed("switchWeapons"):
+	if event.is_action_pressed("switchWeapons") and hasControl:
 		GameManager.switchToNextFireMode()
-	if event.is_action_pressed("fire"):
+	if event.is_action_pressed("fire") and hasControl:
 		shouldFire = true
 
 
@@ -263,6 +263,7 @@ func takeDamage():
 		var followingP = load("res://Utility/FollowingParticles.tscn")
 		followingP = followingP.instance()
 		followingP.init(deathExplosion, self)
+		followingP.startEmitting()
 		get_tree().root.add_child(followingP)
 
 func spawn():

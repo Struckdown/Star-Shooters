@@ -28,20 +28,19 @@ outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 12 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=3]
 size = 24
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 12 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 48
 outline_size = 2
 outline_color = Color( 0.176471, 0.882353, 0.027451, 1 )
 font_data = ExtResource( 12 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "TitleScreenAnim"
+[sub_resource type="Animation" id=5]
 length = 14.0
 loop = true
 tracks/0/type = "value"
@@ -57,7 +56,7 @@ tracks/0/keys = {
 "values": [ Color( 0.176471, 0.882353, 0.027451, 1 ), Color( 0.713726, 0.65098, 0.121569, 1 ), Color( 0.4, 0.607843, 0.898039, 1 ), Color( 0.819608, 0.0509804, 0.807843, 1 ), Color( 0.647059, 0.572549, 0.317647, 1 ), Color( 0.176471, 0.882353, 0.027451, 1 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 4.0
 loop = true
 tracks/0/type = "value"
@@ -147,7 +146,7 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.5
 
 [node name="Main Menu" type="Control"]
@@ -475,7 +474,7 @@ __meta__ = {
 [node name="ExtraInfoLbl" type="Label" parent="ExtraBtns"]
 margin_right = 252.0
 margin_bottom = 117.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 3 )
 text = "Boss Rush Score: 116153
 Infinite Mode Score: 0"
 align = 1
@@ -591,7 +590,7 @@ margin_left = 267.0
 margin_top = 91.0
 margin_right = 759.0
 margin_bottom = 145.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Star Shooters"
 align = 1
 __meta__ = {
@@ -600,12 +599,12 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TitleContainer"]
 autoplay = "TitleScreenAnim"
-anims/TitleScreenAnim = SubResource( 4 )
+anims/TitleScreenAnim = SubResource( 5 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "default"
-anims/default = SubResource( 5 )
-anims/reset = SubResource( 6 )
+anims/default = SubResource( 6 )
+anims/reset = SubResource( 7 )
 
 [node name="Player" parent="AnimationPlayer" instance=ExtResource( 5 )]
 position = Vector2( 503.579, 528.93 )

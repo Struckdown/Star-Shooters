@@ -14,12 +14,12 @@ func _ready():
 		$SingleExplosions.add_child(e)
 		e.position = Vector2(-100, 100)
 		e.get_node("Timer").stop()
+		e.get_node("AudioStreamPlayer").playing = false
 	for _i in range(maxExplosionsAllowed):
 		var e = followingParticles.instance()
 		$MultiExplosions.add_child(e)
 		e.position = Vector2(-100, 100)
 		e.init(multiExplosion, null, false)
-		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
