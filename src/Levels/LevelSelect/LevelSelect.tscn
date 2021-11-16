@@ -515,10 +515,10 @@ levels = NodePath("../../Levels")
 
 [node name="Pause Menu" parent="CanvasLayer" instance=ExtResource( 5 )]
 visible = false
-margin_left = 303.799
-margin_top = 98.4002
-margin_right = -320.201
-margin_bottom = -101.6
+margin_left = 230.0
+margin_top = 66.0
+margin_right = -256.0
+margin_bottom = -69.0
 
 [connection signal="playerNearby" from="UpgradePlanet" to="." method="_on_UpgradePlanet_playerNearby"]
 [connection signal="playerNearby" from="StatsZone" to="." method="_on_StatsZone_playerNearby"]

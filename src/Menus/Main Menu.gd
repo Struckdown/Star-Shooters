@@ -78,6 +78,8 @@ func _on_Menu_button_up(btn):
 		"exit":
 			if $MainBtns/ExitBtn.is_hovered():
 				$ButtonClickedSFX.play()
+				SceneTransition.fadetoBlack()
+				yield(SceneTransition, "fadeFinished")
 				get_tree().quit()
 		"BossRush":
 			if $ExtraBtns/BossRushBtn.is_hovered():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Menus/Settings.gd" type="Script" id=1]
 [ext_resource path="res://Menus/Pause Menu/PauseFont.tres" type="DynamicFont" id=2]
@@ -8,21 +8,32 @@
 [ext_resource path="res://Menus/UI_ButtonHovered.wav" type="AudioStream" id=6]
 [ext_resource path="res://Menus/UI_ButtonClicked.mp3" type="AudioStream" id=7]
 [ext_resource path="res://Art Packs/Space Shooter GUI/PNG/Pause/SelectedTable.png" type="Texture" id=8]
+[ext_resource path="res://Menus/RebindableBtnsFont.tres" type="DynamicFont" id=9]
+[ext_resource path="res://Art Packs/GDQuest/BlackSquare.png" type="Texture" id=10]
+[ext_resource path="res://Art Packs/Fonts/SourceSansProRegular/SourceSansPro-Semibold.ttf" type="DynamicFontData" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 size = 40
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 24
-font_data = ExtResource( 3 )
+[sub_resource type="StyleBoxEmpty" id=2]
 
-[sub_resource type="DynamicFont" id=3]
-font_data = ExtResource( 3 )
+[sub_resource type="StyleBoxEmpty" id=3]
 
 [sub_resource type="DynamicFont" id=4]
 size = 24
 font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=5]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 32
+font_data = ExtResource( 11 )
 
 [node name="Settings" type="MarginContainer"]
 anchor_right = 1.0
@@ -37,20 +48,18 @@ __meta__ = {
 margin_right = 1024.0
 margin_bottom = 600.0
 texture = ExtResource( 4 )
+patch_margin_left = 63
+patch_margin_right = 62
+patch_margin_bottom = 40
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PauseCtrl" type="Control" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SettingsLbl" type="Label" parent="PauseCtrl"]
+[node name="SettingsLbl" type="Label" parent="Window"]
 anchor_right = 1.0
-margin_bottom = 71.0
+anchor_bottom = 1.0
+margin_top = 20.7895
+margin_bottom = -534.211
 custom_fonts/font = SubResource( 1 )
 text = "Settings"
 align = 1
@@ -59,271 +68,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseCtrl"]
-anchor_left = 0.076
-anchor_top = 0.248
-anchor_right = 0.914
-anchor_bottom = 0.655
-margin_left = 0.175995
-margin_top = 0.199997
-margin_right = 0.0639648
-margin_bottom = -3.05176e-05
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer" type="HBoxContainer" parent="PauseCtrl/VBoxContainer"]
-margin_right = 857.0
-margin_bottom = 57.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="MusicLbl" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer"]
-margin_top = 15.0
-margin_right = 155.0
-margin_bottom = 42.0
-rect_min_size = Vector2( 155, 0 )
-custom_fonts/font = SubResource( 2 )
-text = "Music"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PercentMin" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer"]
-margin_left = 159.0
-margin_top = 19.0
-margin_right = 183.0
-margin_bottom = 37.0
-custom_fonts/font = SubResource( 3 )
-text = "0%"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HSliderMusic" type="HSlider" parent="PauseCtrl/VBoxContainer/HBoxContainer"]
-margin_left = 187.0
-margin_right = 809.0
-margin_bottom = 57.0
-focus_neighbour_top = NodePath("../../../ResumeBtn")
-focus_neighbour_bottom = NodePath("../../HBoxContainer2/HSliderSFX")
-size_flags_horizontal = 3
-size_flags_vertical = 3
-step = 5.0
-value = 100.0
-tick_count = 10
-ticks_on_borders = true
-
-[node name="PercentMax" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer"]
-margin_left = 813.0
-margin_top = 19.0
-margin_right = 857.0
-margin_bottom = 37.0
-custom_fonts/font = SubResource( 3 )
-text = "100%"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="PauseCtrl/VBoxContainer"]
-margin_top = 61.0
-margin_right = 857.0
-margin_bottom = 119.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SFXLbl" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer2"]
-margin_top = 15.0
-margin_right = 155.0
-margin_bottom = 42.0
-rect_min_size = Vector2( 155, 0 )
-custom_fonts/font = SubResource( 4 )
-text = "SFX"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PercentMin" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer2"]
-margin_left = 159.0
-margin_top = 20.0
-margin_right = 183.0
-margin_bottom = 38.0
-custom_fonts/font = SubResource( 3 )
-text = "0%"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HSliderSFX" type="HSlider" parent="PauseCtrl/VBoxContainer/HBoxContainer2"]
-margin_left = 187.0
-margin_right = 809.0
-margin_bottom = 58.0
-focus_neighbour_top = NodePath("../../HBoxContainer/HSliderMusic")
-focus_neighbour_bottom = NodePath("../../HBoxContainer3/HSliderSpeed")
-size_flags_horizontal = 3
-size_flags_vertical = 3
-step = 5.0
-value = 100.0
-tick_count = 10
-ticks_on_borders = true
-
-[node name="PercentMax" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer2"]
-margin_left = 813.0
-margin_top = 20.0
-margin_right = 857.0
-margin_bottom = 38.0
-custom_fonts/font = SubResource( 3 )
-text = "100%"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="PauseCtrl/VBoxContainer"]
-margin_top = 123.0
-margin_right = 857.0
-margin_bottom = 181.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="SpeedLbl" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer3"]
-margin_right = 140.0
-margin_bottom = 57.0
-rect_min_size = Vector2( 140, 0 )
-custom_fonts/font = SubResource( 4 )
-text = "Enemy Speed"
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="PercentMin" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer3"]
-margin_left = 144.0
-margin_top = 20.0
-margin_right = 181.0
-margin_bottom = 38.0
-grow_horizontal = 0
-rect_min_size = Vector2( 20, 0 )
-custom_fonts/font = SubResource( 3 )
-text = "50%"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HSliderSpeed" type="HSlider" parent="PauseCtrl/VBoxContainer/HBoxContainer3"]
-margin_left = 185.0
-margin_right = 809.0
-margin_bottom = 58.0
-focus_neighbour_top = NodePath("../../HBoxContainer2/HSliderSFX")
-focus_neighbour_bottom = NodePath("../../HBoxContainer4/Checkbox")
-size_flags_horizontal = 3
-size_flags_vertical = 3
-min_value = 0.5
-max_value = 1.5
-step = 0.05
-value = 1.0
-tick_count = 10
-ticks_on_borders = true
-
-[node name="PercentMax" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer3"]
-margin_left = 813.0
-margin_top = 20.0
-margin_right = 857.0
-margin_bottom = 38.0
-custom_fonts/font = SubResource( 3 )
-text = "150%"
-align = 1
-valign = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="PauseCtrl/VBoxContainer"]
-margin_top = 185.0
-margin_right = 857.0
-margin_bottom = 243.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FullscreenLbl" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer4"]
-margin_top = 15.0
-margin_right = 211.0
-margin_bottom = 42.0
-rect_min_size = Vector2( 140, 0 )
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 4 )
-text = "Full Screen"
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Checkbox" type="CheckBox" parent="PauseCtrl/VBoxContainer/HBoxContainer4"]
-margin_left = 215.0
-margin_right = 426.0
-margin_bottom = 58.0
-focus_neighbour_top = NodePath("../../HBoxContainer3/HSliderSpeed")
-focus_neighbour_bottom = NodePath("../../../ResumeBtn")
-size_flags_horizontal = 3
-size_flags_vertical = 3
-align = 1
-expand_icon = true
-
-[node name="InstaKillLbl" type="Label" parent="PauseCtrl/VBoxContainer/HBoxContainer4"]
-margin_left = 430.0
-margin_right = 641.0
-margin_bottom = 57.0
-rect_min_size = Vector2( 140, 0 )
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 4 )
-text = "Insta Kill Mode"
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Checkbox2" type="CheckBox" parent="PauseCtrl/VBoxContainer/HBoxContainer4"]
-margin_left = 645.0
-margin_right = 857.0
-margin_bottom = 58.0
-focus_neighbour_top = NodePath("../../HBoxContainer3/HSliderSpeed")
-focus_neighbour_bottom = NodePath("../../../ResumeBtn")
-size_flags_horizontal = 3
-size_flags_vertical = 3
-align = 1
-expand_icon = true
-
-[node name="ResumeBtn" type="TextureButton" parent="PauseCtrl"]
+[node name="ResumeBtn" type="TextureButton" parent="Window"]
 anchor_left = 0.324
 anchor_top = 0.793
 anchor_right = 0.677
@@ -331,8 +76,7 @@ anchor_bottom = 0.95
 margin_left = 0.223999
 margin_top = 0.199982
 margin_right = -0.248047
-focus_neighbour_top = NodePath("../VBoxContainer/HBoxContainer4/Checkbox")
-focus_neighbour_bottom = NodePath("../VBoxContainer/HBoxContainer/HSliderMusic")
+focus_neighbour_top = NodePath("../TabContainer")
 size_flags_vertical = 3
 texture_normal = ExtResource( 5 )
 texture_focused = ExtResource( 8 )
@@ -341,7 +85,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ResumeLbl" type="Label" parent="PauseCtrl/ResumeBtn"]
+[node name="ResumeLbl" type="Label" parent="Window/ResumeBtn"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -351,6 +95,603 @@ custom_fonts/font = ExtResource( 2 )
 text = "Resume"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TabContainer" type="TabContainer" parent="Window"]
+anchor_top = 0.138
+anchor_right = 1.0
+anchor_bottom = 0.783
+margin_top = 0.199997
+margin_bottom = 0.199982
+custom_styles/tab_fg = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseCtrl" type="Control" parent="Window/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/TabContainer/PauseCtrl"]
+anchor_left = 0.077
+anchor_top = 0.003
+anchor_right = 0.914
+anchor_bottom = 0.983
+margin_left = 0.151993
+margin_top = -0.089
+margin_right = 0.0640259
+margin_bottom = 0.17099
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Window/TabContainer/PauseCtrl/VBoxContainer"]
+margin_right = 857.0
+margin_bottom = 86.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MusicLbl" type="Label" parent="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer"]
+margin_top = 29.0
+margin_right = 155.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 155, 0 )
+custom_fonts/font = SubResource( 4 )
+text = "Music"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PercentMin" type="Label" parent="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer"]
+margin_left = 159.0
+margin_top = 34.0
+margin_right = 183.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 5 )
+text = "0%"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSliderMusic" type="HSlider" parent="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer"]
+margin_left = 187.0
+margin_top = 35.0
+margin_right = 809.0
+margin_bottom = 51.0
+focus_neighbour_top = NodePath("../../../ResumeBtn")
+focus_neighbour_bottom = NodePath("../../HBoxContainer2/HSliderSFX")
+size_flags_horizontal = 3
+size_flags_vertical = 4
+step = 5.0
+value = 100.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="PercentMax" type="Label" parent="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer"]
+margin_left = 813.0
+margin_top = 34.0
+margin_right = 857.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 5 )
+text = "100%"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Window/TabContainer/PauseCtrl/VBoxContainer"]
+margin_top = 90.0
+margin_right = 857.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SFXLbl" type="Label" parent="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer2"]
+margin_top = 29.0
+margin_right = 155.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 155, 0 )
+custom_fonts/font = SubResource( 6 )
+text = "SFX"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PercentMin" type="Label" parent="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer2"]
+margin_left = 159.0
+margin_top = 34.0
+margin_right = 183.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 5 )
+text = "0%"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSliderSFX" type="HSlider" parent="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer2"]
+margin_left = 187.0
+margin_top = 35.0
+margin_right = 809.0
+margin_bottom = 51.0
+focus_neighbour_top = NodePath("../../HBoxContainer/HSliderMusic")
+focus_neighbour_bottom = NodePath("../../HBoxContainer3/HSliderSpeed")
+size_flags_horizontal = 3
+size_flags_vertical = 6
+step = 5.0
+value = 100.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="PercentMax" type="Label" parent="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer2"]
+margin_left = 813.0
+margin_top = 34.0
+margin_right = 857.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 5 )
+text = "100%"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Window/TabContainer/PauseCtrl/VBoxContainer"]
+margin_top = 180.0
+margin_right = 857.0
+margin_bottom = 266.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SpeedLbl" type="Label" parent="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer3"]
+margin_top = 14.0
+margin_right = 140.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 140, 0 )
+custom_fonts/font = SubResource( 6 )
+text = "Enemy Speed"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PercentMin" type="Label" parent="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer3"]
+margin_left = 144.0
+margin_top = 34.0
+margin_right = 181.0
+margin_bottom = 52.0
+grow_horizontal = 0
+rect_min_size = Vector2( 20, 0 )
+custom_fonts/font = SubResource( 5 )
+text = "50%"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HSliderSpeed" type="HSlider" parent="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer3"]
+margin_left = 185.0
+margin_top = 35.0
+margin_right = 809.0
+margin_bottom = 51.0
+focus_neighbour_top = NodePath("../../HBoxContainer2/HSliderSFX")
+focus_neighbour_bottom = NodePath("../../HBoxContainer4/Checkbox")
+size_flags_horizontal = 3
+size_flags_vertical = 4
+min_value = 0.5
+max_value = 1.5
+step = 0.05
+value = 1.0
+tick_count = 10
+ticks_on_borders = true
+
+[node name="PercentMax" type="Label" parent="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer3"]
+margin_left = 813.0
+margin_top = 34.0
+margin_right = 857.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 5 )
+text = "150%"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Window/TabContainer/PauseCtrl/VBoxContainer"]
+margin_top = 270.0
+margin_right = 857.0
+margin_bottom = 356.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FullscreenLbl" type="Label" parent="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer4"]
+margin_top = 29.0
+margin_right = 211.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 140, 0 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+text = "Full Screen"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Checkbox" type="CheckBox" parent="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer4"]
+margin_left = 215.0
+margin_right = 426.0
+margin_bottom = 86.0
+focus_neighbour_top = NodePath("../../HBoxContainer3/HSliderSpeed")
+focus_neighbour_bottom = NodePath("../../../ResumeBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+align = 1
+expand_icon = true
+
+[node name="InstaKillLbl" type="Label" parent="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer4"]
+margin_left = 430.0
+margin_top = 14.0
+margin_right = 641.0
+margin_bottom = 71.0
+rect_min_size = Vector2( 140, 0 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 6 )
+text = "Insta Kill Mode"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Checkbox2" type="CheckBox" parent="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer4"]
+margin_left = 645.0
+margin_right = 857.0
+margin_bottom = 86.0
+focus_neighbour_top = NodePath("../../HBoxContainer3/HSliderSpeed")
+focus_neighbour_bottom = NodePath("../../../ResumeBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+align = 1
+expand_icon = true
+
+[node name="ControlsCtrl" type="Control" parent="Window/TabContainer"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 24.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Window/TabContainer/ControlsCtrl"]
+anchor_left = 0.183594
+anchor_top = 0.0578512
+anchor_right = 0.828125
+anchor_bottom = 0.900826
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/TabContainer/ControlsCtrl/ScrollContainer"]
+margin_right = 660.0
+margin_bottom = 522.0
+size_flags_horizontal = 3
+
+[node name="move_up" type="HBoxContainer" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer"]
+margin_right = 648.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="ActionLbl" type="Label" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_up"]
+margin_top = 4.0
+margin_right = 320.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 9 )
+text = "Move Up"
+
+[node name="Spacer" type="TextureRect" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_up"]
+margin_left = 324.0
+margin_right = 484.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_up"]
+margin_left = 488.0
+margin_right = 648.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "W"
+
+[node name="move_left" type="HBoxContainer" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer"]
+margin_top = 66.0
+margin_right = 648.0
+margin_bottom = 128.0
+size_flags_horizontal = 3
+
+[node name="ActionLbl" type="Label" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_left"]
+margin_top = 4.0
+margin_right = 320.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 9 )
+text = "Move Left"
+
+[node name="Spacer" type="TextureRect" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_left"]
+margin_left = 324.0
+margin_right = 484.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_left"]
+margin_left = 488.0
+margin_right = 648.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "A"
+
+[node name="move_down" type="HBoxContainer" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer"]
+margin_top = 132.0
+margin_right = 648.0
+margin_bottom = 194.0
+size_flags_horizontal = 3
+
+[node name="ActionLbl" type="Label" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_down"]
+margin_top = 4.0
+margin_right = 320.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 9 )
+text = "Move Down"
+
+[node name="Spacer" type="TextureRect" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_down"]
+margin_left = 324.0
+margin_right = 484.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_down"]
+margin_left = 488.0
+margin_right = 648.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "S"
+
+[node name="move_right" type="HBoxContainer" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer"]
+margin_top = 198.0
+margin_right = 648.0
+margin_bottom = 260.0
+size_flags_horizontal = 3
+
+[node name="ActionLbl" type="Label" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_right"]
+margin_top = 4.0
+margin_right = 320.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 9 )
+text = "Move Right"
+
+[node name="Spacer" type="TextureRect" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_right"]
+margin_left = 324.0
+margin_right = 484.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_right"]
+margin_left = 488.0
+margin_right = 648.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "D"
+
+[node name="move_slow" type="HBoxContainer" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer"]
+margin_top = 264.0
+margin_right = 648.0
+margin_bottom = 326.0
+size_flags_horizontal = 3
+
+[node name="ActionLbl" type="Label" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_slow"]
+margin_top = 4.0
+margin_right = 320.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 9 )
+text = "Move Slow"
+
+[node name="Spacer" type="TextureRect" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_slow"]
+margin_left = 324.0
+margin_right = 484.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_slow"]
+margin_left = 488.0
+margin_right = 648.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "Shift"
+
+[node name="fire" type="HBoxContainer" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer"]
+margin_top = 330.0
+margin_right = 648.0
+margin_bottom = 392.0
+size_flags_horizontal = 3
+
+[node name="ActionLbl" type="Label" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/fire"]
+margin_top = 4.0
+margin_right = 320.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 9 )
+text = "Fire"
+
+[node name="Spacer" type="TextureRect" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/fire"]
+margin_left = 324.0
+margin_right = 484.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/fire"]
+margin_left = 488.0
+margin_right = 648.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "Z"
+
+[node name="switchWeapons" type="HBoxContainer" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer"]
+margin_top = 396.0
+margin_right = 648.0
+margin_bottom = 458.0
+size_flags_horizontal = 3
+
+[node name="ActionLbl" type="Label" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/switchWeapons"]
+margin_top = 4.0
+margin_right = 320.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 9 )
+text = "Cycle Weapons"
+
+[node name="Spacer" type="TextureRect" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/switchWeapons"]
+margin_left = 324.0
+margin_right = 484.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/switchWeapons"]
+margin_left = 488.0
+margin_right = 648.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "R"
+
+[node name="Reset" type="HBoxContainer" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer"]
+margin_top = 462.0
+margin_right = 648.0
+margin_bottom = 522.0
+
+[node name="ResetBtn" type="TextureButton" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/Reset"]
+margin_right = 648.0
+margin_bottom = 60.0
+rect_min_size = Vector2( 0, 60 )
+focus_neighbour_top = NodePath("../TabContainer")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource( 5 )
+texture_focused = ExtResource( 8 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResetLbl" type="Label" parent="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/Reset/ResetBtn"]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_top = -18.0
+margin_bottom = 18.0
+custom_fonts/font = ExtResource( 2 )
+text = "Reset Controls"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RebindControlsSelector" type="Control" parent="Window"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="TransparentBlackBG" type="TextureRect" parent="Window/RebindControlsSelector"]
+modulate = Color( 0, 0, 0, 0.258824 )
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+texture = ExtResource( 10 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RebindInstructionsBG" type="NinePatchRect" parent="Window/RebindControlsSelector"]
+anchor_left = 0.401
+anchor_top = 0.385
+anchor_right = 0.589
+anchor_bottom = 0.545
+margin_left = -231.624
+margin_top = -1.52588e-05
+margin_right = 245.864
+texture = ExtResource( 5 )
+patch_margin_left = 63
+patch_margin_right = 62
+patch_margin_bottom = 40
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RebindInstructions" type="Label" parent="Window/RebindControlsSelector/RebindInstructionsBG"]
+anchor_left = 0.153
+anchor_top = 0.219
+anchor_right = 0.801
+anchor_bottom = 0.719
+margin_left = -71.51
+margin_top = -0.0240021
+margin_right = 102.33
+margin_bottom = -0.0240021
+custom_fonts/font = SubResource( 7 )
+text = "Press the new input for: Move Left"
+align = 1
+valign = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -368,10 +709,18 @@ stream = ExtResource( 6 )
 bus = "SFX"
 
 [connection signal="visibility_changed" from="." to="." method="_on_Settings_visibility_changed"]
-[connection signal="value_changed" from="PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic" to="." method="_on_HSliderMusic_value_changed"]
-[connection signal="value_changed" from="PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX" to="." method="_on_HSliderSFX_value_changed"]
-[connection signal="value_changed" from="PauseCtrl/VBoxContainer/HBoxContainer3/HSliderSpeed" to="." method="_on_HSliderSpeed_value_changed"]
-[connection signal="toggled" from="PauseCtrl/VBoxContainer/HBoxContainer4/Checkbox" to="." method="_on_Checkbox_toggled"]
-[connection signal="toggled" from="PauseCtrl/VBoxContainer/HBoxContainer4/Checkbox2" to="." method="_on_Checkbox2_toggled"]
-[connection signal="mouse_entered" from="PauseCtrl/ResumeBtn" to="." method="_on_ResumeBtn_mouse_entered"]
-[connection signal="pressed" from="PauseCtrl/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]
+[connection signal="mouse_entered" from="Window/ResumeBtn" to="." method="_on_ResumeBtn_mouse_entered"]
+[connection signal="pressed" from="Window/ResumeBtn" to="." method="_on_ResumeBtn_pressed"]
+[connection signal="value_changed" from="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic" to="." method="_on_HSliderMusic_value_changed"]
+[connection signal="value_changed" from="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX" to="." method="_on_HSliderSFX_value_changed"]
+[connection signal="value_changed" from="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer3/HSliderSpeed" to="." method="_on_HSliderSpeed_value_changed"]
+[connection signal="toggled" from="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer4/Checkbox" to="." method="_on_Checkbox_toggled"]
+[connection signal="toggled" from="Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer4/Checkbox2" to="." method="_on_Checkbox2_toggled"]
+[connection signal="pressed" from="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_up/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "move_up" ]]
+[connection signal="pressed" from="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_left/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "move_left" ]]
+[connection signal="pressed" from="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_down/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "move_down" ]]
+[connection signal="pressed" from="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_right/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "move_right" ]]
+[connection signal="pressed" from="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/move_slow/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "move_slow" ]]
+[connection signal="pressed" from="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/fire/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "fire" ]]
+[connection signal="pressed" from="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/switchWeapons/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "switchWeapons" ]]
+[connection signal="pressed" from="Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/Reset/ResetBtn" to="." method="_on_ResetBtn_pressed"]
