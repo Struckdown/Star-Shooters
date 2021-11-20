@@ -56,7 +56,7 @@ func startFadeOut():
 	var initColor = modulate
 	var finalColor = initColor
 	finalColor[3] = 0
-	$EndOfLifeTween.interpolate_property(self, "modulate", initColor, finalColor, 1)
+	$EndOfLifeTween.interpolate_property(self, "modulate", initColor, finalColor, 0.3)
 	$EndOfLifeTween.start()
 
 func setGeneratesEnergy(generates):

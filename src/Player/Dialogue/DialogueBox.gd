@@ -11,6 +11,9 @@ var characterUpdatingAllowed = false
 var visibleCharacters = 0.0
 export(bool) var debug = false
 var allTextShown = false
+var textVariables = {
+	"playerName": "SampleVariableName"
+}
 
 signal finished
 
@@ -60,7 +63,17 @@ func advanceText():
 		return
 	$AudioStreamPlayer.play()
 	$AnimationPlayer.play("Show")
-	lbl.bbcode_text = currentTextScene[dialogueIndex]["dialogue"]
+	var args = []
+	if currentTextScene[dialogueIndex].has("args"):
+		args = currentTextScene[dialogueIndex]["args"]
+		for i in range(len(args)):
+			# Try to grab keybinding argument first
+			if InputMap.has_action(args[i]):
+				args[i] = InputMap.get_action_list(args[i])[0].as_text()
+				continue
+			if args[i] in textVariables:	# check if we have a custom variable
+				args[i] = textVariables[args[i]]
+	lbl.bbcode_text = currentTextScene[dialogueIndex]["dialogue"] % args
 	nameLbl.text = currentTextScene[dialogueIndex]["name"]
 	updatePortrait()
 

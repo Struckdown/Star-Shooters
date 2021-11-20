@@ -40,7 +40,8 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "You can use the [color=#ff3333]ARROW KEYS[/color] or [color=#ff3333]WASD[/color] to pilot the ship and [color=#ff3333]SHIFT[/color] to slow yourself down. You can see your pilot seat when you're moving slow.",
+			"dialogue": "You can use [color=#ff3333]%s%s%s%s[/color] to pilot the ship and [color=#ff3333]%s[/color] to slow yourself down. You can see your pilot seat when you're moving slow.",
+			"args": ["move_up", "move_left", "move_down", "move_right", "move_slow"]
 		},
 		{
 			"name": "Pilot",
@@ -60,7 +61,8 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "This will let the TitanCoreX shielding absorb the radiation of the laser and you'll be able to shoot it back using [color=#ff3333]SPACE[/color].",
+			"dialogue": "This will let the TitanCoreX shielding absorb the radiation of the laser and you'll be able to shoot it back using [color=#ff3333]%s[/color].",
+			"args": ["fire"],
 		},
 		{
 			"name": "Commander",

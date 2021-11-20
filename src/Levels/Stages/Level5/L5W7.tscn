@@ -63,12 +63,14 @@ flyingPattern = "hoverMoveGoal"
 isBoss = true
 
 [node name="Trailing Orb" type="Sprite" parent="Titan" index="0"]
+modulate = Color( 0.658824, 0.0784314, 0.0784314, 1 )
 position = Vector2( -31.5359, 111.621 )
 rotation = 4.09795
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 2 )
 
 [node name="Trailing Orb2" type="Sprite" parent="Titan" index="1"]
+modulate = Color( 0.658824, 0.0784314, 0.0784314, 1 )
 position = Vector2( -31.5354, -113.021 )
 rotation = -4.09794
 scale = Vector2( 0.4, 0.4 )
