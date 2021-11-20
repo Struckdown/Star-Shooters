@@ -8,7 +8,7 @@ var selectedRebindableHBox = null
 
 func _ready():
 	loadSettings()
-	$Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer4/Checkbox.pressed = OS.window_fullscreen
+	$Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox.pressed = OS.window_fullscreen
 	_on_Settings_visibility_changed()
 
 func _input(_event):
@@ -63,10 +63,10 @@ func save():
 	fileLock = true
 	var save_file = File.new()
 	save_file.open(optionsFileName, File.WRITE)
-	var bgm = $Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic.value
-	var sfx = $Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX.value
-	var speed = $Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer3/HSliderSpeed.value
-	var instaKill = $Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer4/Checkbox2.pressed
+	var bgm = $Window/TabContainer/General/VBoxContainer/HBoxContainer/HSliderMusic.value
+	var sfx = $Window/TabContainer/General/VBoxContainer/HBoxContainer2/HSliderSFX.value
+	var speed = $Window/TabContainer/General/VBoxContainer/HBoxContainer3/HSliderSpeed.value
+	var instaKill = $Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox2.pressed
 	save_file.store_var(bgm)
 	save_file.store_var(sfx)
 	save_file.store_var(speed)
@@ -86,12 +86,12 @@ func loadSettings():
 		var sfx = save_file.get_var()
 		var speed = save_file.get_var()
 		var instaKill = save_file.get_var()
-		$Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer/HSliderMusic.value = bgm
+		$Window/TabContainer/General/VBoxContainer/HBoxContainer/HSliderMusic.value = bgm
 		_on_HSliderMusic_value_changed(bgm)
-		$Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer2/HSliderSFX.value = sfx
+		$Window/TabContainer/General/VBoxContainer/HBoxContainer2/HSliderSFX.value = sfx
 		_on_HSliderSFX_value_changed(sfx)
-		$Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer3/HSliderSpeed.value = speed
-		$Window/TabContainer/PauseCtrl/VBoxContainer/HBoxContainer4/Checkbox2.pressed = instaKill
+		$Window/TabContainer/General/VBoxContainer/HBoxContainer3/HSliderSpeed.value = speed
+		$Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox2.pressed = instaKill
 		save_file.close()
 	fileLock = false
 
@@ -117,7 +117,7 @@ func _on_RebindableBtn_pressed(rebindableControl):
 	var focusOwner = get_focus_owner()
 	if focusOwner:
 		focusOwner.release_focus()
-	selectedRebindableHBox = get_node("Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/" + selectedRebindableControl)
+	selectedRebindableHBox = get_node("Window/TabContainer/Controls/ScrollContainer/VBoxContainer/" + selectedRebindableControl)
 	$Window/RebindControlsSelector.show()
 	$Window/RebindControlsSelector/RebindInstructionsBG/RebindInstructions.text = "Press the new input for: " + selectedRebindableHBox.get_child(0).text
 
@@ -132,7 +132,7 @@ func resetControls():
 			var btn = InputEventKey.new()
 			btn.scancode = val
 			InputMap.action_add_event(action, btn)
-			var hbox = get_node("Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/" + action)
+			var hbox = get_node("Window/TabContainer/Controls/ScrollContainer/VBoxContainer/" + action)
 			displayNewInput(hbox)
 
 
