@@ -69,6 +69,8 @@ radius = 12.7634
 radius = 12.6321
 
 [node name="Asteroid" type="RigidBody2D"]
+collision_layer = 2
+collision_mask = 7
 physics_material_override = SubResource( 1 )
 gravity_scale = 0.0
 linear_damp = 0.0
@@ -94,6 +96,7 @@ shape = SubResource( 10 )
 "Enemy",
 "Hostile",
 ]]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtArea"]
 shape = SubResource( 11 )

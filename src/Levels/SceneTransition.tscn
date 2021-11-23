@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Art Packs/GDQuest/BlackSquare.png" type="Texture" id=1]
 [ext_resource path="res://Levels/SceneTransition.gd" type="Script" id=2]
-[ext_resource path="res://Levels/SceneTransitionLaserBeam.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hostiles/LaserBeam.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Levels/SceneTransitionLaserSFX.mp3" type="AudioStream" id=4]
 
 [sub_resource type="Animation" id=1]
@@ -70,6 +70,38 @@ tracks/4/keys = {
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ 180.0, 270.0, 360.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("CanvasLayer/Node2D/LaserBeam:is_casting")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = false
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.07, 0.67 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/6/type = "method"
+tracks/6/path = NodePath("CanvasLayer/Node2D/LaserBeam")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.07, 0.67 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"values": [ {
+"args": [ false ],
+"method": "set_is_casting"
+}, {
+"args": [ true ],
+"method": "set_is_casting"
+}, {
+"args": [ false ],
+"method": "set_is_casting"
+} ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -191,6 +223,10 @@ offset = Vector2( 32, -32 )
 [node name="LaserBeam" parent="CanvasLayer/Node2D" instance=ExtResource( 3 )]
 visible = false
 rotation = -3.14159
+collision_mask = 0
+sceneTransitionSpecificBeam = true
+is_casting = true
+previewTime = 0.0
 
 [node name="LaserSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )

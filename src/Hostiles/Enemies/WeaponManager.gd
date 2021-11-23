@@ -9,6 +9,7 @@ var maxPhases
 var time = 0
 var active = true
 var weaponManagerParent = null
+export(float) var startDelay = 0.0
 export(bool) var debug = false
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +23,7 @@ func _ready():
 		weaponManagerParent = get_parent()
 		active = false
 	maxPhases = get_child_count()
+	yield(get_tree().create_timer(startDelay), "timeout")
 	if active:
 		updatePhase()	# only activate root
 

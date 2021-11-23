@@ -618,6 +618,9 @@ generatesEnergy = true
 energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed08New.png"
 titleScreenVersion = true
 
+[node name="Area2D" parent="AnimationPlayer/Bullet_Straight" index="0"]
+collision_layer = 1
+
 [node name="Sprite" parent="AnimationPlayer/Bullet_Straight" index="2"]
 texture = ExtResource( 4 )
 
@@ -625,6 +628,9 @@ texture = ExtResource( 4 )
 position = Vector2( 510.127, -89.272 )
 scale = Vector2( 3, 3 )
 titleScreenVersion = true
+
+[node name="Area2D" parent="AnimationPlayer/Bullet_Straight2" index="0"]
+collision_layer = 1
 
 [node name="Sprite" parent="AnimationPlayer/Bullet_Straight2" index="2"]
 texture = ExtResource( 11 )

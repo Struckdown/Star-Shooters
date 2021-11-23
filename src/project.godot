@@ -30,6 +30,7 @@ BGM="*res://Levels/BGM.tscn"
 GameManager="*res://GameManager.tscn"
 UpgradeManager="*res://Player/UpgradeManager.tscn"
 StatsManager="*res://Player/StatsManager.tscn"
+GlobalWorldEnvironment="*res://WorldEnvironment.tscn"
 
 [display]
 
@@ -129,6 +130,13 @@ switchWeapons={
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":82,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Enemy"
+2d_physics/layer_3="Player Projectile"
+2d_physics/layer_4="Enemy Projectile"
 
 [rendering]
 

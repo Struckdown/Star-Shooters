@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Art Packs/Struckdown/Triangle.png" type="Texture" id=5]
+[ext_resource path="res://Hostiles/LaserBeam.tscn" type="PackedScene" id=6]
 
 [sub_resource type="Animation" id=1]
 resource_name = "AnimateArrows"
@@ -38,7 +39,7 @@ tracks/1/keys = {
 enemiesToDestroy = 1
 
 [node name="Spiraler" parent="." index="0" instance=ExtResource( 2 )]
-position = Vector2( 449.904, -141.653 )
+position = Vector2( 411.763, -141.653 )
 rotation = 1.57079
 pointsWorth = 150
 maxHealth = 85
@@ -46,27 +47,22 @@ gemValue = 15
 moveGoal = Vector2( 0, 400 )
 flyingPattern = "hoverMoveGoal"
 
+[node name="WeaponManager" parent="Spiraler" index="4"]
+startDelay = 3.0
+
 [node name="BulletEmitter" parent="Spiraler/WeaponManager" index="0" instance=ExtResource( 3 )]
+rotationDegPerSec = 15.0
 useRotationAsCenterBullet = true
 angleOfBulletSpread = 180.0
-amountOfBullets = 2
+amountOfBullets = 0
 bulletSpawnDelay = 0.2
 bulletType = ExtResource( 4 )
 makeBulletEnergizedAnywaysOdds = 1.0
 
-[node name="BulletEmitter2" parent="Spiraler/WeaponManager/BulletEmitter" index="1" instance=ExtResource( 3 )]
-rotationPerVolley = 3.0
-fireAtLocationForWholeClip = false
-angleOfBulletSpread = 90.0
-amountOfBullets = 4
-volleyClipSize = 110
-clipReloadTime = 3.0
-bulletMovementSpeed = 80.0
-bulletSpawnDelay = 0.1
-bulletType = ExtResource( 4 )
-initialSpawnDelayConstant = 3.0
-initialSpawnDelayRandomRange = 0.0
-makeBulletEnergizedAnywaysOdds = 1.0
+[node name="LaserBeam" parent="Spiraler/WeaponManager/BulletEmitter" index="2" instance=ExtResource( 6 )]
+
+[node name="LaserBeam2" parent="Spiraler/WeaponManager/BulletEmitter" index="3" instance=ExtResource( 6 )]
+rotation = 3.14159
 
 [node name="Node2D" type="Node2D" parent="." index="1"]
 modulate = Color( 1, 1, 1, 0.226682 )
