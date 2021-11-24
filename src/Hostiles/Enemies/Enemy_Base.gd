@@ -165,7 +165,8 @@ func scaleOut():
 	$DeathScaleTween.start()
 
 func _on_ExplosionTimer_timeout():
-	levelManagerRef.addCameraShakeIntensity(deathShakeIntensity)
+	if levelManagerRef:
+		levelManagerRef.addCameraShakeIntensity(deathShakeIntensity)
 	var partsParticles = load("res://Explosions/PartsEmitter.tscn").instance()
 	get_viewport().add_child(partsParticles)
 	partsParticles.global_position = global_position

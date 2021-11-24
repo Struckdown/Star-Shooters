@@ -228,6 +228,10 @@ sceneTransitionSpecificBeam = true
 is_casting = true
 previewTime = 0.0
 
+[node name="Area2D" parent="CanvasLayer/Node2D/LaserBeam" index="1"]
+collision_layer = 0
+collision_mask = 0
+
 [node name="LaserSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 bus = "SFX"
