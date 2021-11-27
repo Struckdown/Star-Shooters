@@ -10,6 +10,7 @@ var previewWidth = 2.0
 export(float) var previewTime = 0.4
 var timesCast = 0
 
+
 func _ready():
 	setGeneratesEnergy(generatesEnergy)
 	set_is_casting(is_casting)
@@ -67,17 +68,20 @@ func set_is_casting(cast: bool) -> void:
 	set_physics_process(is_casting)
 
 func appear() -> void:
-	if sceneTransitionSpecificBeam and timesCast <= 1:
-		return
+	#if sceneTransitionSpecificBeam and timesCast <= 1:
+	#	return
+	$AudioStreamPlayer.play()
 	$Tween.stop_all()
-	$Tween.interpolate_property($Line2D, "width", 0, previewWidth, 0.4)
+	$Tween.interpolate_property($Line2D, "width", 0, previewWidth, previewTime)
 	$Tween.start()
 
 func disappear() -> void:
 	canCauseDamage = false
 	$Tween.stop_all()
-	$Tween.interpolate_property($Line2D, "width", $Line2D.width, 0, previewTime)
+	$Tween.interpolate_property($Line2D, "width", $Line2D.width, 0, 0.1)
 	$Tween.start()
+	$AudioStreamPlayer.stop()
+	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 
 
 func _on_Tween_tween_completed(object, _key):
@@ -86,4 +90,9 @@ func _on_Tween_tween_completed(object, _key):
 			$Tween.stop_all()
 			$Tween.interpolate_property($Line2D, "width", previewWidth, maxWidth, 0.2)
 			$Tween.start()
+			$Area2D/CollisionShape2D.disabled = false
 			canCauseDamage = true
+
+func _exit_tree():
+	print(get_stack())
+	print_stack()

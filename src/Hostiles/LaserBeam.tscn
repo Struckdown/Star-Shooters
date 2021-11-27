@@ -1,42 +1,43 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Hostiles/LaserBeam.gd" type="Script" id=1]
 [ext_resource path="res://Art Packs/GDQuest/glowing_circle_gray.png" type="Texture" id=2]
+[ext_resource path="res://Hostiles/LaserBeamSFX.mp3" type="AudioStream" id=3]
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 500 )
 
-[sub_resource type="Gradient" id=1]
+[sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=2]
-gradient = SubResource( 1 )
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
 
-[sub_resource type="Curve" id=3]
+[sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.572727, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=4]
-curve = SubResource( 3 )
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=6]
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 125.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 4 )
-color_ramp = SubResource( 2 )
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=6]
+[sub_resource type="ParticlesMaterial" id=7]
 flag_disable_z = true
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 250.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 4 )
-color_ramp = SubResource( 2 )
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=7]
+[sub_resource type="ParticlesMaterial" id=8]
 emission_shape = 2
 emission_box_extents = Vector3( 1, 1, 1 )
 flag_disable_z = true
@@ -45,13 +46,14 @@ initial_velocity = 250.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 tangential_accel = 100.0
-scale_curve = SubResource( 4 )
-color_ramp = SubResource( 2 )
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
 
 [node name="LaserBeam" type="RayCast2D"]
 modulate = Color( 0.4, 1.2, 1.5, 1 )
 cast_to = Vector2( 1000, 0 )
 script = ExtResource( 1 )
+laserLength = 1500.0
 generatesEnergy = true
 
 [node name="Line2D" type="Line2D" parent="."]
@@ -66,27 +68,33 @@ collision_layer = 8
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2( 500, 0 )
 rotation = -1.5708
-shape = SubResource( 8 )
+shape = SubResource( 1 )
+disabled = true
 
 [node name="Tween" type="Tween" parent="."]
 
 [node name="SourceParticles" type="Particles2D" parent="."]
 emitting = false
 lifetime = 0.3
-process_material = SubResource( 5 )
+process_material = SubResource( 6 )
 texture = ExtResource( 2 )
 
 [node name="ImpactParticles" type="Particles2D" parent="."]
 emitting = false
 lifetime = 0.3
-process_material = SubResource( 6 )
+process_material = SubResource( 7 )
 texture = ExtResource( 2 )
 
 [node name="BeamParticles" type="Particles2D" parent="."]
 emitting = false
 lifetime = 0.3
 local_coords = false
-process_material = SubResource( 7 )
+process_material = SubResource( 8 )
 texture = ExtResource( 2 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
+bus = "SFX"
 
 [connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

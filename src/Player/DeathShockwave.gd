@@ -1,8 +1,6 @@
 extends Node2D
 
-
 var active = true
-
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,12 +15,12 @@ func _ready():
 func _on_OuterCollision_area_entered(area):
 	if area.global_position.distance_to($Inner.global_position) <= $Inner/CollisionShape2D.shape.radius*scale.x:
 		return
-	if area.is_in_group("Hostile"):
+	if area.is_in_group("clearedByDeathShockwave"):
 		area.owner.queue_free()
 
 
 func _on_Inner_area_exited(area):
-	if area.is_in_group("Hostile") and active:
+	if area.is_in_group("clearedByDeathShockwave") and active:
 		if is_instance_valid(area.owner):
 			area.owner.queue_free()
 

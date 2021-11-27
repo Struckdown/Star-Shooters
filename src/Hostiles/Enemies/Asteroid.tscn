@@ -95,6 +95,7 @@ shape = SubResource( 10 )
 [node name="HurtArea" type="Area2D" parent="." groups=[
 "Enemy",
 "Hostile",
+"clearedByDeathShockwave",
 ]]
 collision_layer = 2
 

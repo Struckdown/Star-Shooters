@@ -129,8 +129,9 @@ func updatePosToShoot():
 func spawnBullets(delta, additionalRads):
 	if not $VisibilityNotifier2D.is_visible_in_tree():
 		return
-	$FireSFX.pitch_scale = rand_range(0.75, 2.5)
-	$FireSFX.play()
+	if amountOfBullets > 0:
+		$FireSFX.pitch_scale = rand_range(0.75, 2.5)
+		$FireSFX.play()
 	for i in range(amountOfBullets):
 		if i in bulletsToSkip:	# allows for gaps in bullet patterns
 			continue
