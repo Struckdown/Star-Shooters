@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://Player/Player Sprite Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -88,6 +88,23 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=7]
+resource_name = "HitInvuln"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.1, 0.15, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true ]
+}
+
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
@@ -101,19 +118,19 @@ tracks/0/keys = {
 "values": [ true, false, true, false, true, false, true, false, true, false, true ]
 }
 
-[sub_resource type="Gradient" id=8]
+[sub_resource type="Gradient" id=9]
 colors = PoolColorArray( 0.0280151, 0.580633, 0.796875, 1, 0.00160217, 0.352703, 0.410156, 1 )
 
-[sub_resource type="GradientTexture" id=9]
-gradient = SubResource( 8 )
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
 
-[sub_resource type="Curve" id=10]
+[sub_resource type="Curve" id=11]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=11]
-curve = SubResource( 10 )
+[sub_resource type="CurveTexture" id=12]
+curve = SubResource( 11 )
 
-[sub_resource type="ParticlesMaterial" id=12]
+[sub_resource type="ParticlesMaterial" id=13]
 emission_shape = 2
 emission_box_extents = Vector3( 5, 2, 1 )
 flag_disable_z = true
@@ -124,12 +141,13 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = 360.0
 angle_random = 1.0
-scale_curve = SubResource( 11 )
-color_ramp = SubResource( 9 )
+scale_curve = SubResource( 12 )
+color_ramp = SubResource( 10 )
 
 [node name="Player" type="Node2D" groups=[
 "Player",
 ]]
+visible = false
 script = ExtResource( 2 )
 hasControl = true
 deathExplosion = ExtResource( 4 )
@@ -249,9 +267,10 @@ anims/Flying = SubResource( 5 )
 anims/Spawn = SubResource( 6 )
 
 [node name="InvulnAnimPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Invuln"
+autoplay = "SpawnInvuln"
 playback_speed = 0.5
-anims/Invuln = SubResource( 7 )
+anims/HitInvuln = SubResource( 7 )
+anims/SpawnInvuln = SubResource( 8 )
 
 [node name="GemCollectorSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
@@ -272,7 +291,7 @@ position = Vector2( 0, 10.1466 )
 amount = 40
 explosiveness = 0.2
 local_coords = false
-process_material = SubResource( 12 )
+process_material = SubResource( 13 )
 
 [connection signal="area_entered" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_entered"]
 [connection signal="area_exited" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_exited"]

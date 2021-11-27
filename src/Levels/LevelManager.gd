@@ -73,6 +73,7 @@ func spawnWave():
 			$VPCgame/Viewport/EnemyArrowTrackerManager.startTrackingNewEnemy(e)
 		curWave.dialogueBoxRef = dialogueBoxRef
 		if curWave.dialogueRequest:
+			yield(get_tree().create_timer(curWave.dialogueRequestDelay), "timeout")
 			dialogueBoxRef.connect("finished", curWave, "markWaveFinished")
 			dialogueBoxRef.setUpNewSequence(curWave.dialogueRequest)
 

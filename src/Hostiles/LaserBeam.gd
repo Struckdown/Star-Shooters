@@ -92,7 +92,3 @@ func _on_Tween_tween_completed(object, _key):
 			$Tween.start()
 			$Area2D/CollisionShape2D.disabled = false
 			canCauseDamage = true
-
-func _exit_tree():
-	print(get_stack())
-	print_stack()

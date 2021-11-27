@@ -4,7 +4,7 @@ extends Node2D
 export(bool) var hasControl = false
 export(bool) var godMode = false
 var dying = false
-var respawnInvuln = true
+var invulnerable = true
 var inputVec = Vector2()	# this represents the Vec2 of button inputs by the player
 var inputVecLastFrame = Vector2()
 var slowMode = false	# While shift is held, move slower
@@ -242,7 +242,7 @@ func spawnEnergyCollectedParticles():
 
 # When the core is hit, you die
 func _on_CoreArea_area_entered(area):
-	if area.is_in_group("Hostile") and not dying and not respawnInvuln and not godMode:
+	if area.is_in_group("Hostile") and not dying and not invulnerable and not godMode:
 		var bul = area.owner
 		if bul.canCauseDamage and not cheatModeActive:
 			var HP = hitParticles.instance()
@@ -267,6 +267,9 @@ func takeDamage():
 		followingP.init(deathExplosion, self)
 		followingP.startEmitting()
 		get_tree().root.add_child(followingP)
+	else:
+		$InvulnAnimPlayer.play("HitInvuln")
+		invulnerable = true
 
 func spawn():
 	$AnimationPlayer.play("Spawn")	# Note this messes with the transform
@@ -288,7 +291,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 
 func _on_InvulnAnimPlayer_animation_finished(_anim_name):
-	respawnInvuln = false
+	invulnerable = false
 
 
 func _on_GemMagnetArea_area_entered(area):

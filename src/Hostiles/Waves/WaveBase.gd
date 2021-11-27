@@ -13,7 +13,8 @@ export(String) var bossName = ""
 export(String) var musicRequest = ""
 var bossHPRef	# set by level manager
 var waveFinishedSignalEmitted = false
-export(String) var dialogueRequest = ""
+export(String) var dialogueRequest = ""	# used by level manager. Maybe should be done here???
+export(float) var dialogueRequestDelay = 0.0	# used by level manager
 var dialogueBoxRef	# set by level manager
 
 signal waveFinished

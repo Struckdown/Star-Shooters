@@ -5,3 +5,4 @@
 [node name="WaveBase" instance=ExtResource( 1 )]
 waveAdvanceCondition = "other"
 dialogueRequest = "level1Slipstream"
+dialogueRequestDelay = 3.0

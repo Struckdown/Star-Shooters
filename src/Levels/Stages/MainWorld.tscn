@@ -20,7 +20,6 @@
 "LevelManager",
 ]]
 script = ExtResource( 1 )
-debug = true
 debugWave = 4
 
 [node name="VPCscoreboard" type="ViewportContainer" parent="."]
