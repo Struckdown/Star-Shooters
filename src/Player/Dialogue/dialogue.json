@@ -229,4 +229,50 @@
 			"dialogue": "...",
 		},
 	],
+	"level8Intro":[
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Uh, that's an impressive looking fleet.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "With your flying, you'll be fine. Probably.",
+		},
+	],
+	"level9Intro":[
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Things are really picking up.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "If it was worth doing, it wouldn't be easy.",
+		},
+	],
+	"level10Intro":[
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Listen kid. I wanted you to know that I'm proud of you.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Are you alright?",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Seriously, you've done incredible. I... think you should know the truth.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "The Star Shooter's project was our last effort to defeat the Federation.",
+		},
+	],
 }

@@ -1,0 +1,9 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Levels/Stages/Level.gd" type="Script" id=1]
+[ext_resource path="res://Levels/Stages/Level8/L8W1.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/Stages/Level8/Dialogue8.tscn" type="PackedScene" id=3]
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 1 )
+waves = [ ExtResource( 3 ), ExtResource( 2 ) ]
