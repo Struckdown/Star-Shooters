@@ -27,6 +27,7 @@ var wrapsRemaining = 0
 var hasEverBeenInBounds = false
 var bouncesRemaining = 0
 var directionVectorMultiplier = Vector2(1, 1)	# used for bounces
+var energyAmountToGenerate = 25.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

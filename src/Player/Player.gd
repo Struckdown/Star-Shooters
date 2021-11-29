@@ -215,12 +215,13 @@ func updateTeleport(delta):
 # Your energy shield gathers the energy!
 func _on_EnergyArea_area_entered(area):
 	if area.is_in_group("generatesEnergy"):
+		var energyAmountToGenerate = area.owner.energyAmountToGenerate
 		if area.owner.has_method("markEnergyDrained"):
 			area.owner.markEnergyDrained()
 		spawnEnergyCollectedParticles()
 		$EnergyParticleRoot/AbsorbSFX.play()
 		var oldEnergyLevel = energyLevel
-		energyLevel = min(energyLevel+(25*energyGainMultiplier), energyLimit)
+		energyLevel = min(energyLevel+(energyAmountToGenerate*energyGainMultiplier), energyLimit)
 		StatsManager.updateStats("chargeGained", energyLevel-oldEnergyLevel)
 		emit_signal("energyUpdated")
 	if area.owner.is_in_group("Gem"):

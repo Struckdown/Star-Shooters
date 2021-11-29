@@ -14,7 +14,7 @@ colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 gradient = SubResource( 2 )
 
 [sub_resource type="Curve" id=4]
-_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.572727, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.376569, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CurveTexture" id=5]
 curve = SubResource( 4 )
@@ -46,6 +46,7 @@ initial_velocity = 250.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 tangential_accel = 100.0
+scale = 0.68
 scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
@@ -55,6 +56,7 @@ cast_to = Vector2( 1000, 0 )
 script = ExtResource( 1 )
 laserLength = 1500.0
 generatesEnergy = true
+previewTime = 1.5
 
 [node name="Line2D" type="Line2D" parent="."]
 points = PoolVector2Array( 0, 0, 150, 150 )
@@ -87,7 +89,9 @@ texture = ExtResource( 2 )
 
 [node name="BeamParticles" type="Particles2D" parent="."]
 emitting = false
+amount = 32
 lifetime = 0.3
+visibility_rect = Rect2( -300, -300, 600, 600 )
 local_coords = false
 process_material = SubResource( 8 )
 texture = ExtResource( 2 )

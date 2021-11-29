@@ -9,15 +9,17 @@ var maxWidth = 10.0
 var previewWidth = 2.0
 export(float) var previewTime = 0.4
 var timesCast = 0
-
+var playerCheckerTimer = 0
+var playerCheckerTimerInterval = 0.1
+var energyAmountToGenerate = 3.0
 
 func _ready():
 	setGeneratesEnergy(generatesEnergy)
 	set_is_casting(is_casting)
 	cast_to = Vector2(laserLength, 0)
 
-func _process(_delta):
-	pass
+func _process(delta):
+	checkForPlayer(delta)
 
 func _physics_process(_delta: float) -> void:
 	var cast_point := cast_to
@@ -58,7 +60,6 @@ func toggleEmitting(state: bool) -> void:
 func set_is_casting(cast: bool) -> void:
 	timesCast += 1
 	is_casting = cast
-	$BeamParticles.emitting = is_casting
 	$SourceParticles.emitting = is_casting
 	if is_casting:
 		appear()
@@ -81,6 +82,7 @@ func disappear() -> void:
 	$Tween.interpolate_property($Line2D, "width", $Line2D.width, 0, 0.1)
 	$Tween.start()
 	$AudioStreamPlayer.stop()
+	$BeamParticles.emitting = false
 	$Area2D/CollisionShape2D.set_deferred("disabled", true)
 
 
@@ -90,5 +92,15 @@ func _on_Tween_tween_completed(object, _key):
 			$Tween.stop_all()
 			$Tween.interpolate_property($Line2D, "width", previewWidth, maxWidth, 0.2)
 			$Tween.start()
+			$BeamParticles.emitting = true
 			$Area2D/CollisionShape2D.disabled = false
 			canCauseDamage = true
+
+func checkForPlayer(delta: float) -> void:
+	playerCheckerTimer += delta
+	if playerCheckerTimer < playerCheckerTimerInterval:
+		return
+	playerCheckerTimer = 0
+	for a in $Area2D.get_overlapping_areas():
+		if a.is_in_group("PlayerOuterHitbox") and a.owner.has_method("_on_EnergyArea_area_entered"):
+			a.owner._on_EnergyArea_area_entered($Area2D)
