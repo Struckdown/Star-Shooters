@@ -192,8 +192,8 @@ func takeDamage(damage):
 		$HitSFX.play()
 	emit_signal("tookDamage", float(health)/float(maxHealth))	# used by weapon manager
 	updateScratches()
-	if healthBarRef:	# technically this won't work correctly if there is overkill
-		healthBarRef.applyDamage(1)
+	if healthBarRef:
+		healthBarRef.applyDamage(min(health, damage))
 	if health <= 0:
 		StatsManager.updateStats("enemiesKilled", 1)
 		if isBoss:
