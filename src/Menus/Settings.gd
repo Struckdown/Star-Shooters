@@ -24,6 +24,7 @@ func _unhandled_input(event):
 		$Window/RebindControlsSelector.hide()
 		selectedRebindableHBox = null
 		selectedRebindableControl = null
+		save()
 
 
 func _process(_delta):
@@ -61,17 +62,22 @@ func save():
 	if fileLock:
 		return
 	fileLock = true
-	var save_file = File.new()
-	save_file.open(optionsFileName, File.WRITE)
+	var config = ConfigFile.new()
+	var err = config.load(optionsFileName)
+	if err:	# file does not exist
+		print("No previous config detected")
 	var bgm = $Window/TabContainer/General/VBoxContainer/HBoxContainer/HSliderMusic.value
 	var sfx = $Window/TabContainer/General/VBoxContainer/HBoxContainer2/HSliderSFX.value
 	var speed = $Window/TabContainer/General/VBoxContainer/HBoxContainer3/HSliderSpeed.value
 	var instaKill = $Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox2.pressed
-	save_file.store_var(bgm)
-	save_file.store_var(sfx)
-	save_file.store_var(speed)
-	save_file.store_var(instaKill)
-	save_file.close()
+	config.set_value("audio", "bgm", bgm)
+	config.set_value("audio", "sfx", sfx)
+	config.set_value("gameplay", "speed", speed)
+	config.set_value("gameplay", "instaKill", instaKill)
+		
+	for action in InputMap.get_actions():
+		config.set_value("input", action, OS.get_scancode_string(InputMap.get_action_list(action)[0].scancode))
+	config.save(optionsFileName)
 	fileLock = false
 	
 
@@ -79,20 +85,30 @@ func loadSettings():
 	if fileLock:
 		return
 	fileLock = true
-	var save_file = File.new()
-	if save_file.file_exists(optionsFileName):
-		save_file.open(optionsFileName, File.READ)
-		var bgm = save_file.get_var()
-		var sfx = save_file.get_var()
-		var speed = save_file.get_var()
-		var instaKill = save_file.get_var()
+	var config = ConfigFile.new()
+	var err = config.load(optionsFileName)
+	if not err:
+		var bgm = config.get_value("audio", "bgm", 80.0)
+		var sfx = config.get_value("audio", "sfx", 80.0)
+		var speed = config.get_value("gameplay", "speed", 1)
+		var instaKill = config.get_value("gameplay", "instakill", false)
 		$Window/TabContainer/General/VBoxContainer/HBoxContainer/HSliderMusic.value = bgm
 		_on_HSliderMusic_value_changed(bgm)
 		$Window/TabContainer/General/VBoxContainer/HBoxContainer2/HSliderSFX.value = sfx
 		_on_HSliderSFX_value_changed(sfx)
 		$Window/TabContainer/General/VBoxContainer/HBoxContainer3/HSliderSpeed.value = speed
 		$Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox2.pressed = instaKill
-		save_file.close()
+		
+		for action in InputMap.get_actions():
+			InputMap.action_erase_events(action)	# ckean up old actions
+			var scannedCodeString = config.get_value("input", action)
+			var inputEventKey = InputEventKey.new()
+			inputEventKey.scancode = OS.find_scancode_from_string(scannedCodeString)
+			InputMap.action_add_event(action, inputEventKey)
+			var nodeName = "Window/TabContainer/Controls/ScrollContainer/VBoxContainer/" + action
+			if has_node(nodeName):
+				var hbox = get_node(nodeName)
+				displayNewInput(hbox)
 	fileLock = false
 
 

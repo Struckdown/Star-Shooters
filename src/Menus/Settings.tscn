@@ -18,36 +18,36 @@
 size = 40
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 361, 101 )
 margin_left = 8.0
 margin_right = 9.0
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 361, 101 )
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 361, 101 )
 margin_left = 7.0
 margin_right = 9.0
 
-[sub_resource type="StyleBoxEmpty" id=6]
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="DynamicFont" id=6]
+size = 24
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=7]
-size = 24
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=8]
-font_data = ExtResource( 3 )
-
-[sub_resource type="DynamicFont" id=9]
 size = 24
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=9]
 size = 32
 font_data = ExtResource( 11 )
 
@@ -121,10 +121,10 @@ anchor_bottom = 0.783
 margin_top = 0.199997
 margin_bottom = 0.199982
 theme = ExtResource( 13 )
-custom_styles/tab_fg = SubResource( 3 )
-custom_styles/tab_disabled = SubResource( 4 )
-custom_styles/tab_bg = SubResource( 5 )
-custom_styles/panel = SubResource( 6 )
+custom_styles/tab_fg = SubResource( 2 )
+custom_styles/tab_disabled = SubResource( 3 )
+custom_styles/tab_bg = SubResource( 4 )
+custom_styles/panel = SubResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -164,7 +164,7 @@ margin_top = 30.0
 margin_right = 155.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 155, 0 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 text = "Music"
 align = 1
 valign = 1
@@ -177,7 +177,7 @@ margin_left = 159.0
 margin_top = 35.0
 margin_right = 183.0
 margin_bottom = 53.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "0%"
 align = 1
 valign = 1
@@ -204,7 +204,7 @@ margin_left = 813.0
 margin_top = 35.0
 margin_right = 857.0
 margin_bottom = 53.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "100%"
 align = 1
 valign = 1
@@ -227,7 +227,7 @@ margin_top = 30.0
 margin_right = 155.0
 margin_bottom = 57.0
 rect_min_size = Vector2( 155, 0 )
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 text = "SFX"
 align = 1
 valign = 1
@@ -240,7 +240,7 @@ margin_left = 159.0
 margin_top = 35.0
 margin_right = 183.0
 margin_bottom = 53.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "0%"
 align = 1
 valign = 1
@@ -267,7 +267,7 @@ margin_left = 813.0
 margin_top = 35.0
 margin_right = 857.0
 margin_bottom = 53.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "100%"
 align = 1
 valign = 1
@@ -290,7 +290,7 @@ margin_top = 15.0
 margin_right = 140.0
 margin_bottom = 72.0
 rect_min_size = Vector2( 140, 0 )
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 text = "Enemy Speed"
 align = 1
 valign = 1
@@ -306,7 +306,7 @@ margin_right = 181.0
 margin_bottom = 53.0
 grow_horizontal = 0
 rect_min_size = Vector2( 20, 0 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "50%"
 align = 1
 valign = 1
@@ -335,7 +335,7 @@ margin_left = 813.0
 margin_top = 35.0
 margin_right = 857.0
 margin_bottom = 53.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 text = "150%"
 align = 1
 valign = 1
@@ -359,7 +359,7 @@ margin_right = 211.0
 margin_bottom = 58.0
 rect_min_size = Vector2( 140, 0 )
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 text = "Full Screen"
 align = 1
 valign = 1
@@ -386,7 +386,7 @@ margin_right = 641.0
 margin_bottom = 73.0
 rect_min_size = Vector2( 140, 0 )
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 text = "Insta Kill Mode"
 align = 1
 valign = 1
@@ -411,7 +411,7 @@ expand_icon = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 24.0
+margin_top = 14.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -708,7 +708,7 @@ margin_left = -71.51
 margin_top = -0.0240021
 margin_right = 102.33
 margin_bottom = -0.0240021
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 9 )
 text = "Press the new input for: Move Left"
 align = 1
 valign = 1
