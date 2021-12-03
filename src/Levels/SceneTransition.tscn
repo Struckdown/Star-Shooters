@@ -26,7 +26,7 @@ tracks/1/path = NodePath("CanvasLayer/Node2D/LaserBeam:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0.07, 0.67 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -112,7 +112,7 @@ tracks/1/path = NodePath("CanvasLayer/Node2D/LaserBeam:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
-tracks/1/enabled = true
+tracks/1/enabled = false
 tracks/1/keys = {
 "times": PoolRealArray( 0, 0.6 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -209,7 +209,6 @@ layer = 128
 
 [node name="Node2D" type="Node2D" parent="CanvasLayer"]
 position = Vector2( 520.872, 0 )
-rotation = 6.28319
 
 [node name="Sprite" type="Sprite" parent="CanvasLayer/Node2D"]
 modulate = Color( 0, 0, 0, 1 )
@@ -226,17 +225,18 @@ texture = ExtResource( 1 )
 offset = Vector2( 32, -32 )
 
 [node name="LaserBeam" parent="CanvasLayer/Node2D" instance=ExtResource( 3 )]
-visible = false
 rotation = -3.14159
 collision_mask = 0
 sceneTransitionSpecificBeam = true
-is_casting = true
 generatesEnergy = false
 previewTime = 0.0
 
 [node name="Area2D" parent="CanvasLayer/Node2D/LaserBeam" index="1"]
 collision_layer = 0
 collision_mask = 0
+
+[node name="SourceParticles" parent="CanvasLayer/Node2D/LaserBeam" index="3"]
+emitting = true
 
 [node name="AudioStreamPlayer" parent="CanvasLayer/Node2D/LaserBeam" index="6"]
 stream = null
