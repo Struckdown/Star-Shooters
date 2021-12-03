@@ -14,6 +14,7 @@ var instaKillMode = false
 var skipDialogue = false	# set on game over to true and reset on level select entered
 enum playerFireTypes{SPREAD,CHARGE,FOCUSED,REVERSE}
 var playerFireType = playerFireTypes.FOCUSED
+var unlockedPlayerFireTypes = [playerFireTypes.FOCUSED, playerFireTypes.SPREAD, playerFireTypes.REVERSE, playerFireTypes.CHARGE]
 
 var saveGameFileName = "user://savegame.save"
 signal fireModeUpdated
@@ -119,17 +120,12 @@ func load_game():
 #	print("Game loaded")
 
 func switchToNextFireMode():
-	match playerFireType:
-		GameManager.playerFireTypes.FOCUSED:
-			playerFireType = GameManager.playerFireTypes.SPREAD
-		GameManager.playerFireTypes.SPREAD:
-			playerFireType = GameManager.playerFireTypes.REVERSE
-		GameManager.playerFireTypes.REVERSE:
-			playerFireType = GameManager.playerFireTypes.CHARGE
-		GameManager.playerFireTypes.CHARGE:
-			playerFireType = GameManager.playerFireTypes.FOCUSED
+	var index = unlockedPlayerFireTypes.find(playerFireType)
+	index = (index + 1) % len(unlockedPlayerFireTypes)
+	playerFireType = unlockedPlayerFireTypes[index]
 	emit_signal("fireModeUpdated")
 
+# Forcibly set to a specific fire type
 func updateFireMode(newType):
 	match newType:
 		GameManager.playerFireTypes.FOCUSED:
