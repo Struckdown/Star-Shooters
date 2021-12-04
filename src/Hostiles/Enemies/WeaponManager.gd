@@ -1,15 +1,17 @@
 extends Node2D
 
-
-export(String, "health", "time", "never") var phaseSwapMode = "never"	# most enemies don't swap by default.
+# solowDownAndUp means it spends x seconds offline and y seconds online
+export(String, "health", "time", "never", "soloDownAndUp") var phaseSwapMode = "never"	# most enemies don't swap by default.
 export(int) var timeToNextPhase
 export(float) var healthPercentToNextPhase
 var phaseTracker = 0
 var maxPhases
-var time = 0
-var active = true
+var timeSinceLastPhase := 0.0
+export(bool) var active := true
 var weaponManagerParent = null
-export(float) var startDelay = 0.0
+export(float) var startDelay := 0.0
+export(float) var upTime := 5.0
+export(float) var downTime = 2
 export(bool) var debug = false
 
 # Called when the node enters the scene tree for the first time.
@@ -23,23 +25,35 @@ func _ready():
 		weaponManagerParent = get_parent()
 		active = false
 	maxPhases = get_child_count()
-	yield(get_tree().create_timer(startDelay), "timeout")
 	if active:
 		updatePhase()	# only activate root
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if active:
-		if weaponManagerParent and not weaponManagerParent.active:
-			return
-		if phaseSwapMode != "time":
-			return
-		time += delta
-		if time >= timeToNextPhase:
-			time -= timeToNextPhase
-			phaseTracker = (phaseTracker + 1) % maxPhases
-			updatePhase()
+	if startDelay > 0:
+		startDelay -= delta
+		return
+	if weaponManagerParent and not weaponManagerParent.active:
+		return
+	timeSinceLastPhase += delta
+	match phaseSwapMode:
+		"soloDownAndUp":
+			if active:
+				if timeSinceLastPhase >= upTime:
+					timeSinceLastPhase = 0
+					active = false
+					updatePhase()
+			else:
+				if timeSinceLastPhase >= downTime:
+					timeSinceLastPhase = 0
+					active = true
+					updatePhase()
+		"time":
+			if active and timeSinceLastPhase >= timeToNextPhase:
+				timeSinceLastPhase -= timeToNextPhase
+				phaseTracker = (phaseTracker + 1) % maxPhases
+				updatePhase()
 
 func updateHealth(currentFraction):
 	if phaseSwapMode == "health" and currentFraction > 0 and maxPhases > 0:

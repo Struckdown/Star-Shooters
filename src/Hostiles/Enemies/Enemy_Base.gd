@@ -139,7 +139,7 @@ func move(d):
 		if velocity.length() > maxSpeed:
 			velocity = velocity/velocity.length() * maxSpeed
 	else:
-		velocity = acceleration.normalized() * deltaSpeed
+		velocity = acceleration.normalized() * abs(deltaSpeed)
 	position += velocity
 
 func aimAtTarget():

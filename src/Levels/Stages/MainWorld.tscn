@@ -20,7 +20,9 @@
 "LevelManager",
 ]]
 script = ExtResource( 1 )
-debugWave = 4
+level = 8
+debug = true
+debugWave = 1
 
 [node name="VPCscoreboard" type="ViewportContainer" parent="."]
 margin_left = 824.0

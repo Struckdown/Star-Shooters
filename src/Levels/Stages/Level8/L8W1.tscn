@@ -1,66 +1,442 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Hostiles/AsteroidSpawner.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Levels/TimeRemaining.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hostiles/LaserBeam.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Space Shooter Redux/PNG/Parts/turretBase_small.png" type="Texture" id=4]
+[ext_resource path="res://Space Shooter Redux/PNG/Parts/gun06.png" type="Texture" id=5]
+[ext_resource path="res://Space Shooter Redux/PNG/Parts/engine1.png" type="Texture" id=6]
 
-[sub_resource type="Animation" id=1]
-resource_name = "TimerIntro"
-length = 2.0
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.2822, 11.7627 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "Death"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/TimeRemaining:rect_position")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6, 2 ),
-"transitions": PoolRealArray( 1, 1.10957, 2.46229, 15.455 ),
-"update": 0,
-"values": [ Vector2( 346.759, 240.426 ), Vector2( 346.759, 240.426 ), Vector2( 346.759, 240.426 ), Vector2( 8.18948, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/TimeRemaining:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
 }
 
 [node name="WaveBase" instance=ExtResource( 1 )]
 waveAdvanceCondition = "time"
-timeToNextWave = 120
+timeToNextWave = 10
 timeOutFinishesWaveInsteadOfAdvancesWave = true
 
-[node name="AsteroidSpawner" parent="." index="0" instance=ExtResource( 2 )]
+[node name="Wall" type="StaticBody2D" parent="." index="0"]
+position = Vector2( 9.76439, 284.742 )
+collision_layer = 16
+collision_mask = 31
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" index="0"]
+rotation = -1.5708
+scale = Vector2( 25, 1 )
+shape = SubResource( 1 )
 
-[node name="TimeRemaining" parent="CanvasLayer" index="0" instance=ExtResource( 3 )]
-margin_left = 8.18948
-margin_right = -908.81
-margin_bottom = -489.0
-seconds = 0
+[node name="Sprite" type="Sprite" parent="Wall" index="1"]
+rotation = -1.5708
+scale = Vector2( 25, 1 )
+texture = ExtResource( 6 )
 
-[node name="TimeLbl" parent="CanvasLayer/TimeRemaining" index="0"]
-margin_left = 70.9134
-margin_top = 52.563
-margin_right = 110.913
-margin_bottom = 66.563
+[node name="Wall2" type="StaticBody2D" parent="." index="1"]
+position = Vector2( 817.229, 284.742 )
+rotation = 3.14159
+collision_layer = 16
+collision_mask = 31
 
-[node name="SurviveFor" type="Label" parent="CanvasLayer/TimeRemaining" index="1"]
-margin_top = 52.563
-margin_right = 75.0
-margin_bottom = 66.563
-text = "Survive for: "
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" index="0"]
+rotation = -1.5708
+scale = Vector2( 25, 1 )
+shape = SubResource( 1 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
-autoplay = "TimerIntro"
-anims/TimerIntro = SubResource( 1 )
+[node name="Sprite" type="Sprite" parent="Wall2" index="1"]
+rotation = -1.5708
+scale = Vector2( 25, 1 )
+texture = ExtResource( 6 )
 
-[editable path="CanvasLayer/TimeRemaining"]
+[node name="WallTurret" parent="." index="2" instance=ExtResource( 3 )]
+position = Vector2( 19.9609, 58.9217 )
+rotation = 1.57079
+speed = 50.0
+
+[node name="CollisionShape2D" parent="WallTurret/Area2D" index="0"]
+disabled = true
+
+[node name="Sprite" parent="WallTurret" index="1"]
+rotation = -3.14159
+scale = Vector2( 1.3104, 1.3104 )
+texture = ExtResource( 4 )
+
+[node name="Gun" type="Sprite" parent="WallTurret/Sprite" index="3"]
+position = Vector2( -4.39915e-05, 12.1524 )
+texture = ExtResource( 5 )
+
+[node name="WeaponManager" parent="WallTurret" index="4"]
+phaseSwapMode = "soloDownAndUp"
+upTime = 2.0
+
+[node name="LaserBeam" parent="WallTurret/WeaponManager" index="0" instance=ExtResource( 2 )]
+position = Vector2( 0.6353, -31.5001 )
+rotation = -1.57079
+generatesEnergy = false
+previewTime = 0.2
+
+[node name="WallTurret2" parent="." index="3" instance=ExtResource( 3 )]
+position = Vector2( 19.9609, 36.638 )
+rotation = 1.57079
+speed = 50.0
+
+[node name="CollisionShape2D" parent="WallTurret2/Area2D" index="0"]
+disabled = true
+
+[node name="Sprite" parent="WallTurret2" index="1"]
+rotation = -3.14159
+scale = Vector2( 1.3104, 1.3104 )
+texture = ExtResource( 4 )
+
+[node name="Gun" type="Sprite" parent="WallTurret2/Sprite" index="3"]
+position = Vector2( -4.39915e-05, 12.1524 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" parent="WallTurret2" index="3"]
+anims/Death = SubResource( 2 )
+
+[node name="WeaponManager" parent="WallTurret2" index="4"]
+phaseSwapMode = "soloDownAndUp"
+upTime = 2.0
+
+[node name="LaserBeam" parent="WallTurret2/WeaponManager" index="0" instance=ExtResource( 2 )]
+position = Vector2( 0.6353, -31.5001 )
+rotation = -1.57079
+generatesEnergy = false
+previewTime = 0.2
+
+[node name="WallTurret3" parent="." index="4" instance=ExtResource( 3 )]
+position = Vector2( 19.9609, 15.1951 )
+rotation = 1.57079
+speed = 50.0
+
+[node name="CollisionShape2D" parent="WallTurret3/Area2D" index="0"]
+disabled = true
+
+[node name="Sprite" parent="WallTurret3" index="1"]
+rotation = -3.14159
+scale = Vector2( 1.3104, 1.3104 )
+texture = ExtResource( 4 )
+
+[node name="Gun" type="Sprite" parent="WallTurret3/Sprite" index="3"]
+position = Vector2( -4.39915e-05, 12.1524 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" parent="WallTurret3" index="3"]
+anims/Death = SubResource( 3 )
+
+[node name="WeaponManager" parent="WallTurret3" index="4"]
+phaseSwapMode = "soloDownAndUp"
+upTime = 2.0
+
+[node name="LaserBeam" parent="WallTurret3/WeaponManager" index="0" instance=ExtResource( 2 )]
+position = Vector2( 0.6353, -31.5001 )
+rotation = -1.57079
+generatesEnergy = false
+previewTime = 0.2
+
+[node name="WallTurret4" parent="." index="5" instance=ExtResource( 3 )]
+position = Vector2( 808.087, -44.3892 )
+rotation = -1.57079
+speed = -50.0
+
+[node name="CollisionShape2D" parent="WallTurret4/Area2D" index="0"]
+disabled = true
+
+[node name="Sprite" parent="WallTurret4" index="1"]
+rotation = -3.14159
+scale = Vector2( 1.3104, 1.3104 )
+texture = ExtResource( 4 )
+
+[node name="Gun" type="Sprite" parent="WallTurret4/Sprite" index="3"]
+position = Vector2( -4.39915e-05, 12.1524 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" parent="WallTurret4" index="3"]
+anims/Death = SubResource( 4 )
+
+[node name="WeaponManager" parent="WallTurret4" index="4"]
+phaseSwapMode = "soloDownAndUp"
+active = false
+startDelay = 1.0
+upTime = 2.0
+
+[node name="LaserBeam" parent="WallTurret4/WeaponManager" index="0" instance=ExtResource( 2 )]
+position = Vector2( 0.6353, -31.5001 )
+rotation = -1.57079
+generatesEnergy = false
+previewTime = 0.2
+
+[node name="WallTurret5" parent="." index="6" instance=ExtResource( 3 )]
+position = Vector2( 808.087, -70.8758 )
+rotation = -1.57079
+speed = -50.0
+
+[node name="CollisionShape2D" parent="WallTurret5/Area2D" index="0"]
+disabled = true
+
+[node name="Sprite" parent="WallTurret5" index="1"]
+rotation = -3.14159
+scale = Vector2( 1.3104, 1.3104 )
+texture = ExtResource( 4 )
+
+[node name="Gun" type="Sprite" parent="WallTurret5/Sprite" index="3"]
+position = Vector2( -4.39915e-05, 12.1524 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" parent="WallTurret5" index="3"]
+anims/Death = SubResource( 5 )
+
+[node name="WeaponManager" parent="WallTurret5" index="4"]
+phaseSwapMode = "soloDownAndUp"
+active = false
+startDelay = 1.0
+upTime = 2.0
+
+[node name="LaserBeam" parent="WallTurret5/WeaponManager" index="0" instance=ExtResource( 2 )]
+position = Vector2( 0.6353, -31.5001 )
+rotation = -1.57079
+generatesEnergy = false
+previewTime = 0.2
+
+[node name="WallTurret6" parent="." index="7" instance=ExtResource( 3 )]
+position = Vector2( 808.087, -100.541 )
+rotation = -1.57079
+speed = -50.0
+
+[node name="CollisionShape2D" parent="WallTurret6/Area2D" index="0"]
+disabled = true
+
+[node name="Sprite" parent="WallTurret6" index="1"]
+rotation = -3.14159
+scale = Vector2( 1.3104, 1.3104 )
+texture = ExtResource( 4 )
+
+[node name="Gun" type="Sprite" parent="WallTurret6/Sprite" index="3"]
+position = Vector2( -4.39915e-05, 12.1524 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" parent="WallTurret6" index="3"]
+anims/Death = SubResource( 6 )
+
+[node name="WeaponManager" parent="WallTurret6" index="4"]
+phaseSwapMode = "soloDownAndUp"
+active = false
+startDelay = 1.0
+upTime = 2.0
+
+[node name="LaserBeam" parent="WallTurret6/WeaponManager" index="0" instance=ExtResource( 2 )]
+position = Vector2( 0.6353, -31.5001 )
+rotation = -1.57079
+generatesEnergy = false
+previewTime = 0.2
+
+[editable path="WallTurret"]
+[editable path="WallTurret2"]
+[editable path="WallTurret3"]
+[editable path="WallTurret4"]
+[editable path="WallTurret5"]
+[editable path="WallTurret6"]
