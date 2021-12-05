@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Player/Player Sprite Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -9,16 +9,16 @@
 [ext_resource path="res://Player/PlayerTeleport2.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Player/PlayerShieldShader.tres" type="Material" id=8]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id=2]
 radius = 22.0
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=3]
 radius = 22.6594
 
-[sub_resource type="CircleShape2D" id=3]
+[sub_resource type="CircleShape2D" id=4]
 radius = 2.97038
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=5]
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpritesRoot/Spaceship:rotation_degrees")
 tracks/0/interp = 1
@@ -44,7 +44,7 @@ tracks/1/keys = {
 "values": [ 0, 0, 1, 2, 3, 4, 5, 1, 2 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.6
 loop = true
 tracks/0/type = "value"
@@ -60,7 +60,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5 ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=7]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("SpritesRoot/Spaceship:position")
@@ -87,8 +87,7 @@ tracks/1/keys = {
 "values": [ Vector2( 2, 5 ), Vector2( 3, 3 ) ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "HitInvuln"
+[sub_resource type="Animation" id=8]
 length = 0.2
 step = 0.05
 tracks/0/type = "value"
@@ -104,7 +103,7 @@ tracks/0/keys = {
 "values": [ true, false, true, false, true ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:visible")
 tracks/0/interp = 1
@@ -118,19 +117,19 @@ tracks/0/keys = {
 "values": [ true, false, true, false, true, false, true, false, true, false, true ]
 }
 
-[sub_resource type="Gradient" id=9]
+[sub_resource type="Gradient" id=10]
 colors = PoolColorArray( 0.0280151, 0.580633, 0.796875, 1, 0.00160217, 0.352703, 0.410156, 1 )
 
-[sub_resource type="GradientTexture" id=10]
-gradient = SubResource( 9 )
+[sub_resource type="GradientTexture" id=11]
+gradient = SubResource( 10 )
 
-[sub_resource type="Curve" id=11]
+[sub_resource type="Curve" id=12]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=12]
-curve = SubResource( 11 )
+[sub_resource type="CurveTexture" id=13]
+curve = SubResource( 12 )
 
-[sub_resource type="ParticlesMaterial" id=13]
+[sub_resource type="ParticlesMaterial" id=14]
 emission_shape = 2
 emission_box_extents = Vector3( 5, 2, 1 )
 flag_disable_z = true
@@ -141,13 +140,15 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = 360.0
 angle_random = 1.0
-scale_curve = SubResource( 12 )
-color_ramp = SubResource( 10 )
+scale_curve = SubResource( 13 )
+color_ramp = SubResource( 11 )
 
-[node name="Player" type="Node2D" groups=[
+[sub_resource type="CircleShape2D" id=1]
+radius = 6.04593
+
+[node name="Player" type="KinematicBody2D" groups=[
 "Player",
 ]]
-visible = false
 script = ExtResource( 2 )
 hasControl = true
 deathExplosion = ExtResource( 4 )
@@ -241,7 +242,7 @@ texture = ExtResource( 3 )
 [node name="GemMagnetArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GemMagnetArea"]
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="EnergyArea" type="Area2D" parent="." groups=[
 "PlayerOuterHitbox",
@@ -249,7 +250,7 @@ shape = SubResource( 1 )
 collision_mask = 8
 
 [node name="EnergyHitBox" type="CollisionShape2D" parent="EnergyArea"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="Core" type="Sprite" parent="EnergyArea"]
 scale = Vector2( 0.125, 0.125 )
@@ -259,18 +260,18 @@ texture = ExtResource( 3 )
 collision_mask = 8
 
 [node name="CoreHitBox" type="CollisionShape2D" parent="EnergyArea/CoreArea"]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Explosion = SubResource( 4 )
-anims/Flying = SubResource( 5 )
-anims/Spawn = SubResource( 6 )
+anims/Explosion = SubResource( 5 )
+anims/Flying = SubResource( 6 )
+anims/Spawn = SubResource( 7 )
 
 [node name="InvulnAnimPlayer" type="AnimationPlayer" parent="."]
 autoplay = "SpawnInvuln"
 playback_speed = 0.5
-anims/HitInvuln = SubResource( 7 )
-anims/SpawnInvuln = SubResource( 8 )
+anims/HitInvuln = SubResource( 8 )
+anims/SpawnInvuln = SubResource( 9 )
 
 [node name="GemCollectorSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
@@ -291,7 +292,11 @@ position = Vector2( 0, 10.1466 )
 amount = 40
 explosiveness = 0.2
 local_coords = false
-process_material = SubResource( 13 )
+process_material = SubResource( 14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2( 3, 3 )
+shape = SubResource( 1 )
 
 [connection signal="area_entered" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_entered"]
 [connection signal="area_exited" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_exited"]

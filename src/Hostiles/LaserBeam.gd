@@ -17,6 +17,7 @@ func _ready():
 	setGeneratesEnergy(generatesEnergy)
 	set_is_casting(is_casting)
 	cast_to = Vector2(laserLength, 0)
+	set_physics_process(true)
 
 func _process(delta):
 	checkForPlayer(delta)

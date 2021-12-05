@@ -114,6 +114,7 @@ func updatePosToShoot():
 		if len(get_tree().get_nodes_in_group("Player")) > 0:
 			target = get_tree().get_nodes_in_group("Player")[0]
 		else:
+			positionToShoot = global_position+global_transform.x
 			return	# just return and shoot straight forward
 	match targetStyle:
 		"straight":

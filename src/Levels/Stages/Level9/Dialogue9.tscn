@@ -1,7 +1,74 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Space Shooter Redux/PNG/Parts/engine1.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 15.2822, 11.7627 )
+
+[sub_resource type="Animation" id=2]
+resource_name = "start"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("Wall:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 9.76439, -513.258 ), Vector2( 9.76439, 284.742 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Wall2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 6 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 817.229, -513.258 ), Vector2( 817.229, 284.742 ) ]
+}
 
 [node name="WaveBase" instance=ExtResource( 1 )]
 waveAdvanceCondition = "other"
 dialogueRequest = "level9Intro"
+
+[node name="Wall" type="StaticBody2D" parent="." index="0"]
+position = Vector2( 9.76439, -513.258 )
+collision_layer = 16
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall" index="0"]
+rotation = -1.5708
+scale = Vector2( 25, 1 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Wall" index="1"]
+rotation = -1.5708
+scale = Vector2( 25, 1 )
+texture = ExtResource( 2 )
+
+[node name="Wall2" type="StaticBody2D" parent="." index="1"]
+position = Vector2( 817.229, -513.258 )
+rotation = 3.14159
+collision_layer = 16
+collision_mask = 31
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall2" index="0"]
+rotation = -1.5708
+scale = Vector2( 25, 1 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="Wall2" index="1"]
+rotation = -1.5708
+scale = Vector2( 25, 1 )
+texture = ExtResource( 2 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
+autoplay = "start"
+anims/start = SubResource( 2 )

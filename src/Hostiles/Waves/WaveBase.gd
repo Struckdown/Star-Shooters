@@ -16,6 +16,7 @@ var waveFinishedSignalEmitted = false
 export(String) var dialogueRequest = ""	# used by level manager. Maybe should be done here???
 export(float) var dialogueRequestDelay = 0.0	# used by level manager
 var dialogueBoxRef	# set by level manager
+export(Vector2) var waveMoveDirection = Vector2.ZERO
 
 signal waveFinished
 signal startNextWave
@@ -38,8 +39,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	position += waveMoveDirection*delta
 
 # Controls what marks this wave as complete
 # Enemies = enough foes are destroyed

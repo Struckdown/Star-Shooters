@@ -2,6 +2,7 @@ extends Node2D
 
 export(int) var pointsWorth = 100
 export(float) var speed = 110
+export(float) var maxRotationSpeed = PI / 64
 export(float) var maxSpeed = 1.5
 export(bool) var useAcclerationInsteadOfLinearVelocity = false
 var velocity := Vector2.ZERO
@@ -114,8 +115,7 @@ func move(d):
 							queue_free()
 			acceleration = position.direction_to(flyTarget) * deltaSpeed
 			var desiredAngle = get_angle_to(global_position+acceleration)
-			var maxRotation = PI / 64
-			desiredAngle = sign(desiredAngle) * min(abs(desiredAngle), maxRotation)
+			desiredAngle = sign(desiredAngle) * min(abs(desiredAngle), maxRotationSpeed)
 			rotation += desiredAngle
 		"homingNoStop":
 			var deltaAngle

@@ -1,4 +1,4 @@
-extends Node2D
+extends KinematicBody2D
 
 
 export(bool) var hasControl = false
@@ -120,7 +120,9 @@ func applyInputs(delta):
 	if slowMode:
 		velocity *= slowModeMultiplier
 		$EnergyArea/Core.visible = true
-	position += velocity * delta
+	
+	var _collision = move_and_slide(velocity)
+#	position += velocity * delta
 	
 	if shouldFire and energyLevel >= energyThreshold and fireDelay <= 0:
 		performAttack()

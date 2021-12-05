@@ -46,15 +46,16 @@ initial_velocity = 250.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 tangential_accel = 100.0
-scale = 0.68
+scale = 0.38
 scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
 [node name="LaserBeam" type="RayCast2D"]
 modulate = Color( 0.4, 1.2, 1.5, 1 )
 cast_to = Vector2( 1000, 0 )
+collision_mask = 16
 script = ExtResource( 1 )
-laserLength = 1500.0
+laserLength = 2000.0
 generatesEnergy = true
 previewTime = 1.5
 

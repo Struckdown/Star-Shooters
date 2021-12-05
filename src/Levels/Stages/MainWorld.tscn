@@ -20,7 +20,7 @@
 "LevelManager",
 ]]
 script = ExtResource( 1 )
-level = 8
+level = 9
 debug = true
 debugWave = 1
 
