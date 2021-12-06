@@ -186,7 +186,9 @@ nodes/fragment/connections = PoolIntArray( 3, 0, 9, 0, 13, 0, 14, 0, 8, 0, 14, 1
 shader = SubResource( 17 )
 shader_param/FillPercentage = 0.3
 
-[node name="ScoreboardPnl" type="Panel"]
+[node name="ScoreboardPnl" type="Panel" groups=[
+"scoreBoard",
+]]
 margin_left = 820.0
 margin_right = 1020.0
 margin_bottom = 600.0

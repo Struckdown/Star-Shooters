@@ -42,6 +42,7 @@ var cheatModeActive = false
 
 var levelManagerRef
 var explosionManagerRef
+var scoreBoardRef
 
 signal destroyed
 signal gemCollected
@@ -54,6 +55,9 @@ func _ready():
 	var explosionManagers = get_tree().get_nodes_in_group("explosionManager")
 	if len(explosionManagers) > 0:
 		explosionManagerRef = explosionManagers[0]
+	var scoreBoardRefs = get_tree().get_nodes_in_group("scoreBoard")
+	if len(scoreBoardRefs) > 0:
+		scoreBoardRef = scoreBoardRefs[0]
 	var err = GameManager.connect("fireModeUpdated", self, "updateFirePattern")
 	if err:
 		print("Error:", err)
@@ -220,6 +224,9 @@ func _on_EnergyArea_area_entered(area):
 		var energyAmountToGenerate = area.owner.energyAmountToGenerate
 		if area.owner.has_method("markEnergyDrained"):
 			area.owner.markEnergyDrained()
+		GameManager.score += 5	# shot grazing is worth 5 points each
+		if scoreBoardRef:
+			scoreBoardRef.updateScore()
 		spawnEnergyCollectedParticles()
 		$EnergyParticleRoot/AbsorbSFX.play()
 		var oldEnergyLevel = energyLevel
