@@ -632,6 +632,7 @@ missionName = "The Bouncer"
 missionBriefing = "You survived the jump!? That asteroid by-pass was rated as odds of survival of one in a million! Your flight skills are unsurmounted! You truly are our greatest pilot! If so, then you are finally worthy.
 
 I've been speaking with Upper Management since we've arrived, and it's been decided that only you'll be able to bypass this Federation system's space defenses. They're using experimental space-wrapping weapons, so watch out for unusual movement!"
+levelsToUnlock = [ NodePath("../Planet8") ]
 
 [node name="PlanetSprite" parent="Levels/Planet7" index="0"]
 scale = Vector2( 0.045, 0.045 )
@@ -655,6 +656,7 @@ levelDescription = "Omicron Sector"
 levelName = "8"
 missionName = "Hot Blooded"
 missionBriefing = "We're beginning to make our way into the heart of Federation controlled territory now. Their fleets will become far more aggressive and dangerous from here on out. "
+levelsToUnlock = [ NodePath("../Planet9") ]
 
 [node name="PlanetSprite" parent="Levels/Planet8" index="0"]
 scale = Vector2( 0.045, 0.045 )
@@ -678,6 +680,7 @@ levelDescription = "Upsilon Sector"
 levelName = "9"
 missionName = "Penultimate"
 missionBriefing = "Breaking through these defenses has been quite impressive. "
+levelsToUnlock = [ NodePath("../Planet10") ]
 
 [node name="PlanetSprite" parent="Levels/Planet9" index="0"]
 scale = Vector2( 0.045, 0.045 )

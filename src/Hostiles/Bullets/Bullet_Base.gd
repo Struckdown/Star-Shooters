@@ -111,7 +111,8 @@ func _on_EndOfLifeTween_tween_completed(_object, _key):
 func checkForWrap():
 	if outOfBounds():
 		if wrapsRemaining <= 0:
-			if not titleScreenVersion and diesOnOutOfBounds:
+			var abovePlaySpace = global_position.y < 0
+			if not titleScreenVersion and diesOnOutOfBounds and not abovePlaySpace:
 				startFadeOut()
 		else:
 			var _wrapped = wrap()

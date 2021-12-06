@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Space Shooter Redux/PNG/Parts/turretBase_small.png" type="Texture" id=4]
 [ext_resource path="res://Space Shooter Redux/PNG/Parts/gun06.png" type="Texture" id=5]
 [ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Gravity.tscn" type="PackedScene" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Death"
@@ -130,7 +131,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=10]
 resource_name = "Death"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -171,7 +172,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=11]
 resource_name = "Death"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -212,7 +213,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=12]
 resource_name = "Death"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -253,7 +254,171 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=13]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="Animation" id=15]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="Animation" id=17]
 resource_name = "Death"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -337,7 +502,7 @@ tracks/2/keys = {
 
 [sub_resource type="Curve2D" id=9]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 809.478, -342.645, 0, 0, 0, 0, 809.478, -8.52295 )
+"points": PoolVector2Array( 0, 0, 0, 0, 807.844, -368.79, 0, 0, 0, 0, 805.599, -23.0714 )
 }
 
 [node name="WaveBase" instance=ExtResource( 1 )]
@@ -347,7 +512,7 @@ timeOutFinishesWaveInsteadOfAdvancesWave = true
 waveMoveDirection = Vector2( 0, 50 )
 
 [node name="WallTurret" parent="." index="0" instance=ExtResource( 3 )]
-position = Vector2( 19.9609, -31.0783 )
+position = Vector2( 19.9609, -37.61 )
 rotation = 1.57079
 scale = Vector2( 1, 1 )
 speed = 0.0
@@ -374,16 +539,17 @@ spawnAsChild = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 lifetime = 20.0
-volleyClipSize = 11
+volleyClipSize = 1
 clipReloadTime = 1.0
+clipRandomReloadDelay = 2.0
 bulletMovementSpeed = 90.0
-bulletSpawnDelay = 0.3
+bulletSpawnDelay = 0.0
 bulletType = ExtResource( 2 )
 initialSpawnDelayConstant = 1.0
 initialSpawnDelayRandomRange = 0.0
 
 [node name="WallTurret2" parent="." index="1" instance=ExtResource( 3 )]
-position = Vector2( 19.9609, -56.4767 )
+position = Vector2( 19.9609, -63.0085 )
 rotation = 1.57079
 scale = Vector2( 1, 1 )
 speed = 0.0
@@ -413,16 +579,17 @@ spawnAsChild = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 lifetime = 20.0
-volleyClipSize = 11
+volleyClipSize = 1
 clipReloadTime = 1.0
+clipRandomReloadDelay = 2.0
 bulletMovementSpeed = 90.0
-bulletSpawnDelay = 0.3
+bulletSpawnDelay = 0.0
 bulletType = ExtResource( 2 )
 initialSpawnDelayConstant = 1.0
 initialSpawnDelayRandomRange = 0.0
 
 [node name="WallTurret3" parent="." index="2" instance=ExtResource( 3 )]
-position = Vector2( 19.9609, -82.272 )
+position = Vector2( 19.9609, -88.8037 )
 rotation = 1.57079
 scale = Vector2( 1, 1 )
 speed = 0.0
@@ -452,16 +619,17 @@ spawnAsChild = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 lifetime = 20.0
-volleyClipSize = 11
+volleyClipSize = 1
 clipReloadTime = 1.0
+clipRandomReloadDelay = 2.0
 bulletMovementSpeed = 90.0
-bulletSpawnDelay = 0.3
+bulletSpawnDelay = 0.0
 bulletType = ExtResource( 2 )
 initialSpawnDelayConstant = 1.0
 initialSpawnDelayRandomRange = 0.0
 
 [node name="WallTurret4" parent="." index="3" instance=ExtResource( 3 )]
-position = Vector2( 19.9609, -110.448 )
+position = Vector2( 19.9609, -116.98 )
 rotation = 1.57079
 scale = Vector2( 1, 1 )
 speed = 0.0
@@ -491,17 +659,18 @@ spawnAsChild = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 lifetime = 20.0
-volleyClipSize = 11
+volleyClipSize = 1
 clipReloadTime = 1.0
+clipRandomReloadDelay = 2.0
 bulletMovementSpeed = 90.0
-bulletSpawnDelay = 0.3
+bulletSpawnDelay = 0.0
 bulletType = ExtResource( 2 )
 initialSpawnDelayConstant = 1.0
 initialSpawnDelayRandomRange = 0.0
 
 [node name="WallTurret5" parent="." index="4" instance=ExtResource( 3 )]
-position = Vector2( 808.087, -181.178 )
-rotation = -1.57079
+position = Vector2( 19.9609, -149.449 )
+rotation = 1.57079
 scale = Vector2( 1, 1 )
 speed = 0.0
 
@@ -518,29 +687,30 @@ position = Vector2( -4.39915e-05, 12.1524 )
 texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" parent="WallTurret5" index="3"]
-anims/Death = SubResource( 4 )
+anims/Death = SubResource( 10 )
 
 [node name="WeaponManager" parent="WallTurret5" index="4"]
 upTime = 2.0
 
 [node name="BulletEmitter" parent="WallTurret5/WeaponManager" index="0" instance=ExtResource( 6 )]
-position = Vector2( -0.00012207, -39.3119 )
+position = Vector2( 0.000244141, -38.2608 )
 rotation = -1.5708
 spawnAsChild = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 lifetime = 20.0
-volleyClipSize = 11
+volleyClipSize = 1
 clipReloadTime = 1.0
+clipRandomReloadDelay = 2.0
 bulletMovementSpeed = 90.0
-bulletSpawnDelay = 0.3
+bulletSpawnDelay = 0.0
 bulletType = ExtResource( 2 )
 initialSpawnDelayConstant = 1.0
 initialSpawnDelayRandomRange = 0.0
 
 [node name="WallTurret6" parent="." index="5" instance=ExtResource( 3 )]
-position = Vector2( 808.087, -206.577 )
-rotation = -1.57079
+position = Vector2( 19.9609, -174.848 )
+rotation = 1.57079
 scale = Vector2( 1, 1 )
 speed = 0.0
 
@@ -557,29 +727,30 @@ position = Vector2( -4.39915e-05, 12.1524 )
 texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" parent="WallTurret6" index="3"]
-anims/Death = SubResource( 5 )
+anims/Death = SubResource( 11 )
 
 [node name="WeaponManager" parent="WallTurret6" index="4"]
 upTime = 2.0
 
 [node name="BulletEmitter" parent="WallTurret6/WeaponManager" index="0" instance=ExtResource( 6 )]
-position = Vector2( -6.10352e-05, -39.3119 )
+position = Vector2( 0.000244141, -38.2608 )
 rotation = -1.5708
 spawnAsChild = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 lifetime = 20.0
-volleyClipSize = 11
+volleyClipSize = 1
 clipReloadTime = 1.0
+clipRandomReloadDelay = 2.0
 bulletMovementSpeed = 90.0
-bulletSpawnDelay = 0.3
+bulletSpawnDelay = 0.0
 bulletType = ExtResource( 2 )
 initialSpawnDelayConstant = 1.0
 initialSpawnDelayRandomRange = 0.0
 
 [node name="WallTurret7" parent="." index="6" instance=ExtResource( 3 )]
-position = Vector2( 808.087, -232.372 )
-rotation = -1.57079
+position = Vector2( 19.9609, -200.643 )
+rotation = 1.57079
 scale = Vector2( 1, 1 )
 speed = 0.0
 
@@ -596,29 +767,28 @@ position = Vector2( -4.39915e-05, 12.1524 )
 texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" parent="WallTurret7" index="3"]
-anims/Death = SubResource( 6 )
+anims/Death = SubResource( 12 )
 
 [node name="WeaponManager" parent="WallTurret7" index="4"]
 upTime = 2.0
 
 [node name="BulletEmitter" parent="WallTurret7/WeaponManager" index="0" instance=ExtResource( 6 )]
-position = Vector2( -0.00012207, -39.3119 )
+position = Vector2( 0.000244141, -38.2608 )
 rotation = -1.5708
 spawnAsChild = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 lifetime = 20.0
-volleyClipSize = 11
-clipReloadTime = 1.0
 bulletMovementSpeed = 90.0
-bulletSpawnDelay = 0.3
-bulletType = ExtResource( 2 )
+bulletScale = Vector2( 1.5, 1.5 )
+bulletSpawnDelay = 3.0
+bulletType = ExtResource( 7 )
 initialSpawnDelayConstant = 1.0
 initialSpawnDelayRandomRange = 0.0
 
 [node name="WallTurret8" parent="." index="7" instance=ExtResource( 3 )]
-position = Vector2( 808.087, -260.548 )
-rotation = -1.57079
+position = Vector2( 19.9609, -228.819 )
+rotation = 1.57079
 scale = Vector2( 1, 1 )
 speed = 0.0
 
@@ -635,28 +805,189 @@ position = Vector2( -4.39915e-05, 12.1524 )
 texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" parent="WallTurret8" index="3"]
-anims/Death = SubResource( 7 )
+anims/Death = SubResource( 13 )
 
 [node name="WeaponManager" parent="WallTurret8" index="4"]
 upTime = 2.0
 
 [node name="BulletEmitter" parent="WallTurret8/WeaponManager" index="0" instance=ExtResource( 6 )]
-position = Vector2( -6.10352e-05, -39.3119 )
+position = Vector2( 0.000236511, -38.2608 )
 rotation = -1.5708
 spawnAsChild = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 0.0
 lifetime = 20.0
-volleyClipSize = 11
+volleyClipSize = 1
 clipReloadTime = 1.0
+clipRandomReloadDelay = 2.0
 bulletMovementSpeed = 90.0
-bulletSpawnDelay = 0.3
+bulletSpawnDelay = 0.0
 bulletType = ExtResource( 2 )
 initialSpawnDelayConstant = 1.0
 initialSpawnDelayRandomRange = 0.0
 
-[node name="WallTurretMover" parent="." index="8" instance=ExtResource( 3 )]
-position = Vector2( 808.087, -342.573 )
+[node name="WallTurret9" parent="." index="8" instance=ExtResource( 3 )]
+position = Vector2( 19.9609, -260.448 )
+rotation = 1.57079
+scale = Vector2( 1, 1 )
+speed = 0.0
+
+[node name="CollisionShape2D" parent="WallTurret9/Area2D" index="0"]
+disabled = true
+
+[node name="Sprite" parent="WallTurret9" index="1"]
+rotation = -3.14159
+scale = Vector2( 1.3104, 1.3104 )
+texture = ExtResource( 4 )
+
+[node name="Gun" type="Sprite" parent="WallTurret9/Sprite" index="3"]
+position = Vector2( -4.39915e-05, 12.1524 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" parent="WallTurret9" index="3"]
+anims/Death = SubResource( 14 )
+
+[node name="WeaponManager" parent="WallTurret9" index="4"]
+upTime = 2.0
+
+[node name="BulletEmitter" parent="WallTurret9/WeaponManager" index="0" instance=ExtResource( 6 )]
+position = Vector2( 0.000244141, -38.2608 )
+rotation = -1.5708
+spawnAsChild = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+lifetime = 20.0
+volleyClipSize = 1
+clipReloadTime = 1.0
+clipRandomReloadDelay = 2.0
+bulletMovementSpeed = 90.0
+bulletSpawnDelay = 0.0
+bulletType = ExtResource( 2 )
+initialSpawnDelayConstant = 1.0
+initialSpawnDelayRandomRange = 0.0
+
+[node name="WallTurret10" parent="." index="9" instance=ExtResource( 3 )]
+position = Vector2( 19.9609, -285.846 )
+rotation = 1.57079
+scale = Vector2( 1, 1 )
+speed = 0.0
+
+[node name="CollisionShape2D" parent="WallTurret10/Area2D" index="0"]
+disabled = true
+
+[node name="Sprite" parent="WallTurret10" index="1"]
+rotation = -3.14159
+scale = Vector2( 1.3104, 1.3104 )
+texture = ExtResource( 4 )
+
+[node name="Gun" type="Sprite" parent="WallTurret10/Sprite" index="3"]
+position = Vector2( -4.39915e-05, 12.1524 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" parent="WallTurret10" index="3"]
+anims/Death = SubResource( 15 )
+
+[node name="WeaponManager" parent="WallTurret10" index="4"]
+upTime = 2.0
+
+[node name="BulletEmitter" parent="WallTurret10/WeaponManager" index="0" instance=ExtResource( 6 )]
+position = Vector2( 0.000244141, -38.2608 )
+rotation = -1.5708
+spawnAsChild = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+lifetime = 20.0
+volleyClipSize = 1
+clipReloadTime = 1.0
+clipRandomReloadDelay = 2.0
+bulletMovementSpeed = 90.0
+bulletSpawnDelay = 0.0
+bulletType = ExtResource( 2 )
+initialSpawnDelayConstant = 1.0
+initialSpawnDelayRandomRange = 0.0
+
+[node name="WallTurret11" parent="." index="10" instance=ExtResource( 3 )]
+position = Vector2( 19.9609, -311.641 )
+rotation = 1.57079
+scale = Vector2( 1, 1 )
+speed = 0.0
+
+[node name="CollisionShape2D" parent="WallTurret11/Area2D" index="0"]
+disabled = true
+
+[node name="Sprite" parent="WallTurret11" index="1"]
+rotation = -3.14159
+scale = Vector2( 1.3104, 1.3104 )
+texture = ExtResource( 4 )
+
+[node name="Gun" type="Sprite" parent="WallTurret11/Sprite" index="3"]
+position = Vector2( -4.39915e-05, 12.1524 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" parent="WallTurret11" index="3"]
+anims/Death = SubResource( 16 )
+
+[node name="WeaponManager" parent="WallTurret11" index="4"]
+upTime = 2.0
+
+[node name="BulletEmitter" parent="WallTurret11/WeaponManager" index="0" instance=ExtResource( 6 )]
+position = Vector2( 0.000244141, -38.2608 )
+rotation = -1.5708
+spawnAsChild = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+lifetime = 20.0
+volleyClipSize = 1
+clipReloadTime = 1.0
+clipRandomReloadDelay = 2.0
+bulletMovementSpeed = 90.0
+bulletSpawnDelay = 0.0
+bulletType = ExtResource( 2 )
+initialSpawnDelayConstant = 1.0
+initialSpawnDelayRandomRange = 0.0
+
+[node name="WallTurret12" parent="." index="11" instance=ExtResource( 3 )]
+position = Vector2( 19.9609, -339.818 )
+rotation = 1.57079
+scale = Vector2( 1, 1 )
+speed = 0.0
+
+[node name="CollisionShape2D" parent="WallTurret12/Area2D" index="0"]
+disabled = true
+
+[node name="Sprite" parent="WallTurret12" index="1"]
+rotation = -3.14159
+scale = Vector2( 1.3104, 1.3104 )
+texture = ExtResource( 4 )
+
+[node name="Gun" type="Sprite" parent="WallTurret12/Sprite" index="3"]
+position = Vector2( -4.39915e-05, 12.1524 )
+texture = ExtResource( 5 )
+
+[node name="AnimationPlayer" parent="WallTurret12" index="3"]
+anims/Death = SubResource( 17 )
+
+[node name="WeaponManager" parent="WallTurret12" index="4"]
+upTime = 2.0
+
+[node name="BulletEmitter" parent="WallTurret12/WeaponManager" index="0" instance=ExtResource( 6 )]
+position = Vector2( 0.000236511, -38.2608 )
+rotation = -1.5708
+spawnAsChild = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+lifetime = 20.0
+volleyClipSize = 1
+clipReloadTime = 1.0
+clipRandomReloadDelay = 2.0
+bulletMovementSpeed = 90.0
+bulletSpawnDelay = 0.0
+bulletType = ExtResource( 2 )
+initialSpawnDelayConstant = 1.0
+initialSpawnDelayRandomRange = 0.0
+
+[node name="WallTurretMover" parent="." index="12" instance=ExtResource( 3 )]
+position = Vector2( 808.087, -369.309 )
 rotation = -1.57079
 scale = Vector2( 1, 1 )
 speed = 150.0
@@ -696,6 +1027,7 @@ bulletSpawnDelay = 0.3
 bulletType = ExtResource( 2 )
 initialSpawnDelayConstant = 1.0
 initialSpawnDelayRandomRange = 0.0
+makeBulletEnergizedAnywaysOdds = 0.3
 
 [node name="BulletEmitter2" parent="WallTurretMover/WeaponManager/BulletEmitter" index="2" instance=ExtResource( 6 )]
 rotation = -0.785397
@@ -709,8 +1041,9 @@ bulletSpawnDelay = 0.3
 bulletType = ExtResource( 2 )
 initialSpawnDelayConstant = 1.0
 initialSpawnDelayRandomRange = 0.0
+makeBulletEnergizedAnywaysOdds = 0.3
 
-[node name="Path2D" type="Path2D" parent="." index="9"]
+[node name="Path2D" type="Path2D" parent="." index="13"]
 curve = SubResource( 9 )
 
 [editable path="WallTurret"]
@@ -721,4 +1054,8 @@ curve = SubResource( 9 )
 [editable path="WallTurret6"]
 [editable path="WallTurret7"]
 [editable path="WallTurret8"]
+[editable path="WallTurret9"]
+[editable path="WallTurret10"]
+[editable path="WallTurret11"]
+[editable path="WallTurret12"]
 [editable path="WallTurretMover"]

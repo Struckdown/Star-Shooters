@@ -8,6 +8,47 @@
 [ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=7]
 
+[sub_resource type="Animation" id=1]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
 [sub_resource type="Animation" id=2]
 resource_name = "Death"
 tracks/0/type = "value"
@@ -213,48 +254,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "Death"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "scaleOut"
-} ]
-}
-
-[sub_resource type="Curve2D" id=8]
+[sub_resource type="Curve2D" id=7]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 19.6599, -341.746, 0, 0, 0, 0, 19.6599, 122.729 )
 }
@@ -312,7 +312,7 @@ position = Vector2( -4.39915e-05, 12.1524 )
 texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" parent="WallTurret2" index="3"]
-anims/Death = SubResource( 2 )
+anims/Death = SubResource( 1 )
 
 [node name="WeaponManager" parent="WallTurret2" index="4"]
 phaseSwapMode = "soloDownAndUp"
@@ -343,7 +343,7 @@ position = Vector2( -4.39915e-05, 12.1524 )
 texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" parent="WallTurret3" index="3"]
-anims/Death = SubResource( 3 )
+anims/Death = SubResource( 2 )
 
 [node name="WeaponManager" parent="WallTurret3" index="4"]
 phaseSwapMode = "soloDownAndUp"
@@ -373,7 +373,7 @@ position = Vector2( -4.39915e-05, 12.1524 )
 texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" parent="WallTurret4" index="3"]
-anims/Death = SubResource( 4 )
+anims/Death = SubResource( 3 )
 
 [node name="WeaponManager" parent="WallTurret4" index="4"]
 phaseSwapMode = "soloDownAndUp"
@@ -406,7 +406,7 @@ position = Vector2( -4.39915e-05, 12.1524 )
 texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" parent="WallTurret5" index="3"]
-anims/Death = SubResource( 5 )
+anims/Death = SubResource( 4 )
 
 [node name="WeaponManager" parent="WallTurret5" index="4"]
 phaseSwapMode = "soloDownAndUp"
@@ -439,7 +439,7 @@ position = Vector2( -4.39915e-05, 12.1524 )
 texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" parent="WallTurret6" index="3"]
-anims/Death = SubResource( 6 )
+anims/Death = SubResource( 5 )
 
 [node name="WeaponManager" parent="WallTurret6" index="4"]
 phaseSwapMode = "soloDownAndUp"
@@ -476,7 +476,7 @@ position = Vector2( -4.39915e-05, 12.1524 )
 texture = ExtResource( 5 )
 
 [node name="AnimationPlayer" parent="WallTurretMover" index="3"]
-anims/Death = SubResource( 7 )
+anims/Death = SubResource( 6 )
 
 [node name="WeaponManager" parent="WallTurretMover" index="4"]
 upTime = 2.0
@@ -492,7 +492,7 @@ bulletType = ExtResource( 6 )
 nthBulletIsGreen = [ 0 ]
 
 [node name="Path2D" type="Path2D" parent="." index="7"]
-curve = SubResource( 8 )
+curve = SubResource( 7 )
 
 [editable path="WallTurret"]
 [editable path="WallTurret2"]

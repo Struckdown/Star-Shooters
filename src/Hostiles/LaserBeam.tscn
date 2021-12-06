@@ -60,7 +60,7 @@ generatesEnergy = true
 previewTime = 1.5
 
 [node name="Line2D" type="Line2D" parent="."]
-points = PoolVector2Array( 0, 0, 150, 150 )
+points = PoolVector2Array( 0, 0, 150, 0 )
 default_color = Color( 1, 1, 1, 1 )
 
 [node name="Area2D" type="Area2D" parent="." groups=[
