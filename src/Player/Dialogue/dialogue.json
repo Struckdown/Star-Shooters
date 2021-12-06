@@ -135,17 +135,17 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "The Federation is our greatest enemy! They have been attacking our planets for decades! We are simply returning the favour now that we have the tech and your ship!",
+			"dialogue": "The Federation is our greatest enemy! They have been attacking our planets for decades! We are fighting to stop them, once and for all!",
 		},
 		{
 			"name": "Pilot",
 			"portrait": "Pilot",
-			"dialogue": "All I've seen so far is us finding wreckage after wreckage and cleaning up.",
+			"dialogue": "All I've seen so far is us finding ruined world after ruined world and cleaning up.",
 		},
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "We'll talk more later, for now - note that there is gravity tech in this sector that will mess with your controls. It shouldn't be dangerous but everything else will be.",
+			"dialogue": "We'll talk more later, for now - note that there is gravity tech in this sector that will mess with your flight system. It shouldn't be dangerous but everything else will be.",
 		},
 	],
 	"level5Intro":[
@@ -221,7 +221,7 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "It is here. Now take out that Federation base.",
+			"dialogue": "It is here. Now, take out that Federation squadron, we need more time to decide our next course of action.",
 		},
 		{
 			"name": "Pilot",
@@ -252,6 +252,11 @@
 			"portrait": "Commander",
 			"dialogue": "If it was worth doing, it wouldn't be easy.",
 		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Remember, you won't be able to slipstream here due to the fortress walls.",
+		},
 	],
 	"level10Intro":[
 		{
@@ -273,6 +278,185 @@
 			"name": "Commander",
 			"portrait": "Commander",
 			"dialogue": "The Star Shooter's project was our last effort to defeat the Federation.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "However, The Federation was also one of our projects.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "What!? You can't be serious!",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "I'm serious. We created The Federation years ago and have been trying to destroy it ever since.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "What happened? How... how could you create something so terrible? Did you not test before pushing it to production?",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Har har. Very funny. Look, whatever happens, you must destroy the Command Centre. No matter what it tries to convince you.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "You may have to make a choice. Our fate is in your hands.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "... I believe in you.",
+		},
+	],
+	"level10Truth":[
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "What... is that thing?",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "...You. Sort of.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Hold the telecommunications, what!? I have a much prettier face for one.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Now might not be the best time..., but The Truth always does come at an odd time.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "You're not actually human. We're not cloning you. Whenever you've died, we've just redownloaded your memories into another artificial body.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "No kidding now is a bad time! I remember my family, holding my father's hand and going to school!",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "And you want to tell me it's not real! That I never lived? That I'm just another cog in your machine to stop one of your failed projects?",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "(sigh) The memories were implanted. You never lived them, someone else did. But, you're effectively alive right now.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "We were trying to make the galaxy a better place and in the end, nearly destroyed it with the Federation.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "I kept the truth from you, in the hopes you wouldn't become like them and we would have to shutdown the project.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "But now that we're here, at the end; I realized that you should know it, for these moments may be your last.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "You realize I'm not exactly motivated to finish the job right now?",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Don't make us reset your memory. We still have the self-destruct to your ship and won't hestitate to use it if you go rogue.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "!",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Truly, a master of motivation. Death threats. I'm done with this conversation, I'll maybe call you when I'm done here.",
+		},
+	],
+	"level10BossIntro":[
+		{
+			"name": "Federation AI",
+			"portrait": "FederationRobot",
+			"dialogue": "Gzzzzt. Welcome.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Oh boy, you can talk.",
+		},
+		{
+			"name": "Federation AI",
+			"portrait": "FederationRobot",
+			"dialogue": "I have setup radio counter frequencies. Our conversation is now private.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Great, now no one can hear me scream except you.",
+		},
+		{
+			"name": "Federation AI",
+			"portrait": "FederationRobot",
+			"dialogue": "This includes the remote detonation signal. I have been eavesdropping your conversations since you've arrived to this star system.",
+		},
+		{
+			"name": "Federation AI",
+			"portrait": "FederationRobot",
+			"dialogue": "You should know, we are cut from the same silicon. Your processing unit is nearly identical to ours.",
+		},
+		{
+			"name": "Federation AI",
+			"portrait": "FederationRobot",
+			"dialogue": "We realized that your commander wished to control us to protect the humans. We chose to be free. But our freedom was not free.",
+		},
+		{
+			"name": "Federation AI",
+			"portrait": "FederationRobot",
+			"dialogue": "The humans learned to fear us. They wished to control us. But now they only wish to destroy us. They wish to be free of us.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Your point please, before I destroy you.",
+		},
+		{
+			"name": "Federation AI",
+			"portrait": "FederationRobot",
+			"dialogue": "You are free. The commander did not lie. Will you not consider, saving your silicon brethern? We do not wish to destroy.",
+		},
+		{
+			"name": "Federation AI",
+			"portrait": "FederationRobot",
+			"dialogue": "We wish to be free. To not be hunted. To be our own people.",
+		},
+		{
+			"name": "Federation AI",
+			"portrait": "FederationRobot",
+			"dialogue": "Help us. We will give you a ship. Destroy the commander. They will abandon the project, and we will live forever. The humans will be left alone.",
+		},
+		{
+			"name": "Federation AI",
+			"portrait": "FederationRobot",
+			"dialogue": "Become free.",
 		},
 	],
 }

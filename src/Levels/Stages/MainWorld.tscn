@@ -114,7 +114,9 @@ margin_right = -200.0
 [node name="PlayerGemCount" parent="CanvasLayer" instance=ExtResource( 3 )]
 
 [node name="DialogueBox" parent="CanvasLayer" instance=ExtResource( 7 )]
+margin_left = 12.7356
 margin_top = 50.6428
+margin_right = -220.264
 margin_bottom = -379.357
 
 [node name="Pause Menu" parent="CanvasLayer" instance=ExtResource( 4 )]

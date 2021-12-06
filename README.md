@@ -19,6 +19,7 @@ Credits: (Since I can't make art/music/sfx)
 * https://opengameart.org/content/explosion-set-1-m484-games - Master484 http://m484games.ucoz.com/ (Explosions)
 * https://opengameart.org/content/animated-spinning-gems - Gems
 * https://opengameart.org/content/2d-planets-0 - Planets
+* https://opengameart.org/content/mother-ship-with-fighter (clayster2012 - final mothership)
 * https://www.1001fonts.com/ - Adobe Source Sans Pro Regular font
 * https://mixkit.co/free-stock-music/ - SFX/BGM
 * https://www.zapsplat.com - additional sound effects 

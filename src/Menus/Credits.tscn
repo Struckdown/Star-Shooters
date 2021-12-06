@@ -88,7 +88,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="WindowTexture/ScrollContainer"]
 margin_right = 894.0
-margin_bottom = 785.0
+margin_bottom = 845.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -113,6 +113,7 @@ Satur9
 Master484
 Code Inferno Games - codeinferno.com
 Rawdanitsu
+clayster2012
 Adobe Source Sans Pro Regular font
 Mixkit
 Zapsplat.com

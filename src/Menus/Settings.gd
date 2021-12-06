@@ -11,9 +11,15 @@ func _ready():
 	$Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox.pressed = OS.window_fullscreen
 	_on_Settings_visibility_changed()
 
-func _input(_event):
+func _input(event):
 	if (Input.is_action_pressed("ui_cancel") or Input.is_action_pressed("pause")) and visible:
 		emit_signal("closed")
+		return
+	if event.is_action_pressed("ui_change_tabs") and visible:
+		var tabNumber = $Window/TabContainer.current_tab
+		$Window/TabContainer.current_tab = (tabNumber+1)%$Window/TabContainer.get_child_count()
+		$Window/ResumeBtn.call_deferred("grab_focus")
+
 
 func _unhandled_input(event):
 	if $Window/RebindControlsSelector.visible:
@@ -100,7 +106,7 @@ func loadSettings():
 		$Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox2.pressed = instaKill
 		
 		for action in InputMap.get_actions():
-			InputMap.action_erase_events(action)	# ckean up old actions
+			InputMap.action_erase_events(action)	# clean up old actions
 			var scannedCodeString = config.get_value("input", action)
 			var inputEventKey = InputEventKey.new()
 			inputEventKey.scancode = OS.find_scancode_from_string(scannedCodeString)
@@ -109,6 +115,9 @@ func loadSettings():
 			if has_node(nodeName):
 				var hbox = get_node(nodeName)
 				displayNewInput(hbox)
+	else:
+		print("No settings configured, loading defaults")
+		resetControls()
 	fileLock = false
 
 
@@ -138,9 +147,9 @@ func _on_RebindableBtn_pressed(rebindableControl):
 	$Window/RebindControlsSelector/RebindInstructionsBG/RebindInstructions.text = "Press the new input for: " + selectedRebindableHBox.get_child(0).text
 
 func resetControls():
-	var actions = {"move_left": [KEY_A], "move_right": [KEY_D],
-	"move_up":[KEY_W], "move_down":[KEY_S], "move_slow":[KEY_SHIFT],
-	"fire":[KEY_Z], "switchWeapons":[KEY_R]
+	var actions = {"move_left": [KEY_LEFT], "move_right": [KEY_RIGHT],
+	"move_up":[KEY_UP], "move_down":[KEY_DOWN], "move_slow":[KEY_SHIFT],
+	"fire":[KEY_SPACE], "switchWeapons":[KEY_R]
 	}
 	for action in actions:
 		InputMap.action_erase_events(action)
@@ -150,6 +159,7 @@ func resetControls():
 			InputMap.action_add_event(action, btn)
 			var hbox = get_node("Window/TabContainer/Controls/ScrollContainer/VBoxContainer/" + action)
 			displayNewInput(hbox)
+	save()
 
 
 func _on_ResetBtn_pressed():
