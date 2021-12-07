@@ -5,7 +5,7 @@ var dying = false
 export(int) var moveSpeed = 200
 export(int) var waveStr = 0
 onready var startTime = OS.get_ticks_msec()
-var elapsedTime = 0
+var elapsedTime = 0.0
 var horizontalOffset = 0
 var prevHorizontalOffset = 0
 export(float) var waveSpeed = 10
@@ -14,6 +14,8 @@ export(String, FILE) var energySprite
 var totalHOffset = 0
 export(bool) var titleScreenVersion
 export(float) var rotationSpeed = 0
+var originalScale = Vector2(1,1)	# given by parent
+export(CurveTexture) var bulletScaleCurve
 export(NodePath) var nodeToRotate
 var orbitalChildren = -1	# used by rotationalBullet
 var orbitalRotationSpeedDegs = 0
@@ -51,6 +53,7 @@ func _process(delta):
 	if not bounced:
 		checkForWrap()
 	checkForEndOfLife()
+	updateScale()
 
 
 func startFadeOut():
@@ -178,3 +181,10 @@ func checkForEndOfLife():
 		dying = true
 		canCauseDamage = false
 		startFadeOut()
+
+
+func updateScale():
+	#return
+	var size = bulletScaleCurve.get_curve().interpolate(elapsedTime/lifetime)	# elapsedTime already accounts for gameDelta
+	scale = originalScale*size
+	

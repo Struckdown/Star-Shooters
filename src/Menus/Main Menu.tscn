@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Space Backgrounds/space_background_pack/ScrollingShader2.shader" type="Shader" id=1]
 [ext_resource path="res://Menus/Main Menu.gd" type="Script" id=2]
@@ -148,6 +148,20 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id=7]
 length = 0.5
+
+[sub_resource type="Curve" id=8]
+max_value = 3.0
+_data = [ Vector2( 0.41, 3 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=9]
+curve = SubResource( 8 )
+
+[sub_resource type="Curve" id=10]
+max_value = 3.0
+_data = [ Vector2( 0, 3 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=11]
+curve = SubResource( 10 )
 
 [node name="Main Menu" type="Control"]
 anchor_right = 1.0
@@ -617,6 +631,7 @@ scale = Vector2( 3, 3 )
 generatesEnergy = true
 energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed08New.png"
 titleScreenVersion = true
+bulletScaleCurve = SubResource( 9 )
 
 [node name="Area2D" parent="AnimationPlayer/Bullet_Straight" index="0"]
 collision_layer = 1
@@ -628,6 +643,7 @@ texture = ExtResource( 4 )
 position = Vector2( 510.127, -89.272 )
 scale = Vector2( 3, 3 )
 titleScreenVersion = true
+bulletScaleCurve = SubResource( 11 )
 
 [node name="Area2D" parent="AnimationPlayer/Bullet_Straight2" index="0"]
 collision_layer = 1

@@ -37,6 +37,7 @@ export(float) var clipReloadTime = 0
 export(float) var clipRandomReloadDelay = 0	# seconds
 export(float) var bulletMovementSpeed = 130
 export(Vector2) var bulletScale = Vector2(1,1)
+export(CurveTexture) var bulletScaleCurve
 export(float) var bulletWaveSpeed = 0
 export(float) var bulletWaveStr = 0
 export(float) var bulletSpawnDelay = 1	# in seconds
@@ -115,6 +116,7 @@ func _process(delta):
 		shouldUpdateRotationPerVolley = true
 	updateRotation(shouldUpdateRotationPerVolley, delta*GameManager.gameSpeed)
 
+
 func updatePosToShoot():
 	positionToShoot = global_position+global_transform.x
 	if not is_instance_valid(target):	# tries to find the player
@@ -177,6 +179,8 @@ func spawnBullets(delta, additionalRads):
 		b.orbitalChildren = orbitalChildren
 		b.orbitalRotationSpeedDegs = orbitalRotationSpeedDegs
 		b.scale = bulletScale
+		b.bulletScaleCurve = bulletScaleCurve
+		b.originalScale = bulletScale
 		b.target = target
 		b.wrapsRemaining = wrapsRemaining
 		b.bouncesRemaining = bouncesRemaining
@@ -212,6 +216,12 @@ func calculateBulletTargetPosition(_delta):
 # volleyUpdate is a bool whether to increase rotation per volley shot
 func updateRotation(volleyUpdate, delta):
 	var amountToRotate = 0
+	
+	if is_instance_valid(target) and targetStyle == "atTarget":
+		var deltaAngle = get_angle_to(target.global_position)
+		rotation += min(abs(deltaAngle), deg2rad(rotationDegPerSec*delta)) * sign(deltaAngle)
+		return
+	
 	if volleyUpdate:
 		amountToRotate += rotationPerVolley
 	amountToRotate += rotationDegPerSec*delta
@@ -287,4 +297,5 @@ func getExpectedTargetPosition():
 	var predictedPosition = target.global_position + target.velocity*time
 
 	return predictedPosition
+
 

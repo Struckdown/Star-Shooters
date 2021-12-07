@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyGreen5.png" type="Texture" id=4]
+[ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.172, 0.281818 ), 0.0, 0.0, 0, 0, Vector2( 0.356, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="Curve" id=3]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=4]
+curve = SubResource( 3 )
+
+[sub_resource type="Curve2D" id=5]
+_data = {
+"points": PoolVector2Array( 75.1632, -7.10928, -75.1632, 7.10928, 370.206, 90.7937, -108.824, -194.995, 108.824, 194.995, 203.426, 441.023, 4.41637, 101.61, -4.41637, -101.61, 727.035, 356.973, 45.4084, -2.52269, -45.4084, 2.52269, 481.493, 87.0452 )
+}
+
+[node name="WaveBase" instance=ExtResource( 1 )]
+enemiesToDestroy = 2
+
+[node name="Enemy_Base" parent="." index="0" instance=ExtResource( 2 )]
+position = Vector2( 419.005, -66.5567 )
+rotation = -4.71238
+pointsWorth = 200
+speed = 80.0
+maxHealth = 60
+moveGoal = Vector2( 0, 150 )
+flyPaths = [ NodePath("../Path2D") ]
+loopFlyPaths = true
+flyingPattern = "followPath"
+
+[node name="Sprite" parent="Enemy_Base" index="1"]
+texture = ExtResource( 4 )
+
+[node name="BulletEmitter" parent="Enemy_Base/WeaponManager" index="0" instance=ExtResource( 3 )]
+targetStyle = "straight"
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 20.0
+amountOfBullets = 18
+lifetime = 7.0
+bulletMovementSpeed = 110.0
+bulletScale = Vector2( 6, 6 )
+bulletScaleCurve = SubResource( 2 )
+bulletSpawnDelay = 4.0
+bulletType = ExtResource( 5 )
+initialSpawnDelayRandomRange = 0.0
+
+[node name="BulletEmitterTemplate" parent="Enemy_Base/WeaponManager/BulletEmitter" index="2" instance=ExtResource( 3 )]
+targetStyle = "straight"
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 180.0
+amountOfBullets = 2
+lifetime = 7.0
+bulletsToSkip = [ 0 ]
+bulletScale = Vector2( 2, 2 )
+bulletScaleCurve = SubResource( 4 )
+bulletSpawnDelay = 1.5
+bulletType = ExtResource( 6 )
+initialSpawnDelayConstant = 1.0
+initialSpawnDelayRandomRange = 0.0
+makeBulletEnergizedAnywaysOdds = 0.3
+emitting = false
+template = true
+
+[node name="Path2D" type="Path2D" parent="." index="1"]
+position = Vector2( 0.793701, -0.793701 )
+curve = SubResource( 5 )
+
+[editable path="Enemy_Base"]

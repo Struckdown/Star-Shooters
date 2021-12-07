@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Levels/Stages/Level.gd" type="Script" id=1]
 [ext_resource path="res://Levels/Stages/Level8/L8W1.tscn" type="PackedScene" id=2]
@@ -7,7 +7,11 @@
 [ext_resource path="res://Levels/Stages/Level8/L8W3.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Levels/Stages/Level8/L8W4.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Levels/Stages/Level8/L8W5.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Hostiles/Waves/Checkpoint.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Hostiles/Waves/WarningScreen.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/Stages/Level8/L8W6.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Levels/Stages/Level8/L8W7.tscn" type="PackedScene" id=11]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
-waves = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ) ]
+waves = [ ExtResource( 3 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 11 ) ]

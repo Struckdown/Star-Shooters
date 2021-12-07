@@ -3,11 +3,10 @@
 [ext_resource path="res://Hostiles/Bullets/Bullet_Base.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Space Shooter Redux/PNG/Lasers/laserBlue08.png" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=1]
 radius = 2.63721
 
-[sub_resource type="Animation" id=1]
-resource_name = "default"
+[sub_resource type="Animation" id=2]
 length = 0.5
 loop = true
 tracks/0/type = "value"
@@ -33,8 +32,8 @@ scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 autoplay = "default"
-anims/default = SubResource( 1 )
+anims/default = SubResource( 2 )

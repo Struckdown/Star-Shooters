@@ -1,13 +1,20 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Hostiles/Bullets/BulletEmitter.gd" type="Script" id=1]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Base.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Bullets/FireLaser.wav" type="AudioStream" id=3]
 
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
 [node name="BulletEmitter" type="Node2D" groups=[
 "emitsBullets",
 ]]
 script = ExtResource( 1 )
+bulletScaleCurve = SubResource( 2 )
 bulletType = ExtResource( 2 )
 
 [node name="FireSFX" type="AudioStreamPlayer" parent="."]

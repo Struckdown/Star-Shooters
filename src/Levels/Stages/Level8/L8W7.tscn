@@ -1,0 +1,216 @@
+[gd_scene load_steps=23 format=2]
+
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Space Shooter Redux/PNG/Parts/cockpitYellow_7.png" type="Texture" id=4]
+[ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Space Shooter Redux/PNG/Parts/wingYellow_7.png" type="Texture" id=7]
+[ext_resource path="res://Space Shooter Redux/PNG/Parts/engine2.png" type="Texture" id=8]
+[ext_resource path="res://Space Shooter Redux/PNG/Parts/wingYellow_3.png" type="Texture" id=9]
+[ext_resource path="res://Hostiles/WeaponManager.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Space Shooter Redux/PNG/Parts/wingYellow_4.png" type="Texture" id=11]
+[ext_resource path="res://Hostiles/LaserBeam.tscn" type="PackedScene" id=12]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 54.8997, 69.8403 )
+
+[sub_resource type="Curve" id=2]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=3]
+curve = SubResource( 2 )
+
+[sub_resource type="ParticlesMaterial" id=4]
+emission_shape = 2
+emission_box_extents = Vector3( 22, 1, 1 )
+flag_disable_z = true
+direction = Vector3( 0, -1, 0 )
+spread = 22.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 700.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 3.0
+scale_curve = SubResource( 3 )
+color = Color( 0.909804, 0.0784314, 0.0156863, 1 )
+
+[sub_resource type="Curve" id=5]
+min_value = 1.0
+max_value = 8.0
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.06, 8 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=6]
+curve = SubResource( 5 )
+
+[sub_resource type="Curve" id=7]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=8]
+curve = SubResource( 7 )
+
+[sub_resource type="Curve" id=9]
+_data = [ Vector2( 0.34, 1 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=10]
+curve = SubResource( 9 )
+
+[node name="WaveBase" instance=ExtResource( 1 )]
+enemiesToDestroy = 1
+usesBossHP = true
+bossName = "The Claw"
+musicRequest = "res://Levels/BossBattle.mp3"
+
+[node name="TheClaw" parent="." index="0" instance=ExtResource( 2 )]
+position = Vector2( 422.573, -106.395 )
+rotation = -4.71238
+scale = Vector2( 1, 1 )
+pointsWorth = 3000
+speed = 0.9
+useAcclerationInsteadOfLinearVelocity = true
+leashRadius = 25.0
+maxHealth = 1200
+moveGoal = Vector2( 0, 200 )
+flyingPattern = "hoverMoveGoal"
+
+[node name="CollisionShape2D" parent="TheClaw/Area2D" index="0"]
+position = Vector2( 20.2394, -0.000183105 )
+shape = SubResource( 1 )
+
+[node name="Sprite" parent="TheClaw" index="1"]
+texture = ExtResource( 4 )
+
+[node name="Node2D" type="Node2D" parent="TheClaw/Sprite" index="3"]
+
+[node name="wingYellow_3" type="Sprite" parent="TheClaw/Sprite/Node2D" index="0"]
+position = Vector2( 54.123, 13.9018 )
+rotation = 0.15012
+texture = ExtResource( 9 )
+
+[node name="wingYellow_4" type="Sprite" parent="TheClaw/Sprite/Node2D/wingYellow_3" index="0"]
+position = Vector2( 3.73755, 38.6478 )
+rotation = 0.18313
+texture = ExtResource( 11 )
+
+[node name="wingYellow_7" type="Sprite" parent="TheClaw/Sprite/Node2D" index="1"]
+position = Vector2( 28.0966, 14.0553 )
+z_index = -1
+texture = ExtResource( 7 )
+
+[node name="engine1" type="Sprite" parent="TheClaw/Sprite/Node2D" index="2"]
+position = Vector2( -0.0800781, -42.2973 )
+texture = ExtResource( 8 )
+
+[node name="Node2D2" type="Node2D" parent="TheClaw/Sprite" index="4"]
+scale = Vector2( -1, 1 )
+
+[node name="wingYellow_3" type="Sprite" parent="TheClaw/Sprite/Node2D2" index="0"]
+position = Vector2( 54.123, 13.9018 )
+rotation = 0.15012
+texture = ExtResource( 9 )
+
+[node name="wingYellow_4" type="Sprite" parent="TheClaw/Sprite/Node2D2/wingYellow_3" index="0"]
+position = Vector2( 3.73755, 38.6478 )
+rotation = 0.18313
+texture = ExtResource( 11 )
+
+[node name="wingYellow_7" type="Sprite" parent="TheClaw/Sprite/Node2D2" index="1"]
+position = Vector2( 28.0966, 14.0553 )
+z_index = -1
+texture = ExtResource( 7 )
+
+[node name="engine1" type="Sprite" parent="TheClaw/Sprite/Node2D2" index="2"]
+position = Vector2( -0.0800781, -42.2973 )
+texture = ExtResource( 8 )
+
+[node name="Particles2D" type="Particles2D" parent="TheClaw/Sprite/Node2D2/engine1" index="0"]
+position = Vector2( 9.15527e-05, -14.6833 )
+amount = 40
+local_coords = false
+process_material = SubResource( 4 )
+
+[node name="WeaponManager" parent="TheClaw" index="4"]
+phaseSwapMode = "health"
+healthPercentToNextPhase = 50.0
+
+[node name="Phase1" parent="TheClaw/WeaponManager" index="0" instance=ExtResource( 10 )]
+phaseSwapMode = "time"
+timeToNextPhase = 12
+
+[node name="BulletEmitter" parent="TheClaw/WeaponManager/Phase1" index="0" instance=ExtResource( 3 )]
+rotation = -0.610865
+rotationDegPerSec = 20.0
+rotationRange = 70.0
+targetStyle = "straight"
+amountOfBullets = 0
+bulletType = ExtResource( 6 )
+
+[node name="LaserBeam" parent="TheClaw/WeaponManager/Phase1/BulletEmitter" index="2" instance=ExtResource( 12 )]
+position = Vector2( 36.5, -0.000335693 )
+generatesEnergy = false
+
+[node name="EmitterA" parent="TheClaw/WeaponManager/Phase1" index="1" instance=ExtResource( 3 )]
+position = Vector2( 33, -0.000305176 )
+fireAtLocationForWholeClip = false
+lifetime = 20.0
+bulletMovementSpeed = 30.0
+bulletScaleCurve = SubResource( 6 )
+bulletWaveSpeed = 0.5
+bulletWaveStr = 15.0
+bulletSpawnDelay = 4.0
+bulletType = ExtResource( 5 )
+initialSpawnDelayConstant = 1.0
+
+[node name="BulletEmitterTemplate" parent="TheClaw/WeaponManager/Phase1/EmitterA" index="2" instance=ExtResource( 3 )]
+rotationDegPerSec = 30.0
+angleOfBulletSpread = 0.0
+randomAngleOfBulletSpread = 180.0
+bulletScaleCurve = SubResource( 8 )
+bulletSpawnDelay = 0.1
+bulletType = ExtResource( 6 )
+initialSpawnDelayRandomRange = 0.0
+makeBulletEnergizedAnywaysOdds = 0.1
+template = true
+
+[node name="Phase2" parent="TheClaw/WeaponManager" index="1" instance=ExtResource( 10 )]
+
+[node name="BulletEmitter" parent="TheClaw/WeaponManager/Phase2" index="0" instance=ExtResource( 3 )]
+targetStyle = "atTarget"
+fireAtLocationForWholeClip = false
+lifetime = 3.0
+bulletMovementSpeed = 60.0
+bulletSpawnDelay = 7.0
+bulletType = ExtResource( 5 )
+initialSpawnDelayConstant = 1.0
+initialSpawnDelayRandomRange = 0.0
+
+[node name="BulletEmitterTemplate" parent="TheClaw/WeaponManager/Phase2/BulletEmitter" index="2" instance=ExtResource( 3 )]
+targetStyle = "straight"
+angleOfBulletSpread = 45.0
+amountOfBullets = 8
+lifetime = 7.0
+volleyClipSize = 3
+clipReloadTime = 3.0
+bulletMovementSpeed = 80.0
+bulletScale = Vector2( 2, 2 )
+bulletScaleCurve = SubResource( 10 )
+bulletSpawnDelay = 2.0
+bulletType = ExtResource( 5 )
+initialSpawnDelayRandomRange = 0.0
+template = true
+
+[node name="BulletEmitterTemplate2" parent="TheClaw/WeaponManager/Phase2/BulletEmitter/BulletEmitterTemplate" index="2" instance=ExtResource( 3 )]
+targetStyle = "straight"
+angleOfBulletSpread = 60.0
+amountOfBullets = 6
+lifetime = 6.0
+bulletMovementSpeed = 120.0
+bulletScaleCurve = SubResource( 10 )
+bulletType = ExtResource( 6 )
+initialSpawnDelayConstant = 1.0
+initialSpawnDelayRandomRange = 0.0
+makeBulletEnergizedAnywaysOdds = 0.3
+template = true
+
+[editable path="TheClaw"]
