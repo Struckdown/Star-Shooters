@@ -59,6 +59,8 @@ export(int) var wrapsRemaining = 0	# wrapping property. Don't use with ring bull
 export(int) var bouncesRemaining = 0	# bounce off walls property
 
 export(bool) var emitting = true
+export(bool) var template = false
+var templateChild = null
 export(bool) var DEBUG = false
 var target	# what we're trying to track
 var positionToShoot	# the actual location we shoot, usually derived from target
@@ -83,7 +85,12 @@ func _ready():
 	if targetStyle == "shape":
 		bulletSpawnDelay = (shapeEmissionTime / float(shapeTotalBullets)) / 2	# accounts for [-1..1]
 	updatePosToShoot()
-
+	for child in get_children():
+		if child.is_in_group("emitsBullets"):
+			if child.template:
+				templateChild = child
+	if template:	# Template emitters don't do anything and are instead used by parent emitters as what to spawn >:D
+		emitting = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -179,6 +186,11 @@ func spawnBullets(delta, additionalRads):
 			if totalDelta > 1:
 				totalDelta -= 2
 		b.trackYFirst = trackYFirst
+		if templateChild:
+			var emitter = templateChild.duplicate()
+			emitter.template = false
+			emitter.emitting = true
+			b.add_child(emitter)
 		b.init()
 	volleysFired += 1
 
@@ -229,6 +241,8 @@ func updateRotation(volleyUpdate, delta):
 	rotation = actualRotationStart + internalRotation
 
 func toggleEmitting(state):
+	if template:
+		return
 	for child in get_children():
 		if child.has_method("toggleEmitting"):
 			child.toggleEmitting(state)

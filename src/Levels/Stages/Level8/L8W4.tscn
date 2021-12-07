@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyGreen1.png" type="Texture" id=4]
+[ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=6]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( -0.51745, 0.458786, 0.51745, -0.458786, -86.6756, 290.269, -345.602, -80.9814, 345.602, 80.9814, 630.39, 93.1758, 156.176, 4.00452, -156.176, -4.00452, 410.338, 347.082, -26.6968, 123.473, 26.6968, -123.473, 260.667, 88.7213, 0, 0, 0, 0, 1074.95, 83.376 )
+}
+
+[node name="WaveBase" instance=ExtResource( 1 )]
+enemiesToDestroy = 1
+
+[node name="Enemy_Base" parent="." index="0" instance=ExtResource( 2 )]
+position = Vector2( -141.722, 320.525 )
+rotation = -0.523598
+moveGoal = Vector2( 0, 150 )
+flyPaths = [ NodePath("../Path2D") ]
+flyingPattern = "followPath"
+
+[node name="Sprite" parent="Enemy_Base" index="1"]
+texture = ExtResource( 4 )
+
+[node name="BulletEmitter" parent="Enemy_Base/WeaponManager" index="0" instance=ExtResource( 3 )]
+targetStyle = "straight"
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 20.0
+amountOfBullets = 18
+lifetime = 2.0
+bulletMovementSpeed = 110.0
+bulletScale = Vector2( 2, 2 )
+bulletSpawnDelay = 2.0
+bulletType = ExtResource( 5 )
+initialSpawnDelayRandomRange = 0.0
+
+[node name="BulletEmitterTemplate" parent="Enemy_Base/WeaponManager/BulletEmitter" index="2" instance=ExtResource( 3 )]
+rotationDegPerSec = 60.0
+targetStyle = "straight"
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 60.0
+amountOfBullets = 6
+lifetime = 7.0
+bulletMovementSpeed = 80.0
+bulletType = ExtResource( 6 )
+makeBulletEnergizedAnywaysOdds = 0.1
+emitting = false
+template = true
+
+[node name="Path2D" type="Path2D" parent="." index="1"]
+position = Vector2( 0.793701, -0.793701 )
+curve = SubResource( 1 )
+
+[editable path="Enemy_Base"]

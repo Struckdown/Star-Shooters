@@ -4,7 +4,9 @@
 [ext_resource path="res://Hostiles/Bullets/Bullet_Base.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Bullets/FireLaser.wav" type="AudioStream" id=3]
 
-[node name="BulletEmitter" type="Node2D"]
+[node name="BulletEmitter" type="Node2D" groups=[
+"emitsBullets",
+]]
 script = ExtResource( 1 )
 bulletType = ExtResource( 2 )
 
