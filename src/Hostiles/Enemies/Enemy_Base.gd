@@ -146,7 +146,8 @@ func aimAtTarget():
 	match flyingPattern:
 		"hoverRandomPoint":
 			if is_instance_valid(target):
-				look_at(target.position)
+				var deltaAngle = get_angle_to(target.global_position)
+				rotation += min(abs(deltaAngle), deg2rad(maxRotationSpeed)) * sign(deltaAngle)
 			else:
 				if len(get_tree().get_nodes_in_group("Player")) > 0:
 					target = get_tree().get_nodes_in_group("Player")[0]
@@ -214,7 +215,7 @@ func getNewMoveGoal():
 	#var mapCenter = levelBounds.position
 	var mapSize = get_viewport().size
 	randomize()
-	var xRand = rand_range(mapSize.x * 0.1, mapSize.x * 0.9)
+	var xRand = rand_range(mapSize.x * 0.2, mapSize.x * 0.7)	# avoid parking on the right side
 	var yRand = rand_range(mapSize.y * 0.1, mapSize.y * 0.4) #+ 200	# 200 is from wave offset spawning things off-camera
 	moveGoal = Vector2(xRand, yRand)
 

@@ -8,7 +8,7 @@
 
 [node name="BossL3Minion" instance=ExtResource( 1 )]
 scale = Vector2( 0.3, 0.3 )
-speed = 90.0
+speed = 150.0
 gemValue = 0
 flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )

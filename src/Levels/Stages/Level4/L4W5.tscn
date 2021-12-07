@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Hostiles/Bullets/Bullet_Gravity.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=2]
@@ -6,7 +6,9 @@
 [ext_resource path="res://Hostiles/Enemies/CircleShooter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlack2.png" type="Texture" id=5]
 [ext_resource path="res://Hostiles/Bullets/OrbitalBullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Hostiles/LaserBeam.tscn" type="PackedScene" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Death"
@@ -88,6 +90,11 @@ tracks/2/keys = {
 "args": [  ],
 "method": "scaleOut"
 } ]
+}
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 10.044, 78.6742, 0, 0, 0, 0, 956.662, 78.8278 )
 }
 
 [node name="WaveBase" instance=ExtResource( 2 )]
@@ -190,5 +197,24 @@ initialSpawnDelayRandomRange = 2.0
 nthBulletIsGreen = [ 0, 1, 2, 3 ]
 orbitalChildren = 6
 
+[node name="Enemy_Base" parent="." index="2" instance=ExtResource( 7 )]
+position = Vector2( -96.8736, 78.8424 )
+speed = 60.0
+flyPaths = [ NodePath("../Path2D") ]
+flyingPattern = "followPath"
+
+[node name="WeaponManager" parent="Enemy_Base" index="4"]
+phaseSwapMode = "soloDownAndUp"
+active = false
+startDelay = 1.0
+upTime = 3.0
+
+[node name="LaserBeam" parent="Enemy_Base/WeaponManager" index="0" instance=ExtResource( 9 )]
+rotation = 1.57079
+
+[node name="Path2D" type="Path2D" parent="." index="3"]
+curve = SubResource( 3 )
+
 [editable path="StandardShooter"]
 [editable path="StandardShooter2"]
+[editable path="Enemy_Base"]

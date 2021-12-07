@@ -15,6 +15,9 @@ useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 35
 flyingPattern = "hoverRandomPoint"
 
+[node name="BulletEmitter" parent="Enemy_Base/WeaponManager" index="0"]
+bulletMovementSpeed = 240.0
+
 [node name="Enemy_Base2" parent="." index="1" instance=ExtResource( 2 )]
 position = Vector2( 352.999, -83.1617 )
 rotation = 1.57657
@@ -23,6 +26,9 @@ speed = 1.0
 useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 35
 flyingPattern = "hoverRandomPoint"
+
+[node name="BulletEmitter" parent="Enemy_Base2/WeaponManager" index="0"]
+bulletMovementSpeed = 240.0
 
 [node name="Enemy_Base3" parent="." index="2" instance=ExtResource( 2 )]
 position = Vector2( 570.473, -76.8121 )
@@ -33,6 +39,9 @@ useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 35
 flyingPattern = "hoverRandomPoint"
 
+[node name="BulletEmitter" parent="Enemy_Base3/WeaponManager" index="0"]
+bulletMovementSpeed = 240.0
+
 [node name="Enemy_Base4" parent="." index="3" instance=ExtResource( 2 )]
 position = Vector2( 716.514, -72.0498 )
 rotation = 1.57657
@@ -41,3 +50,11 @@ speed = 1.0
 useAcclerationInsteadOfLinearVelocity = true
 maxHealth = 35
 flyingPattern = "hoverRandomPoint"
+
+[node name="BulletEmitter" parent="Enemy_Base4/WeaponManager" index="0"]
+bulletMovementSpeed = 240.0
+
+[editable path="Enemy_Base"]
+[editable path="Enemy_Base2"]
+[editable path="Enemy_Base3"]
+[editable path="Enemy_Base4"]

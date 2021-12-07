@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Gravity.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Enemies/CircleShooter.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Hostiles/LaserBeam.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlack2.png" type="Texture" id=7]
 
 [sub_resource type="Animation" id=1]
@@ -136,7 +137,7 @@ enemiesToDestroy = 3
 [node name="TargetShooter" parent="." index="0" instance=ExtResource( 3 )]
 position = Vector2( 512.089, -122.754 )
 rotation = -4.71238
-speed = 80.0
+speed = 70.0
 maxHealth = 50
 moveGoal = Vector2( 0, 200 )
 loopFlyPaths = true
@@ -147,6 +148,12 @@ texture = ExtResource( 7 )
 
 [node name="AnimationPlayer" parent="TargetShooter" index="3"]
 anims/Death = SubResource( 1 )
+
+[node name="WeaponManager" parent="TargetShooter" index="4"]
+phaseSwapMode = "soloDownAndUp"
+active = false
+startDelay = 1.0
+upTime = 3.0
 
 [node name="BulletEmitter" parent="TargetShooter/WeaponManager" index="0"]
 rotationDegPerSec = 0.0
@@ -159,24 +166,16 @@ bulletSpawnDelay = 3.0
 bulletType = ExtResource( 2 )
 nthBulletIsGreen = [  ]
 
-[node name="BulletEmitter" parent="TargetShooter/WeaponManager/BulletEmitter" index="1" instance=ExtResource( 4 )]
-rotation = 1.5708
-targetStyle = "straight"
-fireAtLocationForWholeClip = false
-angleOfBulletSpread = 180.0
-amountOfBullets = 2
-bulletScale = Vector2( 4, 4 )
-bulletSpawnDelay = 0.8
-bulletType = ExtResource( 5 )
-initialSpawnDelayConstant = 1.0
-initialSpawnDelayRandomRange = 0.0
-greenBulletFrequency = 4
-nthBulletIsGreen = [ 0, 1 ]
+[node name="LaserBeam" parent="TargetShooter/WeaponManager/BulletEmitter" index="2" instance=ExtResource( 6 )]
+rotation = 1.57079
+
+[node name="LaserBeam2" parent="TargetShooter/WeaponManager/BulletEmitter" index="3" instance=ExtResource( 6 )]
+rotation = -1.57079
 
 [node name="TargetShooter2" parent="." index="1" instance=ExtResource( 3 )]
 position = Vector2( 392.24, -229.11 )
 rotation = -4.71238
-speed = 80.0
+speed = 70.0
 maxHealth = 50
 moveGoal = Vector2( 0, 200 )
 loopFlyPaths = true
@@ -216,7 +215,7 @@ nthBulletIsGreen = [ 0, 1 ]
 [node name="TargetShooter3" parent="." index="2" instance=ExtResource( 3 )]
 position = Vector2( 639.874, -229.11 )
 rotation = -4.71238
-speed = 80.0
+speed = 70.0
 maxHealth = 50
 moveGoal = Vector2( 0, 200 )
 loopFlyPaths = true

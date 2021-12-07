@@ -19,8 +19,9 @@
 [node name="Level" type="Node2D" groups=[
 "LevelManager",
 ]]
+position = Vector2( -1, 1 )
 script = ExtResource( 1 )
-level = 8
+level = 2
 debugWave = 5
 
 [node name="VPCscoreboard" type="ViewportContainer" parent="."]

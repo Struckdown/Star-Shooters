@@ -19,7 +19,7 @@ func _ready():
 func spawnMinion():
 	var minion = preloadedMinion.instance()
 	spawnedMinions.append(minion)
-	get_parent().add_child(minion)
+	get_parent().get_parent().add_child(minion)
 	minion.connect("wantsNewTarget", self, "assignNewMinionTarget", [minion])
 	var hanger = get_node("Sprite/cockpitBlue_" + str(hangerIndex+1))
 	minion.global_position = hanger.global_position

@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Hostiles/LaserBeam.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Death"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[node name="WaveBase" instance=ExtResource( 1 )]
+enemiesToDestroy = 4
+
+[node name="Enemy_BaseLaser" parent="." index="0" instance=ExtResource( 3 )]
+position = Vector2( 454.736, -128.854 )
+rotation = 1.57079
+maxRotationSpeed = 0.196
+flyingPattern = "hoverRandomPoint"
+
+[node name="WeaponManager" parent="Enemy_BaseLaser" index="4"]
+phaseSwapMode = "soloDownAndUp"
+active = false
+startDelay = 1.5
+
+[node name="LaserBeam" parent="Enemy_BaseLaser/WeaponManager" index="0" instance=ExtResource( 4 )]
+position = Vector2( 15.5739, 0 )
+
+[node name="Enemy_Base" parent="." index="1" instance=ExtResource( 3 )]
+position = Vector2( 204.338, -100.908 )
+rotation = 1.41548
+flyingPattern = "hoverRandomPoint"
+
+[node name="BulletEmitter" parent="Enemy_Base/WeaponManager" index="0" instance=ExtResource( 2 )]
+targetStyle = "atTarget"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+amountOfBullets = 3
+bulletType = ExtResource( 5 )
+initialSpawnDelayConstant = 1.0
+greenBulletFrequency = 2
+nthBulletIsGreen = [ 1, 2 ]
+
+[node name="Enemy_Base2" parent="." index="2" instance=ExtResource( 3 )]
+position = Vector2( 697.944, -100.908 )
+rotation = 2.21058
+flyingPattern = "hoverRandomPoint"
+
+[node name="AnimationPlayer" parent="Enemy_Base2" index="3"]
+anims/Death = SubResource( 1 )
+
+[node name="BulletEmitter" parent="Enemy_Base2/WeaponManager" index="0" instance=ExtResource( 2 )]
+targetStyle = "atTarget"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+amountOfBullets = 3
+bulletType = ExtResource( 5 )
+initialSpawnDelayConstant = 1.0
+greenBulletFrequency = 2
+nthBulletIsGreen = [ 1, 2 ]
+
+[editable path="Enemy_BaseLaser"]
+[editable path="Enemy_Base"]
+[editable path="Enemy_Base2"]
