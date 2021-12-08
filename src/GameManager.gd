@@ -14,7 +14,7 @@ var instaKillMode = false
 var skipDialogue = false	# set on game over to true and reset on level select entered
 enum playerFireTypes{SPREAD,CHARGE,FOCUSED,REVERSE}
 var playerFireType = playerFireTypes.FOCUSED
-var unlockedPlayerFireTypes = [playerFireTypes.FOCUSED, playerFireTypes.SPREAD, playerFireTypes.REVERSE, playerFireTypes.CHARGE]
+var unlockedPlayerFireTypes = [playerFireTypes.FOCUSED]
 
 var saveGameFileName = "user://savegame.save"
 signal fireModeUpdated
@@ -31,6 +31,7 @@ func clearSaveData():
 	gameMode = null
 	mapPlayerLastPos = Vector2(496.063, 303.194)
 	mapPlayerLastRot = 0
+	unlockedPlayerFireTypes = [playerFireTypes.FOCUSED]; playerFireType = playerFireTypes.FOCUSED
 
 func resetPlayerLives():
 	var curLevel = UpgradeManager.upgrades["lives"]["curLevel"]
@@ -56,6 +57,7 @@ func saveGame():
 	save_game.store_line(to_json(stagesCompletedData))
 	save_game.store_var(mapPlayerLastPos)
 	save_game.store_var(mapPlayerLastRot)
+	save_game.store_var(unlockedPlayerFireTypes)
 	return
 
 #	var save_nodes = get_tree().get_nodes_in_group("Persist")
@@ -90,6 +92,8 @@ func load_game():
 	stagesCompletedData = parse_json(save_game.get_line())
 	mapPlayerLastPos = save_game.get_var()
 	mapPlayerLastRot = save_game.get_var()
+	unlockedPlayerFireTypes = save_game.get_var()
+
 #	# We need to revert the game state so we're not cloning objects
 #	# during loading. This will vary wildly depending on the needs of a
 #	# project, so take care with this step.
@@ -141,4 +145,7 @@ func updateFireMode(newType):
 			return
 	emit_signal("fireModeUpdated")
 
-	
+func unlockFireMode(fireMode) -> void:
+	if not (fireMode in unlockedPlayerFireTypes) and fireMode >= 0:
+		unlockedPlayerFireTypes.append(fireMode)
+		saveGame()

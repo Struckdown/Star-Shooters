@@ -18,6 +18,7 @@ export(float) var dialogueRequestDelay = 0.0	# used by level manager
 var levelManagerRef
 var dialogueBoxRef	# set by level manager
 export(Vector2) var waveMoveDirection = Vector2.ZERO
+export(GameManager.playerFireTypes) var playerFireTypeUnlock = GameManager.playerFireTypes.FOCUSED
 
 signal waveFinished
 signal startNextWave
@@ -40,6 +41,7 @@ func _ready():
 		changeMusic()
 	if usesBossHP:
 		setUpBossHP()
+	GameManager.unlockFireMode(playerFireTypeUnlock)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

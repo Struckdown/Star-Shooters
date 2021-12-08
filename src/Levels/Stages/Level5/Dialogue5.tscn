@@ -5,3 +5,4 @@
 [node name="WaveBase" instance=ExtResource( 1 )]
 waveAdvanceCondition = "dialogue"
 dialogueRequest = "level5Intro"
+playerFireTypeUnlock = 3

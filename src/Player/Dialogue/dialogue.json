@@ -115,6 +115,12 @@
 			"portrait": "Commander",
 			"dialogue": "The forward forward scout. Someone's gotta look out for you after all!",
 		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "As well, we've upgraded your ship with new weaponry. Press [color=#ff3333]%s[/color] to change between all unlocked weapon types.",
+			"args": ["switchWeapons"]
+		},
 	],
 	"level4Intro":[
 		{
@@ -168,7 +174,18 @@
 			"name": "Commander",
 			"portrait": "Commander",
 			"dialogue": "...",
-		}
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Now sounds like a poor time to tell you that your ship has been upgraded with another new weapon type. [color=#ff3333]%s[/color] to switch.",
+			"args": ["switchWeapons"]
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Maybe you should lead with that next time.",
+		},
 	],
 	"level6Intro":[
 		{
@@ -204,14 +221,19 @@
 	],
 	"level7Intro":[
 		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "You've been authorized for another weapon installment. We actually won't be able to fit anything else into your ship.",
+		},
+		{
 			"name": "Pilot",
 			"portrait": "Pilot",
-			"dialogue": "Do you have HR's number?",
+			"dialogue": "Thanks, do you have HR's number? I'd like to file a complaint about a superior officer doubting my skills.",
 		},
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "What for? I am HR.",
+			"dialogue": "I am HR.",
 		},
 		{
 			"name": "Pilot",
@@ -226,7 +248,7 @@
 		{
 			"name": "Pilot",
 			"portrait": "Pilot",
-			"dialogue": "...",
+			"dialogue": "...We're gonna have a serious conversation when I get back.",
 		},
 	],
 	"level8Intro":[
