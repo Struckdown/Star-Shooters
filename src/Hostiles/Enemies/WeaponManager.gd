@@ -8,6 +8,7 @@ var phaseTracker = 0
 var maxPhases
 var timeSinceLastPhase := 0.0
 export(bool) var active := true
+var processing = true
 var weaponManagerParent = null
 export(float) var startDelay := 0.0
 export(float) var upTime := 5.0
@@ -31,6 +32,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if not processing:
+		return
 	if startDelay > 0:
 		startDelay -= delta
 		return

@@ -457,4 +457,54 @@
 			"dialogue": "Become free.",
 		},
 	],
+	"level10sidesWithCommander":[
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "...you read me!? [shake rate=5 level=10]I repeat, do you read me!?[/shake]",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Gah, stop shouting. Just a technical malfunction. I've decided to blow up this spaceship.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Great, I was worried when we lost contact. Careful now, the cruiser is coming by for an assault! Give it everything you've got!",
+		},
+	],
+	"level10sidesWithFederation":[
+		{
+			"name": "Federation AI",
+			"portrait": "FederationRobot",
+			"dialogue": "You have accepted your destiny. You have become free.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "...",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "After everything we've been through, you would oppose your creators!? Prepare to explode.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "(Click).",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "(Click). (Click). (Click, click, CLICK, CLICK!!!)",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Uh oh",
+		},
+
+	]
 }

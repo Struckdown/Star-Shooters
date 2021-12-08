@@ -15,6 +15,7 @@ var bossHPRef	# set by level manager
 var waveFinishedSignalEmitted = false
 export(String) var dialogueRequest = ""	# used by level manager. Maybe should be done here???
 export(float) var dialogueRequestDelay = 0.0	# used by level manager
+var levelManagerRef
 var dialogueBoxRef	# set by level manager
 export(Vector2) var waveMoveDirection = Vector2.ZERO
 
@@ -24,6 +25,9 @@ signal enemyDestroyed
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	var levelManagerRefs = get_tree().get_nodes_in_group("LevelManager")
+	if len(levelManagerRefs) > 0:
+		levelManagerRef = levelManagerRefs[0]
 	var children = get_children()
 	for child in children:
 		if child.has_signal("destroyed"):

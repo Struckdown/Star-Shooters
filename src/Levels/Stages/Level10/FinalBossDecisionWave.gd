@@ -1,13 +1,9 @@
 extends "res://Hostiles/Waves/WaveBase.gd"
 
-var levelManagerRef
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	._ready()
-	levelManagerRef = get_tree().get_nodes_in_group("LevelManager")
-	if len(levelManagerRef) > 0:
-		levelManagerRef = levelManagerRef[0]
 	dialogueBoxRef.connect("finished", self, "revealChoices")
 	$Node2D/DecisionZone/Area2D/CollisionShape2D.disabled = true
 	$Node2D/DecisionZone2/Area2D/CollisionShape2D.disabled = true
@@ -25,7 +21,7 @@ func revealChoices():
 	$Node2D/DecisionZone2/Area2D/CollisionShape2D.disabled = false
 
 func _on_DecisionZone_activated():
-	#levelManagerRef.addWave(load("res://Levels/Stages/Level10/CommanderBoss.tscn"))
+	levelManagerRef.addWave(load("res://Levels/Stages/Level10/Dialogue10sidesWithFederation.tscn"))
 	levelManagerRef.addWave(load("res://Levels/Stages/Level10/CommanderBoss.tscn"))
 	cleanup()
 

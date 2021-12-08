@@ -125,6 +125,9 @@ func move(d):
 				deltaAngle = get_angle_to(target.global_position)
 			else:
 				deltaAngle = 0
+				target = get_tree().get_nodes_in_group("Player")	# default target
+				if len(target) > 0:
+					target = target[0]
 				emit_signal("wantsNewTarget")
 			if distToTarget > 0 and distToTarget <= 4000:
 				emit_signal("wantsNewTarget")
@@ -229,3 +232,4 @@ func setActive(nowActive:bool) -> void:
 	$Area2D/CollisionShape2D.disabled = !nowActive
 	$WeaponManager.active = nowActive
 	$WeaponManager.updatePhase()
+	$WeaponManager.processing = nowActive

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Space Shooter Redux/PNG/playerShip2_orange.png" type="Texture" id=3]
 
 [node name="WaveBase" instance=ExtResource( 1 )]
 waveAdvanceCondition = "other"
@@ -9,6 +10,17 @@ usesBossHP = true
 bossName = "Commander"
 
 [node name="Enemy_Base" parent="." index="0" instance=ExtResource( 2 )]
-position = Vector2( 164.313, 87.1541 )
+position = Vector2( 396.564, -129.143 )
 rotation = 1.57079
+pointsWorth = 2000
+maxHealth = 800
+deathShakeIntensity = 4.0
+moveGoal = Vector2( 0, 200 )
 flyingPattern = "hoverMoveGoal"
+isBoss = true
+
+[node name="Sprite" parent="Enemy_Base" index="1"]
+rotation = -4.71238
+texture = ExtResource( 3 )
+
+[editable path="Enemy_Base"]

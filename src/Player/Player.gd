@@ -20,6 +20,7 @@ var fireIndex = 0	# which pos2d to shoot from
 var shotDamage = 1	# how much damage each projectile does
 #enum playerFireTypes{SPREAD,CHARGE,FOCUSED,REVERSE}
 var firePattern
+export(bool) var useAlternativeSkin := false
 
 export(float) var energyLevel = 0.0		# current energy
 var energyLimit = 250.0	# max amount of energy allowed
@@ -49,6 +50,8 @@ signal gemCollected
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if useAlternativeSkin:
+		applyAlternativeSkin()
 	var levelManagers = get_tree().get_nodes_in_group("LevelManager")
 	if len(levelManagers) > 0:
 		levelManagerRef = levelManagers[0]
@@ -161,16 +164,16 @@ func performAttack():
 	emit_signal("energyUpdated")
 	match firePattern:
 		GameManager.playerFireTypes.FOCUSED:
-			spawnBullet(get_node("SpritesRoot/Spaceship/FireGroups/2Straight"), fireIndex)
+			spawnBullet(get_node("FireGroups/2Straight"), fireIndex)
 			fireIndex = (fireIndex+1)%2
 		GameManager.playerFireTypes.SPREAD:
 			for i in range(4):
-				spawnBullet(get_node("SpritesRoot/Spaceship/FireGroups/4Arc"), i)
+				spawnBullet(get_node("FireGroups/4Arc"), i)
 		GameManager.playerFireTypes.CHARGE:
-			spawnBullet(get_node("SpritesRoot/Spaceship/FireGroups/strongSlow"), 0)
+			spawnBullet(get_node("FireGroups/strongSlow"), 0)
 		GameManager.playerFireTypes.REVERSE:
 			for i in range(3):
-				spawnBullet(get_node("SpritesRoot/Spaceship/FireGroups/forwardBackward"), i)
+				spawnBullet(get_node("FireGroups/forwardBackward"), i)
 		_:
 			print("No attack pattern matched?")
 	
@@ -334,3 +337,10 @@ func applyUpgrades():
 				_:
 					print("No upgrade found for: ", upgradeName)
 	emit_signal("energyUpdated")
+
+func applyAlternativeSkin():
+	for child in $SpritesRoot.get_children():
+		child.texture = load("res://Space Shooter Redux/PNG/Enemies/enemyRed1.png")
+		$SpritesRoot/Spaceship.rotation += deg2rad(180)
+		child.hframes = 1
+		$AnimationPlayer.stop()

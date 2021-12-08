@@ -84,7 +84,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 2, 5 ), Vector2( 3, 3 ) ]
+"values": [ Vector2( 0.333, 0.833 ), Vector2( 0.5, 0.5 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -152,72 +152,23 @@ radius = 6.04593
 script = ExtResource( 2 )
 hasControl = true
 deathExplosion = ExtResource( 4 )
+useAlternativeSkin = true
 
 [node name="SpritesRoot" type="Node2D" parent="."]
 
 [node name="Spaceship" type="Sprite" parent="SpritesRoot"]
-scale = Vector2( 3, 3 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 hframes = 6
 
 [node name="AbsorptionVisual" type="Sprite" parent="SpritesRoot/Spaceship"]
 material = ExtResource( 8 )
-scale = Vector2( 0.525, 0.525 )
+scale = Vector2( 3, 3 )
 texture = ExtResource( 3 )
-
-[node name="FireGroups" type="Node2D" parent="SpritesRoot/Spaceship"]
-
-[node name="2Straight" type="Node2D" parent="SpritesRoot/Spaceship/FireGroups"]
-visible = false
-
-[node name="Position2D" type="Position2D" parent="SpritesRoot/Spaceship/FireGroups/2Straight"]
-position = Vector2( -2, -10 )
-
-[node name="Position2D2" type="Position2D" parent="SpritesRoot/Spaceship/FireGroups/2Straight"]
-position = Vector2( 2, -2.336 )
-
-[node name="4Arc" type="Node2D" parent="SpritesRoot/Spaceship/FireGroups"]
-visible = false
-
-[node name="Position2D" type="Position2D" parent="SpritesRoot/Spaceship/FireGroups/4Arc"]
-position = Vector2( -2, -2.336 )
-rotation = -0.120745
-
-[node name="Position2D2" type="Position2D" parent="SpritesRoot/Spaceship/FireGroups/4Arc"]
-position = Vector2( -3.77464, -0.393622 )
-rotation = -0.292103
-
-[node name="Position2D3" type="Position2D" parent="SpritesRoot/Spaceship/FireGroups/4Arc"]
-position = Vector2( 2, -2.336 )
-rotation = 0.120428
-
-[node name="Position2D4" type="Position2D" parent="SpritesRoot/Spaceship/FireGroups/4Arc"]
-position = Vector2( 3.775, -0.394 )
-rotation = 0.29147
-
-[node name="strongSlow" type="Node2D" parent="SpritesRoot/Spaceship/FireGroups"]
-
-[node name="Position2D" type="Position2D" parent="SpritesRoot/Spaceship/FireGroups/strongSlow"]
-position = Vector2( 0, -5.71294 )
-scale = Vector2( 1.5, 1.5 )
-
-[node name="forwardBackward" type="Node2D" parent="SpritesRoot/Spaceship/FireGroups"]
-
-[node name="Position2D" type="Position2D" parent="SpritesRoot/Spaceship/FireGroups/forwardBackward"]
-position = Vector2( -3, -2.598 )
-rotation = -0.0872665
-
-[node name="Position2D2" type="Position2D" parent="SpritesRoot/Spaceship/FireGroups/forwardBackward"]
-position = Vector2( 3, -2.598 )
-rotation = 0.0872665
-
-[node name="Position2D3" type="Position2D" parent="SpritesRoot/Spaceship/FireGroups/forwardBackward"]
-position = Vector2( 0, 1.68 )
-rotation = 3.14159
 
 [node name="Spaceship_L" type="Sprite" parent="SpritesRoot"]
 position = Vector2( -840, 0 )
-scale = Vector2( 3, 3 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 hframes = 6
 frame = 4
@@ -229,7 +180,7 @@ texture = ExtResource( 3 )
 
 [node name="Spaceship_R" type="Sprite" parent="SpritesRoot"]
 position = Vector2( 840, 0 )
-scale = Vector2( 3, 3 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 1 )
 hframes = 6
 frame = 4
@@ -297,6 +248,57 @@ process_material = SubResource( 13 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2( 3, 3 )
 shape = SubResource( 14 )
+
+[node name="FireGroups" type="Node2D" parent="."]
+scale = Vector2( 0.5, 0.5 )
+
+[node name="2Straight" type="Node2D" parent="FireGroups"]
+visible = false
+
+[node name="Position2D" type="Position2D" parent="FireGroups/2Straight"]
+position = Vector2( -2, -10 )
+
+[node name="Position2D2" type="Position2D" parent="FireGroups/2Straight"]
+position = Vector2( 2, -2.336 )
+
+[node name="4Arc" type="Node2D" parent="FireGroups"]
+visible = false
+
+[node name="Position2D" type="Position2D" parent="FireGroups/4Arc"]
+position = Vector2( -2, -2.336 )
+rotation = -0.120745
+
+[node name="Position2D2" type="Position2D" parent="FireGroups/4Arc"]
+position = Vector2( -3.77464, -0.393622 )
+rotation = -0.292103
+
+[node name="Position2D3" type="Position2D" parent="FireGroups/4Arc"]
+position = Vector2( 2, -2.336 )
+rotation = 0.120428
+
+[node name="Position2D4" type="Position2D" parent="FireGroups/4Arc"]
+position = Vector2( 3.775, -0.394 )
+rotation = 0.29147
+
+[node name="strongSlow" type="Node2D" parent="FireGroups"]
+
+[node name="Position2D" type="Position2D" parent="FireGroups/strongSlow"]
+position = Vector2( 0, -5.71294 )
+scale = Vector2( 1.5, 1.5 )
+
+[node name="forwardBackward" type="Node2D" parent="FireGroups"]
+
+[node name="Position2D" type="Position2D" parent="FireGroups/forwardBackward"]
+position = Vector2( -3, -2.598 )
+rotation = -0.0872665
+
+[node name="Position2D2" type="Position2D" parent="FireGroups/forwardBackward"]
+position = Vector2( 3, -2.598 )
+rotation = 0.0872665
+
+[node name="Position2D3" type="Position2D" parent="FireGroups/forwardBackward"]
+position = Vector2( 0, 1.68 )
+rotation = 3.14159
 
 [connection signal="area_entered" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_entered"]
 [connection signal="area_exited" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_exited"]

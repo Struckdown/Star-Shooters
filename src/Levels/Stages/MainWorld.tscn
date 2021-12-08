@@ -22,7 +22,6 @@
 position = Vector2( -1, 1 )
 script = ExtResource( 1 )
 level = 2
-debug = true
 debugWave = 5
 debugWaveName = "res://Levels/Stages/Level10/FederationBossWave.tscn"
 
