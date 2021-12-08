@@ -64,6 +64,12 @@ func setUpStats():
 		if lbl.text == "Game Completion:":
 			val.text = "%7.1f" % float(val.text)
 			val.text += "%"
+		if lbl.text == "Overworld Distance Traveled:":
+			lbl.text = "Distance Traveled:"
+			val.text += "km"
+		if lbl.text == "Charge Gained:":
+			val.text = "%8.0f" % float(val.text)
+			val.text += "GJ"
 		hBox.name = lbl.text + "hBox"
 		lbl.show()
 		val.show()

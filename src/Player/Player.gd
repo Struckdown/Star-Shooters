@@ -123,6 +123,7 @@ func applyInputs(delta):
 		moveVec.y = 0
 
 	velocity = moveVec * moveSpeed
+	StatsManager.updateStats("overworldDistanceTraveled", velocity.length()*0.00001)
 	$EnergyArea/Core.visible = false
 	if slowMode:
 		velocity *= slowModeMultiplier

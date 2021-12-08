@@ -12,6 +12,7 @@ bossName = "Commander"
 [node name="Enemy_Base" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( 396.564, -129.143 )
 rotation = 1.57079
+scale = Vector2( 1, 1 )
 pointsWorth = 2000
 maxHealth = 800
 deathShakeIntensity = 4.0

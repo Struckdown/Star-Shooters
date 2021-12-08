@@ -152,7 +152,6 @@ radius = 6.04593
 script = ExtResource( 2 )
 hasControl = true
 deathExplosion = ExtResource( 4 )
-useAlternativeSkin = true
 
 [node name="SpritesRoot" type="Node2D" parent="."]
 
