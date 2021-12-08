@@ -82,7 +82,9 @@ tracks/2/keys = {
 "values": [ true, true ]
 }
 
-[node name="DialogueBox" type="Control"]
+[node name="DialogueBox" type="Control" groups=[
+"dialogueBox",
+]]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_right = -233.0

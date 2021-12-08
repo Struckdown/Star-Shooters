@@ -162,7 +162,7 @@ func destroy():
 			child.markOwnerAsDestroyed()
 
 func scaleOut():
-	$DeathScaleTween.interpolate_property(self, "scale", self.scale, Vector2(0.2, 0.2), 0.3)
+	$DeathScaleTween.interpolate_property(self, "scale", self.scale, scale*Vector2(0.2, 0.2), 0.3)
 	$DeathScaleTween.start()
 
 func _on_ExplosionTimer_timeout():
@@ -224,3 +224,8 @@ func spawnGems():
 	g.gemsRemaining = gemValue
 	g.global_position = global_position
 	get_viewport().call_deferred("add_child", g)
+
+func setActive(nowActive:bool) -> void:
+	$Area2D/CollisionShape2D.disabled = !nowActive
+	$WeaponManager.active = nowActive
+	$WeaponManager.updatePhase()

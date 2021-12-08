@@ -35,7 +35,7 @@ tracks/1/keys = {
 }
 
 [node name="WaveBase" instance=ExtResource( 1 )]
-waveAdvanceCondition = "other"
+waveAdvanceCondition = "dialogue"
 dialogueRequest = "level9Intro"
 
 [node name="Wall" type="StaticBody2D" parent="." index="0"]

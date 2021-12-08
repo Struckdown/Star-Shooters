@@ -1,0 +1,121 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Levels/Stages/Level10/FederationBoss.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Levels/DecisionZone.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/Stages/Level10/FinalBossDecisionWave.gd" type="Script" id=6]
+[ext_resource path="res://Space Shooter Redux/Bonus/kenvector_future.ttf" type="DynamicFontData" id=7]
+
+[sub_resource type="Animation" id=1]
+resource_name = "cleanup"
+length = 11.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("finalBossFightShip:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 11 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 392.335, 1888.3 ), Vector2( 392.335, 3324.59 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Node2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Node2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 30.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("finalBossFightShip:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 30 ),
+"transitions": PoolRealArray( 0.5, 2 ),
+"update": 0,
+"values": [ Vector2( 392.335, -2644.76 ), Vector2( 392.335, 1888.3 ) ]
+}
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 7 )
+
+[node name="FinalBossDecisionWave" instance=ExtResource( 1 )]
+script = ExtResource( 6 )
+waveAdvanceCondition = "other"
+dialogueRequest = "level10Truth"
+
+[node name="finalBossFightShip" parent="." index="0" instance=ExtResource( 2 )]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+autoplay = "default"
+anims/cleanup = SubResource( 1 )
+anims/default = SubResource( 2 )
+
+[node name="Node2D" type="Node2D" parent="." index="2"]
+modulate = Color( 1, 1, 1, 0 )
+
+[node name="OptionA" type="Label" parent="Node2D" index="0"]
+margin_left = 59.1793
+margin_top = 31.8759
+margin_right = 245.179
+margin_bottom = 49.8759
+custom_fonts/font = SubResource( 3 )
+text = "Fight Commander"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DecisionZone" parent="Node2D" index="1" instance=ExtResource( 4 )]
+position = Vector2( 159.561, 140.666 )
+rotation = 1.57079
+scale = Vector2( 1.875, 1.875 )
+
+[node name="OptionB" type="Label" parent="Node2D" index="2"]
+margin_left = 608.551
+margin_top = 31.8759
+margin_right = 794.551
+margin_bottom = 49.8759
+custom_fonts/font = SubResource( 3 )
+text = "Fight Federation"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DecisionZone2" parent="Node2D" index="3" instance=ExtResource( 4 )]
+position = Vector2( 708.932, 140.666 )
+rotation = 1.57079
+scale = Vector2( 1.875, 1.875 )
+
+[node name="Tween" type="Tween" parent="." index="3"]
+
+[connection signal="activated" from="Node2D/DecisionZone" to="." method="_on_DecisionZone_activated"]
+[connection signal="activated" from="Node2D/DecisionZone2" to="." method="_on_DecisionZone2_activated"]

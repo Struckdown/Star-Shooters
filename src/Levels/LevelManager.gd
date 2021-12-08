@@ -17,6 +17,7 @@ onready var dialogueBoxRef = $CanvasLayer/DialogueBox
 
 export(bool) var debug = false
 export(int) var debugWave = 0
+export(String) var debugWaveName
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -48,6 +49,9 @@ func getWaves():
 	var temp = load(levelToLoad).instance()
 	waves = temp.waves
 
+func addWave(newScene):
+	waves.append(newScene)
+
 func updateCharge():
 	scoreBoardRef.updateCharge(playerRef.energyLevel / playerRef.energyLimit)
 
@@ -59,6 +63,9 @@ func spawnWave():
 	#print("Spawned wave: ", waveNum, " out of ", waves.size())
 	if debug:
 		waveNum = debugWave
+		if debugWaveName != null:
+			waves.append(load(debugWaveName))
+			waveNum = waves.size()-1
 	
 	if waveNum < waves.size():
 		curWave = waves[waveNum].instance()
@@ -74,7 +81,8 @@ func spawnWave():
 		curWave.dialogueBoxRef = dialogueBoxRef
 		if curWave.dialogueRequest:
 			yield(get_tree().create_timer(curWave.dialogueRequestDelay), "timeout")
-			dialogueBoxRef.connect("finished", curWave, "markWaveFinished")
+			if curWave.waveAdvanceCondition == "dialogue":
+				dialogueBoxRef.connect("finished", curWave, "markWaveFinished")
 			dialogueBoxRef.setUpNewSequence(curWave.dialogueRequest)
 
 	else:

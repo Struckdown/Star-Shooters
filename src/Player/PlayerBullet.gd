@@ -16,6 +16,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	move(delta)
+	if not inBounds():
+		queue_free()
 	
 
 func move(delta):
@@ -43,3 +45,8 @@ func _on_Area2D_area_entered(area):
 		if is_instance_valid(areaOwner) and areaOwner.has_method("applyDamage"):
 			areaOwner.applyDamage(damage)
 			destroy()
+
+func inBounds() -> bool:
+	if position.y < -5:
+		return false
+	return true

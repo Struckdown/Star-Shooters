@@ -391,8 +391,6 @@
 			"portrait": "Pilot",
 			"dialogue": "Truly, a master of motivation. Death threats. I'm done with this conversation, I'll maybe call you when I'm done here.",
 		},
-	],
-	"level10BossIntro":[
 		{
 			"name": "Federation AI",
 			"portrait": "FederationRobot",

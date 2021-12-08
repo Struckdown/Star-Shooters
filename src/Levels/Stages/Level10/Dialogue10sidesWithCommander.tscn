@@ -3,5 +3,5 @@
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
 
 [node name="WaveBase" instance=ExtResource( 1 )]
-waveAdvanceCondition = "other"
-dialogueRequest = "level10BossIntro"
+waveAdvanceCondition = "dialogue"
+dialogueRequest = "level10sidesWithCommander"

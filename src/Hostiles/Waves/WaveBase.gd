@@ -4,7 +4,7 @@ extends Node2D
 var enemiesDestroyed = 0
 var enemies = []
 var initialAmountOfEnemies
-export(String, "enemies", "time", "other") var waveAdvanceCondition = "enemies"
+export(String, "enemies", "time", "dialogue", "other") var waveAdvanceCondition = "enemies"
 export(int) var enemiesToDestroy = 0
 export(int) var timeToNextWave
 export(bool) var timeOutFinishesWaveInsteadOfAdvancesWave = false
