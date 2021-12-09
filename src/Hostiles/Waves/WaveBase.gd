@@ -18,7 +18,6 @@ export(float) var dialogueRequestDelay = 0.0	# used by level manager
 var levelManagerRef
 var dialogueBoxRef	# set by level manager
 export(Vector2) var waveMoveDirection = Vector2.ZERO
-export(GameManager.playerFireTypes) var playerFireTypeUnlock = GameManager.playerFireTypes.FOCUSED
 
 signal waveFinished
 signal startNextWave
@@ -41,7 +40,6 @@ func _ready():
 		changeMusic()
 	if usesBossHP:
 		setUpBossHP()
-	GameManager.unlockFireMode(playerFireTypeUnlock)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -86,11 +84,12 @@ func setUpBossHP():	# used by level manager
 func updateEnemyCount(pointsWorth):
 	enemiesDestroyed += 1
 	emit_signal("enemyDestroyed", pointsWorth)
-	if enemiesDestroyed >= enemiesToDestroy and waveAdvanceCondition == "enemies":	# trigger if count met
-		advanceWave()
-	if enemiesDestroyed >= initialAmountOfEnemies:
-		markWaveFinished()
-		queue_free()
+	if waveAdvanceCondition == "enemies":
+		if enemiesDestroyed >= enemiesToDestroy:	# trigger if count met
+			advanceWave()
+		if enemiesDestroyed >= initialAmountOfEnemies:
+			markWaveFinished()
+			queue_free()
 	
 func advanceWave():	# lets the wave manager know it can start the next wave
 	if not waveFinishedSignalEmitted:

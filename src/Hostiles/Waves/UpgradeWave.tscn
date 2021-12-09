@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Space Shooter Redux/PNG/playerShip3_blue.png" type="Texture" id=3]
+[ext_resource path="res://Hostiles/Waves/UpgradeWave.gd" type="Script" id=4]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -21.4635, 116.444, 0, 0, 0, 0, 939.708, 121.206 )
+}
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 42.8392
+
+[node name="UpgradeWave" instance=ExtResource( 1 )]
+script = ExtResource( 4 )
+waveAdvanceCondition = "other"
+
+[node name="Enemy_Base" parent="." index="0" instance=ExtResource( 2 )]
+position = Vector2( -57.9084, 114.035 )
+pointsWorth = 0
+speed = 222.0
+maxHealth = 2555
+flyPaths = [ NodePath("../Path2D") ]
+flyingPattern = "followPath"
+
+[node name="Sprite" parent="Enemy_Base" index="1"]
+rotation = -4.71238
+texture = ExtResource( 3 )
+
+[node name="Path2D" type="Path2D" parent="." index="1"]
+curve = SubResource( 1 )
+
+[node name="Area2D" type="Area2D" parent="." index="2"]
+position = Vector2( 394.566, 116.673 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+
+[editable path="Enemy_Base"]

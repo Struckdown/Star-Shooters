@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Levels/Stages/Level.gd" type="Script" id=1]
 [ext_resource path="res://Levels/Stages/Level3/Orbiter.tscn" type="PackedScene" id=2]
@@ -12,7 +12,8 @@
 [ext_resource path="res://Levels/Stages/Level3/WBoss.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Hostiles/Waves/Checkpoint.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Hostiles/Waves/WarningScreen.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/Stages/Level5/UpgradeWaveSpread.tscn" type="PackedScene" id=13]
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 1 )
-waves = [ ExtResource( 9 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 10 ) ]
+waves = [ ExtResource( 9 ), ExtResource( 13 ), ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 6 ), ExtResource( 8 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 10 ) ]

@@ -118,7 +118,7 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "As well, we've upgraded your ship with new weaponry. Press [color=#ff3333]%s[/color] to change between all unlocked weapon types.",
+			"dialogue": "As well, we're delivering new weaponry to a dropsite near your ship though you'll need to collect it yourself. Press [color=#ff3333]%s[/color] to change between all unlocked weapon types.",
 			"args": ["switchWeapons"]
 		},
 	],
@@ -178,7 +178,7 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "Now sounds like a poor time to tell you that your ship has been upgraded with another new weapon type. [color=#ff3333]%s[/color] to switch.",
+			"dialogue": "Now sounds like a poor time to tell you that your ship has been sent another new weapon type. Remember, [color=#ff3333]%s[/color] to switch.",
 			"args": ["switchWeapons"]
 		},
 		{
@@ -223,7 +223,7 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "You've been authorized for another weapon installment. We actually won't be able to fit anything else into your ship.",
+			"dialogue": "You've been authorized for another weapon installment. We actually won't be able to fit anything else into your ship. Expect it any minute now.",
 		},
 		{
 			"name": "Pilot",
@@ -243,7 +243,7 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "It is here. Now, take out that Federation squadron, we need more time to decide our next course of action.",
+			"dialogue": "Look, stop arguing with me. Now, take out that Federation squadron, we need more time to decide our next course of action.",
 		},
 		{
 			"name": "Pilot",
