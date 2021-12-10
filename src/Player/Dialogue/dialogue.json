@@ -341,7 +341,7 @@
 		{
 			"name": "Pilot",
 			"portrait": "Pilot",
-			"dialogue": "What... is that thing?",
+			"dialogue": "Incoming! What... is that thing?",
 		},
 		{
 			"name": "Commander",
@@ -525,7 +525,7 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "Uh oh",
+			"dialogue": "Uh oh.",
 		},
 
 	]

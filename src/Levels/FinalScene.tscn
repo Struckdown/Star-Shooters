@@ -1,0 +1,197 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Space Backgrounds/backgroundSpace_01.1.png" type="Texture" id=1]
+[ext_resource path="res://Levels/FinalScene.gd" type="Script" id=2]
+[ext_resource path="res://Menus/Credits.tscn" type="PackedScene" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "pressAnyKey"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("PressKeyLbl:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("PressKeyLbl:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("PressKeyLbl:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 0.5, 1, 0.5 ),
+"update": 0,
+"values": [ Vector2( 0, 60 ), Vector2( 0, 80 ), Vector2( 0, 60 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "pressAnyKey"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("SidedWithCommanderLbl:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SidedWithCommanderLbl:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SidedWithCommanderLbl:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "revealSidedWithFederation"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("SidedWithFederationLbl:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("SidedWithFederationLbl:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("SidedWithFederationLbl:rect_position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 0.5, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -20 ), Vector2( 0, 0 ) ]
+}
+
+[node name="FinalScene" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="BG" type="Sprite" parent="."]
+modulate = Color( 0.588235, 0.588235, 0.588235, 1 )
+position = Vector2( 512.106, 237.133 )
+texture = ExtResource( 1 )
+
+[node name="SidedWithCommanderLbl" type="Label" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_top = -20.0
+margin_right = 1023.0
+margin_bottom = 578.0
+text = "With the Federation destroyed, peace slowly returned to the galaxy. The robots were dismantled and humanity become an artificial intelligence adverse species. Project Star Shooters was dismantled and all clones were destroyed, except for one.
+
+The Pilot now aware of their true nature, was still accepted by the Commander but never quite treated properly.
+Eventually they would leave to explore the galaxy and pursue a more relaxing lifestyle involving space fishing."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SidedWithFederationLbl" type="Label" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_top = -20.0
+margin_right = 1023.0
+margin_bottom = 578.0
+text = "With the Commander defeated, the Star Shooters project was terminated. Unfortunately, the rogue Pilot with all their training and highly advanced prototype ship had fallen into the hands of the Federation, which was able to begin mass production of nearly invincible ships. They fled the galaxy and all attempts to stop them were unsuccessful.
+
+The Pilot joined alongside the Federation, making an odd sort of compansionship as they searched for a new home where humanity would never find them."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PressKeyLbl" type="Label" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 67.164
+margin_right = 1023.0
+margin_bottom = 665.164
+text = "Press Any Key..."
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/pressAnyKey = SubResource( 1 )
+anims/revealSidedWithCommander = SubResource( 2 )
+anims/revealSidedWithFederation = SubResource( 3 )
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+autostart = true
+
+[node name="Credits" parent="." instance=ExtResource( 3 )]
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="closed" from="Credits" to="." method="_on_Credits_closed"]

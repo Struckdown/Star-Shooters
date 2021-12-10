@@ -15,6 +15,8 @@ export(float) var upTime := 5.0
 export(float) var downTime = 2
 export(bool) var debug = false
 
+signal startedNextHealthPhase
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	var node = get_parent()
@@ -64,6 +66,7 @@ func updateHealth(currentFraction):
 		var newPhaseTracker = int( (1-currentFraction) / healthFractionToNextPhase ) % maxPhases
 		if newPhaseTracker != phaseTracker:
 			phaseTracker = newPhaseTracker
+			emit_signal("startedNextHealthPhase")
 			updatePhase()
 
 func updatePhase():

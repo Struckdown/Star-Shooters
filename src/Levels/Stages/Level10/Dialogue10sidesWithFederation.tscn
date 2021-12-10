@@ -5,3 +5,5 @@
 
 [node name="WaveBase" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
+waveAdvanceCondition = "dialogue"
+dialogueRequest = "level10sidesWithFederation"

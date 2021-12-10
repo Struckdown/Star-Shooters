@@ -34,18 +34,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("Node2D:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/keys = {
-"times": PoolRealArray( 0, 3 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ true, false ]
-}
 
 [sub_resource type="Animation" id=2]
 length = 30.0
@@ -61,6 +49,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 0.5, 2 ),
 "update": 0,
 "values": [ Vector2( 392.335, -2644.76 ), Vector2( 392.335, 1888.3 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Node2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="DynamicFont" id=3]
@@ -117,5 +117,6 @@ scale = Vector2( 1.875, 1.875 )
 
 [node name="Tween" type="Tween" parent="." index="3"]
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="activated" from="Node2D/DecisionZone" to="." method="_on_DecisionZone_activated"]
 [connection signal="activated" from="Node2D/DecisionZone2" to="." method="_on_DecisionZone2_activated"]

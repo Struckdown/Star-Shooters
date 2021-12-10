@@ -15,6 +15,7 @@ var skipDialogue = false	# set on game over to true and reset on level select en
 enum playerFireTypes{SPREAD,CHARGE,FOCUSED,REVERSE}
 var playerFireType = playerFireTypes.FOCUSED
 var unlockedPlayerFireTypes = [playerFireTypes.FOCUSED]
+var endingToPlay = "commanderVictory"	# or federationVictory. Set by final boss decision wave
 
 var saveGameFileName = "user://savegame.save"
 signal fireModeUpdated

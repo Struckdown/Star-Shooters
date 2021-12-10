@@ -18,8 +18,10 @@ func playLevelComplete():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Level Won":
-		if GameManager.stage == "0" or GameManager.stage == "BossRush":
+		if GameManager.stage == "0" or GameManager.stage == "BossRush" or GameManager.stage == "Infinite":
 			SceneTransition.transitionToScene("res://Menus/Main Menu.tscn")
+		elif GameManager.stage == "10":
+			SceneTransition.transitionToScene("res://Levels/FinalScene.tscn")
 		else:
 			GameManager.updateStagesCompleted(str(GameManager.stage), GameManager.score)
 			StatsManager.updateStats("stagesCleared", 1)

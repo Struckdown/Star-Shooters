@@ -23,13 +23,21 @@ func revealChoices():
 func _on_DecisionZone_activated():
 	levelManagerRef.addWave(load("res://Levels/Stages/Level10/Dialogue10sidesWithFederation.tscn"))
 	levelManagerRef.addWave(load("res://Levels/Stages/Level10/CommanderBoss.tscn"))
+	GameManager.endingToPlay = "federationVictory"
 	cleanup()
 
 func _on_DecisionZone2_activated():
 	levelManagerRef.addWave(load("res://Levels/Stages/Level10/Dialogue10sidesWithCommander.tscn"))
 	levelManagerRef.addWave(load("res://Levels/Stages/Level10/FederationBossWave.tscn"))
+	GameManager.endingToPlay = "commanderVictory"
 	cleanup()
 
 func cleanup():
 	$AnimationPlayer.play("cleanup")
 	markWaveFinished()
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	match anim_name:
+		"cleanup":
+			queue_free()

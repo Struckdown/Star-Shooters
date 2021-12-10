@@ -299,7 +299,8 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			get_viewport().add_child(shockwave)
 			queue_free()
 		"Spawn":
-			$AnimationPlayer.play("Flying")
+			if not useAlternativeSkin:
+				$AnimationPlayer.play("Flying")
 			hasControl = true
 	
 
@@ -340,8 +341,8 @@ func applyUpgrades():
 	emit_signal("energyUpdated")
 
 func applyAlternativeSkin():
+	useAlternativeSkin = true
 	for child in $SpritesRoot.get_children():
 		child.texture = load("res://Space Shooter Redux/PNG/Enemies/enemyRed1.png")
-		$SpritesRoot/Spaceship.rotation += deg2rad(180)
+		$SpritesRoot/Spaceship.rotation = deg2rad(180)
 		child.hframes = 1
-		$AnimationPlayer.stop()

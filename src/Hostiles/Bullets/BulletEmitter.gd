@@ -8,6 +8,8 @@ extends Node2D
 export(bool) var spawnAsChild = false
 export(float) var rotationDegPerSec = 0	# deg
 export(float) var rotationPerVolley = 0 #deg
+export(Vector2) var randomRotationStart = Vector2(0, 0)
+export(bool) var resetRotationOnClip = false
 export(float) var rotationRange = 0	# how many degrees the emitter can rotate before reversing direction, 0 means not used
 var rotatingPositively = 1
 var internalRotation = 0	# how much the emitter has rotated internally (rad)
@@ -78,7 +80,7 @@ func _ready():
 		if len(get_tree().get_nodes_in_group("Player")) > 0:
 			target = get_tree().get_nodes_in_group("Player")[0]
 	randomize()
-	internalRotation = deg2rad(initialRotationOffset)
+	internalRotation = deg2rad(initialRotationOffset) + deg2rad(rand_range(randomRotationStart[0], randomRotationStart[1]))
 	actualRotationStart = rotation
 	var delay = rand_range(0, initialSpawnDelayRandomRange)
 	totalDelta = -initialSpawnDelayConstant - delay
@@ -110,6 +112,8 @@ func _process(delta):
 		if volleysRemaining == 0:
 			totalDelta -= (clipReloadTime + rand_range(0, clipRandomReloadDelay))
 			volleysRemaining = volleyClipSize
+			if resetRotationOnClip:
+				internalRotation = 0
 			needsToUpdatePosToShoot = true
 		if not fireAtLocationForWholeClip:
 			needsToUpdatePosToShoot = true

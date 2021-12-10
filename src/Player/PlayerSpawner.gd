@@ -14,8 +14,7 @@ func spawnPlayer():
 	if playerRef != null:
 		playerRef.queue_free()
 	playerRef = playerToSpawn.instance()
-	if useAlternativeSkin:
-		playerRef.applyAlternativeSkin()
+	playerRef.useAlternativeSkin = useAlternativeSkin
 	get_parent().add_child(playerRef)
 	playerRef.global_position = global_position
 	playerRef.spawn()

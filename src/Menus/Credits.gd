@@ -25,6 +25,8 @@ func _process(_delta):
 	updateScrolling()
 
 func display(shouldDisplay):
+	if shouldDisplay == visible:
+		return
 	if shouldDisplay:
 		visible = true
 		$AnimationPlayer.play("Display")
