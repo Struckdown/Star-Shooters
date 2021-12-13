@@ -14,7 +14,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if is_instance_valid(enemyToFollow):
-		position.x = enemyToFollow.position.x
+		global_position.x = enemyToFollow.global_position.x
 
 func OnEnemyDestroyed(destroyedEnemy):
 	if destroyedEnemy == enemyToFollow:

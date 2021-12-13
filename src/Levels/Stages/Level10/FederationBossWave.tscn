@@ -41,23 +41,28 @@ bossName = "Federation Core"
 
 [node name="ExplosionBoxParticles" type="Particles2D" parent="." index="1"]
 material = SubResource( 1 )
-position = Vector2( 464.386, 278.443 )
+position = Vector2( 440.879, 343.927 )
 emitting = false
 amount = 30
 lifetime = 0.6
+visibility_rect = Rect2( -3000, -500, 6000, 1000 )
 local_coords = false
 process_material = SubResource( 4 )
 texture = ExtResource( 4 )
 
 [node name="TurnOffTimer" type="Timer" parent="ExplosionBoxParticles" index="0"]
-wait_time = 3.0
+wait_time = 2.0
 one_shot = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ExplosionBoxParticles" index="1"]
 stream = ExtResource( 3 )
 
-[connection signal="tween_completed" from="federationBossFight/Tween" to="." method="_on_Tween_tween_completed"]
+[node name="ActivateTurretsTimer" type="Timer" parent="." index="2"]
+wait_time = 3.0
+one_shot = true
+
 [connection signal="timeout" from="ExplosionBoxParticles/TurnOffTimer" to="." method="_on_TurnOffTimer_timeout"]
+[connection signal="timeout" from="ActivateTurretsTimer" to="." method="_on_ActivateTurretsTimer_timeout"]
 
 [editable path="federationBossFight"]
 [editable path="federationBossFight/Turrets/Turret"]

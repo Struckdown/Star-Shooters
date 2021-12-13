@@ -75,9 +75,8 @@ func spawnWave():
 		curWave.connect("enemyDestroyed", self, "addToScore")
 		curWave.connect("waveFinished", self, "updateWavesFinished")
 		curWave.bossHPRef = $"CanvasLayer/Boss HP"
-		var enemies = curWave.getEnemies()
-		for e in enemies:
-			$VPCgame/Viewport/EnemyArrowTrackerManager.startTrackingNewEnemy(e)
+		curWave.arrowTrackerRef = $VPCgame/Viewport/EnemyArrowTrackerManager
+		curWave.startArrowTracking()
 		curWave.dialogueBoxRef = dialogueBoxRef
 		if curWave.dialogueRequest:
 			yield(get_tree().create_timer(curWave.dialogueRequestDelay), "timeout")

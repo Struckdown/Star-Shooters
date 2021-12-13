@@ -229,6 +229,10 @@ func spawnGems():
 	get_viewport().call_deferred("add_child", g)
 
 func setActive(nowActive:bool) -> void:
+	if nowActive:
+		$Sprite.modulate.darkened(0)
+	else:
+		$Sprite.modulate.darkened(0.5)
 	$Area2D/CollisionShape2D.disabled = !nowActive
 	$WeaponManager.active = nowActive
 	$WeaponManager.updatePhase()

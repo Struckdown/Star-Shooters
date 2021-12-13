@@ -17,6 +17,7 @@ export(String) var dialogueRequest = ""	# used by level manager. Maybe should be
 export(float) var dialogueRequestDelay = 0.0	# used by level manager
 var levelManagerRef
 var dialogueBoxRef	# set by level manager
+var arrowTrackerRef # set by level manager
 export(Vector2) var waveMoveDirection = Vector2.ZERO
 
 signal waveFinished
@@ -110,3 +111,9 @@ func getEnemies():
 		if child.is_in_group("EnemyBase"):
 			e.append(child)
 	return e
+
+
+func startArrowTracking():
+	var enemies = getEnemies()
+	for e in enemies:
+		arrowTrackerRef.startTrackingNewEnemy(e)

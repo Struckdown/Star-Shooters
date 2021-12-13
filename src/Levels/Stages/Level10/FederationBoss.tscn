@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://Levels/finalBossFightShip.png" type="Texture" id=1]
 [ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Hostiles/LaserBeam.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Gravity.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Orthogonal.tscn" type="PackedScene" id=11]
@@ -642,12 +641,19 @@ texture = ExtResource( 1 )
 position = Vector2( 153.113, 6.95239 )
 scale = Vector2( 0.05, 0.05 )
 speed = 0.0
+maxHealth = 50
 flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret" index="1"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
+
+[node name="Scratch2" parent="Turrets/Turret/Sprite" index="1"]
+position = Vector2( 12.2859, 1.77858 )
+
+[node name="Scratch3" parent="Turrets/Turret/Sprite" index="2"]
+position = Vector2( -6.8744, 2.49387 )
 
 [node name="gun04" type="Sprite" parent="Turrets/Turret/Sprite" index="3"]
 position = Vector2( 0.437149, 5.51236 )
@@ -668,12 +674,19 @@ nthBulletIsGreen = [ 0 ]
 position = Vector2( 153.113, -11.9767 )
 scale = Vector2( 0.05, 0.05 )
 speed = 0.0
+maxHealth = 50
 flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret2" index="1"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
+
+[node name="Scratch2" parent="Turrets/Turret2/Sprite" index="1"]
+position = Vector2( 12.7949, 1.59767 )
+
+[node name="Scratch3" parent="Turrets/Turret2/Sprite" index="2"]
+position = Vector2( -6.3305, 3.8666 )
 
 [node name="gun04" type="Sprite" parent="Turrets/Turret2/Sprite" index="3"]
 position = Vector2( 0.437149, 5.51236 )
@@ -697,6 +710,7 @@ nthBulletIsGreen = [ 0 ]
 position = Vector2( 109.463, -24.6906 )
 scale = Vector2( 0.05, 0.05 )
 speed = 0.0
+maxHealth = 50
 flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
@@ -704,8 +718,20 @@ turningRateDegsBounds = Vector2( 1, 2 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
+[node name="Scratch1" parent="Turrets/Turret3/Sprite" index="0"]
+position = Vector2( -11.6543, 2.20471 )
+rotation = 0.716206
+
+[node name="Scratch2" parent="Turrets/Turret3/Sprite" index="1"]
+position = Vector2( 6.39905, 1.66559 )
+rotation = 2.11148
+
+[node name="Scratch3" parent="Turrets/Turret3/Sprite" index="2"]
+position = Vector2( -3.56969, -10.9717 )
+
 [node name="gun04" type="Sprite" parent="Turrets/Turret3/Sprite" index="3"]
-position = Vector2( 0.437149, 5.51236 )
+position = Vector2( 0.437103, 5.51233 )
+rotation = -4.54747e-12
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="Turrets/Turret3" index="3"]
@@ -726,12 +752,22 @@ nthBulletIsGreen = [ 0 ]
 position = Vector2( 109.463, 14.9986 )
 scale = Vector2( 0.05, 0.05 )
 speed = 0.0
+maxHealth = 50
 flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret4" index="1"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
+
+[node name="Scratch1" parent="Turrets/Turret4/Sprite" index="0"]
+position = Vector2( -4.20446, -3.36365 )
+
+[node name="Scratch2" parent="Turrets/Turret4/Sprite" index="1"]
+position = Vector2( 11.3499, 0.973419 )
+
+[node name="Scratch3" parent="Turrets/Turret4/Sprite" index="2"]
+position = Vector2( -4.90582, 4.26941 )
 
 [node name="gun04" type="Sprite" parent="Turrets/Turret4/Sprite" index="3"]
 position = Vector2( 0.437149, 5.51236 )
@@ -754,15 +790,25 @@ greenBulletFrequency = 4
 nthBulletIsGreen = [ 0 ]
 
 [node name="Turret5" parent="Turrets" instance=ExtResource( 2 )]
-position = Vector2( 100.564, -4.49013 )
+position = Vector2( 104.268, -4.49011 )
 scale = Vector2( 0.05, 0.05 )
 speed = 0.0
+maxHealth = 50
 flyingPattern = "homingNoStop"
-turningRateDegsBounds = Vector2( 0.049, 0.049 )
+turningRateDegsBounds = Vector2( 0.3, 0.3 )
 
 [node name="Sprite" parent="Turrets/Turret5" index="1"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
+
+[node name="Scratch1" parent="Turrets/Turret5/Sprite" index="0"]
+position = Vector2( -6.83801, 8.12616 )
+
+[node name="Scratch2" parent="Turrets/Turret5/Sprite" index="1"]
+position = Vector2( 10.0905, 0.349518 )
+
+[node name="Scratch3" parent="Turrets/Turret5/Sprite" index="2"]
+position = Vector2( -6.17425, -10.9659 )
 
 [node name="gun04" type="Sprite" parent="Turrets/Turret5/Sprite" index="3"]
 position = Vector2( 0.437149, 5.51236 )
@@ -781,12 +827,22 @@ position = Vector2( 45.969, 0.000305176 )
 position = Vector2( 78.9349, 9.58686 )
 scale = Vector2( 0.05, 0.05 )
 speed = 0.0
+maxHealth = 50
 flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret6" index="1"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
+
+[node name="Scratch1" parent="Turrets/Turret6/Sprite" index="0"]
+position = Vector2( -3.50009, 9.83331 )
+
+[node name="Scratch2" parent="Turrets/Turret6/Sprite" index="1"]
+position = Vector2( 10.861, 1.43954 )
+
+[node name="Scratch3" parent="Turrets/Turret6/Sprite" index="2"]
+position = Vector2( -5.053, -11.5334 )
 
 [node name="gun04" type="Sprite" parent="Turrets/Turret6/Sprite" index="3"]
 position = Vector2( 0.437149, 5.51236 )
@@ -824,15 +880,25 @@ greenBulletFrequency = 4
 nthBulletIsGreen = [ 0 ]
 
 [node name="Turret7" parent="Turrets" instance=ExtResource( 2 )]
-position = Vector2( 60.0576, -20.5543 )
+position = Vector2( 68.2507, -20.5543 )
 scale = Vector2( 0.05, 0.05 )
 speed = 0.0
+maxHealth = 50
 flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret7" index="1"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
+
+[node name="Scratch1" parent="Turrets/Turret7/Sprite" index="0"]
+position = Vector2( -6.48187, 6.83521 )
+
+[node name="Scratch2" parent="Turrets/Turret7/Sprite" index="1"]
+position = Vector2( 11.7642, -0.590485 )
+
+[node name="Scratch3" parent="Turrets/Turret7/Sprite" index="2"]
+position = Vector2( -7.92556, -10.9847 )
 
 [node name="gun04" type="Sprite" parent="Turrets/Turret7/Sprite" index="3"]
 position = Vector2( 0.437149, 5.51236 )
@@ -855,15 +921,25 @@ greenBulletFrequency = 4
 nthBulletIsGreen = [ 0 ]
 
 [node name="Turret8" parent="Turrets" instance=ExtResource( 2 )]
-position = Vector2( 59.2393, 18.3962 )
+position = Vector2( 67.4324, 18.3963 )
 scale = Vector2( 0.05, 0.05 )
 speed = 0.0
+maxHealth = 50
 flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret8" index="1"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
+
+[node name="Scratch1" parent="Turrets/Turret8/Sprite" index="0"]
+position = Vector2( -4.87678, 8.9668 )
+
+[node name="Scratch2" parent="Turrets/Turret8/Sprite" index="1"]
+position = Vector2( 10.8805, 1.49969 )
+
+[node name="Scratch3" parent="Turrets/Turret8/Sprite" index="2"]
+position = Vector2( -6.48422, -10.2375 )
 
 [node name="gun04" type="Sprite" parent="Turrets/Turret8/Sprite" index="3"]
 position = Vector2( 0.437149, 5.51236 )
@@ -911,6 +987,15 @@ turningRateDegsBounds = Vector2( 1, 2 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
+[node name="Scratch1" parent="Turrets/Turret9/Sprite" index="0"]
+position = Vector2( -4.88892, 1.99997 )
+
+[node name="Scratch2" parent="Turrets/Turret9/Sprite" index="1"]
+position = Vector2( 10.8054, 1.77283 )
+
+[node name="Scratch3" parent="Turrets/Turret9/Sprite" index="2"]
+position = Vector2( -2.99765, 8.91105 )
+
 [node name="gun04" type="Sprite" parent="Turrets/Turret9/Sprite" index="3"]
 position = Vector2( 0.437149, 5.51236 )
 texture = ExtResource( 3 )
@@ -941,19 +1026,25 @@ bulletSpawnDelay = 0.2
 bulletType = ExtResource( 6 )
 initialSpawnDelayRandomRange = 0.0
 greenBulletFrequency = 4
-nthBulletIsGreen = [ 0 ]
+nthBulletIsGreen = [ 0, 1, 2 ]
 template = true
 
 [node name="Turret10" parent="Turrets" instance=ExtResource( 2 )]
-position = Vector2( -20.2295, -16.3998 )
+position = Vector2( -16.0916, -16.3997 )
 scale = Vector2( 0.05, 0.05 )
 speed = 0.0
 flyingPattern = "homingNoStop"
-turningRateDegsBounds = Vector2( 0.049, 0.049 )
+turningRateDegsBounds = Vector2( 0.3, 0.3 )
 
 [node name="Sprite" parent="Turrets/Turret10" index="1"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
+
+[node name="Scratch2" parent="Turrets/Turret10/Sprite" index="1"]
+position = Vector2( 12.4709, -0.708313 )
+
+[node name="Scratch3" parent="Turrets/Turret10/Sprite" index="2"]
+position = Vector2( -9.811, 2.7276 )
 
 [node name="gun04" type="Sprite" parent="Turrets/Turret10/Sprite" index="3"]
 position = Vector2( 0.437149, 5.51236 )
@@ -969,15 +1060,21 @@ phaseSwapMode = "soloDownAndUp"
 position = Vector2( 45.969, 0.000305176 )
 
 [node name="Turret11" parent="Turrets" instance=ExtResource( 2 )]
-position = Vector2( -20.2297, 9.15039 )
+position = Vector2( -16.0918, 9.15042 )
 scale = Vector2( 0.05, 0.05 )
 speed = 0.0
 flyingPattern = "homingNoStop"
-turningRateDegsBounds = Vector2( 0.049, 0.049 )
+turningRateDegsBounds = Vector2( 0.3, 0.3 )
 
 [node name="Sprite" parent="Turrets/Turret11" index="1"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
+
+[node name="Scratch2" parent="Turrets/Turret11/Sprite" index="1"]
+position = Vector2( 10.9824, 0.647095 )
+
+[node name="Scratch3" parent="Turrets/Turret11/Sprite" index="2"]
+position = Vector2( -5.77801, 4.19635 )
 
 [node name="gun04" type="Sprite" parent="Turrets/Turret11/Sprite" index="3"]
 position = Vector2( 0.437149, 5.51236 )
@@ -997,12 +1094,19 @@ position = Vector2( 45.969, 0.000305176 )
 position = Vector2( -49.5635, 12.0043 )
 scale = Vector2( 0.05, 0.05 )
 speed = 0.0
+maxHealth = 50
 flyingPattern = "homingNoStop"
-turningRateDegsBounds = Vector2( 1, 2 )
+turningRateDegsBounds = Vector2( 1, 0.3 )
 
 [node name="Sprite" parent="Turrets/Turret12" index="1"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
+
+[node name="Scratch2" parent="Turrets/Turret12/Sprite" index="1"]
+position = Vector2( 9.33984, -0.776978 )
+
+[node name="Scratch3" parent="Turrets/Turret12/Sprite" index="2"]
+position = Vector2( -7.63827, -8.86456 )
 
 [node name="gun04" type="Sprite" parent="Turrets/Turret12/Sprite" index="3"]
 position = Vector2( 0.437149, 5.51236 )
@@ -1028,12 +1132,19 @@ orbitalChildren = 5
 position = Vector2( -56.9717, -15.3838 )
 scale = Vector2( 0.05, 0.05 )
 speed = 0.0
+maxHealth = 50
 flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret13" index="1"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
+
+[node name="Scratch2" parent="Turrets/Turret13/Sprite" index="1"]
+position = Vector2( 9.87842, 3.7699 )
+
+[node name="Scratch3" parent="Turrets/Turret13/Sprite" index="2"]
+position = Vector2( -9.81133, 0.682561 )
 
 [node name="gun04" type="Sprite" parent="Turrets/Turret13/Sprite" index="3"]
 position = Vector2( 0.437149, 5.51236 )
@@ -1071,6 +1182,12 @@ turningRateDegsBounds = Vector2( 1, 2 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
+[node name="Scratch2" parent="Turrets/Turret14/Sprite" index="1"]
+position = Vector2( 13.1783, 2.35565 )
+
+[node name="Scratch3" parent="Turrets/Turret14/Sprite" index="2"]
+position = Vector2( -10.047, -2.61724 )
+
 [node name="gun04" type="Sprite" parent="Turrets/Turret14/Sprite" index="3"]
 position = Vector2( 0.437149, 5.51236 )
 texture = ExtResource( 3 )
@@ -1100,15 +1217,22 @@ orbitalChildren = 5
 bouncesRemaining = 2
 
 [node name="Turret15" parent="Turrets" instance=ExtResource( 2 )]
-position = Vector2( -141.009, 10.173 )
+position = Vector2( -137.36, 10.173 )
 scale = Vector2( 0.05, 0.05 )
 speed = 0.0
+maxHealth = 50
 flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret15" index="1"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
+
+[node name="Scratch2" parent="Turrets/Turret15/Sprite" index="1"]
+position = Vector2( 12.6985, 1.45569 )
+
+[node name="Scratch3" parent="Turrets/Turret15/Sprite" index="2"]
+position = Vector2( -10.6043, -0.997371 )
 
 [node name="gun04" type="Sprite" parent="Turrets/Turret15/Sprite" index="3"]
 position = Vector2( 0.437149, 5.51236 )
@@ -1139,15 +1263,22 @@ orbitalChildren = 5
 wrapsRemaining = 2
 
 [node name="Turret16" parent="Turrets" instance=ExtResource( 2 )]
-position = Vector2( -141.009, -16.9103 )
+position = Vector2( -137.36, -16.9103 )
 scale = Vector2( 0.05, 0.05 )
 speed = 0.0
+maxHealth = 50
 flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret16" index="1"]
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
+
+[node name="Scratch2" parent="Turrets/Turret16/Sprite" index="1"]
+position = Vector2( 10.8308, 2.83679 )
+
+[node name="Scratch3" parent="Turrets/Turret16/Sprite" index="2"]
+position = Vector2( -8.32949, -1.87139 )
 
 [node name="gun04" type="Sprite" parent="Turrets/Turret16/Sprite" index="3"]
 position = Vector2( 0.437149, 5.51236 )
@@ -1178,8 +1309,6 @@ orbitalChildren = 5
 wrapsRemaining = 2
 
 [node name="Tween" type="Tween" parent="."]
-
-[node name="WaveBase" parent="." instance=ExtResource( 8 )]
 
 [editable path="Turrets/Turret"]
 [editable path="Turrets/Turret2"]

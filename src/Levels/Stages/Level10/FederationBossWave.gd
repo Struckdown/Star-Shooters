@@ -23,20 +23,23 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("switchWeapons"):
-		print(name, " debug used to advance segment")
-		advanceToNextSegment()
+		pass
+		#print(name, " debug used to advance segment")
+		#advanceToNextSegment()
 
 func advanceToNextSegment():
-	if segmentIndex > 0:
+	if segmentIndex >= 0:
 		$ExplosionBoxParticles.emitting = true
 		$ExplosionBoxParticles/TurnOffTimer.start()
 	segmentIndex += 1
+	var pos = $federationBossFight.position
 	if segmentIndex < len(enemiesToDestroyToAdvanceSegment):
 		enemiesLeftInSegment = enemiesToDestroyToAdvanceSegment[segmentIndex]
-		$federationBossFight/Tween.interpolate_property(self, "position", position, Vector2(position.x, position.y+600), 5, Tween.TRANS_SINE)
+		$federationBossFight/Tween.interpolate_property($federationBossFight, "position", pos, Vector2(pos.x, pos.y+600), 5, Tween.TRANS_SINE)
 		$federationBossFight/Tween.start()
+		$ActivateTurretsTimer.start()
 	else:
-		$federationBossFight/Tween.interpolate_property(self, "position", position, Vector2(position.x, position.y+1200), 3, Tween.TRANS_SINE)
+		$federationBossFight/Tween.interpolate_property($federationBossFight, "position", pos, Vector2(pos.x, pos.y+1200), 3, Tween.TRANS_SINE)
 		$federationBossFight/Tween.start()
 		yield(get_tree().create_timer(3), "timeout")
 		markWaveFinished()
@@ -64,14 +67,21 @@ func getEnemies():
 			e.append(child)
 	return e
 
-func _on_Tween_tween_completed(_object, _key):
+
+func _on_TurnOffTimer_timeout():
+	$ExplosionBoxParticles.emitting = false
+
+
+func _on_ActivateTurretsTimer_timeout():
 	var i = enemiesLeftInSegment
 	for e in getEnemies():
 		e.setActive(true)
+		arrowTrackerRef.startTrackingNewEnemy(e)
 		i -= 1
 		if i <= 0:
 			break
 
 
-func _on_TurnOffTimer_timeout():
-	$ExplosionBoxParticles.emitting = false
+# Function overwritten to do nothing in this wave, we do it with the timer
+func startArrowTracking():
+	pass
