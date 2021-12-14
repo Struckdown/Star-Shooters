@@ -1,8 +1,9 @@
 extends Node2D
 # A simple class that spawns gems every frame until it exhausts, and then deletes itself
-var gemsRemaining = -1
+export(int) var gemsRemaining = -1
 var gemsAllowedToSpawnPerFrame = 5
 var gem = load("res://Hostiles/Gem.tscn")
+export(bool) var spawnInWaveInsteadOfViewport = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,6 +20,9 @@ func spawnGems():
 			queue_free()
 			break
 		var g = gem.instance()
-		get_viewport().call_deferred("add_child", g)
+		if spawnInWaveInsteadOfViewport:
+			owner.call_deferred("add_child", g)
+		else:
+			get_viewport().call_deferred("add_child", g)
 		g.global_position = self.global_position
 		gemsRemaining -= 1

@@ -191,13 +191,15 @@ func applyDamage(damage):
 		takeDamage(damage)
 
 func takeDamage(damage):
+	var prevHealth = health
 	health = max(health - damage, 0)	# disallow going below 0
+	var deltaHealth = abs(prevHealth-health)
 	if not $HitSFX.playing:
 		$HitSFX.play()
 	emit_signal("tookDamage", float(health)/float(maxHealth))	# used by weapon manager
 	updateScratches()
 	if healthBarRef:
-		healthBarRef.applyDamage(min(health, damage))
+		healthBarRef.applyDamage(deltaHealth)
 	if health <= 0:
 		StatsManager.updateStats("enemiesKilled", 1)
 		if isBoss:

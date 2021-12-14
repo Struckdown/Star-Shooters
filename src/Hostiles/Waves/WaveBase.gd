@@ -19,6 +19,7 @@ var levelManagerRef
 var dialogueBoxRef	# set by level manager
 var arrowTrackerRef # set by level manager
 export(Vector2) var waveMoveDirection = Vector2.ZERO
+export(float) var destroyWaveTimer = -1.0
 
 signal waveFinished
 signal startNextWave
@@ -46,6 +47,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position += waveMoveDirection*delta
+	if destroyWaveTimer >= 0:
+		destroyWaveTimer -= delta
+		if destroyWaveTimer <= 0:
+			queue_free()
 
 # Controls what marks this wave as complete
 # Enemies = enough foes are destroyed

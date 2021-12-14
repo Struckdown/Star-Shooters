@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/GemSpawner.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Space Shooter Redux/PNG/Parts/turretBase_small.png" type="Texture" id=4]
 [ext_resource path="res://Space Shooter Redux/PNG/Parts/gun06.png" type="Texture" id=5]
@@ -204,6 +205,11 @@ previewTime = 0.5
 
 [node name="Path2D" type="Path2D" parent="." index="3"]
 curve = SubResource( 3 )
+
+[node name="GemSpawner" parent="." index="4" instance=ExtResource( 2 )]
+position = Vector2( 410.172, -201.249 )
+gemsRemaining = 25
+spawnInWaveInsteadOfViewport = true
 
 [editable path="WallTurretLaser"]
 [editable path="WallTurretMover"]

@@ -264,6 +264,7 @@ waveAdvanceCondition = "time"
 timeToNextWave = 10
 timeOutFinishesWaveInsteadOfAdvancesWave = true
 waveMoveDirection = Vector2( 0, 50 )
+destroyWaveTimer = 25.0
 
 [node name="WallTurret" parent="." index="0" instance=ExtResource( 3 )]
 position = Vector2( 19.9609, -42.7868 )
