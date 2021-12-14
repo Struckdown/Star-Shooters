@@ -262,6 +262,11 @@
 			"portrait": "Commander",
 			"dialogue": "With your flying, you'll be fine. Probably.",
 		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "The main technology used here is focused on overcharged plasma cannons. They will radiate additional plasma in various directions, so keep your wits about you.",
+		},
 	],
 	"level9Intro":[
 		{

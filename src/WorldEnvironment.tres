@@ -1,0 +1,10 @@
+[gd_resource type="Environment" format=2]
+
+[resource]
+background_mode = 4
+background_camera_feed_id = 4
+glow_enabled = true
+glow_intensity = 0.48
+glow_blend_mode = 0
+glow_hdr_luminance_cap = 2.0
+glow_bicubic_upscale = true

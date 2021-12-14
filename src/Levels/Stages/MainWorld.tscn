@@ -1,20 +1,20 @@
 [gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Levels/LevelManager.gd" type="Script" id=1]
-[ext_resource path="res://Hostiles/Boss HP.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Levels/LevelSelect/PlayerGemCount.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Menus/Pause Menu/Pause Menu.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Levels/Game Over.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Hostiles/Boss HP.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/LevelSelect/PlayerGemCount.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Hostiles/EnemyArrowTrackerManager.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Player/Dialogue/DialogueBox.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Menus/Pause Menu/Pause Menu.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Space Backgrounds/space_background_pack/Animated_BG.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Menus/RetryMenu.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Levels/Game Over.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Levels/LevelWon.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/LevelWon.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Levels/LevelBoundaries.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Levels/KillZone.tscn" type="PackedScene" id=14]
 [ext_resource path="res://Levels/ExplosionPoolManager.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Menus/RetryMenu.tscn" type="PackedScene" id=17]
 
 [node name="Level" type="Node2D" groups=[
 "LevelManager",
@@ -22,13 +22,39 @@
 position = Vector2( -1, 1 )
 z_index = 1
 script = ExtResource( 1 )
-level = 2
-debugWave = 5
-debugWaveName = "res://Levels/Stages/Level10/FederationBossWave.tscn"
+level = 9
+debugWave = 1
+
+[node name="GameRoot" type="Node2D" parent="."]
+
+[node name="Animated_BG" parent="GameRoot" instance=ExtResource( 9 )]
+position = Vector2( 401, 250.935 )
+rotation = -1.57153
+scale = Vector2( 5, 5.5 )
+
+[node name="Camera2D" type="Camera2D" parent="GameRoot"]
+position = Vector2( 1, -1 )
+anchor_mode = 0
+current = true
+
+[node name="PlayerSpawner" parent="GameRoot" instance=ExtResource( 4 )]
+position = Vector2( 436.655, 492.162 )
+
+[node name="KillZone" parent="GameRoot" instance=ExtResource( 14 )]
+position = Vector2( 408.679, 949 )
+
+[node name="LevelBoundaries" parent="GameRoot" instance=ExtResource( 13 )]
+position = Vector2( 411, 274 )
+
+[node name="EnemyArrowTrackerManager" parent="GameRoot" instance=ExtResource( 6 )]
+position = Vector2( 1, -1 )
+
+[node name="ExplosionPoolManager" parent="GameRoot" instance=ExtResource( 15 )]
+position = Vector2( 1, -1 )
 
 [node name="VPCscoreboard" type="ViewportContainer" parent="."]
-margin_left = 824.0
-margin_right = 1024.0
+margin_left = 826.0
+margin_right = 1026.0
 margin_bottom = 600.0
 mouse_filter = 1
 __meta__ = {
@@ -43,58 +69,16 @@ usage = 0
 render_target_update_mode = 3
 gui_disable_input = true
 
-[node name="Scoreboard" parent="VPCscoreboard/Viewport" instance=ExtResource( 8 )]
+[node name="Scoreboard" parent="VPCscoreboard/Viewport" instance=ExtResource( 11 )]
 margin_left = 0.0
 margin_right = 240.0
 
-[node name="Camera2D" type="Camera2D" parent="VPCscoreboard/Viewport" groups=[
-"Camera",
-]]
-
-[node name="VPCgame" type="ViewportContainer" parent="."]
-margin_right = 420.0
-margin_bottom = 600.0
-mouse_filter = 1
-__meta__ = {
-"_edit_lock_": true,
-"_edit_use_anchors_": false
-}
-
-[node name="Viewport" type="Viewport" parent="VPCgame"]
-size = Vector2( 824, 600 )
-handle_input_locally = false
-disable_3d = true
-usage = 0
-render_target_update_mode = 3
-
-[node name="Animated_BG" parent="VPCgame/Viewport" instance=ExtResource( 9 )]
-position = Vector2( 400, 251.935 )
-rotation = -1.57153
-scale = Vector2( 5, 5.5 )
-
-[node name="Camera2D" type="Camera2D" parent="VPCgame/Viewport"]
-anchor_mode = 0
-current = true
-
-[node name="PlayerSpawner" parent="VPCgame/Viewport" instance=ExtResource( 5 )]
-position = Vector2( 435.655, 493.162 )
-
-[node name="KillZone" parent="VPCgame/Viewport" instance=ExtResource( 14 )]
-position = Vector2( 407.679, 950 )
-
-[node name="LevelBoundaries" parent="VPCgame/Viewport" instance=ExtResource( 13 )]
-position = Vector2( 410, 275 )
-
-[node name="EnemyArrowTrackerManager" parent="VPCgame/Viewport" instance=ExtResource( 6 )]
-
-[node name="ExplosionPoolManager" parent="VPCgame/Viewport" instance=ExtResource( 15 )]
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Game Over" parent="CanvasLayer" instance=ExtResource( 11 )]
+[node name="Game Over" parent="CanvasLayer" instance=ExtResource( 2 )]
 margin_right = -201.0
 
-[node name="Level Won" parent="CanvasLayer" instance=ExtResource( 12 )]
+[node name="Level Won" parent="CanvasLayer" instance=ExtResource( 10 )]
 margin_right = -203.0
 
 [node name="Control" type="Control" parent="CanvasLayer"]
@@ -106,15 +90,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RetryMenu" parent="CanvasLayer/Control" instance=ExtResource( 10 )]
+[node name="RetryMenu" parent="CanvasLayer/Control" instance=ExtResource( 17 )]
 visible = false
 margin_right = 0.0
 margin_bottom = 0.0
 
-[node name="Boss HP" parent="CanvasLayer" instance=ExtResource( 2 )]
+[node name="Boss HP" parent="CanvasLayer" instance=ExtResource( 3 )]
 margin_right = -200.0
 
-[node name="PlayerGemCount" parent="CanvasLayer" instance=ExtResource( 3 )]
+[node name="PlayerGemCount" parent="CanvasLayer" instance=ExtResource( 5 )]
 
 [node name="DialogueBox" parent="CanvasLayer" instance=ExtResource( 7 )]
 margin_left = 12.7356
@@ -122,7 +106,7 @@ margin_top = 50.6428
 margin_right = -220.264
 margin_bottom = -379.357
 
-[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource( 4 )]
+[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource( 8 )]
 visible = false
 margin_left = 201.0
 margin_top = 72.0

@@ -25,12 +25,12 @@ config/windows_native_icon="res://DesktopIcons/Windows.ico"
 
 [autoload]
 
+GlobalWorldEnvironment="*res://WorldEnvironment.tscn"
 SceneTransition="*res://Levels/SceneTransition.tscn"
 BGM="*res://Levels/BGM.tscn"
 GameManager="*res://GameManager.tscn"
 UpgradeManager="*res://Player/UpgradeManager.tscn"
 StatsManager="*res://Player/StatsManager.tscn"
-GlobalWorldEnvironment="*res://WorldEnvironment.tscn"
 
 [display]
 
@@ -154,4 +154,4 @@ ui_change_tabs={
 
 [rendering]
 
-environment/default_environment="res://default_env.tres"
+environment/default_environment="res://WorldEnvironment.tres"

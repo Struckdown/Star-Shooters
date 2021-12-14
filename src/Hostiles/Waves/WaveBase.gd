@@ -120,4 +120,5 @@ func getEnemies():
 
 func startArrowTracking():
 	for e in getEnemies():
-		arrowTrackerRef.startTrackingNewEnemy(e)
+		if is_instance_valid(e):
+			arrowTrackerRef.startTrackingNewEnemy(e)

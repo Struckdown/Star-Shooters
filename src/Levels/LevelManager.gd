@@ -11,7 +11,7 @@ var wavesComplete = 0
 export(int) var level = 1
 var levelLost = false
 var levelWon = false
-onready var camera = $VPCgame/Viewport/Camera2D
+onready var camera = $GameRoot/Camera2D
 var shakeIntensity = 0	# from 0 to 1
 onready var dialogueBoxRef = $CanvasLayer/DialogueBox
 
@@ -23,7 +23,7 @@ export(String) var debugWaveName
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	scoreBoardRef = get_node("VPCscoreboard/Viewport/Scoreboard")
-	playerSpawn = get_node("VPCgame/Viewport/PlayerSpawner")
+	playerSpawn = get_node("GameRoot/PlayerSpawner")
 	if GameManager.stage != null:
 		level = GameManager.stage
 	setupLevelSpecificFeatures()
@@ -63,19 +63,19 @@ func spawnWave():
 	#print("Spawned wave: ", waveNum, " out of ", waves.size())
 	if debug:
 		waveNum = debugWave
-		if debugWaveName != null:
+		if debugWaveName != "":
 			waves.append(load(debugWaveName))
 			waveNum = waves.size()-1
 	
 	if waveNum < waves.size():
 		curWave = waves[waveNum].instance()
 		waveNum +=1
-		$VPCgame/Viewport.call_deferred("add_child", curWave)
+		$GameRoot.call_deferred("add_child", curWave)
 		curWave.connect("startNextWave", self, "spawnWave")
 		curWave.connect("enemyDestroyed", self, "addToScore")
 		curWave.connect("waveFinished", self, "updateWavesFinished")
 		curWave.bossHPRef = $"CanvasLayer/Boss HP"
-		curWave.arrowTrackerRef = $VPCgame/Viewport/EnemyArrowTrackerManager
+		curWave.arrowTrackerRef = $GameRoot/EnemyArrowTrackerManager
 		curWave.call_deferred("startArrowTracking")
 		curWave.dialogueBoxRef = dialogueBoxRef
 		if curWave.dialogueRequest:
@@ -125,7 +125,7 @@ func gemCollected():
 
 
 func _on_LevelWonGemCollectDelayTimer_timeout():
-	$VPCgame/Viewport/LevelBoundaries.collectGems(playerRef)
+	$GameRoot/LevelBoundaries.collectGems(playerRef)
 
 func updateCameraShake():
 	var x = (randi()%2*2-1) * shakeIntensity

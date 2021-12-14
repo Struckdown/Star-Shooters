@@ -1,9 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Levels/Stages/Level10/CommanderBoss.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/LaserBeam.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Boss HP.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Levels/LevelSelect/PlayerGemCount.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Menus/RetryMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Player/Dialogue/DialogueBox.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Menus/Pause Menu/Pause Menu.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Levels/Game Over.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Levels/LevelWon.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=11]
+[ext_resource path="res://WorldEnvironment.tscn" type="PackedScene" id=12]
 
 [node name="Node2D" type="Node2D"]
 
@@ -20,4 +28,98 @@ margin_top = 4.2045
 margin_right = 769.928
 margin_bottom = 78.2045
 
-[node name="WaveBase" parent="." instance=ExtResource( 1 )]
+[node name="VPCscoreboard" type="ViewportContainer" parent="."]
+margin_left = 824.0
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="VPCscoreboard"]
+size = Vector2( 200, 600 )
+handle_input_locally = false
+disable_3d = true
+usage = 0
+render_target_update_mode = 3
+gui_disable_input = true
+
+[node name="Scoreboard" parent="VPCscoreboard/Viewport" instance=ExtResource( 11 )]
+margin_left = 0.0
+margin_right = 240.0
+
+[node name="Camera2D" type="Camera2D" parent="VPCscoreboard/Viewport" groups=[
+"Camera",
+]]
+
+[node name="ViewportContainer" type="ViewportContainer" parent="."]
+margin_right = 1200.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Viewport" type="Viewport" parent="ViewportContainer"]
+size = Vector2( 1200, 600 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="LaserBeam" parent="ViewportContainer/Viewport" instance=ExtResource( 1 )]
+position = Vector2( 229.517, 309.194 )
+is_casting = true
+
+[node name="Camera2D" type="Camera2D" parent="ViewportContainer/Viewport"]
+position = Vector2( 0, 255 )
+current = true
+
+[node name="LaserBeam" parent="ViewportContainer" instance=ExtResource( 1 )]
+position = Vector2( 229.517, 401.34 )
+is_casting = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Game Over" parent="CanvasLayer" instance=ExtResource( 9 )]
+margin_right = -201.0
+
+[node name="Level Won" parent="CanvasLayer" instance=ExtResource( 10 )]
+margin_right = -203.0
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+margin_left = 110.0
+margin_top = 129.0
+margin_right = 736.0
+margin_bottom = 428.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RetryMenu" parent="CanvasLayer/Control" instance=ExtResource( 6 )]
+visible = false
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Boss HP" parent="CanvasLayer" instance=ExtResource( 3 )]
+margin_right = -200.0
+
+[node name="PlayerGemCount" parent="CanvasLayer" instance=ExtResource( 5 )]
+
+[node name="DialogueBox" parent="CanvasLayer" instance=ExtResource( 7 )]
+margin_left = 12.7356
+margin_top = 50.6428
+margin_right = -220.264
+margin_bottom = -379.357
+
+[node name="Pause Menu" parent="CanvasLayer" instance=ExtResource( 8 )]
+visible = false
+margin_left = 201.0
+margin_top = 72.0
+margin_right = -423.0
+margin_bottom = -128.0
+mouse_filter = 1
+
+[node name="LaserBeam" parent="." instance=ExtResource( 1 )]
+position = Vector2( 229.517, 246.265 )
+is_casting = true
+
+[node name="WorldEnvironment" parent="." instance=ExtResource( 12 )]
