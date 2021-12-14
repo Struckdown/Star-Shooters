@@ -114,6 +114,5 @@ func getEnemies():
 
 
 func startArrowTracking():
-	var enemies = getEnemies()
-	for e in enemies:
+	for e in getEnemies():
 		arrowTrackerRef.startTrackingNewEnemy(e)

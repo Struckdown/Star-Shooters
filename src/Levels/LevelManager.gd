@@ -76,7 +76,7 @@ func spawnWave():
 		curWave.connect("waveFinished", self, "updateWavesFinished")
 		curWave.bossHPRef = $"CanvasLayer/Boss HP"
 		curWave.arrowTrackerRef = $VPCgame/Viewport/EnemyArrowTrackerManager
-		curWave.startArrowTracking()
+		curWave.call_deferred("startArrowTracking")
 		curWave.dialogueBoxRef = dialogueBoxRef
 		if curWave.dialogueRequest:
 			yield(get_tree().create_timer(curWave.dialogueRequestDelay), "timeout")
