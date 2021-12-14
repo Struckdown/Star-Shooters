@@ -2,6 +2,7 @@ extends Control
 
 var netScrollVal = 0
 var scrollSpeed = 3
+var fullyVisible = null
 
 signal closed
 
@@ -37,7 +38,8 @@ func updateScrolling():
 	$WindowTexture/ScrollContainer.scroll_vertical += netScrollVal
 
 func _on_CloseButton_button_up():
-	emit_signal("closed")
+	if fullyVisible:
+		emit_signal("closed")
 
 
 func _on_Credits_visibility_changed():
@@ -46,5 +48,6 @@ func _on_Credits_visibility_changed():
 		$WindowTexture/CloseButton.grab_focus()
 
 
-func _on_AnimationPlayer_animation_finished(_anim_name):
-	pass # Replace with function body.
+func _on_AnimationPlayer_animation_finished(anim_name):
+	if anim_name == "Display":
+		fullyVisible = visible
