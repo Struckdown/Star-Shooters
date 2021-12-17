@@ -819,6 +819,7 @@ anims/Death = SubResource( 4 )
 
 [node name="WeaponManager" parent="Turrets/Turret5" index="4"]
 phaseSwapMode = "soloDownAndUp"
+active = false
 
 [node name="LaserBeam" parent="Turrets/Turret5/WeaponManager" index="0" instance=ExtResource( 7 )]
 position = Vector2( 45.969, 0.000305176 )
@@ -1055,6 +1056,7 @@ anims/Death = SubResource( 9 )
 
 [node name="WeaponManager" parent="Turrets/Turret10" index="4"]
 phaseSwapMode = "soloDownAndUp"
+active = false
 
 [node name="LaserBeam" parent="Turrets/Turret10/WeaponManager" index="0" instance=ExtResource( 7 )]
 position = Vector2( 45.969, 0.000305176 )
@@ -1085,6 +1087,7 @@ anims/Death = SubResource( 10 )
 
 [node name="WeaponManager" parent="Turrets/Turret11" index="4"]
 phaseSwapMode = "soloDownAndUp"
+active = false
 startDelay = 2.0
 
 [node name="LaserBeam" parent="Turrets/Turret11/WeaponManager" index="0" instance=ExtResource( 7 )]

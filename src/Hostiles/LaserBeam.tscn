@@ -10,13 +10,13 @@ extents = Vector2( 4, 500 )
 [sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=3]
+[sub_resource type="GradientTexture" id=9]
 gradient = SubResource( 2 )
 
 [sub_resource type="Curve" id=4]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.376569, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=5]
+[sub_resource type="CurveTexture" id=10]
 curve = SubResource( 4 )
 
 [sub_resource type="ParticlesMaterial" id=6]
@@ -25,8 +25,8 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 125.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 5 )
-color_ramp = SubResource( 3 )
+scale_curve = SubResource( 10 )
+color_ramp = SubResource( 9 )
 
 [sub_resource type="ParticlesMaterial" id=7]
 flag_disable_z = true
@@ -34,8 +34,8 @@ gravity = Vector3( 0, 0, 0 )
 initial_velocity = 250.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
-scale_curve = SubResource( 5 )
-color_ramp = SubResource( 3 )
+scale_curve = SubResource( 10 )
+color_ramp = SubResource( 9 )
 
 [sub_resource type="ParticlesMaterial" id=8]
 emission_shape = 2
@@ -47,8 +47,8 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 tangential_accel = 100.0
 scale = 0.38
-scale_curve = SubResource( 5 )
-color_ramp = SubResource( 3 )
+scale_curve = SubResource( 10 )
+color_ramp = SubResource( 9 )
 
 [node name="LaserBeam" type="RayCast2D"]
 modulate = Color( 0.4, 1.2, 1.5, 1 )

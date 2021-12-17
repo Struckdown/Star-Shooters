@@ -6,7 +6,8 @@ var componentsFinished = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	._ready()
-	dialogueBoxRef.connect("finished", self, "markDialogueFinished")
+	if dialogueBoxRef:
+		dialogueBoxRef.connect("finished", self, "markDialogueFinished")
 	$Node2D/DecisionZone/Area2D/CollisionShape2D.disabled = true
 	$Node2D/DecisionZone2/Area2D/CollisionShape2D.disabled = true
 	for turret in $finalBossFightShip/Turrets.get_children():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Hostiles/LaserBeam.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Levels/LevelWon.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=11]
 [ext_resource path="res://WorldEnvironment.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Levels/Stages/Level10/FederationBoss.tscn" type="PackedScene" id=13]
 
 [node name="Node2D" type="Node2D"]
 
@@ -123,3 +124,5 @@ position = Vector2( 229.517, 246.265 )
 is_casting = true
 
 [node name="WorldEnvironment" parent="." instance=ExtResource( 12 )]
+
+[node name="federationBossFight" parent="." instance=ExtResource( 13 )]

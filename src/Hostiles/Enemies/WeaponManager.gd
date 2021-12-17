@@ -77,7 +77,7 @@ func updatePhase():
 		if child.has_method("updatePhase"):
 			child.active = false
 			child.updatePhase()
-		else:
+		if child.has_method("toggleEmitting"):
 			child.toggleEmitting(false)
 	
 	if not active:
