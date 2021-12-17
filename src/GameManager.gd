@@ -16,6 +16,7 @@ enum playerFireTypes{SPREAD,CHARGE,FOCUSED,REVERSE}
 var playerFireType = playerFireTypes.FOCUSED
 var unlockedPlayerFireTypes = [playerFireTypes.FOCUSED]
 var endingToPlay = "commanderVictory"	# or federationVictory. Set by final boss decision wave
+var settingsLoaded = false	# used by Settings
 
 var saveGameFileName = "user://savegame.save"
 signal fireModeUpdated

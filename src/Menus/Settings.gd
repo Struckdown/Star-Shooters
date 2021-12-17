@@ -90,6 +90,8 @@ func save():
 func loadSettings():
 	if fileLock:
 		return
+	if GameManager.settingsLoaded:
+		return
 	fileLock = true
 	var config = ConfigFile.new()
 	var err = config.load(optionsFileName)
@@ -106,18 +108,19 @@ func loadSettings():
 		$Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox2.pressed = instaKill
 		
 		for action in InputMap.get_actions():
-			InputMap.action_erase_events(action)	# clean up old actions
-			var scannedCodeString = config.get_value("input", action)
-			var inputEventKey = InputEventKey.new()
-			inputEventKey.scancode = OS.find_scancode_from_string(scannedCodeString)
-			InputMap.action_add_event(action, inputEventKey)
 			var nodeName = "Window/TabContainer/Controls/ScrollContainer/VBoxContainer/" + action
 			if has_node(nodeName):
+				InputMap.action_erase_events(action)	# clean up old actions
+				var scannedCodeString = config.get_value("input", action)
+				var inputEventKey = InputEventKey.new()
+				inputEventKey.scancode = OS.find_scancode_from_string(scannedCodeString)
+				InputMap.action_add_event(action, inputEventKey)
 				var hbox = get_node(nodeName)
 				displayNewInput(hbox)
 	else:
 		print("No settings configured, loading defaults")
 		resetControls()
+	GameManager.settingsLoaded = true
 	fileLock = false
 
 
@@ -149,7 +152,7 @@ func _on_RebindableBtn_pressed(rebindableControl):
 func resetControls():
 	var actions = {"move_left": [KEY_LEFT], "move_right": [KEY_RIGHT],
 	"move_up":[KEY_UP], "move_down":[KEY_DOWN], "move_slow":[KEY_SHIFT],
-	"fire":[KEY_SPACE], "switchWeapons":[KEY_R], "ui_accept":[KEY_SPACE]
+	"fire":[KEY_Z], "switchWeapons":[KEY_R], "ui_accept":[KEY_SPACE]
 	}
 	for action in actions:
 		InputMap.action_erase_events(action)

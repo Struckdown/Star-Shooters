@@ -220,8 +220,8 @@ func getNewMoveGoal():
 	#var mapCenter = levelBounds.position
 	var mapSize = get_viewport().size
 	randomize()
-	var xRand = rand_range(mapSize.x * 0.2, mapSize.x * 0.7)	# avoid parking on the right side
-	var yRand = rand_range(mapSize.y * 0.1, mapSize.y * 0.4) #+ 200	# 200 is from wave offset spawning things off-camera
+	var xRand = rand_range(mapSize.x * 0.2, mapSize.x * 0.5)	# avoid parking on the right side
+	var yRand = rand_range(mapSize.y * 0.1, mapSize.y * 0.4)
 	moveGoal = Vector2(xRand, yRand)
 
 func spawnGems():
