@@ -1,5 +1,6 @@
 # Star-Shooters
 Star Shooters
+![Banner](Screenshots/Banner.png)
 
 Star Shooters was a concept I had that I quickly threw together in Unity over a couple of days when I knew nothing of Unity. The game focuses on the mechanic of top-down bullet shooters, where you charge up energy by grazing bullets, allowing you to shoot back. I think it's a neat idea that could potentially be expanded upon. ~~For now, this will sit here, gathering dust though.~~
 
@@ -32,8 +33,8 @@ https://opengameart.org/ for any other unmentioned art assets, though I hope I d
 
 
 ## Gameplay Screenshots
-![CoverImage](Screenshots/CoverImage.png)
-![LevelSelect](Screenshots/LevelSelect.png)
-![MissionBriefing](Screenshots/MissionBriefing.png)
-![Gameplay1](Screenshots/Gameplay1.png)
-![Gameplay2](Screenshots/Gameplay2.png)
+![CoverImage](Screenshots/CoverImage.PNG)
+![LevelSelect](Screenshots/LevelSelect.PNG)
+![MissionBriefing](Screenshots/MissionBriefing.PNG)
+![Gameplay1](Screenshots/Gameplay1.PNG)
+![Gameplay2](Screenshots/Gameplay2.PNG)
