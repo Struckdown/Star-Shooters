@@ -161,6 +161,7 @@ func updateFirePattern():
 
 func performAttack():
 	energyLevel -= energyThreshold
+	$FiringSFX.play()
 	fireDelay = fireDelayUpperBound
 	emit_signal("energyUpdated")
 	match firePattern:
@@ -195,9 +196,6 @@ func spawnBullet(pos2Dgroup:Node2D, shotIndex):
 func updateFakes():
 	$SpritesRoot/Spaceship_L.frame = $SpritesRoot/Spaceship.frame
 	$SpritesRoot/Spaceship_R.frame = $SpritesRoot/Spaceship.frame
-	#$SpritesRoot/Spaceship_L.position.x = $SpritesRoot/Spaceship.position.x - 420
-	#$SpritesRoot/Spaceship_R.position.x = $SpritesRoot/Spaceship.position.x + 420
-	
 
 func updateTeleport(delta):
 	if not teleporting:

@@ -513,7 +513,7 @@ Before we can send you out, you'll need to prove your skills.
 
 We have setup this basic course to get you used to the basics.
 
-Remember, We need you to hunt down the Star Child, so your skills will be of the utmost importance.
+Remember, we need you to defeat the Federation, so your skills will be of the utmost importance.
 Prepare for deployment...
 "
 unlocked = true
@@ -529,7 +529,7 @@ levelName = "2"
 missionName = "A Loss of Energy	"
 missionBriefing = "Incredible performance in your previous mission. Now that you're well acquainted with the capabilities of your spaceship, you will need to venture forth and carve out a path for us!
 
-Your enemy will not always use energy aligned ammunition, so make sure to seek out attacks that matched your training to generate charge to fight back! Without it, you stand no chance."
+The Federation will not always use energy aligned ammunition, so make sure to seek out attacks that matched your training to generate charge to fight back! Without it, you stand no chance."
 levelsToUnlock = [ NodePath("../Planet3") ]
 
 [node name="PlanetSprite" parent="Levels/Planet2" index="0"]
@@ -575,7 +575,7 @@ position = Vector2( 1345.14, 371.091 )
 levelDescription = "Delta Sector"
 levelName = "4"
 missionName = "Gravity Vectors"
-missionBriefing = "What have the Federation done? The entire ecosystem is now uninhabitable. The nearby battle fleet armada must be responsible! Don't just float there, go blow them up. You must avenge the fallen."
+missionBriefing = "What have the Federation done? The entire ecosystem of this planet is now uninhabitable. The brutes. The nearby battle fleet armada must be responsible! Don't just float there, go blow them up. You must avenge the fallen."
 levelsToUnlock = [ NodePath("../Planet5") ]
 
 [node name="PlanetSprite" parent="Levels/Planet4" index="0"]

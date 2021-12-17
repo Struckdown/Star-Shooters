@@ -18,40 +18,40 @@
 size = 40
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=2]
 size = 10
 font_data = ExtResource( 3 )
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 361, 101 )
 margin_left = 8.0
 margin_right = 9.0
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 361, 101 )
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 361, 101 )
 margin_left = 7.0
 margin_right = 9.0
 
-[sub_resource type="StyleBoxEmpty" id=5]
-
-[sub_resource type="DynamicFont" id=6]
-size = 24
-font_data = ExtResource( 3 )
+[sub_resource type="StyleBoxEmpty" id=6]
 
 [sub_resource type="DynamicFont" id=7]
+size = 24
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=8]
-size = 24
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=9]
+size = 24
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=10]
 size = 32
 font_data = ExtResource( 11 )
 
@@ -96,7 +96,7 @@ margin_top = 87.3337
 margin_right = -4.0
 margin_bottom = -485.666
 rect_min_size = Vector2( 155, 0 )
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 2 )
 text = "Tab To Switch"
 align = 1
 valign = 1
@@ -141,10 +141,10 @@ anchor_bottom = 0.783
 margin_top = 0.199997
 margin_bottom = 0.199982
 theme = ExtResource( 13 )
-custom_styles/tab_fg = SubResource( 2 )
-custom_styles/tab_disabled = SubResource( 3 )
-custom_styles/tab_bg = SubResource( 4 )
-custom_styles/panel = SubResource( 5 )
+custom_styles/tab_fg = SubResource( 3 )
+custom_styles/tab_disabled = SubResource( 4 )
+custom_styles/tab_bg = SubResource( 5 )
+custom_styles/panel = SubResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -162,17 +162,17 @@ anchor_left = 0.077
 anchor_top = 0.003
 anchor_right = 0.914
 anchor_bottom = 0.983
-margin_left = 0.151993
-margin_top = -0.089
+margin_left = 0.152
+margin_top = 27.881
 margin_right = 0.0640259
-margin_bottom = 0.17099
+margin_bottom = 0.341034
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Window/TabContainer/General/VBoxContainer"]
 margin_right = 857.0
-margin_bottom = 88.0
+margin_bottom = 81.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -180,11 +180,11 @@ __meta__ = {
 }
 
 [node name="MusicLbl" type="Label" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer"]
-margin_top = 30.0
+margin_top = 27.0
 margin_right = 155.0
-margin_bottom = 57.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 155, 0 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 text = "Music"
 align = 1
 valign = 1
@@ -194,10 +194,10 @@ __meta__ = {
 
 [node name="PercentMin" type="Label" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer"]
 margin_left = 159.0
-margin_top = 35.0
+margin_top = 31.0
 margin_right = 183.0
-margin_bottom = 53.0
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 8 )
 text = "0%"
 align = 1
 valign = 1
@@ -207,9 +207,9 @@ __meta__ = {
 
 [node name="HSliderMusic" type="HSlider" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer"]
 margin_left = 187.0
-margin_top = 36.0
+margin_top = 32.0
 margin_right = 809.0
-margin_bottom = 52.0
+margin_bottom = 48.0
 focus_neighbour_top = NodePath("../../../../../ResumeBtn")
 focus_neighbour_bottom = NodePath("../../HBoxContainer2/HSliderSFX")
 size_flags_horizontal = 3
@@ -221,10 +221,10 @@ ticks_on_borders = true
 
 [node name="PercentMax" type="Label" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer"]
 margin_left = 813.0
-margin_top = 35.0
+margin_top = 31.0
 margin_right = 857.0
-margin_bottom = 53.0
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 8 )
 text = "100%"
 align = 1
 valign = 1
@@ -233,9 +233,9 @@ __meta__ = {
 }
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Window/TabContainer/General/VBoxContainer"]
-margin_top = 92.0
+margin_top = 85.0
 margin_right = 857.0
-margin_bottom = 180.0
+margin_bottom = 167.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -243,11 +243,11 @@ __meta__ = {
 }
 
 [node name="SFXLbl" type="Label" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer2"]
-margin_top = 30.0
+margin_top = 27.0
 margin_right = 155.0
-margin_bottom = 57.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 155, 0 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 text = "SFX"
 align = 1
 valign = 1
@@ -257,10 +257,10 @@ __meta__ = {
 
 [node name="PercentMin" type="Label" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer2"]
 margin_left = 159.0
-margin_top = 35.0
+margin_top = 32.0
 margin_right = 183.0
-margin_bottom = 53.0
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 8 )
 text = "0%"
 align = 1
 valign = 1
@@ -270,9 +270,9 @@ __meta__ = {
 
 [node name="HSliderSFX" type="HSlider" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer2"]
 margin_left = 187.0
-margin_top = 36.0
+margin_top = 33.0
 margin_right = 809.0
-margin_bottom = 52.0
+margin_bottom = 49.0
 focus_neighbour_top = NodePath("../../HBoxContainer/HSliderMusic")
 focus_neighbour_bottom = NodePath("../../HBoxContainer3/HSliderSpeed")
 size_flags_horizontal = 3
@@ -284,10 +284,10 @@ ticks_on_borders = true
 
 [node name="PercentMax" type="Label" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer2"]
 margin_left = 813.0
-margin_top = 35.0
+margin_top = 32.0
 margin_right = 857.0
-margin_bottom = 53.0
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 8 )
 text = "100%"
 align = 1
 valign = 1
@@ -296,9 +296,9 @@ __meta__ = {
 }
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="Window/TabContainer/General/VBoxContainer"]
-margin_top = 184.0
+margin_top = 171.0
 margin_right = 857.0
-margin_bottom = 272.0
+margin_bottom = 252.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -306,11 +306,11 @@ __meta__ = {
 }
 
 [node name="SpeedLbl" type="Label" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer3"]
-margin_top = 15.0
+margin_top = 12.0
 margin_right = 140.0
-margin_bottom = 72.0
+margin_bottom = 69.0
 rect_min_size = Vector2( 140, 0 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 text = "Enemy Speed"
 align = 1
 valign = 1
@@ -321,12 +321,12 @@ __meta__ = {
 
 [node name="PercentMin" type="Label" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer3"]
 margin_left = 144.0
-margin_top = 35.0
+margin_top = 31.0
 margin_right = 181.0
-margin_bottom = 53.0
+margin_bottom = 49.0
 grow_horizontal = 0
 rect_min_size = Vector2( 20, 0 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "50%"
 align = 1
 valign = 1
@@ -336,9 +336,9 @@ __meta__ = {
 
 [node name="HSliderSpeed" type="HSlider" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer3"]
 margin_left = 185.0
-margin_top = 36.0
+margin_top = 32.0
 margin_right = 809.0
-margin_bottom = 52.0
+margin_bottom = 48.0
 focus_neighbour_top = NodePath("../../HBoxContainer2/HSliderSFX")
 focus_neighbour_bottom = NodePath("../../HBoxContainer4/Checkbox")
 size_flags_horizontal = 3
@@ -352,10 +352,10 @@ ticks_on_borders = true
 
 [node name="PercentMax" type="Label" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer3"]
 margin_left = 813.0
-margin_top = 35.0
+margin_top = 31.0
 margin_right = 857.0
-margin_bottom = 53.0
-custom_fonts/font = SubResource( 7 )
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 8 )
 text = "150%"
 align = 1
 valign = 1
@@ -364,9 +364,9 @@ __meta__ = {
 }
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="Window/TabContainer/General/VBoxContainer"]
-margin_top = 276.0
+margin_top = 256.0
 margin_right = 857.0
-margin_bottom = 365.0
+margin_bottom = 338.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 __meta__ = {
@@ -374,12 +374,12 @@ __meta__ = {
 }
 
 [node name="FullscreenLbl" type="Label" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer4"]
-margin_top = 31.0
+margin_top = 27.0
 margin_right = 211.0
-margin_bottom = 58.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 140, 0 )
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 text = "Full Screen"
 align = 1
 valign = 1
@@ -391,7 +391,7 @@ __meta__ = {
 [node name="Checkbox" type="CheckBox" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer4"]
 margin_left = 215.0
 margin_right = 426.0
-margin_bottom = 89.0
+margin_bottom = 82.0
 focus_neighbour_top = NodePath("../../HBoxContainer3/HSliderSpeed")
 focus_neighbour_bottom = NodePath("../../../../../ResumeBtn")
 size_flags_horizontal = 3
@@ -401,12 +401,12 @@ expand_icon = true
 
 [node name="InstaKillLbl" type="Label" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer4"]
 margin_left = 430.0
-margin_top = 16.0
+margin_top = 12.0
 margin_right = 641.0
-margin_bottom = 73.0
+margin_bottom = 69.0
 rect_min_size = Vector2( 140, 0 )
 size_flags_horizontal = 3
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 text = "Insta Kill Mode"
 align = 1
 valign = 1
@@ -418,7 +418,7 @@ __meta__ = {
 [node name="Checkbox2" type="CheckBox" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer4"]
 margin_left = 645.0
 margin_right = 857.0
-margin_bottom = 89.0
+margin_bottom = 82.0
 focus_neighbour_left = NodePath("../Checkbox")
 focus_neighbour_top = NodePath("../../HBoxContainer3/HSliderSpeed")
 focus_neighbour_bottom = NodePath("../../../../../ResumeBtn")
@@ -437,29 +437,29 @@ __meta__ = {
 }
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Window/TabContainer/Controls"]
-anchor_left = 0.183594
-anchor_top = 0.0578512
-anchor_right = 0.828125
-anchor_bottom = 0.900826
+anchor_left = 0.0683594
+anchor_top = 0.126005
+anchor_right = 0.960938
+anchor_bottom = 0.900804
 follow_focus = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer"]
-margin_right = 660.0
+margin_right = 914.0
 margin_bottom = 522.0
 size_flags_horizontal = 3
 
 [node name="move_up" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
-margin_right = 648.0
+margin_right = 902.0
 margin_bottom = 62.0
 focus_neighbour_top = NodePath("../../../../../ResumeBtn")
 size_flags_horizontal = 3
 
 [node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_up"]
 margin_top = 4.0
-margin_right = 320.0
+margin_right = 447.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -467,14 +467,14 @@ custom_fonts/font = ExtResource( 9 )
 text = "Move Up"
 
 [node name="Spacer" type="TextureRect" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_up"]
-margin_left = 324.0
-margin_right = 484.0
+margin_left = 451.0
+margin_right = 674.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 
 [node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_up"]
-margin_left = 488.0
-margin_right = 648.0
+margin_left = 678.0
+margin_right = 902.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
@@ -482,13 +482,13 @@ text = "W"
 
 [node name="move_left" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
 margin_top = 66.0
-margin_right = 648.0
+margin_right = 902.0
 margin_bottom = 128.0
 size_flags_horizontal = 3
 
 [node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_left"]
 margin_top = 4.0
-margin_right = 320.0
+margin_right = 447.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -496,14 +496,14 @@ custom_fonts/font = ExtResource( 9 )
 text = "Move Left"
 
 [node name="Spacer" type="TextureRect" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_left"]
-margin_left = 324.0
-margin_right = 484.0
+margin_left = 451.0
+margin_right = 674.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 
 [node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_left"]
-margin_left = 488.0
-margin_right = 648.0
+margin_left = 678.0
+margin_right = 902.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
@@ -511,13 +511,13 @@ text = "A"
 
 [node name="move_down" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
 margin_top = 132.0
-margin_right = 648.0
+margin_right = 902.0
 margin_bottom = 194.0
 size_flags_horizontal = 3
 
 [node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_down"]
 margin_top = 4.0
-margin_right = 320.0
+margin_right = 447.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -525,14 +525,14 @@ custom_fonts/font = ExtResource( 9 )
 text = "Move Down"
 
 [node name="Spacer" type="TextureRect" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_down"]
-margin_left = 324.0
-margin_right = 484.0
+margin_left = 451.0
+margin_right = 674.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 
 [node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_down"]
-margin_left = 488.0
-margin_right = 648.0
+margin_left = 678.0
+margin_right = 902.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
@@ -540,13 +540,13 @@ text = "S"
 
 [node name="move_right" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
 margin_top = 198.0
-margin_right = 648.0
+margin_right = 902.0
 margin_bottom = 260.0
 size_flags_horizontal = 3
 
 [node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_right"]
 margin_top = 4.0
-margin_right = 320.0
+margin_right = 447.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -554,14 +554,14 @@ custom_fonts/font = ExtResource( 9 )
 text = "Move Right"
 
 [node name="Spacer" type="TextureRect" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_right"]
-margin_left = 324.0
-margin_right = 484.0
+margin_left = 451.0
+margin_right = 674.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 
 [node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_right"]
-margin_left = 488.0
-margin_right = 648.0
+margin_left = 678.0
+margin_right = 902.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
@@ -569,13 +569,13 @@ text = "D"
 
 [node name="move_slow" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
 margin_top = 264.0
-margin_right = 648.0
+margin_right = 902.0
 margin_bottom = 326.0
 size_flags_horizontal = 3
 
 [node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_slow"]
 margin_top = 4.0
-margin_right = 320.0
+margin_right = 447.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -583,14 +583,14 @@ custom_fonts/font = ExtResource( 9 )
 text = "Move Slow"
 
 [node name="Spacer" type="TextureRect" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_slow"]
-margin_left = 324.0
-margin_right = 484.0
+margin_left = 451.0
+margin_right = 674.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 
 [node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_slow"]
-margin_left = 488.0
-margin_right = 648.0
+margin_left = 678.0
+margin_right = 902.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
@@ -598,13 +598,13 @@ text = "Shift"
 
 [node name="fire" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
 margin_top = 330.0
-margin_right = 648.0
+margin_right = 902.0
 margin_bottom = 392.0
 size_flags_horizontal = 3
 
 [node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/fire"]
 margin_top = 4.0
-margin_right = 320.0
+margin_right = 447.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -612,14 +612,14 @@ custom_fonts/font = ExtResource( 9 )
 text = "Fire"
 
 [node name="Spacer" type="TextureRect" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/fire"]
-margin_left = 324.0
-margin_right = 484.0
+margin_left = 451.0
+margin_right = 674.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 
 [node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/fire"]
-margin_left = 488.0
-margin_right = 648.0
+margin_left = 678.0
+margin_right = 902.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
@@ -627,13 +627,13 @@ text = "Z"
 
 [node name="switchWeapons" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
 margin_top = 396.0
-margin_right = 648.0
+margin_right = 902.0
 margin_bottom = 458.0
 size_flags_horizontal = 3
 
 [node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/switchWeapons"]
 margin_top = 4.0
-margin_right = 320.0
+margin_right = 447.0
 margin_bottom = 58.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 2.0
@@ -641,26 +641,55 @@ custom_fonts/font = ExtResource( 9 )
 text = "Cycle Weapons"
 
 [node name="Spacer" type="TextureRect" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/switchWeapons"]
-margin_left = 324.0
-margin_right = 484.0
+margin_left = 451.0
+margin_right = 674.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 
 [node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/switchWeapons"]
-margin_left = 488.0
-margin_right = 648.0
+margin_left = 678.0
+margin_right = 902.0
 margin_bottom = 62.0
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
 text = "R"
 
+[node name="ui_accept" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
+margin_top = 396.0
+margin_right = 902.0
+margin_bottom = 458.0
+size_flags_horizontal = 3
+
+[node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_accept"]
+margin_top = 4.0
+margin_right = 447.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 9 )
+text = "UI Accept"
+
+[node name="Spacer" type="TextureRect" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_accept"]
+margin_left = 451.0
+margin_right = 674.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_accept"]
+margin_left = 678.0
+margin_right = 902.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "Space"
+
 [node name="Reset" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
 margin_top = 462.0
-margin_right = 648.0
+margin_right = 902.0
 margin_bottom = 522.0
 
 [node name="ResetBtn" type="TextureButton" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/Reset"]
-margin_right = 648.0
+margin_right = 902.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
 focus_neighbour_top = NodePath("../../switchWeapons/RebindableBtn")
@@ -728,7 +757,7 @@ margin_left = -71.51
 margin_top = -0.0240021
 margin_right = 102.33
 margin_bottom = -0.0240021
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 10 )
 text = "Press the new input for: Move Left"
 align = 1
 valign = 1
@@ -764,4 +793,5 @@ bus = "SFX"
 [connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_slow/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "move_slow" ]]
 [connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/fire/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "fire" ]]
 [connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/switchWeapons/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "switchWeapons" ]]
+[connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_accept/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "ui_accept" ]]
 [connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/Reset/ResetBtn" to="." method="_on_ResetBtn_pressed"]

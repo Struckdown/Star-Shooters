@@ -110,8 +110,8 @@ margin_bottom = -379.357
 visible = false
 margin_left = 201.0
 margin_top = 72.0
-margin_right = -423.0
-margin_bottom = -128.0
+margin_right = -275.0
+margin_bottom = -96.0
 mouse_filter = 1
 
 [node name="LevelWonGemCollectDelayTimer" type="Timer" parent="."]

@@ -149,7 +149,7 @@ func _on_RebindableBtn_pressed(rebindableControl):
 func resetControls():
 	var actions = {"move_left": [KEY_LEFT], "move_right": [KEY_RIGHT],
 	"move_up":[KEY_UP], "move_down":[KEY_DOWN], "move_slow":[KEY_SHIFT],
-	"fire":[KEY_SPACE], "switchWeapons":[KEY_R]
+	"fire":[KEY_SPACE], "switchWeapons":[KEY_R], "ui_accept":[KEY_SPACE]
 	}
 	for action in actions:
 		InputMap.action_erase_events(action)

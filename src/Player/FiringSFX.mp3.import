@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/FiringSFX.mp3-36415b6b984ef6db6b24710a726510d7.mp3str"
+
+[deps]
+
+source_file="res://Player/FiringSFX.mp3"
+dest_files=[ "res://.import/FiringSFX.mp3-36415b6b984ef6db6b24710a726510d7.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0
