@@ -302,6 +302,7 @@ rotation = 3.14159
 
 [node name="FiringSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+bus = "SFX"
 
 [connection signal="area_entered" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_entered"]
 [connection signal="area_exited" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_exited"]

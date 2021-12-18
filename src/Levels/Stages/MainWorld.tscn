@@ -23,7 +23,6 @@ position = Vector2( -1, 1 )
 z_index = 1
 script = ExtResource( 1 )
 level = 6
-debug = true
 debugWave = 1
 
 [node name="GameRoot" type="Node2D" parent="." groups=[
