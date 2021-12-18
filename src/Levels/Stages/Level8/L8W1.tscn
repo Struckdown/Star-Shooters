@@ -54,8 +54,11 @@ enemiesToDestroy = 2
 [node name="Enemy_Base" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( 207.291, -54.7495 )
 rotation = 1.57079
+pointsWorth = 175
 speed = 0.7
 useAcclerationInsteadOfLinearVelocity = true
+maxHealth = 60
+gemValue = 22
 moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"
 
@@ -85,8 +88,11 @@ template = true
 [node name="Enemy_Base2" parent="." index="1" instance=ExtResource( 2 )]
 position = Vector2( 507.104, -54.7495 )
 rotation = 1.57079
+pointsWorth = 175
 speed = 0.7
 useAcclerationInsteadOfLinearVelocity = true
+maxHealth = 60
+gemValue = 22
 moveGoal = Vector2( 0, 150 )
 flyingPattern = "hoverMoveGoal"
 

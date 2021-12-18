@@ -18,6 +18,9 @@ enemiesToDestroy = 1
 [node name="Enemy_Base" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( -141.722, 320.525 )
 rotation = -0.523598
+pointsWorth = 160
+maxHealth = 50
+gemValue = 18
 moveGoal = Vector2( 0, 150 )
 flyPaths = [ NodePath("../Path2D") ]
 flyingPattern = "followPath"
