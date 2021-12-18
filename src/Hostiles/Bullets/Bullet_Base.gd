@@ -40,6 +40,7 @@ func _ready():
 	if nodeToRotate and typeof(nodeToRotate) != TYPE_OBJECT:
 		nodeToRotate = get_node(nodeToRotate)
 	bounds = get_viewport_rect().size
+	bounds.x *= 0.8
 
 func init():
 	pass	# overridden in children classes

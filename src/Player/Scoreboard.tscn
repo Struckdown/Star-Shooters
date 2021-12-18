@@ -1,10 +1,9 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player/FutureFont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://Player/playerScoreboardLife.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Player/Scoreboard.gd" type="Script" id=4]
-[ext_resource path="res://Art Packs/Struckdown/Triangle.png" type="Texture" id=5]
 [ext_resource path="res://Space Shooter Redux/PNG/Power-ups/powerupBlue_bolt.png" type="Texture" id=6]
 
 [sub_resource type="VisualShaderNodeVec3Constant" id=1]
@@ -284,13 +283,6 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Sprite" type="Sprite" parent="VBoxContainer"]
-visible = false
-position = Vector2( 76.777, 457.314 )
-rotation = -1.5708
-scale = Vector2( 0.2, 0.1 )
-texture = ExtResource( 5 )
 
 [node name="MarginContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 252.0

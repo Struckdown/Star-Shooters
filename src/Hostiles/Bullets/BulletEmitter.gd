@@ -157,8 +157,11 @@ func spawnBullets(delta, additionalRads):
 			b.setGeneratesEnergy(true)
 		if spawnAsChild:
 			add_child(b)
+		elif find_parent("Level"):
+			find_parent("Level").add_child(b)
 		else:
-			get_viewport().add_child(b)
+			var viewport = get_viewport()
+			viewport.get_child(viewport.get_child_count()-1).add_child(b)
 		b.global_position = global_position
 		b.global_rotation = global_rotation + additionalRads
 		

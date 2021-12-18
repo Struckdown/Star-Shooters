@@ -22,7 +22,7 @@ export(String) var debugWaveName
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	scoreBoardRef = get_node("VPCscoreboard/Viewport/Scoreboard")
+	scoreBoardRef = get_node("CanvasLayer/Scoreboard")
 	playerSpawn = get_node("GameRoot/PlayerSpawner")
 	if GameManager.stage != null:
 		level = GameManager.stage
