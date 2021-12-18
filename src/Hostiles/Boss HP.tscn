@@ -150,11 +150,10 @@ margin_right = 819.0
 margin_bottom = 74.0
 
 [node name="Boss_Name_Table" type="TextureRect" parent="VBoxContainer"]
-margin_left = 159.0
-margin_right = 659.0
+margin_left = 134.0
+margin_right = 684.0
 margin_bottom = 40.0
-rect_min_size = Vector2( 500, 40 )
-rect_scale = Vector2( 1, 1e-05 )
+rect_min_size = Vector2( 550, 40 )
 size_flags_horizontal = 6
 texture = ExtResource( 5 )
 expand = true
@@ -182,7 +181,6 @@ margin_top = 44.0
 margin_right = 819.0
 margin_bottom = 74.0
 rect_min_size = Vector2( 0, 30 )
-rect_scale = Vector2( 1e-05, 1 )
 size_flags_horizontal = 7
 __meta__ = {
 "_edit_use_anchors_": false
