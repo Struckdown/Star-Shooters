@@ -46,7 +46,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position += waveMoveDirection*delta
+	if waveMoveDirection != Vector2.ZERO:	# weirdly enough, this breaks the asteroids if not checked
+		position += waveMoveDirection*delta
 	if destroyWaveTimer >= 0:
 		destroyWaveTimer -= delta
 		if destroyWaveTimer <= 0:

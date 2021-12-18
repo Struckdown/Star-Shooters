@@ -8,34 +8,33 @@
 resource_name = "TimerIntro"
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasLayer/TimeRemaining:rect_position")
+tracks/0/path = NodePath("CanvasLayer/TimeRemaining:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.6, 2 ),
-"transitions": PoolRealArray( 1, 1.10957, 2.46229, 15.455 ),
-"update": 0,
-"values": [ Vector2( 346.759, 240.426 ), Vector2( 346.759, 240.426 ), Vector2( 346.759, 240.426 ), Vector2( 8.18948, 0 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("CanvasLayer/TimeRemaining:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasLayer/TimeRemaining:rect_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.6, 2 ),
+"transitions": PoolRealArray( 1, 1.10957, 2.46229, 15.455 ),
+"update": 0,
+"values": [ Vector2( 346.759, 240.426 ), Vector2( 346.759, 240.426 ), Vector2( 346.759, 240.426 ), Vector2( 8.18948, 0 ) ]
+}
 
 [node name="WaveBase" instance=ExtResource( 1 )]
 waveAdvanceCondition = "time"
 timeToNextWave = 120
-timeOutFinishesWaveInsteadOfAdvancesWave = true
 
 [node name="AsteroidSpawner" parent="." index="0" instance=ExtResource( 2 )]
 
@@ -58,6 +57,9 @@ margin_top = 52.563
 margin_right = 75.0
 margin_bottom = 66.563
 text = "Survive for: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="2"]
 autoplay = "TimerIntro"

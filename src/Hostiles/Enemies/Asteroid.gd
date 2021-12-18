@@ -24,7 +24,7 @@ func _ready():
 		piecesWhenBroken = max(0, piecesWhenBrokenMax)
 
 func init():
-	linear_velocity = (velocity*speed*GameManager.gameSpeed).rotated(rotation)
+	linear_velocity = speed*(velocity*GameManager.gameSpeed).rotated(rotation)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,7 +33,7 @@ func _process(_delta):
 #	move(delta)
 
 #func move(delta):
-#	#var collision = move_and_collide(velocity*delta*speed)
+#	var collision = move_and_collide(velocity*delta*speed)
 #	if collision:
 #		velocity += collision.normal * 0.7
 #		var otherObj = collision.collider

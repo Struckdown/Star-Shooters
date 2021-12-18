@@ -1,6 +1,5 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Hostiles/LaserBeam.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Boss HP.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=4]
@@ -12,11 +11,6 @@
 [ext_resource path="res://Levels/LevelWon.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=11]
 [ext_resource path="res://WorldEnvironment.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Player/DARK PHGLAZER.png" type="Texture" id=13]
-[ext_resource path="res://Space Backgrounds/space_background_pack/Animated_BG.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Space Shooter Redux/PNG/Lasers/laserRed05.png" type="Texture" id=15]
-[ext_resource path="res://Space Shooter Redux/PNG/Lasers/laserRed11.png" type="Texture" id=16]
-[ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlack1.png" type="Texture" id=17]
 
 [node name="Node2D" type="Node2D"]
 
@@ -59,31 +53,6 @@ margin_right = 240.0
 "Camera",
 ]]
 
-[node name="ViewportContainer" type="ViewportContainer" parent="."]
-visible = false
-margin_right = 1200.0
-margin_bottom = 600.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Viewport" type="Viewport" parent="ViewportContainer"]
-size = Vector2( 1200, 600 )
-handle_input_locally = false
-render_target_update_mode = 0
-
-[node name="LaserBeam" parent="ViewportContainer/Viewport" instance=ExtResource( 1 )]
-position = Vector2( 229.517, 309.194 )
-is_casting = true
-
-[node name="Camera2D" type="Camera2D" parent="ViewportContainer/Viewport"]
-position = Vector2( 0, 255 )
-current = true
-
-[node name="LaserBeam" parent="ViewportContainer" instance=ExtResource( 1 )]
-position = Vector2( 229.517, 401.34 )
-is_casting = true
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Game Over" parent="CanvasLayer" instance=ExtResource( 9 )]
@@ -125,44 +94,4 @@ margin_right = -423.0
 margin_bottom = -128.0
 mouse_filter = 1
 
-[node name="LaserBeam" parent="." instance=ExtResource( 1 )]
-position = Vector2( 229.517, 246.265 )
-is_casting = true
-
 [node name="WorldEnvironment" parent="." instance=ExtResource( 12 )]
-
-[node name="Animated_BG" parent="." instance=ExtResource( 14 )]
-position = Vector2( 429.928, 263.82 )
-scale = Vector2( 4.75745, 4.00013 )
-
-[node name="enemyBlack1" type="Sprite" parent="."]
-position = Vector2( 707.858, 360.869 )
-rotation = 1.57079
-texture = ExtResource( 17 )
-
-[node name="DARK PHGLAZER" type="Sprite" parent="."]
-position = Vector2( 124.155, 384.47 )
-rotation = 1.57079
-texture = ExtResource( 13 )
-hframes = 3
-
-[node name="DARK PHGLAZER2" type="Sprite" parent="."]
-position = Vector2( 170.983, 372.564 )
-rotation = 1.57079
-texture = ExtResource( 13 )
-hframes = 3
-
-[node name="laserRed05" type="Sprite" parent="."]
-position = Vector2( 547.562, 378.622 )
-rotation = 1.57079
-texture = ExtResource( 15 )
-
-[node name="laserRed06" type="Sprite" parent="."]
-position = Vector2( 492.818, 349.362 )
-rotation = 1.57079
-texture = ExtResource( 15 )
-
-[node name="laserRed11" type="Sprite" parent="."]
-position = Vector2( 613.162, 361.633 )
-rotation = 0.386307
-texture = ExtResource( 16 )

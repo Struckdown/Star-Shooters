@@ -23,12 +23,12 @@ func increaseAggression(_aggresionLevel):
 
 func _on_SpeedAsteroidTimer_timeout():
 	var a = asteroid.instance()
-	add_child(a)
 	var viewport = get_viewport_rect().size
-	a.position.x = rand_range(0, viewport.x)
+	a.position.x = rand_range(0, viewport.x*0.7)
 	a.position.y = rand_range(-15, -80)
 	a.rotation_degrees = rand_range(75, 125)
 	a.speed = rand_range(150, 180) * aggressionMultiplier
+	add_child(a)
 	a.init()
 	$SpeedAsteroidTimer.start(spawnTime/aggressionMultiplier)
 
