@@ -19,7 +19,7 @@ func _on_Area2D_area_entered(area):
 		emit_signal("collected")
 		$UpgradeSFX.play()
 		hide()
-		$Area2D/CollisionShape2D.disabled = true
+		$Area2D/CollisionShape2D.set_deferred("disabled", true)
 
 func setUpgrade(upgradeType):
 	playerFireTypeUnlock = upgradeType
