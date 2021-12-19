@@ -36,6 +36,7 @@ script = ExtResource( 2 )
 waveAdvanceCondition = "other"
 usesBossHP = true
 bossName = "Federation Core"
+musicRequest = "res://Levels/BossBattle.mp3"
 
 [node name="federationBossFight" parent="." index="0" instance=ExtResource( 1 )]
 

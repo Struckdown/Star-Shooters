@@ -17,7 +17,9 @@ func _on_Area2D_area_entered(area):
 	if area.is_in_group("PlayerOuterHitbox"):
 		GameManager.unlockFireMode(playerFireTypeUnlock)
 		emit_signal("collected")
-		queue_free()
+		$UpgradeSFX.play()
+		hide()
+		$Area2D/CollisionShape2D.disabled = true
 
 func setUpgrade(upgradeType):
 	playerFireTypeUnlock = upgradeType
@@ -32,3 +34,7 @@ func setUpgrade(upgradeType):
 		GameManager.playerFireTypes.SPREAD:
 			resourcePath = "res://Space Shooter Redux/PNG/Power-ups/powerupGreen_bolt.png"
 	$Sprite.texture = load(resourcePath)
+
+
+func _on_UpgradeSFX_finished():
+			queue_free()

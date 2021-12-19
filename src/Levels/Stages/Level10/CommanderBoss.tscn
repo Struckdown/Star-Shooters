@@ -43,6 +43,7 @@ script = ExtResource( 9 )
 enemiesToDestroy = 1
 usesBossHP = true
 bossName = "The Commander"
+musicRequest = "res://Levels/BossBattle.mp3"
 
 [node name="Commander" parent="." index="0" instance=ExtResource( 2 )]
 position = Vector2( 395.564, -129.143 )
@@ -71,7 +72,6 @@ timeToNextPhase = 6
 
 [node name="BulletEmitter" parent="Commander/WeaponManager/PhaseA" index="0" instance=ExtResource( 4 )]
 rotation = -1.43117
-scale = Vector2( 1, 1 )
 rotationPerVolley = 10.0
 rotationRange = 164.0
 useRotationAsCenterBullet = true
@@ -89,7 +89,6 @@ nthBulletIsGreen = [ 3, 4 ]
 
 [node name="BulletEmitter2" parent="Commander/WeaponManager/PhaseA" index="1" instance=ExtResource( 4 )]
 rotation = -1.43117
-scale = Vector2( 1, 1 )
 rotationPerVolley = 10.0
 resetRotationOnClip = true
 rotationRange = 164.0
@@ -111,7 +110,6 @@ phaseSwapMode = "time"
 timeToNextPhase = 8
 
 [node name="BulletEmitter" parent="Commander/WeaponManager/PhaseB" index="0" instance=ExtResource( 4 )]
-scale = Vector2( 1, 1 )
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 30.0
@@ -139,7 +137,6 @@ makeBulletEnergizedAnywaysOdds = 0.1
 template = true
 
 [node name="BulletEmitter2" parent="Commander/WeaponManager/PhaseB" index="1" instance=ExtResource( 4 )]
-scale = Vector2( 1, 1 )
 rotationDegPerSec = 15.0
 fireAtLocationForWholeClip = false
 angleOfBulletSpread = 36.0
@@ -156,7 +153,6 @@ makeBulletEnergizedAnywaysOdds = 0.1
 
 [node name="BulletEmitter3" parent="Commander/WeaponManager/PhaseB/BulletEmitter2" index="2" instance=ExtResource( 4 )]
 rotation = 4.54747e-13
-scale = Vector2( 1, 1 )
 rotationDegPerSec = 15.0
 initialRotationOffset = 18.0
 fireAtLocationForWholeClip = false
@@ -178,7 +174,6 @@ timeToNextPhase = 6
 
 [node name="BulletEmitter" parent="Commander/WeaponManager/PhaseC" index="0" instance=ExtResource( 4 )]
 rotation = -0.785398
-scale = Vector2( 1, 1 )
 rotationPerVolley = 2.0
 resetRotationOnClip = true
 rotationRange = 90.0
@@ -216,7 +211,6 @@ makeBulletEnergizedAnywaysOdds = 0.1
 
 [node name="BulletEmitter2" parent="Commander/WeaponManager/PhaseC" index="1" instance=ExtResource( 4 )]
 rotation = -0.785398
-scale = Vector2( 1, 1 )
 targetStyle = "atTarget"
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false

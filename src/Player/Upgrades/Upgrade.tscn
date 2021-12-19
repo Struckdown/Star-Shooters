@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Space Shooter Redux/PNG/Power-ups/powerupGreen_bolt.png" type="Texture" id=1]
 [ext_resource path="res://Player/Upgrades/Upgrade.gd" type="Script" id=2]
+[ext_resource path="res://Levels/LevelSelect/UpgradeSFX.mp3" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 17.0079, 17.0326 )
@@ -56,4 +57,8 @@ process_material = SubResource( 2 )
 autoplay = "default"
 anims/default = SubResource( 3 )
 
+[node name="UpgradeSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="finished" from="UpgradeSFX" to="." method="_on_UpgradeSFX_finished"]
