@@ -19,8 +19,8 @@ func _ready():
 		print("CanvasLayer/Settings connect failed???")
 	BGM.transitionSong("res://Menus/MainMenuBGM.mp3")
 	get_node("MainBtns/PlayBtn").grab_focus()
-	$PlayBtns/MissionsCompletedLbl.text = "Missions Completed: " + str(len(GameManager.stagesCompletedData))
 	setupExtraInfolbl()
+	setupMissionsCompleted()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -113,3 +113,10 @@ func setupExtraInfolbl():
 	var finalString = "Boss Rush Score: " + str(bossRushScore) + "\n"
 	finalString += "Infinite Mode Score: " + str(0) 
 	$ExtraBtns/ExtraInfoLbl.text = finalString
+
+func setupMissionsCompleted():
+	var missionsCompleted = len(GameManager.stagesCompletedData)
+	for mission in ["BossRush", "0", "InfiniteMode"]:
+		if mission in GameManager.stagesCompletedData:
+			missionsCompleted -= 1
+	$PlayBtns/MissionsCompletedLbl.text = "Missions Completed: " + str(missionsCompleted)

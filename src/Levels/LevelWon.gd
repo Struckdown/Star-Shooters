@@ -18,13 +18,15 @@ func playLevelComplete():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Level Won":
+		if GameManager.stage != "0":	# tutorial doesn't count for a stage completion, but boss rush does
+			GameManager.updateStagesCompleted(str(GameManager.stage), GameManager.score)
+		
+		# Update stats and transition to next scene
 		if GameManager.stage == "0" or GameManager.stage == "BossRush" or GameManager.stage == "Infinite":
 			SceneTransition.transitionToScene("res://Menus/Main Menu.tscn")
 		elif GameManager.stage == "10":
-			GameManager.updateStagesCompleted(str(GameManager.stage), GameManager.score)
 			StatsManager.updateStats("stagesCleared", 1)
 			SceneTransition.transitionToScene("res://Levels/FinalScene.tscn")
 		else:
-			GameManager.updateStagesCompleted(str(GameManager.stage), GameManager.score)
 			StatsManager.updateStats("stagesCleared", 1)
 			SceneTransition.transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")

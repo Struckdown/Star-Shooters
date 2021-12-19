@@ -61,6 +61,7 @@ __meta__ = {
 [node name="ResumeBtn" type="TextureButton" parent="PauseCtrl/VBoxContainer"]
 margin_right = 361.0
 margin_bottom = 144.0
+focus_neighbour_top = NodePath("../QuitBtn")
 size_flags_vertical = 3
 texture_normal = ExtResource( 7 )
 texture_focused = ExtResource( 6 )
@@ -113,6 +114,7 @@ __meta__ = {
 margin_top = 298.0
 margin_right = 361.0
 margin_bottom = 443.0
+focus_neighbour_bottom = NodePath("../ResumeBtn")
 size_flags_vertical = 3
 texture_normal = ExtResource( 7 )
 texture_focused = ExtResource( 6 )
