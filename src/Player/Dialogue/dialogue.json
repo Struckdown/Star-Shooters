@@ -67,7 +67,7 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "If you are hit, you'll discharge energy to stay alive. Not enough energy? You die. Good luck!",
+			"dialogue": "If you are hit, you'll discharge energy to stay alive as ablative shielding. Not enough energy? You die. Good luck!",
 		},
 	],
 	"level1Slipstream":[
@@ -299,7 +299,7 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "Seriously, you've done incredible. I... think you should know the truth.",
+			"dialogue": "Seriously, you've done incredible if I didn't know better I'd think you were... I have orders not to tell you this but screw them. I think you deserve to know the truth.",
 		},
 		{
 			"name": "Commander",
@@ -329,12 +329,12 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "Har har. Very funny. Look, whatever happens, you must destroy the Command Centre. No matter what it tries to convince you.",
+			"dialogue": "Har har. Very funny. Look, whatever happens, you must destroy the Command Centre. No matter what it tries to convince you. You're better than it is.",
 		},
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "You may have to make a choice. Our fate is in your hands.",
+			"dialogue": "You have to make this choice. Our fate is in your hands.",
 		},
 		{
 			"name": "Commander",
@@ -381,7 +381,7 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "(sigh) The memories were implanted. You never lived them, someone else did. But, you're effectively alive right now.",
+			"dialogue": "(sigh) The memories were implanted. You never lived them, someone else did. But, you're effectively alive right now. You aren't physically human but you have all the thoughts and feelings of one.",
 		},
 		{
 			"name": "Commander",
@@ -391,22 +391,32 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "I kept the truth from you, in the hopes you wouldn't become like them and we would have to shutdown the project.",
+			"dialogue": "I kept the truth from you, in the hopes you wouldn't become like them and we would have to shutdown the project. But maybe that's why the Federation turned out how it did. We never told it the truth. And maybe that was our mistake.",
 		},
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "But now that we're here, at the end; I realized that you should know it, for these moments may be your last.",
+			"dialogue": "But now that we're here, at the end; I realized that you should know it. The other commanders haven't seen what you're capable of and I have, so screw their armchair strategy. These moments may be your last.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "You deserve to know the truth because you are better than the Federation. Don't fall for its lies. At the end of the day you are more... human. And humans need their free will to choose.",
 		},
 		{
 			"name": "Pilot",
 			"portrait": "Pilot",
-			"dialogue": "You realize I'm not exactly motivated to finish the job right now?",
+			"dialogue": "...You couldn't have maybe told me this sooner?",
 		},
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "Don't make us reset your memory. We still have the self-destruct to your ship and won't hestitate to use it if you go rogue.",
+			"dialogue": "Well, I thought you should at least know what you're walking into so you won't fall for the Federation's synthetic sweet talk.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue": "Besides, we still have the self-destruct to your ship and won't hestitate to use it if you go rogue.",
 		},
 		{
 			"name": "Pilot",
@@ -416,7 +426,12 @@
 		{
 			"name": "Pilot",
 			"portrait": "Pilot",
-			"dialogue": "Truly, a master of motivation. Death threats. I'm done with this conversation, I'll maybe call you when I'm done here.",
+			"dialogue": "Death threats. Way to undercut your first motivational speech. Why did you even bother programming me with a sense of annoyance or sarcasm?",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "I'm done with this conversation, I'll maybe call you when I'm done here.",
 		},
 		{
 			"name": "Federation AI",
@@ -531,6 +546,11 @@
 			"name": "Commander",
 			"portrait": "Commander",
 			"dialogue": "Uh oh.",
+		},
+		{
+			"name": "Pilot",
+			"portrait": "Pilot",
+			"dialogue": "Prepare to explode, yourself.",
 		},
 
 	]
