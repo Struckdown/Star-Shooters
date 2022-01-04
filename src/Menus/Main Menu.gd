@@ -35,7 +35,7 @@ func _on_Menu_button_up(btn):
 				$PlayBtns/ContinueBtn.grab_focus()
 		"continue":
 			if $PlayBtns/ContinueBtn.is_hovered():
-				GameManager.gameMode = "Main"
+				GameManager.setGameMode(GameManager.gamesModes.STORY)
 				$ButtonClickedSFX.play()
 				$"/root/SceneTransition".transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")
 		"back":
@@ -45,7 +45,7 @@ func _on_Menu_button_up(btn):
 				$MainBtns/PlayBtn.grab_focus()
 		"new game":
 			if $PlayBtns/NewGameBtn.is_hovered():
-				GameManager.gameMode = "Main"
+				GameManager.setGameMode(GameManager.gamesModes.STORY)
 				$ButtonClickedSFX.play()
 				UpgradeManager.clearSaveData()
 				StatsManager.clearSaveData()
@@ -53,14 +53,15 @@ func _on_Menu_button_up(btn):
 				GameManager.saveGame()
 				$"/root/SceneTransition".transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")
 		"infinite":
-			if $MainBtns/InfiniteBtn.is_hovered():
-				GameManager.gameMode = "Infinite"
+			if $ExtraBtns/InfiniteBtn.is_hovered():
+				GameManager.setGameMode(GameManager.gamesModes.INFINITE)
+				GameManager.stage = "Infinite"
 				$ButtonClickedSFX.play()
-				$"/root/SceneTransition".transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")
+				$"/root/SceneTransition".transitionToScene("res://Levels/Stages/MainWorld.tscn")
 		"tutorial":
 			if $MainBtns/TutorialBtn.is_hovered():
-				GameManager.gameMode = "Tutorial"
-				GameManager.stage = 0
+				GameManager.setGameMode(GameManager.gamesModes.TUTORIAL)
+				GameManager.stage = "0"
 				$ButtonClickedSFX.play()
 				$"/root/SceneTransition".transitionToScene("res://Levels/Stages/MainWorld.tscn")
 		"extras":
@@ -83,7 +84,7 @@ func _on_Menu_button_up(btn):
 				get_tree().quit()
 		"BossRush":
 			if $ExtraBtns/BossRushBtn.is_hovered():
-				GameManager.gameMode = "BossRush"
+				GameManager.setGameMode(GameManager.gamesModes.BOSSRUSH)
 				GameManager.stage = "BossRush"
 				$ButtonClickedSFX.play()
 				$"/root/SceneTransition".transitionToScene("res://Levels/Stages/MainWorld.tscn")
@@ -108,10 +109,13 @@ func resetMainMenuBullet():
 
 func setupExtraInfolbl():
 	var bossRushScore = 0
+	var infiniteScore = 0
 	if "BossRush" in GameManager.stagesCompletedData:
 		bossRushScore = GameManager.stagesCompletedData["BossRush"]
 	var finalString = "Boss Rush Score: " + str(bossRushScore) + "\n"
-	finalString += "Infinite Mode Score: " + str(0) 
+	if "Infinite" in GameManager.stagesCompletedData:
+		infiniteScore = GameManager.stagesCompletedData["Infinite"]
+	finalString += "Infinite Mode Score: " + str(infiniteScore) 
 	$ExtraBtns/ExtraInfoLbl.text = finalString
 
 func setupMissionsCompleted():

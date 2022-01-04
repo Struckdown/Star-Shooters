@@ -14,6 +14,11 @@ func _ready():
 
 func _on_AnimationPlayer_animation_finished(anim_name):
 	if anim_name == "Game Over":
+		var isBossRush = (GameManager.gameMode == GameManager.gamesModes.BOSSRUSH)
+		var isInfiniteMode = (GameManager.gameMode == GameManager.gamesModes.INFINITE)
+		var recordScoreOnDefeat = isBossRush or isInfiniteMode
+		if recordScoreOnDefeat:
+			GameManager.updateStagesCompleted(str(GameManager.stage), GameManager.score)
 		if GameManager.stage == "0":
 			SceneTransition.transitionToScene("res://Menus/Main Menu.tscn")
 		else:

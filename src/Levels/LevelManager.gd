@@ -66,11 +66,16 @@ func spawnWave():
 		if debugWaveName != "":
 			waves.append(load(debugWaveName))
 			waveNum = waves.size()-1
-	
-	if waveNum < waves.size():
-		curWave = waves[waveNum].instance()
+	var isInfiniteMode = GameManager.gameMode == GameManager.gamesModes.INFINITE
+	if waveNum < waves.size() or isInfiniteMode:
+		if isInfiniteMode:
+			curWave = waves[0].instance()
+			$GameRoot.add_child(curWave)
+			curWave.allocateDifficultyPoints(30)
+		else:
+			curWave = waves[waveNum].instance()
+			$GameRoot.add_child(curWave)
 		waveNum +=1
-		$GameRoot.call_deferred("add_child", curWave)
 		curWave.connect("startNextWave", self, "spawnWave")
 		curWave.connect("enemyDestroyed", self, "addToScore")
 		curWave.connect("waveFinished", self, "updateWavesFinished")

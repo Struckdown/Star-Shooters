@@ -6,7 +6,8 @@ var playerLives = 3
 var stage = null	# String
 var stagesCompletedData = {} 	# string->array map
 var lastPlayedStage = null	 #string
-var gameMode = null	# String
+enum gamesModes{STORY,BOSSRUSH,INFINITE,TUTORIAL}
+var gameMode = gamesModes.STORY	# enum
 var mapPlayerLastPos = Vector2(496.063, 303.194)
 var mapPlayerLastRot = 0
 var gameSpeed = 1	#1 is normal speed
@@ -30,7 +31,6 @@ func clearSaveData():
 	stage = null
 	stagesCompletedData = {}
 	lastPlayedStage = null
-	gameMode = null
 	mapPlayerLastPos = Vector2(496.063, 303.194)
 	mapPlayerLastRot = 0
 	unlockedPlayerFireTypes = [playerFireTypes.FOCUSED]; playerFireType = playerFireTypes.FOCUSED
@@ -151,3 +151,9 @@ func unlockFireMode(fireMode) -> void:
 	if not (fireMode in unlockedPlayerFireTypes) and fireMode >= 0:
 		unlockedPlayerFireTypes.append(fireMode)
 		saveGame()
+
+func setGameMode(newGameMode:int) -> void:
+	if newGameMode >= len(gamesModes) or newGameMode < 0:
+		push_error("Tried to pass invalid game mode:" + str(newGameMode))
+		return
+	gameMode = newGameMode

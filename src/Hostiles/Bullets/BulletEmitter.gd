@@ -305,4 +305,26 @@ func getExpectedTargetPosition():
 
 	return predictedPosition
 
-
+# For use with infinite mode
+func setupWithPoints(points: int):
+	var upgrades = {
+		"bulletMovementSpeed":{
+			"cost": 1,
+			"upgradeValue": 30,
+			"maxValue": 250
+			},
+#		"amountOfBullets":1,
+#		"bulletSpawnDelay":-0.05
+	}
+	bulletType = load("res://Hostiles/Bullets/Bullet_Straight.tscn")
+	var costMultiplier = 1
+	makeBulletEnergizedAnywaysOdds = 1
+	while points > 0:
+		var i = randi() % len(upgrades)
+		var property = upgrades.keys()[i]
+		var val = get(property)
+		set(property, val+upgrades[property]["upgradeValue"])
+		points -= 1*costMultiplier
+		
+			
+		

@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://WaveBaseInfinite.gd" type="Script" id=2]
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 186.418, -74.8504, -73.158, -95.8622, 73.158, 95.8622, 78.1084, 115.23, -70.6353, 0, 70.6353, 0, 206.766, 304.431, -100.908, 73.9989, 100.908, -73.9989, 670.94, 283.409, 0, 0, 0, 0, 624.54, -61.3575 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -83.4797, 443.493, -123.61, 6.74238, 123.61, -6.74238, 133.201, 110.139, -145.336, -0.749154, 145.336, 0.749154, 381.629, 412.538, -118.366, 2.99661, 118.366, -2.99661, 541.163, 98.2331, -135.384, 16.8179, 135.384, -16.8179, 761.497, 386.671, 0, 0, 0, 0, 1007.53, 117.187 )
+}
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 861.744, -33.234, 15.1361, -79.8852, -15.1361, 79.8852, 304.466, 64.2366, -111.839, -114.362, 111.839, 114.362, 503.645, 270.832, 0, 0, 0, 0, 1131.91, 255.999 )
+}
+
+[sub_resource type="Curve2D" id=4]
+_data = {
+"points": PoolVector2Array( -9.24986, 43.7266, 9.24986, -43.7266, 277.993, 115.803, -109.317, -58.0219, 109.317, 58.0219, 804.394, 115.803, 70.6353, -46.2493, -70.6353, 46.2493, 779.167, 482.434, 47.9311, 79.8852, -47.9311, -79.8852, 283.038, 477.389 )
+}
+
+[sub_resource type="Curve2D" id=5]
+_data = {
+"points": PoolVector2Array( -78.6611, -12.7356, 78.6611, 12.7356, 768.187, 67.1591, -622.547, 0.749154, 622.547, -0.749154, 562.919, 335.356, -3.74577, 41.2034, 3.74577, -41.2034, 258.013, 91.132, 0, 0, 0, 0, 333.678, 42.437, -47.9458, -47.1967, 47.9458, 47.1967, 735.224, 34.1964 )
+}
+
+[node name="WaveBaseInfinite" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="FinitePaths" type="Node2D" parent="." index="0"]
+
+[node name="Path2D" type="Path2D" parent="FinitePaths" index="0"]
+curve = SubResource( 1 )
+
+[node name="Position2D" type="Position2D" parent="FinitePaths/Path2D" index="0"]
+position = Vector2( 216.561, -99.3593 )
+rotation = 2.4372
+
+[node name="Path2D2" type="Path2D" parent="FinitePaths" index="1"]
+curve = SubResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="FinitePaths/Path2D2" index="0"]
+position = Vector2( -102.98, 469.928 )
+rotation = -1.00939
+
+[node name="Path2D4" type="Path2D" parent="FinitePaths" index="2"]
+curve = SubResource( 3 )
+
+[node name="Position2D" type="Position2D" parent="FinitePaths/Path2D4" index="0"]
+position = Vector2( 894.324, -34.6102 )
+rotation = 3.06599
+
+[node name="LoopPaths" type="Node2D" parent="." index="1"]
+
+[node name="Path2D3" type="Path2D" parent="LoopPaths" index="0"]
+curve = SubResource( 4 )
+
+[node name="Position2D" type="Position2D" parent="LoopPaths/Path2D3" index="0"]
+position = Vector2( -49.1622, 203.363 )
+rotation = -0.261799
+
+[node name="Path2D" type="Path2D" parent="LoopPaths" index="1"]
+curve = SubResource( 5 )
+
+[node name="Position2D" type="Position2D" parent="LoopPaths/Path2D" index="0"]
+position = Vector2( 677.794, -111.5 )
+rotation = 1.39676
+
+[node name="Position2D" type="Position2D" parent="." index="2"]
+position = Vector2( 357.832, 225.227 )
+rotation = 1.77144

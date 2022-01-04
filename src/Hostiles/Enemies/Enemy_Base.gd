@@ -37,6 +37,7 @@ var loadedGem = preload("res://Hostiles/GemSpawner.tscn")
 var timeSinceLastGoal := 0.0
 var levelManagerRef
 var explosionManagerRef
+var bulletEmitter = preload("res://Hostiles/Bullets/BulletEmitter.tscn")	# for use with infinite mode
 
 signal destroyed
 signal tookDamage
@@ -68,15 +69,13 @@ func _process(delta):
 	move(delta)
 	aimAtTarget()
 
-
-#Called when the enemy is destroyed
-func _exit_tree():
+func cleanup():
 	if health <= 0:
 		spawnGems()
 	if deathCountsAsWaveProgression:
 		emit_signal("destroyed", pointsWorth)
 	get_tree().call_group("EnemyDestroyedListener", "OnEnemyDestroyed", self)
-
+	queue_free()
 
 func move(d):
 	var deltaSpeed = speed*d*GameManager.gameSpeed
@@ -112,7 +111,7 @@ func move(d):
 							flyPathIndex = 0
 							flyPoints = get_node(flyPaths[flyPathIndex]).curve.get_baked_points()
 						else:
-							queue_free()
+							cleanup()
 			acceleration = position.direction_to(flyTarget) * deltaSpeed
 			var desiredAngle = get_angle_to(global_position+acceleration)
 			desiredAngle = sign(desiredAngle) * min(abs(desiredAngle), maxRotationSpeed)
@@ -175,7 +174,7 @@ func _on_ExplosionTimer_timeout():
 	get_viewport().add_child(partsParticles)
 	partsParticles.global_position = global_position
 	partsParticles.emitting = true
-	queue_free()
+	cleanup()
 
 func setHealthBarRef(ref):
 	healthBarRef = ref
@@ -239,3 +238,13 @@ func setActive(nowActive:bool) -> void:
 	$WeaponManager.active = nowActive
 	$WeaponManager.updatePhase()
 	$WeaponManager.processing = nowActive
+
+
+# For setting up with infinite mode
+func setupWithPoints(points: int):
+	var emitter = bulletEmitter.instance()
+	$WeaponManager.add_child(emitter)
+	emitter.setupWithPoints(points)
+	# decide on what fly pattern to use
+	# decide on what shot types to use
+	# decide if enemies advance on time or destroyed (correlate with fly pattern)
