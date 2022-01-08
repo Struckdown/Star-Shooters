@@ -1,7 +1,7 @@
 extends "res://Hostiles/Waves/WaveBase.gd"
 
-var percentageToUsePathOverHover = 30
-var percentageToUseInfinitePaths = 90
+var percentageToUsePathOverHover = 0.3
+var percentageToUseInfinitePaths = 0.9
 var enemiesToSpawn = 0
 var baseEnemy = preload("res://Hostiles/Enemies/Enemy_Base.tscn")
 var enemyPointDistributions = {
@@ -45,7 +45,7 @@ func _ready():
 
 func allocateDifficultyPoints(pointsToSpend:int):
 	enemiesAllLeaveOnPath = true
-	var upperLimit = min(int(pointsToSpend/25.0), MAX_ENEMIES_IN_SINGLE_WAVE)
+	var upperLimit = min(int(pointsToSpend/10.0), MAX_ENEMIES_IN_SINGLE_WAVE)
 	upperLimit = max(1, upperLimit)	# force this to always be at least 1
 	enemiesToSpawn = rand_range(1, upperLimit)
 	
@@ -70,9 +70,30 @@ func allocateDifficultyPoints(pointsToSpend:int):
 	._ready()
 
 func setupStartPositionAndPath(enemy):
-	enemy.position = $Position2D.position
-	enemy.rotation = $Position2D.rotation
-	enemy.flyingPattern = "hoverRandomPoint"
+	var positionNode
+	var i = randf()
+	if i <= percentageToUsePathOverHover:
+		# using a path, now pick which group of paths
+		i = randf()
+		var pathGroup
+		if i <= percentageToUseInfinitePaths:
+			pathGroup = $LoopPaths
+			enemy.loopFlyPaths = true
+		else:
+			pathGroup = $FinitePaths
+			enemy.loopFlyPaths = false
+		var childrenCount = pathGroup.get_child_count()
+		var path = pathGroup.get_child(rand_range(0, childrenCount-1))
+		positionNode = path.get_child(0)
+		enemy.flyingPattern = "followPath"
+
+		enemy.flyPaths = [NodePath(path.get_path())]
+		
+	else:
+		positionNode = $DefaultSpawnPoints.get_child(0)
+		enemy.flyingPattern = "hoverRandomPoint"
+	enemy.position = positionNode.position
+	enemy.rotation = positionNode.rotation
 	enemy._ready()
 	# if any enemy is set to hover or loop path, set enemiesAllLeaveOnPath to false
 	#	enemiesAllLeaveOnPath = false

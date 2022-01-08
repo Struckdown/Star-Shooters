@@ -244,7 +244,49 @@ func setActive(nowActive:bool) -> void:
 func setupWithPoints(points: int):
 	var emitter = bulletEmitter.instance()
 	$WeaponManager.add_child(emitter)
-	emitter.setupWithPoints(points)
+	var remainingPoints = assignShipStats(points)
+	emitter.setupWithPoints(remainingPoints)
+	randomizeSkin()
 	# decide on what fly pattern to use
 	# decide on what shot types to use
 	# decide if enemies advance on time or destroyed (correlate with fly pattern)
+
+func assignShipStats(points: int):
+	var shipUpgradesPercentage = rand_range(0, 0.3)
+	var p = shipUpgradesPercentage*points
+	var costMultiplier = 1
+	var upgrades = {
+		"speed":{
+			"cost": 1,
+			"upgradeValue": 10,
+			"bounds": [60, 150]
+		},
+		"maxHealth":{
+			"cost": 1,
+			"upgradeValue": 10,
+			"bounds": [25, 70]
+		},
+	}
+	while p > 0:
+		var canBuy = []
+		for key in upgrades.keys():
+			if upgrades[key]["cost"]*costMultiplier <= p:
+				canBuy.append(key)
+		if len(canBuy) <= 0:	# stop trying to buy if everything is too expensive
+			#TODO Check for bounds
+			break
+		var i = randi() % len(canBuy)
+		var property = upgrades.keys()[i]
+		var val = get(property)
+		set(property, val+upgrades[property]["upgradeValue"])
+		p -= upgrades[property]["cost"]*costMultiplier
+
+	return points-p
+
+func randomizeSkin():
+	var resource = "res://Space Shooter Redux/PNG/Enemies/enemy"
+	var colors = ["Black", "Blue", "Green"]
+	var num = randi() % 5 + 1
+	var i = randi() % len(colors)
+	resource += colors[i] + str(num) + ".png"
+	$Sprite.texture = load(resource)

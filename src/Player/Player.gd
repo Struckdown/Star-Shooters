@@ -226,7 +226,7 @@ func _on_EnergyArea_area_entered(area):
 		var energyAmountToGenerate = area.owner.energyAmountToGenerate
 		if area.owner.has_method("markEnergyDrained"):
 			area.owner.markEnergyDrained()
-		GameManager.score += 5	# shot grazing is worth 5 points each
+#		GameManager.score += 5	# shot grazing is worth 5 points each # Edit: Removed due to artificially inflating scores. >.>
 		if scoreBoardRef:
 			scoreBoardRef.updateScore()
 		spawnEnergyCollectedParticles()

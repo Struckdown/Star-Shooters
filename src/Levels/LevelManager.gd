@@ -14,6 +14,8 @@ var levelWon = false
 onready var camera = $GameRoot/Camera2D
 var shakeIntensity = 0	# from 0 to 1
 onready var dialogueBoxRef = $CanvasLayer/DialogueBox
+var isInfiniteMode
+var difficultyPoints = 5
 
 export(bool) var debug = false
 export(int) var debugWave = 0
@@ -21,6 +23,7 @@ export(String) var debugWaveName
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	isInfiniteMode = GameManager.gameMode == GameManager.gamesModes.INFINITE
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	scoreBoardRef = get_node("CanvasLayer/Scoreboard")
 	playerSpawn = get_node("GameRoot/PlayerSpawner")
@@ -66,12 +69,12 @@ func spawnWave():
 		if debugWaveName != "":
 			waves.append(load(debugWaveName))
 			waveNum = waves.size()-1
-	var isInfiniteMode = GameManager.gameMode == GameManager.gamesModes.INFINITE
 	if waveNum < waves.size() or isInfiniteMode:
 		if isInfiniteMode:
 			curWave = waves[0].instance()
 			$GameRoot.add_child(curWave)
-			curWave.allocateDifficultyPoints(30)
+			curWave.allocateDifficultyPoints(difficultyPoints)
+			difficultyPoints += 5
 		else:
 			curWave = waves[waveNum].instance()
 			$GameRoot.add_child(curWave)
@@ -96,7 +99,7 @@ func spawnWave():
 
 func updateWavesFinished():
 	wavesComplete += 1
-	if wavesComplete >= waves.size():
+	if wavesComplete >= waves.size() and not isInfiniteMode:
 		levelWon = true
 		if is_instance_valid(playerRef):
 			playerRef.godMode = true

@@ -311,20 +311,64 @@ func setupWithPoints(points: int):
 		"bulletMovementSpeed":{
 			"cost": 1,
 			"upgradeValue": 30,
-			"maxValue": 250
+			"bounds": [60, 250]
 			},
-#		"amountOfBullets":1,
-#		"bulletSpawnDelay":-0.05
+		"amountOfBullets":{
+			"cost": 2,
+			"upgradeValue": 1,
+			"bounds": [1, 16]
+			},
+		"bulletSpawnDelay":{
+			"cost": 2,
+			"upgradeValue": -0.05,
+			"bounds": [0.1, 3]
+			},
+		"randomAngleOfBulletSpread":{
+			"cost": 1,
+			"upgradeValue": 1,
+			"bounds": [0, 15]
+			},
+		"bulletScale":{
+			"cost": 2,
+			"upgradeValue": Vector2(0.2, 0.2),
+			"bounds": [Vector2(1,1), Vector2(3,3)]
+			},
+		"makeBulletEnergizedAnywaysOdds":{
+			"cost": 2,
+			"upgradeValue": -0.05,
+			"bounds": [0.1, 1]
+			},
 	}
 	bulletType = load("res://Hostiles/Bullets/Bullet_Straight.tscn")
 	var costMultiplier = 1
 	makeBulletEnergizedAnywaysOdds = 1
+	fireAtLocationForWholeClip = false
+	
+	var targetRoll = randf()
+	if targetRoll < 0.5:
+		targetStyle = "straight"
+		costMultiplier *= 1
+	elif targetRoll < 0.9:
+		targetStyle = "atTarget"
+		costMultiplier *= 2
+	else:
+		targetStyle = "predict"
+		costMultiplier *= 3
+	
 	while points > 0:
-		var i = randi() % len(upgrades)
+		var canBuy = []
+		for key in upgrades.keys():
+			if upgrades[key]["cost"]*costMultiplier <= points:
+				canBuy.append(key)
+		if len(canBuy) <= 0:	# stop trying to buy if everything is too expensive
+			break
+		var i = randi() % len(canBuy)
 		var property = upgrades.keys()[i]
 		var val = get(property)
+					#TODO Check for bounds
+
 		set(property, val+upgrades[property]["upgradeValue"])
-		points -= 1*costMultiplier
+		points -= upgrades[property]["cost"]*costMultiplier
 		
 			
 		

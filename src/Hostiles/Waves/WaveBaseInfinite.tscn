@@ -20,7 +20,7 @@ _data = {
 
 [sub_resource type="Curve2D" id=4]
 _data = {
-"points": PoolVector2Array( -9.24986, 43.7266, 9.24986, -43.7266, 277.993, 115.803, -109.317, -58.0219, 109.317, 58.0219, 804.394, 115.803, 70.6353, -46.2493, -70.6353, 46.2493, 779.167, 482.434, 47.9311, 79.8852, -47.9311, -79.8852, 283.038, 477.389 )
+"points": PoolVector2Array( -9.24986, 43.7266, 9.24986, -43.7266, 156.577, 112.322, -109.317, -58.0219, 109.317, 58.0219, 702.643, 111.528, 70.6353, -46.2493, -70.6353, 46.2493, 677.244, 486.949, 47.9311, 79.8852, -47.9311, -79.8852, 134.353, 459.963 )
 }
 
 [sub_resource type="Curve2D" id=5]
@@ -70,6 +70,8 @@ curve = SubResource( 5 )
 position = Vector2( 677.794, -111.5 )
 rotation = 1.39676
 
-[node name="Position2D" type="Position2D" parent="." index="2"]
-position = Vector2( 357.832, 225.227 )
-rotation = 1.77144
+[node name="DefaultSpawnPoints" type="Node2D" parent="." index="2"]
+
+[node name="Position2D" type="Position2D" parent="DefaultSpawnPoints" index="0"]
+position = Vector2( 421.873, -100.042 )
+rotation = 1.5708
