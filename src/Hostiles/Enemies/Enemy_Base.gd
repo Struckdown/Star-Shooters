@@ -242,11 +242,17 @@ func setActive(nowActive:bool) -> void:
 
 # For setting up with infinite mode
 func setupWithPoints(points: int):
+	pointsWorth = points*10
 	var emitter = bulletEmitter.instance()
 	$WeaponManager.add_child(emitter)
 	var remainingPoints = assignShipStats(points)
 	emitter.setupWithPoints(remainingPoints)
 	randomizeSkin()
+	var scaleSize = rand_range(0.25, 1.25)
+	scale = Vector2(scaleSize, scaleSize)
+	speed *= (2-scaleSize)
+	maxHealth *= (2-scaleSize)
+	health = maxHealth
 	# decide on what fly pattern to use
 	# decide on what shot types to use
 	# decide if enemies advance on time or destroyed (correlate with fly pattern)
@@ -268,19 +274,25 @@ func assignShipStats(points: int):
 		},
 	}
 	while p > 0:
+		var property
+		var val
 		var canBuy = []
 		for key in upgrades.keys():
-			if upgrades[key]["cost"]*costMultiplier <= p:
+			var affordable = (upgrades[key]["cost"]*costMultiplier <= p)
+			val = get(key)
+			var inBounds = inBounds(val + upgrades[key]["upgradeValue"], upgrades[key]["bounds"])
+			if affordable and inBounds:
 				canBuy.append(key)
 		if len(canBuy) <= 0:	# stop trying to buy if everything is too expensive
-			#TODO Check for bounds
 			break
 		var i = randi() % len(canBuy)
-		var property = upgrades.keys()[i]
-		var val = get(property)
+		property = upgrades.keys()[i]
+		val = get(property)
 		set(property, val+upgrades[property]["upgradeValue"])
 		p -= upgrades[property]["cost"]*costMultiplier
+	
 
+	
 	return points-p
 
 func randomizeSkin():
@@ -290,3 +302,10 @@ func randomizeSkin():
 	var i = randi() % len(colors)
 	resource += colors[i] + str(num) + ".png"
 	$Sprite.texture = load(resource)
+
+func inBounds(val, bounds:Array) -> bool:
+	if val < bounds[0]:
+		return false
+	elif val > bounds[1]:
+		return false
+	return true

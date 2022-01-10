@@ -57,8 +57,8 @@ func allocateDifficultyPoints(pointsToSpend:int):
 		var enemyWeight = dist[i]	# assign a weight, eg [40, 30, 30] would assign 40% of points to first enemy
 		var e = baseEnemy.instance()
 		add_child(e)
-		setupStartPositionAndPath(e)
 		e.setupWithPoints(enemyWeight*0.01*pointsToSpend)
+		setupStartPositionAndPath(e)
 		# decide on what fly pattern to use
 		# decide on what shot types to use
 		# decide if enemies advance on time or destroyed (correlate with fly pattern)
@@ -86,12 +86,16 @@ func setupStartPositionAndPath(enemy):
 		var path = pathGroup.get_child(rand_range(0, childrenCount-1))
 		positionNode = path.get_child(0)
 		enemy.flyingPattern = "followPath"
-
 		enemy.flyPaths = [NodePath(path.get_path())]
 		
 	else:
-		positionNode = $DefaultSpawnPoints.get_child(0)
+		i = $DefaultSpawnPoints.get_child_count()
+		positionNode = $DefaultSpawnPoints.get_child(randi()%i)
 		enemy.flyingPattern = "hoverRandomPoint"
+		enemy.maxRotationSpeed *= 10
+		enemy.useAcclerationInsteadOfLinearVelocity = bool(randi()%2)
+		if enemy.useAcclerationInsteadOfLinearVelocity:
+			enemy.speed /= 100.0
 	enemy.position = positionNode.position
 	enemy.rotation = positionNode.rotation
 	enemy._ready()

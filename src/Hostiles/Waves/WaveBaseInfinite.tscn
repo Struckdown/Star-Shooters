@@ -75,3 +75,19 @@ rotation = 1.39676
 [node name="Position2D" type="Position2D" parent="DefaultSpawnPoints" index="0"]
 position = Vector2( 421.873, -100.042 )
 rotation = 1.5708
+
+[node name="Position2D2" type="Position2D" parent="DefaultSpawnPoints" index="1"]
+position = Vector2( 130.082, -72.2924 )
+rotation = 1.5708
+
+[node name="Position2D3" type="Position2D" parent="DefaultSpawnPoints" index="2"]
+position = Vector2( 611.916, -71.4515 )
+rotation = 1.5708
+
+[node name="Position2D4" type="Position2D" parent="DefaultSpawnPoints" index="3"]
+position = Vector2( -68.3697, 102.614 )
+rotation = 1.02624
+
+[node name="Position2D5" type="Position2D" parent="DefaultSpawnPoints" index="4"]
+position = Vector2( 944.94, 108.5 )
+rotation = 2.45371

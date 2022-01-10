@@ -310,8 +310,8 @@ func setupWithPoints(points: int):
 	var upgrades = {
 		"bulletMovementSpeed":{
 			"cost": 1,
-			"upgradeValue": 30,
-			"bounds": [60, 250]
+			"upgradeValue": 20,
+			"bounds": [60, 120]
 			},
 		"amountOfBullets":{
 			"cost": 2,
@@ -339,10 +339,51 @@ func setupWithPoints(points: int):
 			"bounds": [0.1, 1]
 			},
 	}
-	bulletType = load("res://Hostiles/Bullets/Bullet_Straight.tscn")
+	var bType = randi() % 6
 	var costMultiplier = 1
+	match bType:
+		0:
+			bulletType = load("res://Hostiles/Bullets/Bullet_Straight.tscn")
+			upgrades["bulletMovementSpeed"]["bounds"] = [60, 250]
+		1:
+			bulletType = load("res://Hostiles/Bullets/Bullet_Orthogonal.tscn")
+			upgrades.erase("amountOfBullets")
+			upgrades.erase("randomAngleOfBulletSpread")
+			volleyClipSize = 3
+			clipReloadTime = 1
+			upgrades["volleyClipSize"] = {
+				"cost": 2,
+				"upgradeValue": 1,
+				"bounds": [1, 10]
+			}
+			trackYFirst = bool(randi()%2)
+		2:
+			bulletType = load("res://Hostiles/Bullets/Wave_Bullet.tscn")
+			bulletWaveSpeed = 1
+			bulletWaveStr = 100
+		3:
+			bulletType = load("res://Hostiles/Bullets/OrbitalBullet.tscn")
+			orbitalChildren = randi()%3+3
+			angleOfBulletSpread *= 2
+		4:
+			bulletType = load("res://Hostiles/Bullets/Bullet_Straight.tscn")	#TODO make this into grav bullets but avoid soft locking
+			#upgrades.erase("bulletMovementSpeed")
+		5:
+			bulletType = load("res://Hostiles/Bullets/Wave_Bullet.tscn")	# Bounce/wrap
+			upgrades["wrapsRemaining"] = {
+				"cost": 2,
+				"upgradeValue": 1,
+				"bounds": [0, 3]
+			}
+			upgrades["bouncesRemaining"] = {
+				"cost": 2,
+				"upgradeValue": 1,
+				"bounds": [0, 3]
+			}
+			
 	makeBulletEnergizedAnywaysOdds = 1
 	fireAtLocationForWholeClip = false
+	useRotationAsCenterBullet = true
 	
 	var targetRoll = randf()
 	if targetRoll < 0.5:
@@ -357,18 +398,31 @@ func setupWithPoints(points: int):
 	
 	while points > 0:
 		var canBuy = []
+		var val
 		for key in upgrades.keys():
-			if upgrades[key]["cost"]*costMultiplier <= points:
+			var affordable = (upgrades[key]["cost"]*costMultiplier <= points)
+			val = get(key)
+			var inBounds = inBounds(val + upgrades[key]["upgradeValue"], upgrades[key]["bounds"])
+			if affordable and inBounds:
 				canBuy.append(key)
 		if len(canBuy) <= 0:	# stop trying to buy if everything is too expensive
 			break
 		var i = randi() % len(canBuy)
 		var property = upgrades.keys()[i]
-		var val = get(property)
-					#TODO Check for bounds
-
+		val = get(property)
 		set(property, val+upgrades[property]["upgradeValue"])
 		points -= upgrades[property]["cost"]*costMultiplier
-		
-			
-		
+	
+	angleOfBulletSpread = rand_range(2, 15)
+	if randi()%5 == 0:
+		angleOfBulletSpread *= 10
+		bulletMovementSpeed *= 0.7
+		amountOfBullets *= 2
+	
+
+func inBounds(val, bounds:Array) -> bool:
+	if val < bounds[0]:
+		return false
+	elif val > bounds[1]:
+		return false
+	return true
