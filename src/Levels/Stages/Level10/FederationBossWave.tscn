@@ -82,3 +82,4 @@ one_shot = true
 [editable path="federationBossFight/Turrets/Turret14"]
 [editable path="federationBossFight/Turrets/Turret15"]
 [editable path="federationBossFight/Turrets/Turret16"]
+[editable path="federationBossFight/FederationEye"]

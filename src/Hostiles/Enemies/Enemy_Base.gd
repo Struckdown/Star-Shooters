@@ -195,6 +195,8 @@ func takeDamage(damage):
 	var deltaHealth = abs(prevHealth-health)
 	if not $HitSFX.playing:
 		$HitSFX.play()
+	if not $HitAnimPlayer.is_playing():
+		$HitAnimPlayer.play("Hit")
 	emit_signal("tookDamage", float(health)/float(maxHealth))	# used by weapon manager
 	updateScratches()
 	if healthBarRef:

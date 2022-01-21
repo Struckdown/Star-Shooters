@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Player/Dialogue/FederationRobot.png" type="Texture" id=1]
+[ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
+
+[node name="FederationEye" instance=ExtResource( 2 )]
+pointsWorth = 10000
+speed = 0.0
+maxRotationSpeed = 0.0
+maxSpeed = 0.0
+leashRadius = 0.0
+slowingDistance = 0.0
+maxHealth = 800
+deathShakeIntensity = 7.0
+gemValue = 125
+
+[node name="Sprite" parent="." index="1"]
+scale = Vector2( 0.16044, 0.16044 )
+texture = ExtResource( 1 )

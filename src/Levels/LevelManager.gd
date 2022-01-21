@@ -77,7 +77,7 @@ func spawnWave():
 			difficultyPoints += 5
 		else:
 			curWave = waves[waveNum].instance()
-			$GameRoot.add_child(curWave)
+			$GameRoot.call_deferred("add_child", curWave)
 		waveNum +=1
 		curWave.connect("startNextWave", self, "spawnWave")
 		curWave.connect("enemyDestroyed", self, "addToScore")

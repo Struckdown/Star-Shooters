@@ -59,6 +59,7 @@ anims/default = SubResource( 3 )
 
 [node name="UpgradeSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
+bus = "SFX"
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="finished" from="UpgradeSFX" to="." method="_on_UpgradeSFX_finished"]

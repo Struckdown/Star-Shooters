@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://Levels/finalBossFightShip.png" type="Texture" id=1]
 [ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Hostiles/LaserBeam.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Hostiles/Enemies/FederationEye.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Gravity.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Orthogonal.tscn" type="PackedScene" id=11]
@@ -505,88 +506,6 @@ tracks/2/keys = {
 }
 
 [sub_resource type="Animation" id=13]
-resource_name = "Death"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "scaleOut"
-} ]
-}
-
-[sub_resource type="Animation" id=14]
-resource_name = "Death"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "scaleOut"
-} ]
-}
-
-[sub_resource type="Animation" id=15]
 resource_name = "Death"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
@@ -1219,99 +1138,11 @@ nthBulletIsGreen = [ 0 ]
 orbitalChildren = 5
 bouncesRemaining = 2
 
-[node name="Turret15" parent="Turrets" instance=ExtResource( 2 )]
-position = Vector2( -137.36, 10.173 )
-scale = Vector2( 0.05, 0.05 )
-speed = 0.0
-maxHealth = 50
-flyingPattern = "homingNoStop"
-turningRateDegsBounds = Vector2( 1, 2 )
-
-[node name="Sprite" parent="Turrets/Turret15" index="1"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-
-[node name="Scratch2" parent="Turrets/Turret15/Sprite" index="1"]
-position = Vector2( 12.6985, 1.45569 )
-
-[node name="Scratch3" parent="Turrets/Turret15/Sprite" index="2"]
-position = Vector2( -10.6043, -0.997371 )
-
-[node name="gun04" type="Sprite" parent="Turrets/Turret15/Sprite" index="3"]
-position = Vector2( 0.437149, 5.51236 )
-texture = ExtResource( 3 )
-
-[node name="AnimationPlayer" parent="Turrets/Turret15" index="3"]
-anims/Death = SubResource( 14 )
-
-[node name="WeaponManager" parent="Turrets/Turret15" index="4"]
-startDelay = 2.0
-
-[node name="BulletEmitter" parent="Turrets/Turret15/WeaponManager" index="0" instance=ExtResource( 5 )]
-position = Vector2( 47.1646, 0.000305176 )
-targetStyle = "straight"
-useRotationAsCenterBullet = true
-fireAtLocationForWholeClip = false
-angleOfBulletSpread = 41.0
-amountOfBullets = 5
-volleyClipSize = 3
-clipReloadTime = 2.0
-bulletMovementSpeed = 160.0
-bulletScale = Vector2( 2, 2 )
-bulletSpawnDelay = 0.4
-bulletType = ExtResource( 9 )
-greenBulletFrequency = 3
-nthBulletIsGreen = [ 0 ]
-orbitalChildren = 5
-wrapsRemaining = 2
-
-[node name="Turret16" parent="Turrets" instance=ExtResource( 2 )]
-position = Vector2( -137.36, -16.9103 )
-scale = Vector2( 0.05, 0.05 )
-speed = 0.0
-maxHealth = 50
-flyingPattern = "homingNoStop"
-turningRateDegsBounds = Vector2( 1, 2 )
-
-[node name="Sprite" parent="Turrets/Turret16" index="1"]
-scale = Vector2( 2, 2 )
-texture = ExtResource( 4 )
-
-[node name="Scratch2" parent="Turrets/Turret16/Sprite" index="1"]
-position = Vector2( 10.8308, 2.83679 )
-
-[node name="Scratch3" parent="Turrets/Turret16/Sprite" index="2"]
-position = Vector2( -8.32949, -1.87139 )
-
-[node name="gun04" type="Sprite" parent="Turrets/Turret16/Sprite" index="3"]
-position = Vector2( 0.437149, 5.51236 )
-texture = ExtResource( 3 )
-
-[node name="AnimationPlayer" parent="Turrets/Turret16" index="3"]
-anims/Death = SubResource( 15 )
-
-[node name="WeaponManager" parent="Turrets/Turret16" index="4"]
-startDelay = 2.0
-
-[node name="BulletEmitter" parent="Turrets/Turret16/WeaponManager" index="0" instance=ExtResource( 5 )]
-position = Vector2( 47.1646, 0.000305176 )
-targetStyle = "straight"
-useRotationAsCenterBullet = true
-fireAtLocationForWholeClip = false
-angleOfBulletSpread = 41.0
-amountOfBullets = 5
-volleyClipSize = 3
-clipReloadTime = 2.0
-bulletMovementSpeed = 160.0
-bulletScale = Vector2( 2, 2 )
-bulletSpawnDelay = 0.4
-bulletType = ExtResource( 9 )
-greenBulletFrequency = 3
-nthBulletIsGreen = [ 0 ]
-orbitalChildren = 5
-wrapsRemaining = 2
-
 [node name="Tween" type="Tween" parent="."]
+
+[node name="FederationEye" parent="." instance=ExtResource( 8 )]
+position = Vector2( -115.676, -1.53732 )
+scale = Vector2( 0.143117, 0.143117 )
 
 [editable path="Turrets/Turret"]
 [editable path="Turrets/Turret2"]
@@ -1327,5 +1158,3 @@ wrapsRemaining = 2
 [editable path="Turrets/Turret12"]
 [editable path="Turrets/Turret13"]
 [editable path="Turrets/Turret14"]
-[editable path="Turrets/Turret15"]
-[editable path="Turrets/Turret16"]
