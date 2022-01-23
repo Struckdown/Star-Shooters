@@ -1,7 +1,7 @@
 extends Control
 
 
-onready var fakePlayer = get_node("Window/ViewportContainer/Viewport/Player")
+onready var fakePlayer = get_node("Window/ViewportContainer/TutorialViewport/Player")
 var fakeEnergy = 0
 var maxEnergy = 0
 var tutorialFinished = false
@@ -9,8 +9,7 @@ var tutorialFinished = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	$Window/ViewportContainer/Viewport/ScoreboardPnl.updateCharge(fakeEnergy)
+	$Window/ViewportContainer/TutorialViewport/ScoreboardPnl.updateCharge(fakeEnergy)
 
 
 func _unhandled_input(_event):
@@ -28,7 +27,7 @@ func _on_Player_energyUpdated():
 	fakeEnergy = fakePlayer.energyLevel / 10000.0
 	if maxEnergy != 0:
 		fakeEnergy -= maxEnergy/4
-	$Window/ViewportContainer/Viewport/ScoreboardPnl.updateCharge(fakeEnergy)
+	$Window/ViewportContainer/TutorialViewport/ScoreboardPnl.updateCharge(fakeEnergy)
 
 func updateMaxEnergy():
 	maxEnergy = fakeEnergy
@@ -36,7 +35,7 @@ func updateMaxEnergy():
 func resetEnergy():
 	fakeEnergy = 0
 	fakePlayer.energyLevel = 0
-	$Window/ViewportContainer/Viewport/ScoreboardPnl.updateCharge(fakeEnergy)
+	$Window/ViewportContainer/TutorialViewport/ScoreboardPnl.updateCharge(fakeEnergy)
 
 
 func _on_AnimationPlayer_animation_finished(_anim_name):

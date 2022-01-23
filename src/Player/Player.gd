@@ -44,6 +44,7 @@ var cheatModeActive = false
 var levelManagerRef
 var explosionManagerRef
 var scoreBoardRef
+export(String) var scoreBoardGroupName = "scoreBoard"
 
 signal destroyed
 signal gemCollected
@@ -58,7 +59,7 @@ func _ready():
 	var explosionManagers = get_tree().get_nodes_in_group("explosionManager")
 	if len(explosionManagers) > 0:
 		explosionManagerRef = explosionManagers[0]
-	var scoreBoardRefs = get_tree().get_nodes_in_group("scoreBoard")
+	var scoreBoardRefs = get_tree().get_nodes_in_group(scoreBoardGroupName)
 	if len(scoreBoardRefs) > 0:
 		scoreBoardRef = scoreBoardRefs[0]
 	var err = GameManager.connect("fireModeUpdated", self, "updateFirePattern")
@@ -178,12 +179,16 @@ func performAttack():
 				spawnBullet(get_node("FireGroups/forwardBackward"), i)
 		_:
 			print("No attack pattern matched?")
-	
+
+func spawnDemoBullet():
+	spawnBullet(get_node("FireGroups/2Straight"), fireIndex)
+	fireIndex = (fireIndex+1)%2
+
 func spawnBullet(pos2Dgroup:Node2D, shotIndex):
 	var bInst = bulletPrefab.instance()
 	StatsManager.updateStats("lasersFired", 1)
-	get_parent().add_child(bInst)
-	get_parent().move_child(bInst, 2)	# Force bullet to be under space
+	get_viewport().add_child(bInst)
+	#get_parent().move_child(bInst, 2)	# Force bullet to be under space
 	bInst.position = self.position
 	var pos2D = pos2Dgroup.get_child(shotIndex)
 	bInst.position += pos2D.position

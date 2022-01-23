@@ -157,6 +157,8 @@ func spawnBullets(delta, additionalRads):
 			b.setGeneratesEnergy(true)
 		if spawnAsChild:
 			add_child(b)
+		elif find_parent("TutorialViewport"):
+			find_parent("TutorialViewport").add_child(b)
 		elif find_parent("Level"):
 			find_parent("Level").add_child(b)
 		else:
