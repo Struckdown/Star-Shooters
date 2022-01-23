@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Levels/Stages/Level10/FederationBoss.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/Stages/Level10/FederationBossWave.gd" type="Script" id=2]
@@ -6,20 +6,162 @@
 [ext_resource path="res://Art Packs/m484ExplosionSet/LargeExplosion2_Y.png" type="Texture" id=4]
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=8]
 
-[sub_resource type="CanvasItemMaterial" id=1]
+[sub_resource type="VisualShaderNodeTexture" id=1]
+source = 2
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=2]
+uniform_name = "WhiteAlpha"
+
+[sub_resource type="VisualShaderNodeVectorInterp" id=3]
+
+[sub_resource type="VisualShaderNodeInput" id=4]
+input_name = "uv"
+
+[sub_resource type="VisualShader" id=5]
+code = "shader_type canvas_item;
+uniform float WhiteAlpha;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Input:8
+	vec3 n_out8p0 = vec3(UV, 0.0);
+
+// Texture:11
+	vec3 n_out11p0;
+	float n_out11p1;
+	{
+		vec4 _tex_read = texture(TEXTURE, n_out8p0.xy);
+		n_out11p0 = _tex_read.rgb;
+		n_out11p1 = _tex_read.a;
+	}
+
+// ScalarUniform:5
+	float n_out5p0 = WhiteAlpha;
+
+// VectorMix:6
+	vec3 n_in6p1 = vec3(1.00000, 1.00000, 1.00000);
+	vec3 n_out6p0 = mix(n_out11p0, n_in6p1, vec3(n_out5p0));
+
+// Output:0
+	COLOR.rgb = n_out6p0;
+	COLOR.a = n_out11p1;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -589.697, 75 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 260, 180 )
+nodes/fragment/5/node = SubResource( 2 )
+nodes/fragment/5/position = Vector2( -380, 340 )
+nodes/fragment/6/node = SubResource( 3 )
+nodes/fragment/6/position = Vector2( -120, 260 )
+nodes/fragment/8/node = SubResource( 4 )
+nodes/fragment/8/position = Vector2( -540, 180 )
+nodes/fragment/11/node = SubResource( 1 )
+nodes/fragment/11/position = Vector2( -340, 180 )
+nodes/fragment/connections = PoolIntArray( 5, 0, 6, 2, 6, 0, 0, 0, 8, 0, 11, 0, 11, 0, 6, 0, 11, 1, 0, 1 )
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="ShaderMaterial" id=8]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="ShaderMaterial" id=9]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="ShaderMaterial" id=10]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="ShaderMaterial" id=11]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="ShaderMaterial" id=12]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="ShaderMaterial" id=13]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="ShaderMaterial" id=14]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="ShaderMaterial" id=15]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="ShaderMaterial" id=16]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="ShaderMaterial" id=17]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="ShaderMaterial" id=18]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="ShaderMaterial" id=19]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="ShaderMaterial" id=20]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="CanvasItemMaterial" id=21]
 particles_animation = true
 particles_anim_h_frames = 7
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[sub_resource type="Curve" id=2]
+[sub_resource type="Curve" id=22]
 max_value = 3.0
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.0648535, 2.94545 ), -8.08254, -8.08254, 0, 0, Vector2( 1, 1 ), 0.0, 0.0, 0, 0 ]
 
-[sub_resource type="CurveTexture" id=3]
-curve = SubResource( 2 )
+[sub_resource type="CurveTexture" id=23]
+curve = SubResource( 22 )
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="ParticlesMaterial" id=24]
 emission_shape = 2
 emission_box_extents = Vector3( 400, 300, 1 )
 flag_disable_z = true
@@ -28,10 +170,10 @@ orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 angle = 360.0
 angle_random = 1.0
-scale_curve = SubResource( 3 )
+scale_curve = SubResource( 23 )
 anim_speed = 1.0
 
-[node name="WaveBase" instance=ExtResource( 8 )]
+[node name="FedBossWave" instance=ExtResource( 8 )]
 script = ExtResource( 2 )
 waveAdvanceCondition = "other"
 usesBossHP = true
@@ -40,15 +182,60 @@ musicRequest = "res://Levels/BossBattle.mp3"
 
 [node name="federationBossFight" parent="." index="0" instance=ExtResource( 1 )]
 
+[node name="Sprite" parent="federationBossFight/Turrets/Turret" index="1"]
+material = SubResource( 6 )
+
+[node name="Sprite" parent="federationBossFight/Turrets/Turret2" index="1"]
+material = SubResource( 7 )
+
+[node name="Sprite" parent="federationBossFight/Turrets/Turret3" index="1"]
+material = SubResource( 8 )
+
+[node name="Sprite" parent="federationBossFight/Turrets/Turret4" index="1"]
+material = SubResource( 9 )
+
+[node name="Sprite" parent="federationBossFight/Turrets/Turret5" index="1"]
+material = SubResource( 10 )
+
+[node name="Sprite" parent="federationBossFight/Turrets/Turret6" index="1"]
+material = SubResource( 11 )
+
+[node name="Sprite" parent="federationBossFight/Turrets/Turret7" index="1"]
+material = SubResource( 12 )
+
+[node name="Sprite" parent="federationBossFight/Turrets/Turret8" index="1"]
+material = SubResource( 13 )
+
+[node name="Sprite" parent="federationBossFight/Turrets/Turret9" index="1"]
+material = SubResource( 14 )
+
+[node name="Sprite" parent="federationBossFight/Turrets/Turret10" index="1"]
+material = SubResource( 15 )
+
+[node name="Sprite" parent="federationBossFight/Turrets/Turret11" index="1"]
+material = SubResource( 16 )
+
+[node name="Sprite" parent="federationBossFight/Turrets/Turret12" index="1"]
+material = SubResource( 17 )
+
+[node name="Sprite" parent="federationBossFight/Turrets/Turret13" index="1"]
+material = SubResource( 18 )
+
+[node name="Sprite" parent="federationBossFight/Turrets/Turret14" index="1"]
+material = SubResource( 19 )
+
+[node name="Sprite" parent="federationBossFight/FederationEye" index="1"]
+material = SubResource( 20 )
+
 [node name="ExplosionBoxParticles" type="Particles2D" parent="." index="1"]
-material = SubResource( 1 )
+material = SubResource( 21 )
 position = Vector2( 440.879, 343.927 )
 emitting = false
 amount = 30
 lifetime = 0.6
 visibility_rect = Rect2( -3000, -500, 6000, 1000 )
 local_coords = false
-process_material = SubResource( 4 )
+process_material = SubResource( 24 )
 texture = ExtResource( 4 )
 
 [node name="TurnOffTimer" type="Timer" parent="ExplosionBoxParticles" index="0"]
@@ -80,6 +267,4 @@ one_shot = true
 [editable path="federationBossFight/Turrets/Turret12"]
 [editable path="federationBossFight/Turrets/Turret13"]
 [editable path="federationBossFight/Turrets/Turret14"]
-[editable path="federationBossFight/Turrets/Turret15"]
-[editable path="federationBossFight/Turrets/Turret16"]
 [editable path="federationBossFight/FederationEye"]

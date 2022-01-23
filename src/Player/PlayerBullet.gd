@@ -45,6 +45,12 @@ func _on_Area2D_area_entered(area):
 		if is_instance_valid(areaOwner) and areaOwner.has_method("applyDamage"):
 			areaOwner.applyDamage(damage)
 			destroy()
+	elif area.is_in_group("Shield"):
+		var areaOwner = area.owner
+		if is_instance_valid(areaOwner) and areaOwner.shieldIsActive:
+			destroy()
+	else:
+		pass
 
 func inBounds() -> bool:
 	if position.y < -5:

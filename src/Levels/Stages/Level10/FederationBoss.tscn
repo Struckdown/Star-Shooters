@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=45 format=2]
 
 [ext_resource path="res://Levels/finalBossFightShip.png" type="Texture" id=1]
 [ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
@@ -13,295 +13,84 @@
 [ext_resource path="res://Hostiles/Bullets/Bullet_Orthogonal.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Hostiles/Bullets/OrbitalBullet.tscn" type="PackedScene" id=12]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Death"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "scaleOut"
-} ]
+[sub_resource type="VisualShaderNodeTexture" id=1]
+source = 2
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=2]
+uniform_name = "WhiteAlpha"
+
+[sub_resource type="VisualShaderNodeVectorInterp" id=3]
+
+[sub_resource type="VisualShaderNodeInput" id=4]
+input_name = "uv"
+
+[sub_resource type="VisualShader" id=5]
+code = "shader_type canvas_item;
+uniform float WhiteAlpha;
+
+
+
+void vertex() {
+// Output:0
+
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Death"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "scaleOut"
-} ]
+void fragment() {
+// Input:8
+	vec3 n_out8p0 = vec3(UV, 0.0);
+
+// Texture:11
+	vec3 n_out11p0;
+	float n_out11p1;
+	{
+		vec4 _tex_read = texture(TEXTURE, n_out8p0.xy);
+		n_out11p0 = _tex_read.rgb;
+		n_out11p1 = _tex_read.a;
+	}
+
+// ScalarUniform:5
+	float n_out5p0 = WhiteAlpha;
+
+// VectorMix:6
+	vec3 n_in6p1 = vec3(1.00000, 1.00000, 1.00000);
+	vec3 n_out6p0 = mix(n_out11p0, n_in6p1, vec3(n_out5p0));
+
+// Output:0
+	COLOR.rgb = n_out6p0;
+	COLOR.a = n_out11p1;
+
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "Death"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "scaleOut"
-} ]
-}
+void light() {
+// Output:0
 
-[sub_resource type="Animation" id=4]
-resource_name = "Death"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "scaleOut"
-} ]
-}
+"
+graph_offset = Vector2( -589.697, 75 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 260, 180 )
+nodes/fragment/5/node = SubResource( 2 )
+nodes/fragment/5/position = Vector2( -380, 340 )
+nodes/fragment/6/node = SubResource( 3 )
+nodes/fragment/6/position = Vector2( -120, 260 )
+nodes/fragment/8/node = SubResource( 4 )
+nodes/fragment/8/position = Vector2( -540, 180 )
+nodes/fragment/11/node = SubResource( 1 )
+nodes/fragment/11/position = Vector2( -340, 180 )
+nodes/fragment/connections = PoolIntArray( 5, 0, 6, 2, 6, 0, 0, 0, 8, 0, 11, 0, 11, 0, 6, 0, 11, 1, 0, 1 )
 
-[sub_resource type="Animation" id=5]
-resource_name = "Death"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "scaleOut"
-} ]
-}
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
 
-[sub_resource type="Animation" id=6]
-resource_name = "Death"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "scaleOut"
-} ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "Death"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "scaleOut"
-} ]
-}
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
 
 [sub_resource type="Animation" id=8]
-resource_name = "Death"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -341,49 +130,12 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=9]
-resource_name = "Death"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "scaleOut"
-} ]
-}
+[sub_resource type="ShaderMaterial" id=9]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
 
 [sub_resource type="Animation" id=10]
-resource_name = "Death"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -423,49 +175,12 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=11]
-resource_name = "Death"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/keys = {
-"times": PoolRealArray( 0.7, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "scaleOut"
-} ]
-}
+[sub_resource type="ShaderMaterial" id=11]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
 
 [sub_resource type="Animation" id=12]
-resource_name = "Death"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -505,8 +220,417 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=13]
-resource_name = "Death"
+[sub_resource type="ShaderMaterial" id=13]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="Animation" id=14]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="ShaderMaterial" id=15]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="Animation" id=16]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="ShaderMaterial" id=17]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="Animation" id=18]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="ShaderMaterial" id=19]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="Animation" id=20]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="ShaderMaterial" id=21]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="Animation" id=22]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="ShaderMaterial" id=23]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="Animation" id=24]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="ShaderMaterial" id=25]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="Animation" id=26]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="ShaderMaterial" id=27]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="Animation" id=28]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="ShaderMaterial" id=29]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="Animation" id=30]
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 3, 3, 3, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/keys = {
+"times": PoolRealArray( 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.7 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "scaleOut"
+} ]
+}
+
+[sub_resource type="ShaderMaterial" id=31]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="Animation" id=32]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -565,6 +689,7 @@ flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret" index="1"]
+material = SubResource( 6 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
@@ -598,6 +723,7 @@ flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret2" index="1"]
+material = SubResource( 7 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
@@ -612,7 +738,7 @@ position = Vector2( 0.437149, 5.51236 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="Turrets/Turret2" index="3"]
-anims/Death = SubResource( 1 )
+anims/Death = SubResource( 8 )
 
 [node name="BulletEmitter" parent="Turrets/Turret2/WeaponManager" index="0" instance=ExtResource( 5 )]
 position = Vector2( 50.8168, 0.000335693 )
@@ -634,6 +760,7 @@ flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret3" index="1"]
+material = SubResource( 9 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
@@ -654,7 +781,7 @@ rotation = -4.54747e-12
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="Turrets/Turret3" index="3"]
-anims/Death = SubResource( 2 )
+anims/Death = SubResource( 10 )
 
 [node name="BulletEmitter" parent="Turrets/Turret3/WeaponManager" index="0" instance=ExtResource( 5 )]
 position = Vector2( 50.8168, 0.000335693 )
@@ -676,6 +803,7 @@ flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret4" index="1"]
+material = SubResource( 11 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
@@ -693,7 +821,7 @@ position = Vector2( 0.437149, 5.51236 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="Turrets/Turret4" index="3"]
-anims/Death = SubResource( 3 )
+anims/Death = SubResource( 12 )
 
 [node name="BulletEmitter" parent="Turrets/Turret4/WeaponManager" index="0" instance=ExtResource( 5 )]
 position = Vector2( 50.8168, 0.000335693 )
@@ -717,6 +845,7 @@ flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 0.3, 0.3 )
 
 [node name="Sprite" parent="Turrets/Turret5" index="1"]
+material = SubResource( 13 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
@@ -734,7 +863,7 @@ position = Vector2( 0.437149, 5.51236 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="Turrets/Turret5" index="3"]
-anims/Death = SubResource( 4 )
+anims/Death = SubResource( 14 )
 
 [node name="WeaponManager" parent="Turrets/Turret5" index="4"]
 phaseSwapMode = "soloDownAndUp"
@@ -752,6 +881,7 @@ flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret6" index="1"]
+material = SubResource( 15 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
@@ -769,7 +899,7 @@ position = Vector2( 0.437149, 5.51236 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="Turrets/Turret6" index="3"]
-anims/Death = SubResource( 5 )
+anims/Death = SubResource( 16 )
 
 [node name="BulletEmitter" parent="Turrets/Turret6/WeaponManager" index="0" instance=ExtResource( 5 )]
 position = Vector2( 50.8168, 0.000335693 )
@@ -808,6 +938,7 @@ flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret7" index="1"]
+material = SubResource( 17 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
@@ -825,7 +956,7 @@ position = Vector2( 0.437149, 5.51236 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="Turrets/Turret7" index="3"]
-anims/Death = SubResource( 6 )
+anims/Death = SubResource( 18 )
 
 [node name="BulletEmitter" parent="Turrets/Turret7/WeaponManager" index="0" instance=ExtResource( 5 )]
 position = Vector2( 50.8168, 0.000335693 )
@@ -849,6 +980,7 @@ flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret8" index="1"]
+material = SubResource( 19 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
@@ -866,7 +998,7 @@ position = Vector2( 0.437149, 5.51236 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="Turrets/Turret8" index="3"]
-anims/Death = SubResource( 7 )
+anims/Death = SubResource( 20 )
 
 [node name="BulletEmitter" parent="Turrets/Turret8/WeaponManager" index="0" instance=ExtResource( 5 )]
 position = Vector2( 50.8168, 0.000335693 )
@@ -904,6 +1036,7 @@ flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret9" index="1"]
+material = SubResource( 21 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
@@ -921,7 +1054,7 @@ position = Vector2( 0.437149, 5.51236 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="Turrets/Turret9" index="3"]
-anims/Death = SubResource( 8 )
+anims/Death = SubResource( 22 )
 
 [node name="BulletEmitter" parent="Turrets/Turret9/WeaponManager" index="0" instance=ExtResource( 5 )]
 position = Vector2( 50.8168, 0.000335693 )
@@ -957,6 +1090,7 @@ flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 0.3, 0.3 )
 
 [node name="Sprite" parent="Turrets/Turret10" index="1"]
+material = SubResource( 23 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
@@ -971,7 +1105,7 @@ position = Vector2( 0.437149, 5.51236 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="Turrets/Turret10" index="3"]
-anims/Death = SubResource( 9 )
+anims/Death = SubResource( 24 )
 
 [node name="WeaponManager" parent="Turrets/Turret10" index="4"]
 phaseSwapMode = "soloDownAndUp"
@@ -988,6 +1122,7 @@ flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 0.3, 0.3 )
 
 [node name="Sprite" parent="Turrets/Turret11" index="1"]
+material = SubResource( 25 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
@@ -1002,7 +1137,7 @@ position = Vector2( 0.437149, 5.51236 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="Turrets/Turret11" index="3"]
-anims/Death = SubResource( 10 )
+anims/Death = SubResource( 26 )
 
 [node name="WeaponManager" parent="Turrets/Turret11" index="4"]
 phaseSwapMode = "soloDownAndUp"
@@ -1021,6 +1156,7 @@ flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 0.3 )
 
 [node name="Sprite" parent="Turrets/Turret12" index="1"]
+material = SubResource( 27 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
@@ -1035,7 +1171,7 @@ position = Vector2( 0.437149, 5.51236 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="Turrets/Turret12" index="3"]
-anims/Death = SubResource( 11 )
+anims/Death = SubResource( 28 )
 
 [node name="WeaponManager" parent="Turrets/Turret12" index="4"]
 startDelay = 2.0
@@ -1059,6 +1195,7 @@ flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret13" index="1"]
+material = SubResource( 29 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
@@ -1073,7 +1210,7 @@ position = Vector2( 0.437149, 5.51236 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="Turrets/Turret13" index="3"]
-anims/Death = SubResource( 12 )
+anims/Death = SubResource( 30 )
 
 [node name="WeaponManager" parent="Turrets/Turret13" index="4"]
 startDelay = 2.0
@@ -1101,6 +1238,7 @@ flyingPattern = "homingNoStop"
 turningRateDegsBounds = Vector2( 1, 2 )
 
 [node name="Sprite" parent="Turrets/Turret14" index="1"]
+material = SubResource( 31 )
 scale = Vector2( 2, 2 )
 texture = ExtResource( 4 )
 
@@ -1115,7 +1253,7 @@ position = Vector2( 0.437149, 5.51236 )
 texture = ExtResource( 3 )
 
 [node name="AnimationPlayer" parent="Turrets/Turret14" index="3"]
-anims/Death = SubResource( 13 )
+anims/Death = SubResource( 32 )
 
 [node name="WeaponManager" parent="Turrets/Turret14" index="4"]
 startDelay = 2.0

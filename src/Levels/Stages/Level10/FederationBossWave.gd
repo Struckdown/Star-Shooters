@@ -15,6 +15,7 @@ func _ready():
 			child.connect("destroyed", self, "updateEnemyCount")
 			enemies.append(child)
 			child.setActive(false)
+	$federationBossFight/FederationEye.setActive(false)
 	initialAmountOfEnemies = enemiesToDestroy
 	advanceToNextSegment()
 
@@ -40,6 +41,7 @@ func advanceToNextSegment():
 		var targetY = initPosition.y+(600*(segmentIndex+1))
 		if segmentIndex == 7:
 			targetY = targetY - 300
+			$federationBossFight/FederationEye.setActive(true)
 		$federationBossFight/Tween.interpolate_property($federationBossFight, "position", pos, Vector2(pos.x, targetY), 5, Tween.TRANS_SINE)
 		$federationBossFight/Tween.start()
 		$ActivateTurretsTimer.start()

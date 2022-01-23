@@ -12,6 +12,7 @@ func _ready():
 	$Node2D/DecisionZone2/Area2D/CollisionShape2D.disabled = true
 	for turret in $finalBossFightShip/Turrets.get_children():
 		turret.setActive(false)
+	$finalBossFightShip/FederationEye.setActive(false)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -52,4 +53,7 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			if componentsFinished >= 2:
 				revealChoices()
 		"cleanup":
+			for t in $finalBossFightShip/Turrets.get_children():
+				t.cleanup()
+			$finalBossFightShip/FederationEye.cleanup()
 			queue_free()

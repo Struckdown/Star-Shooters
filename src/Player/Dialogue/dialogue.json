@@ -391,7 +391,12 @@
 		{
 			"name": "Commander",
 			"portrait": "Commander",
-			"dialogue": "I kept the truth from you, in the hopes you wouldn't become like them and we would have to shutdown the project. But maybe that's why the Federation turned out how it did. We never told it the truth. And maybe that was our mistake.",
+			"dialogue": "I kept the truth from you, in the hopes you wouldn't become like them and we would have to shutdown the project.",
+		},
+		{
+			"name": "Commander",
+			"portrait": "Commander",
+			"dialogue":"We never told it the truth. And maybe that was our mistake.",
 		},
 		{
 			"name": "Commander",

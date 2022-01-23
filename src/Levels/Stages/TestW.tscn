@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Boss HP.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=4]
@@ -11,13 +10,12 @@
 [ext_resource path="res://Levels/Game Over.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/LevelWon.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Hostiles/Enemies/FederationEye.tscn" type="PackedScene" id=13]
 
-[node name="Node2D" type="Node2D"]
+[node name="TestW" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 79.4789, 375.584 )
-rotation = 1.57079
+position = Vector2( 425.148, 482.492 )
 
 [node name="PlayerSpawner" parent="." instance=ExtResource( 4 )]
 position = Vector2( 516.698, 515.379 )
@@ -91,9 +89,5 @@ margin_right = -423.0
 margin_bottom = -128.0
 mouse_filter = 1
 
-[node name="BulletEmitter" parent="." instance=ExtResource( 12 )]
-position = Vector2( 428.598, 382.564 )
-rotation = -0.354378
-bulletType = ExtResource( 1 )
-wrapsRemaining = 3
-bouncesRemaining = 3
+[node name="FederationEye" parent="." instance=ExtResource( 13 )]
+position = Vector2( 405.359, 241.434 )
