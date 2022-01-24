@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://Levels/finalBossFightShip.png" type="Texture" id=1]
 [ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
@@ -12,6 +12,7 @@
 [ext_resource path="res://Hostiles/Bullets/Bullet_Gravity.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Orthogonal.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Hostiles/Bullets/OrbitalBullet.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Hostiles/Enemies/ShieldBotSpawner.tscn" type="PackedScene" id=13]
 
 [sub_resource type="VisualShaderNodeTexture" id=1]
 source = 2
@@ -1281,6 +1282,17 @@ bouncesRemaining = 2
 [node name="FederationEye" parent="." instance=ExtResource( 8 )]
 position = Vector2( -115.676, -1.53732 )
 scale = Vector2( 0.143117, 0.143117 )
+shieldBotSpawners = [ NodePath("../ShieldBotSpawner"), NodePath("../ShieldBotSpawner2") ]
+
+[node name="ShieldBotSpawner" parent="." instance=ExtResource( 13 )]
+position = Vector2( -108.809, 19.0051 )
+rotation = -3.78956e-13
+scale = Vector2( 0.15, 0.15 )
+
+[node name="ShieldBotSpawner2" parent="." instance=ExtResource( 13 )]
+position = Vector2( -112.849, -19.9445 )
+rotation = -3.78956e-13
+scale = Vector2( 0.15, 0.15 )
 
 [editable path="Turrets/Turret"]
 [editable path="Turrets/Turret2"]

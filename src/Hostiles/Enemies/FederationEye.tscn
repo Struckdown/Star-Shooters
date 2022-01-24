@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player/Dialogue/FederationRobot.png" type="Texture" id=1]
 [ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://Hostiles/Bullets/BulletEmitter.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Hostiles/WeaponManager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Hostiles/Bullets/OrbitalBullet.tscn" type="PackedScene" id=8]
 
 [sub_resource type="VisualShaderNodeTexture" id=1]
 source = 2
@@ -85,6 +86,7 @@ radius = 71.2479
 
 [sub_resource type="Animation" id=8]
 resource_name = "activate"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -92,7 +94,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
+"times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
@@ -102,7 +104,7 @@ tracks/0/keys = {
 script = ExtResource( 3 )
 pointsWorth = 25000
 speed = 0.0
-maxHealth = 2500
+maxHealth = 1500
 deathShakeIntensity = 8.0
 gemValue = 200
 explosionType = null
@@ -113,6 +115,10 @@ isBoss = true
 material = SubResource( 6 )
 scale = Vector2( 0.16044, 0.16044 )
 texture = ExtResource( 1 )
+
+[node name="WeaponManager" parent="." index="4"]
+phaseSwapMode = "health"
+healthPercentToNextPhase = 34.0
 
 [node name="Phase1" parent="WeaponManager" index="0" instance=ExtResource( 7 )]
 phaseSwapMode = "time"
@@ -137,20 +143,59 @@ bulletScale = Vector2( 1, 20 )
 bulletType = ExtResource( 6 )
 makeBulletEnergizedAnywaysOdds = 0.9
 
+[node name="Phase2" parent="WeaponManager" index="1" instance=ExtResource( 7 )]
+phaseSwapMode = "time"
+timeToNextPhase = 6
+
+[node name="BulletEmitterLong" parent="WeaponManager/Phase2" index="0" instance=ExtResource( 5 )]
+rotationPerVolley = 7.0
+targetStyle = "atTarget"
+useRotationAsCenterBullet = true
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 7.0
+amountOfBullets = 9
+bulletMovementSpeed = 150.0
+bulletScale = Vector2( 5, 1 )
+bulletType = ExtResource( 6 )
+makeBulletEnergizedAnywaysOdds = 1.0
+
+[node name="BulletEmitterOrbiter" parent="WeaponManager/Phase2" index="1" instance=ExtResource( 5 )]
+rotationPerVolley = 7.0
+targetStyle = "atTarget"
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+bulletScale = Vector2( 3, 3 )
+bulletSpawnDelay = 4.0
+bulletType = ExtResource( 8 )
+initialSpawnDelayRandomRange = 0.0
+makeBulletEnergizedAnywaysOdds = 0.9
+orbitalChildren = 15
+
+[node name="BulletEmitterOrbiter2" parent="WeaponManager/Phase2/BulletEmitterOrbiter" index="2" instance=ExtResource( 5 )]
+rotationPerVolley = 7.0
+targetStyle = "atTarget"
+fireAtLocationForWholeClip = false
+angleOfBulletSpread = 0.0
+bulletScale = Vector2( 3, 3 )
+bulletSpawnDelay = 4.0
+bulletType = ExtResource( 8 )
+initialSpawnDelayConstant = 2.0
+initialSpawnDelayRandomRange = 0.0
+makeBulletEnergizedAnywaysOdds = 0.9
+orbitalChildren = 15
+orbitalRotationSpeedDegs = -30.0
+
 [node name="ShieldRoot" type="Node2D" parent="." index="8"]
 scale = Vector2( 1.37309, 1.37309 )
 
-[node name="ShieldTimer" type="Timer" parent="ShieldRoot" index="0"]
-wait_time = 5.0
-
-[node name="Shield" type="Sprite" parent="ShieldRoot" index="1"]
+[node name="Shield" type="Sprite" parent="ShieldRoot" index="0"]
 rotation = 3.14159
 texture = ExtResource( 4 )
 
-[node name="Shield2" type="Sprite" parent="ShieldRoot" index="2"]
+[node name="Shield2" type="Sprite" parent="ShieldRoot" index="1"]
 texture = ExtResource( 4 )
 
-[node name="Area2D" type="Area2D" parent="ShieldRoot" index="3" groups=[
+[node name="Area2D" type="Area2D" parent="ShieldRoot" index="2" groups=[
 "Shield",
 ]]
 rotation = 3.14159
@@ -158,7 +203,7 @@ rotation = 3.14159
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShieldRoot/Area2D" index="0"]
 shape = SubResource( 7 )
 
-[node name="ShieldAnimationPlayer" type="AnimationPlayer" parent="ShieldRoot" index="4"]
+[node name="ShieldAnimationPlayer" type="AnimationPlayer" parent="ShieldRoot" index="3"]
 anims/activate = SubResource( 8 )
 
-[connection signal="timeout" from="ShieldRoot/ShieldTimer" to="." method="_on_ShieldTimer_timeout"]
+[connection signal="startedNextHealthPhase" from="WeaponManager" to="." method="_on_WeaponManager_startedNextHealthPhase"]

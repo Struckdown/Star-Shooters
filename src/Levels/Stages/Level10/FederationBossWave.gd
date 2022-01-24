@@ -29,6 +29,11 @@ func _input(event):
 		pass
 		print(name, " debug used to advance segment")
 		advanceToNextSegment()
+#		var pos = $federationBossFight.position
+#		$federationBossFight/Tween.interpolate_property($federationBossFight, "position", pos, Vector2(pos.x, pos.y+1500), 3, Tween.TRANS_SINE)
+#		$federationBossFight/Tween.start()
+#		yield(get_tree().create_timer(3), "timeout")
+#		markWaveFinished()
 
 func advanceToNextSegment():
 	if segmentIndex >= 0:
@@ -45,11 +50,7 @@ func advanceToNextSegment():
 		$federationBossFight/Tween.interpolate_property($federationBossFight, "position", pos, Vector2(pos.x, targetY), 5, Tween.TRANS_SINE)
 		$federationBossFight/Tween.start()
 		$ActivateTurretsTimer.start()
-	else:
-		$federationBossFight/Tween.interpolate_property($federationBossFight, "position", pos, Vector2(pos.x, pos.y+1500), 3, Tween.TRANS_SINE)
-		$federationBossFight/Tween.start()
-		yield(get_tree().create_timer(3), "timeout")
-		markWaveFinished()
+
 
 
 func setUpBossHP():	# used by level manager
@@ -59,6 +60,7 @@ func setUpBossHP():	# used by level manager
 			hpTotal += child.maxHealth
 			child.setHealthBarRef(bossHPRef)
 	hpTotal += $federationBossFight/FederationEye.maxHealth	# add core's health to total
+	$federationBossFight/FederationEye.setHealthBarRef(bossHPRef)
 	if bossHPRef:
 		bossHPRef.setup(hpTotal, bossName)
 
@@ -94,3 +96,11 @@ func _on_ActivateTurretsTimer_timeout():
 # Function overwritten to do nothing in this wave, we do it with the timer
 func startArrowTracking():
 	pass
+
+
+func _on_FederationEye_destroyed(_points):
+	var pos = $federationBossFight.position
+	$federationBossFight/Tween.interpolate_property($federationBossFight, "position", pos, Vector2(pos.x, pos.y+1500), 3, Tween.TRANS_SINE)
+	$federationBossFight/Tween.start()
+	yield(get_tree().create_timer(3), "timeout")
+	markWaveFinished()

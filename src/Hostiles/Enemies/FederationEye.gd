@@ -1,8 +1,8 @@
 extends "res://Hostiles/Enemies/Enemy_Base.gd"
 
 var shieldIsActive = true setget setShield
-var shieldDownTime = 2
-var shieldUpTime = 3
+export(Array, NodePath) var shieldBotSpawners = []
+var activeShieldBots = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -10,7 +10,8 @@ var shieldUpTime = 3
 
 func _ready():
 	._ready()
-	$ShieldRoot/ShieldTimer.start(shieldUpTime)
+	setShield(false)
+
 
 func setShield(active:bool):
 	shieldIsActive = active
@@ -19,10 +20,23 @@ func setShield(active:bool):
 	else:
 		$ShieldRoot/ShieldAnimationPlayer.play_backwards("activate")
 
+func _on_WeaponManager_startedNextHealthPhase():
+	requestShields()
 
-func _on_ShieldTimer_timeout():
-	if shieldIsActive:
-		$ShieldRoot/ShieldTimer.start(shieldDownTime)
-	else:
-		$ShieldRoot/ShieldTimer.start(shieldUpTime)
-	setShield(!shieldIsActive)
+func requestShields():
+	for child in shieldBotSpawners:
+		child = get_node(child)
+		child.targetRef = self
+		child.startSpawningBot()
+		var connections = child.get_signal_connection_list("shieldBotDestroyed")
+		if len(connections) <= 0:
+			child.connect("shieldBotDestroyed", self, "markShieldBotDestroyed")
+	activeShieldBots = len(shieldBotSpawners)
+	if activeShieldBots > 0:
+		setShield(true)
+
+func markShieldBotDestroyed():
+	activeShieldBots -= 1
+	if activeShieldBots <= 0:
+		activeShieldBots = 0
+		setShield(false)

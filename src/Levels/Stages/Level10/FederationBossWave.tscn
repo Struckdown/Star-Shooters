@@ -249,6 +249,7 @@ stream = ExtResource( 3 )
 wait_time = 3.0
 one_shot = true
 
+[connection signal="destroyed" from="federationBossFight/FederationEye" to="." method="_on_FederationEye_destroyed"]
 [connection signal="timeout" from="ExplosionBoxParticles/TurnOffTimer" to="." method="_on_TurnOffTimer_timeout"]
 [connection signal="timeout" from="ActivateTurretsTimer" to="." method="_on_ActivateTurretsTimer_timeout"]
 

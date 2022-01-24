@@ -40,6 +40,7 @@ var explosionManagerRef
 var bulletEmitter = preload("res://Hostiles/Bullets/BulletEmitter.tscn")	# for use with infinite mode
 
 signal destroyed
+signal destroyedWithoutWaveProgression	# this is redundant.. :(
 signal tookDamage
 signal wantsNewTarget
 
@@ -74,6 +75,8 @@ func cleanup():
 		spawnGems()
 	if deathCountsAsWaveProgression:
 		emit_signal("destroyed", pointsWorth)
+	else:
+		emit_signal("destroyedWithoutWaveProgression")
 	get_tree().call_group("EnemyDestroyedListener", "OnEnemyDestroyed", self)
 	queue_free()
 
