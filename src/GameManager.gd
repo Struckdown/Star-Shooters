@@ -17,10 +17,11 @@ enum playerFireTypes{SPREAD,CHARGE,FOCUSED,REVERSE}
 var playerFireType = playerFireTypes.FOCUSED
 var unlockedPlayerFireTypes = [playerFireTypes.FOCUSED]
 var endingToPlay = "commanderVictory"	# or federationVictory. Set by final boss decision wave
-var settingsLoaded = false	# used by Settings
 var debugMode = false
+var config = ConfigFile.new()
 
 var saveGameFileName = "user://savegame.save"
+var optionsFileName = "user://player.perfs"
 signal fireModeUpdated
 
 func _ready():
@@ -85,6 +86,7 @@ func saveGame():
 	
 
 func load_game():
+	loadSettings()
 	UpgradeManager.load_game()
 	StatsManager.load_game()
 	var save_game = File.new()
@@ -158,3 +160,45 @@ func setGameMode(newGameMode:int) -> void:
 		push_error("Tried to pass invalid game mode:" + str(newGameMode))
 		return
 	gameMode = newGameMode
+
+func loadSettings():
+	var err = config.load(optionsFileName)
+	if not err:	# if file exists, try to load it
+		var bgm = config.get_value("audio", "bgm", 80.0)	# 80 is default if this value is missing for some reason
+		var sfx = config.get_value("audio", "sfx", 80.0)
+		gameSpeed = config.get_value("gameplay", "speed", 1)
+		instaKillMode = config.get_value("gameplay", "instakill", false)
+		setBusAudio("BGM", bgm)
+		setBusAudio("SFX", sfx)
+		
+		for action in InputMap.get_actions():
+			var nodeName = "Window/TabContainer/Controls/ScrollContainer/VBoxContainer/" + action
+			if has_node(nodeName):
+				InputMap.action_erase_events(action)	# clean up old actions
+				var scannedCodeString = config.get_value("input", action)
+				var inputEventKey = InputEventKey.new()
+				inputEventKey.scancode = OS.find_scancode_from_string(scannedCodeString)
+				InputMap.action_add_event(action, inputEventKey)
+	else:
+		print("No settings configured, loading defaults")
+		resetControls()
+
+func setBusAudio(bus, value):
+	var val = BGM.normalizeValToDB(value)
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), val)
+	config.set_value("audio", bus, val)
+
+func getActionString(action): 
+	return config.get_value("input", action, null)
+
+func resetControls():
+	var actions = {"move_left": [KEY_LEFT], "move_right": [KEY_RIGHT],
+	"move_up":[KEY_UP], "move_down":[KEY_DOWN], "move_slow":[KEY_SHIFT],
+	"fire":[KEY_Z], "switchWeapons":[KEY_R], "ui_accept":[KEY_SPACE]
+	}
+	for action in actions:
+		InputMap.action_erase_events(action)
+		for val in actions[action]:
+			var btn = InputEventKey.new()
+			btn.scancode = val
+			InputMap.action_add_event(action, btn)
