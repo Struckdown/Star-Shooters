@@ -28,7 +28,7 @@ func spawnBot():
 	add_child(shieldBotRef)
 	yield(get_tree().create_timer(0.06), "timeout")
 	shieldBotRef.assignTarget(targetRef)
-	shieldBotRef.connect("destroyedWithoutWaveProgression", self, "markShieldBotDestroyed")
+	shieldBotRef.connect("destroyed", self, "markShieldBotDestroyed")
 
-func markShieldBotDestroyed():
+func markShieldBotDestroyed(_points):
 	emit_signal("shieldBotDestroyed")

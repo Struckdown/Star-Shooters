@@ -448,7 +448,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer"]
 margin_right = 914.0
-margin_bottom = 588.0
+margin_bottom = 522.0
 size_flags_horizontal = 3
 
 [node name="move_up" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
@@ -654,6 +654,35 @@ size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
 text = "R"
 
+[node name="ui_accept" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
+margin_top = 396.0
+margin_right = 902.0
+margin_bottom = 458.0
+size_flags_horizontal = 3
+
+[node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_accept"]
+margin_top = 4.0
+margin_right = 447.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 9 )
+text = "UI Accept"
+
+[node name="Spacer" type="TextureRect" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_accept"]
+margin_left = 451.0
+margin_right = 674.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_accept"]
+margin_left = 678.0
+margin_right = 902.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "Space"
+
 [node name="Reset" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
 margin_top = 462.0
 margin_right = 902.0
@@ -764,4 +793,5 @@ bus = "SFX"
 [connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_slow/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "move_slow" ]]
 [connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/fire/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "fire" ]]
 [connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/switchWeapons/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "switchWeapons" ]]
+[connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_accept/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "switchWeapons" ]]
 [connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/Reset/ResetBtn" to="." method="_on_ResetBtn_pressed"]

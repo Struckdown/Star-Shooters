@@ -40,7 +40,6 @@ var explosionManagerRef
 var bulletEmitter = preload("res://Hostiles/Bullets/BulletEmitter.tscn")	# for use with infinite mode
 
 signal destroyed
-signal destroyedWithoutWaveProgression	# this is redundant.. :(
 signal tookDamage
 signal wantsNewTarget
 
@@ -73,12 +72,13 @@ func _process(delta):
 func cleanup():
 	if health <= 0:
 		spawnGems()
-	if deathCountsAsWaveProgression:
-		emit_signal("destroyed", pointsWorth)
 	else:
-		emit_signal("destroyedWithoutWaveProgression")
+		pointsWorth = int(pointsWorth/2)
+	emit_signal("destroyed", pointsWorth)
 	get_tree().call_group("EnemyDestroyedListener", "OnEnemyDestroyed", self)
 	queue_free()
+
+
 
 func move(d):
 	var deltaSpeed = speed*d*GameManager.gameSpeed
@@ -222,9 +222,9 @@ func updateScratches():
 
 func getNewMoveGoal():
 	#var mapCenter = levelBounds.position
-	var mapSize = get_viewport().size
+	var mapSize = Vector2(1024, 600)#get_viewport().size
 	randomize()
-	var xRand = rand_range(mapSize.x * 0.2, mapSize.x * 0.5)	# avoid parking on the right side
+	var xRand = rand_range(mapSize.x * 0.2, mapSize.x * 0.7)	# avoid parking on the right side
 	var yRand = rand_range(mapSize.y * 0.1, mapSize.y * 0.4)
 	moveGoal = Vector2(xRand, yRand)
 

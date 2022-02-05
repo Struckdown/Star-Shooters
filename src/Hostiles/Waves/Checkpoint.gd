@@ -4,6 +4,7 @@ extends "res://Hostiles/Waves/WaveBase.gd"
 var enemiesRemaining
 var finished = false
 export(float) var delayAfterCheckpointReadyToAdvance = 1
+var deltaTime = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -11,12 +12,14 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	deltaTime += delta
+	if deltaTime >= 1:
+		deltaTime = 0
+		updateCheckpointStatus()
+		
 
 func otherAdvanceCondition():
-	enemiesRemaining = get_tree().get_nodes_in_group("EnemyBase")
-	enemiesRemaining = len(enemiesRemaining)
 	updateCheckpointStatus()
  
 func OnEnemyDestroyed(_enemy):	# when an enemy is destroyed, it calls a function in a group (this node belongs to that group)
@@ -24,6 +27,8 @@ func OnEnemyDestroyed(_enemy):	# when an enemy is destroyed, it calls a function
 	updateCheckpointStatus()
 
 func updateCheckpointStatus():
+	enemiesRemaining = get_tree().get_nodes_in_group("EnemyBase")
+	enemiesRemaining = len(enemiesRemaining)
 	if enemiesRemaining <= 0:
 		if not finished:
 			finished = true

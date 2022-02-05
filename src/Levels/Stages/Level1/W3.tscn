@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Hostiles/Waves/WaveBase.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Hostiles/Enemies/ForwardShooter.tscn" type="PackedScene" id=2]
@@ -6,8 +6,84 @@
 [ext_resource path="res://Space Shooter Redux/PNG/Enemies/enemyBlack3.png" type="Texture" id=4]
 [ext_resource path="res://Hostiles/Bullets/Bullet_Straight.tscn" type="PackedScene" id=5]
 
-[sub_resource type="Animation" id=1]
-resource_name = "Death"
+[sub_resource type="VisualShaderNodeTexture" id=1]
+source = 2
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=2]
+uniform_name = "WhiteAlpha"
+
+[sub_resource type="VisualShaderNodeVectorInterp" id=3]
+
+[sub_resource type="VisualShaderNodeInput" id=4]
+input_name = "uv"
+
+[sub_resource type="VisualShader" id=5]
+code = "shader_type canvas_item;
+uniform float WhiteAlpha;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Input:8
+	vec3 n_out8p0 = vec3(UV, 0.0);
+
+// Texture:11
+	vec3 n_out11p0;
+	float n_out11p1;
+	{
+		vec4 _tex_read = texture(TEXTURE, n_out8p0.xy);
+		n_out11p0 = _tex_read.rgb;
+		n_out11p1 = _tex_read.a;
+	}
+
+// ScalarUniform:5
+	float n_out5p0 = WhiteAlpha;
+
+// VectorMix:6
+	vec3 n_in6p1 = vec3(1.00000, 1.00000, 1.00000);
+	vec3 n_out6p0 = mix(n_out11p0, n_in6p1, vec3(n_out5p0));
+
+// Output:0
+	COLOR.rgb = n_out6p0;
+	COLOR.a = n_out11p1;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -589.697, 75 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 260, 180 )
+nodes/fragment/5/node = SubResource( 2 )
+nodes/fragment/5/position = Vector2( -380, 340 )
+nodes/fragment/6/node = SubResource( 3 )
+nodes/fragment/6/position = Vector2( -120, 260 )
+nodes/fragment/8/node = SubResource( 4 )
+nodes/fragment/8/position = Vector2( -540, 180 )
+nodes/fragment/11/node = SubResource( 1 )
+nodes/fragment/11/position = Vector2( -340, 180 )
+nodes/fragment/connections = PoolIntArray( 5, 0, 6, 2, 6, 0, 0, 0, 8, 0, 11, 0, 11, 0, 6, 0, 11, 1, 0, 1 )
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="ShaderMaterial" id=7]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="Animation" id=8]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -33,8 +109,12 @@ tracks/1/keys = {
 "values": [ Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
 }
 
-[sub_resource type="Animation" id=2]
-resource_name = "Death"
+[sub_resource type="ShaderMaterial" id=9]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
+[sub_resource type="Animation" id=10]
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
@@ -60,17 +140,17 @@ tracks/1/keys = {
 "values": [ Vector2( 0.5, 0.5 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
 }
 
-[sub_resource type="Curve2D" id=3]
+[sub_resource type="Curve2D" id=11]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 471.846, 11.5439, -68.1126, -180.793, 68.1126, 180.793, 771.971, 170.021, 294.314, -47.9311, -294.314, 47.9311, 570.231, 574.945, 0, 0, 0, 0, 140.533, 432.833, -216.11, 153.884, 216.11, -153.884, 227.145, 143.565 )
 }
 
-[sub_resource type="Curve2D" id=4]
+[sub_resource type="Curve2D" id=12]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -30.289, 229.725, -140.762, 5.34539, 140.762, -5.34539, 172.836, 521.94, -170.162, 8.01809, 170.162, -8.01809, 228.072, 56.8909, -180.852, 4.45449, 180.852, -4.45449, 440.996, 500.558, 168.38, -27.6179, -168.38, 27.6179, 538.104, 46.2001, -152.344, 3.56359, 152.344, -3.56359, 679.757, 525.504, -117.599, -12.4726, 117.599, 12.4726, 871.469, 69.2247 )
 }
 
-[sub_resource type="Curve2D" id=5]
+[sub_resource type="Curve2D" id=13]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -59.719, 346.736, 0, 0, 0, 0, 815.733, 166.566 )
 }
@@ -89,6 +169,9 @@ gemValue = 15
 flyPaths = [ NodePath("../CirclePath") ]
 loopFlyPaths = true
 flyingPattern = "followPath"
+
+[node name="Sprite" parent="HelixShooter" index="1"]
+material = SubResource( 6 )
 
 [node name="BulletEmitter" parent="HelixShooter/WeaponManager" index="0"]
 rotation = 1.5708
@@ -123,8 +206,11 @@ flyPaths = [ NodePath("../LoopingPath") ]
 loopFlyPaths = true
 flyingPattern = "followPath"
 
+[node name="Sprite" parent="LeftPlayerShooter" index="1"]
+material = SubResource( 7 )
+
 [node name="AnimationPlayer" parent="LeftPlayerShooter" index="3"]
-anims/Death = SubResource( 1 )
+anims/Death = SubResource( 8 )
 
 [node name="BulletEmitter" parent="LeftPlayerShooter/WeaponManager" index="0"]
 initialRotationOffset = 0.0
@@ -148,10 +234,11 @@ loopFlyPaths = true
 flyingPattern = "followPath"
 
 [node name="Sprite" parent="RightCircleSpammer" index="1"]
+material = SubResource( 9 )
 texture = ExtResource( 4 )
 
 [node name="AnimationPlayer" parent="RightCircleSpammer" index="3"]
-anims/Death = SubResource( 2 )
+anims/Death = SubResource( 10 )
 
 [node name="BulletEmitter" parent="RightCircleSpammer/WeaponManager" index="0"]
 rotationPerVolley = 20.0
@@ -169,13 +256,13 @@ greenBulletFrequency = -1
 nthBulletIsGreen = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 ]
 
 [node name="CirclePath" type="Path2D" parent="." index="3"]
-curve = SubResource( 3 )
+curve = SubResource( 11 )
 
 [node name="LoopingPath" type="Path2D" parent="." index="4"]
-curve = SubResource( 4 )
+curve = SubResource( 12 )
 
 [node name="StraightPath" type="Path2D" parent="." index="5"]
-curve = SubResource( 5 )
+curve = SubResource( 13 )
 
 [editable path="HelixShooter"]
 [editable path="LeftPlayerShooter"]

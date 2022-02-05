@@ -13,4 +13,8 @@ func _ready():
 
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("Hostile") or area.is_in_group("Enemy"):
-		area.owner.queue_free()
+		var o = area.owner
+		if o.has_method("cleanup"):
+			o.cleanup()
+		else:
+			o.queue_free()

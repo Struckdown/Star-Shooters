@@ -169,6 +169,8 @@ func _on_ResetBtn_pressed():
 	resetControls()
 
 func displayNewInput(hbox:HBoxContainer):
+	#if hbox == null:
+	#	return
 	var action = hbox.name
 	hbox.get_child(2).text = InputMap.get_action_list(action)[0].as_text()
 #	get_node("Window/TabContainer/ControlsCtrl/ScrollContainer/VBoxContainer/" + selectedRebindableControl + "/RebindableBtn").text = event.as_text()

@@ -12,11 +12,10 @@ func _ready():
 	pass	# loaded by upgradeManager
 
 func _input(event):
-	if event is InputEventKey and event.is_pressed():
+	if GameManager.debugMode and event is InputEventKey and event.is_pressed():
 		if event.scancode == KEY_F:
-			print("Upgrade Manager: Infinite gems is disabled")
-#			setGems(9999999)
-#			print("Cheat gems acquired")
+			setGems(9999999)
+			print("Upgrade Manager: Cheat gems acquired")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

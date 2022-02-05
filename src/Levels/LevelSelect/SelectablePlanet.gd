@@ -22,6 +22,12 @@ func setupPlanetSpeed():
 	# random speed and then multiply by -1 or 1 randomly
 	planetRotationSpeed = rand_range(0.5, 1) * (rng.randi_range(0,1)*2-1)
 
+func _unhandled_input(event):
+	if GameManager.debugMode and event is InputEventKey and event.is_pressed():
+		if event.scancode == KEY_U:
+			#print("Player: Cheat mode not allowed!")
+			unlockLevel()
+			print("SelectablePlanet: Cheat mode activated, all levels unlocked")
 
 func _process(delta):
 	updateIdleAnimation(delta)

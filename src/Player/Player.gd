@@ -78,7 +78,7 @@ func _process(delta):
 	updateTeleport(delta)
 
 func _unhandled_input(event):
-	if event is InputEventKey and event.is_pressed():
+	if GameManager.debugMode and event is InputEventKey and event.is_pressed():
 		if event.scancode == KEY_G:
 			#print("Player: Cheat mode not allowed!")
 			cheatModeActive = true

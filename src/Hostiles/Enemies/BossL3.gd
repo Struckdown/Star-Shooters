@@ -50,7 +50,6 @@ func getPlayer():
 	return p
 
 func _exit_tree():
-	._exit_tree()
 	for m in spawnedMinions:
 		if is_instance_valid(m):
 			m.destroy()

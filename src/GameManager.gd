@@ -18,6 +18,7 @@ var playerFireType = playerFireTypes.FOCUSED
 var unlockedPlayerFireTypes = [playerFireTypes.FOCUSED]
 var endingToPlay = "commanderVictory"	# or federationVictory. Set by final boss decision wave
 var settingsLoaded = false	# used by Settings
+var debugMode = false
 
 var saveGameFileName = "user://savegame.save"
 signal fireModeUpdated
