@@ -19,7 +19,7 @@ func updateStats(key, valueDelta):
 	if key in stats:
 		stats[key] = stats[key] + valueDelta
 	else:
-		push_error("Tried to push an invalid stat: " + key)
+		push_warning("Tried to push an invalid stat: " + key)
 		stats[key] = valueDelta
 
 func saveGame():
@@ -35,6 +35,8 @@ func load_game():
 		return # Error! We don't have a save to load.
 	save_game.open(saveFileName, File.READ)
 	stats = parse_json(save_game.get_line())
+	if stats.size() == 0:
+		resetToDefaults()
 
 func clearSaveData():
 	var dir = Directory.new()
