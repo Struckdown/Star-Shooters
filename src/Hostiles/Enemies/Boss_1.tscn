@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Hostiles/Enemies/Boss_1.gd" type="Script" id=1]
 [ext_resource path="res://Hostiles/Enemies/Enemy_Base.tscn" type="PackedScene" id=2]
@@ -9,6 +9,78 @@
 [ext_resource path="res://Hostiles/Bullets/Wave_Bullet.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Hostiles/Bullets/OrbitalBullet.tscn" type="PackedScene" id=8]
 
+[sub_resource type="VisualShaderNodeTexture" id=1]
+source = 2
+
+[sub_resource type="VisualShaderNodeScalarUniform" id=2]
+uniform_name = "WhiteAlpha"
+
+[sub_resource type="VisualShaderNodeVectorInterp" id=3]
+
+[sub_resource type="VisualShaderNodeInput" id=4]
+input_name = "uv"
+
+[sub_resource type="VisualShader" id=5]
+code = "shader_type canvas_item;
+uniform float WhiteAlpha;
+
+
+
+void vertex() {
+// Output:0
+
+}
+
+void fragment() {
+// Input:8
+	vec3 n_out8p0 = vec3(UV, 0.0);
+
+// Texture:11
+	vec3 n_out11p0;
+	float n_out11p1;
+	{
+		vec4 _tex_read = texture(TEXTURE, n_out8p0.xy);
+		n_out11p0 = _tex_read.rgb;
+		n_out11p1 = _tex_read.a;
+	}
+
+// ScalarUniform:5
+	float n_out5p0 = WhiteAlpha;
+
+// VectorMix:6
+	vec3 n_in6p1 = vec3(1.00000, 1.00000, 1.00000);
+	vec3 n_out6p0 = mix(n_out11p0, n_in6p1, vec3(n_out5p0));
+
+// Output:0
+	COLOR.rgb = n_out6p0;
+	COLOR.a = n_out11p1;
+
+}
+
+void light() {
+// Output:0
+
+}
+"
+graph_offset = Vector2( -589.697, 75 )
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2( 260, 180 )
+nodes/fragment/5/node = SubResource( 2 )
+nodes/fragment/5/position = Vector2( -380, 340 )
+nodes/fragment/6/node = SubResource( 3 )
+nodes/fragment/6/position = Vector2( -120, 260 )
+nodes/fragment/8/node = SubResource( 4 )
+nodes/fragment/8/position = Vector2( -540, 180 )
+nodes/fragment/11/node = SubResource( 1 )
+nodes/fragment/11/position = Vector2( -340, 180 )
+nodes/fragment/connections = PoolIntArray( 5, 0, 6, 2, 6, 0, 0, 0, 8, 0, 11, 0, 11, 0, 6, 0, 11, 1, 0, 1 )
+
+[sub_resource type="ShaderMaterial" id=6]
+resource_local_to_scene = true
+shader = SubResource( 5 )
+shader_param/WhiteAlpha = 0.0
+
 [node name="Boss_1" instance=ExtResource( 2 )]
 script = ExtResource( 1 )
 pointsWorth = 2500
@@ -18,6 +90,7 @@ flyingPattern = "TBD"
 isBoss = true
 
 [node name="Sprite" parent="." index="1"]
+material = SubResource( 6 )
 texture = ExtResource( 3 )
 
 [node name="WeaponManager" parent="." index="4"]
@@ -51,9 +124,10 @@ emitting = false
 [node name="SpreadE" parent="WeaponManager/WeaponManager1" index="1" instance=ExtResource( 4 )]
 useRotationAsCenterBullet = true
 fireAtLocationForWholeClip = false
-amountOfBullets = 19
+angleOfBulletSpread = 20.0
+amountOfBullets = 16
 bulletMovementSpeed = 120.0
-bulletSpawnDelay = 0.5
+bulletSpawnDelay = 0.7
 bulletType = ExtResource( 5 )
 initialSpawnDelayRandomRange = 0.0
 emitting = false
@@ -64,9 +138,9 @@ useRotationAsCenterBullet = true
 angleOfBulletSpread = 25.0
 amountOfBullets = 8
 bulletMovementSpeed = 120.0
-bulletSpawnDelay = 0.5
+bulletSpawnDelay = 0.7
 bulletType = ExtResource( 5 )
-initialSpawnDelayConstant = 0.25
+initialSpawnDelayConstant = 0.35
 initialSpawnDelayRandomRange = 0.0
 greenBulletFrequency = 1
 makeBulletEnergizedAnywaysOdds = 0.4
