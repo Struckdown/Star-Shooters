@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Space Backgrounds/space_background_pack/ScrollingShader2.shader" type="Shader" id=1]
 [ext_resource path="res://Menus/Main Menu.gd" type="Script" id=2]
@@ -15,7 +15,6 @@
 [ext_resource path="res://Menus/Settings.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Menus/UI_ButtonHovered.wav" type="AudioStream" id=14]
 [ext_resource path="res://Menus/UI_ButtonClicked.mp3" type="AudioStream" id=15]
-[ext_resource path="res://Art Packs/Struckdown/Lock.png" type="Texture" id=16]
 [ext_resource path="res://Menus/Credits.tscn" type="PackedScene" id=17]
 
 [sub_resource type="ShaderMaterial" id=1]
@@ -476,7 +475,6 @@ __meta__ = {
 }
 
 [node name="ExtraBtns" type="VBoxContainer" parent="."]
-visible = false
 margin_left = 711.0
 margin_top = 337.0
 margin_right = 963.0
@@ -528,7 +526,6 @@ __meta__ = {
 }
 
 [node name="InfiniteBtn" type="TextureButton" parent="ExtraBtns"]
-modulate = Color( 0.537255, 0.537255, 0.537255, 1 )
 margin_top = 164.0
 margin_right = 252.0
 margin_bottom = 203.0
@@ -555,11 +552,6 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="Lock" type="Sprite" parent="ExtraBtns/InfiniteBtn"]
-position = Vector2( 125.608, 19.716 )
-scale = Vector2( 1.47247, 1.47247 )
-texture = ExtResource( 16 )
 
 [node name="BackBtn" type="TextureButton" parent="ExtraBtns"]
 margin_top = 207.0
