@@ -21,12 +21,22 @@ func spawnMinion():
 	spawnedMinions.append(minion)
 	get_parent().get_parent().add_child(minion)
 	minion.connect("wantsNewTarget", self, "assignNewMinionTarget", [minion])
+	minion.connect("destroyed", self, "onMinionDied", [minion])
 	var hanger = get_node("Sprite/cockpitBlue_" + str(hangerIndex+1))
 	minion.global_position = hanger.global_position
 	minion.global_rotation = hanger.global_rotation
 	hangerIndex = (hangerIndex+1)%2
 
+func onMinionDied(_pointsWorth, minion):
+	var i = 0
+	for m in spawnedMinions:
+		if m == minion:
+			spawnedMinions.remove(i)
+			break
+		i += 1
+
 func _on_MinionSpawnTimer_timeout():
+	print(spawnedMinions)
 	if len(spawnedMinions) < maxMinions:
 		spawnMinion()
 

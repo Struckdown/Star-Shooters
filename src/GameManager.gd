@@ -40,8 +40,9 @@ func clearSaveData():
 	unlockedPlayerFireTypes = [playerFireTypes.FOCUSED]; playerFireType = playerFireTypes.FOCUSED
 
 func resetPlayerLives():
-	var curLevel = UpgradeManager.upgrades["lives"]["curLevel"]
-	playerLives = UpgradeManager.upgrades["lives"]["upgradeLevels"][curLevel]	#called whenever level select is hit?
+	if "lives" in UpgradeManager.upgrades:
+		var curLevel = UpgradeManager.upgrades["lives"]["curLevel"]
+		playerLives = UpgradeManager.upgrades["lives"]["upgradeLevels"][curLevel]	#called whenever level select is hit?
 
 
 func updateStagesCompleted(level:String, newScore:int):	# level is an int converted to a string
