@@ -31,8 +31,8 @@ func _unhandled_input(event):
 #		InputMap.action_erase_event(selectedRebindableControl, actions[-1])
 		InputMap.action_add_event(selectedRebindableControl, event)
 		displayNewInput(selectedRebindableHBox, OS.get_scancode_string(event.scancode))
-		GameManager.config.set_value("input", selectedRebindableControl, event.scancode)
-		GameManager.saveGame()
+		GameManager.config.set_value("input", selectedRebindableControl, event)
+		GameManager.saveConfig()
 		$Window/RebindControlsSelector.hide()
 		selectedRebindableHBox = null
 		selectedRebindableControl = null

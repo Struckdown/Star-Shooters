@@ -88,6 +88,10 @@ func load_game():
 	unlockedPlayerFireTypes = save_game.get_var()
 	save_game.close()
 
+func saveConfig():
+	#for action in InputMap.get_actions():
+		#config.set_value("input", action, InputMap.get_action_list(action)[0])
+	config.save(optionsFileName)
 
 func switchToNextFireMode():
 	var index = unlockedPlayerFireTypes.find(playerFireType)
@@ -133,7 +137,7 @@ func loadSettings():
 		setBusAudio("SFX", sfx)
 		
 		for action in InputMap.get_actions():
-			var scannedCode = int(config.get_value("input", action, 0))
+			var scannedCode = config.get_value("input", action, 0).scancode
 			if scannedCode in [null, 0]:
 				continue
 			var inputEventKey = InputEventKey.new()
