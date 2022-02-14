@@ -25,6 +25,9 @@ var optionsFileName = "user://player.perfs"
 signal fireModeUpdated
 signal controlsChanged
 
+func _unhandled_input(event):
+	if event.is_action_pressed("fullscreen"):
+		OS.window_fullscreen = !OS.window_fullscreen
 
 func _ready():
 	load_game()
