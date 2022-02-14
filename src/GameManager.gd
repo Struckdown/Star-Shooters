@@ -46,6 +46,8 @@ func resetPlayerLives():
 	if "lives" in UpgradeManager.upgrades:
 		var curLevel = UpgradeManager.upgrades["lives"]["curLevel"]
 		playerLives = UpgradeManager.upgrades["lives"]["upgradeLevels"][curLevel]	#called whenever level select is hit?
+	else:
+		playerLives = 3
 
 
 func updateStagesCompleted(level:String, newScore:int):	# level is an int converted to a string
@@ -68,7 +70,6 @@ func saveGame():
 	save_game.store_var(mapPlayerLastPos)
 	save_game.store_var(mapPlayerLastRot)
 	save_game.store_var(unlockedPlayerFireTypes)
-	config.save(optionsFileName)
 	save_game.close()
 	return
 
@@ -147,7 +148,7 @@ func setBusAudio(bus, value):
 	var val = value#BGM.normalizeValToDB(value)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), val)
 	config.set_value("audio", bus, val)
-	saveGame()
+	config.save(optionsFileName)
 
 func getActionString(action): 
 	return config.get_value("input", action, null)
@@ -155,4 +156,6 @@ func getActionString(action):
 func resetControls():
 	InputMap.load_from_globals()
 	emit_signal("controlsChanged")
-	saveGame()
+	for action in InputMap.get_actions():
+		config.set_value("input", action, InputMap.get_action_list(action)[0])
+	config.save(optionsFileName)

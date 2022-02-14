@@ -72,6 +72,7 @@ func loadSettings():
 	$Window/TabContainer/General/VBoxContainer/HBoxContainer2/HSliderSFX.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))
 	$Window/TabContainer/General/VBoxContainer/HBoxContainer3/HSliderSpeed.value = GameManager.gameSpeed
 	$Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox2.pressed = GameManager.instaKillMode
+	$Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox.pressed = OS.window_fullscreen
 	updateControlsDisplay()
 
 

@@ -30,5 +30,7 @@ func _on_DisplayArea2D_area_entered(area):
 
 
 func _on_DisplayArea2D_area_exited(area):
-	if area.owner.is_in_group("Player"):
-		$AnimationPlayer.play_backwards("DisplayLevelInfo")
+	var o = area.owner
+	if is_instance_valid(o):
+		if area.owner.is_in_group("Player"):
+			$AnimationPlayer.play_backwards("DisplayLevelInfo")

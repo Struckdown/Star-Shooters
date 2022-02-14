@@ -26,6 +26,7 @@ func saveGame():
 	var save_game = File.new()
 	save_game.open(saveFileName, File.WRITE)
 	save_game.store_line(to_json(stats))
+	save_game.close()
 
 func load_game():
 	var save_game = File.new()
@@ -37,6 +38,7 @@ func load_game():
 	stats = parse_json(save_game.get_line())
 	if stats.size() == 0:
 		resetToDefaults()
+	save_game.close()
 
 func clearSaveData():
 	var dir = Directory.new()

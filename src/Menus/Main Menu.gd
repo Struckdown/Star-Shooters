@@ -11,6 +11,7 @@ var backgrounds = [
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	GameManager.resetPlayerLives()
 	randomize()
 	var i = randi() % (backgrounds.size()-1)
 	var bg = backgrounds[i]

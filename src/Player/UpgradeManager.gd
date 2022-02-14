@@ -32,6 +32,7 @@ func saveGame():
 	save_game.open(saveFileName, File.WRITE)
 	save_game.store_var(upgrades)
 	save_game.store_var(gems)
+	save_game.close()
 
 	
 
@@ -43,6 +44,7 @@ func load_game():
 	save_game.open(saveFileName, File.READ)
 	upgrades = save_game.get_var()
 	gems = save_game.get_var()
+	save_game.close()
 
 func clearSaveData():
 	var dir = Directory.new()

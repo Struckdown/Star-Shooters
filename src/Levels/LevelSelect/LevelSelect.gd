@@ -7,6 +7,7 @@ var nearUpgradePlanet = null
 var nearStatsZone = null	# in case we have multiple?
 
 func _ready():
+	GameManager.saveGame()
 	GameManager.skipDialogue = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	GameManager.resetPlayerLives()	# Maybe move lives out of gamemanager into level manager?
