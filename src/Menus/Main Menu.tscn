@@ -475,6 +475,7 @@ __meta__ = {
 }
 
 [node name="ExtraBtns" type="VBoxContainer" parent="."]
+visible = false
 margin_left = 711.0
 margin_top = 337.0
 margin_right = 963.0

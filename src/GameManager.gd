@@ -121,8 +121,8 @@ func setGameMode(newGameMode:int) -> void:
 func loadSettings():
 	var err = config.load(optionsFileName)
 	if not err:	# if file exists, try to load it
-		var bgm = config.get_value("audio", "bgm", 80.0)	# 80 is default if this value is missing for some reason
-		var sfx = config.get_value("audio", "sfx", 80.0)
+		var bgm = config.get_value("audio", "BGM", -10.0)	# -10 is default if this value is missing for some reason
+		var sfx = config.get_value("audio", "SFX", -10.0)
 		gameSpeed = config.get_value("gameplay", "speed", 1)
 		instaKillMode = config.get_value("gameplay", "instakill", false)
 		setBusAudio("BGM", bgm)
@@ -141,7 +141,7 @@ func loadSettings():
 		resetControls()
 
 func setBusAudio(bus, value):
-	var val = BGM.normalizeValToDB(value)
+	var val = value#BGM.normalizeValToDB(value)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus), val)
 	config.set_value("audio", bus, val)
 	saveGame()

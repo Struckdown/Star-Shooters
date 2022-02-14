@@ -214,8 +214,10 @@ focus_neighbour_top = NodePath("../../../../../ResumeBtn")
 focus_neighbour_bottom = NodePath("../../HBoxContainer2/HSliderSFX")
 size_flags_horizontal = 3
 size_flags_vertical = 4
+min_value = -60.0
+max_value = 0.0
 step = 5.0
-value = 100.0
+value = -10.0
 tick_count = 10
 ticks_on_borders = true
 
@@ -277,8 +279,10 @@ focus_neighbour_top = NodePath("../../HBoxContainer/HSliderMusic")
 focus_neighbour_bottom = NodePath("../../HBoxContainer3/HSliderSpeed")
 size_flags_horizontal = 3
 size_flags_vertical = 6
+min_value = -60.0
+max_value = 0.0
 step = 5.0
-value = 100.0
+value = -10.0
 tick_count = 10
 ticks_on_borders = true
 
