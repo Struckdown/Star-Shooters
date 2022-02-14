@@ -161,4 +161,12 @@ func _on_RetryMenu_retry():
 
 
 func _on_RetryMenu_backToMap():
-	SceneTransition.transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")
+	match GameManager.gameMode:
+		GameManager.gamesModes.INFINITE:
+			SceneTransition.transitionToScene("res://Menus/Main Menu.tscn")
+		GameManager.gamesModes.BOSSRUSH:
+			SceneTransition.transitionToScene("res://Menus/Main Menu.tscn")
+		GameManager.gamesModes.TUTORIAL:
+			SceneTransition.transitionToScene("res://Menus/Main Menu.tscn")
+		GameManager.gamesModes.STORY:
+			SceneTransition.transitionToScene("res://Levels/LevelSelect/LevelSelect.tscn")

@@ -132,7 +132,6 @@ margin_left = 389.0
 margin_top = 272.0
 margin_right = 635.0
 margin_bottom = 328.0
-rect_scale = Vector2( 1, 1e-05 )
 rect_pivot_offset = Vector2( 123, 28 )
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.870588, 0.0392157, 0.0392157, 1 )
