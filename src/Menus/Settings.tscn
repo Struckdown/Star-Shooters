@@ -696,7 +696,7 @@ margin_bottom = 522.0
 margin_right = 902.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
-focus_neighbour_top = NodePath("../../switchWeapons/RebindableBtn")
+focus_neighbour_top = NodePath("../../ui_accept/RebindableBtn")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource( 5 )
@@ -790,12 +790,12 @@ bus = "SFX"
 [connection signal="value_changed" from="Window/TabContainer/General/VBoxContainer/HBoxContainer3/HSliderSpeed" to="." method="_on_HSliderSpeed_value_changed"]
 [connection signal="toggled" from="Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox" to="." method="_on_Checkbox_toggled"]
 [connection signal="toggled" from="Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox2" to="." method="_on_Checkbox2_toggled"]
-[connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_up/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "move_up" ]]
-[connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_left/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "move_left" ]]
-[connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_down/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "move_down" ]]
-[connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_right/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "move_right" ]]
-[connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_slow/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "move_slow" ]]
-[connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/fire/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "fire" ]]
-[connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/switchWeapons/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "switchWeapons" ]]
-[connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_accept/RebindableBtn" to="." method="_on_RebindableBtn_pressed" binds= [ "ui_accept" ]]
+[connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_up/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "move_up" ]]
+[connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_left/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "move_left" ]]
+[connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_down/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "move_down" ]]
+[connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_right/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "move_right" ]]
+[connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_slow/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "move_slow" ]]
+[connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/fire/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "fire" ]]
+[connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/switchWeapons/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "switchWeapons" ]]
+[connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_accept/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "ui_accept" ]]
 [connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/Reset/ResetBtn" to="." method="_on_ResetBtn_pressed"]

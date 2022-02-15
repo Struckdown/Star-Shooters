@@ -22,11 +22,14 @@ func _input(event):
 	if event.is_action_pressed("ui_change_tabs") and visible:
 		var tabNumber = $Window/TabContainer.current_tab
 		$Window/TabContainer.current_tab = (tabNumber+1)%$Window/TabContainer.get_child_count()
-		$Window/ResumeBtn.call_deferred("grab_focus")
+		if tabNumber == 1:
+			$Window/ResumeBtn.call_deferred("grab_focus")
+		else:
+			$Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_up/RebindableBtn.call_deferred("grab_focus")
 
 
 func _unhandled_input(event):
-	if $Window/RebindControlsSelector.visible:
+	if $Window/RebindControlsSelector.visible and not event.is_pressed():
 		InputMap.action_erase_events(selectedRebindableControl)
 #		InputMap.action_erase_event(selectedRebindableControl, actions[-1])
 		InputMap.action_add_event(selectedRebindableControl, event)
@@ -34,6 +37,7 @@ func _unhandled_input(event):
 		GameManager.config.set_value("input", selectedRebindableControl, event)
 		GameManager.saveConfig()
 		$Window/RebindControlsSelector.hide()
+		selectedRebindableHBox.get_child(2).grab_focus()
 		selectedRebindableHBox = null
 		selectedRebindableControl = null
 
@@ -90,15 +94,6 @@ func _on_Checkbox2_toggled(button_pressed):
 	GameManager.instaKillMode = button_pressed
 
 
-func _on_RebindableBtn_pressed(rebindableControl):
-	selectedRebindableControl = rebindableControl
-	var focusOwner = get_focus_owner()
-	if focusOwner:
-		focusOwner.release_focus()
-	selectedRebindableHBox = get_node("Window/TabContainer/Controls/ScrollContainer/VBoxContainer/" + selectedRebindableControl)
-	$Window/RebindControlsSelector.show()
-	$Window/RebindControlsSelector/RebindInstructionsBG/RebindInstructions.text = "Press the new input for: " + selectedRebindableHBox.get_child(0).text
-
 func updateControlsDisplay():
 	for action in InputMap.get_actions():
 		if has_node("Window/TabContainer/Controls/ScrollContainer/VBoxContainer/" + action):
@@ -112,3 +107,14 @@ func displayNewInput(hbox:HBoxContainer, text):
 	if hbox == null or text == null:
 		return
 	hbox.get_child(2).text = str(text)
+
+
+func _on_RebindableBtn_button_up(rebindableControl):
+	get_tree().set_input_as_handled()
+	selectedRebindableControl = rebindableControl
+	var focusOwner = get_focus_owner()
+	if focusOwner:
+		focusOwner.release_focus()
+	selectedRebindableHBox = get_node("Window/TabContainer/Controls/ScrollContainer/VBoxContainer/" + selectedRebindableControl)
+	$Window/RebindControlsSelector.show()
+	$Window/RebindControlsSelector/RebindInstructionsBG/RebindInstructions.text = "Press the new input for: " + selectedRebindableHBox.get_child(0).text
