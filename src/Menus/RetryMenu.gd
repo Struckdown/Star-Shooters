@@ -47,6 +47,7 @@ func _on_RetryBtn_mouse_entered():
 
 func display():
 	$AnimationPlayer.play("Show")
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 
 func _on_AnimationPlayer_animation_finished(_anim_name):
