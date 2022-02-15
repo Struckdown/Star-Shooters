@@ -12,7 +12,7 @@ var mapPlayerLastPos = Vector2(496.063, 303.194)
 var mapPlayerLastRot = 0
 var gameSpeed = 1	#1 is normal speed
 var instaKillMode = false
-var skipDialogue = false	# set on game over to true and reset on level select entered
+var skipDialogue = -1	# what wave to skip dialogue upto (and including). Set on game over to waveNum and reset on level select entered
 enum playerFireTypes{SPREAD,CHARGE,FOCUSED,REVERSE}
 var playerFireType = playerFireTypes.FOCUSED
 var unlockedPlayerFireTypes = [playerFireTypes.FOCUSED]

@@ -8,7 +8,7 @@ var nearStatsZone = null	# in case we have multiple?
 
 func _ready():
 	GameManager.saveGame()
-	GameManager.skipDialogue = false
+	GameManager.skipDialogue = -1
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	GameManager.resetPlayerLives()	# Maybe move lives out of gamemanager into level manager?
 	for level in $Levels.get_children():

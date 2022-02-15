@@ -90,7 +90,10 @@ func spawnWave():
 			yield(get_tree().create_timer(curWave.dialogueRequestDelay), "timeout")
 			if curWave.waveAdvanceCondition == "dialogue":
 				dialogueBoxRef.connect("finished", curWave, "markWaveFinished")
-			dialogueBoxRef.setUpNewSequence(curWave.dialogueRequest)
+			if GameManager.skipDialogue >= waveNum:
+				curWave.markWaveFinished()
+			else:
+				dialogueBoxRef.setUpNewSequence(curWave.dialogueRequest)
 
 	else:
 		pass
@@ -156,7 +159,7 @@ func _on_Game_Over_gameOverAnimationFinished():
 	
 
 func _on_RetryMenu_retry():
-	GameManager.skipDialogue = true
+	GameManager.skipDialogue = waveNum
 	SceneTransition.transitionToScene("res://Levels/Stages/MainWorld.tscn")	# all the properties should already be set, so this should reload the level
 
 

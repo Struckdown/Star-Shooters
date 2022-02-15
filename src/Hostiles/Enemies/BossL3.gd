@@ -36,7 +36,6 @@ func onMinionDied(_pointsWorth, minion):
 		i += 1
 
 func _on_MinionSpawnTimer_timeout():
-	print(spawnedMinions)
 	if len(spawnedMinions) < maxMinions:
 		spawnMinion()
 

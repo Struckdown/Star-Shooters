@@ -131,7 +131,7 @@ func move(d):
 				if len(target) > 0:
 					target = target[0]
 				emit_signal("wantsNewTarget")
-			if distToTarget > 0 and distToTarget <= 4000:
+			if distToTarget > 0 and distToTarget <= 8000:
 				emit_signal("wantsNewTarget")
 			acceleration = Vector2(deltaSpeed, 0).rotated(rotation) * deltaSpeed
 			rotation += min(abs(deltaAngle), deg2rad(turningRateDeg)) * sign(deltaAngle)

@@ -47,9 +47,6 @@ func _input(event):
 
 
 func setUpNewSequence(key):
-	if GameManager.skipDialogue:
-		emit_signal("finished")
-		return
 	if key == "":
 		return
 	dialogueIndex = -1
