@@ -33,6 +33,8 @@ func calculateGameCompletion():
 	var levelsComplete = len(GameManager.stagesCompletedData)
 	if "BossRush" in GameManager.stagesCompletedData:	# boss rush is not counted as a main level.
 		levelsComplete -= 1
+	if "Infinite" in GameManager.stagesCompletedData:	# neither is infinite mode
+		levelsComplete -= 1
 	var prevPercentage = StatsManager.stats["gameCompletion"]
 	var percentage = float(levelsComplete) / float(totalLevels) * 100
 	StatsManager.updateStats("gameCompletion", percentage-prevPercentage)

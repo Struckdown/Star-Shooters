@@ -40,3 +40,13 @@ func markShieldBotDestroyed():
 	if activeShieldBots <= 0:
 		activeShieldBots = 0
 		setShield(false)
+
+
+func _on_CheckForShieldsTimer_timeout():
+	activeShieldBots = 0
+	for bot in shieldBotSpawners:
+		if bot.shieldBotRef != null:
+			activeShieldBots += 1
+	if activeShieldBots <= 0:
+		activeShieldBots = 0
+		setShield(false)

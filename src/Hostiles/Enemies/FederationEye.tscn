@@ -206,4 +206,9 @@ shape = SubResource( 7 )
 [node name="ShieldAnimationPlayer" type="AnimationPlayer" parent="ShieldRoot" index="3"]
 anims/activate = SubResource( 8 )
 
+[node name="CheckForShieldsTimer" type="Timer" parent="." index="9"]
+wait_time = 2.0
+autostart = true
+
 [connection signal="startedNextHealthPhase" from="WeaponManager" to="." method="_on_WeaponManager_startedNextHealthPhase"]
+[connection signal="timeout" from="CheckForShieldsTimer" to="." method="_on_CheckForShieldsTimer_timeout"]
