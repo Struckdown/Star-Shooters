@@ -452,7 +452,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer"]
 margin_right = 914.0
-margin_bottom = 588.0
+margin_bottom = 918.0
 size_flags_horizontal = 3
 
 [node name="move_up" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
@@ -687,6 +687,151 @@ size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 9 )
 text = "Space"
 
+[node name="ui_select" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
+margin_top = 396.0
+margin_right = 902.0
+margin_bottom = 458.0
+size_flags_horizontal = 3
+
+[node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_select"]
+margin_top = 4.0
+margin_right = 447.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 9 )
+text = "UI Select"
+
+[node name="Spacer" type="TextureRect" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_select"]
+margin_left = 451.0
+margin_right = 674.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_select"]
+margin_left = 678.0
+margin_right = 902.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "Space"
+
+[node name="ui_up" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
+margin_top = 396.0
+margin_right = 902.0
+margin_bottom = 458.0
+size_flags_horizontal = 3
+
+[node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_up"]
+margin_top = 4.0
+margin_right = 447.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 9 )
+text = "UI Up"
+
+[node name="Spacer" type="TextureRect" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_up"]
+margin_left = 451.0
+margin_right = 674.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_up"]
+margin_left = 678.0
+margin_right = 902.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "Space"
+
+[node name="ui_left" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
+margin_top = 396.0
+margin_right = 902.0
+margin_bottom = 458.0
+size_flags_horizontal = 3
+
+[node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_left"]
+margin_top = 4.0
+margin_right = 447.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 9 )
+text = "UI Left"
+
+[node name="Spacer" type="TextureRect" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_left"]
+margin_left = 451.0
+margin_right = 674.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_left"]
+margin_left = 678.0
+margin_right = 902.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "Space"
+
+[node name="ui_down" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
+margin_top = 396.0
+margin_right = 902.0
+margin_bottom = 458.0
+size_flags_horizontal = 3
+
+[node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_down"]
+margin_top = 4.0
+margin_right = 447.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 9 )
+text = "UI Down"
+
+[node name="Spacer" type="TextureRect" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_down"]
+margin_left = 451.0
+margin_right = 674.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_down"]
+margin_left = 678.0
+margin_right = 902.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "Space"
+
+[node name="ui_right" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
+margin_top = 396.0
+margin_right = 902.0
+margin_bottom = 458.0
+size_flags_horizontal = 3
+
+[node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_right"]
+margin_top = 4.0
+margin_right = 447.0
+margin_bottom = 58.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+custom_fonts/font = ExtResource( 9 )
+text = "UI Right"
+
+[node name="Spacer" type="TextureRect" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_right"]
+margin_left = 451.0
+margin_right = 674.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+
+[node name="RebindableBtn" type="ToolButton" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_right"]
+margin_left = 678.0
+margin_right = 902.0
+margin_bottom = 62.0
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 9 )
+text = "Space"
+
 [node name="Reset" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
 margin_top = 462.0
 margin_right = 902.0
@@ -696,7 +841,6 @@ margin_bottom = 522.0
 margin_right = 902.0
 margin_bottom = 60.0
 rect_min_size = Vector2( 0, 60 )
-focus_neighbour_top = NodePath("../../ui_accept/RebindableBtn")
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource( 5 )
@@ -798,4 +942,9 @@ bus = "SFX"
 [connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/fire/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "fire" ]]
 [connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/switchWeapons/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "switchWeapons" ]]
 [connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_accept/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "ui_accept" ]]
+[connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_select/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "ui_select" ]]
+[connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_up/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "ui_up" ]]
+[connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_left/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "ui_left" ]]
+[connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_down/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "ui_down" ]]
+[connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_right/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "ui_right" ]]
 [connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/Reset/ResetBtn" to="." method="_on_ResetBtn_pressed"]

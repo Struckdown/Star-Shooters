@@ -26,7 +26,7 @@ func _exit_tree():
 	GameManager.saveGame()
 
 func _input(event):
-	if event.is_action_pressed("fire"):
+	if event.is_action_pressed("ui_select"):
 		if selectedLevel != null and not $CanvasLayer/MissionBriefing.visible:	# check if near level
 			#$CanvasLayer/MissionBriefing.show()
 			$CanvasLayer/MissionBriefing.playDisplayAnimation("forwards")
