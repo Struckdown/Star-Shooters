@@ -88,7 +88,7 @@ __meta__ = {
 
 [node name="VBoxContainer" type="VBoxContainer" parent="WindowTexture/ScrollContainer"]
 margin_right = 894.0
-margin_bottom = 845.0
+margin_bottom = 875.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -104,10 +104,11 @@ mostly as a solo project
 
 Special thanks to
 Isaac Cantine (Writing direction, player spaceship graphic)
+Samuel Anderson (Lead playtesting)
 The Games Den
 Alberta Game Developers
 
-Assets sourced from:
+Other assets sourced from:
 Kenney.nl
 Satur9
 Master484

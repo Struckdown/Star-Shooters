@@ -1,6 +1,6 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
-[ext_resource path="res://Hostiles/Enemies/Asteroid.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Hostiles/Enemies/ShieldBotSpawner.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Hostiles/Boss HP.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Player/PlayerSpawner.tscn" type="PackedScene" id=4]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Levels/Game Over.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Levels/LevelWon.tscn" type="PackedScene" id=10]
 [ext_resource path="res://Player/Scoreboard.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Hostiles/Enemies/FederationEye.tscn" type="PackedScene" id=12]
 
 [node name="TestW" type="Node2D"]
 
@@ -89,5 +90,12 @@ margin_right = -423.0
 margin_bottom = -128.0
 mouse_filter = 1
 
-[node name="Asteroid" parent="." instance=ExtResource( 1 )]
-position = Vector2( 203.647, 470.227 )
+[node name="FederationEye" parent="." instance=ExtResource( 12 )]
+position = Vector2( 420.5, 214 )
+shieldBotSpawners = [ NodePath("../ShieldBotSpawner"), NodePath("../ShieldBotSpawner2") ]
+
+[node name="ShieldBotSpawner" parent="." instance=ExtResource( 1 )]
+position = Vector2( 203.354, 259.247 )
+
+[node name="ShieldBotSpawner2" parent="." instance=ExtResource( 1 )]
+position = Vector2( 661.794, 184.327 )

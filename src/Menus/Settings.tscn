@@ -150,6 +150,7 @@ __meta__ = {
 }
 
 [node name="General" type="Control" parent="Window/TabContainer"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 14.0
@@ -659,9 +660,9 @@ custom_fonts/font = ExtResource( 9 )
 text = "R"
 
 [node name="ui_accept" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
-margin_top = 396.0
+margin_top = 462.0
 margin_right = 902.0
-margin_bottom = 458.0
+margin_bottom = 524.0
 size_flags_horizontal = 3
 
 [node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_accept"]
@@ -688,9 +689,9 @@ custom_fonts/font = ExtResource( 9 )
 text = "Space"
 
 [node name="ui_select" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
-margin_top = 396.0
+margin_top = 528.0
 margin_right = 902.0
-margin_bottom = 458.0
+margin_bottom = 590.0
 size_flags_horizontal = 3
 
 [node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_select"]
@@ -717,9 +718,9 @@ custom_fonts/font = ExtResource( 9 )
 text = "Space"
 
 [node name="ui_up" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
-margin_top = 396.0
+margin_top = 594.0
 margin_right = 902.0
-margin_bottom = 458.0
+margin_bottom = 656.0
 size_flags_horizontal = 3
 
 [node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_up"]
@@ -746,9 +747,9 @@ custom_fonts/font = ExtResource( 9 )
 text = "Space"
 
 [node name="ui_left" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
-margin_top = 396.0
+margin_top = 660.0
 margin_right = 902.0
-margin_bottom = 458.0
+margin_bottom = 722.0
 size_flags_horizontal = 3
 
 [node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_left"]
@@ -775,9 +776,9 @@ custom_fonts/font = ExtResource( 9 )
 text = "Space"
 
 [node name="ui_down" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
-margin_top = 396.0
+margin_top = 726.0
 margin_right = 902.0
-margin_bottom = 458.0
+margin_bottom = 788.0
 size_flags_horizontal = 3
 
 [node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_down"]
@@ -804,9 +805,9 @@ custom_fonts/font = ExtResource( 9 )
 text = "Space"
 
 [node name="ui_right" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
-margin_top = 396.0
+margin_top = 792.0
 margin_right = 902.0
-margin_bottom = 458.0
+margin_bottom = 854.0
 size_flags_horizontal = 3
 
 [node name="ActionLbl" type="Label" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_right"]
@@ -833,9 +834,9 @@ custom_fonts/font = ExtResource( 9 )
 text = "Space"
 
 [node name="Reset" type="HBoxContainer" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer"]
-margin_top = 462.0
+margin_top = 858.0
 margin_right = 902.0
-margin_bottom = 522.0
+margin_bottom = 918.0
 
 [node name="ResetBtn" type="TextureButton" parent="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/Reset"]
 margin_right = 902.0
@@ -860,6 +861,53 @@ custom_fonts/font = ExtResource( 2 )
 text = "Reset Controls"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Graphics" type="Control" parent="Window/TabContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 14.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window/TabContainer/Graphics"]
+margin_left = 26.0
+margin_top = 23.0
+margin_right = 990.0
+margin_bottom = 364.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Window/TabContainer/Graphics/VBoxContainer"]
+margin_right = 964.0
+margin_bottom = 27.0
+
+[node name="UseLightsLbl" type="Label" parent="Window/TabContainer/Graphics/VBoxContainer/HBoxContainer"]
+margin_right = 640.0
+margin_bottom = 27.0
+rect_min_size = Vector2( 140, 0 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 9 )
+text = "Enable Glow"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UseLightsCheckbox" type="CheckBox" parent="Window/TabContainer/Graphics/VBoxContainer/HBoxContainer"]
+margin_left = 644.0
+margin_right = 964.0
+margin_bottom = 27.0
+focus_neighbour_top = NodePath("../../HBoxContainer3/HSliderSpeed")
+focus_neighbour_bottom = NodePath("../../../../../ResumeBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+align = 1
+expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -948,3 +996,4 @@ bus = "SFX"
 [connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_down/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "ui_down" ]]
 [connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_right/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "ui_right" ]]
 [connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/Reset/ResetBtn" to="." method="_on_ResetBtn_pressed"]
+[connection signal="toggled" from="Window/TabContainer/Graphics/VBoxContainer/HBoxContainer/UseLightsCheckbox" to="." method="_on_UseLightsCheckbox_toggled"]

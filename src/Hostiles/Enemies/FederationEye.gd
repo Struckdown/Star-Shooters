@@ -14,6 +14,8 @@ func _ready():
 
 
 func setShield(active:bool):
+	if shieldIsActive == active:
+		return
 	shieldIsActive = active
 	if active:
 		$ShieldRoot/ShieldAnimationPlayer.play("activate")
@@ -45,7 +47,8 @@ func markShieldBotDestroyed():
 func _on_CheckForShieldsTimer_timeout():
 	activeShieldBots = 0
 	for bot in shieldBotSpawners:
-		if bot.shieldBotRef != null:
+		var shieldBotRef = get_node(bot).shieldBotRef
+		if is_instance_valid(shieldBotRef):
 			activeShieldBots += 1
 	if activeShieldBots <= 0:
 		activeShieldBots = 0

@@ -19,6 +19,7 @@ var unlockedPlayerFireTypes = [playerFireTypes.FOCUSED]
 var endingToPlay = "commanderVictory"	# or federationVictory. Set by final boss decision wave
 var debugMode = false
 var config = ConfigFile.new()
+var usesGlow = true
 
 var saveGameFileName = "user://savegame.save"
 var optionsFileName = "user://player.perfs"
@@ -136,6 +137,11 @@ func loadSettings():
 		setBusAudio("BGM", bgm)
 		setBusAudio("SFX", sfx)
 		
+		# Set Graphics
+		usesGlow = config.get_value("graphics", "glowEnabled", true)
+		GlobalWorldEnvironment.environment.glow_enabled = usesGlow
+		
+		# Set Inputs
 		for action in InputMap.get_actions():
 			var scannedCode = config.get_value("input", action, 0).scancode
 			if scannedCode in [null, 0]:
@@ -162,4 +168,8 @@ func resetControls():
 	emit_signal("controlsChanged")
 	for action in InputMap.get_actions():
 		config.set_value("input", action, InputMap.get_action_list(action)[0])
+	config.save(optionsFileName)
+
+func updateGraphicSettings(key, value):
+	config.set_value("graphics", key, value)
 	config.save(optionsFileName)

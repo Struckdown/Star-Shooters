@@ -77,6 +77,7 @@ func loadSettings():
 	$Window/TabContainer/General/VBoxContainer/HBoxContainer3/HSliderSpeed.value = GameManager.gameSpeed
 	$Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox2.pressed = GameManager.instaKillMode
 	$Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox.pressed = OS.window_fullscreen
+	$Window/TabContainer/Graphics/VBoxContainer/HBoxContainer/UseLightsCheckbox.pressed = GameManager.usesGlow
 	updateControlsDisplay()
 
 
@@ -118,3 +119,9 @@ func _on_RebindableBtn_button_up(rebindableControl):
 	selectedRebindableHBox = get_node("Window/TabContainer/Controls/ScrollContainer/VBoxContainer/" + selectedRebindableControl)
 	$Window/RebindControlsSelector.show()
 	$Window/RebindControlsSelector/RebindInstructionsBG/RebindInstructions.text = "Press the new input for: " + selectedRebindableHBox.get_child(0).text
+
+
+func _on_UseLightsCheckbox_toggled(button_pressed):
+	GlobalWorldEnvironment.environment.glow_enabled = button_pressed
+	GameManager.updateGraphicSettings("glowEnabled", button_pressed)
+	
