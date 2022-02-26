@@ -50,3 +50,4 @@ func _on_CheckForShieldsTimer_timeout():
 	if activeShieldBots <= 0:
 		activeShieldBots = 0
 		setShield(false)
+	$CheckForShieldsTimer.start()

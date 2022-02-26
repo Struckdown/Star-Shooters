@@ -30,6 +30,7 @@ var hasEverBeenInBounds = false
 var bouncesRemaining = 0
 var directionVectorMultiplier = Vector2(1, 1)	# used for bounces
 var energyAmountToGenerate = 25.0
+var noEnergySprite
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -74,6 +75,7 @@ func setGeneratesEnergy(generates):
 
 func changeEnergySprite():
 	if energySprite:
+		noEnergySprite = get_node("Sprite").texture.resource_path
 		get_node("Sprite").texture = load(energySprite)
 
 
@@ -106,6 +108,7 @@ func markEnergyDrained():
 	if $Area2D.is_in_group("generatesEnergy"):
 		$Area2D.remove_from_group("generatesEnergy")
 		modulate = modulate*0.8
+		get_node("Sprite").texture = load(noEnergySprite)
 
 
 func _on_EndOfLifeTween_tween_completed(_object, _key):
