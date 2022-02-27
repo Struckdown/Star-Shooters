@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Hostiles/Bullets/Bullet_Base.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Space Shooter Redux/PNG/Lasers/laserBlue01.png" type="Texture" id=2]
+[ext_resource path="res://Space Shooter Redux/PNG/Lasers/laserBlue06.png" type="Texture" id=2]
 
 [sub_resource type="Curve" id=1]
 _data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0 ]
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 1.22021
-height = 12.2553
+radius = 2.20166
+height = 7.23178
 
 [node name="Bullet_Straight" instance=ExtResource( 1 )]
 energySprite = "res://Space Shooter Redux/PNG/Lasers/laserRed06.png"

@@ -132,7 +132,7 @@ fireAtLocationForWholeClip = false
 amountOfBullets = 9
 bulletScale = Vector2( 3, 1 )
 bulletType = ExtResource( 6 )
-makeBulletEnergizedAnywaysOdds = 1.0
+makeBulletEnergizedAnywaysOdds = 0.4
 
 [node name="BulletEmitterWide" parent="WeaponManager/Phase1" index="1" instance=ExtResource( 5 )]
 rotationPerVolley = 7.0
@@ -141,7 +141,7 @@ angleOfBulletSpread = 40.0
 amountOfBullets = 9
 bulletScale = Vector2( 1, 20 )
 bulletType = ExtResource( 6 )
-makeBulletEnergizedAnywaysOdds = 0.9
+makeBulletEnergizedAnywaysOdds = 0.7
 
 [node name="Phase2" parent="WeaponManager" index="1" instance=ExtResource( 7 )]
 phaseSwapMode = "time"
@@ -157,7 +157,7 @@ amountOfBullets = 9
 bulletMovementSpeed = 150.0
 bulletScale = Vector2( 5, 1 )
 bulletType = ExtResource( 6 )
-makeBulletEnergizedAnywaysOdds = 1.0
+makeBulletEnergizedAnywaysOdds = 0.4
 
 [node name="BulletEmitterOrbiter" parent="WeaponManager/Phase2" index="1" instance=ExtResource( 5 )]
 rotationPerVolley = 7.0
@@ -168,7 +168,7 @@ bulletScale = Vector2( 3, 3 )
 bulletSpawnDelay = 4.0
 bulletType = ExtResource( 8 )
 initialSpawnDelayRandomRange = 0.0
-makeBulletEnergizedAnywaysOdds = 0.9
+makeBulletEnergizedAnywaysOdds = 1.0
 orbitalChildren = 15
 
 [node name="BulletEmitterOrbiter2" parent="WeaponManager/Phase2/BulletEmitterOrbiter" index="2" instance=ExtResource( 5 )]
