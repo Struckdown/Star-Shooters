@@ -378,37 +378,10 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="FullscreenLbl" type="Label" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer4"]
-margin_top = 27.0
-margin_right = 211.0
-margin_bottom = 54.0
-rect_min_size = Vector2( 140, 0 )
-size_flags_horizontal = 3
-custom_fonts/font = SubResource( 9 )
-text = "Full Screen"
-align = 1
-valign = 1
-autowrap = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="Checkbox" type="CheckBox" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer4"]
-margin_left = 215.0
-margin_right = 426.0
-margin_bottom = 82.0
-focus_neighbour_top = NodePath("../../HBoxContainer3/HSliderSpeed")
-focus_neighbour_bottom = NodePath("../../../../../ResumeBtn")
-size_flags_horizontal = 3
-size_flags_vertical = 3
-align = 1
-expand_icon = true
-
 [node name="InstaKillLbl" type="Label" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer4"]
-margin_left = 430.0
-margin_top = 12.0
-margin_right = 641.0
-margin_bottom = 69.0
+margin_top = 27.0
+margin_right = 426.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 140, 0 )
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 9 )
@@ -421,7 +394,7 @@ __meta__ = {
 }
 
 [node name="Checkbox2" type="CheckBox" parent="Window/TabContainer/General/VBoxContainer/HBoxContainer4"]
-margin_left = 645.0
+margin_left = 430.0
 margin_right = 857.0
 margin_bottom = 82.0
 focus_neighbour_left = NodePath("../Checkbox")
@@ -871,21 +844,57 @@ anchor_bottom = 1.0
 margin_top = 14.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Window/TabContainer/Graphics"]
+anchor_right = 1.0
 margin_left = 26.0
 margin_top = 23.0
-margin_right = 990.0
+margin_right = -34.0
 margin_bottom = 364.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Window/TabContainer/Graphics/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="Window/TabContainer/Graphics/VBoxContainer"]
 margin_right = 964.0
-margin_bottom = 27.0
+margin_bottom = 82.0
+size_flags_vertical = 3
+
+[node name="FullscreenLbl" type="Label" parent="Window/TabContainer/Graphics/VBoxContainer/HBoxContainer2"]
+margin_top = 27.0
+margin_right = 640.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 140, 0 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 9 )
+text = "Full Screen"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FullScreenCheckbox" type="CheckBox" parent="Window/TabContainer/Graphics/VBoxContainer/HBoxContainer2"]
+margin_left = 644.0
+margin_right = 964.0
+margin_bottom = 82.0
+focus_neighbour_top = NodePath("../../HBoxContainer3/HSliderSpeed")
+focus_neighbour_bottom = NodePath("../../../../../ResumeBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+align = 1
+expand_icon = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Window/TabContainer/Graphics/VBoxContainer"]
+margin_top = 86.0
+margin_right = 964.0
+margin_bottom = 168.0
+size_flags_vertical = 3
 
 [node name="UseLightsLbl" type="Label" parent="Window/TabContainer/Graphics/VBoxContainer/HBoxContainer"]
+margin_top = 27.0
 margin_right = 640.0
-margin_bottom = 27.0
+margin_bottom = 54.0
 rect_min_size = Vector2( 140, 0 )
 size_flags_horizontal = 3
 custom_fonts/font = SubResource( 9 )
@@ -900,7 +909,7 @@ __meta__ = {
 [node name="UseLightsCheckbox" type="CheckBox" parent="Window/TabContainer/Graphics/VBoxContainer/HBoxContainer"]
 margin_left = 644.0
 margin_right = 964.0
-margin_bottom = 27.0
+margin_bottom = 82.0
 focus_neighbour_top = NodePath("../../HBoxContainer3/HSliderSpeed")
 focus_neighbour_bottom = NodePath("../../../../../ResumeBtn")
 size_flags_horizontal = 3
@@ -911,6 +920,72 @@ expand_icon = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Window/TabContainer/Graphics/VBoxContainer"]
+margin_top = 172.0
+margin_right = 964.0
+margin_bottom = 254.0
+size_flags_vertical = 3
+
+[node name="EnemyParticlesLbl" type="Label" parent="Window/TabContainer/Graphics/VBoxContainer/HBoxContainer3"]
+margin_top = 27.0
+margin_right = 640.0
+margin_bottom = 54.0
+rect_min_size = Vector2( 140, 0 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 9 )
+text = "Enemy Particles"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="EnemyParticlesCheckbox" type="CheckBox" parent="Window/TabContainer/Graphics/VBoxContainer/HBoxContainer3"]
+margin_left = 644.0
+margin_right = 964.0
+margin_bottom = 82.0
+focus_neighbour_top = NodePath("../../HBoxContainer3/HSliderSpeed")
+focus_neighbour_bottom = NodePath("../../../../../ResumeBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+align = 1
+expand_icon = true
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Window/TabContainer/Graphics/VBoxContainer"]
+margin_top = 258.0
+margin_right = 964.0
+margin_bottom = 341.0
+size_flags_vertical = 3
+
+[node name="BackgroundParallaxLbl" type="Label" parent="Window/TabContainer/Graphics/VBoxContainer/HBoxContainer4"]
+margin_top = 28.0
+margin_right = 640.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 140, 0 )
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 9 )
+text = "Background Parallax"
+align = 1
+valign = 1
+autowrap = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackgroundParallaxCheckbox" type="CheckBox" parent="Window/TabContainer/Graphics/VBoxContainer/HBoxContainer4"]
+margin_left = 644.0
+margin_right = 964.0
+margin_bottom = 83.0
+focus_neighbour_top = NodePath("../../HBoxContainer3/HSliderSpeed")
+focus_neighbour_bottom = NodePath("../../../../../ResumeBtn")
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+align = 1
+expand_icon = true
 
 [node name="RebindControlsSelector" type="Control" parent="Window"]
 visible = false
@@ -980,7 +1055,6 @@ bus = "SFX"
 [connection signal="value_changed" from="Window/TabContainer/General/VBoxContainer/HBoxContainer/HSliderMusic" to="." method="_on_HSliderMusic_value_changed"]
 [connection signal="value_changed" from="Window/TabContainer/General/VBoxContainer/HBoxContainer2/HSliderSFX" to="." method="_on_HSliderSFX_value_changed"]
 [connection signal="value_changed" from="Window/TabContainer/General/VBoxContainer/HBoxContainer3/HSliderSpeed" to="." method="_on_HSliderSpeed_value_changed"]
-[connection signal="toggled" from="Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox" to="." method="_on_Checkbox_toggled"]
 [connection signal="toggled" from="Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox2" to="." method="_on_Checkbox2_toggled"]
 [connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_up/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "move_up" ]]
 [connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_left/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "move_left" ]]
@@ -996,4 +1070,7 @@ bus = "SFX"
 [connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_down/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "ui_down" ]]
 [connection signal="button_up" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/ui_right/RebindableBtn" to="." method="_on_RebindableBtn_button_up" binds= [ "ui_right" ]]
 [connection signal="pressed" from="Window/TabContainer/Controls/ScrollContainer/VBoxContainer/Reset/ResetBtn" to="." method="_on_ResetBtn_pressed"]
+[connection signal="toggled" from="Window/TabContainer/Graphics/VBoxContainer/HBoxContainer2/FullScreenCheckbox" to="." method="_on_Checkbox_toggled"]
 [connection signal="toggled" from="Window/TabContainer/Graphics/VBoxContainer/HBoxContainer/UseLightsCheckbox" to="." method="_on_UseLightsCheckbox_toggled"]
+[connection signal="toggled" from="Window/TabContainer/Graphics/VBoxContainer/HBoxContainer3/EnemyParticlesCheckbox" to="." method="_on_EnemyParticlesCheckbox_toggled"]
+[connection signal="toggled" from="Window/TabContainer/Graphics/VBoxContainer/HBoxContainer4/BackgroundParallaxCheckbox" to="." method="_on_BackgroundParallaxCheckbox_toggled"]

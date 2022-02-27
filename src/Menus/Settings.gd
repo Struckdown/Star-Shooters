@@ -8,7 +8,6 @@ var selectedRebindableHBox = null
 
 func _ready():
 	loadSettings()
-	$Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox.pressed = OS.window_fullscreen
 	_on_Settings_visibility_changed()
 	var err = GameManager.connect("controlsChanged", self, "updateControlsDisplay")
 	if err:
@@ -76,8 +75,10 @@ func loadSettings():
 	$Window/TabContainer/General/VBoxContainer/HBoxContainer2/HSliderSFX.value = AudioServer.get_bus_volume_db(AudioServer.get_bus_index("SFX"))
 	$Window/TabContainer/General/VBoxContainer/HBoxContainer3/HSliderSpeed.value = GameManager.gameSpeed
 	$Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox2.pressed = GameManager.instaKillMode
-	$Window/TabContainer/General/VBoxContainer/HBoxContainer4/Checkbox.pressed = OS.window_fullscreen
-	$Window/TabContainer/Graphics/VBoxContainer/HBoxContainer/UseLightsCheckbox.pressed = GameManager.usesGlow
+	$Window/TabContainer/Graphics/VBoxContainer/HBoxContainer2/FullScreenCheckbox.pressed = OS.window_fullscreen
+	$Window/TabContainer/Graphics/VBoxContainer/HBoxContainer/UseLightsCheckbox.pressed = GameManager.graphicSettings["usesGlow"]
+	$Window/TabContainer/Graphics/VBoxContainer/HBoxContainer3/EnemyParticlesCheckbox.pressed = GameManager.graphicSettings["enemyParticlesEnabled"]
+	$Window/TabContainer/Graphics/VBoxContainer/HBoxContainer4/BackgroundParallaxCheckbox.pressed = GameManager.graphicSettings["BackgroundParallaxEnabled"]
 	updateControlsDisplay()
 
 
@@ -125,3 +126,11 @@ func _on_UseLightsCheckbox_toggled(button_pressed):
 	GlobalWorldEnvironment.environment.glow_enabled = button_pressed
 	GameManager.updateGraphicSettings("glowEnabled", button_pressed)
 	
+
+
+func _on_EnemyParticlesCheckbox_toggled(button_pressed):
+	GameManager.updateGraphicSettings("enemyParticlesEnabled", button_pressed)
+
+
+func _on_BackgroundParallaxCheckbox_toggled(button_pressed):
+	GameManager.updateGraphicSettings("BackgroundParallaxEnabled", button_pressed)

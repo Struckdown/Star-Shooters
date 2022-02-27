@@ -9,7 +9,7 @@ var layerSpeedAllowedRanges = [[7,14], [14, 16], [12, 20]]
 var colors = ["Red", "Orange", "Green", "Blue"]
 export(String, "Red", "Orange", "Green", "Blue") var color = "Red"
 export(bool) var useRandomColor = true
-export(float) var backgroundSpeedMultiplier setget updateBackgroundSpeed
+export(float) var backgroundSpeedMultiplier
 var backgroundSpeedBase
 onready var background = $background
 
@@ -23,6 +23,8 @@ func _ready():
 	for i in range(0, len(planets)):
 		planets[i].position.x = rand_range(250, 400)
 	applyHueShift()
+	GameManager.connect("graphicsUpdated", self, "refreshBackground")
+	#updateBackgroundSpeed(backgroundSpeedBase)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -52,10 +54,13 @@ func applyHueShift():
 		"Blue":
 			modulate = Color(0.062745, 0.980392, 0.87451)
 
+func refreshBackground():
+	updateBackgroundSpeed(backgroundSpeedMultiplier)
+
 func updateBackgroundSpeed(_val):
 	if not background:
 		return
 	backgroundSpeedMultiplier = _val
-	var newSpeed = backgroundSpeedBase*backgroundSpeedMultiplier
-	background.material.set_shader_param("scroll_speed",newSpeed)
+	var newSpeed = backgroundSpeedBase*backgroundSpeedMultiplier*float(GameManager.graphicSettings["BackgroundParallaxEnabled"])
+	background.material.set_shader_param("scroll_speed", newSpeed)
 	$"parallax-space-stars".material.set_shader_param("scroll_speed",newSpeed)

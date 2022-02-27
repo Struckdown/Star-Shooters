@@ -19,12 +19,13 @@ var unlockedPlayerFireTypes = [playerFireTypes.FOCUSED]
 var endingToPlay = "commanderVictory"	# or federationVictory. Set by final boss decision wave
 var debugMode = false
 var config = ConfigFile.new()
-var usesGlow = true
+var graphicSettings = {"usesGlow": true, "BackgroundParallaxEnabled": true, "enemyParticlesEnabled": true}
 
 var saveGameFileName = "user://savegame.save"
 var optionsFileName = "user://player.perfs"
 signal fireModeUpdated
 signal controlsChanged
+signal graphicsUpdated
 
 func _unhandled_input(event):
 	if event.is_action_pressed("fullscreen"):
@@ -138,8 +139,11 @@ func loadSettings():
 		setBusAudio("SFX", sfx)
 		
 		# Set Graphics
-		usesGlow = config.get_value("graphics", "glowEnabled", true)
-		GlobalWorldEnvironment.environment.glow_enabled = usesGlow
+		graphicSettings["usesGlow"] = config.get_value("graphics", "glowEnabled", true)
+		graphicSettings["BackgroundParallaxEnabled"] = config.get_value("graphics", "BackgroundParallaxEnabled", true)
+		graphicSettings["enemyParticlesEnabled"] = config.get_value("graphics", "enemyParticlesEnabled", true)
+		GlobalWorldEnvironment.environment.glow_enabled = graphicSettings["usesGlow"]
+		
 		
 		# Set Inputs
 		for action in InputMap.get_actions():
@@ -171,5 +175,7 @@ func resetControls():
 	config.save(optionsFileName)
 
 func updateGraphicSettings(key, value):
+	graphicSettings[key] = value
 	config.set_value("graphics", key, value)
 	config.save(optionsFileName)
+	emit_signal("graphicsUpdated")
