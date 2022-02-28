@@ -23,11 +23,13 @@ func _ready():
 	for i in range(0, len(planets)):
 		planets[i].position.x = rand_range(250, 400)
 	applyHueShift()
-	GameManager.connect("graphicsUpdated", self, "refreshBackground")
-	#updateBackgroundSpeed(backgroundSpeedBase)
+	var err = GameManager.connect("graphicsUpdated", self, "refreshBackground")
+	if err:
+		push_error(err)
+	refreshBackground()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(delta): 
 	updatePlanets(delta)
 
 

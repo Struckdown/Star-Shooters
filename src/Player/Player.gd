@@ -84,6 +84,8 @@ func _unhandled_input(event):
 			cheatModeActive = true
 			print("Player: Cheat mode activated")
 	if event.is_action_pressed("switchWeapons") and hasControl:
+		if len(GameManager.unlockedPlayerFireTypes) > 1:
+			$WeaponSwitchSFX.play()
 		GameManager.switchToNextFireMode()
 	if event.is_action_pressed("fire") and hasControl:
 		shouldFire = true
@@ -159,6 +161,7 @@ func updateFirePattern():
 			shotDamage = 1
 		_:
 			print("No fire type matched!")
+			return
 
 func performAttack():
 	energyLevel -= energyThreshold

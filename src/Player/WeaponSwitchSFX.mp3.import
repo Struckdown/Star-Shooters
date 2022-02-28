@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/WeaponSwitchSFX.mp3-7d63a776400528b23a598a6f0a46af83.mp3str"
+
+[deps]
+
+source_file="res://Player/WeaponSwitchSFX.mp3"
+dest_files=[ "res://.import/WeaponSwitchSFX.mp3-7d63a776400528b23a598a6f0a46af83.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

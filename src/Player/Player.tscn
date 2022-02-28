@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://Player/Player Sprite Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Player/PlayerTeleport2.ogg" type="AudioStream" id=7]
 [ext_resource path="res://Player/PlayerShieldShader.tres" type="Material" id=8]
 [ext_resource path="res://Player/FiringSFX.mp3" type="AudioStream" id=9]
+[ext_resource path="res://Player/WeaponSwitchSFX.mp3" type="AudioStream" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 22.0
@@ -302,6 +303,10 @@ rotation = 3.14159
 
 [node name="FiringSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+bus = "SFX"
+
+[node name="WeaponSwitchSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
 bus = "SFX"
 
 [connection signal="area_entered" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_entered"]

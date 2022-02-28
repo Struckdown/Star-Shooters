@@ -158,7 +158,7 @@ func aimAtTarget():
 					target = get_tree().get_nodes_in_group("Player")[0]
 
 func destroy():
-	if explosionManagerRef and GameManager["enemyParticlesEnabled"]:
+	if explosionManagerRef and GameManager.graphicSettings["enemyParticlesEnabled"]:
 		explosionManagerRef.requestExplosion("multi", position, self)
 	$AnimationPlayer.play("Death")
 	$ExplosionTimer.start()
