@@ -152,7 +152,7 @@ func updateFirePattern():
 			energyThreshold = 4
 			shotDamage = 1
 		GameManager.playerFireTypes.CHARGE:
-			fireDelayUpperBound = 0.5
+			fireDelayUpperBound = 1.5
 			energyThreshold = 30
 			shotDamage = 30
 		GameManager.playerFireTypes.REVERSE:
@@ -176,6 +176,9 @@ func performAttack():
 			for i in range(4):
 				spawnBullet(get_node("FireGroups/4Arc"), i)
 		GameManager.playerFireTypes.CHARGE:
+			$ChargeWeaponParticles.emitting = true
+			yield(get_tree().create_timer(fireDelay),"timeout")
+			$ChargeWeaponParticles.emitting = false
 			spawnBullet(get_node("FireGroups/strongSlow"), 0)
 		GameManager.playerFireTypes.REVERSE:
 			for i in range(3):

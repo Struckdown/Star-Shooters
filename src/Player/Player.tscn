@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://Player/Player Sprite Sheet.png" type="Texture" id=1]
 [ext_resource path="res://Player/Player.gd" type="Script" id=2]
@@ -147,6 +147,29 @@ color_ramp = SubResource( 10 )
 
 [sub_resource type="CircleShape2D" id=14]
 radius = 6.04593
+
+[sub_resource type="Curve" id=15]
+min_value = -1024.0
+max_value = 200.0
+_data = [ Vector2( 0, 136.018 ), 0.0, 0.0, 0, 0, Vector2( 1, -1024 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=16]
+curve = SubResource( 15 )
+
+[sub_resource type="ParticlesMaterial" id=17]
+emission_shape = 1
+emission_sphere_radius = 25.0
+flag_align_y = true
+flag_disable_z = true
+direction = Vector3( 0, 0, 0 )
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = -100.0
+radial_accel_curve = SubResource( 16 )
+color = Color( 0.945098, 0.466667, 0, 1 )
+hue_variation = 1.0
+hue_variation_random = 0.05
 
 [node name="Player" type="KinematicBody2D" groups=[
 "Player",
@@ -308,6 +331,14 @@ bus = "SFX"
 [node name="WeaponSwitchSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
 bus = "SFX"
+
+[node name="ChargeWeaponParticles" type="Particles2D" parent="."]
+position = Vector2( 0, -15.6617 )
+emitting = false
+amount = 60
+lifetime = 1.5
+explosiveness = 1.0
+process_material = SubResource( 17 )
 
 [connection signal="area_entered" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_entered"]
 [connection signal="area_exited" from="GemMagnetArea" to="." method="_on_GemMagnetArea_area_exited"]
