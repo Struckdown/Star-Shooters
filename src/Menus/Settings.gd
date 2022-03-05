@@ -21,10 +21,13 @@ func _input(event):
 	if event.is_action_pressed("ui_change_tabs") and visible:
 		var tabNumber = $Window/TabContainer.current_tab
 		$Window/TabContainer.current_tab = (tabNumber+1)%$Window/TabContainer.get_child_count()
-		if tabNumber == 1:
-			$Window/ResumeBtn.call_deferred("grab_focus")
-		else:
-			$Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_up/RebindableBtn.call_deferred("grab_focus")
+		match tabNumber:
+			2:
+				$Window/ResumeBtn.call_deferred("grab_focus")
+			0:
+				$Window/TabContainer/Controls/ScrollContainer/VBoxContainer/move_up/RebindableBtn.call_deferred("grab_focus")
+			1:
+				$Window/ResumeBtn.call_deferred("grab_focus")
 
 
 func _unhandled_input(event):
